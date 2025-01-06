@@ -1,0 +1,67 @@
+[
+    {
+       "pk": 1,
+       "model": "products.product",
+       "fields": {
+          "sku": "mm001",
+          "name": "Magic Mirror",
+          "description": "Gaze into the Magic Mirror and reveal the truth you seek! A mystical relic from the Queen's castle, this enchanted mirror answers your questions with cryptic clarity. Beware—its insights are as honest as they are profound.",
+          "price": 1500.00,
+          "realm": 1,
+          "stock": 1,
+          "image": "magic_mirror.jpg"
+       }
+    },
+    {
+       "pk": 2,
+       "model": "products.product",
+       "fields": {
+          "sku": "ml002",
+          "name": "Magic Lamp",
+          "description": "Unlock the wonders of the Magic Lamp! This ancient treasure grants three wishes to those daring enough to rub its surface. Bound by cosmic laws, its genie promises adventure, mischief, and perhaps a touch of magic to change your destiny.",
+          "price": 2000.00,
+          "realm": 3,
+          "stock": 1,
+          "image": "magic_lamp.jpg"
+       }
+    },
+    {
+       "pk": 3,
+       "model": "products.product",
+       "fields": {
+          "sku": "tu003",
+          "name": "Rapunzel's Hairbrush",
+          "description": "Let your hair shine with the magic of Rapunzel’s enchanted hairbrush! Said to hold traces of the golden flower’s healing power, this elegant brush detangles effortlessly and leaves a radiant, silky glow. A perfect blend of beauty and magic for any aspiring royal.",
+          "price": 250.00,
+          "realm": 2,
+          "stock": 1,
+          "image": "rapunzels_hairbrush.jpg"
+       }
+    },
+    {
+       "pk": 4,
+       "model": "products.product",
+       "fields": {
+          "sku": "ch004",
+          "name": "Captain Hook's Hook",
+          "description": "Command fear and respect on the high seas with Captain Hook’s iconic hook! Forged from gleaming steel and worn with the tales of Neverland, this menacing accessory is a must-have for any aspiring pirate captain.",
+          "price": 400.00,
+          "realm": 4,
+          "stock": 1,
+          "image": "captain_hooks_hook.jpg"
+       }
+    },
+      {
+            "pk": 5,
+            "model": "products.product",
+            "fields": {
+               "sku": "br005",
+               "name": "Enchanted Rose",
+               "description": "A symbol of timeless love, the Enchanted Rose holds the power to change fate. Encased in a glass dome, it slowly loses its petals, each falling like a moment of magic and wonder. Perfect for lovers and dreamers alike.",
+               "price": 600.00,
+               "realm": 5,
+               "stock": 1,
+               "image": "enchanted_rose.jpg"
+    }
+ }
+ ]

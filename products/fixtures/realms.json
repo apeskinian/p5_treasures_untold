@@ -1,0 +1,42 @@
+[
+    {
+        "pk": 1,
+        "model": "products.realm",
+        "fields": {
+            "name": "enchanted_forest",
+            "friendly_name": "Enchanted Forest"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.realm",
+        "fields": {
+            "name": "corona",
+            "friendly_name": "Corona"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.realm",
+        "fields": {
+            "name": "agrabah",
+            "friendly_name": "Agrabah"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.realm",
+        "fields": {
+            "name": "neverland",
+            "friendly_name": "Neverland"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.realm",
+        "fields": {
+            "name": "enchanted_castle",
+            "friendly_name": "Enchanted Castle"
+        }
+    }
+]
