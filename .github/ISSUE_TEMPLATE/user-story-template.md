@@ -1,7 +1,7 @@
 ---
 name: User Story Template
 about: Describe user stories and acceptance criteria.
-title: "[USER STORY] -"
+title: "[USER STORY] - "
 labels: ''
 assignees: apeskinian
 
