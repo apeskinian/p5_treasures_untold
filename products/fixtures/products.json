@@ -75,5 +75,83 @@
             "stock": 1,
             "image": "magic_carpet.jpg"
         }
+    },
+    {
+        "pk": 7,
+        "model": "products.product",
+        "fields": {
+          "sku": "cg006",
+          "name": "Fairy Godmother's Wand",
+          "description": "Wave your troubles away with the Fairy Godmother's magical wand! Infused with the power to transform pumpkins into carriages and rags into gowns, this delicate wand is a must-have for those seeking a touch of enchantment in their lives. Just remember, magic fades at midnight!",
+          "price": 350.00,
+          "realm": 6,
+          "stock": 1,
+          "image": "fairy_godmothers_wand.jpg"
+        }
+      },
+      {
+        "pk": 8,
+        "model": "products.product",
+        "fields": {
+            "sku": "mo001",
+            "name": "Maui's Fish Hook",
+            "description": "Harness the power of the mighty Maui with his enchanted fish hook. Crafted by the demigod himself, this hook grants the ability to shape-shift and command the seas. A symbol of strength and adventure, perfect for any daring explorer.",
+            "price": 500.00,
+            "realm": 7,
+            "stock": 1,
+            "image": "maui_fish_hook.jpg"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "products.product",
+        "fields": {
+            "sku": "oc001",
+            "name": "Cinderella's Glass Slipper",
+            "description": "Step into a world of elegance with Cinderella's enchanted glass slipper. Delicate, perfectly crafted, and shimmering with magic, this slipper is said to fit only the true love of the princess. A timeless symbol of grace and love, perfect for any royal occasion.",
+            "price": 350.00,
+            "realm": 6,
+            "stock": 1,
+            "image": "cinderellas_glass_slipper.jpg"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "products.product",
+        "fields": {
+            "sku": "lm010",
+            "name": "Dinglehopper",
+            "description": "The Dinglehopper is an essential tool for any aspiring mermaid! This magical, multi-purpose fork is perfect for combing through even the wildest of underwater tresses, leaving them smooth and shining. With a touch of magic, it’s more than just a utensil – it’s a symbol of the wonders of the sea.",
+            "price": 15.00,
+            "realm": 8,
+            "stock": 8,
+            "image": "dinglehopper.jpg"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.product",
+        "fields": {
+            "sku": "tu009",
+            "name": "Rapunzel's Frying Pan",
+            "description": "Unleash your inner hero with Rapunzel's trusty frying pan! Known for its versatility and unexpected power, this iconic kitchen tool doubles as a weapon in the hands of a brave princess. Whether for cooking or defending against foes, it's a must-have for any adventurer.",
+            "price": 120.00,
+            "realm": 2,
+            "stock": 1,
+            "image": "rapunzels_frying_pan.jpg"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "products.product",
+        "fields": {
+            "sku": "rh010",
+            "name": "Golden Arrow",
+            "description": "Channel the legendary skills of Robin Hood with the Golden Arrow. Crafted for precision and speed, this arrow is a symbol of unmatched expertise in archery. Perfect for any daring adventurer who seeks to master the art of the bow.",
+            "price": 150.00,
+            "realm": 9,
+            "stock": 1,
+            "image": "golden_arrow.jpg"
+        }
     }
 ]

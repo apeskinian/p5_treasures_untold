@@ -38,5 +38,37 @@
             "name": "enchanted_castle",
             "friendly_name": "Enchanted Castle"
         }
+    },
+    {
+        "pk": 6,
+        "model": "products.realm",
+        "fields": {
+            "name": "occitania",
+            "friendly_name": "Occitania"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.realm",
+        "fields": {
+            "name": "motunui",
+            "friendly_name": "Motunui"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "products.realm",
+        "fields": {
+            "name": "atlantica",
+            "friendly_name": "Atlantica"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "products.realm",
+        "fields": {
+            "name": "sherwood_forest",
+            "friendly_name": "Sherwood Forest"
+        }
     }
 ]
