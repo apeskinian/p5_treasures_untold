@@ -67,7 +67,7 @@
         "pk": 6,
         "model": "products.product",
         "fields": {
-            "sku": "al001",
+            "sku": "al006",
             "name": "Magic Carpet",
             "description": "Fly through the skies with the enchanted Magic Carpet, a wondrous item that grants the ability to soar above the clouds. Known for its vibrant colors and unmatched comfort, it’s the perfect travel companion for adventurers seeking both style and speed. A must-have for any daring journey, whether through enchanted cities or across desert sands.",
             "price": 450.00,
@@ -80,7 +80,7 @@
         "pk": 7,
         "model": "products.product",
         "fields": {
-          "sku": "cg006",
+          "sku": "cg007",
           "name": "Fairy Godmother's Wand",
           "description": "Wave your troubles away with the Fairy Godmother's magical wand! Infused with the power to transform pumpkins into carriages and rags into gowns, this delicate wand is a must-have for those seeking a touch of enchantment in their lives. Just remember, magic fades at midnight!",
           "price": 350.00,
@@ -93,7 +93,7 @@
         "pk": 8,
         "model": "products.product",
         "fields": {
-            "sku": "mo001",
+            "sku": "mo008",
             "name": "Maui's Fish Hook",
             "description": "Harness the power of the mighty Maui with his enchanted fish hook. Crafted by the demigod himself, this hook grants the ability to shape-shift and command the seas. A symbol of strength and adventure, perfect for any daring explorer.",
             "price": 500.00,
@@ -106,7 +106,7 @@
         "pk": 9,
         "model": "products.product",
         "fields": {
-            "sku": "oc001",
+            "sku": "oc009",
             "name": "Cinderella's Glass Slipper",
             "description": "Step into a world of elegance with Cinderella's enchanted glass slipper. Delicate, perfectly crafted, and shimmering with magic, this slipper is said to fit only the true love of the princess. A timeless symbol of grace and love, perfect for any royal occasion.",
             "price": 350.00,
@@ -132,7 +132,7 @@
         "pk": 11,
         "model": "products.product",
         "fields": {
-            "sku": "tu009",
+            "sku": "tu011",
             "name": "Rapunzel's Frying Pan",
             "description": "Unleash your inner hero with Rapunzel's trusty frying pan! Known for its versatility and unexpected power, this iconic kitchen tool doubles as a weapon in the hands of a brave princess. Whether for cooking or defending against foes, it's a must-have for any adventurer.",
             "price": 120.00,
@@ -145,13 +145,130 @@
         "pk": 12,
         "model": "products.product",
         "fields": {
-            "sku": "rh010",
+            "sku": "rh012",
             "name": "Golden Arrow",
             "description": "Channel the legendary skills of Robin Hood with the Golden Arrow. Crafted for precision and speed, this arrow is a symbol of unmatched expertise in archery. Perfect for any daring adventurer who seeks to master the art of the bow.",
             "price": 150.00,
             "realm": 9,
             "stock": 1,
             "image": "golden_arrow.jpg"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "products.product",
+        "fields": {
+            "sku": "fa013",
+            "name": "Apprentice's Broom",
+            "description": "Step into the shoes of the Sorcerer’s Apprentice with this magical broom. Infused with mystical energy, it brings a spark of enchantment to mundane chores, though caution is advised for novice sorcerers. A timeless artifact from Fantasia's magical world.",
+            "price": 120.00,
+            "realm": 10,
+            "stock": 100,
+            "image": "apprentices_broom.jpg"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "products.product",
+        "fields": {
+            "sku": "fa014",
+            "name": "Sorcerer's Hat",
+            "description": "Wield the power of the cosmos with the iconic Sorcerer's Hat. A symbol of magical mastery, it grants its wearer an aura of mystery and a touch of enchantment. Perfect for dreamers and aspiring apprentices.",
+            "price": 250.00,
+            "realm": 10,
+            "stock": 1,
+            "image": "sorcerers_hat.jpg"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "products.product",
+        "fields": {
+            "sku": "nb015",
+            "name": "Oogie Boogie's Bathtub",
+            "description": "Oogie Boogie's bathtub, a peculiar item from Halloween Town, is as spooky as it is strange. Known for its eerie presence, it's perfect for fans of The Nightmare Before Christmas who want a touch of the bizarre in their collection.",
+            "price": 100.00,
+            "realm": 11,
+            "stock": 1,
+            "image": "oogie_boogies_bathtub.jpg"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph016",
+            "name": "Captain Hook's Cutlass",
+            "description": "Captain Hook's Cutlass, a fearsome and iconic weapon wielded by the notorious pirate from Neverland. This item captures the essence of Captain Hook's menacing presence, perfect for fans of Peter Pan.",
+            "price": 150.00,
+            "realm": 4,
+            "stock": 1,
+            "image": "captain_hooks_cutlass.jpg"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph017",
+            "name": "Neverland Map",
+            "description": "A treasure map that reveals the hidden secrets of Neverland. This map is a must-have for any adventurer seeking to explore the magical island of Peter Pan's world.",
+            "price": 80.00,
+            "realm": 4,
+            "stock": 1,
+            "image": "neverland_map.jpg"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph018",
+            "name": "Alarm Clock",
+            "description": "A peculiar alarm clock that was once swallowed by Tick-Tock, the crocodile. Known for its ticking sound, it’s a unique and iconic piece of Neverland history.",
+            "price": 35.00,
+            "realm": 4,
+            "stock": 1,
+            "image": "alarm_clock.jpg"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph004",
+            "name": "Pixie Dust",
+            "description": "A shimmering vial containing the magical pixie dust that can make anyone fly. A must-have item for those seeking to experience the magic of Neverland.",
+            "price": 50.00,
+            "realm": 4,
+            "stock": 10,
+            "image": "vial_of_pixie_dust.jpg"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph022",
+            "name": "Left Half of a Golden Scarab Beetle",
+            "description": "The left half of a golden beetle, prized for its intricate design. Rumors suggest that when the right half is found, its true magic will be revealed.",
+            "price": 37.50,
+            "realm": 3,
+            "stock": 1,
+            "image": "golden_scarab_beetle_left.jpg"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph023",
+            "name": "Right Half of a Golden Scarab Beetle",
+            "description": "The right half of a golden beetle, its delicate features hinting at a larger mystery. It is said that when paired with the left half, the beetle’s full power is unlocked.",
+            "price": 37.50,
+            "realm": 3,
+            "stock": 1,
+            "image": "golden_scarab_beetle_right.jpg"
         }
     }
 ]

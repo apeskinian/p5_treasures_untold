@@ -70,5 +70,21 @@
             "name": "sherwood_forest",
             "friendly_name": "Sherwood Forest"
         }
+    },
+    {
+        "pk": 10,
+        "model": "products.realm",
+        "fields": {
+            "name": "fantasia",
+            "friendly_name": "Fantasia"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.realm",
+        "fields": {
+            "name": "halloween_town",
+            "friendly_name": "Halloween Town"
+        }
     }
 ]
