@@ -86,5 +86,13 @@
             "name": "halloween_town",
             "friendly_name": "Halloween Town"
         }
+    },
+    {
+        "pk": 12,
+        "model": "products.realm",
+        "fields": {
+            "name": "pride_lands",
+            "friendly_name": "Pride Lands"
+        }
     }
 ]

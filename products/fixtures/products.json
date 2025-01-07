@@ -5,7 +5,7 @@
             "sku": "mm001",
             "name": "Magic Mirror",
             "description": "Gaze into the Magic Mirror and reveal the truth you seek! A mystical relic from the Queen's castle, this enchanted mirror answers your questions with cryptic clarity. Beware—its insights are as honest as they are profound.",
-            "price": 1500.00,
+            "price": 900.00,
             "realm": 1,
             "stock": 1,
             "image": "magic_mirror.jpg"
@@ -18,7 +18,7 @@
             "sku": "ml002",
             "name": "Magic Lamp",
             "description": "Unlock the wonders of the Magic Lamp! This ancient treasure grants three wishes to those daring enough to rub its surface. Bound by cosmic laws, its genie promises adventure, mischief, and perhaps a touch of magic to change your destiny.",
-            "price": 2000.00,
+            "price": 1200.00,
             "realm": 3,
             "stock": 1,
             "image": "magic_lamp.jpg"
@@ -31,7 +31,7 @@
             "sku": "tu003",
             "name": "Rapunzel's Hairbrush",
             "description": "Let your hair shine with the magic of Rapunzel’s enchanted hairbrush! Said to hold traces of the golden flower’s healing power, this elegant brush detangles effortlessly and leaves a radiant, silky glow. A perfect blend of beauty and magic for any aspiring royal.",
-            "price": 250.00,
+            "price": 200.00,
             "realm": 2,
             "stock": 1,
             "image": "rapunzels_hairbrush.jpg"
@@ -44,7 +44,7 @@
             "sku": "ch004",
             "name": "Captain Hook's Hook",
             "description": "Command fear and respect on the high seas with Captain Hook’s iconic hook! Forged from gleaming steel and worn with the tales of Neverland, this menacing accessory is a must-have for any aspiring pirate captain.",
-            "price": 400.00,
+            "price": 350.00,
             "realm": 4,
             "stock": 1,
             "image": "captain_hooks_hook.jpg"
@@ -57,7 +57,7 @@
             "sku": "br005",
             "name": "Enchanted Rose",
             "description": "A symbol of timeless love, the Enchanted Rose holds the power to change fate. Encased in a glass dome, it slowly loses its petals, each falling like a moment of magic and wonder. Perfect for lovers and dreamers alike.",
-            "price": 600.00,
+            "price": 400.00,
             "realm": 5,
             "stock": 1,
             "image": "enchanted_rose.jpg"
@@ -70,7 +70,7 @@
             "sku": "al006",
             "name": "Magic Carpet",
             "description": "Fly through the skies with the enchanted Magic Carpet, a wondrous item that grants the ability to soar above the clouds. Known for its vibrant colors and unmatched comfort, it’s the perfect travel companion for adventurers seeking both style and speed. A must-have for any daring journey, whether through enchanted cities or across desert sands.",
-            "price": 450.00,
+            "price": 500.00,
             "realm": 3,
             "stock": 1,
             "image": "magic_carpet.jpg"
@@ -83,7 +83,7 @@
           "sku": "cg007",
           "name": "Fairy Godmother's Wand",
           "description": "Wave your troubles away with the Fairy Godmother's magical wand! Infused with the power to transform pumpkins into carriages and rags into gowns, this delicate wand is a must-have for those seeking a touch of enchantment in their lives. Just remember, magic fades at midnight!",
-          "price": 350.00,
+          "price": 300.00,
           "realm": 6,
           "stock": 1,
           "image": "fairy_godmothers_wand.jpg"
@@ -96,7 +96,7 @@
             "sku": "mo008",
             "name": "Maui's Fish Hook",
             "description": "Harness the power of the mighty Maui with his enchanted fish hook. Crafted by the demigod himself, this hook grants the ability to shape-shift and command the seas. A symbol of strength and adventure, perfect for any daring explorer.",
-            "price": 500.00,
+            "price": 600.00,
             "realm": 7,
             "stock": 1,
             "image": "maui_fish_hook.jpg"
@@ -109,7 +109,7 @@
             "sku": "oc009",
             "name": "Cinderella's Glass Slipper",
             "description": "Step into a world of elegance with Cinderella's enchanted glass slipper. Delicate, perfectly crafted, and shimmering with magic, this slipper is said to fit only the true love of the princess. A timeless symbol of grace and love, perfect for any royal occasion.",
-            "price": 350.00,
+            "price": 300.00,
             "realm": 6,
             "stock": 1,
             "image": "cinderellas_glass_slipper.jpg"
@@ -122,7 +122,7 @@
             "sku": "lm010",
             "name": "Dinglehopper",
             "description": "The Dinglehopper is an essential tool for any aspiring mermaid! This magical, multi-purpose fork is perfect for combing through even the wildest of underwater tresses, leaving them smooth and shining. With a touch of magic, it’s more than just a utensil – it’s a symbol of the wonders of the sea.",
-            "price": 15.00,
+            "price": 25.00,
             "realm": 8,
             "stock": 8,
             "image": "dinglehopper.jpg"
@@ -135,7 +135,7 @@
             "sku": "tu011",
             "name": "Rapunzel's Frying Pan",
             "description": "Unleash your inner hero with Rapunzel's trusty frying pan! Known for its versatility and unexpected power, this iconic kitchen tool doubles as a weapon in the hands of a brave princess. Whether for cooking or defending against foes, it's a must-have for any adventurer.",
-            "price": 120.00,
+            "price": 15.00,
             "realm": 2,
             "stock": 1,
             "image": "rapunzels_frying_pan.jpg"
@@ -148,7 +148,7 @@
             "sku": "rh012",
             "name": "Golden Arrow",
             "description": "Channel the legendary skills of Robin Hood with the Golden Arrow. Crafted for precision and speed, this arrow is a symbol of unmatched expertise in archery. Perfect for any daring adventurer who seeks to master the art of the bow.",
-            "price": 150.00,
+            "price": 180.00,
             "realm": 9,
             "stock": 1,
             "image": "golden_arrow.jpg"
@@ -161,7 +161,7 @@
             "sku": "fa013",
             "name": "Apprentice's Broom",
             "description": "Step into the shoes of the Sorcerer’s Apprentice with this magical broom. Infused with mystical energy, it brings a spark of enchantment to mundane chores, though caution is advised for novice sorcerers. A timeless artifact from Fantasia's magical world.",
-            "price": 120.00,
+            "price": 100.00,
             "realm": 10,
             "stock": 100,
             "image": "apprentices_broom.jpg"
@@ -174,7 +174,7 @@
             "sku": "fa014",
             "name": "Sorcerer's Hat",
             "description": "Wield the power of the cosmos with the iconic Sorcerer's Hat. A symbol of magical mastery, it grants its wearer an aura of mystery and a touch of enchantment. Perfect for dreamers and aspiring apprentices.",
-            "price": 250.00,
+            "price": 200.00,
             "realm": 10,
             "stock": 1,
             "image": "sorcerers_hat.jpg"
@@ -187,7 +187,7 @@
             "sku": "nb015",
             "name": "Oogie Boogie's Bathtub",
             "description": "Oogie Boogie's bathtub, a peculiar item from Halloween Town, is as spooky as it is strange. Known for its eerie presence, it's perfect for fans of The Nightmare Before Christmas who want a touch of the bizarre in their collection.",
-            "price": 100.00,
+            "price": 150.00,
             "realm": 11,
             "stock": 1,
             "image": "oogie_boogies_bathtub.jpg"
@@ -200,7 +200,7 @@
             "sku": "ph016",
             "name": "Captain Hook's Cutlass",
             "description": "Captain Hook's Cutlass, a fearsome and iconic weapon wielded by the notorious pirate from Neverland. This item captures the essence of Captain Hook's menacing presence, perfect for fans of Peter Pan.",
-            "price": 150.00,
+            "price": 200.00,
             "realm": 4,
             "stock": 1,
             "image": "captain_hooks_cutlass.jpg"
@@ -213,7 +213,7 @@
             "sku": "ph017",
             "name": "Neverland Map",
             "description": "A treasure map that reveals the hidden secrets of Neverland. This map is a must-have for any adventurer seeking to explore the magical island of Peter Pan's world.",
-            "price": 80.00,
+            "price": 100.00,
             "realm": 4,
             "stock": 1,
             "image": "neverland_map.jpg"
@@ -226,7 +226,7 @@
             "sku": "ph018",
             "name": "Alarm Clock",
             "description": "A peculiar alarm clock that was once swallowed by Tick-Tock, the crocodile. Known for its ticking sound, it’s a unique and iconic piece of Neverland history.",
-            "price": 35.00,
+            "price": 45.00,
             "realm": 4,
             "stock": 1,
             "image": "alarm_clock.jpg"
@@ -239,7 +239,7 @@
             "sku": "ph004",
             "name": "Pixie Dust",
             "description": "A shimmering vial containing the magical pixie dust that can make anyone fly. A must-have item for those seeking to experience the magic of Neverland.",
-            "price": 50.00,
+            "price": 40.00,
             "realm": 4,
             "stock": 10,
             "image": "vial_of_pixie_dust.jpg"
@@ -252,7 +252,7 @@
             "sku": "ph022",
             "name": "Left Half of a Golden Scarab Beetle",
             "description": "The left half of a golden beetle, prized for its intricate design. Rumors suggest that when the right half is found, its true magic will be revealed.",
-            "price": 37.50,
+            "price": 50.00,
             "realm": 3,
             "stock": 1,
             "image": "golden_scarab_beetle_left.jpg"
@@ -265,10 +265,49 @@
             "sku": "ph023",
             "name": "Right Half of a Golden Scarab Beetle",
             "description": "The right half of a golden beetle, its delicate features hinting at a larger mystery. It is said that when paired with the left half, the beetle’s full power is unlocked.",
-            "price": 37.50,
+            "price": 50.00,
             "realm": 3,
             "stock": 1,
             "image": "golden_scarab_beetle_right.jpg"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 24,
+        "fields": {
+            "sku": "rs024",
+            "name": "Rafiki's Stick",
+            "realm": 12,
+            "description": "Rafiki’s staff, imbued with wisdom and magic, once used by the wise mandrill of the Pride Lands. Hold it in your hand and feel the weight of knowledge and the power of the savanna.",
+            "price": 25.00,
+            "stock": 1,
+            "image": "rafiki_stick.jpg"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 25,
+        "fields": {
+            "sku": "sb025",
+            "name": "Snarfblat",
+            "realm": 8,
+            "description": "A curious and mysterious artifact from the depths of Atlantica. This Snarfblat, once used to communicate with the surface world, holds the secrets of underwater exploration.",
+            "price": 25.00,
+            "stock": 1,
+            "image": "snarfblat.jpg"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 26,
+        "fields": {
+            "sku": "tt026",
+            "name": "King Triton's Trident",
+            "realm": 8,
+            "description": "The legendary trident of King Triton, ruler of the seas. With this powerful artifact in hand, you command the waves and the creatures of the deep. A symbol of royal authority and oceanic strength.",
+            "price": 75.00,
+            "stock": 1,
+            "image": "tritons_trident.jpg"
         }
     }
 ]
