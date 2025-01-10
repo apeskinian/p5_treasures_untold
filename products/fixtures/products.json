@@ -146,13 +146,13 @@
         "pk": 12,
         "model": "products.product",
         "fields": {
-            "sku": "rh012",
-            "name": "Golden Arrow",
-            "description": "Channel the legendary skills of Robin Hood with the Golden Arrow. Crafted for precision and speed, this arrow is a symbol of unmatched expertise in archery. Perfect for any daring adventurer who seeks to master the art of the bow.",
-            "price": 180.00,
-            "realm": 9,
+            "sku": "mt012",
+            "name": "Heart of Te Fiti",
+            "description": "A mystical green gem said to hold the life-giving power of creation. The Heart of Te Fiti restores barren lands, heals nature, and grants immense life-giving power to its bearer. A treasure for those seeking to harness the essence of creation itself.",
+            "price": 1000.00,
+            "realm": 7,
             "stock": 1,
-            "image": "golden_arrow.jpg"
+            "image": "heart_of_te_fiti.jpg"
         }
     },
     {
