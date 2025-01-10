@@ -362,5 +362,18 @@
             "stock": 1,
             "image": "shield_of_virtue.jpg"
         }
+    },
+    {
+        "pk": 29,
+        "model": "products.product",
+        "fields": {
+            "sku": "at029",
+            "name": "Fishbone Quill",
+            "description": "Crafted from the remains of a magical fish, this quill is said to bring the words of the sea to life. Perfect for writing enchanted tales or signing pacts under the waves, the Fishbone Quill is a treasure from the depths of Atlantica.",
+            "price": 75.00,
+            "realm": 8,
+            "stock": 1,
+            "image": "fishbone_quill.jpg"
+        }
     }
 ]
