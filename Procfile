@@ -1,0 +1,1 @@
+web: gunicorn treasures_untold.wsgi:application
