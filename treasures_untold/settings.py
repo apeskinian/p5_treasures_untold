@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 if os.path.isfile('env.py'):
     import env
 
@@ -43,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'products',
 ]
 
@@ -76,6 +81,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'treasures_untold.wsgi.application'
 
+# Cloudinary
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUDINARY_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API'),
+    api_secret=os.environ.get('CLOUDINARY_SECRET'),
+    secure=True,
+)
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
