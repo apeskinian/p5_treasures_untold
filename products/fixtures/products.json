@@ -375,5 +375,18 @@
             "stock": 1,
             "image": "fishbone_quill.jpg"
         }
+    },
+    {
+        "pk": 30,
+        "model": "products.product",
+        "fields": {
+            "sku": "wf030",
+            "name": "White Rabbit's Pocket Watch",
+            "description": "Never be late for an important date with the White Rabbit's Pocket Watch. This enchanted timepiece from Wonderland always keeps perfect time—unless, of course, you're late on purpose. A must-have for those who appreciate punctuality and whimsy.",
+            "price": 150.00,
+            "realm": 13,
+            "stock": 1,
+            "image": "white_rabbits_pocket_watch.jpg"
+        }
     }
 ]
