@@ -100,7 +100,7 @@
             "price": 600.00,
             "realm": 7,
             "stock": 1,
-            "image": "maui_fish_hook.jpg"
+            "image": "mauis_fish_hook.jpg"
         }
     },
     {
@@ -277,12 +277,12 @@
         "pk": 22,
         "fields": {
             "sku": "rs022",
-            "name": "Rafiki's Stick",
-            "description": "Rafiki’s staff, imbued with wisdom and magic, once used by the wise mandrill of the Pride Lands. Hold it in your hand and feel the weight of knowledge and the power of the savanna.",
+            "name": "Bakora Staff",
+            "description": "Imbued with wisdom and magic, once used by the wise Rafiki of the Pride Lands. Hold it in your hand and feel the weight of knowledge and the power of the savanna.",
             "price": 25.00,
             "realm": 12,
             "stock": 1,
-            "image": "rafiki_stick.jpg"
+            "image": "bakora_staff.jpg"
         }
     },
     {
