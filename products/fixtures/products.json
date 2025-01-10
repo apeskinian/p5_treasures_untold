@@ -211,13 +211,13 @@
         "pk": 17,
         "model": "products.product",
         "fields": {
-            "sku": "ph017",
-            "name": "Neverland Map",
-            "description": "A treasure map that reveals the hidden secrets of Neverland. This map is a must-have for any adventurer seeking to explore the magical island of Peter Pan's world.",
-            "price": 100.00,
-            "realm": 4,
-            "stock": 1,
-            "image": "neverland_map.jpg"
+            "sku": "wf017",
+            "name": "Eat Me Cookies",
+            "description": "Delight in the magic of Wonderland with these 'Eat Me' Cookies. Each bite-sized treat is infused with a touch of enchantment—perfect for curious adventurers seeking a small taste of wonder. Just remember, size can be a tricky thing in Wonderland!",
+            "price": 25.00,
+            "realm": 13,
+            "stock": 10,
+            "image": "eat_me_cookies.jpg"
         }
     },
     {
