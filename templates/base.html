@@ -22,7 +22,12 @@
     {% endblock %}
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header class="container-fluid fixed-top">
+
+    </header>
+    <div>
+      <a href="{% url 'home' %}" class="btn btn-primary">HOME</a>
+    </div>
 
     {% if messages %}
         <div class="message_container"></div>

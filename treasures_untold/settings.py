@@ -101,8 +101,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -185,16 +183,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email server settings
-# if 'TEST_EMAIL' in os.environ:
-#     # Email setup for console logs
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     DEFAULT_FROM_EMAIL = 'treasuresuntold@example.com'
-# else:
-#     # Email setup for smtp
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_USE_TLS = True
-#     EMAIL_PORT = 587
-#     EMAIL_HOST = os.environ.get('SUPPORT_EMAIL_HOST')
-#     EMAIL_HOST_USER = os.environ.get('SUPPORT_EMAIL_ADDRESS')
-#     EMAIL_HOST_PASSWORD = os.environ.get('SUPPORT_EMAIL_PASS')
-#     DEFAULT_FROM_EMAIL = os.environ.get('SUPPORT_EMAIL_ADDRESS')
+if 'TEST_EMAIL' in os.environ:
+    # Email setup for console logs
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'treasuresuntold@example.com'
+else:
+    # Email setup for smtp
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = os.environ.get('SUPPORT_EMAIL_HOST')
+    EMAIL_HOST_USER = os.environ.get('SUPPORT_EMAIL_ADDRESS')
+    EMAIL_HOST_PASSWORD = os.environ.get('SUPPORT_EMAIL_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('SUPPORT_EMAIL_ADDRESS')
