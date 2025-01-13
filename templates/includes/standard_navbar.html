@@ -3,13 +3,13 @@
 <nav class="top-nav navbar bg-white fixed-top">
     <div class="container-fluid mt-2">
         <a href="{% url 'home' %}" class="navbar-nav navbar-brand position-absolute top-50 start-50 translate-middle">
-            Treasures Untold
+            TREASURES UNTOLD
         </a>
-        <div class="d-none d-md-flex gap-1 ms-auto">
+        <div class="d-none d-md-flex gap-2 ms-auto">
             <li class="list-inline-item dropdown">
                 <a class="text-black nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="Account">
-                        <i class="fa-solid fa-hat-wizard fa-2xl"></i>
+                        <i class="fa-solid fa-hat-wizard fa-xl"></i>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3">
@@ -29,9 +29,23 @@
             </li>
             <a class="text-black nav-link" href="#" id="basket">
                 <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="Basket">
-                    <i class="fa-solid fa-basket-shopping fa-2xl"></i>
+                    <i class="fa-solid fa-basket-shopping fa-xl"></i>
                 </div>
             </a>
         </div>
+    </div>
+</nav>
+<!-- Mobile navbar -->
+<nav id="bottom-nav-mobile" class="d-flex justify-content-evenly d-md-none navbar bg-white fixed-bottom p-3">
+    <div class="text-center">
+        <i class="fa-solid fa-hat-wizard fa-xl"></i>
+    </div>
+    <div class="text-center">
+        <i class="fa-solid fa-bars fa-xl"></i>
+    </div>
+    <div class="text-center">
+        <a href="#" class="text-reset text-decoration-none">
+            <i class="fa-solid fa-basket-shopping fa-xl"></i>
+        </a>
     </div>
 </nav>

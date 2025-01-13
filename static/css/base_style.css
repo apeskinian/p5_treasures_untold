@@ -1,14 +1,10 @@
-.collapse-up {
-    position: absolute;
-    bottom: 0; /* Content starts at the bottom of the container */
-    width: 100%; /* Match the container's width */
+body {
+    background-color: rgb(172, 134, 229);
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
 }
 
-/* Optional: Smooth transition */
-.collapse-up.collapsing {
-    transition: height 0.35s ease, bottom 0.35s ease;
-}
-
-.collapse-up.show {
-    bottom: auto; /* Allow it to expand upwards */
+.navbar {
+    height: 50px;
 }
