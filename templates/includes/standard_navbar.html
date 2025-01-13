@@ -1,0 +1,35 @@
+{% load static %}
+<!-- larger navbar -->
+<nav class="top-nav navbar navbar-expand bg-white fixed-top">
+    <div class="container-fluid mt-2">
+        <a href="{% url 'home' %}" class="navbar-nav navbar-brand">Treasures Untold</a>
+        <div class="d-flex gap-1">
+            <li class="list-inline-item dropdown">
+                <a class="text-black nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="Account">
+                        <i class="fa-solid fa-hat-wizard fa-2xl"></i>
+                    </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end mt-3">
+                    {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                    <li><a href="#" class="dropdown-item" id="staff" aria-label="go to the settings page">SETTINGS</a></li>
+                    {% endif %}
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'admin:index' %}" class="dropdown-item" id="admin-btn" aria-label="go to the admin page">ADMIN</a></li>
+                    {% endif %}
+                    <li><a href="{{ logout_url }}" class="dropdown-item" aria-label="sign out">SIGN OUT</a></li>
+                    {% else %}
+                    <li><a href="{{ login_url }}" class="dropdown-item">LOGIN</a></li>
+                    <li><a href="{{ signup_url }}" class="dropdown-item">SIGNUP</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+            <a class="text-black nav-link" href="#" id="basket">
+                <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="Basket">
+                    <i class="fa-solid fa-basket-shopping fa-2xl"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</nav>
