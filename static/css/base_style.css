@@ -1,0 +1,14 @@
+.collapse-up {
+    position: absolute;
+    bottom: 0; /* Content starts at the bottom of the container */
+    width: 100%; /* Match the container's width */
+}
+
+/* Optional: Smooth transition */
+.collapse-up.collapsing {
+    transition: height 0.35s ease, bottom 0.35s ease;
+}
+
+.collapse-up.show {
+    bottom: auto; /* Allow it to expand upwards */
+}
