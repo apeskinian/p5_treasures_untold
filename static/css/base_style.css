@@ -18,24 +18,28 @@ body {
     min-height: 100dvh;
 }
 
-
 main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 56px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .navbar {
     height: 60px;
 }
 
+#main-search-box {
+    border-radius: 0px 0px 30px 30px;
+}
+
 #bottom-nav-mobile .dropdown-menu {
     position: fixed;
     border-radius: 0;
     width: 100vw;
-    border-color: white;
-    bottom: 48px;
+    border-color: rgb(255, 255, 255);
+    bottom: 58px;
     left: 0;
 }

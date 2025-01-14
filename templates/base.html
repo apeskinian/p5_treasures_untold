@@ -31,7 +31,7 @@
     {% endblock %}
   </head>
   <body>
-    <header>
+    <header class="container-fluid fixed-top bg-white">
       {% include 'includes/standard_navbar.html' %}
       {% block page_header %}
       {% endblock %}
@@ -44,6 +44,7 @@
       {% endif %}
     </main>
     <footer>
+      {% include 'includes/standard_footer.html' %}
       {% block footer_content %}
       {% endblock %}
     </footer>
