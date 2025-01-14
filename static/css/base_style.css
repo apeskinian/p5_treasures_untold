@@ -1,18 +1,42 @@
+/* OVERRIDE BROWSER DEFAULTS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+}
+
+/* GENERAL */
+.hidden {
+    display: none;
+}
+
 body {
     background-color: rgb(203, 180, 237);
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    margin-top: 50px;
+}
+
+header {
+    height: 50px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
 }
 
 .navbar {
-    min-height: 50px;
+    height: 50px;
 }
 
-.menu-content {
+/* .menu-content {
     position: fixed;
-    bottom: 50px; /* Adjust to position above the navbar */
+    bottom: 50px;
     width: 100%;
     background-color: white;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -23,4 +47,4 @@ body {
 
 .collapse.show .menu-content {
     transform: translateY(0);
-}
+} */
