@@ -1,13 +1,13 @@
 {% if user.is_authenticated %}
-<li class="text-center"><a href="#" class="dropdown-item" id="profile-page" aria-label="go to your profile page">PROFILE</a></li>
+<li class="text-center"><a href="#" class="dropdown-item" id="profile-page" aria-label="go to your profile page">Profile</a></li>
 {% if user.is_staff %}
-<li class="text-center"><a href="#" class="dropdown-item" id="staff" aria-label="go to the settings page">SETTINGS</a></li>
+<li class="text-center"><a href="#" class="dropdown-item" id="staff" aria-label="go to the settings page">Shop Management</a></li>
 {% endif %}
 {% if user.is_superuser %}
-<li class="text-center"><a href="{% url 'admin:index' %}" class="dropdown-item" id="admin-btn" aria-label="go to the admin page">ADMIN</a></li>
+<li class="text-center"><a href="{% url 'admin:index' %}" class="dropdown-item" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></li>
 {% endif %}
-<li class="text-center"><a href="{{ logout_url }}" class="dropdown-item" aria-label="sign out">SIGN OUT</a></li>
+<li class="text-center"><a href="{{ logout_url }}" class="dropdown-item" aria-label="sign out">Log out</a></li>
 {% else %}
-<li class="text-center"><a href="{{ login_url }}" class="dropdown-item">LOGIN</a></li>
-<li class="text-center"><a href="{{ signup_url }}" class="dropdown-item">SIGNUP</a></li>
+<li class="text-center"><a href="{{ login_url }}" class="dropdown-item">Log in</a></li>
+<li class="text-center"><a href="{{ signup_url }}" class="dropdown-item">Sign up</a></li>
 {% endif %}
