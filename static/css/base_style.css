@@ -1,3 +1,16 @@
+/* OVERRIDE BROWSER DEFAULTS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+}
+
+/* GENERAL */
+.hidden {
+    display: none;
+}
+
 body {
     background-color: rgb(203, 180, 237);
     display: flex;
@@ -5,6 +18,27 @@ body {
     min-height: 100dvh;
 }
 
+header {
+    height: 50px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+}
+
 .navbar {
     height: 50px;
+}
+
+#bottom-nav-mobile .dropdown-menu {
+    position: fixed;
+    border-radius: 0;
+    width: 100vw;
+    border-color: white;
+    bottom: 48px;
+    left: 0;
 }

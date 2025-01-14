@@ -13,18 +13,7 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3">
-                    {% if user.is_authenticated %}
-                    {% if user.is_staff %}
-                    <li><a href="#" class="dropdown-item" id="staff" aria-label="go to the settings page">SETTINGS</a></li>
-                    {% endif %}
-                    {% if user.is_superuser %}
-                    <li><a href="{% url 'admin:index' %}" class="dropdown-item" id="admin-btn" aria-label="go to the admin page">ADMIN</a></li>
-                    {% endif %}
-                    <li><a href="{{ logout_url }}" class="dropdown-item" aria-label="sign out">SIGN OUT</a></li>
-                    {% else %}
-                    <li><a href="{{ login_url }}" class="dropdown-item">LOGIN</a></li>
-                    <li><a href="{{ signup_url }}" class="dropdown-item">SIGNUP</a></li>
-                    {% endif %}
+                    {% include 'includes/login_options.html' %}
                 </ul>
             </li>
             <a class="text-black nav-link" href="#" id="basket">
@@ -37,11 +26,25 @@
 </nav>
 <!-- Mobile navbar -->
 <nav id="bottom-nav-mobile" class="d-flex justify-content-evenly d-md-none navbar bg-white fixed-bottom p-3">
-    <div class="text-center">
-        <i class="fa-solid fa-hat-wizard fa-xl"></i>
+    <div class="dropup">
+        <a class="text-black" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <i class="fa-solid fa-hat-wizard fa-xl"></i>
+        </a>
+        <ul class="dropdown-menu">
+            {% include 'includes/login_options.html' %}
+        </ul>
     </div>
-    <div class="text-center">
-        <i class="fa-solid fa-bars fa-xl"></i>
+    <div class="dropup">
+        <a class="text-black" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item" aria-label="go to the home page">HOME</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
+        </ul>
     </div>
     <div class="text-center">
         <a href="#" class="text-reset text-decoration-none">

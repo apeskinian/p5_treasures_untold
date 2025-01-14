@@ -31,18 +31,22 @@
     {% endblock %}
   </head>
   <body>
-    {% include 'includes/standard_navbar.html' %}
-
-    {% if messages %}
-        <div class="message_container"></div>
-    {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
+    <header>
+      {% include 'includes/standard_navbar.html' %}
+      {% block page_header %}
+      {% endblock %}
+    </header>
+    <main>      
+      {% block content %}
+      {% endblock %}
+      {% if messages %}
+          <div class="message_container"></div>
+      {% endif %}
+    </main>
+    <footer>
+      {% block footer_content %}
+      {% endblock %}
+    </footer>
     {% block core_js %}
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
