@@ -19,7 +19,7 @@
         </div>
         <div class="d-none d-md-flex gap-3 ms-auto align-items-center">
             <li class="list-inline-item dropdown">
-                <a class="text-black nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="Account">
                         <i class="fa-solid fa-hat-wizard fa-xl"></i>
                     </div>
@@ -28,7 +28,7 @@
                     {% include 'includes/login_options.html' %}
                 </ul>
             </li>
-            <a class="text-black nav-link" href="#" id="basket">
+            <a class="nav-link" href="#" id="basket">
                 <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}">
                     <i class="fa-solid fa-basket-shopping fa-xl"></i>
                 </div>
