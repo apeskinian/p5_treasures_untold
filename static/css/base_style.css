@@ -34,17 +34,11 @@ main {
     height: 50px;
 }
 
-/* .menu-content {
+#bottom-nav-mobile .dropdown-menu {
     position: fixed;
-    bottom: 50px;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease-out;
-    transform: translateY(100%);
-    background-color: rgb(200, 200, 200);
+    border-radius: 0;
+    width: 100vw;
+    border-color: white;
+    bottom: 48px;
+    left: 0;
 }
-
-.collapse.show .menu-content {
-    transform: translateY(0);
-} */
