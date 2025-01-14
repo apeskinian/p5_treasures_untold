@@ -31,8 +31,8 @@ main {
     height: 60px;
 }
 
-#main-search-box {
-    border-radius: 0px 0px 30px 30px;
+#search-box {
+    width: 85vw;
 }
 
 #bottom-nav-mobile .dropdown-menu {
@@ -42,4 +42,10 @@ main {
     border-color: rgb(255, 255, 255);
     bottom: 58px;
     left: 0;
+}
+
+@media screen and (min-width: 768px) {
+    #search-box {
+        width: 50vw;
+    }
 }
