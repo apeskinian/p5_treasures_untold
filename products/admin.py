@@ -3,4 +3,8 @@ from .models import Realm, Product
 
 # registering models
 admin.site.register(Realm)
-admin.site.register(Product)
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'realm', 'sku', 'price', 'stock')
+    list_filter = ('realm',)
