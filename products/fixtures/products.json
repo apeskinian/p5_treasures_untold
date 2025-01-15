@@ -9,7 +9,7 @@
             "price": 900.00,
             "realm": 1,
             "stock": 1,
-            "image": "treasures/magic_mirror.png"
+            "image": "magic_mirror"
         }
     },
     {
@@ -22,7 +22,7 @@
             "price": 1200.00,
             "realm": 3,
             "stock": 1,
-            "image": "treasures/magic_lamp.png"
+            "image": "magic_lamp"
         }
     },
     {
@@ -35,7 +35,7 @@
             "price": 200.00,
             "realm": 2,
             "stock": 1,
-            "image": "treasures/rapunzels_hairbrush.png"
+            "image": "rapunzels_hairbrush"
         }
     },
     {
@@ -48,7 +48,7 @@
             "price": 350.00,
             "realm": 4,
             "stock": 1,
-            "image": "treasures/captain_hooks_hook.png"
+            "image": "captain_hooks_hook"
         }
     },
     {
@@ -61,7 +61,7 @@
             "price": 400.00,
             "realm": 5,
             "stock": 1,
-            "image": "treasures/enchanted_rose.png"
+            "image": "enchanted_rose"
         }
     },
     {
@@ -74,7 +74,7 @@
             "price": 500.00,
             "realm": 3,
             "stock": 1,
-            "image": "treasures/magic_carpet.png"
+            "image": "magic_carpet"
         }
     },
     {
@@ -87,7 +87,7 @@
           "price": 300.00,
           "realm": 6,
           "stock": 1,
-          "image": "treasures/fairy_godmothers_wand.png"
+          "image": "fairy_godmothers_wand"
         }
       },
       {
@@ -100,7 +100,7 @@
             "price": 600.00,
             "realm": 7,
             "stock": 1,
-            "image": "treasures/mauis_fish_hook.png"
+            "image": "mauis_fish_hook"
         }
     },
     {
@@ -113,7 +113,7 @@
             "price": 300.00,
             "realm": 6,
             "stock": 1,
-            "image": "treasures/cinderellas_glass_slipper.png"
+            "image": "cinderellas_glass_slipper"
         }
     },
     {
@@ -126,7 +126,7 @@
             "price": 25.00,
             "realm": 8,
             "stock": 8,
-            "image": "treasures/dinglehopper.png"
+            "image": "dinglehopper"
         }
     },
     {
@@ -139,7 +139,7 @@
             "price": 15.00,
             "realm": 2,
             "stock": 1,
-            "image": "treasures/rapunzels_frying_pan.png"
+            "image": "rapunzels_frying_pan"
         }
     },
     {
@@ -152,7 +152,7 @@
             "price": 1000.00,
             "realm": 7,
             "stock": 1,
-            "image": "treasures/heart_of_te_fiti.png"
+            "image": "heart_of_te_fiti"
         }
     },
     {
@@ -165,7 +165,7 @@
             "price": 100.00,
             "realm": 10,
             "stock": 100,
-            "image": "treasures/apprentices_broom.png"
+            "image": "apprentices_broom"
         }
     },
     {
@@ -178,7 +178,7 @@
             "price": 200.00,
             "realm": 10,
             "stock": 1,
-            "image": "treasures/sorcerers_hat.png"
+            "image": "sorcerers_hat"
         }
     },
     {
@@ -191,7 +191,7 @@
             "price": 150.00,
             "realm": 11,
             "stock": 1,
-            "image": "treasures/oogie_boogies_bathtub.png"
+            "image": "oogie_boogies_bathtub"
         }
     },
     {
@@ -204,7 +204,7 @@
             "price": 200.00,
             "realm": 4,
             "stock": 1,
-            "image": "treasures/captain_hooks_cutlass.png"
+            "image": "captain_hooks_cutlass"
         }
     },
     {
@@ -217,7 +217,7 @@
             "price": 25.00,
             "realm": 13,
             "stock": 10,
-            "image": "treasures/eat_me_cookies.png"
+            "image": "eat_me_cookies"
         }
     },
     {
@@ -230,7 +230,7 @@
             "price": 45.00,
             "realm": 4,
             "stock": 1,
-            "image": "treasures/alarm_clock.png"
+            "image": "alarm_clock"
         }
     },
     {
@@ -243,7 +243,7 @@
             "price": 40.00,
             "realm": 4,
             "stock": 10,
-            "image": "treasures/vial_of_pixie_dust.png"
+            "image": "vial_of_pixie_dust"
         }
     },
     {
@@ -256,7 +256,7 @@
             "price": 50.00,
             "realm": 3,
             "stock": 1,
-            "image": "treasures/golden_scarab_beetle_left.png"
+            "image": "golden_scarab_beetle_left"
         }
     },
     {
@@ -269,7 +269,7 @@
             "price": 50.00,
             "realm": 3,
             "stock": 1,
-            "image": "treasures/golden_scarab_beetle_right.png"
+            "image": "golden_scarab_beetle_right"
         }
     },
     {
@@ -282,7 +282,7 @@
             "price": 25.00,
             "realm": 12,
             "stock": 1,
-            "image": "treasures/bakora_staff.png"
+            "image": "bakora_staff"
         }
     },
     {
@@ -295,7 +295,7 @@
             "price": 25.00,
             "realm": 8,
             "stock": 1,
-            "image": "treasures/snarfblat.png"
+            "image": "snarfblat"
         }
     },
     {
@@ -308,7 +308,7 @@
             "price": 75.00,
             "realm": 8,
             "stock": 1,
-            "image": "treasures/tritons_trident.png"
+            "image": "tritons_trident"
         }
     },
     {
@@ -321,7 +321,7 @@
             "price": 600.00,
             "realm": 1,
             "stock": 1,
-            "image": "treasures/spinning_wheel.png"
+            "image": "spinning_wheel"
         }
     },
     {
@@ -334,7 +334,7 @@
             "price": 450.00,
             "realm": 8,
             "stock": 1,
-            "image": "treasures/prince_erics_statue.png"
+            "image": "prince_erics_statue"
         }
     },
     {
@@ -347,7 +347,7 @@
             "price": 800.00,
             "realm": 1,
             "stock": 1,
-            "image": "treasures/sword_of_truth.png"
+            "image": "sword_of_truth"
         }
     },
     {
@@ -360,7 +360,7 @@
             "price": 750.00,
             "realm": 1,
             "stock": 1,
-            "image": "treasures/shield_of_virtue.png"
+            "image": "shield_of_virtue"
         }
     },
     {
@@ -373,7 +373,7 @@
             "price": 75.00,
             "realm": 8,
             "stock": 1,
-            "image": "treasures/fishbone_quill.png"
+            "image": "fishbone_quill"
         }
     },
     {
@@ -386,7 +386,7 @@
             "price": 150.00,
             "realm": 13,
             "stock": 1,
-            "image": "treasures/white_rabbits_pocket_watch.png"
+            "image": "white_rabbits_pocket_watch"
         }
     }
 ]

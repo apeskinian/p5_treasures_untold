@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator
 from cloudinary.models import CloudinaryField
 
+
 class Realm(models.Model):
     name = models.CharField(max_length=254)
 
@@ -18,9 +19,9 @@ class Product(models.Model):
     stock = models.IntegerField(validators=[MinValueValidator(0)])
     sku = models.CharField(max_length=254, null=True, blank=True)
     image = CloudinaryField(
-        'image', default='placeholder', asset_folder='/treasures/'
+        'image', default='placeholder', asset_folder='/treasures/',
+        use_filename=True, unique_filename=False,
     )
 
     def __str__(self):
         return self.name
-

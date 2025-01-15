@@ -120,6 +120,8 @@ cloudinary.config(
     secure=True,
 )
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
