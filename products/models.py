@@ -8,6 +8,9 @@ class Realm(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def display_name(self):
+        return self.name.replace('_', ' ')
 
 class Product(models.Model):
     realm = models.ForeignKey(
@@ -25,3 +28,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def realm_name(self):
+        return self.realm.name.replace('_', ' ')
