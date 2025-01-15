@@ -23,7 +23,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, null=True, blank=True)
     image = CloudinaryField(
         'image', default='placeholder', asset_folder='/treasures/',
-        use_filename=True, unique_filename=False,
+        use_filename=True, unique_filename=False
     )
 
     def __str__(self):
