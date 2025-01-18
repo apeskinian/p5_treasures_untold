@@ -3,7 +3,7 @@
 <nav class="top-nav navbar">
     <div class="container-fluid">
         <a href="{% url 'home' %}" class="navbar-brand d-none d-md-block">
-            <img src="{{ MEDIA_URL }}images/lamp_black.png" alt="" width="30" height="30">
+            <img src="{% static 'images/lamp_black.png' %}" alt="" width="30" height="30">
         </a>
         <div id="search-box" class="position-absolute top-50 start-50 translate-middle">
             <form method="GET" action="#">
