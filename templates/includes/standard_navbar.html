@@ -1,51 +1,96 @@
 {% load static %}
 <!-- larger navbar -->
-<nav class="top-nav navbar">
-    <div class="container-fluid">
-        <a data-bs-toggle="offcanvas" href="#offcanvas-nav" aria-controls="offcanvas-nav" role="button" class="text-black d-none d-md-block">
+<nav class="navbar p-0 d-flex justify-content-center">
+    <!-- Navigation Offcanvas -->
+    <div id="navigation-menu" class="d-none d-md-block">
+        <a data-bs-toggle="offcanvas" href="#offcanvas-nav" aria-controls="offcanvas-nav" role="button" class="text-black">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
-
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-nav" aria-labelledby="offcanvas-navLabel">
-            <div class="offcanvas-header">
-                <div id="search-box" class="w-100">
-                    <form method="GET" action="#">
-                        <div class="input-group">
-                            <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
-                            <button class="btn btn-black" type="submit">
-                                <span class="icon">
-                                    <i class="fa-solid fa-magnifying-glass fa-l"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <a href="{% url 'home' %}" class="text-black nav-link">Home</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="d-none d-md-flex gap-3 ms-auto align-items-center">
-            <li class="list-inline-item dropdown">
-                <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="Account">
-                        <i class="fa-solid fa-hat-wizard fa-xl"></i>
-                    </div>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end mt-3">
-                    {% include 'includes/login_options.html' %}
-                </ul>
-            </li>
-            <a class="nav-link" href="#" id="basket">
-                <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}">
-                    <i class="fa-solid fa-basket-shopping fa-xl"></i>
-                </div>
+    </div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-nav" aria-labelledby="offcanvas-navLabel">
+        <div class="offcanvas-header">
+            <a data-bs-dismiss="offcanvas" href="#offcanvas-nav" aria-label="Close" role="button" class="offcanvas-left-close text-black">
+                <i class="fa-solid fa-bars fa-xl"></i>
             </a>
         </div>
+        <div class="offcanvas-body">
+            <div id="search-box" class="w-100 mt-3">
+                <form method="GET" action="#">
+                    <div class="input-group">
+                        <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
+                        <button class="btn btn-black" type="submit">
+                            <span class="icon">
+                                <i class="fa-solid fa-magnifying-glass fa-l"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="mt-3 ms-2">
+                <a href="{% url 'home' %}" class="text-black nav-link">Home</a>
+                <a href="#" class="text-black nav-link mt-1">New</a>
+                <a href="{% url 'products' %}" class="text-black nav-link mt-1 mb-1">All Products</a>
+                <div id="by-realm-menu">
+                    <a href="#realm-collapse" class="nav-link text-black" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="realm-collapse">
+                        By Realm
+                        <span class="indicator">
+                            <i class="fa-solid fa-angle-down ms-5"></i>
+                        </span>
+                    </a>
+                </div>
+                <ul id="realm-collapse" class="collapse list-unstyled ms-3">
+                    <li><a class="nav-link mt-2" href="#">Agrabah</a></li>
+                    <li><a class="nav-link" href="#">Atlantica</a></li>
+                    <li><a class="nav-link" href="#">Corona</a></li>
+                    <li><a class="nav-link" href="#">Enchanted Castle</li>
+                    <li><a class="nav-link" href="#">Enchanted Forest</li>
+                    <li><a class="nav-link" href="#">Fantasia</li>
+                    <li><a class="nav-link" href="#">Halloween Town</li>
+                    <li><a class="nav-link" href="#">Motunui</li>
+                    <li><a class="nav-link" href="#">Neverland</li>
+                    <li><a class="nav-link" href="#">Occitania</li>
+                    <li><a class="nav-link" href="#">Pride Lands</li>
+                    <li><a class="nav-link" href="#">Wonderland</li>
+                </ul>
+                <a href="#" class="text-black nav-link mt-1">FAQ</a>
+                <a href="#" class="text-black nav-link mt-1">Contact Us</a>
+                <a href="#" class="text-black nav-link mt-1">Privacy</a>
+            </div>
+        </div>
+    </div>
+    <!-- Title -->
+    <a href="{% url 'home' %}" class="text-black nav-link">
+        <h1>Treasures Untold</h1>
+    </a>
+    <!-- Account and Basket -->
+    <div id="account-and-basket" class="d-none d-md-flex gap-3">
+        <!-- Account Dropdown -->
+        <div id="user-account-dropdown" class="dropdown">
+            <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if user.is_authenticated %}{{ user.username }}{% else %}Log In or Sign Up{% endif %}">
+                    <i class="fa-solid fa-hat-wizard fa-xl"></i>
+                </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end mt-3">
+                {% include 'includes/login_options.html' %}
+            </ul>
+        </div>
+        <!-- Basket Offcanvas -->
+        <a data-bs-toggle="offcanvas" href="#offcanvas-basket" aria-controls="offcanvas-basket" role="button" class="text-black">
+            <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}">
+                <i class="fa-solid fa-basket-shopping fa-xl"></i>
+            </div>
+        </a>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-basket" aria-labelledby="offcanvas-basketLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvas-basketLabel">Basket</h5>
+                <a data-bs-dismiss="offcanvas" href="#offcanvas-basket" aria-label="Close" role="button" class="offcanvas-right-close text-black">
+                    <i class="fa-solid fa-basket-shopping fa-xl"></i>
+                </a>
+            </div>
+            <div class="offcanvas-body">
+              ...
+            </div>
+          </div>
     </div>
 </nav>
