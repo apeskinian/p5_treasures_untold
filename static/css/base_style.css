@@ -64,11 +64,15 @@ main {
     left: 1rem;
 }
 
+#bottom-nav-mobile {
+    height: 60px;
+}
+
 #bottom-nav-mobile .dropdown-menu {
     position: fixed;
     border-radius: 0;
     width: 100vw;
     border-color: rgb(255, 255, 255);
-    bottom: 54px;
+    bottom: 58px;
     left: 0;
 }

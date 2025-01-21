@@ -14,11 +14,36 @@
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
         <ul class="dropdown-menu">
-            <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item" aria-label="go to the home page">HOME</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="">TBC</a></li>
+            <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item" aria-label="go to the home page">Home</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="see the new products">New</a></li>
+            <li class="text-center"><a href="{% url 'products' %}" class="dropdown-item" aria-label="shop all products">All Products</a></li>
+            <li class="text-center">
+                <div id="by-realm-menu-mobile">
+                    <a href="#realm-collapse-mobile" class="nav-link text-black" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="realm-collapse-mobile">
+                        By Realm
+                        <span class="indicator">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </span>
+                    </a>
+                </div>
+                <ul id="realm-collapse-mobile" class="collapse list-unstyled ms-3">
+                    <li><a class="nav-link" href="#">Agrabah</a></li>
+                    <li><a class="nav-link" href="#">Atlantica</a></li>
+                    <li><a class="nav-link" href="#">Corona</a></li>
+                    <li><a class="nav-link" href="#">Enchanted Castle</li>
+                    <li><a class="nav-link" href="#">Enchanted Forest</li>
+                    <li><a class="nav-link" href="#">Fantasia</li>
+                    <li><a class="nav-link" href="#">Halloween Town</li>
+                    <li><a class="nav-link" href="#">Motunui</li>
+                    <li><a class="nav-link" href="#">Neverland</li>
+                    <li><a class="nav-link" href="#">Occitania</li>
+                    <li><a class="nav-link" href="#">Pride Lands</li>
+                    <li><a class="nav-link" href="#">Wonderland</li>
+                </ul>
+            </li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="see our faqs">FAQ</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="go to the contact us page">Contact Us</a></li>
+            <li class="text-center"><a href="#" class="dropdown-item" aria-label="view our privacy statement">Privacy</a></li>
         </ul>
     </div>
     <div class="dropup">
