@@ -79,13 +79,15 @@ main {
 
 #bottom-nav-mobile {
     height: 60px;
+    background-color: #1B2429;
 }
 
 #bottom-nav-mobile .dropdown-menu {
     position: fixed;
     border-radius: 0;
     width: 100vw;
-    border-color: rgb(255, 255, 255);
+    background-color: lightgrey;
+    border-color: #1B2429;
     bottom: 58px;
     left: 0;
 }
