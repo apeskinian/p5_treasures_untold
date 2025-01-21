@@ -33,12 +33,13 @@ main {
 }
 
 .top-nav {
-    height: 500px;
-    background: url('/static/images/banner.png') no-repeat center center;
+    height: 300px;
+    background: url('/static/images/banner.png') no-repeat top center;
+    background-size: auto 200px;
 }
 
 #main-title {
-    font-size: 150px;
+    font-size: 60px;
     padding-bottom: 200px;
 }
 
@@ -87,4 +88,16 @@ main {
     border-color: rgb(255, 255, 255);
     bottom: 58px;
     left: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .top-nav {
+        height: 500px;
+        background: url('/static/images/banner.png') no-repeat center center;
+    }
+    
+    #main-title {
+        font-size: 150px;
+        padding-bottom: 200px;
+    }
 }
