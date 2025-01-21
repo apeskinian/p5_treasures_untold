@@ -2,21 +2,34 @@
 <!-- larger navbar -->
 <nav class="top-nav navbar">
     <div class="container-fluid">
-        <a href="{% url 'home' %}" class="navbar-brand d-none d-md-block">
-            <img src="{% static 'images/lamp_black.png' %}" alt="" width="30" height="30">
+        <a data-bs-toggle="offcanvas" href="#offcanvas-nav" aria-controls="offcanvas-nav" role="button" class="text-black d-none d-md-block">
+            <i class="fa-solid fa-bars fa-xl"></i>
         </a>
-        <div id="search-box" class="position-absolute top-50 start-50 translate-middle">
-            <form method="GET" action="#">
-                <div class="input-group w-100">
-                    <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
-                    <button class="btn btn-black" type="submit">
-                        <span class="icon">
-                            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-                        </span>
-                    </button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-nav" aria-labelledby="offcanvas-navLabel">
+            <div class="offcanvas-header">
+                <div id="search-box" class="w-100">
+                    <form method="GET" action="#">
+                        <div class="input-group">
+                            <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
+                            <button class="btn btn-black" type="submit">
+                                <span class="icon">
+                                    <i class="fa-solid fa-magnifying-glass fa-l"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <a href="{% url 'home' %}" class="text-black nav-link">Home</a>
+            </div>
         </div>
+
+
+
+
         <div class="d-none d-md-flex gap-3 ms-auto align-items-center">
             <li class="list-inline-item dropdown">
                 <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
