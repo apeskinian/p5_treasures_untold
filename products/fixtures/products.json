@@ -9,7 +9,8 @@
             "price": 900.00,
             "realm": 1,
             "stock": 1,
-            "image": "magic_mirror"
+            "image": "magic_mirror",
+            "date_added": "2024-01-01"
         }
     },
     {
@@ -22,7 +23,8 @@
             "price": 1200.00,
             "realm": 3,
             "stock": 1,
-            "image": "magic_lamp"
+            "image": "magic_lamp",
+            "date_added": "2024-10-01"
         }
     },
     {
@@ -35,7 +37,8 @@
             "price": 200.00,
             "realm": 2,
             "stock": 1,
-            "image": "rapunzels_hairbrush"
+            "image": "rapunzels_hairbrush",
+            "date_added": "2024-10-01"
         }
     },
     {
@@ -48,7 +51,8 @@
             "price": 350.00,
             "realm": 4,
             "stock": 1,
-            "image": "captain_hooks_hook"
+            "image": "captain_hooks_hook",
+            "date_added": "2024-10-01"
         }
     },
     {
@@ -61,7 +65,8 @@
             "price": 400.00,
             "realm": 5,
             "stock": 1,
-            "image": "enchanted_rose"
+            "image": "enchanted_rose",
+            "date_added": "2024-10-01"
         }
     },
     {
@@ -74,7 +79,8 @@
             "price": 500.00,
             "realm": 3,
             "stock": 1,
-            "image": "magic_carpet"
+            "image": "magic_carpet",
+            "date_added": "2024-11-01"
         }
     },
     {
@@ -87,7 +93,8 @@
           "price": 300.00,
           "realm": 6,
           "stock": 1,
-          "image": "fairy_godmothers_wand"
+          "image": "fairy_godmothers_wand",
+            "date_added": "2024-11-01"
         }
       },
       {
@@ -100,7 +107,8 @@
             "price": 600.00,
             "realm": 7,
             "stock": 1,
-            "image": "mauis_fish_hook"
+            "image": "mauis_fish_hook",
+            "date_added": "2024-11-01"
         }
     },
     {
@@ -113,7 +121,8 @@
             "price": 300.00,
             "realm": 6,
             "stock": 1,
-            "image": "cinderellas_glass_slipper"
+            "image": "cinderellas_glass_slipper",
+            "date_added": "2024-11-01"
         }
     },
     {
@@ -126,7 +135,8 @@
             "price": 25.00,
             "realm": 8,
             "stock": 8,
-            "image": "dinglehopper"
+            "image": "dinglehopper",
+            "date_added": "2024-11-01"
         }
     },
     {
@@ -139,7 +149,8 @@
             "price": 15.00,
             "realm": 2,
             "stock": 1,
-            "image": "rapunzels_frying_pan"
+            "image": "rapunzels_frying_pan",
+            "date_added": "2024-12-01"
         }
     },
     {
@@ -152,7 +163,8 @@
             "price": 1000.00,
             "realm": 7,
             "stock": 1,
-            "image": "heart_of_te_fiti"
+            "image": "heart_of_te_fiti",
+            "date_added": "2024-12-01"
         }
     },
     {
@@ -165,7 +177,8 @@
             "price": 100.00,
             "realm": 10,
             "stock": 100,
-            "image": "apprentices_broom"
+            "image": "apprentices_broom",
+            "date_added": "2024-12-01"
         }
     },
     {
@@ -178,7 +191,8 @@
             "price": 200.00,
             "realm": 10,
             "stock": 1,
-            "image": "sorcerers_hat"
+            "image": "sorcerers_hat",
+            "date_added": "2024-12-01"
         }
     },
     {
@@ -191,7 +205,8 @@
             "price": 150.00,
             "realm": 11,
             "stock": 1,
-            "image": "oogie_boogies_bathtub"
+            "image": "oogie_boogies_bathtub",
+            "date_added": "2024-12-01"
         }
     },
     {
@@ -204,7 +219,8 @@
             "price": 200.00,
             "realm": 4,
             "stock": 1,
-            "image": "captain_hooks_cutlass"
+            "image": "captain_hooks_cutlass",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -217,7 +233,8 @@
             "price": 25.00,
             "realm": 13,
             "stock": 10,
-            "image": "eat_me_cookies"
+            "image": "eat_me_cookies",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -230,7 +247,8 @@
             "price": 45.00,
             "realm": 4,
             "stock": 1,
-            "image": "alarm_clock"
+            "image": "alarm_clock",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -243,7 +261,8 @@
             "price": 40.00,
             "realm": 4,
             "stock": 10,
-            "image": "vial_of_pixie_dust"
+            "image": "vial_of_pixie_dust",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -256,7 +275,8 @@
             "price": 50.00,
             "realm": 3,
             "stock": 1,
-            "image": "golden_scarab_beetle_left"
+            "image": "golden_scarab_beetle_left",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -269,7 +289,8 @@
             "price": 50.00,
             "realm": 3,
             "stock": 1,
-            "image": "golden_scarab_beetle_right"
+            "image": "golden_scarab_beetle_right",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -282,7 +303,8 @@
             "price": 25.00,
             "realm": 12,
             "stock": 1,
-            "image": "bakora_staff"
+            "image": "bakora_staff",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -295,7 +317,8 @@
             "price": 25.00,
             "realm": 8,
             "stock": 1,
-            "image": "snarfblat"
+            "image": "snarfblat",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -308,7 +331,8 @@
             "price": 75.00,
             "realm": 8,
             "stock": 1,
-            "image": "tritons_trident"
+            "image": "tritons_trident",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -321,7 +345,8 @@
             "price": 600.00,
             "realm": 1,
             "stock": 1,
-            "image": "spinning_wheel"
+            "image": "spinning_wheel",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -334,7 +359,8 @@
             "price": 450.00,
             "realm": 8,
             "stock": 1,
-            "image": "prince_erics_statue"
+            "image": "prince_erics_statue",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -347,7 +373,8 @@
             "price": 800.00,
             "realm": 1,
             "stock": 1,
-            "image": "sword_of_truth"
+            "image": "sword_of_truth",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -360,7 +387,8 @@
             "price": 750.00,
             "realm": 1,
             "stock": 1,
-            "image": "shield_of_virtue"
+            "image": "shield_of_virtue",
+            "date_added": "2025-01-01"
         }
     },
     {
@@ -373,7 +401,8 @@
             "price": 75.00,
             "realm": 8,
             "stock": 1,
-            "image": "fishbone_quill"
+            "image": "fishbone_quill",
+            "date_added": "2025-01-21"
         }
     },
     {
@@ -386,7 +415,8 @@
             "price": 150.00,
             "realm": 13,
             "stock": 1,
-            "image": "white_rabbits_pocket_watch"
+            "image": "white_rabbits_pocket_watch",
+            "date_added": "2025-01-21"
         }
     }
 ]

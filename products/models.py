@@ -20,11 +20,12 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     stock = models.IntegerField(validators=[MinValueValidator(0)])
-    sku = models.CharField(max_length=254, null=True, blank=True)
+    sku = models.CharField(max_length=254, null=True, blank=True, unique=True)
     image = CloudinaryField(
         'image', default='placeholder', asset_folder='/treasures/',
         use_filename=True, unique_filename=False
     )
+    date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.name
