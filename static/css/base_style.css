@@ -1,3 +1,6 @@
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 /* OVERRIDE BROWSER DEFAULTS */
 * {
     padding: 0;
@@ -11,12 +14,11 @@
     display: none;
 }
 
-header {
-    min-height: 60px;
+h1 {
+    font-family: 'Pirata One', serif;
 }
 
 body {
-    background-color: rgb(203, 180, 237);
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
@@ -30,16 +32,26 @@ main {
     margin-bottom: 60px;
 }
 
+.top-nav {
+    height: 500px;
+    background: url('/static/images/banner.png') no-repeat center center;
+}
+
+#main-title {
+    font-size: 150px;
+    padding-bottom: 200px;
+}
+
 #navigation-menu {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
+    left: 1.5rem;
 }
 
 #account-and-basket {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
 }
 
 /* rotate arrow on click */
@@ -54,14 +66,14 @@ main {
 
 .offcanvas-right-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
 }
 
 .offcanvas-left-close {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
+    left: 1.5rem;
 }
 
 #bottom-nav-mobile {
