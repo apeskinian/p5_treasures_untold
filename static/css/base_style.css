@@ -33,14 +33,14 @@ main {
 }
 
 .top-nav {
-    height: 300px;
+    height: 200px;
     background: url('/static/images/banner.png') no-repeat top center;
-    background-size: auto 200px;
+    background-size: auto 100%;
 }
 
 #main-title {
     font-size: 60px;
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }
 
 #navigation-menu {
@@ -92,8 +92,22 @@ main {
 
 @media screen and (min-width: 768px) {
     .top-nav {
+        height: 300px;
+        background: url('/static/images/banner.png') no-repeat top center;
+        background-size: auto 100%;
+    }
+    
+    #main-title {
+        font-size: 100px;
+        padding-bottom: 150px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .top-nav {
         height: 500px;
-        background: url('/static/images/banner.png') no-repeat center center;
+        background: url('/static/images/banner.png') no-repeat top center;
+        background-size: auto 100%;
     }
     
     #main-title {
