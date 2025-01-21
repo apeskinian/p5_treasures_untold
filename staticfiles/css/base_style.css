@@ -1,3 +1,6 @@
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 /* OVERRIDE BROWSER DEFAULTS */
 * {
     padding: 0;
@@ -11,8 +14,11 @@
     display: none;
 }
 
+h1 {
+    font-family: 'Pirata One', serif;
+}
+
 body {
-    background-color: rgb(203, 180, 237);
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
@@ -23,16 +29,55 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
     margin-bottom: 60px;
 }
 
-.navbar {
-    height: 60px;
+.top-nav {
+    height: 500px;
+    background: url('/static/images/banner.png') no-repeat center center;
 }
 
-#search-box {
-    width: 85vw;
+#main-title {
+    font-size: 150px;
+    padding-bottom: 200px;
+}
+
+#navigation-menu {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+#account-and-basket {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+/* rotate arrow on click */
+.indicator i {
+    transition: transform 0.3s ease-in-out;
+}
+  
+.collapse.show + #by-realm-menu .indicator i,
+  [data-bs-toggle="collapse"][aria-expanded="true"] .indicator i {
+    transform: rotate(180deg);
+}
+
+.offcanvas-right-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.offcanvas-left-close {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+#bottom-nav-mobile {
+    height: 60px;
 }
 
 #bottom-nav-mobile .dropdown-menu {
@@ -42,10 +87,4 @@ main {
     border-color: rgb(255, 255, 255);
     bottom: 58px;
     left: 0;
-}
-
-@media screen and (min-width: 768px) {
-    #search-box {
-        width: 50vw;
-    }
 }
