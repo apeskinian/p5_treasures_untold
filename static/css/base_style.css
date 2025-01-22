@@ -32,6 +32,7 @@ main {
     margin-bottom: 60px;
 }
 
+/* NAVIGATION BARS */
 .top-nav {
     height: 200px;
     background: url('/static/images/banner.png') no-repeat top center;
@@ -64,6 +65,7 @@ main {
   [data-bs-toggle="collapse"][aria-expanded="true"] .indicator i {
     transform: rotate(180deg);
 }
+/* rotate arrow on click */
 
 .offcanvas-right-close {
     position: absolute;
@@ -90,6 +92,23 @@ main {
     border-color: #1B2429;
     bottom: 58px;
     left: 0;
+}
+
+/* PRODUCT VIEWS */
+/* #products-shown {
+    background-color: red;
+}
+
+#sort-and-filter {
+    background-color: green;
+}
+
+#products-view {
+    background-color: blue;
+} */
+
+.card-spacer {
+    padding-bottom: 1rem;
 }
 
 @media screen and (min-width: 768px) {

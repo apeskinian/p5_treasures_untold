@@ -2,11 +2,52 @@
 {% load static %}
 
 {% block content %}
-    <h1>PRODUCTS</h1>
-    <div class="container">
+    <div id="products-shown" class="container-fluid text-center">
+        <br>
+        <!-- search, sort and filter results here -->
+    </div>
+    <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                {{ products }}
+            <div id="sort-and-filter" class="col-3 col-lg-2">
+                <!-- sort and filter checkboxes to go here -->
+            </div>
+            <div id="products-view" class="col-9 col-lg-10">
+                <div class="row py-3 px-2">
+                    {% for product in products %}
+                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="card h-100">
+                                {% if 'placeholder' in product.image.url %}
+                                    <a href="#">
+                                        <img class="card-img-top" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
+                                    </a>
+                                {% else %}                                
+                                    <a href="#">
+                                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body p-1">
+                                    <h5 class="card-title text-center">{{ product.name }}</h5>
+                                    <p class="card-text text-center">£{{ product.price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:1 %}
+                        <div class="col-12 d-sm-none card-spacer"></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:2 %}
+                        <div class="col-12 d-none d-sm-block d-md-none card-spacer"></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:3 %}
+                        <div class="col-12 d-none d-md-block d-lg-none card-spacer"></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:4 %}
+                        <div class="col-12 d-none d-lg-block d-xl-none card-spacer"></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:6 %}
+                        <div class="col-12 d-none d-xl-block card-spacer"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
