@@ -3,7 +3,7 @@
 
 {% block content %}
 <div id="product-details" class="container">
-    <div class="row">
+    <div class="row mt-3">
         <div id="product-details-image" class="col">
             {% if 'placeholder' in product.image.url %}
                 <a href="#">
@@ -16,9 +16,19 @@
             {% endif %}
         </div>
         <div id="product-details-info" class="col">
-            <h3>{{ product.title }}</h3>
+            <h3>{{ product.name }}</h3>
             <p>{{ product.description }}</p>
-            <p>£{{ product.price }}</p>
+            <p class="fw-bold">£{{ product.price }}</p>
+            <button>Add to basket</button>
+            <div mt-3>
+                <i class="fa-solid fa-clock-rotate-left fa-flip-horizontal"></i>
+                <span>Order in INSERT TIMER for same day dispatch!</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col text-center">
+            <button class="text-center">Back to results</button>
         </div>
     </div>
 </div>
