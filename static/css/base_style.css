@@ -111,6 +111,14 @@ main {
     padding-bottom: 1rem;
 }
 
+.out-of-stock {
+    filter: saturate(0) blur(1.5px) brightness(1.5);
+}
+
+.text-red {
+    color: rgb(200, 0, 0);
+}
+
 @media screen and (min-width: 768px) {
     .top-nav {
         height: 300px;

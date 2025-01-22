@@ -20,14 +20,18 @@
                                     <a href="#">
                                         <img class="card-img-top" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
                                     </a>
-                                {% else %}                                
+                                {% else %}                               
                                     <a href="#">
-                                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        <img class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     </a>
                                 {% endif %}
                                 <div class="card-body p-1">
-                                    <h5 class="card-title text-center">{{ product.name }}</h5>
-                                    <p class="card-text text-center">£{{ product.price }}</p>
+                                    <h6 class="card-title text-center">{{ product.name }}</h6>
+                                    {% if product.stock < 1 %}
+                                        <p class="card-text text-center text-red fw-bold"><small>OUT OF STOCK</small></p>
+                                    {% else %}
+                                        <p class="card-text text-center">£{{ product.price }}</p>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
