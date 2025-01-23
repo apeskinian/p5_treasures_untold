@@ -13,12 +13,12 @@ def all_products(request):
     realms = None
 
     if request.GET:
-
+        # looking for realm filter
         if 'realm' in request.GET:
             realms = request.GET['realm'].split(',')
             products = products.filter(realm__name__in=realms)
             realms = Realm.objects.filter(name__in=realms)
-
+        # handling search bar queries
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -33,6 +33,7 @@ def all_products(request):
             )
             products = products.filter(queries)
 
+    # setting up view parameters
     template = 'products/products.html'
     context = {
         'products': products,
@@ -49,6 +50,7 @@ def product_detail(request, product_id):
     """
     product = get_object_or_404(Product, pk=product_id)
 
+    # setting up view parameters
     template = 'products/product_detail.html'
     context = {
         'product': product,
