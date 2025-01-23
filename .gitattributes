@@ -1,2 +1,10 @@
 # Ensure consistent line endings
 * text=auto
+
+# Specifically enforce LF for Python files
+*.py text eol=lf
+
+# Binary files should not be modified
+*.png binary
+*.jpg binary
+*.gif binary
