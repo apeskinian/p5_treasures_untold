@@ -4,17 +4,44 @@
 {% block content %}
     <div id="products-shown" class="container-fluid text-center mt-3">
         <p>
-            Showing {{ products|length }} product{% if products|length != 1 %}s{% endif %}{% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+            <!-- Amount of products -->
+            Showing {{ products|length }} product{% if products|length != 1 %}s{% endif %}
+            <!-- If there was a search term -->
+            {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+            <!-- If there is an order -->
+            {% if current_sorting != 'None_None' %} ordered by 
+                {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
+                {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
+                {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
+                {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
+                {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
+                {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
+            {% endif %}
         </p>
         <br>
         <!-- search, sort and filter results here -->
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div id="sort-and-filter" class="col-3 col-lg-2">                
+            <div id="sort-and-filter" class="col-3 col-lg-2">
+                <!-- sort and filter checkboxes to go here -->
+                <a href="{% url 'products' %}" class="btn btn-secondary m-1 w-100">Clear</a>
+                <div class="sort-selector_wrapper m-1">
+                    <select id="sort-selector" class="w-100">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                        <option value="realm_asc" {% if current_sorting == 'realm_asc' %}selected{% endif %}>Realm (A-Z)</option>
+                        <option value="realm_desc" {% if current_sorting == 'realm_desc' %}selected{% endif %}>Realm (Z-A)</option>
+                    </select>
+                </div>            
                 <!-- sort and filter checkboxes to go here -->
                  <a href="{% url 'products' %}?sort=name&direction=asc" class="btn btn-primary m-1">Sort by Name ASC</a>
                  <a href="{% url 'products' %}?sort=name&direction=desc" class="btn btn-primary m-1">Sort by Name DESC</a>
+                 <a href="{% url 'products' %}?sort=realm&direction=asc" class="btn btn-primary m-1">Sort by Realm ASC</a>
+                 <a href="{% url 'products' %}?sort=realm&direction=desc" class="btn btn-primary m-1">Sort by Realm DESC</a>
                  <a href="{% url 'products' %}?sort=price&direction=asc" class="btn btn-primary m-1">Sort by Price ASC</a>
                  <a href="{% url 'products' %}?sort=price&direction=desc" class="btn btn-primary m-1">Sort by Price DESC</a>
             </div>
