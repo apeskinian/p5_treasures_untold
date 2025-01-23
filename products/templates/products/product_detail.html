@@ -6,7 +6,7 @@
     <div class="row mt-3">
         <div id="product-details-image" class="col">
             {% if 'placeholder' in product.image.url %}
-                <a href="{{ product.image.url }}" target="_blank">
+                <a href="">
                 <img class="card-img-top" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
                 </a>
             {% else %}                               
