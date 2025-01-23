@@ -25,7 +25,6 @@
         <div class="row">
             <div id="sort-and-filter" class="col-3 col-lg-2">
                 <!-- sort and filter checkboxes to go here -->
-                <a href="{% url 'products' %}" class="btn btn-secondary m-1 w-100">Clear</a>
                 <div class="sort-selector_wrapper m-1">
                     <select id="sort-selector" class="w-100">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
@@ -38,6 +37,40 @@
                     </select>
                 </div>            
                 <!-- sort and filter checkboxes to go here -->
+                <a href="{% url 'products' %}" class="btn btn-secondary m-1 w-100">Clear</a>
+                <form action="">
+                    <input type="submit" name="submit" id="submit-filter-list" class="btn btn-secondary m-1 w-100">
+                    <p class="m-0">Stock</p>
+                    <input type="checkbox" id="checkbox-instock" name="stock" value="instock">
+                    <label for="checkbox-instock"> In stock</label><br>
+                    <input type="checkbox" id="checkbox-outofstock" name="stock" value="outofstock">
+                    <label for="checkbox-outofstock"> Out of stock</label><br>
+                    <p class="m-0">Realm</p>
+                    <input type="checkbox" id="checkbox-agrabah" name="realm" value="Agrabah">
+                    <label for="checkbox-agrabah"> Agrabah</label><br>
+                    <input type="checkbox" id="checkbox-atlantica" name="realm" value="Atlantica">
+                    <label for="checkbox-atlantica"> Atlantica</label><br>
+                    <input type="checkbox" id="checkbox-corona" name="realm" value="Corona">
+                    <label for="checkbox-corona"> Corona</label><br>
+                    <input type="checkbox" id="checkbox-enchantedcastle" name="realm" value="Enchanted_Castle">
+                    <label for="checkbox-enchantedcastle"> Enchanted Castle</label><br>
+                    <input type="checkbox" id="checkbox-enchantedforest" name="realm" value="Enchanted_Forest">
+                    <label for="checkbox-enchantedforest"> Enchanted Forest</label><br>
+                    <input type="checkbox" id="checkbox-fantasia" name="realm" value="Fantasia">
+                    <label for="checkbox-fantasia"> Fantasia</label><br>
+                    <input type="checkbox" id="checkbox-halloweentown" name="realm" value="Halloween_Town">
+                    <label for="checkbox-halloweentown"> Halloween Town</label><br>
+                    <input type="checkbox" id="checkbox-motunui" name="realm" value="Motunui">
+                    <label for="checkbox-motunui"> Motunui</label><br>
+                    <input type="checkbox" id="checkbox-neverland" name="realm" value="Neverland">
+                    <label for="checkbox-neverland"> Neverland</label><br>
+                    <input type="checkbox" id="checkbox-occitania" name="realm" value="Occitania">
+                    <label for="checkbox-occitania"> Occitania</label><br>
+                    <input type="checkbox" id="checkbox-pridelands" name="realm" value="Pride_Lands">
+                    <label for="checkbox-pridelands"> Pride Lands</label><br>
+                    <input type="checkbox" id="checkbox-wonderland" name="realm" value="Wonderland">
+                    <label for="checkbox-wonderland"> Wonderland</label><br>
+                </form>
             </div>
             <div id="products-view" class="col-9 col-lg-10">
                 <div class="row py-3 px-2">
