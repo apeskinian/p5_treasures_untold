@@ -18,12 +18,20 @@ def all_products(request):
     if request.GET:
         # looking for latest additions query
         if 'new' in request.GET:
-            most_recent_dates = Product.objects.annotate(added_date=TruncDate('date_added')) \
-                .values('added_date') \
-                .distinct() \
+            most_recent_dates = (
+                Product.objects.annotate(added_date=TruncDate('date_added'))
+                .values('added_date')
+                .distinct()
                 .order_by('-added_date')[:1]
+            )
             if most_recent_dates:
-                products = Product.objects.filter(date_added__in=[date['added_date'] for date in most_recent_dates])
+                products = (
+                    Product.objects.filter(
+                        date_added__in=[
+                            date['added_date'] for date in most_recent_dates
+                        ]
+                    )
+                )
             else:
                 products = Product.objects.none()
         # looking for product sorting
