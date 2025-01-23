@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from django.db.models.functions import Lower
+from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
 
 
@@ -16,6 +16,16 @@ def all_products(request):
     direction = None
 
     if request.GET:
+        # looking for latest additions query
+        if 'new' in request.GET:
+            most_recent_dates = Product.objects.annotate(added_date=TruncDate('date_added')) \
+                .values('added_date') \
+                .distinct() \
+                .order_by('-added_date')[:1]
+            if most_recent_dates:
+                products = Product.objects.filter(date_added__in=[date['added_date'] for date in most_recent_dates])
+            else:
+                products = Product.objects.none()
         # looking for product sorting
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -30,7 +40,6 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-
         # looking for realm filter
         if 'realm' in request.GET:
             realms = request.GET['realm'].split(',')
