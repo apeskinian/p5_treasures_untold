@@ -17,6 +17,9 @@
         </div>
         <div id="product-details-info" class="col">
             <h3>{{ product.name }}</h3>
+            <a href="{% url 'products' %}?realm={{ product.realm }}">
+                <h5>{{ product.realm.display_name }}</h5>
+            </a>
             <p>{{ product.description }}</p>
             <p class="fw-bold">£{{ product.price }}</p>
             <button>Add to basket</button>
