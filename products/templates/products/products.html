@@ -5,7 +5,7 @@
     <div id="products-shown" class="container-fluid text-center mt-3">
         <p>
             <!-- Amount of products -->
-            Showing {{ products|length }} product{% if products|length != 1 %}s{% endif %}
+            Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
             <!-- If there was a search term -->
             {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
             <!-- If there is an order -->
@@ -38,12 +38,6 @@
                     </select>
                 </div>            
                 <!-- sort and filter checkboxes to go here -->
-                 <a href="{% url 'products' %}?sort=name&direction=asc" class="btn btn-primary m-1">Sort by Name ASC</a>
-                 <a href="{% url 'products' %}?sort=name&direction=desc" class="btn btn-primary m-1">Sort by Name DESC</a>
-                 <a href="{% url 'products' %}?sort=realm&direction=asc" class="btn btn-primary m-1">Sort by Realm ASC</a>
-                 <a href="{% url 'products' %}?sort=realm&direction=desc" class="btn btn-primary m-1">Sort by Realm DESC</a>
-                 <a href="{% url 'products' %}?sort=price&direction=asc" class="btn btn-primary m-1">Sort by Price ASC</a>
-                 <a href="{% url 'products' %}?sort=price&direction=desc" class="btn btn-primary m-1">Sort by Price DESC</a>
             </div>
             <div id="products-view" class="col-9 col-lg-10">
                 <div class="row py-3 px-2">

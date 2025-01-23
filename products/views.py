@@ -14,10 +14,12 @@ def all_products(request):
     realms = None
     sort = None
     direction = None
+    showing_new = False
 
     if request.GET:
         # looking for latest additions query
         if 'new' in request.GET:
+            showing_new = True
             most_recent_dates = (
                 Product.objects.annotate(added_date=TruncDate('date_added'))
                 .values('added_date')
@@ -77,6 +79,7 @@ def all_products(request):
         'search_term': query,
         'current_realms': realms,
         'current_sorting': current_sorting,
+        'showing_new': showing_new,
     }
 
     return render(request, template, context)
