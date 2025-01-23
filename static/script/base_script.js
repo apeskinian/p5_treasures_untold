@@ -26,3 +26,8 @@ $('#sort-selector').change(function() {
     window.location.replace(currentUrl);
   }
 })
+
+// scroll to top button
+$('.scroll-link').click(function(e) {
+  window.scrollTo(0,0);
+})

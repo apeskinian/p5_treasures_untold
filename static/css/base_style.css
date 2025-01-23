@@ -119,6 +119,21 @@ main {
     color: rgb(200, 0, 0);
 }
 
+.scroll-button {
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 25%;
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.scroll-link {
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     .top-nav {
         height: 300px;
