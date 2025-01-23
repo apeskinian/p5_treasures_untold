@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block content %}
-    <div id="products-shown" class="container-fluid text-center">
+    <div id="products-shown" class="container-fluid text-center mt-3">
+        <p>
+            Showing {{ products|length }} product{% if products|length != 1 %}s{% endif %}{% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+        </p>
         <br>
         <!-- search, sort and filter results here -->
     </div>
