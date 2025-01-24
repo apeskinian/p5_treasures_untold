@@ -9,7 +9,7 @@
             {% if products|length > 0 %}
                 Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
             {% else %}    
-                No products
+                No {% if showing_new %}new {% endif %}products
             {% endif %}
                 <!-- If there was a stock check -->
                 {% if "in" in showing_stock and "out" not in showing_stock %}in stock{% endif %}
@@ -51,6 +51,8 @@
                 <button id="submit-filter" class="btn btn-success m-1 w-100">Apply</button>
                 <form id="filter-form" action="">
                     <p class="m-0 fw-bold">Stock</p>
+                    <input type="checkbox" id="checkbox-new" name="new" value="new" {% if showing_new %}checked{% endif %}>
+                    <label for="checkbox-new"> New</label><br>
                     <input type="checkbox" id="checkbox-instock" name="stock" value="in" {% if "in" in showing_stock %}checked{% endif %}>
                     <label for="checkbox-instock"> In stock</label><br>
                     <input type="checkbox" id="checkbox-outofstock" name="stock" value="out" {% if "out" in showing_stock %}checked{% endif %}>

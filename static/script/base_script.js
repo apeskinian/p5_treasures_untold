@@ -31,30 +31,37 @@ $('#sort-selector').change(function() {
 const baseUrl = '/products/';
 var filterStockList = [];
 var filterRealmList = [];
+var filterNewList = [];
 
 $('#submit-filter').click(function() {
 // $('#filter-form input[type="checkbox"]').on('change', function () {
   $('#filter-form input[type="checkbox"]').each(function () {
     if ($(this).is(':checked')) {
-      if ($(this).attr('name')=='stock') {
+      if ($(this).attr('name')=='new') {
+        console.log('new is checked');
+        filterNewList.push($(this).val());
+      } else if ($(this).attr('name')=='stock') {
         filterStockList.push($(this).val());
       } else if ($(this).attr('name')=='realm') {
         filterRealmList.push($(this).val());
       }
     }
   })
-  var filterList = `?`
-  if (filterStockList.length > 0) {
-    filterList += `stock=${filterStockList}`
+
+  var filterList = [];
+  if (filterNewList.length > 0) {
+      filterList.push(`${filterNewList}`);
   }
-  if (filterStockList.length > 0 && filterRealmList.length > 0) {
-    filterList += `&`
+  if (filterStockList.length > 0) {
+      filterList.push(`stock=${filterStockList}`);
   }
   if (filterRealmList.length > 0) {
-    filterList += `realm=${filterRealmList}`
+      filterList.push(`realm=${filterRealmList}`);
   }
-  const url = `${baseUrl}${filterList}`;
+  const queryString = filterList.length > 0 ? `?${filterList.join('&')}` : '';
+  const url = `${baseUrl}${queryString}`;
   window.location.replace(url);
+  console.log(queryString);
 })
 
 // scroll to top button
