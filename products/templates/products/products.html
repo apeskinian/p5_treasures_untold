@@ -8,6 +8,14 @@
             Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
             <!-- If there was a search term -->
             {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+            <!-- If there is a filter for realms -->
+            {% if current_realms %}
+                from
+                {% for realm in current_realms %}
+                    {% if forloop.first %}{{ realm }}{% else %}{% if forloop.last %}and {{ realm }}{% else %}, {{ realm }}{% endif %}{% endif %}
+                {% endfor %}
+            {% endif %}
+
             <!-- If there is an order -->
             {% if current_sorting != 'None_None' %} ordered by 
                 {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
@@ -38,12 +46,12 @@
                 </div>            
                 <!-- sort and filter checkboxes to go here -->
                 <a href="{% url 'products' %}" class="btn btn-secondary m-1 w-100">Clear</a>
-                <a href="" id="submit-filter" class="btn btn-success m-1 w-100">Apply</a>
-                <form action="">
+                <button id="submit-filter" class="btn btn-success m-1 w-100">Apply</button>
+                <form id="filter-form" action="">
                     <p class="m-0">Stock</p>
-                    <input type="checkbox" id="checkbox-instock" name="stock" value="instock">
+                    <input type="checkbox" id="checkbox-instock" name="stock" value="in">
                     <label for="checkbox-instock"> In stock</label><br>
-                    <input type="checkbox" id="checkbox-outofstock" name="stock" value="outofstock">
+                    <input type="checkbox" id="checkbox-outofstock" name="stock" value="out">
                     <label for="checkbox-outofstock"> Out of stock</label><br>
                     <p class="m-0">Realm</p>
                     <input type="checkbox" id="checkbox-agrabah" name="realm" value="Agrabah">

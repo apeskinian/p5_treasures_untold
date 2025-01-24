@@ -15,6 +15,7 @@ def all_products(request):
     sort = None
     direction = None
     showing_new = False
+    showing_stock = None
 
     if request.GET:
         # looking for latest additions query
@@ -50,6 +51,20 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
+        # looking for stock filter
+        if 'stock' in request.GET:
+            showing_stock = []
+            stock_requests = request.GET['stock'].split(',')
+            in_stock_products = products.none()
+            out_of_stock_products = products.none()
+            if 'in' in stock_requests:
+                in_stock_products = products.filter(stock__gt=0)
+                showing_stock.append('in')
+            if 'out' in stock_requests:
+                out_of_stock_products = products.filter(stock__exact=0)
+                showing_stock.append('out')
+            products = in_stock_products | out_of_stock_products
+            print(showing_stock)
         # looking for realm filter
         if 'realm' in request.GET:
             realms = request.GET['realm'].split(',')
@@ -80,6 +95,7 @@ def all_products(request):
         'current_realms': realms,
         'current_sorting': current_sorting,
         'showing_new': showing_new,
+        'showing_stock': showing_stock,
     }
 
     return render(request, template, context)

@@ -27,6 +27,38 @@ $('#sort-selector').change(function() {
   }
 })
 
+// filter menu
+const baseUrl = '/products/';
+var filterStockList = [];
+var filterRealmList = [];
+
+$('#submit-filter').click(function() {
+  $('#filter-form input[type="checkbox"]').each(function () {
+    if ($(this).is(':checked')) {
+      if ($(this).attr('name')=='stock') {
+        filterStockList.push($(this).val());
+      } else if ($(this).attr('name')=='realm') {
+        filterRealmList.push($(this).val());
+      }
+    }
+  })
+  var filterList = `?`
+  if (filterStockList.length > 0) {
+    filterList += `stock=${filterStockList}`
+  }
+  if (filterStockList.length > 0 && filterRealmList.length > 0) {
+    filterList += `&`
+  }
+  if (filterRealmList.length > 0) {
+    filterList += `realm=${filterRealmList}`
+  }
+  const url = `${baseUrl}${filterList}`;
+  window.location.replace(url);
+})
+
+
+
+
 // scroll to top button
 $('.scroll-link').click(function(e) {
   window.scrollTo(0,0);
