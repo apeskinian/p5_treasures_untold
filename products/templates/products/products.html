@@ -5,26 +5,33 @@
     <div id="products-shown" class="container-fluid text-center mt-3">
         <p>
             <!-- Amount of products -->
-            Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
-            <!-- If there was a search term -->
-            {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
-            <!-- If there is a filter for realms -->
-            {% if current_realms %}
-                from
-                {% for realm in current_realms %}
-                    {% if forloop.first %}{{ realm }}{% else %}{% if forloop.last %}and {{ realm }}{% else %}, {{ realm }}{% endif %}{% endif %}
-                {% endfor %}
+            {% if products|length > 0 %}
+                Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
+                <!-- If there was a stock check -->
+                {% if "in" in showing_stock and "out" not in showing_stock %}in stock{% endif %}
+                {% if "out" in showing_stock and "in" not in showing_stock %}out of stock{% endif %}
+                <!-- If there was a search term -->
+                {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+                <!-- If there is a filter for realms -->
+                {% if current_realms %}
+                    from
+                    {% for realm in current_realms %}
+                        {% if forloop.first %}{{ realm }}{% else %}{% if forloop.last %}and {{ realm }}{% else %}, {{ realm }}{% endif %}{% endif %}
+                    {% endfor %}
+                {% endif %}
+                <!-- If there is an order -->
+                {% if current_sorting != 'None_None' %} ordered by 
+                    {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
+                    {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
+                    {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
+                    {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
+                    {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
+                    {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
+                {% endif %}
+            {% else %}    
+                No products found
             {% endif %}
 
-            <!-- If there is an order -->
-            {% if current_sorting != 'None_None' %} ordered by 
-                {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
-                {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
-                {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
-                {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
-                {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
-                {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
-            {% endif %}
         </p>
         <br>
         <!-- search, sort and filter results here -->
@@ -49,34 +56,34 @@
                 <button id="submit-filter" class="btn btn-success m-1 w-100">Apply</button>
                 <form id="filter-form" action="">
                     <p class="m-0">Stock</p>
-                    <input type="checkbox" id="checkbox-instock" name="stock" value="in">
+                    <input type="checkbox" id="checkbox-instock" name="stock" value="in" {% if "in" in showing_stock %}checked{% endif %}>
                     <label for="checkbox-instock"> In stock</label><br>
-                    <input type="checkbox" id="checkbox-outofstock" name="stock" value="out">
+                    <input type="checkbox" id="checkbox-outofstock" name="stock" value="out" {% if "out" in showing_stock %}checked{% endif %}>
                     <label for="checkbox-outofstock"> Out of stock</label><br>
                     <p class="m-0">Realm</p>
-                    <input type="checkbox" id="checkbox-agrabah" name="realm" value="Agrabah">
+                    <input type="checkbox" id="checkbox-agrabah" name="realm" value="Agrabah" {% if "Agrabah" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-agrabah"> Agrabah</label><br>
-                    <input type="checkbox" id="checkbox-atlantica" name="realm" value="Atlantica">
+                    <input type="checkbox" id="checkbox-atlantica" name="realm" value="Atlantica" {% if "Atlantica" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-atlantica"> Atlantica</label><br>
-                    <input type="checkbox" id="checkbox-corona" name="realm" value="Corona">
+                    <input type="checkbox" id="checkbox-corona" name="realm" value="Corona" {% if "Corona" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-corona"> Corona</label><br>
-                    <input type="checkbox" id="checkbox-enchantedcastle" name="realm" value="Enchanted_Castle">
+                    <input type="checkbox" id="checkbox-enchantedcastle" name="realm" value="Enchanted_Castle" {% if "Enchanted_Castle" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-enchantedcastle"> Enchanted Castle</label><br>
-                    <input type="checkbox" id="checkbox-enchantedforest" name="realm" value="Enchanted_Forest">
+                    <input type="checkbox" id="checkbox-enchantedforest" name="realm" value="Enchanted_Forest" {% if "Enchanted_Forest" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-enchantedforest"> Enchanted Forest</label><br>
-                    <input type="checkbox" id="checkbox-fantasia" name="realm" value="Fantasia">
+                    <input type="checkbox" id="checkbox-fantasia" name="realm" value="Fantasia" {% if "Fantasia" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-fantasia"> Fantasia</label><br>
-                    <input type="checkbox" id="checkbox-halloweentown" name="realm" value="Halloween_Town">
+                    <input type="checkbox" id="checkbox-halloweentown" name="realm" value="Halloween_Town" {% if "Halloween_Town" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-halloweentown"> Halloween Town</label><br>
-                    <input type="checkbox" id="checkbox-motunui" name="realm" value="Motunui">
+                    <input type="checkbox" id="checkbox-motunui" name="realm" value="Motunui" {% if "Motunui" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-motunui"> Motunui</label><br>
-                    <input type="checkbox" id="checkbox-neverland" name="realm" value="Neverland">
+                    <input type="checkbox" id="checkbox-neverland" name="realm" value="Neverland" {% if "Neverland" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-neverland"> Neverland</label><br>
-                    <input type="checkbox" id="checkbox-occitania" name="realm" value="Occitania">
+                    <input type="checkbox" id="checkbox-occitania" name="realm" value="Occitania" {% if "Occitania" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-occitania"> Occitania</label><br>
-                    <input type="checkbox" id="checkbox-pridelands" name="realm" value="Pride_Lands">
+                    <input type="checkbox" id="checkbox-pridelands" name="realm" value="Pride_Lands" {% if "Pride_Lands" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-pridelands"> Pride Lands</label><br>
-                    <input type="checkbox" id="checkbox-wonderland" name="realm" value="Wonderland">
+                    <input type="checkbox" id="checkbox-wonderland" name="realm" value="Wonderland" {% if "Wonderland" in current_realms_names %}checked{% endif %}>
                     <label for="checkbox-wonderland"> Wonderland</label><br>
                 </form>
             </div>

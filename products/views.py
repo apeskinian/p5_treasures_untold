@@ -16,6 +16,8 @@ def all_products(request):
     direction = None
     showing_new = False
     showing_stock = None
+    current_realms_names = None
+    showing_stock = []
 
     if request.GET:
         # looking for latest additions query
@@ -53,7 +55,6 @@ def all_products(request):
             products = products.order_by(sortkey)
         # looking for stock filter
         if 'stock' in request.GET:
-            showing_stock = []
             stock_requests = request.GET['stock'].split(',')
             in_stock_products = products.none()
             out_of_stock_products = products.none()
@@ -70,6 +71,7 @@ def all_products(request):
             realms = request.GET['realm'].split(',')
             products = products.filter(realm__name__in=realms)
             realms = Realm.objects.filter(name__in=realms)
+            current_realms_names = realms.values_list('name', flat=True)
         # handling search bar queries
         if 'q' in request.GET:
             query = request.GET['q']
@@ -93,6 +95,7 @@ def all_products(request):
         'products': products,
         'search_term': query,
         'current_realms': realms,
+        'current_realms_names': current_realms_names,
         'current_sorting': current_sorting,
         'showing_new': showing_new,
         'showing_stock': showing_stock,
