@@ -15,7 +15,7 @@
         </a>
         <ul class="dropdown-menu">
             <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item" aria-label="go to the home page">Home</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="see the new products">New</a></li>
+            <li class="text-center"><a href="{% url 'products' %}?new" class="dropdown-item" aria-label="see the new products">New</a></li>
             <li class="text-center"><a href="{% url 'products' %}" class="dropdown-item" aria-label="shop all products">All Products</a></li>
             <li class="text-center">
                 <div id="by-realm-menu-mobile">
