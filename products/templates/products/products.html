@@ -8,27 +8,27 @@
             <!-- Amount of products -->
             {% if products|length > 0 %}
                 Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
+            {% else %}    
+                No products
+            {% endif %}
                 <!-- If there was a stock check -->
                 {% if "in" in showing_stock and "out" not in showing_stock %}in stock{% endif %}
                 {% if "out" in showing_stock and "in" not in showing_stock %}out of stock{% endif %}
-                <!-- If there was a search term -->
-                {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
-                <!-- If there is a filter for realms -->
-                {% if current_realms_names %}
-                    from
-                    {% for realm in current_realms_names %}{% if forloop.first %}{{ realm|friendly_name }}{% elif forloop.last %} and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endfor %}
-                {% endif %}
-                <!-- If there is an order -->
-                {% if current_sorting != 'None_None' %} ordered by 
-                    {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
-                    {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
-                    {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
-                    {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
-                    {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
-                    {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
-                {% endif %}
-            {% else %}    
-                No products found
+            <!-- If there was a search term -->
+            {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+            <!-- If there is a filter for realms -->
+            {% if current_realms_names %}
+                from
+                {% for realm in current_realms_names %}{% if forloop.first %}{{ realm|friendly_name }}{% elif forloop.last %} and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endfor %}
+            {% endif %}
+            <!-- If there is an order -->
+            {% if current_sorting != 'None_None' %} ordered by 
+                {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
+                {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
+                {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
+                {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
+                {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
+                {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
             {% endif %}
 
         </p>
