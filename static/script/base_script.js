@@ -27,7 +27,7 @@ $('#sort-selector').change(function() {
   }
 })
 
-// filter menu
+// product filter menu
 const baseUrl = '/products/';
 var filterStockList = [];
 var filterRealmList = [];
@@ -56,9 +56,6 @@ $('#submit-filter').click(function() {
   const url = `${baseUrl}${filterList}`;
   window.location.replace(url);
 })
-
-
-
 
 // scroll to top button
 $('.scroll-link').click(function(e) {
