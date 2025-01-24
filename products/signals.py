@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from cloudinary.uploader import destroy
 from .models import Product
 
+
 @receiver(post_delete, sender=Product)
 def delete_image_from_cloudinary(sender, instance, **kwargs):
     # making sure the image is not a placeholder and deleting image
