@@ -16,9 +16,7 @@
                 <!-- If there is a filter for realms -->
                 {% if current_realms_names %}
                     from
-                    {% for realm in current_realms_names %}
-                        {% if forloop.first %}{{ realm|friendly_name }}{% else %}{% if forloop.last %}and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endif %}
-                    {% endfor %}
+                    {% for realm in current_realms_names %}{% if forloop.first %}{{ realm|friendly_name }}{% elif forloop.last %} and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endfor %}
                 {% endif %}
                 <!-- If there is an order -->
                 {% if current_sorting != 'None_None' %} ordered by 

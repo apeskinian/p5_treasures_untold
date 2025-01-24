@@ -65,7 +65,6 @@ def all_products(request):
                 out_of_stock_products = products.filter(stock__exact=0)
                 showing_stock.append('out')
             products = in_stock_products | out_of_stock_products
-            print(showing_stock)
         # looking for realm filter
         if 'realm' in request.GET:
             realms = request.GET['realm'].split(',')
