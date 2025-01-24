@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load product_tags %}
 
 {% block content %}
     <div id="products-shown" class="container-fluid text-center mt-3">
@@ -13,10 +14,10 @@
                 <!-- If there was a search term -->
                 {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
                 <!-- If there is a filter for realms -->
-                {% if current_realms %}
+                {% if current_realms_names %}
                     from
-                    {% for realm in current_realms %}
-                        {% if forloop.first %}{{ realm }}{% else %}{% if forloop.last %}and {{ realm }}{% else %}, {{ realm }}{% endif %}{% endif %}
+                    {% for realm in current_realms_names %}
+                        {% if forloop.first %}{{ realm|friendly_name }}{% else %}{% if forloop.last %}and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endif %}
                     {% endfor %}
                 {% endif %}
                 <!-- If there is an order -->

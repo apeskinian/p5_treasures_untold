@@ -71,7 +71,9 @@ def all_products(request):
             realms = request.GET['realm'].split(',')
             products = products.filter(realm__name__in=realms)
             realms = Realm.objects.filter(name__in=realms)
-            current_realms_names = realms.values_list('name', flat=True)
+            current_realms_names = (
+                realms.order_by('name').values_list('name', flat=True)
+            )
         # handling search bar queries
         if 'q' in request.GET:
             query = request.GET['q']

@@ -33,6 +33,7 @@ var filterStockList = [];
 var filterRealmList = [];
 
 $('#submit-filter').click(function() {
+// $('#filter-form input[type="checkbox"]').on('change', function () {
   $('#filter-form input[type="checkbox"]').each(function () {
     if ($(this).is(':checked')) {
       if ($(this).attr('name')=='stock') {
