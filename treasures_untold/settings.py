@@ -83,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'basket.contexts.basket_contents',
             ],
         },
     },
@@ -208,3 +209,6 @@ else:
     EMAIL_HOST_USER = os.environ.get('SUPPORT_EMAIL_ADDRESS')
     EMAIL_HOST_PASSWORD = os.environ.get('SUPPORT_EMAIL_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('SUPPORT_EMAIL_ADDRESS')
+
+DISCOUNT = 0
+DELIVERY = 25.00
