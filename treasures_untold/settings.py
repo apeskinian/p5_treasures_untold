@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'home',
     'products',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +133,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    
+
 if 'test' in sys.argv:
     DATABASES = {
         'default': {

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Basket</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if basket_items %}
+                    <div class="table-resposive">
+
+                    </div>
+                {% else %}
+                    <p>Your basket is empty</p>
+                    <a href="{{ back_url }}" class="">Continue Shopping</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
