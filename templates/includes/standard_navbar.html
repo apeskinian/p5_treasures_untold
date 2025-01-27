@@ -78,7 +78,7 @@
         </div>
         <!-- Basket Offcanvas -->
         <a data-bs-toggle="offcanvas" href="#offcanvas-basket" aria-controls="offcanvas-basket" role="button" class="text-white">
-            <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}">
+            <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ total|floatformat:2 }}{% else %}£0.00{% endif %}">
                 <i class="fa-solid fa-basket-shopping fa-xl"></i>
             </div>
         </a>
