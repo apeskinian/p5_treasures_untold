@@ -9,6 +9,7 @@ def all_products(request):
     """
     A view to show all products including sorting and search queries
     """
+    back_url = request.META.get('HTTP_REFERER')
     products = Product.objects.all()
     query = None
     realms = None
@@ -93,6 +94,7 @@ def all_products(request):
     # setting up view parameters
     template = 'products/products.html'
     context = {
+        'back_url': back_url,
         'products': products,
         'search_term': query,
         'current_realms': realms,
