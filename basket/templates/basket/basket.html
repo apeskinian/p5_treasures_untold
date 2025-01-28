@@ -35,7 +35,7 @@
                                                 <div class="input-group w-75">
                                                     <span class="input-group-text">QTY</span>
                                                     <button class="btn btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-minus"></i></i></button>
-                                                    <input id="id-qty-{{ item.item_id }}" class="form-control qty-input" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.stock|add:item.quantity }}" data-item-id="{{ item.item_id }}">
+                                                    <input id="id-qty-{{ item.item_id }}" class="form-control qty-input" type="number" name="quantity" value="{{ item.quantity }}" min="0" max="{{ item.product.stock|add:item.quantity }}" data-item-id="{{ item.item_id }}">
                                                     <button class="btn btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                             </div>

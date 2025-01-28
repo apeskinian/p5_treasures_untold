@@ -2,7 +2,8 @@
 function handleEnableDisable(itemId) {
   var currentValue = parseInt($(`#id-qty-${itemId}`).val());
   var maxPurchase = parseInt($(`#id-qty-${itemId}`).attr('max'));
-  var minusDisabled = currentValue < 2;
+  var minPurchase = parseInt($(`#id-qty-${itemId}`).attr('min'));
+  var minusDisabled = currentValue === minPurchase;
   var plusDisabled = currentValue === maxPurchase; 
   $(`#decrement-qty-${itemId}`).prop('disabled', minusDisabled);
   $(`#increment-qty-${itemId}`).prop('disabled', plusDisabled);
