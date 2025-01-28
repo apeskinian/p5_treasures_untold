@@ -45,12 +45,19 @@ $('.decrement-qty').click(function(e) {
 // update form
 $('.update-basket').click(function(e) {
   e.preventDefault();
+
+  // preventing double clicking
+  var updateLink = $(this);
+  if (updateLink.hasClass('disabled')) return;
+  updateLink.addClass('disabled');
+
   var form = $(this).prev('.update-form');
   var inputField = form.find('input[type="number"]')[0];
   if (inputField.checkValidity()) {
     form.submit();
   } else {
     inputField.reportValidity();
+    updateLink.removeClass('disabled');
   }
 });
 
@@ -62,17 +69,24 @@ function getCsrfToken() {
 // remove items
 $('.remove-item').click(function(e) {
     e.preventDefault()
+
+    // prevent double clicking
+    var removeLink = $(this);
+    if (removeLink.hasClass('disabled')) return;
+    removeLink.addClass('disabled');
+
     var csrfToken = getCsrfToken();
     var itemId = $(this).attr('id').split('remove-')[1];
     var quantity = $(this).data('qty');
-    console.log(quantity)
     var url = `/basket/remove/${itemId}/`;
     var data = {'csrfmiddlewaretoken': csrfToken, 'quantity': quantity};
 
     $.post(url, data)
         .done(function() {
             location.reload();
-        });
-    console.log('finished...')
+        })
+        .fail(function () {
+          removeLink.removeClass('disabled');
+      });
 })
 
