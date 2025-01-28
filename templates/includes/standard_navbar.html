@@ -78,7 +78,7 @@
         </div>
         <!-- Basket Offcanvas -->
         <a data-bs-toggle="offcanvas" href="#offcanvas-basket" aria-controls="offcanvas-basket" role="button" class="text-white">
-            <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ grand_total|floatformat:2 }}{% else %}£0.00{% endif %}">
+            <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if grand_total %}£{{ total|floatformat:2 }}{% else %}£0.00{% endif %}">
                 <i class="fa-solid fa-basket-shopping fa-xl"></i>
             </div>
         </a>
@@ -89,6 +89,47 @@
                 </a>
             </div>
             <div class="offcanvas-body">
+                <div class="col">
+                    {% if basket_items %}
+                        <div class="table-resposive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                    {% for item in basket_items %}
+                                    <tr>
+                                        <td class="w-25">
+                                            <img class="img-fluid" src="{{ item.product.image.url }}" alt="">
+                                        </td>
+                                        <td>
+                                            <p><strong>{{ item.product.name }}</strong></p>
+                                            <p><small>{{ item.product.sku }}</small></p>
+                                        </td>
+                                        <td><p>£{{ item.product.price }}</p></td>
+                                        <td><p>{{ item.quantity }}</p></td>
+                                        <td><p>£{{ item.product.price }}</p></td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
+                                        <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
+                                        <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p>Your basket is empty</p>
+                        <a href="{% url 'products' %}" class="">Continue Shopping</a>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'view_basket' %}" class="btn btn-secondary">View basket</a>
+                    <a href="" class="btn btn-secondary">Secure Checkout</a>
             </div>
           </div>
     </div>

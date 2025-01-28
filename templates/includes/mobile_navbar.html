@@ -64,8 +64,8 @@
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-basket-shopping fa-xl"></i>
         </a>
-        <div class="dropdown-menu">
-            <p class="text-center">BASKET DETAILS</p>
-        </div>
+        <ul class="dropdown-menu">
+            <li class="text-center"><a href="{% url 'view_basket' %}" class="dropdown-item" aria-label="view the basket">View Basket</a></li>
+        </ul>
     </div>
 </nav>

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load basket_tools %}
+
+{% block content %}
+    <h1>Basket</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if basket_items %}
+                    <div class="table-resposive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                                {% for item in basket_items %}
+                                <tr>
+                                    <td class="w-25">
+                                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="">
+                                    </td>
+                                    <td>
+                                        <p><strong>{{ item.product.name }}</strong></p>
+                                        <p><small>{{ item.product.sku }}</small></p>
+                                    </td>
+                                    <td><p>£{{ item.product.price }}</p></td>
+                                    <td>
+                                        <form class="update-form" method="POST" action="{% url 'adjust_basket' item.item_id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <div class="input-group w-75">
+                                                    <span class="input-group-text">QTY</span>
+                                                    <button class="btn btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-minus"></i></i></button>
+                                                    <input id="id-qty-{{ item.item_id }}" class="form-control qty-input" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" data-item-id="{{ item.item_id }}">
+                                                    <button class="btn btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <a href="" class="btn btn-primary update-basket"><i class="fa-solid fa-rotate"></i></i></a>
+                                        <span>
+                                            <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-danger remove-item" id="remove-{{ item.item_id }}"><i class="fa-solid fa-trash-can"></i></a>
+                                        </span>
+                                    </td>
+                                    <td><p>£{{ item.product.price|calc_subtotal:item.quantity }}</p></td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
+                                    <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
+                                    <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'products' %}" class="btn btn-secondary">Continue Shopping</a>
+                                        <a href="" class="btn btn-secondary">Secure Checkout</a>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                {% else %}
+                    <p>Your basket is empty</p>
+                    <a href="{% url 'products' %}" class="">Continue Shopping</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <!-- qty modifiers script -->
+    <script src="{% static 'script/product_qty_limits.js' %}"></script>
+{% endblock %}
