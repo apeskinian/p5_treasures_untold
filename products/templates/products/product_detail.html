@@ -35,8 +35,14 @@
                         </div>
                     </div>
                     <div class="mt-3">
+                        {% if user.is_authenticated %}
                         <input type="submit" class="btn btn-secondary" value="Add to Basket">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        {% else %}
+                            <p>You must log in to add items to your basket.</p>
+                            <a href="{{ login_url }}" class="btn btn-secondary">Log In</a>
+                            <a href="{{ signup_url }}" class="btn btn-secondary">Sign Up</a>
+                        {% endif %}
                     </div>
                 </form>
                 <div mt-3>
