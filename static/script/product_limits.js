@@ -54,3 +54,25 @@ $('.update-basket').click(function(e) {
   }
 });
 
+// get csrf token from meta
+function getCsrfToken() {
+  return $('meta[name="csrf-token"]').attr('content');
+}
+
+// remove items
+$('.remove-item').click(function(e) {
+    e.preventDefault()
+    var csrfToken = getCsrfToken();
+    var itemId = $(this).attr('id').split('remove-')[1];
+    var quantity = $(this).data('qty');
+    console.log(quantity)
+    var url = `/basket/remove/${itemId}/`;
+    var data = {'csrfmiddlewaretoken': csrfToken, 'quantity': quantity};
+
+    $.post(url, data)
+        .done(function() {
+            location.reload();
+        });
+    console.log('finished...')
+})
+
