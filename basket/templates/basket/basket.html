@@ -39,8 +39,9 @@
                                                     <button class="btn btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="previous-quantity" value="{{ item.quantity }}">
                                         </form>
-                                        <a href="" class="btn btn-primary update-basket"><i class="fa-solid fa-rotate"></i></i></a>
+                                        <a href="" class="btn btn-primary update-basket" data-item-id="{{ item.item_id }}" data-current-qty="{{ item.quantity }}"><i class="fa-solid fa-rotate"></i></i></a>
                                         <span>
                                             <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-danger remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
                                         </span>
