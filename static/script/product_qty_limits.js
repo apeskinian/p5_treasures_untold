@@ -39,3 +39,11 @@ function handleEnableDisable(itemId) {
     var itemId = $(this).data('item-id');
     handleEnableDisable(itemId);
   });
+
+  // update form
+  console.log('update called')
+  $('.update-basket').click(function(e) {
+    e.preventDefault();
+    var form = $(this).prev('.update-form');
+    form.submit();
+  })

@@ -125,7 +125,7 @@
                         </div>
                         {% else %}
                         <p>Your basket is empty</p>
-                        <a href="{{ back_url }}" class="">Continue Shopping</a>
+                        <a href="{% url 'products' %}" class="">Continue Shopping</a>
                         {% endif %}
                     </div>
                     <a href="{% url 'view_basket' %}" class="btn btn-secondary">View basket</a>

@@ -1,18 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 
 def view_basket(request):
     """
     A view to show the basket contents
     """
-    back_url = request.META.get('HTTP_REFERER')
 
-    context = {
-        'back_url': back_url
-    }
     template = 'basket/basket.html'
 
-    return render(request, template, context)
+    return render(request, template)
 
 
 def add_to_basket(request, item_id):
@@ -31,3 +27,31 @@ def add_to_basket(request, item_id):
     request.session['basket'] = basket
 
     return redirect(redirect_url)
+
+
+def adjust_basket(request, item_id):
+    """
+    Adjust the basket
+    """
+    quantity = int(request.POST.get('quantity'))
+    basket = request.session.get('basket', {})
+
+    if quantity > 0:
+        basket[item_id] = quantity
+    else:
+        basket.pop(item_id, None)
+
+    request.session['basket'] = basket
+
+    return redirect(reverse('view_basket'))
+
+
+def remove_from_basket(request, item_id):
+    """
+    Removes an item from the basket
+    """
+    basket = request.session.get('basket', {})
+    basket.pop(item_id, None)
+    request.session['basket'] = basket
+
+    return redirect(reverse('view_basket'))
