@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from products.models import Product
 
 
 def view_basket(request):
@@ -18,6 +19,11 @@ def add_to_basket(request, item_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
+
+    # update product stock level
+    product = get_object_or_404(Product, pk=item_id)
+    product.stock -= quantity
+    product.save()
 
     if item_id in list(basket.keys()):
         basket[item_id] += quantity
@@ -50,7 +56,16 @@ def remove_from_basket(request, item_id):
     """
     Removes an item from the basket
     """
+    print('VIEWS TURN')
     basket = request.session.get('basket', {})
+    quantity = int(request.POST['quantity'])
+    print(quantity)
+
+    # update product stock level
+    product = get_object_or_404(Product, pk=item_id)
+    product.stock += quantity
+    product.save()
+
     basket.pop(item_id, None)
     request.session['basket'] = basket
 
