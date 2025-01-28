@@ -1,8 +1,9 @@
 // disabling qty modifiers outside of stock ranges
 function handleEnableDisable(itemId) {
   var currentValue = parseInt($(`#id-qty-${itemId}`).val());
+  var maxPurchase = parseInt($(`#id-qty-${itemId}`).attr('max'));
   var minusDisabled = currentValue < 2;
-  var plusDisabled = currentValue >= parseInt($(`#id-qty-${itemId}`).attr('max'));
+  var plusDisabled = currentValue === maxPurchase; 
   $(`#decrement-qty-${itemId}`).prop('disabled', minusDisabled);
   $(`#increment-qty-${itemId}`).prop('disabled', plusDisabled);
 }
@@ -43,10 +44,12 @@ $('.decrement-qty').click(function(e) {
 // update form
 $('.update-basket').click(function(e) {
   e.preventDefault();
-  var itemId = $(this).data('item-id')
-  var currentQuantity = $(this).data('current-qty');
-  var newQuantity = parseInt($(`#id-qty-${itemId}`).val())
-  console.log(currentQuantity, newQuantity)
   var form = $(this).prev('.update-form');
-  form.submit();
-})
+  var inputField = form.find('input[type="number"]')[0];
+  if (inputField.checkValidity()) {
+    form.submit();
+  } else {
+    inputField.reportValidity();
+  }
+});
+

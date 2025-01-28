@@ -50,8 +50,10 @@ def adjust_basket(request, item_id):
     """
     previous_quantity = int(request.POST.get('previous-quantity'))
     new_quantity = int(request.POST.get('quantity'))
-
-    print(previous_quantity, new_quantity)
+    
+    # update product stock level
+    quantity_delta = previous_quantity - new_quantity
+    update_stock(item_id, quantity_delta)
 
     basket = request.session.get('basket', {})
 
