@@ -65,6 +65,47 @@
             <i class="fa-solid fa-basket-shopping fa-xl"></i>
         </a>
         <ul class="dropdown-menu">
+            <li>
+                <div>
+                    {% if basket_items %}
+                        <div class="table-resposive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                    </tr>
+                                    {% for item in basket_items %}
+                                    <tr>
+                                        <td class="w-25">
+                                            <img class="img-fluid" src="{{ item.product.image.url }}" alt="">
+                                        </td>
+                                        <td>
+                                            <p><strong>{{ item.product.name }}</strong></p>
+                                            <p><small>{{ item.product.sku }}</small></p>
+                                        </td>
+                                        <td><p>£{{ item.product.price }}</p></td>
+                                        <td><p>{{ item.quantity }}</p></td>
+                                        <td><p>£{{ item.product.price }}</p></td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
+                                        <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
+                                        <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p>Your basket is empty</p>
+                        <a href="{% url 'products' %}" class="">Continue Shopping</a>
+                        {% endif %}
+                </div>
+            </li>
             <li class="text-center"><a href="{% url 'view_basket' %}" class="dropdown-item" aria-label="view the basket">View Basket</a></li>
         </ul>
     </div>
