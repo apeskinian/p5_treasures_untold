@@ -41,7 +41,7 @@
                 </form>
                 <div mt-3>
                     <i class="fa-solid fa-clock-rotate-left fa-flip-horizontal"></i>
-                    <span>Order in INSERT TIMER for same day dispatch!</span>
+                    <span id="countdown"></span>
                 </div>
             {% else %}
                 <p class="fw-bold text-red">SOLD OUT</p>
@@ -60,4 +60,5 @@
     {{ block.super }}
     <!-- qty modifiers script -->
     <script src="{% static 'script/product_limits.js' %}"></script>
+    <script src="{% static 'script/countdown_timer.js' %}"></script>
 {% endblock %}
