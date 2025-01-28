@@ -68,3 +68,9 @@ $('#submit-filter').click(function() {
 $('.scroll-link').click(function(e) {
   window.scrollTo(0,0);
 })
+
+// back button
+$('.back-button').click(function(e) {
+  e.preventDefault();
+  history.back();
+})
