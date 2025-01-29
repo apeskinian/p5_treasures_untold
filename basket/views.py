@@ -19,6 +19,7 @@ def view_basket(request):
     """
     A view to show the basket contents
     """
+    # setting up view parameters
     template = 'basket/basket.html'
 
     return render(request, template)
@@ -33,17 +34,24 @@ def add_to_basket(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
 
-    # update product stock level
-    update_stock(product, -quantity)
-
-    if item_id in list(basket.keys()):
-        basket[item_id] += quantity
-        messages.success(
-            request, f'{product.name} quantity updated to {basket[item_id]}'
+    try:
+        if item_id in list(basket.keys()):
+            basket[item_id] += quantity
+            messages.success(
+                request,
+                f'{product.name} quantity updated to {basket[item_id]}'
+            )
+        else:
+            basket[item_id] = quantity
+            messages.success(request, f'{product.name} added to basket')
+        # update product stock level
+        update_stock(product, -quantity)
+    except Exception as e:
+        messages.error(
+            request,
+            f'There was a problem adding {product.name} to your basket: {e}'
+            'Please try again later'
         )
-    else:
-        basket[item_id] = quantity
-        messages.success(request, f'{product.name} added to basket')
 
     request.session['basket'] = basket
 
@@ -57,22 +65,28 @@ def adjust_basket(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     previous_quantity = int(request.POST.get('previous-quantity'))
     new_quantity = int(request.POST.get('quantity'))
-
-    # update product stock level
-    quantity_delta = previous_quantity - new_quantity
-    update_stock(product, quantity_delta)
-
     basket = request.session.get('basket', {})
 
-    if new_quantity > 0:
-        basket[item_id] = new_quantity
-        messages.success(
-            request, f'{product.name} quantity updated to {basket[item_id]}'
-        )
-    else:
-        basket.pop(item_id, None)
-        messages.info(
-            request, f'{product.name} removed from basket'
+    try:
+        if new_quantity > 0:
+            basket[item_id] = new_quantity
+            messages.success(
+                request,
+                f'{product.name} quantity updated to {basket[item_id]}'
+            )
+        else:
+            basket.pop(item_id, None)
+            messages.info(
+                request, f'{product.name} removed from basket'
+            )
+        # update product stock level
+        quantity_delta = previous_quantity - new_quantity
+        update_stock(product, quantity_delta)
+    except Exception as e:
+        messages.error(
+            request,
+            f'There was a problem adjusting {product.name} in your basket: {e}'
+            'Please try again later'
         )
 
     request.session['basket'] = basket
