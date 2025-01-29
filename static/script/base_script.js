@@ -3,10 +3,9 @@ const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 // show toasts
-var toasts = document.querySelectorAll(".toast");
-toasts.forEach(function(toastEl) {
-    var toast = new bootstrap.Toast(toastEl);
-    toast.show();
+$('.toast').each(function(toastEl) {
+  var toast = new bootstrap.Toast(this);
+  toast.show();
 });
 
 
