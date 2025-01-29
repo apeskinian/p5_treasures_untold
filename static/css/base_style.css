@@ -99,19 +99,15 @@ main {
     left: 0;
 }
 
+/* MESSAGES */
+.message-container {
+    z-index: 10000;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+}
+
 /* PRODUCT VIEWS */
-/* #products-shown {
-    background-color: red;
-}
-
-#sort-and-filter {
-    background-color: green;
-}
-
-#products-view {
-    background-color: blue;
-} */
-
 .card-spacer {
     padding-bottom: 1rem;
 }

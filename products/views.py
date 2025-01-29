@@ -110,7 +110,6 @@ def product_detail(request, product_id):
     A view to show a single product in more detail
     """
     product = get_object_or_404(Product, pk=product_id)
-
     # setting up view parameters
     template = 'products/product_detail.html'
     context = {
