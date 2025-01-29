@@ -1,9 +1,8 @@
-<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" autohide="false">
-    <div class="d-flex bg-success p-3">
+<div id="liveToast" class="toast rounded-4 p-2 bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="d-flex">
         <div class="toast-body">
             {{ message }}
         </div>
-        <a href="{% url 'view_basket' %}" class="btn btn-secondary">Go to basket</a>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close my-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
