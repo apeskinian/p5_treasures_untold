@@ -10,7 +10,7 @@ class OrderForm(forms.ModelForm):
             'phone_number',
             'street_address_1',
             'street_address_2',
-            'town_or_city',
+            'town_city',
             'county',
             'postcode',
             'country',
@@ -27,9 +27,10 @@ class OrderForm(forms.ModelForm):
             'phone_number': 'Phone Number',
             'street_address_1': 'Street Address 1',
             'street_address_2': 'Street Address 2',
-            'town_or_city': 'Town or City',
+            'town_city': 'Town or City',
             'county': 'County',
             'postcode': 'Postal Code',
+            'country': 'Country',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
