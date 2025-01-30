@@ -2,5 +2,57 @@
 {% load static %}
 
 {% block content %}
-
+    <div class="d-flex flex-column">
+        <section id="welcome-message-section" class="container-fluid">
+            FILLER
+        </section>
+        <section id="new-items-section" class="container-fluid">
+            FILLER
+        </section>
+        <section id="as-featured-in-section" class="container-fluid">
+            FILLER
+        </section>
+        <section id="featured-realm-section" class="container-fluid">
+            FILLER
+        </section>
+        <section id="support-section" class="container-fluid">
+            <div class="row h-100">
+                <div id="support-links" class="col-12 col-lg-4">
+                    <div class="row p-2">
+                        <div class="col p-0">
+                            <a href="" class="nav-link fw-bold">Menu</a>
+                            <a href="" class="nav-link fw-bold">Home</a>
+                            <a href="" class="nav-link fw-bold">New</a>
+                            <a href="" class="nav-link fw-bold">All Products</a>
+                        </div>
+                        <div class="col p-0">
+                            <a href="" class="nav-link fw-bold">Help</a>
+                            <a href="" class="nav-link fw-bold">FAQ</a>
+                            <a href="" class="nav-link fw-bold">Contact Us</a>
+                        </div>
+                        <div class="col p-0">
+                            <a href="" class="nav-link fw-bold">Information</a>
+                            <a href="" class="nav-link fw-bold">Privacy</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="support-social" class="col-12 col-lg-4 d-flex justify-content-evenly align-items-center">
+                    <i class="fa-brands fa-facebook text-white"></i>
+                    <i class="fa-brands fa-instagram text-white"></i>
+                    <i class="fa-brands fa-x-twitter text-white"></i>
+                </div>
+                <div id="support-newsletter" class="col-12 col-lg-4 d-flex flex-column justify-content-evenly">
+                    <h4 class="text-white m-0">UNLOCK THE MAGIC!</h4>
+                    <P class="text-white m-0">Get informed of all the new item drops and news!</P>
+                    <form action="" method="" class="w-100">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input id="newsletter-form-email" type="email" placeholder="your-email@example.com" class="form-control">
+                            <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>        
 {% endblock %}

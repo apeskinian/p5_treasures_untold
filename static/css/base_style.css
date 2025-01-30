@@ -33,7 +33,12 @@ main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-bottom: 60px;
+}
+
+#apeskinian {
+    background-color: #405254;
+    height: 30px;
     margin-bottom: 60px;
 }
 
@@ -107,6 +112,56 @@ main {
     right: 20px;
 }
 
+/* HOMEPAGE */
+#welcome-message-section {
+    background-color: rgb(180, 180, 180);
+    height: 150px;
+}
+
+#new-items-section {
+    height: 150px;
+}
+
+#as-featured-in-section {
+    height: 150px;
+    background-color: rgb(180, 180, 180)
+}
+
+#featured-realm-section {
+    height: 150px;
+}
+
+#support-section {
+
+}
+
+#support-links {
+    background-color: #EBDAAF;
+}
+
+#support-social {
+    min-height: 80px;
+    font-size: 40px;
+    background-color: #839680;
+}
+
+#support-newsletter {
+    background-color: #934B59;
+}
+
+#newsletter-form-email {
+    padding: 5px;
+    background-color: white;
+    border-radius: 8px 0px 0px 8px;
+    opacity: 0.50;
+    border: none;
+}
+
+#newsletter-form-submit {
+    background-color: white;
+    border-radius: 0px 8px 8px 0px;
+}
+
 /* PRODUCT VIEWS */
 .card-spacer {
     padding-bottom: 1rem;
@@ -145,6 +200,10 @@ main {
     #main-title {
         font-size: 100px;
         padding-bottom: 150px;
+    }
+
+    #apeskinian {
+        margin-bottom: 0;
     }
 }
 
