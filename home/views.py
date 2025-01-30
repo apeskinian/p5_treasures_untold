@@ -31,13 +31,14 @@ def index(request):
     # get a realm to feature and create queryset
     realm_count = Realm.objects.count()
     random_index = random.randint(0, realm_count - 1)
-    random_realm = Realm.objects.all()[random_index]
-    featured_products = Product.objects.filter(realm=random_realm)
+    featured_realm = Realm.objects.all()[random_index]
+    featured_products = Product.objects.filter(realm=featured_realm)
 
     # setting up view parameters
     template = 'home/index.html'
     context = {
         'new_products': new_products,
+        'featured_realm': featured_realm,
         'featured_products': featured_products,
     }
 

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load product_tags %}
 
 {% block content %}
    <div id="homepage-container" class="container-fluid bg-info">
@@ -10,7 +11,11 @@
             </div>
         </div>
         <div class="row new-items-container flex-grow-1">
-            <div class="col-12 col-md-6 bg-white"></div>
+            <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center">
+                <h4>Latest Additions!</h4>
+                <p>Explore our newest arrivals and uncover unique treasures and magical items. Add a touch of enchantment to your collection today.</p>
+                <a href="{% url 'products' %}?new" class="btn btn-secondary">Shop New</a>
+            </div>
             <div class="col-12 col-md-6 bg-black"></div>
         </div>
         <div class="row as-featured-in-container bg-secondary">
@@ -34,8 +39,12 @@
             </div>
         </div>
         <div class="row featured-items-container flex-grow-1">
-            <div class="col-12 col-md-6 bg-white"></div>
             <div class="col-12 col-md-6 bg-black"></div>
+            <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center">
+                <h4>{{ featured_realm.display_name }}</h4>
+                <p>Explore the magic of {{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
+                <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-secondary">Shop {{ featured_realm.display_name }}</a>
+            </div>
         </div>
         <div class="row support-container flex-grow-1">
             <div id="support-newsletter" class="col-12 col-lg-4 d-flex flex-column justify-content-evenly">
