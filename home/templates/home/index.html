@@ -38,6 +38,22 @@
             <div class="col-12 col-md-6 bg-black"></div>
         </div>
         <div class="row support-container flex-grow-1">
+            <div id="support-newsletter" class="col-12 col-lg-4 d-flex flex-column justify-content-evenly">
+                <h4 class="text-white m-0">UNLOCK THE MAGIC!</h4>
+                <P class="text-white m-0">Get informed of all the new item drops and news!</P>
+                <form action="" method="" class="w-100">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input id="newsletter-form-email" type="email" placeholder="your-email@example.com" class="form-control">
+                        <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div id="support-social" class="col-12 col-lg-4 d-flex justify-content-evenly align-items-center">
+                <i class="fa-brands fa-facebook text-white"></i>
+                <i class="fa-brands fa-instagram text-white"></i>
+                <i class="fa-brands fa-x-twitter text-white"></i>
+            </div>
             <div id="support-links" class="col-12 col-lg-4 d-flex">
                 <div class="row flex-grow-1">
                     <div  class="col">
@@ -56,22 +72,6 @@
                         <a href="" class="nav-link fw-bold">Privacy</a>
                     </div>
                 </div>
-            </div>
-            <div id="support-social" class="col-12 col-lg-4 d-flex justify-content-evenly align-items-center">
-                <i class="fa-brands fa-facebook text-white"></i>
-                <i class="fa-brands fa-instagram text-white"></i>
-                <i class="fa-brands fa-x-twitter text-white"></i>
-            </div>
-            <div id="support-newsletter" class="col-12 col-lg-4 d-flex flex-column justify-content-evenly">
-                <h4 class="text-white m-0">UNLOCK THE MAGIC!</h4>
-                <P class="text-white m-0">Get informed of all the new item drops and news!</P>
-                <form action="" method="" class="w-100">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input id="newsletter-form-email" type="email" placeholder="your-email@example.com" class="form-control">
-                        <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
-                    </div>
-                </form>
             </div>
         </div>
    </div>
