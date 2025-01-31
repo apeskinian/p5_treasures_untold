@@ -17,27 +17,3 @@
 .as-featured-in-container {
     height: 50px;
 }
-
-#support-links {
-    background-color: #EBDAAF;
-}
-
-#support-social {
-    font-size: 40px;
-    background-color: #839680;
-}
-
-#support-newsletter {
-    background-color: #934B59;
-}
-
-#newsletter-form-email {
-    border-radius: 8px 0px 0px 8px;
-    opacity: 0.50;
-    border: none;
-}
-
-#newsletter-form-submit {
-    background-color: white;
-    border-radius: 0px 8px 8px 0px;
-}
