@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load basket_tools %}
+
+{% block content %}
+    <h1>Checkout Success</h1>
+    <div class="container">
+        <div class="row">
+            <!-- order summary -->
+            <div class="col order-md-last">
+                <div class="table-resposive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col"></th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                            {% for item in basket_items %}
+                            <tr>
+                                <td class="w-25">
+                                    <img class="img-fluid" src="{{ item.product.image.url }}" alt="">
+                                </td>
+                                <td>
+                                    <p><strong>{{ item.product.name }}</strong></p>
+                                    <p><small>{{ item.product.sku }}</small></p>
+                                </td>
+                                <td><p>£{{ item.product.price }}</p></td>
+                                <td><p>{{ item.quantity }}</p></td>
+                                <td><p>£{{ item.product.price }}</p></td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
+                                <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
+                                <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:'id_stripe_public_key' }}
+    {{ client_secret|json_script:'id_client_secret' }}
+    <!-- Load stripe element -->
+    <script src="{% static 'checkout/script/stripe_elements.js' %}"></script>
+{% endblock %}
