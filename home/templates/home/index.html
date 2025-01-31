@@ -2,8 +2,18 @@
 {% load static %}
 {% load product_tags %}
 
+
+{% block extra_css %}
+    <!-- home_style.css -->
+    <link rel="stylesheet" href="{% static 'home/css/home_style.css' %}">
+    <!-- marquee_style.css -->
+    <link rel="stylesheet" href="{% static 'home/css/marquee_style.css' %}">
+    <!-- slideshow_style.css -->
+    <link rel="stylesheet" href="{% static 'home/css/slideshow_style.css' %}">
+{% endblock %}
+
 {% block content %}
-   <div id="homepage-container" class="container-fluid bg-info">
+   <div id="homepage-container" class="container-fluid">
         <div class="row welcome-container flex-grow-1">
             <div class="col text-center d-flex flex-column justify-content-center">
                 <h2>Welcome Traveler!</h2>
@@ -16,7 +26,15 @@
                 <p>Explore our newest arrivals and uncover unique treasures and magical items. Add a touch of enchantment to your collection today.</p>
                 <a href="{% url 'products' %}?new" class="btn btn-secondary">Shop New</a>
             </div>
-            <div class="col-12 col-md-6 bg-black"></div>
+            <div class="col-12 col-md-6 p-2">
+                <div class="slideshow-container">
+                     {% for product in new_products %}
+                        <div class="new-slide">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
         <div class="row as-featured-in-container bg-secondary">
             <div class="marquee marquee--hover-pause">
@@ -39,11 +57,19 @@
             </div>
         </div>
         <div class="row featured-items-container flex-grow-1">
-            <div class="col-12 col-md-6 bg-black"></div>
             <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center">
                 <h4>{{ featured_realm.display_name }}</h4>
                 <p>Explore the magic of {{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
                 <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-secondary">Shop {{ featured_realm.display_name }}</a>
+            </div>
+            <div class="col-12 col-md-6 order-md-first p-2">
+                <div class="slideshow-container">
+                    {% for product in featured_products %}
+                       <div class="featured-slide">
+                           <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                       </div>
+                   {% endfor %}
+               </div>
             </div>
         </div>
         <div class="row support-container flex-grow-1">
@@ -84,4 +110,10 @@
             </div>
         </div>
    </div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <!-- carousel script -->
+    <script src="{% static 'home/script/home_script.js' %}"></script>
 {% endblock %}
