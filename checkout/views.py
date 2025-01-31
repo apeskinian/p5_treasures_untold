@@ -24,7 +24,6 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
     )
 
-
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
