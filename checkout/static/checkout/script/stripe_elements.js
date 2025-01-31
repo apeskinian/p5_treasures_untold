@@ -11,5 +11,16 @@ var stripe = Stripe(stripe_public_key);
 // paymentElement.mount('#card-element');
 
 var elements = stripe.elements();
-var card = elements.create('card');
-card.mount('#card-element')
+var paymentElement = elements.create('card');
+paymentElement.mount('#card-element')
+
+// handling realtime validation errors
+paymentElement.addEventListener('change', function(event) {
+    var errorDiv = $('.card-errors');
+    if (event.error) {
+        var html = event.error.message;
+        $(errorDiv).html(html);
+    } else {
+        $(errorDiv).html('');
+    }
+})
