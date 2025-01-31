@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 
 class Realm(models.Model):
     name = models.CharField(max_length=254)
+    the_prefix_required = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
