@@ -1,5 +1,5 @@
-var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
-var clientSecret = $('#id_client_secret').text().slice(1, -1);
+var stripePublicKey = JSON.parse(document.getElementById('id_stripe_public_key').textContent);
+var clientSecret = JSON.parse(document.getElementById('id_client_secret').textContent);
 
 var stripe = Stripe(stripePublicKey);
 
@@ -41,7 +41,7 @@ async function handleSubmit(e) {
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "https://www.google.co.uk",
+      return_url: "http://127.0.0.1:8000/products/",
     },
   });
 
