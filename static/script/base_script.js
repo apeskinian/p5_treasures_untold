@@ -8,13 +8,12 @@ $('.toast').each(function(toastEl) {
   toast.show();
 });
 
-
-// stop the realm collapse menu from triggering the
+// stop the realm collapse menu from triggering the dropdowns
 document.querySelector('#by-realm-menu-mobile a').addEventListener('click', function (event) {
     event.stopPropagation();
   });
 
-// sort selector
+// sort items selector
 $('#sort-selector').change(function() {
   console.log('SELECTOR INITIALISED')
   var selector = $(this);
@@ -41,7 +40,6 @@ var filterRealmList = [];
 var filterNewList = [];
 
 $('#submit-filter').click(function() {
-// $('#filter-form input[type="checkbox"]').on('change', function () {
   $('#filter-form input[type="checkbox"]').each(function () {
     if ($(this).is(':checked')) {
       if ($(this).attr('name')=='new') {

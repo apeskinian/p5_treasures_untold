@@ -28,11 +28,15 @@ def index(request):
     else:
         new_products = Product.objects.none()
 
-    # get a realm to feature and create queryset
-    realm_count = Realm.objects.count()
-    random_index = random.randint(0, realm_count - 1)
-    featured_realm = Realm.objects.all()[random_index]
-    featured_products = Product.objects.filter(realm=featured_realm)
+    # get a realm to feature and create queryset but pick again if the
+    # realm has no products
+    featured_products = Product.objects.none()
+    while featured_products.count() < 1:
+        realm_count = Realm.objects.count()
+        random_index = random.randint(0, realm_count - 1)
+        featured_realm = Realm.objects.all()[random_index]
+        featured_products = Product.objects.filter(realm=featured_realm)
+        print(featured_realm.name)
 
     # setting up view parameters
     template = 'home/index.html'

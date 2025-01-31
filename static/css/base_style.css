@@ -41,7 +41,7 @@ main {
     margin-bottom: 60px;
 }
 
-/* NAVIGATION BARS */
+/* START> NAVIGATION BARS */
 .top-nav {
     height: 200px;
     background: url('/static/images/banner.png') no-repeat top center;
@@ -65,7 +65,7 @@ main {
     right: 1.5rem;
 }
 
-/* rotate arrow on click */
+/* start> rotate dropdown arrow on click*/
 .indicator i {
     transition: transform 0.3s ease-in-out;
 }
@@ -74,7 +74,7 @@ main {
   [data-bs-toggle="collapse"][aria-expanded="true"] .indicator i {
     transform: rotate(180deg);
 }
-/* rotate arrow on click */
+/* end> rotate arrow on click*/
 
 .offcanvas-right-close {
     position: absolute;
@@ -102,16 +102,44 @@ main {
     bottom: 58px;
     left: 0;
 }
+/* END> NAVIGATION BARS */
 
-/* MESSAGES */
+/* START> INFO SECTION */
+#support-links {
+    background-color: #EBDAAF;
+}
+
+#support-social {
+    font-size: 40px;
+    background-color: #839680;
+}
+
+#support-newsletter {
+    background-color: #934B59;
+}
+
+#newsletter-form-email {
+    border-radius: 8px 0px 0px 8px;
+    opacity: 0.50;
+    border: none;
+}
+
+#newsletter-form-submit {
+    background-color: white;
+    border-radius: 0px 8px 8px 0px;
+}
+/* END> INFO SECTION */
+
+/* START> MESSAGES */
 .message-container {
     z-index: 10000;
     position: fixed;
     top: 70px;
     right: 20px;
 }
+/* END> MESSAGES */
 
-/* PRODUCT VIEWS */
+/* START> PRODUCT VIEWS */
 .card-spacer {
     padding-bottom: 1rem;
 }
@@ -138,6 +166,7 @@ main {
 .scroll-link {
     cursor: pointer;
 }
+/* END> PRODUCT VIEWS */
 
 @media screen and (min-width: 768px) {
     .top-nav {
@@ -150,7 +179,7 @@ main {
         font-size: 100px;
         padding-bottom: 150px;
     }
-
+    
     #apeskinian {
         margin-bottom: 0;
     }
