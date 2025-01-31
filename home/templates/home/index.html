@@ -1,6 +1,119 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load product_tags %}
+
+
+{% block extra_css %}
+    <!-- home_style.css -->
+    <link rel="stylesheet" href="{% static 'home/css/home_style.css' %}">
+    <!-- marquee_style.css -->
+    <link rel="stylesheet" href="{% static 'home/css/marquee_style.css' %}">
+    <!-- slideshow_style.css -->
+    <link rel="stylesheet" href="{% static 'home/css/slideshow_style.css' %}">
+{% endblock %}
 
 {% block content %}
+   <div id="homepage-container" class="container-fluid">
+        <div class="row welcome-container flex-grow-1">
+            <div class="col text-center d-flex flex-column justify-content-center p-4">
+                <h2>Welcome Traveler!</h2>
+                <p>Prepare to discover Treasures Untold, where every corner holds a magical surprise.<br>Browse our collection of enchanted items, and who knows — you might just uncover a secret that unlocks more than just treasures!</p>
+            </div>
+        </div>
+        <div class="row new-items-container flex-grow-1">
+            <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center p-4">
+                <h4>Latest Additions!</h4>
+                <p>Explore our newest arrivals and uncover unique treasures and magical items. Add a touch of enchantment to your collection today.</p>
+                <a href="{% url 'products' %}?new" class="btn btn-secondary">Shop New</a>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+                <div class="slideshow-container">
+                     {% for product in new_products %}
+                        <div class="new-slide">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row as-featured-in-container bg-secondary">
+            <div class="marquee marquee--hover-pause">
+                <ul class="marquee__content list-unstyled m-0 text-white">
+                    <li>Arcane Finds</li>
+                    <li>Mystic Bazaar</li>
+                    <li>Relic Review</li>
+                    <li>The Enchanter</li>
+                    <li>Charm Chronicles</li>
+                    <li>Wondrous Goods</li>
+                </ul>
+                <ul aria-hidden="true" class="marquee__content list-unstyled m-0 text-white">
+                    <li>Arcane Finds</li>
+                    <li>Mystic Bazaar</li>
+                    <li>Relic Review</li>
+                    <li>The Enchanter</li>
+                    <li>Charm Chronicles</li>
+                    <li>Wondrous Goods</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row featured-items-container flex-grow-1">
+            <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center">
+                <h4>{{ featured_realm.display_name }}</h4>
+                <p>Explore the magic of {{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
+                <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-secondary">Shop {{ featured_realm.display_name }}</a>
+            </div>
+            <div class="col-12 col-md-6 order-md-first p-2">
+                <div class="slideshow-container">
+                    {% for product in featured_products %}
+                       <div class="featured-slide">
+                           <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                       </div>
+                   {% endfor %}
+               </div>
+            </div>
+        </div>
+        <div class="row support-container flex-grow-1">
+            <div id="support-newsletter" class="col-12 col-lg-4 d-flex flex-column justify-content-evenly">
+                <h4 class="text-white m-0">UNLOCK THE MAGIC!</h4>
+                <P class="text-white m-0">Get informed of all the new item drops and news!</P>
+                <form action="" method="" class="w-100">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input id="newsletter-form-email" type="email" placeholder="your-email@example.com" class="form-control">
+                        <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div id="support-social" class="col-12 col-lg-4 d-flex justify-content-evenly align-items-center">
+                <i class="fa-brands fa-facebook text-white"></i>
+                <i class="fa-brands fa-instagram text-white"></i>
+                <i class="fa-brands fa-x-twitter text-white"></i>
+            </div>
+            <div id="support-links" class="col-12 col-lg-4 d-flex">
+                <div class="row flex-grow-1">
+                    <div  class="col">
+                        <a href="" class="nav-link fw-bold">Menu</a>
+                        <a href="" class="nav-link fw-bold">Home</a>
+                        <a href="" class="nav-link fw-bold">New</a>
+                        <a href="" class="nav-link fw-bold">All Products</a>
+                    </div>
+                    <div class="col">
+                        <a href="" class="nav-link fw-bold">Help</a>
+                        <a href="" class="nav-link fw-bold">FAQ</a>
+                        <a href="" class="nav-link fw-bold">Contact Us</a>
+                    </div>
+                    <div class="col">
+                        <a href="" class="nav-link fw-bold">Information</a>
+                        <a href="" class="nav-link fw-bold">Privacy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}
 
+{% block extra_js %}
+    {{ block.super }}
+    <!-- carousel script -->
+    <script src="{% static 'home/script/home_script.js' %}"></script>
 {% endblock %}

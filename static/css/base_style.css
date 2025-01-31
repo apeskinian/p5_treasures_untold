@@ -33,7 +33,11 @@ main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+#apeskinian {
+    background-color: #405254;
+    height: 30px;
     margin-bottom: 60px;
 }
 
@@ -145,6 +149,10 @@ main {
     #main-title {
         font-size: 100px;
         padding-bottom: 150px;
+    }
+
+    #apeskinian {
+        margin-bottom: 0;
     }
 }
 
