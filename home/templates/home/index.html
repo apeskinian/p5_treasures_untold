@@ -92,10 +92,9 @@
             <div id="support-links" class="col-12 col-lg-4 d-flex">
                 <div class="row flex-grow-1">
                     <div  class="col">
-                        <a href="" class="nav-link fw-bold">Menu</a>
-                        <a href="" class="nav-link fw-bold">Home</a>
-                        <a href="" class="nav-link fw-bold">New</a>
-                        <a href="" class="nav-link fw-bold">All Products</a>
+                        <a href="{% url 'home' %}" class="nav-link fw-bold">Home</a>
+                        <a href="{% url 'products' %}?new" class="nav-link fw-bold">New</a>
+                        <a href="{% url 'products' %}" class="nav-link fw-bold">All Products</a>
                     </div>
                     <div class="col">
                         <a href="" class="nav-link fw-bold">Help</a>

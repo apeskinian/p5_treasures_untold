@@ -40,18 +40,9 @@
                     </a>
                 </div>
                 <ul id="realm-collapse" class="collapse list-unstyled ms-3">
-                    <li><a class="nav-link mt-2" href="{% url 'products' %}?realm=Agrabah">Agrabah</a></li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Atlantica">Atlantica</a></li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Corona">Corona</a></li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Enchanted_Castle">Enchanted Castle</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Enchanted_Forest">Enchanted Forest</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Fantasia">Fantasia</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Halloween_Town">Halloween Town</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Motunui">Motunui</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Neverland=">Neverland</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Occitania">Occitania</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Pride_Lands">Pride Lands</li>
-                    <li><a class="nav-link" href="{% url 'products' %}?realm=Wonderland">Wonderland</li>
+                    {% for realm in all_realms %}
+                        <li><a class="nav-link {% if forloop.first %}mt-2{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <a href="#" class="text-black nav-link mt-1">FAQ</a>
                 <a href="#" class="text-black nav-link mt-1">Contact Us</a>

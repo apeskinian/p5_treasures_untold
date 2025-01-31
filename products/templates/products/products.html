@@ -58,30 +58,10 @@
                     <input type="checkbox" id="checkbox-outofstock" name="stock" value="out" {% if "out" in showing_stock %}checked{% endif %}>
                     <label for="checkbox-outofstock"> Out of stock</label><br>
                     <p class="m-0 fw-bold">Realm</p>
-                    <input type="checkbox" id="checkbox-agrabah" name="realm" value="Agrabah" {% if "Agrabah" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-agrabah"> Agrabah</label><br>
-                    <input type="checkbox" id="checkbox-atlantica" name="realm" value="Atlantica" {% if "Atlantica" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-atlantica"> Atlantica</label><br>
-                    <input type="checkbox" id="checkbox-corona" name="realm" value="Corona" {% if "Corona" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-corona"> Corona</label><br>
-                    <input type="checkbox" id="checkbox-enchantedcastle" name="realm" value="Enchanted_Castle" {% if "Enchanted_Castle" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-enchantedcastle"> Enchanted Castle</label><br>
-                    <input type="checkbox" id="checkbox-enchantedforest" name="realm" value="Enchanted_Forest" {% if "Enchanted_Forest" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-enchantedforest"> Enchanted Forest</label><br>
-                    <input type="checkbox" id="checkbox-fantasia" name="realm" value="Fantasia" {% if "Fantasia" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-fantasia"> Fantasia</label><br>
-                    <input type="checkbox" id="checkbox-halloweentown" name="realm" value="Halloween_Town" {% if "Halloween_Town" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-halloweentown"> Halloween Town</label><br>
-                    <input type="checkbox" id="checkbox-motunui" name="realm" value="Motunui" {% if "Motunui" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-motunui"> Motunui</label><br>
-                    <input type="checkbox" id="checkbox-neverland" name="realm" value="Neverland" {% if "Neverland" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-neverland"> Neverland</label><br>
-                    <input type="checkbox" id="checkbox-occitania" name="realm" value="Occitania" {% if "Occitania" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-occitania"> Occitania</label><br>
-                    <input type="checkbox" id="checkbox-pridelands" name="realm" value="Pride_Lands" {% if "Pride_Lands" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-pridelands"> Pride Lands</label><br>
-                    <input type="checkbox" id="checkbox-wonderland" name="realm" value="Wonderland" {% if "Wonderland" in current_realms_names %}checked{% endif %}>
-                    <label for="checkbox-wonderland"> Wonderland</label><br>
+                    {% for realm in all_realms %}
+                        <input type="checkbox" id="checkbox-{{ realm.name|lower }}" name="realm" value="{{ realm.name }}" {% if realm.name in current_realms_names %}checked{% endif %}>
+                        <label for="checkbox-{{ realm.name|lower }}"> {{ realm.display_name }}</label><br>
+                    {% endfor %}
                 </form>
             </div>
             <div id="products-view" class="col-6 col-sm-9 col-lg-10">
