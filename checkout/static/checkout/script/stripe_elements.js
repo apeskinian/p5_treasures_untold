@@ -25,13 +25,11 @@ paymentElement.addEventListener('change', function(event) {
     }
 })
 
-
+// handling payment submit: code from STRIPE
+// https://docs.stripe.com/payments/quickstart
 document
   .querySelector("#payment-form")
   .addEventListener("submit", handleSubmit);
-
-// Fetches a payment intent and captures the client secret
-
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -60,7 +58,6 @@ async function handleSubmit(e) {
 }
 
 // ------- UI helpers -------
-
 function showMessage(messageText) {
   const messageContainer = document.querySelector("#payment-message");
 
@@ -78,14 +75,21 @@ function setLoading(isLoading) {
   if (isLoading) {
     // Disable the button and show a spinner
     document.querySelector("#submit").disabled = true;
+    document.querySelector("#adjust").disabled = true;
     document.querySelector("#spinner").classList.remove("hidden");
     document.querySelector("#button-text").classList.add("hidden");
   } else {
     document.querySelector("#submit").disabled = false;
+    document.querySelector("#adjust").disabled = false;
     document.querySelector("#spinner").classList.add("hidden");
     document.querySelector("#button-text").classList.remove("hidden");
   }
 }
+
+
+
+
+
 // Handle form submit
 // var form = document.getElementById('payment-form');
 
