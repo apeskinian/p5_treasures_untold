@@ -7,25 +7,27 @@ import stripe
 
 
 def checkout(request):
-    if request.method == 'POST':
-        messages.success(request, "Your payment was successful!")
-
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    basket = request.session.get('basket', {})
-    if not basket:
-        messages.error(request, "There's nothing in your basket at the moment")
-        return redirect(reverse('products'))
+    if request.method == 'POST':
+        messages.success(request, "Your payment was successful!")
+    else:
+        basket = request.session.get('basket', {})
+        if not basket:
+            messages.error(
+                request, "There's nothing in your basket at the moment"
+            )
+            return redirect(reverse('products'))
 
-    current_basket = basket_contents(request)
-    total = current_basket['grand_total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
+        current_basket = basket_contents(request)
+        total = current_basket['grand_total']
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
     order_form = OrderForm()
     template = 'checkout/checkout.html'
