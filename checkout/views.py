@@ -9,7 +9,6 @@ import stripe
 def checkout(request):
     if request.method == 'POST':
         messages.success(request, "Your payment was successful!")
-        return redirect('products')
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
