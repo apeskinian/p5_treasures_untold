@@ -27,9 +27,15 @@ paymentElement.addEventListener('change', function(event) {
 
 // handling payment submit: code from STRIPE
 // https://docs.stripe.com/payments/quickstart
-document
-  .querySelector("#payment-form")
-  .addEventListener("submit", handleSubmit);
+// document
+//   .querySelector("#payment-form")
+//   .addEventListener("submit", handleSubmit);
+
+const form = document.querySelector("#payment-form");
+form.addEventListener("submit", handleSubmit);
+
+// var form = $('#payment-form');
+// form.on('submit', handleSubmit);
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -39,10 +45,11 @@ async function handleSubmit(e) {
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "http://127.0.0.1:8000/products/",
+      return_url: "http://127.0.0.1:8000/checkout/",
     },
   });
-
+  
+  
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
   // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -53,7 +60,7 @@ async function handleSubmit(e) {
   } else {
     showMessage("An unexpected error occurred.");
   }
-
+  
   setLoading(false);
 }
 
