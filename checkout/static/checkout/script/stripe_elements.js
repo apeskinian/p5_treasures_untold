@@ -25,17 +25,12 @@ paymentElement.addEventListener('change', function(event) {
     }
 })
 
-// handling payment submit: code from STRIPE
+
+// // handling payment submit: code from STRIPE
 // https://docs.stripe.com/payments/quickstart
-// document
-//   .querySelector("#payment-form")
-//   .addEventListener("submit", handleSubmit);
 
 const form = document.querySelector("#payment-form");
 form.addEventListener("submit", handleSubmit);
-
-// var form = $('#payment-form');
-// form.on('submit', handleSubmit);
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -43,25 +38,31 @@ async function handleSubmit(e) {
 
   const { error } = await stripe.confirmPayment({
     elements,
+    redirect: 'if_required',
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "http://127.0.0.1:8000/checkout/",
+      // return_url: "http://127.0.0.1:8000/checkout/",
     },
   });
-  
   
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
   // your `return_url`. For some payment methods like iDEAL, your customer will
   // be redirected to an intermediate site first to authorize the payment, then
   // redirected to the `return_url`.
-  if (error.type === "card_error" || error.type === "validation_error") {
-    showMessage(error.message);
-  } else {
-    showMessage("An unexpected error occurred.");
+
+  if (error) {
+    if (error.type === "card_error" || error.type === "validation_error") {
+      showMessage(error.message);
+    } else {
+      showMessage("An unexpected error occurred.");
+    }
   }
-  
+
+  form.submit()
   setLoading(false);
+
+  
 }
 
 // ------- UI helpers -------
@@ -97,7 +98,7 @@ function setLoading(isLoading) {
 
 
 
-// Handle form submit
+// handle form submit
 // var form = document.getElementById('payment-form');
 
 // form.addEventListener('submit', function(ev) {
