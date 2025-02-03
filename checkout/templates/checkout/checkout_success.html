@@ -4,11 +4,63 @@
 
 {% block content %}
     <h1>Order Summary</h1>
-    <p class="text-center">Your order details are below. A confirmation email will be sent to <strong>PUT DYNAMIC EMAIL HERE</strong></p>
     <div class="container">
         <div class="row">
-            <!-- order summary -->
-            {{ order }}
+            <div class="col bg-success">
+                <p class="text-center">Thank you for your order! A confirmation email will be sent to <strong>PUT DYNAMIC EMAIL HERE</strong></p>
+                <div id="order-number">
+                    Order number: <strong>{{ order.order_number }}</strong>
+                </div>
+                <div id="order-date">
+                    Date: <strong>{{ order.date }}</strong>
+                </div>
+                <div id="delivery-details">
+                    <div><strong>Delivery to:</strong></div>
+                    <div>{{ order.full_name }}</div>
+                    <div>{{ order.street_address_1 }}</div>
+                    <div>{{ order.street_address_2 }}</div>
+                    <div>{{ order.town_city }}</div>
+                    <div>{{ order.county }}</div>
+                    <div>{{ order.postcode }}</div>
+                    <div>{{ order.country }}</div>
+                </div>
+                <div id="billing-details">
+                    <div>Billing Info:</div>
+                </div>
+            </div>
+            <div class="col bg-info">
+                <div class="table-resposive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col"></th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                            {% for item in order.lineitems.all %}
+                            <tr>
+                                <td class="w-25">
+                                    <img class="img-fluid" src="{{ item.product.image.url }}" alt="">
+                                </td>
+                                <td>
+                                    <p>{{ item.product.name }}</p>
+                                </td>
+                                <td><p>£{{ item.product.price }}</p></td>
+                                <td><p>{{ item.quantity }}</p></td>
+                                <td><p>£{{ item.lineitem_total }}</p></td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td><p>Subtotal: £{{ order.order_total }}</p></td>
+                                <td><p>Delivery: £{{ order.delivery_cost }}</p></td>
+                                <td><p>Grand Total: £{{ order.grand_total }}</p></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
