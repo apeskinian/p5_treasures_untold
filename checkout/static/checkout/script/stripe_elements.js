@@ -14,6 +14,11 @@ const options = {
 // Set up Stripe.js and Elements to use in checkout form, passing the client secret
 const elements = stripe.elements(options);
 
+// // create and mount the address element
+// const addressElementOptions = { mode: 'shipping' }
+// const addressElement = elements.create('address', addressElementOptions)
+// addressElement.mount('#address-element')
+
 // Create and mount the Payment Element
 const paymentElementOptions = { layout: 'accordion'};
 const paymentElement = elements.create('payment', paymentElementOptions);
@@ -40,7 +45,31 @@ form.addEventListener('submit', async (event) => {
     //`Elements` instance that was used to create the Payment Element
     elements,
     redirect: 'if_required',
-    confirmParams: {},
+    confirmParams: {
+      payment_method_data: {
+        billing_details: {
+          name: $.trim(form.full_name.value),
+          address: {
+            line1: $.trim(form.street_address_1.value),
+            line2: $.trim(form.street_address_2.value),
+            city: $.trim(form.town_city.value),
+            state: $.trim(form.county.value),
+            country: $.trim(form.country.value),
+          }
+        }
+      },
+      shipping: {
+        name: $.trim(form.full_name.value),
+        address: {
+          line1: $.trim(form.street_address_1.value),
+          line2: $.trim(form.street_address_2.value),
+          city: $.trim(form.town_city.value),
+          state: $.trim(form.county.value),
+          postal_code: $.trim(form.postcode.value),
+          country: $.trim(form.country.value),
+        }
+      },
+    },
   });
 
   if (error) {
