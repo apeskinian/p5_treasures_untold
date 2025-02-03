@@ -1,5 +1,4 @@
 import stripe
-import json
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
@@ -14,12 +13,14 @@ def webhook(request):
     Listens for webhooks from Stripe
     """
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    endpoint_secret = settings.STRIPE_WH_SECRET
     payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
     try:
-        event = stripe.Event.construct_from(
-            json.loads(payload), stripe.api_key
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
         )
     except ValueError as e:
         return HttpResponse(content=e, status=400)
