@@ -58,14 +58,18 @@ form.addEventListener('submit', async (event) => {
 // disable submit and adjust buttons and show a spinner to user
 function setLoading(isLoading) {
   if (isLoading) {
-    document.querySelector("#submit-button").disabled = true;
-    document.querySelector("#adjust-button").disabled = true;
-    document.querySelector("#spinner").classList.remove("hidden");
-    document.querySelector("#button-text").classList.add("hidden");
+    $('#submit-button').attr('disabled', true);
+    $('#adjust-button').attr('disabled', true);
+    $('#payment-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+    $('#spinner').removeClass('hidden');
+    $('#button-text').addClass('hidden');
   } else {
-    document.querySelector("#submit-button").disabled = false;
-    document.querySelector("#adjust-button").disabled = false;
-    document.querySelector("#spinner").classList.add("hidden");
-    document.querySelector("#button-text").classList.remove("hidden");
+    $('#submit-button').attr('disabled', false);
+    $('#adjust-button').attr('disabled', false);
+    $('#payment-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+    $('#spinner').addClass('hidden');
+    $('#button-text').removeClass('hidden');
   }
 }

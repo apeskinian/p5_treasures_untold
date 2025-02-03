@@ -4,7 +4,7 @@
 
 {% block extra_css %}
     <!-- stripe_syle.css -->
-    <link rel="stylesheet" href="{% static 'checkout/css/stripe_style.css' %}">    
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout_style.css' %}">    
 {% endblock %}
 
 {% block content %}
@@ -94,6 +94,11 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div id="loading-overlay" class="hidden">
+        <h1 id="loading-spinner">
+            <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-2xl"></i>
+        </h1>
     </div>
 {% endblock %}
 
