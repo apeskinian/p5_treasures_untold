@@ -18,10 +18,16 @@
                     <div><strong>Delivery to:</strong></div>
                     <div>{{ order.full_name }}</div>
                     <div>{{ order.street_address_1 }}</div>
-                    <div>{{ order.street_address_2 }}</div>
+                    {% if order.street_address_2 %}
+                        <div>{{ order.street_address_2 }}</div>
+                    {% endif %}
                     <div>{{ order.town_city }}</div>
-                    <div>{{ order.county }}</div>
-                    <div>{{ order.postcode }}</div>
+                    {% if order.county %}
+                        <div>{{ order.county }}</div>
+                    {% endif %}
+                    {% if order.postcode %}
+                        <div>{{ order.postcode }}</div>
+                    {% endif %}
                     <div>{{ order.country }}</div>
                 </div>
                 <div id="billing-details">
