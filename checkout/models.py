@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from decimal import Decimal
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
@@ -43,24 +44,22 @@ class Order(models.Model):
         """
         generates an order number using UUID with the date and TU in front
         """
-        date_part = datetime.now().strftime('%Y%m%d"')
+        date_part = datetime.now().strftime('%Y%m%d')
         return f'TU-{date_part}-{uuid.uuid4().hex[:8].upper()}'
 
     def update_total(self):
         """
         updates grand total each time a line item is added
         """
-        self.order.total = (
-            self.lineitems.aggregate(
-                (Sum('lineitem_total')).get(['lineitem_total_sum'], 0) or 0
-            ))
-        self.delivery_cost = settings.DELIVERY
-        self.discount = settings.DISCOUNT
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total')
+        )['lineitem_total__sum'] or 0
+        self.delivery_cost = Decimal(settings.DELIVERY)
+        self.discount = Decimal(1 - (settings.DISCOUNT / 100))
         self.grand_total = (
-            (self.order_total * (
-                (1 - (self.discount / 100))) + self.delivery_cost)
-            )
-        self.save
+            self.order_total * self.discount + self.delivery_cost
+        )
+        self.save()
 
     def save(self, *args, **kwargs):
         """

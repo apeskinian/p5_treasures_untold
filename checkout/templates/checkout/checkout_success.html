@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h1>Order Summary</h1>
+    <p class="text-center">Your order details are below. A confirmation email will be sent to <strong>PUT DYNAMIC EMAIL HERE</strong></p>
+    <div class="container">
+        <div class="row">
+            <!-- order summary -->
+            {{ order }}
+        </div>
+    </div>
+{% endblock %}

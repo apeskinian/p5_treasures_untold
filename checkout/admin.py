@@ -33,8 +33,6 @@ class OrderAdmin(admin.ModelAdmin):
         'discount',
         'delivery_cost',
         'grand_total',
-        'original_bag',
-        'stripe_pid',
     )
     list_display = (
         'order_number',
