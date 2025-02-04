@@ -97,7 +97,8 @@
                         {% endif %}
                 </div>
             </li>
-            <li class="text-center"><a href="{% url 'view_basket' %}" class="dropdown-item" aria-label="view the basket">View Basket</a></li>
+            <li class="text-center"><div class="btn btn-secondary"><a href="{% url 'view_basket' %}" class="dropdown-item" aria-label="view the basket">View Basket</a></div></li>
+            <li class="text-center"><div class="btn btn-secondary"><a href="{% url 'checkout' %}" class="dropdown-item btn btn-secondary" aria-label="view the basket">Secure Checkout</a></div></li>
         </ul>
     </div>
 </nav>

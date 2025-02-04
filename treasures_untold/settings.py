@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_countries',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -55,7 +56,14 @@ INSTALLED_APPS = [
     'home',
     'products',
     'basket',
+    'checkout',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,6 +94,10 @@ TEMPLATES = [
                 'basket.contexts.basket_contents',
                 'products.contexts.get_realms',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -213,5 +225,10 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('SUPPORT_EMAIL_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('SUPPORT_EMAIL_ADDRESS')
 
+# Stripe
 DISCOUNT = 0
 DELIVERY = 25.00
+STRIPE_CURRENCY = 'gbp'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
