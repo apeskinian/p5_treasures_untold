@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from products.models import Product, Realm
+from profiles.models import UserProfile
 from django.db.models.functions import TruncDate
 import random
 
@@ -10,6 +11,10 @@ def index(request):
     products added to the store and one for a featured realm which
     is decided each week
     """
+    current_user = None
+    # getting username if logged in
+    if request.user.is_authenticated:
+        current_user = get_object_or_404(UserProfile, user=request.user)
     # getting items for new section
     most_recent_dates = (
         Product.objects.annotate(added_date=TruncDate('date_added'))
@@ -41,6 +46,7 @@ def index(request):
     # setting up view parameters
     template = 'home/index.html'
     context = {
+        'current_user': current_user,
         'new_products': new_products,
         'featured_realm': featured_realm,
         'featured_products': featured_products,
