@@ -77,12 +77,11 @@
                     <!-- </fieldset> -->
                     <fieldset class="px-3 mb-3">
                         <legend class="fieldset-label">Payment</legend>
-                        <!-- stripe element here -->
-                        <div id="payment-element">
-                            <!--Stripe.js injects the Payment Element-->
-                        </div>
+                        <!-- stripe payment element -->
+                        <div id="payment-element"></div>
                         <!-- form errors -->
                         <div id="payment-errors" class="text-red text-center mt-2" role="alert"></div>
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <div class="button-container text-center mb-2">
                         <button class="btn btn-secondary w-25" id="adjust-button">

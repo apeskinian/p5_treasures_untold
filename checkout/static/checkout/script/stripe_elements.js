@@ -88,11 +88,13 @@ form.addEventListener('submit', function(event) {
         // show any errors to the user
         var errorDiv = $('#payment-errors');
         var html = result.error.message;
-            $(errorDiv).html(html);
+        $(errorDiv).html(html);
         setLoading(false);
       } else {
         // submit the form
-        form.submit()
+        if (result.paymentIntent.status === 'succeeded') {
+          form.submit();
+        }
       }
     });
   }).fail(function () {
