@@ -37,52 +37,69 @@ paymentElement.addEventListener('change', function(event) {
 
 const form = document.getElementById('payment-form');
 
-form.addEventListener('submit', async (event) => {
+
+
+form.addEventListener('submit', function(event) {
   event.preventDefault();
   setLoading(true);
 
-  const {error} = await stripe.confirmPayment({
-    //`Elements` instance that was used to create the Payment Element
-    elements,
-    redirect: 'if_required',
-    confirmParams: {
-      payment_method_data: {
-        billing_details: {
+  var saveInfo = Boolean($('#id-save-info').prop('checked'));
+  console.log(saveInfo);
+  var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+  var postData = {
+    'csrfmiddlewaretoken': csrfToken,
+    'client_secret': clientSecret,
+    'save_info': saveInfo,
+  };
+  var url = '/checkout/cache_checkout_data/';
+
+  $.post(url, postData).done(function() {
+    stripe.confirmPayment({
+      //`Elements` instance that was used to create the Payment Element
+      elements,
+      redirect: 'if_required',
+      confirmParams: {
+        payment_method_data: {
+          billing_details: {
+            name: $.trim(form.full_name.value),
+            address: {
+              line1: $.trim(form.street_address_1.value),
+              line2: $.trim(form.street_address_2.value),
+              city: $.trim(form.town_city.value),
+              state: $.trim(form.county.value),
+              country: $.trim(form.country.value),
+            }
+          }
+        },
+        shipping: {
           name: $.trim(form.full_name.value),
           address: {
             line1: $.trim(form.street_address_1.value),
             line2: $.trim(form.street_address_2.value),
             city: $.trim(form.town_city.value),
             state: $.trim(form.county.value),
+            postal_code: $.trim(form.postcode.value),
             country: $.trim(form.country.value),
           }
-        }
+        },
       },
-      shipping: {
-        name: $.trim(form.full_name.value),
-        address: {
-          line1: $.trim(form.street_address_1.value),
-          line2: $.trim(form.street_address_2.value),
-          city: $.trim(form.town_city.value),
-          state: $.trim(form.county.value),
-          postal_code: $.trim(form.postcode.value),
-          country: $.trim(form.country.value),
-        }
-      },
-    },
-  });
+    }).then(function(result) {
+      if (result.error) {
+        // show any errors to the user
+        var errorDiv = $('#payment-errors');
+        var html = result.error.message;
+            $(errorDiv).html(html);
+        setLoading(false);
+      } else {
+        // submit the form
+        form.submit()
+      }
+    });
+  }).fail(function () {
+    location.reload();
+  })
 
-  if (error) {
-    // show any errors to the user
-    var errorDiv = $('#payment-errors');
-    var html = error.message;
-        $(errorDiv).html(html);
-    setLoading(false);
-  } else {
-    // submit the form
-    form.submit()
-  }
-});
+})
 
 // disable submit and adjust buttons and show a spinner to user
 function setLoading(isLoading) {

@@ -45,7 +45,6 @@ def webhook(request):
     # generic one
     event_handler = event_map.get(event_type, handler.handle_event)
 
-    # call the event handler with the eventME14 5TH
+    # call the event handler with the event
     response = event_handler(event)
-    print('RESPONSE: ', response)
     return response
