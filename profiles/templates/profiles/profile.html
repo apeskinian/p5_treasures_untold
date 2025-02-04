@@ -2,7 +2,40 @@
 {% load static %}
 
 {% block content %}
-    <h1>User Profile</h1>
-    <p>Welcome {{ profile.user }}!</p>
+    <h1 class="text-center">User Profile</h1>
+    <p class="text-center">Welcome {{ profile.user }}!</p>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form id="user-profile-form" action="{% url 'profile' %}" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="px-3 mb-5">
+                        <legend class="fieldset-label">Personal Details</legend>
+                        {{ form.default_full_name | as_crispy_field }}
+                        {{ form.default_phone_number | as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="px-3 mb-5">
+                        <legend class="fieldset-label">Address Details</legend>
+                        {{ form.default_street_address_1 | as_crispy_field }}
+                        {{ form.default_street_address_2 | as_crispy_field }}
+                        {{ form.default_town_city | as_crispy_field }}
+                        {{ form.default_county | as_crispy_field }}
+                        {{ form.default_postcode | as_crispy_field }}
+                        {{ form.default_country | as_crispy_field }}
+                    </fieldset>
+                    <button id="profile-submit-button" type="submit" class="btn btn-secondary mb-3">
+                        <div class="spinner hidden" id="spinner">
+                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                            <span role="status"></span>
+                        </div>
+                        <span id="button-text">Update Details</span>
+                    </button>
+                </form>
+            </div>
+            <div class="col">
+                {{ orders }}
+            </div>
+        </div>
+    </div>
     {% include 'includes/info_section.html' %}
 {% endblock %}
