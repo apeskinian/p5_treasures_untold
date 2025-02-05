@@ -32,7 +32,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        basket = intent.metadata.basket
+        basket_contents = intent.metadata.basket_contents
         # save_info = intent.metadata.save_info
 
         # getting the charge object
@@ -65,66 +65,65 @@ class StripeWH_Handler:
         #         profile.default_country = shipping_details.address.country,
         #         profile.save()
 
-        # order_exists = False
-        # attempt = 1
-        # while attempt <= 5:
-        #     try:
-        #         order = Order.objects.get(
-        #             full_name__iexact=shipping_details.name,
-        #             phone_number__iexact=shipping_details.phone,
-        #             street_address_1__iexact=shipping_details.address.line1,
-        #             street_address_2__iexact=shipping_details.address.line2,
-        #             town_city__iexact=shipping_details.address.city,
-        #             county__iexact=shipping_details.address.state,
-        #             postcode__iexact=shipping_details.address.postal_code,
-        #             country__iexact=shipping_details.address.country,
-        #             grand_total=grand_total,
-        #             original_basket=basket,
-        #             stripe_pid=pid,
-        #         )
-        #         order_exists = True
-        #         break
-        #     except Order.DoesNotExist:
-        #         attempt += 1
-        #         time.sleep(1)
-        # if order_exists:
-        #     return HttpResponse(
-        #         content='Order verified in database', status=200
-        #     )
-        # else:
-        #     order = None
-        #     try:
-        #         print('CREATING WEBHOOK ORDER...')
-        #         order = Order.objects.create(
-        #             # full_name=shipping_details.name,
-        #             # user_profile=profile,
-        #             full_name='REAL WEBHOOK ORDER',
-        #             phone_number=shipping_details.phone,
-        #             street_address_1=shipping_details.address.line1,
-        #             street_address_2=shipping_details.address.line2,
-        #             town_city=shipping_details.address.city,
-        #             county=shipping_details.address.state,
-        #             postcode=shipping_details.address.postal_code,
-        #             country=shipping_details.address.country,
-        #             grand_total=grand_total,
-        #             original_basket=basket,
-        #             stripe_pid=pid,
-        #         )
-        #         for item_id, quantity in json.loads(basket).items():
-        #             product = Product.objects.get(pk=item_id)
-        #             order_line_item = OrderLineItem(
-        #                 order=order,
-        #                 product=product,
-        #                 quantity=quantity,
-        #             )
-        #             order_line_item.save()
-        #     except Exception as e:
-        #         if order:
-        #             order.delete()
-        #         return HttpResponse(
-        #             content=f': {event['type']} | ERRROR: {e}',
-        #             status=500
-        #         )
+        order_exists = False
+        attempt = 1
+        while attempt <= 5:
+            try:
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    phone_number__iexact=shipping_details.phone,
+                    street_address_1__iexact=shipping_details.address.line1,
+                    street_address_2__iexact=shipping_details.address.line2,
+                    town_city__iexact=shipping_details.address.city,
+                    county__iexact=shipping_details.address.state,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    country__iexact=shipping_details.address.country,
+                    grand_total=grand_total,
+                    original_basket=basket_contents,
+                    stripe_pid=pid,
+                )
+                order_exists = True
+                break
+            except Order.DoesNotExist:
+                attempt += 1
+                time.sleep(1)
+        if order_exists:
+            return HttpResponse(
+                content='Order verified in database', status=200
+            )
+        else:
+            order = None
+            try:
+                print('CREATING WEBHOOK ORDER...')
+                order = Order.objects.create(
+                    full_name=shipping_details.name,
+                    # user_profile=profile,
+                    phone_number=shipping_details.phone,
+                    street_address_1=shipping_details.address.line1,
+                    street_address_2=shipping_details.address.line2,
+                    town_city=shipping_details.address.city,
+                    county=shipping_details.address.state,
+                    postcode=shipping_details.address.postal_code,
+                    country=shipping_details.address.country,
+                    grand_total=grand_total,
+                    original_basket=basket_contents,
+                    stripe_pid=pid,
+                )
+                for item_id, quantity in json.loads(basket_contents).items():
+                    product = Product.objects.get(pk=item_id)
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        product=product,
+                        quantity=quantity,
+                    )
+                    order_line_item.save()
+            except Exception as e:
+                if order:
+                    order.delete()
+                return HttpResponse(
+                    content=f': {event['type']} | ERRROR: {e}',
+                    status=500
+                )
         return HttpResponse(
             content=f'TU Webhook received: {event['type']} |'
             'SUCCESS order created in webhook', status=200
