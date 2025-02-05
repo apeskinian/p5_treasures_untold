@@ -31,7 +31,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        basket = intent.metadata.basket
+        basket_contents = intent.metadata.basket_contents
         # save_info = intent.metadata.save_info
 
         # getting the charge object
@@ -62,7 +62,7 @@ class StripeWH_Handler:
                     postcode__iexact=shipping_details.address.postal_code,
                     country__iexact=shipping_details.address.country,
                     grand_total=grand_total,
-                    original_basket=basket,
+                    original_basket=basket_contents,
                     stripe_pid=pid,
                 )
                 order_exists = True
@@ -87,10 +87,10 @@ class StripeWH_Handler:
                     postcode=shipping_details.address.postal_code,
                     country=shipping_details.address.country,
                     grand_total=grand_total,
-                    original_basket=basket,
+                    original_basket=basket_contents,
                     stripe_pid=pid,
                 )
-                for item_id, quantity in json.loads(basket).items():
+                for item_id, quantity in json.loads(basket_contents).items():
                     product = Product.objects.get(pk=item_id)
                     order_line_item = OrderLineItem(
                         order=order,
