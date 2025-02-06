@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
 from .forms import ProductForm
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def all_products(request):
@@ -121,6 +122,7 @@ def product_detail(request, product_id):
     return render(request, template, context)
 
 
+@staff_member_required
 def add_product(request):
     """
     adds a new product to the shop
@@ -128,9 +130,9 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(
                 request,
@@ -147,6 +149,7 @@ def add_product(request):
     return render(request, template, context)
 
 
+@staff_member_required
 def edit_product(request, product_id):
     """
     edits a product in the shop
@@ -175,3 +178,18 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+@staff_member_required
+def delete_product(request, product_id):
+    """
+    deletes a product in the shop
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    try:
+        product.delete()
+        messages.success(request, 'Product deleted')
+    except Exception:
+        messages.error(request, 'Error deleting product')
+
+    return redirect(reverse('products'))
