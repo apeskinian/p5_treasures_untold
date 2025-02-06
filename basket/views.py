@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404
 )
@@ -15,6 +16,7 @@ def update_stock(product, adjustment):
     product.save()
 
 
+@login_required
 def view_basket(request):
     """
     A view to show the basket contents
