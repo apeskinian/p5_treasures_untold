@@ -1,0 +1,7 @@
+Hello {{ order.full_name }}
+
+Oder info .....
+
+
+Thank you 
+Treasures Untold
