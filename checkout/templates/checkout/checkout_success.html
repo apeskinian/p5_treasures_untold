@@ -68,5 +68,11 @@
                 </div>
             </div>
         </div>
+        {% if from_profile %}
+        <div class="div">
+            <a href="{% url 'profile' %}" class="btn btn-secondary">Return to profile</a>
+        </div>
+        {% endif %}
     </div>
+    {% include 'includes/info_section.html' %}
 {% endblock %}
