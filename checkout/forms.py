@@ -7,6 +7,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = (
             'full_name',
+            'email',
             'phone_number',
             'street_address_1',
             'street_address_2',
@@ -24,6 +25,7 @@ class OrderForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'full_name': 'Full Name',
+            'email': 'Email',
             'phone_number': 'Phone Number',
             'street_address_1': 'Street Address 1',
             'street_address_2': 'Street Address 2',

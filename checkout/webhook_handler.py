@@ -40,7 +40,7 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        # billing_details = stripe_charge.billing_details
+        billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)
 
@@ -81,6 +81,7 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone,
                     street_address_1__iexact=shipping_details.address.line1,
                     street_address_2__iexact=shipping_details.address.line2,
@@ -107,6 +108,7 @@ class StripeWH_Handler:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
                     user_profile=profile,
+                    email=billing_details.email,
                     phone_number=shipping_details.phone,
                     street_address_1=shipping_details.address.line1,
                     street_address_2=shipping_details.address.line2,

@@ -3,9 +3,21 @@ from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
+
+    email = forms.CharField(required=False, disabled=True)
+
     class Meta:
         model = UserProfile
-        exclude = {'user', }
+        fields = [
+            'default_full_name',
+            'default_phone_number',
+            'default_street_address_1',
+            'default_street_address_2',
+            'default_town_city',
+            'default_postcode',
+            'default_county',
+            'default_country'
+        ]
 
     def __init__(self, *args, **kwargs):
         """
@@ -23,9 +35,12 @@ class UserProfileForm(forms.ModelForm):
             'default_county': 'County, State or Locality'
         }
 
+        if self.instance and self.instance.user:
+            self.fields['email'].initial = self.instance.user.email
+
         self.fields['default_full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if field != 'default_country':
+            if field != 'default_country' and field != 'email':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:

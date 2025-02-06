@@ -42,6 +42,7 @@ def checkout(request):
 
         form_data = {
             'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
             'street_address_1': request.POST['street_address_1'],
             'street_address_2': request.POST['street_address_2'],
             'town_city': request.POST['town_city'],
@@ -102,6 +103,7 @@ def checkout(request):
         profile = UserProfile.objects.get(user=request.user)
         order_form = OrderForm(initial={
             'full_name': profile.default_full_name,
+            'email': profile.user.email,
             'phone_number': profile.default_phone_number,
             'street_address_1': profile.default_street_address_1,
             'street_address_2': profile.default_street_address_2,
