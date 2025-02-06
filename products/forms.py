@@ -1,0 +1,16 @@
+from django import forms
+from .models import Product, Realm
+
+
+class ProductForm(forms.ModelForm):
+
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        realms = Realm.objects.all()
+        display_names = [(r.id, r.display_name()) for r in realms]
+
+        self.fields['realm'].choices = display_names
