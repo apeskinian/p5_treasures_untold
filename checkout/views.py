@@ -24,7 +24,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'basket_contents': json.dumps(request.session.get('basket', {})),
             'save_info': request.POST.get('save_info'),
-            'username': request.user,
+            'current_user': request.user,
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -98,21 +98,21 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-    # try:
-    #     profile = UserProfile.objects.get(user=request.user)
-    #     order_form = OrderForm(initial={
-    #         'full_name': profile.default_full_name,
-    #         'phone_number': profile.default_phone_number,
-    #         'street_address_1': profile.default_street_address_1,
-    #         'street_address_2': profile.default_street_address_2,
-    #         'town_city': profile.default_town_city,
-    #         'county': profile.default_county,
-    #         'postcode': profile.default_postcode,
-    #         'country': profile.default_country,
-    #     })
-    # except UserProfile.DoesNotExist:
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+        order_form = OrderForm(initial={
+            'full_name': profile.default_full_name,
+            'phone_number': profile.default_phone_number,
+            'street_address_1': profile.default_street_address_1,
+            'street_address_2': profile.default_street_address_2,
+            'town_city': profile.default_town_city,
+            'county': profile.default_county,
+            'postcode': profile.default_postcode,
+            'country': profile.default_country,
+        })
+    except UserProfile.DoesNotExist:
+        order_form = OrderForm()
 
-    order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -127,27 +127,27 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    # save_info = request.session.get('save_info')
+    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    # profile = UserProfile.objects.get(user=request.user)
-    # order.user_profile = profile
-    # order.save()
+    profile = UserProfile.objects.get(user=request.user)
+    order.user_profile = profile
+    order.save()
 
-    # if save_info:
-    #     profile_data = {
-    #         'default_full_name': order.full_name,
-    #         'default_phone_number': order.phone_number,
-    #         'default_street_address_1': order.street_address_1,
-    #         'default_street_address_2': order.street_address_2,
-    #         'default_town_city': order.town_city,
-    #         'default_postcode': order.postcode,
-    #         'default_county': order.county,
-    #         'default_country': order.country,
-    #     }
-    #     user_profile_form = UserProfileForm(profile_data, instance=profile)
-    #     if user_profile_form.is_valid:
-    #         user_profile_form.save()
+    if save_info:
+        profile_data = {
+            'default_full_name': order.full_name,
+            'default_phone_number': order.phone_number,
+            'default_street_address_1': order.street_address_1,
+            'default_street_address_2': order.street_address_2,
+            'default_town_city': order.town_city,
+            'default_postcode': order.postcode,
+            'default_county': order.county,
+            'default_country': order.country,
+        }
+        user_profile_form = UserProfileForm(profile_data, instance=profile)
+        if user_profile_form.is_valid:
+            user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
                      Your order number is {order_number}. \
