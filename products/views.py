@@ -205,11 +205,21 @@ def delete_product(request, product_id):
     """
     deletes a product in the shop
     """
+    products = Product.objects.all()
     product = get_object_or_404(Product, pk=product_id)
-    try:
-        product.delete()
-        messages.success(request, 'Product deleted')
-    except Exception:
-        messages.error(request, 'Error deleting product')
+    if request.method == 'POST':
+        try:
+            product.delete()
+            messages.success(request, 'Product deleted')
+            return redirect(reverse('product_admin'))
+        except Exception as e:
+            messages.error(request, f'Error deleting product: {e}')
+            return redirect(reverse('product_admin'))
+    else:
+        template = 'products/product_admin.html'
+        context = {
+            'to_delete': product,
+            'products': products
+        }
 
-    return redirect(reverse('product_admin'))
+    return render(request, template, context)
