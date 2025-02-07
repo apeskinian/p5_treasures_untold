@@ -38,7 +38,9 @@ class Product(models.Model):
         return self.realm.name.replace('_', ' ')
 
     def clean(self):
-        """Custom validation to enforce a maximum stock limit for certain products."""
+        """
+        validation to enforce a maximum stock limit for unique products
+        """
         super().clean()
         if self.unique_stock and self.stock > 1:
             raise ValidationError(
