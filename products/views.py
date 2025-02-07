@@ -5,6 +5,7 @@ from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
 from .forms import ProductForm
 from django.contrib.admin.views.decorators import staff_member_required
+from django.conf import settings
 
 
 def all_products(request):
@@ -85,6 +86,11 @@ def all_products(request):
                     "enter search criteria to begin!"
                 )
                 return redirect(reverse('products'))
+            # bibbidi-bobbidi-boo discount easter-egg
+            if query.lower() == 'bibbidi-bobbidi-boo':
+                messages.success(request, '20% activated!!!!')
+                settings.DISCOUNT = 20
+                return redirect(reverse('view_basket'))
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query)
             )
