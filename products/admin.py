@@ -9,6 +9,9 @@ class RealmAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'realm_name', 'sku', 'price', 'stock', 'date_added')
+    list_display = (
+        'name', 'realm_name', 'sku', 'price',
+        'stock', 'unique_stock', 'date_added'
+    )
     list_filter = ('realm',)
     ordering = ('realm__name', 'name')

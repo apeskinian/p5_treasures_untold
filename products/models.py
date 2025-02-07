@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
 
 
@@ -28,9 +29,18 @@ class Product(models.Model):
         use_filename=True, unique_filename=False
     )
     date_added = models.DateField(auto_now_add=True)
+    unique_stock = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
     def realm_name(self):
         return self.realm.name.replace('_', ' ')
+
+    def clean(self):
+        """Custom validation to enforce a maximum stock limit for certain products."""
+        super().clean()
+        if self.unique_stock and self.stock > 1:
+            raise ValidationError(
+                {'stock': 'Stock cannot exceed 1 for unique items.'}
+                )
