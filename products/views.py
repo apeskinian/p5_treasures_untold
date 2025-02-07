@@ -123,10 +123,27 @@ def product_detail(request, product_id):
 
 
 @staff_member_required
+def product_admin(request):
+    """
+    Shows a table of all products with options to edit or delete
+    also provides button to add new product
+    """
+    products = Product.objects.all()
+
+    template = 'products/product_admin.html'
+    context = {
+        'products': products
+    }
+
+    return render(request, template, context)
+
+
+@staff_member_required
 def add_product(request):
     """
-    adds a new product to the shop
+    adds a new product to the store
     """
+    products = Product.objects.all()
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -141,9 +158,10 @@ def add_product(request):
     else:
         form = ProductForm()
 
-    template = 'products/add_product.html'
+    template = 'products/product_admin.html'
     context = {
-        'form': form
+        'add_form': form,
+        'products': products
     }
 
     return render(request, template, context)
@@ -154,6 +172,7 @@ def edit_product(request, product_id):
     """
     edits a product in the shop
     """
+    products = Product.objects.all()
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -171,10 +190,11 @@ def edit_product(request, product_id):
 
     messages.info(request, f'Editing {product.name}')
 
-    template = 'products/edit_product.html'
+    template = 'products/product_admin.html'
     context = {
-        'form': form,
-        'product': product
+        'edit_form': form,
+        'product': product,
+        'products': products
     }
 
     return render(request, template, context)

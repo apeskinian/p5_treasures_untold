@@ -3,7 +3,7 @@
 
 
 {% block content %}
-    <h1>Product Management</h1>
+    <h1 class="text-center">Product Management</h1>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -17,14 +17,13 @@
                     {% endfor %}
                     {{ form.image.as_widget }}
                     <div>
-                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                        <a href="{% url 'product_admin' %}" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-secondary">Update Product</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>    
-    {% include 'includes/info_section.html' %}
 {% endblock %}
 
 {% block extra_js %}

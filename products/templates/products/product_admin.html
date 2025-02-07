@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="text-center">Product Admin</h1>
+        <div class="container table-container">
+            <!-- movement table -->
+            <table class="table caption-top">
+                <caption class="hidden">List of products</caption>
+                <thead class="table-light">
+                    <tr>
+                        <th class="product-image"></th>
+                        <th class="">Product</th>
+                        <th class="">Realm</th>
+                        <th class="">SKU</th>
+                        <th class="">Stock</th>
+                        <th class="">Price</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                <tr>
+                    <td><img width="50" height="50" class="" src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.realm }}</td>
+                    <td>{{ product.sku }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>£{{ product.price }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'edit_product' product.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'delete_product' product.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3"><a class="btn btn-success" href="{% url 'add_product' %}">Add</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {% if add_form or edit_form or to_delete %}
+        <div class="modal fade" id="settings-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center position-relative">
+                        <h5 class="modal-title mx-auto" id="settings-modal-label">{% if add_form %}ADDING{% elif edit_form %}EDITING{% elif to_delete %}DELETING{% endif %}</h5>
+                        <a href="{% url 'product_admin' %}" class="btn-close position-absolute" aria-label="Close"></a>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            <div class="mb-2">
+                                {% csrf_token %}
+                                {% if add_form %}
+                                    {% for field in add_form %}
+                                        {% if field.name != "image" %}
+                                            {{ field|as_crispy_field }}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ add_form.image.as_widget }}
+                                {% elif edit_form %}
+                                    {% for field in edit_form %}
+                                        {% if field.name != "image" %}
+                                            {{ field|as_crispy_field }}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ edit_form.image.as_widget }}
+                                {% endif %}
+                            </div>
+                            <div class="text-center">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="{% url 'product_admin' %}" id="staff-modal-cancel" class="btn btn-primary w-25" aria-label="Close">Cancel</a>
+                                    <button id="staff-modal-confirm" type="submit" class="btn {% if edit_form %}btn-success{% elif to_delete %}btn-danger{% endif %} w-25">{% if edit_form %}Amend{% elif to_delete %}Delete{% endif %}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        window.onload = () => {
+            const settingsModalElement = document.getElementById('settings-modal');
+            if (settingsModalElement) {
+                const settingsModal = new bootstrap.Modal(settingsModalElement);
+                settingsModal.show();
+            }
+        };
+    </script>
+{% endblock %}
