@@ -1,7 +1,6 @@
 from django import forms
 from .models import Product, Realm
 from .widgets import CustomClearableFileInput
-from cloudinary.forms import CloudinaryFileField
 
 
 class ProductForm(forms.ModelForm):
@@ -10,8 +9,8 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
-    image = CloudinaryFileField(
-        label='image',
+    image = forms.ImageField(
+        label='Image',
         required=False,
         widget=CustomClearableFileInput
     )
