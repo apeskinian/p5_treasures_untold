@@ -85,13 +85,7 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script>
-        window.onload = () => {
-            const settingsModalElement = document.getElementById('settings-modal');
-            if (settingsModalElement) {
-                const settingsModal = new bootstrap.Modal(settingsModalElement);
-                settingsModal.show();
-            }
-        };
-    </script>
+    {{ block.super }}
+    <!-- product admin script -->
+    <script src="{% static 'products/script/product_admin.js' %}"></script>
 {% endblock %}

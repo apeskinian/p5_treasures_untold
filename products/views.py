@@ -147,9 +147,9 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save()
+            form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('product_admin'))
         else:
             messages.error(
                 request,
@@ -179,7 +179,7 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'{product.name} successfully updated.')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('product_admin'))
         else:
             messages.error(
                 request,
@@ -212,4 +212,4 @@ def delete_product(request, product_id):
     except Exception:
         messages.error(request, 'Error deleting product')
 
-    return redirect(reverse('products'))
+    return redirect(reverse('product_admin'))
