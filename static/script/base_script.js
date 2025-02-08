@@ -103,6 +103,7 @@ function getTriggerTitleHeight() {
 
 document.addEventListener("scroll", function () {
   const topNav = document.querySelector('.top-nav');
+  const heroImage = document.querySelector('.hero-image-container');
   const heroSpacer = document.querySelector('.hero-spacer')
   const mainTitle = document.querySelector('.main-title')
   const triggerHeroHeight = getTriggerHeroHeight();
@@ -111,9 +112,11 @@ document.addEventListener("scroll", function () {
 
   if (window.scrollY >= triggerHeroHeight) {
       topNav.classList.add('top-nav-small')
+      heroImage.classList.add('hero-image-small')
       heroSpacer.classList.add('hero-spacer-enabled')
     } else {
       topNav.classList.remove('top-nav-small');
+      heroImage.classList.remove('hero-image-small')
       heroSpacer.classList.remove('hero-spacer-enabled')
   }
  
