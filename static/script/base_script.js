@@ -83,21 +83,21 @@ $('.back-button').click(function(e) {
 // // dynamic hero
 function getTriggerHeroHeight() {
   if (window.innerWidth < 768) {
-      return 125;
+      return 120;
   } else if (window.innerWidth < 1200) {
-      return 225;
+      return 180;
   } else {
-      return 425;
+      return 300;
   }
 }
 
 function getTriggerTitleHeight() {
   if (window.innerWidth < 768) {
-      return 12;
+      return 60;
   } else if (window.innerWidth < 1200) {
-      return 24;
+      return 90;
   } else {
-      return 70;
+      return 150;
   }
 }
 

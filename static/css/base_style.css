@@ -48,7 +48,6 @@ main {
 
 /* START> NAVIGATION BARS */
 .top-nav {
-    width: 100vw;
     height: 200px;
     background: url('/static/images/banner.png') no-repeat top center fixed;
     background-size: auto 200px;
@@ -65,19 +64,18 @@ main {
 }
 
 .main-title {
-    font-size: 60px;
-    padding-bottom: 100px;
-}
-
-.main-title-small {
     position: fixed;
     width: fit-content;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 50px;
-    padding-top: 8px;
+    font-size: 60px;
+    padding-top: 10px;
     white-space: nowrap;
+}
+
+.main-title-small {
+    font-size: 50px;
 }
 
 #navigation-menu {
@@ -232,7 +230,7 @@ main {
     }
     
     .top-nav-small {
-        height: 75px;
+        height: 120px;
         z-index: 100;
         position: fixed;
     }
@@ -242,19 +240,12 @@ main {
     }
 
     .main-title {
-        font-size: 100px;
-        padding-bottom: 150px;
+        font-size: 90px;
+        padding-top: 30px;
     }
     
     .main-title-small {
-        position: fixed;
-        width: fit-content;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 50px;
-        padding-top: 8px;
-        white-space: nowrap;
+        font-size: 60px;
     }
 
     #apeskinian {
@@ -270,7 +261,7 @@ main {
     }
 
     .top-nav-small {
-        height: 75px;
+        height: 200px;
         z-index: 100;
         position: fixed;
     }
@@ -281,17 +272,9 @@ main {
     
     .main-title {
         font-size: 150px;
-        padding-bottom: 200px;
     }
 
     .main-title-small {
-        position: fixed;
-        width: fit-content;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 50px;
-        padding-top: 8px;
-        white-space: nowrap;
+        font-size: 100px;
     }
 }
