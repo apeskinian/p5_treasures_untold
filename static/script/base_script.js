@@ -77,5 +77,30 @@ $('.scroll-link').click(function(e) {
 // back button
 $('.back-button').click(function(e) {
   e.preventDefault();
-  history.back();
+  history.back(); screenLeft
 })
+
+// // dynamic hero
+function getTriggerHeight() {
+  if (window.innerWidth < 768) {
+      return 125;
+  } else if (window.innerWidth < 1200) {
+      return 225;
+  } else {
+      return 425;
+  }
+}
+
+document.addEventListener("scroll", function () {
+  const topNav = document.querySelector('.top-nav');
+  const heroSpacer = document.querySelector('.hero-spacer')
+  const triggerHeight = getTriggerHeight();
+
+  if (window.scrollY >= triggerHeight) {
+      topNav.classList.add('top-nav-small')
+      heroSpacer.classList.add('hero-spacer-enabled')
+    } else {
+      topNav.classList.remove('top-nav-small');
+      heroSpacer.classList.remove('hero-spacer-enabled')
+  }
+});

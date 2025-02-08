@@ -35,6 +35,11 @@ main {
     flex-direction: column;
 }
 
+
+.content-top {
+    margin-top: 75px;
+}
+
 #apeskinian {
     background-color: #405254;
     height: 30px;
@@ -43,26 +48,37 @@ main {
 
 /* START> NAVIGATION BARS */
 .top-nav {
+    width: 100vw;
     height: 200px;
-    background: url('/static/images/banner.png') no-repeat top center;
-    background-size: auto 100%;
+    background: url('/static/images/banner.png') no-repeat top center fixed;
+    background-size: auto 200px;
+}
+
+.top-nav-small {
+    height: 75px;
+    z-index: 100;
+    position: fixed;
+}
+
+.hero-spacer-enabled {
+    height: 200px;
 }
 
 #main-title {
     font-size: 60px;
-    padding-bottom: 100px;
 }
 
 #navigation-menu {
-    position: absolute;
+    position: fixed;
     top: 1.5rem;
     left: 1.5rem;
 }
 
 #account-and-basket {
-    position: absolute;
+    position: fixed;
     top: 1.5rem;
-    right: 1.5rem;
+    right: 2rem;
+    margin-right: calc(-1 * (100vw - 100%));
 }
 
 /* start> rotate dropdown arrow on click*/
@@ -199,10 +215,20 @@ main {
 @media screen and (min-width: 768px) {
     .top-nav {
         height: 300px;
-        background: url('/static/images/banner.png') no-repeat top center;
-        background-size: auto 100%;
+        background: url('/static/images/banner.png') no-repeat top center fixed;
+        background-size: auto 300px;
     }
     
+    .top-nav-small {
+        height: 75px;
+        z-index: 100;
+        position: fixed;
+    }
+
+    .hero-spacer-enabled {
+        height: 300px;
+    }
+
     #main-title {
         font-size: 100px;
         padding-bottom: 150px;
@@ -216,8 +242,18 @@ main {
 @media screen and (min-width: 1200px) {
     .top-nav {
         height: 500px;
-        background: url('/static/images/banner.png') no-repeat top center;
-        background-size: auto 100%;
+        background: url('/static/images/banner.png') no-repeat top center fixed;
+        background-size: auto 500px;
+    }
+
+    .top-nav-small {
+        height: 75px;
+        z-index: 100;
+        position: fixed;
+    }
+
+    .hero-spacer-enabled {
+        height: 500px;
     }
     
     #main-title {
