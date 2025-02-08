@@ -64,8 +64,20 @@ main {
     height: 200px;
 }
 
-#main-title {
+.main-title {
     font-size: 60px;
+    padding-bottom: 100px;
+}
+
+.main-title-small {
+    position: fixed;
+    width: fit-content;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    padding-top: 8px;
+    white-space: nowrap;
 }
 
 #navigation-menu {
@@ -229,11 +241,22 @@ main {
         height: 300px;
     }
 
-    #main-title {
+    .main-title {
         font-size: 100px;
         padding-bottom: 150px;
     }
     
+    .main-title-small {
+        position: fixed;
+        width: fit-content;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 50px;
+        padding-top: 8px;
+        white-space: nowrap;
+    }
+
     #apeskinian {
         margin-bottom: 0;
     }
@@ -256,8 +279,19 @@ main {
         height: 500px;
     }
     
-    #main-title {
+    .main-title {
         font-size: 150px;
         padding-bottom: 200px;
+    }
+
+    .main-title-small {
+        position: fixed;
+        width: fit-content;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 50px;
+        padding-top: 8px;
+        white-space: nowrap;
     }
 }
