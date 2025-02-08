@@ -47,48 +47,21 @@ main {
 }
 
 /* START> NAVIGATION BARS */
-.hero-image-container {
-    position: fixed;
-    width: 100vw;
+.top-nav {
     height: 200px;
     background: url('/static/images/banner.png') no-repeat top center;
     background-size: auto 200px;
-    z-index: -1;
-
-}
-
-.hero-image-small {
-    height: 75px;
-}
-
-.top-nav {
-    height: 200px;
-}
-
-.top-nav-small {
-    position: fixed;
-    height: 75px;
-    z-index: 100;
-}
-
-.hero-spacer-enabled {
-    height: 200px;
 }
 
 .main-title {
-    position: fixed;
+    /* position: fixed; */
     width: fit-content;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    padding-bottom: 75px;
+    /* top: 0; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
     font-size: 60px;
-    padding-top: 10px;
     white-space: nowrap;
-    z-index: 101;
-}
-
-.main-title-small {
-    font-size: 50px;
 }
 
 #navigation-menu {
@@ -239,6 +212,7 @@ main {
     .top-nav {
         height: 300px;
         background-size: auto 300px;
+        background-attachment: fixed;
     }
     
     .top-nav-small {
@@ -247,28 +221,26 @@ main {
         position: fixed;
     }
 
-    .hero-image-container {
-        height: 300px;
-        background-size: auto 300px;
-    }
-    
-    .hero-image-small {
-        height: 120px;
-    }
-    
     .hero-spacer-enabled {
         height: 300px;
     }
     
     .main-title {
+        position: fixed;
+        width: fit-content;
+        padding-bottom: 0px;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
         font-size: 90px;
-        padding-top: 30px;
+        padding-top: 25px;
     }
     
     .main-title-small {
         font-size: 60px;
     }
-
+    
     #apeskinian {
         margin-bottom: 0;
     }
@@ -282,17 +254,6 @@ main {
     
     .top-nav-small {
         height: 200px;
-        z-index: 100;
-        position: fixed;
-    }
-    
-    .hero-image-container {
-        height: 500px;
-        background-size: auto 500px;
-    }
-    
-    .hero-image-small {
-        height: 200px;
     }
     
     .hero-spacer-enabled {
@@ -301,6 +262,7 @@ main {
     
     .main-title {
         font-size: 150px;
+        padding-top: 40px;
     }
 
     .main-title-small {
