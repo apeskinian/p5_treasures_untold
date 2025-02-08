@@ -19,6 +19,9 @@
                 <h2>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h2>
                 <p>Prepare to discover Treasures Untold, where every corner holds a magical surprise.<br>Browse our collection of enchanted items, and who knows — you might just uncover a secret that unlocks more than just treasures!</p>
             </div>
+            <div class="text-center mb-3">
+                <a class="btn btn-secondary" href="{% url 'products' %}">Enter</a>
+            </div>
         </div>
         <div class="row new-items-container flex-grow-1">
             <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center p-4">
