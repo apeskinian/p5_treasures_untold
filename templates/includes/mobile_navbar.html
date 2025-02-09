@@ -32,9 +32,10 @@
                     {% endfor %}
                 </ul>
             </li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="see our faqs">FAQ</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="go to the contact us page">Contact Us</a></li>
-            <li class="text-center"><a href="#" class="dropdown-item" aria-label="view our privacy statement">Privacy</a></li>
+            <li class="text-center"><a href="{% url 'faq' %}" class="dropdown-item" aria-label="see our faqs">FAQ</a></li>
+            <li class="text-center"><a href="{% url 'contact' %}" class="dropdown-item" aria-label="go to the contact us page">Contact Us</a></li>
+            <li class="text-center"><a href="{% url 'privacy' %}" class="dropdown-item" aria-label="view our privacy statement">Privacy</a></li>
+            <li class="text-center"><a href="{% url 'newsletter' %}" class="dropdown-item" aria-label="sign up to our newsletter">Newsletter</a></li>
             <li>
                 <div id="search-box" class="px-3 mb-2 mt-2">
                     <form method="GET" action="{% url 'products' %}">

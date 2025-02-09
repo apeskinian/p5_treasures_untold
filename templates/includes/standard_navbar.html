@@ -44,9 +44,10 @@
                         <li><a class="nav-link {% if forloop.first %}mt-2{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a></li>
                     {% endfor %}
                 </ul>
-                <a href="#" class="text-black nav-link mt-1">FAQ</a>
-                <a href="#" class="text-black nav-link mt-1">Contact Us</a>
-                <a href="#" class="text-black nav-link mt-1">Privacy</a>
+                <a href="{% url 'faq' %}" class="text-black nav-link mt-1">FAQ</a>
+                <a href="{% url 'contact' %}" class="text-black nav-link mt-1">Contact Us</a>
+                <a href="{% url 'privacy' %}" class="text-black nav-link mt-1">Privacy</a>
+                <a href="{% url 'newsletter' %}" class="text-black nav-link mt-1">Newsletter</a>
             </div>
         </div>
     </div>
