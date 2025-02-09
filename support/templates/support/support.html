@@ -2,8 +2,13 @@
 {% load static %}
 
 {% block content %}
-<div class="flex-grow-1">
+<div class="container flex-grow-1">
     <h1 class="text-center m-0">{{ title }}</h1>
+    <div class="support-content">
+        {% if content == 'privacy' %}
+        {% include 'support/includes/privacy_policy.html' %}
+        {% endif %}
+    </div>
 </div>
 {% include 'includes/info_section.html' %}
 {% endblock %}

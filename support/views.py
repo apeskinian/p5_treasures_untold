@@ -43,7 +43,8 @@ def privacy(request):
     """
     template = 'support/support.html'
     context = {
-        'title': 'Privacy Statement'
+        'title': 'Privacy Statement',
+        'content': 'privacy'
     }
 
     return render(request, template, context)
