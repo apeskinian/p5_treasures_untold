@@ -35,11 +35,6 @@ main {
     flex-direction: column;
 }
 
-
-.content-top {
-    margin-top: 75px;
-}
-
 #apeskinian {
     background-color: #405254;
     height: 30px;
