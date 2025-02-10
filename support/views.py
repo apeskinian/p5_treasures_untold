@@ -20,7 +20,8 @@ def contact(request):
     """
     template = 'support/support.html'
     context = {
-        'title': 'Contact Us'
+        'title': 'Contact Us',
+        'content': 'contact'
     }
 
     return render(request, template, context)
