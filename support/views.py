@@ -32,7 +32,8 @@ def newsletter(request):
     """
     template = 'support/support.html'
     context = {
-        'title': 'Newsletter'
+        'title': 'Newsletter',
+        'content': 'newsletter'
     }
 
     return render(request, template, context)
