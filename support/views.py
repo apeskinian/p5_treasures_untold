@@ -178,6 +178,7 @@ def faq_admin(request):
     return render(request, template, context)
 
 
+@staff_member_required
 def add_faq(request):
     """
     adds a new faq
