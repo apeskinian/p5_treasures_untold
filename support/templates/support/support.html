@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!-- support_style.css -->
+    <link rel="stylesheet" href="{% static 'support/css/support_style.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container flex-grow-1">
-    <h1 class="text-center m-0">{{ title }}</h1>
+    <h1 class="test text-center m-0 mt-3">{{ title }}</h1>
     <div class="support-content">
         {% if content == 'privacy' %}
-        {% include 'support/includes/privacy_policy.html' %}
+            {% include 'support/includes/privacy_policy.html' %}
+        {% elif content == 'faq' %}
+            {% include 'support/includes/faqs.html' %}
         {% endif %}
     </div>
 </div>

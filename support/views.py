@@ -7,7 +7,8 @@ def faq(request):
     """
     template = 'support/support.html'
     context = {
-        'title': 'FAQs'
+        'title': 'FAQs',
+        'content': 'faq'
     }
 
     return render(request, template, context)

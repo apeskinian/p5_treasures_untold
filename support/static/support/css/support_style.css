@@ -1,0 +1,25 @@
+.accordion-button:not(.collapsed) {
+    background-color: #839680;
+    color: #fff;
+}
+
+.accordion-item {
+    background-color: #e7f0e6;
+    color: black;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 3px #83968066;
+    border-color: #934B59;
+}
+
+.accordion-section-bottom {
+    overflow: hidden;
+    border-radius: 0 0 6px 6px; 
+}
+
+.accordion-section-top {
+    overflow: hidden;
+    border-radius: 6px 6px 0 0;
+    border-top: 1px solid #dee2e6;
+}
