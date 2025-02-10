@@ -41,6 +41,11 @@ main {
     margin-bottom: 60px;
 }
 
+.form-control:focus {
+    box-shadow: 0 0 0 3px #83968066;
+    border-color: #839680;
+}
+
 /* START> NAVIGATION BARS */
 .top-nav {
     height: 200px;

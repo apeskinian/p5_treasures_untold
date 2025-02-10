@@ -6,20 +6,16 @@
 .accordion-item {
     background-color: #e7f0e6;
     color: black;
+    padding: 2px;
+    margin-top: 5px;
+    border-radius: 8px;
 }
 
 .accordion-button:focus {
     box-shadow: 0 0 0 3px #83968066;
-    border-color: #934B59;
+    border-color: #839680;
 }
 
-.accordion-section-bottom {
-    overflow: hidden;
-    border-radius: 0 0 6px 6px; 
-}
-
-.accordion-section-top {
-    overflow: hidden;
-    border-radius: 6px 6px 0 0;
-    border-top: 1px solid #dee2e6;
+.accordion-button {
+    border-radius: 7px;
 }

@@ -3,7 +3,8 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
-from .forms import contactForm
+from .models import Faqs, FaqsTopics
+from .forms import ContactForm
 from django.contrib import messages
 
 
@@ -67,10 +68,15 @@ def faq(request):
     """
     a view to show the faqs for the site
     """
+    faqs_list = Faqs.objects.all().order_by('topic')
+    topics = FaqsTopics.objects.all()
+
     template = 'support/support.html'
     context = {
         'title': 'FAQs',
-        'content': 'faq'
+        'content': 'faq',
+        'faqs_list': faqs_list,
+        'topics': topics
     }
 
     return render(request, template, context)
@@ -86,7 +92,7 @@ def contact(request):
             'email': request.POST['email'],
             'message': request.POST['message']
         }
-        contact_form = contactForm(form_data)
+        contact_form = ContactForm(form_data)
         if contact_form.is_valid():
             contact_form.save()
             messages.success(
@@ -104,7 +110,7 @@ def contact(request):
                 'please ensure the form is valid'
             )
     else:
-        contact_form = contactForm()
+        contact_form = ContactForm()
 
     template = 'support/support.html'
     context = {
