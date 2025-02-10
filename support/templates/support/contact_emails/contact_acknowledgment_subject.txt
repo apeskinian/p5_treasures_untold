@@ -1,0 +1,1 @@
+Your Message Has Been Received {{ name }} – A Reply is on the Horizon!
