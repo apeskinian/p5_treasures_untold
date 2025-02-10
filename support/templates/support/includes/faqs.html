@@ -1,6 +1,6 @@
-<!-- ABOUT -->
 <div class="accordion mb-3" id="treasures-untold-faq">
-
+    
+    <!-- ABOUT -->
     <h5 class="mb-3 mt-3">About Treasures Untold</h5>
     <div class="accordion-item">
         <h2 class="accordion-header" id="about-question-one">
@@ -27,9 +27,7 @@
         </div>
     </div>
 
-
-<!-- ORDERS AND SHIPPING -->
-
+    <!-- ORDERS AND SHIPPING -->
     <h5 class="mt-3 mb-3">Orders & Shipping</h5>
     <div class="accordion-item accordion-section-top">
       <h2 class="accordion-header accordion-section-top" id="orders-question-one">
@@ -55,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item accordion-section-bottom">
+    <div class="accordion-item">
       <h2 class="accordion-header" id="orders-question-three">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ordersThree" aria-expanded="false" aria-controls="ordersThree">
             Q: How can I track my order?
@@ -67,10 +65,32 @@
         </div>
       </div>
     </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="orders-question-four">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ordersFour" aria-expanded="false" aria-controls="ordersFour">
+            Q: Do you restock items once they sell out?
+        </button>
+      </h2>
+      <div id="ordersFour" class="accordion-collapse collapse" aria-labelledby="orders-question-four" data-bs-parent="#treasures-untold-faq">
+        <div class="accordion-body">
+          <strong>A: </strong> Many of our treasures are one-of-a-kind or in very limited supply. Once an item is gone, it may not return, so be sure to claim your magical find while you can!
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item accordion-section-bottom">
+      <h2 class="accordion-header" id="orders-question-five">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ordersFive" aria-expanded="false" aria-controls="ordersFive">
+            Q: Can I save my basket for later?
+        </button>
+      </h2>
+      <div id="ordersFive" class="accordion-collapse collapse" aria-labelledby="orders-question-five" data-bs-parent="#treasures-untold-faq">
+        <div class="accordion-body">
+          <strong>A: </strong> Your basket is only saved while you’re logged in. If you log out before completing your purchase, any items in your basket will be removed and returned to stock, making them available for other adventurers. Since our treasures are rare and limited, we recommend completing your order before leaving the realm!
+        </div>
+      </div>
+    </div>
 
-
-<!-- PAYMENTS AND RETURNS -->
-
+    <!-- PAYMENTS AND RETURNS -->
     <h5 class="mt-3 mb-3">Payment & Returns</h5>
     <div class="accordion-item accordion-section-top">
       <h2 class="accordion-header accordion-section-top" id="payments-returns-question-one">
@@ -109,11 +129,8 @@
       </div>
     </div>
 
-
-<!-- PRODUCT CARE -->
-
+    <!-- PRODUCT CARE -->
     <h5 class="mt-3 mb-3">Product Care</h5>
-
     <div class="accordion-item accordion-section-top">
       <h2 class="accordion-header accordion-section-top" id="product-care-question-one">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#careOne" aria-expanded="false" aria-controls="careOne">
@@ -126,7 +143,6 @@
         </div>
       </div>
     </div>
-
     <div class="accordion-item">
       <h2 class="accordion-header" id="product-care-question-two">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#careTwo" aria-expanded="false" aria-controls="careTwo">
@@ -139,7 +155,6 @@
         </div>
       </div>
     </div>
-
     <div class="accordion-item accordion-section-bottom">
       <h2 class="accordion-header" id="product-care-question-three">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#careThree" aria-expanded="false" aria-controls="careThree">
@@ -149,6 +164,57 @@
       <div id="careThree" class="accordion-collapse collapse" aria-labelledby="product-care-question-three" data-bs-parent="#treasures-untold-faq">
         <div class="accordion-body">
           <strong>A: </strong> Gently wipe your item with a soft, dry cloth. Avoid using water or harsh chemicals, as they may weaken the magic. For delicate artifacts, consult the product description for specific care instructions.
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT & SUPPORT -->
+    <h5 class="mt-3 mb-3">Contact & Support</h5>
+    <div class="accordion-item accordion-section-top">
+      <h2 class="accordion-header accordion-section-top" id="contact-question-one">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactOne" aria-expanded="false" aria-controls="contactOne">
+            Q: How can I contact customer support?
+        </button>
+      </h2>
+      <div id="contactOne" class="accordion-collapse collapse" aria-labelledby="contact-question-one" data-bs-parent="#treasures-untold-faq">
+        <div class="accordion-body">
+          <strong>A: </strong> You can reach us via our our <a href="{% url 'contact' %}">contact</a> form on the website. We aim to respond within 24 hours.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="contact-question-two">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactTwo" aria-expanded="false" aria-controls="contactTwo">
+            Q: Do you have a physical store?
+        </button>
+      </h2>
+      <div id="contactTwo" class="accordion-collapse collapse" aria-labelledby="contact-question-two" data-bs-parent="#treasures-untold-faq">
+        <div class="accordion-body">
+          <strong>A: </strong> Not yet! For now, our shop exists in the mystical lands of the internet.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="contact-question-three">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactThree" aria-expanded="false" aria-controls="contactThree">
+            Q: Do you have a newsletter?
+        </button>
+      </h2>
+      <div id="contactThree" class="accordion-collapse collapse" aria-labelledby="contact-question-three" data-bs-parent="#treasures-untold-faq">
+        <div class="accordion-body">
+          <strong>A: </strong> Yes! Sign up for our Treasures Untold <a href="{% url 'newsletter' %}">newsletter</a> to stay updated on the latest magical discoveries, exclusive offers, and limited-time enchanted items. You’ll also receive special insights into the realms, behind-the-scenes stories, and early access to new treasures. Don’t miss out—join the magic today! 
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item accordion-section-bottom">
+      <h2 class="accordion-header" id="contact-question-four">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contactFour" aria-expanded="false" aria-controls="contactFour">
+            Q: Where can I follow Treasures Untold on social media?
+        </button>
+      </h2>
+      <div id="contactFour" class="accordion-collapse collapse" aria-labelledby="contact-question-four" data-bs-parent="#treasures-untold-faq">
+        <div class="accordion-body">
+          <strong>A: </strong> You can find us on all major social platforms, where we share magical updates, behind-the-scenes looks, exclusive sneak peeks, and special giveaways! See the links below to stay connected with the realms. Join our enchanted community and be part of the magic!
         </div>
       </div>
     </div>
