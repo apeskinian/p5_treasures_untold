@@ -1,9 +1,8 @@
 from django import forms
-from .models import ContactMessage
+from .models import ContactMessage, Faqs
 
 
 class ContactForm(forms.ModelForm):
-
     class Meta:
         model = ContactMessage
         fields = [
@@ -27,3 +26,9 @@ class ContactForm(forms.ModelForm):
             placeholder = f'{placeholders[field]} *'
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
+
+
+class FaqsForm(forms.ModelForm):
+    class Meta:
+        model = Faqs
+        fields = '__all__'

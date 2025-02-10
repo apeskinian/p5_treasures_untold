@@ -26,10 +26,12 @@ class FaqsTopics(models.Model):
 class Faqs(models.Model):
     class Meta:
         verbose_name_plural = 'FAQs'
+        ordering = ['topic', 'sort_order',]
 
     topic = models.ForeignKey(FaqsTopics, on_delete=models.CASCADE)
     question = models.CharField(max_length=254, null=False, blank=False)
     answer = models.TextField()
+    sort_order = models.PositiveIntegerField(default=100)
 
     def __str__(self):
         return self.question
