@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
-from .models import Faqs, FaqsTopics
+from .models import Faqs, FaqsTopics, ContactMessage
 from .forms import ContactForm
 from django.contrib import messages
 
@@ -166,8 +166,13 @@ def support_admin(request):
     a view for shop owners to see and respond to contact us messages,
     send newsletters and manage FAQs
     """
+    contact_messages = ContactMessage.objects.all()
+    faqs = Faqs.objects.all()
+
     template = 'support/support_admin.html'
     context = {
+        'faqs': faqs,
+        'contact_messages': contact_messages
     }
 
     return render(request, template, context)
