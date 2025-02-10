@@ -22,64 +22,52 @@ def dashboard(request):
 
 
 @staff_member_required
-def add_faq(request):
+def manage_faq(request, faq_id=None):
     """
-    adds a new faq
-    """
-    faqs = Faqs.objects.all()
-    if request.method == 'POST':
-        form = FaqsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully added FAQ')
-            return redirect(reverse('dashboard') + '?tab=faq')
-        else:
-            messages.error(
-                request,
-                'Failed to add new FAQ, please ensure the form is valid.'
-            )
-    else:
-        form = FaqsForm()
-
-    template = 'staff/dashboard.html'
-    context = {
-        'faqs': faqs,
-        'faq_add_form': form,
-        'active_tab': 'faq'
-    }
-
-    return render(request, template, context)
-
-
-@staff_member_required
-def edit_faq(request, faq_id):
-    """
-    edits a faq
+    add or edit a faq
     """
     faqs = Faqs.objects.all()
-    faq = get_object_or_404(Faqs, pk=faq_id)
+
     if request.method == 'POST':
-        form = FaqsForm(request.POST, instance=faq)
+        if faq_id:
+            faq = get_object_or_404(Faqs, pk=faq_id)
+            form = FaqsForm(request.POST, instance=faq)
+        else:
+            form = FaqsForm(request.POST)
+
         if form.is_valid():
             form.save()
-            messages.success(request, 'FAQ successfully updated.')
-            return redirect(reverse('dashboard') + '?tab=faq')
+            if faq_id:
+                messages.success(request, 'FAQ updated')
+            else:
+                messages.success(request, 'FAQ added')
         else:
-            messages.error(
-                request,
-                'Error updating FAQ, please ensure the form is valid'
-            )
+            if faq_id:
+                messages.error(
+                    request,
+                    'Failed to update FAQ, please ensure form is valid'
+                )
+            else:
+                messages.error(
+                    request,
+                    'Failed to add FAQ, please ensure form is valid'
+                )
+        return redirect(reverse('dashboard')+'?tab=faq')
     else:
-        form = FaqsForm(instance=faq)
+        if faq_id:
+            faq = get_object_or_404(Faqs, pk=faq_id)
+            form = FaqsForm(instance=faq)
+        else:
+            form = FaqsForm()
 
-    template = 'staff/dashboard.html'
-    context = {
-        'faqs': faqs,
-        'faq_edit_form': form,
-        'active_tab': 'faq'
-    }
+        template = 'staff/dashboard.html'
+        context = {
+            'faqs': faqs,
+            'faq_edit_form' if faq_id else 'faq_add_form': form,
+            'active_tab': 'faq'
+        }
 
-    return render(request, template, context)
+        return render(request, template, context)
 
 
 @staff_member_required

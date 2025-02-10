@@ -7,7 +7,7 @@
                 <th class="">Topic</th>
                 <th class="">Question</th>
                 <th></th>
-                <th class="text-center"><a class="btn btn-sm btn-success w-75" href="{% url 'add_faq' %}">Add</a></th>
+                <th class="text-center"><a class="btn btn-sm btn-success w-75" href="{% url 'manage_faq' %}">Add</a></th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
             <td>{{ faq.topic.name }}</td>
             <td>{{ faq.question }}</td>
             <td class="text-center">
-                <a href="{% url 'edit_faq' faq.id %}" class="btn btn-sm btn-warning btn-edit w-75">Edit</a>
+                <a href="{% url 'manage_faq' faq.id %}" class="btn btn-sm btn-warning btn-edit w-75">Edit</a>
             </td>
             <td class="text-center">
                 <a href="{% url 'delete_faq' faq.id %}" class="btn btn-sm btn-danger btn-delete w-75">Delete</a>
