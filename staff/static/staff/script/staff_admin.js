@@ -5,3 +5,5 @@ window.onload = () => {
         settingsModal.show();
     }
 };
+
+console.log('LOADED')

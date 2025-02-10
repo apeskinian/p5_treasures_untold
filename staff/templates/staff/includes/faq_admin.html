@@ -1,0 +1,74 @@
+<div class="container table-container mt-3">
+    <!-- faq table -->
+    <table class="table caption-top">
+        <caption class="hidden">List of FAQs</caption>
+        <thead class="table-light">
+            <tr>
+                <th class="">Topic</th>
+                <th class="">Question</th>
+                <th></th>
+                <th class="text-center"><a class="btn btn-sm btn-success w-75" href="{% url 'add_faq' %}">Add</a></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for faq in faqs %}
+        <tr>
+            <td>{{ faq.topic.name }}</td>
+            <td>{{ faq.question }}</td>
+            <td class="text-center">
+                <a href="{% url 'edit_faq' faq.id %}" class="btn btn-sm btn-warning btn-edit w-75">Edit</a>
+            </td>
+            <td class="text-center">
+                <a href="{% url 'delete_faq' faq.id %}" class="btn btn-sm btn-danger btn-delete w-75">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if faq_add_form or faq_edit_form or faq_to_delete %}
+    <div class="modal fade" id="settings-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="settings-modal-label">
+                        {% if faq_add_form %}
+                            Add new FAQ
+                        {% elif faq_edit_form %}
+                            Editing FAQ
+                        {% elif faq_to_delete %}
+                            Delete FAQ?
+                        {% endif %}
+                    </h5>
+                    <a href="{% url 'dashboard' %}" class="btn-close" aria-label="Close"></a>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <div class="mb-2">
+                            {% csrf_token %}
+                            {% if faq_add_form %}
+                                {{ faq_add_form | crispy}}
+                            {% elif faq_edit_form %}
+                                {{ faq_edit_form | crispy }}
+                            {% elif faq_to_delete %}
+                                <div>
+                                    <p><strong>Q:</strong> {{ faq_to_delete.question }}</p>
+                                    <p><strong>A:</strong> {{ faq_to_delete.answer }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="{% url 'dashboard' %}" id="staff-modal-cancel" class="btn btn-primary" aria-label="Close">Cancel</a>
+                                <button id="staff-modal-confirm" type="submit" class="btn {% if faq_edit_form or faq_add_form %}btn-success{% elif faq_to_delete %}btn-danger{% endif %}">
+                                    {% if faq_edit_form %}Amend{% elif faq_add_form %}Add{% elif faq_to_delete %}Delete{% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
