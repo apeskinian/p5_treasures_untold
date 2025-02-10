@@ -159,3 +159,15 @@ def privacy(request):
     }
 
     return render(request, template, context)
+
+
+def support_admin(request):
+    """
+    a view for shop owners to see and respond to contact us messages,
+    send newsletters and manage FAQs
+    """
+    template = 'support/support_admin.html'
+    context = {
+    }
+
+    return render(request, template, context)

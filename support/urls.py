@@ -7,4 +7,5 @@ urlpatterns = [
     path('newsletter/', views.newsletter, name='newsletter'),
     path('privacy/', views.privacy, name='privacy'),
     path('thankyou/', views.thankyou, name='thankyou'),
+    path('support_admin/', views.support_admin, name='support_admin'),
 ]
