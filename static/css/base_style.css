@@ -85,7 +85,6 @@ main {
 }
 
 .main-title {
-    width: fit-content;
     padding-bottom: 75px;
     font-size: 60px;
     white-space: nowrap;
