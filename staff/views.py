@@ -65,6 +65,7 @@ def manage_faq(request, delete=None, faq_id=None):
                     request,
                     'Failed to update FAQ' if faq_id else 'Failed to add FAQ'
                 )
+                return redirect(return_url)
     else:
         form = FaqsForm(instance=faq)
 

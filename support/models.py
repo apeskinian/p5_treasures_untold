@@ -17,7 +17,7 @@ class FaqsTopics(models.Model):
         ordering = ['sort_order',]
 
     name = models.CharField(max_length=100, null=False, blank=False)
-    sort_order = models.PositiveIntegerField(default=0)
+    sort_order = models.PositiveIntegerField(default=100)
 
     def __str__(self):
         return self.name

@@ -28,3 +28,15 @@ if (imageInput) {
         }
     });
 }
+
+const idTopic = document.getElementById("id_topic")
+
+idTopic.addEventListener("change", function() {
+    let newTopicField = document.getElementById("new-topic-field");
+    if (this.value === "new") {
+        newTopicField.style.display = "block";
+    } else {
+        newTopicField.style.display = "none";
+        document.getElementById("id_new_topic").value = ""; // Clear new topic field if hidden
+    }
+});

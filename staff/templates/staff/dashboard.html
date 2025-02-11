@@ -51,10 +51,15 @@
                         {% csrf_token %}
                         {% if active_tab == 'FAQ' %}
                             {% if form %}
-                                {{ form | crispy }}
+                                {{ form.topic | as_crispy_field }}
+                                <div id="new-topic-field" style="display: none;">
+                                    {{ form.new_topic | as_crispy_field }}
+                                </div>
+                                {{ form.question | as_crispy_field }}
+                                {{ form.answer | as_crispy_field }}
                             {% elif to_delete %}
                                 <div>
-                                    Are you sure you want to delete the followinf FAQ?
+                                    Are you sure you want to delete the following FAQ?
                                     (This cannot be undone)
                                     <div>
                                         <p><strong>Q:</strong> {{ to_delete.question }}</p>
