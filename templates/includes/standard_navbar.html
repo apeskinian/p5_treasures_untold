@@ -53,7 +53,7 @@
     </div>
     <!-- Title -->
     <a href="{% url 'home' %}" class="nav-link text-white">
-        <h1 id="main-title" class="main-title m-0">Treasures Untold</h1>
+        <h1 id="main-title" class="main-title m-0">{% if title %}{{ title }}{% else %}Treasures Untold{% endif %}</h1>
     </a>
     <!-- Account and Basket -->
     <div id="account-and-basket" class="d-none d-md-flex gap-3">

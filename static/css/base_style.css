@@ -81,6 +81,7 @@ main {
     height: 200px;
     background: url('/static/images/banner.png') no-repeat top center;
     background-size: auto 200px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .main-title {

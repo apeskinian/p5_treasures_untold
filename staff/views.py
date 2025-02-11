@@ -20,7 +20,8 @@ def dashboard(request):
     template = 'staff/dashboard.html'
     context = {
         'faqs': faqs,
-        'products': products
+        'products': products,
+        'title': 'Staff Dashboard'
     }
 
     if not context.get('active_tab'):
@@ -75,6 +76,7 @@ def manage_faq(request, delete=None, faq_id=None):
         'faqs': faqs,
         'mode': mode,
         'return_url': return_url,
+        'title': 'Staff Dashboard'
     }
     if mode == 'Delete':
         context['to_delete'] = faq
@@ -133,6 +135,7 @@ def manage_product(request, delete=None, product_id=None):
         'products': products,
         'mode': mode,
         'return_url': return_url,
+        'title': 'Staff Dashboard'
     }
     if mode == 'Delete':
         context['to_delete'] = product

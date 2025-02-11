@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container flex-grow-1">
-    <h1 class="test text-center m-0 mt-3 mb-3">Staff Dashboard</h1>
+<div class="container flex-grow-1 mt-5">
+    <h1 class="hidden">Staff Dashboard</h1>
 
     <!-- staff dashboard tabs -->
     <ul class="nav nav-pills nav-fill gap-2" id="staffTab" role="tablist">
@@ -25,7 +25,6 @@
             <a class="nav-link{% if active_tab == 'Newsletter' %} show active{% endif %}" id="newsletter-tab" data-bs-toggle="tab" href="#newsletter" role="tab" aria-controls="newsletter" aria-selected="false">Newsletter Admin</a>
         </li>
     </ul>
-
     <!-- tab content -->
     <div class="tab-content" id="staffTabContent">
         <!-- product tab -->

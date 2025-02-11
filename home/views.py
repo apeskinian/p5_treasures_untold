@@ -48,7 +48,7 @@ def index(request):
         'current_user': current_user,
         'new_products': new_products,
         'featured_realm': featured_realm,
-        'featured_products': featured_products,
+        'featured_products': featured_products
     }
 
     return render(request, template, context)
