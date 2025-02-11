@@ -8,35 +8,50 @@
 
 {% block content %}
 <div class="container flex-grow-1">
-    <h1 class="test text-center m-0 mt-3">Staff Dashboard</h1>
+    <h1 class="test text-center m-0 mt-3 mb-3">Staff Dashboard</h1>
 
-    <!-- Tabs for Admin Sections -->
-    <ul class="nav nav-tabs" id="staffTab" role="tablist">
+    <!-- staff dashboard tabs -->
+    <ul class="nav nav-pills nav-fill gap-2" id="staffTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link {% if active_tab == 'Product' %}show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
+            <a class="nav-link{% if active_tab == 'Product' %} show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link {% if active_tab == 'FAQ' %}show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
+            <a class="nav-link{% if active_tab == 'FAQ' %} show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
         </li>
-        <!-- Add more tabs as needed -->
+        <li class="nav-item" role="presentation">
+            <a class="nav-link{% if active_tab == 'Message' %} show active{% endif %}" id="message-tab" data-bs-toggle="tab" href="#message" role="tab" aria-controls="message" aria-selected="false">Message Admin</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link{% if active_tab == 'Newsletter' %} show active{% endif %}" id="newsletter-tab" data-bs-toggle="tab" href="#newsletter" role="tab" aria-controls="newsletter" aria-selected="false">Newsletter Admin</a>
+        </li>
     </ul>
 
+    <!-- tab content -->
     <div class="tab-content" id="staffTabContent">
-        <!-- Product Admin Tab -->
-        <div class="tab-pane fade {% if active_tab == 'Product' %}show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
+        <!-- product tab -->
+        <div class="tab-pane fade{% if active_tab == 'Product' %} show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
             <div id="product-content">
                 {% include 'staff/includes/product_admin.html' %}
             </div>
         </div>
-        
-        <!-- FAQ Admin Tab -->
-        <div class="tab-pane fade {% if active_tab == 'FAQ' %}show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+        <!-- FAQ tab -->
+        <div class="tab-pane fade{% if active_tab == 'FAQ' %} show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
             <div id="faq-content">
                 {% include 'staff/includes/faq_admin.html' %}
             </div>
         </div>
+        <!-- messages tab -->
+        <div class="tab-pane fade{% if active_tab == 'Message' %} show active{% endif %}" id="message" role="tabpanel" aria-labelledby="message-tab">
+            <div id="message-content">
 
-        <!-- More admin sections can be added here -->
+            </div>
+        </div>
+        <!-- newsletter tab -->
+        <div class="tab-pane fade{% if active_tab == 'Newsletter' %} show active{% endif %}" id="newsletter" role="tabpanel" aria-labelledby="newsletter-tab">
+            <div id="newsletter-content">
+
+            </div>
+        </div>
     </div>
 </div>
 
