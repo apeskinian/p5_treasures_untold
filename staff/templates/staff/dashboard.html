@@ -36,17 +36,13 @@
     </div>
 </div>
 
-{% if form or faq_to_delete %}
+{% if mode %}
 <div class="modal fade" id="dashboard-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header d-flex">
                 <h5 class="modal-title" id="dashboard-modal-label">
-                    {% if form %}
-                        {{ mode }} {{ active_tab }}
-                    {% elif faq_to_delete %}
-                        Delete FAQ?
-                    {% endif %}
+                    {{ mode }} {{ active_tab }}
                 </h5>
                 <a href="{{ return_url }}" class="btn-close" aria-label="Close"></a>
             </div>
@@ -56,18 +52,20 @@
                         {% csrf_token %}
                         {% if form %}
                             {{ form | crispy}}
-                        {% elif faq_to_delete %}
+                        {% elif to_delete %}
+                            {% if active_tab == 'FAQ' %}
                             <div>
-                                <p><strong>Q:</strong> {{ faq_to_delete.question }}</p>
-                                <p><strong>A:</strong> {{ faq_to_delete.answer }}</p>
+                                <p><strong>Q:</strong> {{ to_delete.question }}</p>
+                                <p><strong>A:</strong> {{ to_delete.answer }}</p>
                             </div>
+                            {% endif %}
                         {% endif %}
                     </div>
                     <div class="text-center">
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-primary" aria-label="Close">Cancel</a>
-                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif faq_to_delete %}btn-danger{% endif %}">
-                                {% if form %}{{ mode }}{% elif faq_to_delete %}Delete{% endif %}
+                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif to_delete %}btn-danger{% endif %}">
+                                {{ mode }}
                             </button>
                         </div>
                     </div>

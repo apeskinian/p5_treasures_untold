@@ -16,10 +16,10 @@
             <td>{{ faq.topic.name }}</td>
             <td>{{ faq.question }}</td>
             <td class="text-center">
-                <a href="{% url 'manage_faq' faq.id %}" class="btn btn-sm btn-warning btn-edit w-75">Edit</a>
+                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-sm btn-warning btn-edit w-75">Update</a>
             </td>
             <td class="text-center">
-                <a href="{% url 'delete_faq' faq.id %}" class="btn btn-sm btn-danger btn-delete w-75">Delete</a>
+                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-sm btn-danger btn-delete w-75">Delete</a>
             </td>
         </tr>
         {% endfor %}
