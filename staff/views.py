@@ -12,62 +12,60 @@ def dashboard(request):
     """
     faqs = Faqs.objects.all()
 
+    active_tab = request.GET.get('tab')
+
     template = 'staff/dashboard.html'
     context = {
         'faqs': faqs,
-        'active_tab': 'faq'
     }
+
+    if not context.get('active_tab'):
+        context['active_tab'] = active_tab or 'Products'
 
     return render(request, template, context)
 
 
 @staff_member_required
-def manage_faq(request, faq_id=None):
+def manage_faq(request, delete=None, faq_id=None):
     """
     add or edit a faq
     """
     faqs = Faqs.objects.all()
+    mode = 'Update' if faq_id else 'Add'
+    return_url = f"{reverse('dashboard')}?tab=FAQ"
+    faq = None
+
+    if faq_id:
+        faq = get_object_or_404(Faqs, pk=faq_id)
 
     if request.method == 'POST':
-        if faq_id:
-            faq = get_object_or_404(Faqs, pk=faq_id)
-            form = FaqsForm(request.POST, instance=faq)
-        else:
-            form = FaqsForm(request.POST)
-
+        form = FaqsForm(request.POST, instance=faq)
         if form.is_valid():
             form.save()
-            if faq_id:
-                messages.success(request, 'FAQ updated')
-            else:
-                messages.success(request, 'FAQ added')
+            messages.success(
+                request,
+                'FAQ updated' if faq_id else 'FAQ Added'
+            )
+            return redirect(return_url)
         else:
-            if faq_id:
-                messages.error(
-                    request,
-                    'Failed to update FAQ, please ensure form is valid'
-                )
-            else:
-                messages.error(
-                    request,
-                    'Failed to add FAQ, please ensure form is valid'
-                )
-        return redirect(reverse('dashboard')+'?tab=faq')
+            messages.error(
+                request,
+                'Failed to update FAQ' if faq_id else 'Failed to add FAQ'
+            )
     else:
-        if faq_id:
-            faq = get_object_or_404(Faqs, pk=faq_id)
-            form = FaqsForm(instance=faq)
-        else:
-            form = FaqsForm()
+        form = FaqsForm(instance=faq)
 
-        template = 'staff/dashboard.html'
-        context = {
-            'faqs': faqs,
-            'faq_edit_form' if faq_id else 'faq_add_form': form,
-            'active_tab': 'faq'
-        }
+    template = 'staff/dashboard.html'
+    context = {
+        'active_tab': 'FAQ',
+        'faqs': faqs,
+        'form': form,
+        'mode': mode,
+        'return_url': return_url
+    }
+    print(context)
 
-        return render(request, template, context)
+    return render(request, template, context)
 
 
 @staff_member_required
@@ -77,20 +75,22 @@ def delete_faq(request, faq_id):
     """
     faqs = Faqs.objects.all()
     faq = get_object_or_404(Faqs, pk=faq_id)
+    return_url = f"{reverse('dashboard')}?tab=FAQ"
     if request.method == 'POST':
         try:
             faq.delete()
             messages.success(request, 'FAQ deleted')
-            return redirect(reverse('dashboard') + '?tab=faq')
+            return redirect(return_url)
         except Exception as e:
             messages.error(request, f'Error deleting FAQ: {e}')
-            return redirect(reverse('dashboard') + '?tab=faq')
+            return redirect(return_url)
     else:
         template = 'staff/dashboard.html'
         context = {
+            'active_tab': 'FAQ',
             'faq_to_delete': faq,
             'faqs': faqs,
-            'active_tab': 'faq'
+            'return_url': return_url
         }
 
     return render(request, template, context)

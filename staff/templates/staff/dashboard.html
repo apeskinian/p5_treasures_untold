@@ -8,24 +8,24 @@
     <!-- Tabs for Admin Sections -->
     <ul class="nav nav-tabs" id="staffTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link {% if active_tab == 'products' %}active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
+            <a class="nav-link {% if active_tab == 'Products' %}show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link {% if active_tab == 'faq' %}show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
+            <a class="nav-link {% if active_tab == 'FAQ' %}show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
         </li>
         <!-- Add more tabs as needed -->
     </ul>
 
     <div class="tab-content" id="staffTabContent">
         <!-- Product Admin Tab -->
-        <div class="tab-pane fade {% if active_tab == 'products' %}show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
+        <div class="tab-pane fade {% if active_tab == 'Products' %}show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
             <div id="product-content">
                 <!-- Content will be loaded dynamically here -->
             </div>
         </div>
         
         <!-- FAQ Admin Tab -->
-        <div class="tab-pane fade {% if active_tab == 'faq' %}show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+        <div class="tab-pane fade {% if active_tab == 'FAQ' %}show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
             <div id="faq-content">
                 {% include 'staff/includes/faq_admin.html' %}
                 <!-- Content will be loaded dynamically here -->
@@ -34,8 +34,49 @@
 
         <!-- More admin sections can be added here -->
     </div>
-    
 </div>
+
+{% if form or faq_to_delete %}
+<div class="modal fade" id="dashboard-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex">
+                <h5 class="modal-title" id="dashboard-modal-label">
+                    {% if form %}
+                        {{ mode }} {{ active_tab }}
+                    {% elif faq_to_delete %}
+                        Delete FAQ?
+                    {% endif %}
+                </h5>
+                <a href="{{ return_url }}" class="btn-close" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="mb-2">
+                        {% csrf_token %}
+                        {% if form %}
+                            {{ form | crispy}}
+                        {% elif faq_to_delete %}
+                            <div>
+                                <p><strong>Q:</strong> {{ faq_to_delete.question }}</p>
+                                <p><strong>A:</strong> {{ faq_to_delete.answer }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-primary" aria-label="Close">Cancel</a>
+                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif faq_to_delete %}btn-danger{% endif %}">
+                                {% if form %}{{ mode }}{% elif faq_to_delete %}Delete{% endif %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
 
 
