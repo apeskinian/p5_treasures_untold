@@ -24,7 +24,7 @@ def dashboard(request):
     }
 
     if not context.get('active_tab'):
-        context['active_tab'] = active_tab or 'Products'
+        context['active_tab'] = active_tab or 'Product'
 
     return render(request, template, context)
 
@@ -94,7 +94,7 @@ def manage_product(request, delete=None, product_id=None):
         'Delete' if delete and product_id else
         'Update' if product_id else 'Add'
     )
-    return_url = f"{reverse('dashboard')}?tab=Products"
+    return_url = f"{reverse('dashboard')}?tab=Product"
     product = None
 
     if product_id:
@@ -129,7 +129,7 @@ def manage_product(request, delete=None, product_id=None):
 
     template = 'staff/dashboard.html'
     context = {
-        'active_tab': 'Products',
+        'active_tab': 'Product',
         'products': products,
         'mode': mode,
         'return_url': return_url,

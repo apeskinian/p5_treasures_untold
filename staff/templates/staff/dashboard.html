@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!-- support_style.css -->
+    <link rel="stylesheet" href="{% static 'staff/css/staff_style.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container flex-grow-1">
     <h1 class="test text-center m-0 mt-3">Staff Dashboard</h1>
@@ -8,7 +13,7 @@
     <!-- Tabs for Admin Sections -->
     <ul class="nav nav-tabs" id="staffTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link {% if active_tab == 'Products' %}show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
+            <a class="nav-link {% if active_tab == 'Product' %}show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link {% if active_tab == 'FAQ' %}show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
@@ -18,7 +23,7 @@
 
     <div class="tab-content" id="staffTabContent">
         <!-- Product Admin Tab -->
-        <div class="tab-pane fade {% if active_tab == 'Products' %}show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
+        <div class="tab-pane fade {% if active_tab == 'Product' %}show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
             <div id="product-content">
                 {% include 'staff/includes/product_admin.html' %}
             </div>
@@ -39,11 +44,9 @@
 <div class="modal fade" id="dashboard-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header d-flex">
-                <h5 class="modal-title" id="dashboard-modal-label">
-                    {{ mode }} {{ active_tab }}
-                </h5>
-                <a href="{{ return_url }}" class="btn-close" aria-label="Close"></a>
+            <div class="modal-header d-flex align-items-center justify-content-between p-2">
+                <h5 class="modal-title flex-grow-1 text-center" id="dashboard-modal-label">{{ mode }} {{ active_tab }}</h5>
+                <a href="{{ return_url }}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
@@ -52,7 +55,7 @@
                         {% if active_tab == 'FAQ' %}
                             {% if form %}
                                 {{ form.topic | as_crispy_field }}
-                                <div id="new-topic-field" style="display: none;">
+                                <div id="new-topic-field">
                                     {{ form.new_topic | as_crispy_field }}
                                 </div>
                                 {{ form.question | as_crispy_field }}
@@ -67,7 +70,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                        {% elif active_tab == 'Products' %}
+                        {% elif active_tab == 'Product' %}
                             {% if form %}
                                 {% for field in form %}
                                     {% if field.name != "image" %}
