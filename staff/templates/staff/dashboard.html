@@ -20,7 +20,7 @@
         <!-- Product Admin Tab -->
         <div class="tab-pane fade {% if active_tab == 'Products' %}show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
             <div id="product-content">
-                <!-- Content will be loaded dynamically here -->
+                {% include 'staff/includes/product_admin.html' %}
             </div>
         </div>
         
@@ -28,7 +28,6 @@
         <div class="tab-pane fade {% if active_tab == 'FAQ' %}show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
             <div id="faq-content">
                 {% include 'staff/includes/faq_admin.html' %}
-                <!-- Content will be loaded dynamically here -->
             </div>
         </div>
 
@@ -38,7 +37,7 @@
 
 {% if mode %}
 <div class="modal fade" id="dashboard-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header d-flex">
                 <h5 class="modal-title" id="dashboard-modal-label">
@@ -47,24 +46,45 @@
                 <a href="{{ return_url }}" class="btn-close" aria-label="Close"></a>
             </div>
             <div class="modal-body">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <div class="mb-2">
                         {% csrf_token %}
-                        {% if form %}
-                            {{ form | crispy}}
-                        {% elif to_delete %}
-                            {% if active_tab == 'FAQ' %}
-                            <div>
-                                <p><strong>Q:</strong> {{ to_delete.question }}</p>
-                                <p><strong>A:</strong> {{ to_delete.answer }}</p>
-                            </div>
+                        {% if active_tab == 'FAQ' %}
+                            {% if form %}
+                                {{ form | crispy }}
+                            {% elif to_delete %}
+                                <div>
+                                    Are you sure you want to delete the followinf FAQ?
+                                    (This cannot be undone)
+                                    <div>
+                                        <p><strong>Q:</strong> {{ to_delete.question }}</p>
+                                        <p><strong>A:</strong> {{ to_delete.answer }}</p>
+                                    </div>
+                                </div>
                             {% endif %}
+                        {% elif active_tab == 'Products' %}
+                            {% if form %}
+                                {% for field in form %}
+                                    {% if field.name != "image" %}
+                                        {{ field | as_crispy_field }}
+                                    {% endif %}
+                                {% endfor %}
+                                {{ form.image.as_widget }}
+                            {% elif to_delete %}
+                                <div>
+                                    Are you sure you want to delete the following product?
+                                    (This cannot be undone)
+                                    <div>
+                                        {{ to_delete.name }}
+                                    </div>
+                                </div>
+                            {% endif %}                                
                         {% endif %}
                     </div>
                     <div class="text-center">
                         <div class="d-flex justify-content-center gap-2">
-                            <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-primary" aria-label="Close">Cancel</a>
-                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif to_delete %}btn-danger{% endif %}">
+                            <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-primary w-25" aria-label="Close">Cancel</a>
+                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif to_delete %}btn-danger{% endif %} w-25">
                                 {{ mode }}
                             </button>
                         </div>

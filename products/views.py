@@ -3,8 +3,6 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
-from .forms import ProductForm
-from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 
 
@@ -124,108 +122,5 @@ def product_detail(request, product_id):
     context = {
         'product': product,
     }
-
-    return render(request, template, context)
-
-
-@staff_member_required
-def product_admin(request):
-    """
-    Shows a table of all products with options to edit or delete
-    also provides button to add new product
-    """
-    products = Product.objects.all()
-
-    template = 'products/product_admin.html'
-    context = {
-        'products': products
-    }
-
-    return render(request, template, context)
-
-
-@staff_member_required
-def add_product(request):
-    """
-    adds a new product to the store
-    """
-    products = Product.objects.all()
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_admin'))
-        else:
-            messages.error(
-                request,
-                'Failed to add product, please ensure the form is valid.'
-            )
-    else:
-        form = ProductForm()
-
-    template = 'products/product_admin.html'
-    context = {
-        'add_form': form,
-        'products': products
-    }
-
-    return render(request, template, context)
-
-
-@staff_member_required
-def edit_product(request, product_id):
-    """
-    edits a product in the shop
-    """
-    products = Product.objects.all()
-    product = get_object_or_404(Product, pk=product_id)
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES, instance=product)
-        if form.is_valid():
-            form.save()
-            messages.success(request, f'{product.name} successfully updated.')
-            return redirect(reverse('product_admin'))
-        else:
-            messages.error(
-                request,
-                'Error in updating product, please ensure form is valid'
-            )
-    else:
-        form = ProductForm(instance=product)
-
-    messages.info(request, f'Editing {product.name}')
-
-    template = 'products/product_admin.html'
-    context = {
-        'edit_form': form,
-        'product': product,
-        'products': products
-    }
-
-    return render(request, template, context)
-
-
-@staff_member_required
-def delete_product(request, product_id):
-    """
-    deletes a product in the shop
-    """
-    products = Product.objects.all()
-    product = get_object_or_404(Product, pk=product_id)
-    if request.method == 'POST':
-        try:
-            product.delete()
-            messages.success(request, 'Product deleted')
-            return redirect(reverse('product_admin'))
-        except Exception as e:
-            messages.error(request, f'Error deleting product: {e}')
-            return redirect(reverse('product_admin'))
-    else:
-        template = 'products/product_admin.html'
-        context = {
-            'to_delete': product,
-            'products': products
-        }
 
     return render(request, template, context)

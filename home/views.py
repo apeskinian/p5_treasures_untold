@@ -41,7 +41,6 @@ def index(request):
         random_index = random.randint(0, realm_count - 1)
         featured_realm = Realm.objects.all()[random_index]
         featured_products = Product.objects.filter(realm=featured_realm)
-        print(featured_realm.name)
 
     # setting up view parameters
     template = 'home/index.html'

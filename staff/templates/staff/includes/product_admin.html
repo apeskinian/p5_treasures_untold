@@ -1,0 +1,36 @@
+<div class="container table-container mt-3">
+    <!-- product table -->
+    <table class="table caption-top">
+        <caption class="hidden">List of products</caption>
+        <thead class="table-light">
+            <tr>
+                <th class="product-image"></th>
+                <th class="">Product</th>
+                <th class="">Realm</th>
+                <th class="">SKU</th>
+                <th class="">Stock</th>
+                <th class="">Price</th>
+                <th></th>
+                <th class="text-center"><a class="btn btn-sm btn-success w-75" href="{% url 'manage_product' %}">Add</a></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td><img width="50" height="50" class="" src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.realm }}</td>
+            <td>{{ product.sku }}</td>
+            <td>{{ product.stock }}</td>
+            <td>£{{ product.price }}</td>
+            <td class="text-center">
+                <a href="{% url 'manage_product' product_id=product.id %}" class="btn btn-sm btn-warning btn-edit w-75">Update</a>
+            </td>
+            <td class="text-center">
+                <a href="{% url 'manage_product' delete='delete' product_id=product.id %}" class="btn btn-sm btn-danger btn-delete w-75">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
