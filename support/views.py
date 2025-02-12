@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from .models import Faqs, FaqsTopics
-from .forms import ContactForm, NewsletterForm, SubscriberForm
+from .forms import ContactForm, SubscriberForm
 from django.contrib import messages
 
 
@@ -136,7 +136,7 @@ def subscribe(request):
     Signs the user up to the newsletter
     """
     return_url = request.META.get('HTTP_REFERER')
-    subscribe_form = NewsletterForm(request.POST)
+    subscribe_form = SubscriberForm(request.POST)
     if subscribe_form.is_valid():
         subscribe_form.save()
         messages.success(request, 'Thank you for subscribing!')

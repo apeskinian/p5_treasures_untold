@@ -62,13 +62,14 @@ class Faqs(models.Model):
 
 class Newsletter(models.Model):
     class Meta:
-        ordering = ['date_joined']
+        ordering = ['date_sent']
 
-    email = models.EmailField(null=False, blank=False, unique=True)
-    date_joined = models.DateField(auto_now_add=True)
+    subject = models.CharField(max_length=254, null=False, blank=False)
+    news_body = models.TextField()
+    date_sent = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.email
+        return self.subject
 
 
 class Subscriber(models.Model):

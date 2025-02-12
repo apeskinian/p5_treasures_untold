@@ -23,9 +23,9 @@ class FaqsAdmin(admin.ModelAdmin):
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
     list_display = (
-        'email', 'date_joined'
+        'subject', 'date_sent'
     )
-    ordering = ['-date_joined']
+    ordering = ['-date_sent']
 
 
 @admin.register(Subscriber)

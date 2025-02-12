@@ -104,19 +104,15 @@ class FaqsForm(forms.ModelForm):
 class NewsletterForm(forms.ModelForm):
     class Meta:
         model = Newsletter
-        fields = ['email']
+        fields = ['subject', 'news_body']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['email'].widget.attrs['placeholder'] = 'email@example.com'
-        self.fields['email'].label = False
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if email and Newsletter.objects.filter(email=email).exists():
-            raise forms.ValidationError("This email is already subscribed.")
-        return email
+        self.fields['subject'].widget.attrs['placeholder'] = 'Subject'
+        self.fields['subject'].label = False
+        self.fields['news_body'].widget.attrs['placeholder'] = '...'
+        self.fields['news_body'].label = False
 
 
 class SubscriberForm(forms.ModelForm):
