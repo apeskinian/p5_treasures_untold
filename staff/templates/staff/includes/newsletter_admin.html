@@ -1,0 +1,11 @@
+<div class="container messages-container mt-3 mb-3">
+    <!-- newsletter -->
+    <div>
+        SUBSCRIBERS
+    </div>
+    <div>
+        {% for subscriber in subscribers %}
+           <p>{{ subscriber.email }}</p>
+        {% endfor %}
+    </div>
+</div>

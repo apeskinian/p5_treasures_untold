@@ -7,8 +7,8 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.contrib import messages
-from support.models import Faqs, ContactMessage
-from support.forms import FaqsForm, ContactReplyForm
+from support.models import Faqs, ContactMessage, Subscriber
+from support.forms import FaqsForm, ContactReplyForm, NewsletterForm
 from products.models import Product
 from products.forms import ProductForm
 
@@ -49,6 +49,7 @@ def dashboard(request):
     faqs = Faqs.objects.all()
     products = Product.objects.all()
     contact_messages = ContactMessage.objects.all()
+    subscribers = Subscriber.objects.all()
 
     active_tab = request.GET.get('tab')
 
@@ -57,6 +58,7 @@ def dashboard(request):
         'faqs': faqs,
         'products': products,
         'contact_messages': contact_messages,
+        'subscribers': subscribers,
         'title': 'Staff Dashboard'
     }
 
@@ -213,6 +215,28 @@ def reply_to_message(request, message_id):
     context = {
         'active_tab': 'Message',
         'contact_messages': contact_messages,
+        'mode': mode,
+        'return_url': return_url,
+        'form': form,
+        'title': 'Staff Dashboard'
+    }
+
+    return render(request, template, context)
+
+
+@staff_member_required
+def manage_newsletter(request):
+
+    subscribers = Subscriber.objects.all()
+    mode = 'Create'
+    return_url = f"{reverse('dashboard')}?tab=Newsletter"
+
+    form = NewsletterForm()
+
+    template = 'staff/dashboard.html'
+    context = {
+        'active_tab': 'Newsletter',
+        'subscribers': subscribers,
         'mode': mode,
         'return_url': return_url,
         'form': form,
