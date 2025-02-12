@@ -2,6 +2,10 @@ from datetime import date
 
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 from django.contrib import messages
 from support.models import Faqs, ContactMessage
 from support.forms import FaqsForm, ContactReplyForm
@@ -9,32 +13,32 @@ from products.models import Product
 from products.forms import ProductForm
 
 
-# def sendMessageReplyEmail(name, email, message, request):
-#     """
-#     send the user an email with the reply created from the staff dashbpoard
-#     """
-#     products_url = request.build_absolute_uri(reverse('products'))
-#     home_url = request.build_absolute_uri(reverse('home'))
-#     subject = render_to_string(
-#         'support/contact_emails/contact_acknowledgment_subject.txt'
-#     )
-#     html_message = render_to_string(
-#         'support/contact_emails/contact_acknowledgment_body.html',
-#         {
-#             'name': name,
-#             'products_url': products_url,
-#             'home_url': home_url
-#         }
-#     )
-#     plain_message = strip_tags(html_message)
+def sendMessageReplyEmail(message_reply, request):
+    """
+    send the user an email with the reply created from the staff dashbpoard
+    """
+    email = message_reply.email
+    home_url = request.build_absolute_uri(reverse('home'))
+    subject = render_to_string(
+        'staff/contact_emails/contact_reply_subject.txt',
+        {'ticket': message_reply.ticket_number}
+    )
+    html_message = render_to_string(
+        'staff/contact_emails/contact_reply_body.html',
+        {
+            'message': message_reply,
+            'home_url': home_url
+        }
+    )
+    plain_message = strip_tags(html_message)
 
-#     send_mail(
-#         subject,
-#         plain_message,
-#         settings.DEFAULT_FROM_EMAIL,
-#         [email],
-#         html_message=html_message
-#     )
+    send_mail(
+        subject,
+        plain_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [email],
+        html_message=html_message
+    )
 
 
 @staff_member_required
@@ -190,14 +194,12 @@ def reply_to_message(request, message_id):
         if form.is_valid:
             message.date_replied = date.today()
             message.replied = True
-            form.save()
+            message_reply = form.save()
             messages.success(request, 'Reply sent')
-            # sendMessageAcknowledgementEmail(
-            #     form_data['name'],
-            #     form_data['email'],
-            #     request,
-            #     ticket_number=ticket_number,
-            # )
+            sendMessageReplyEmail(
+                message_reply,
+                request,
+            )
             return redirect(return_url)
         else:
             messages.error(

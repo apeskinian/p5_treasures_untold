@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Dear {{ message.name }},</p>
+
+    <p>Thank you for reaching out to us. We appreciate your patience while we reviewed your inquiry. Below is our response to your message:</p>
+
+    <p><strong>Your question:</strong></p>
+    <p>{{ message.message }}</p>
+
+    <p><strong>Our Response:</strong></p>
+    <p>{{ message.reply }}</p>
+
+    <p>We hope this answers your question. If you have any further concerns or need additional assistance, please don’t hesitate to reply to this email making sure the ticket number is included <strong>{{ message.ticket_number }}</strong>.</p>
+
+    <p>Thank you for contacting us. We appreciate your support!</p>
+
+    <p><strong>Best wishes and enchanted tidings,</strong><br>
+    Apeskinian the Wise <br>
+    <strong>Treasures Untold</strong> <br>
+    <a href="{{ home_url }}">Visit Us</a></p>
+</body>
+</html>

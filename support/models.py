@@ -26,7 +26,8 @@ class ContactMessage(models.Model):
         """
         set a ticket number
         """
-        self.ticket_number = self._generate_ticket_number()
+        if not self.ticket_number:
+            self.ticket_number = self._generate_ticket_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
