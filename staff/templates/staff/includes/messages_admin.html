@@ -3,6 +3,7 @@
     {% for message in contact_messages %}
     <div class="contact-message-container">
         <div>
+            <p><strong>{{ message.ticket_number }}</strong></p>
             <p>From: {{ message.name }} - {{ message.email }}</p>
             <p>Date received: {{ message.date_received | date:"d M Y" }}</p>
             <p>{{ message.message }}</p>

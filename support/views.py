@@ -8,49 +8,23 @@ from .forms import ContactForm
 from django.contrib import messages
 
 
-def sendMessageAcknowledgementEmail(name, email, request):
+def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
     """
     send the user an email to confirm receipt of their message
     """
     products_url = request.build_absolute_uri(reverse('products'))
     home_url = request.build_absolute_uri(reverse('home'))
     subject = render_to_string(
-        'support/contact_emails/contact_acknowledgment_subject.txt'
+        'support/contact_emails/contact_acknowledgment_subject.txt',
+        {'ticket_number': ticket_number}
     )
     html_message = render_to_string(
         'support/contact_emails/contact_acknowledgment_body.html',
         {
             'name': name,
             'products_url': products_url,
-            'home_url': home_url
-        }
-    )
-    plain_message = strip_tags(html_message)
-
-    send_mail(
-        subject,
-        plain_message,
-        settings.DEFAULT_FROM_EMAIL,
-        [email],
-        html_message=html_message
-    )
-
-
-def sendMessageEmailToAdmin(name, email, request):
-    """
-    send the user an email to confirm receipt of their message
-    """
-    products_url = request.build_absolute_uri(reverse('products'))
-    home_url = request.build_absolute_uri(reverse('home'))
-    subject = render_to_string(
-        'support/contact_emails/contact_acknowledgment_subject.txt'
-    )
-    html_message = render_to_string(
-        'support/contact_emails/contact_acknowledgment_body.html',
-        {
-            'name': name,
-            'products_url': products_url,
-            'home_url': home_url
+            'home_url': home_url,
+            'ticket_number': ticket_number
         }
     )
     plain_message = strip_tags(html_message)
@@ -94,13 +68,17 @@ def contact(request):
         }
         contact_form = ContactForm(form_data)
         if contact_form.is_valid():
-            contact_form.save()
+            contact_message = contact_form.save()
+            ticket_number = contact_message.ticket_number
             messages.success(
                 request,
                 'Message received, thank you.'
             )
             sendMessageAcknowledgementEmail(
-                form_data['name'], form_data['email'], request
+                form_data['name'],
+                form_data['email'],
+                request,
+                ticket_number=ticket_number,
             )
             return redirect(reverse('thankyou'))
         else:

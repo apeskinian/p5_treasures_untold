@@ -1,1 +1,1 @@
-Your Message Has Been Received {{ name }} – A Reply is on the Horizon!
+{{ ticket_number }} Thank you for your message, a reply is on the horizon!

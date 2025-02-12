@@ -5,7 +5,7 @@ from .models import ContactMessage, Faqs, FaqsTopics
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'email', 'message', 'replied'
+        'ticket_number', 'name', 'email', 'message', 'replied'
     )
     list_filter = ('replied',)
 

@@ -9,6 +9,34 @@ from products.models import Product
 from products.forms import ProductForm
 
 
+# def sendMessageReplyEmail(name, email, message, request):
+#     """
+#     send the user an email with the reply created from the staff dashbpoard
+#     """
+#     products_url = request.build_absolute_uri(reverse('products'))
+#     home_url = request.build_absolute_uri(reverse('home'))
+#     subject = render_to_string(
+#         'support/contact_emails/contact_acknowledgment_subject.txt'
+#     )
+#     html_message = render_to_string(
+#         'support/contact_emails/contact_acknowledgment_body.html',
+#         {
+#             'name': name,
+#             'products_url': products_url,
+#             'home_url': home_url
+#         }
+#     )
+#     plain_message = strip_tags(html_message)
+
+#     send_mail(
+#         subject,
+#         plain_message,
+#         settings.DEFAULT_FROM_EMAIL,
+#         [email],
+#         html_message=html_message
+#     )
+
+
 @staff_member_required
 def dashboard(request):
     """
@@ -164,6 +192,12 @@ def reply_to_message(request, message_id):
             message.replied = True
             form.save()
             messages.success(request, 'Reply sent')
+            # sendMessageAcknowledgementEmail(
+            #     form_data['name'],
+            #     form_data['email'],
+            #     request,
+            #     ticket_number=ticket_number,
+            # )
             return redirect(return_url)
         else:
             messages.error(

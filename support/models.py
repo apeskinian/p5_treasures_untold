@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -5,6 +7,7 @@ class ContactMessage(models.Model):
     class Meta:
         ordering = ['replied',]
 
+    ticket_number = models.CharField(max_length=32, null=False, blank=False)
     name = models.CharField(max_length=254, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     message = models.TextField(null=False, blank=False)
@@ -13,8 +16,21 @@ class ContactMessage(models.Model):
     date_replied = models.DateField(null=True, blank=True)
     reply = models.TextField(null=True, blank=True)
 
+    def _generate_ticket_number(self):
+        """
+        generates a ticket number using UUID and TU- in front
+        """
+        return f'TU-{uuid.uuid4().hex[:8].upper()}'
+
+    def save(self, *args, **kwargs):
+        """
+        set a ticket number
+        """
+        self.ticket_number = self._generate_ticket_number()
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.name
+        return f'{self.ticket_number} - {self.name}'
 
 
 class FaqsTopics(models.Model):
