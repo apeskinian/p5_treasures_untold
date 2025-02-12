@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
@@ -155,7 +157,22 @@ def reply_to_message(request, message_id):
     return_url = f"{reverse('dashboard')}?tab=Message"
     message = get_object_or_404(ContactMessage, pk=message_id)
 
-    form = ContactReplyForm(instance=message)
+    if request.method == 'POST':
+        form = ContactReplyForm(request.POST, instance=message)
+        if form.is_valid:
+            message.date_replied = date.today()
+            message.replied = True
+            form.save()
+            messages.success(request, 'Reply sent')
+            return redirect(return_url)
+        else:
+            messages.error(
+                request,
+                'Failed to send reply, please ensure form is valid'
+            )
+    else:
+        form = ContactReplyForm(instance=message)
+
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Message',
