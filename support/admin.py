@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactMessage, Faqs, FaqsTopics, Newsletter
+from .models import ContactMessage, Faqs, FaqsTopics, Newsletter, Subscriber
 
 
 admin.site.register(FaqsTopics)
@@ -22,6 +22,14 @@ class FaqsAdmin(admin.ModelAdmin):
 
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
+    list_display = (
+        'email', 'date_joined'
+    )
+    ordering = ['-date_joined']
+
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
     list_display = (
         'email', 'date_joined'
     )

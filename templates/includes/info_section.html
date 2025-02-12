@@ -5,7 +5,7 @@
         <form action="{% url 'subscribe' %}" method="POST" class="w-100">
             <div class="input-group">
                 {% csrf_token %}
-                {{ newsletter_form | crispy }}
+                {{ subscriber_form | crispy }}
                 <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
             </div>
         </form>

@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from .models import Faqs, FaqsTopics
-from .forms import ContactForm, NewsletterForm
+from .forms import ContactForm, NewsletterForm, SubscriberForm
 from django.contrib import messages
 
 
@@ -118,13 +118,13 @@ def newsletter(request):
     """
     a view to show the newsletter for the site
     """
-    main_newsletter_form = NewsletterForm()
+    main_subscriber_form = SubscriberForm()
 
     template = 'support/support.html'
     context = {
         'title': 'Newsletter',
         'content': 'newsletter',
-        'main_newsletter_form': main_newsletter_form
+        'main_subscriber_form': main_subscriber_form
     }
 
     return render(request, template, context)
@@ -136,12 +136,12 @@ def subscribe(request):
     Signs the user up to the newsletter
     """
     return_url = request.META.get('HTTP_REFERER')
-    news_form = NewsletterForm(request.POST)
-    if news_form.is_valid():
-        news_form.save()
+    subscribe_form = NewsletterForm(request.POST)
+    if subscribe_form.is_valid():
+        subscribe_form.save()
         messages.success(request, 'Thank you for subscribing!')
     else:
-        for errors in news_form.errors.values():
+        for errors in subscribe_form.errors.values():
             for error in errors:
                 messages.error(request, error)
         return redirect(return_url)

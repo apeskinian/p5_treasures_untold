@@ -1,5 +1,5 @@
-from .forms import NewsletterForm
+from .forms import SubscriberForm
 
 
-def newsletter_form(request):
-    return {'newsletter_form': NewsletterForm()}
+def subscriber_form(request):
+    return {'subscriber_form': SubscriberForm()}

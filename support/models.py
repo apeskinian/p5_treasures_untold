@@ -69,3 +69,14 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Subscriber(models.Model):
+    class Meta:
+        ordering = ['date_joined']
+
+    email = models.EmailField(null=False, blank=False, unique=True)
+    date_joined = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
