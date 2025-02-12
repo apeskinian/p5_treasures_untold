@@ -8,6 +8,7 @@ class ContactMessage(models.Model):
     replied = models.BooleanField(default=False)
     date_received = models.DateField(auto_now_add=True)
     date_replied = models.DateField(null=True, blank=True)
+    reply = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
