@@ -3,7 +3,15 @@
       <div class="col col-lg-8 offset-lg-2">
           <h5>Join Our Magical Community</h5>
           <p>Be the first to know about exciting updates, exclusive offers, and new arrivals from our enchanting realms! Whether you’re looking for the latest magical item or special promotions, our newsletter is your gateway to all the magic happening at Treasures Untold.</p>
-          
+          <div id="main-newsletter-form">
+            <form action="{% url 'subscribe' %}" method="POST">
+              <div class="input-group">
+                {% csrf_token %}
+                {{ main_newsletter_form | crispy }}
+                <button id="main-newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
+              </div>
+            </form>
+          </div>
           <h5>What You’ll Get:</h5>
           <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Exclusive Discounts:</strong> Special offers only available to our subscribers.<br>
           <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Behind-the-Scenes Sneak Peeks:</strong> Get the first look at new magical items, designs, and collaborations.<br>

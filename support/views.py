@@ -118,10 +118,13 @@ def newsletter(request):
     """
     a view to show the newsletter for the site
     """
+    main_newsletter_form = NewsletterForm()
+
     template = 'support/support.html'
     context = {
         'title': 'Newsletter',
-        'content': 'newsletter'
+        'content': 'newsletter',
+        'main_newsletter_form': main_newsletter_form
     }
 
     return render(request, template, context)
@@ -132,7 +135,7 @@ def subscribe(request):
     """
     Signs the user up to the newsletter
     """
-
+    return_url = request.META.get('HTTP_REFERER')
     news_form = NewsletterForm(request.POST)
     if news_form.is_valid():
         news_form.save()
@@ -141,8 +144,16 @@ def subscribe(request):
         for errors in news_form.errors.values():
             for error in errors:
                 messages.error(request, error)
+        return redirect(return_url)
 
-    return redirect(request.META.get('HTTP_REFERER', 'home'))
+    template = 'support/support.html'
+    context = {
+        'title': 'Success',
+        'content': 'newsletter_success',
+        'return_url': return_url
+    }
+
+    return render(request, template, context)
 
 
 def privacy(request):
