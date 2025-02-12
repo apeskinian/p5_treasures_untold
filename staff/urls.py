@@ -10,7 +10,11 @@ urlpatterns = [
         views.manage_faq, name='manage_faq'
     ),
     path('manage_product/', views.manage_product, name='manage_product'),
-    path('manage_product/<int:product_id>/', views.manage_product, name='manage_product'),
+    path(
+        'manage_product/<int:product_id>/',
+        views.manage_product,
+        name='manage_product'
+    ),
     path(
         'manage_product/<str:delete>/<int:product_id>/',
         views.manage_product, name='manage_product'

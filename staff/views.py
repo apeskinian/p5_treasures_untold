@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
-from support.models import Faqs
+from support.models import Faqs, ContactMessage
 from support.forms import FaqsForm
 from products.models import Product
 from products.forms import ProductForm
@@ -14,6 +14,7 @@ def dashboard(request):
     """
     faqs = Faqs.objects.all()
     products = Product.objects.all()
+    contact_messages = ContactMessage.objects.all()
 
     active_tab = request.GET.get('tab')
 
@@ -21,6 +22,7 @@ def dashboard(request):
     context = {
         'faqs': faqs,
         'products': products,
+        'contact_messages': contact_messages,
         'title': 'Staff Dashboard'
     }
 
