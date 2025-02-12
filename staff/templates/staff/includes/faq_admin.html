@@ -6,10 +6,9 @@
             <tr>
                 <th class="">Topic</th>
                 <th class="">Question</th>
-                <th></th>
-                <th class="text-center">
-                    <a class="btn btn-sm btn-success btn-with-spinner w-75" href="{% url 'manage_faq' %}">
-                        <span class="btn-text">Add</span>
+                <th class="text-end">
+                    <a class="btn btn-success btn-with-spinner" width="20" height="20"" href="{% url 'manage_faq' %}">
+                        <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                         <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                     </a>
                 </th>
@@ -20,15 +19,13 @@
         <tr>
             <td>{{ faq.topic.name }}</td>
             <td>{{ faq.question }}</td>
-            <td class="text-center">
-                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-sm btn-warning btn-edit btn-with-spinner w-75">
-                    <span class="btn-text">Update</span>
+            <td class="text-end">
+                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-warning btn-edit btn-with-spinner" width="20" height="20"">
+                    <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
-            </td>
-            <td class="text-center">
-                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-sm btn-danger btn-delete btn-with-spinner w-75">
-                    <span class="btn-text">Delete</span>
+                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-danger btn-delete btn-with-spinner" width="20" height="20"">
+                    <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
             </td>
