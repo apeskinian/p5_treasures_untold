@@ -11,7 +11,12 @@
                 <th class="">Stock</th>
                 <th class="">Price</th>
                 <th></th>
-                <th class="text-center"><a class="btn btn-sm btn-success w-75" href="{% url 'manage_product' %}">Add</a></th>
+                <th class="text-center">
+                    <a class="btn btn-sm btn-success btn-with-spinner w-75" href="{% url 'manage_product' %}">
+                        <span class="btn-text">Add</span>
+                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +29,16 @@
             <td>{{ product.stock }}</td>
             <td>£{{ product.price }}</td>
             <td class="text-center">
-                <a href="{% url 'manage_product' product_id=product.id %}" class="btn btn-sm btn-warning btn-edit w-75">Update</a>
+                <a href="{% url 'manage_product' product_id=product.id %}" class="btn btn-sm btn-warning btn-edit btn-with-spinner w-75">
+                    <span class="btn-text">Update</span>
+                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                </a>
             </td>
             <td class="text-center">
-                <a href="{% url 'manage_product' delete='delete' product_id=product.id %}" class="btn btn-sm btn-danger btn-delete w-75">Delete</a>
+                <a href="{% url 'manage_product' delete='delete' product_id=product.id %}" class="btn btn-sm btn-danger btn-delete btn-with-spinner w-75">
+                    <span class="btn-text">Delete</span>
+                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                </a>
             </td>
         </tr>
         {% endfor %}

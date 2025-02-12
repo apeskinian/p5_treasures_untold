@@ -1,3 +1,6 @@
+// STAFF DASHBOARD SRCIPT //
+
+// Showing modal if there is an add, update or delete request.
 window.onload = () => {
     const dashboardModalElement = document.getElementById('dashboard-modal');
     if (dashboardModalElement) {
@@ -5,6 +8,7 @@ window.onload = () => {
         dashboardModal.show();
     }
 };
+
 
 $('#new-image').change(function() {
     var file = $('#new-image')[0].files[0];
@@ -31,12 +35,45 @@ if (imageInput) {
 
 const idTopic = document.getElementById("id_topic")
 
-idTopic.addEventListener("change", function() {
-    let newTopicField = document.getElementById("new-topic-field");
-    if (this.value === "new") {
-        newTopicField.style.display = "block";
-    } else {
-        newTopicField.style.display = "none";
-        document.getElementById("id_new_topic").value = ""; // Clear new topic field if hidden
-    }
+if (idTopic) {
+    idTopic.addEventListener("change", function() {
+        let newTopicField = document.getElementById("new-topic-field");
+        if (this.value === "new") {
+            newTopicField.style.display = "block";
+        } else {
+            newTopicField.style.display = "none";
+            document.getElementById("id_new_topic").value = "";
+        }
+    });
+}
+
+// DASHBOARD BUTTON SPINNERS //
+const spinnerButtons = document.getElementsByClassName('btn-with-spinner');
+const dashboardModalConfirmButton = document.getElementById('dashboard-modal-confirm');
+
+// Activating spinner on anchor elements.
+Array.from(spinnerButtons).forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        const buttonElement = this;
+        
+        buttonElement.querySelector('.btn-text').classList.add('d-none');
+        buttonElement.querySelector('.spinner-border').classList.remove('d-none');
+        
+        setTimeout(() => {
+            window.location.href = buttonElement.href;
+        }, 1);
+    });
 });
+
+// Activating spinner on button elements.
+if (dashboardModalConfirmButton) {
+    dashboardModalConfirmButton.addEventListener('click', function() {
+        const buttonElement = this;
+        
+        buttonElement.querySelector('.btn-text').classList.add('d-none');
+        buttonElement.querySelector('.spinner-border').classList.remove('d-none');
+    })
+}
+// DASHBOARD BUTTON SPINNERS //
