@@ -68,4 +68,4 @@ class Newsletter(models.Model):
     date_joined = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.email

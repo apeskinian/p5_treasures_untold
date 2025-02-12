@@ -96,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'basket.contexts.basket_contents',
                 'products.contexts.get_realms',
+                'support.contexts.newsletter_form',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

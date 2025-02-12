@@ -1,10 +1,11 @@
+from django.views.decorators.http import require_POST
 from django.shortcuts import render, reverse, redirect
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from .models import Faqs, FaqsTopics
-from .forms import ContactForm
+from .forms import ContactForm, NewsletterForm
 from django.contrib import messages
 
 
@@ -124,6 +125,24 @@ def newsletter(request):
     }
 
     return render(request, template, context)
+
+
+@require_POST
+def subscribe(request):
+    """
+    Signs the user up to the newsletter
+    """
+
+    news_form = NewsletterForm(request.POST)
+    if news_form.is_valid():
+        news_form.save()
+        messages.success(request, 'Thank you for subscribing!')
+    else:
+        for errors in news_form.errors.values():
+            for error in errors:
+                messages.error(request, error)
+
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 
 def privacy(request):
