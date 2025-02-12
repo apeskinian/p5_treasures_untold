@@ -52,26 +52,6 @@ main {
     background-color: #839680;
     color: white;
 }
-
-.nav-pills .nav-link {
-    background-color: #e7f0e6;
-    color: #333;
-  }
-
-  .nav-pills .nav-link:hover {
-    background-color: #d6e0d5;
-  }
-
-  .nav-pills .nav-link:focus {
-    box-shadow: 0 0 0 3px #83968066;
-    border-color: #839680;
-  }
-
-  .nav-pills .nav-link.active {
-    background-color: #839680;
-    color: white;
-  }
-
 /* END> OVERIDING BOOTSTRAP DEFAULT COLOURS */
 
 
