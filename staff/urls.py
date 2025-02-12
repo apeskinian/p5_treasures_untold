@@ -19,4 +19,8 @@ urlpatterns = [
         'manage_product/<str:delete>/<int:product_id>/',
         views.manage_product, name='manage_product'
     ),
+    path(
+        'reply_to_message/<int:message_id>/',
+        views.reply_to_message, name='reply_to_message'
+    ),
 ]

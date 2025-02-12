@@ -1,4 +1,23 @@
 <div class="container mt-3 p-0">
     <!-- messages -->
-    
+    {% for message in contact_messages %}
+    <div class="contact-message-container">
+        <div>
+            <p>From: {{ message.name }} - {{ message.email }}</p>
+            <p>Date received: {{ message.date_received | date:"d M Y" }}</p>
+            <p>{{ message.message }}</p>
+        </div>
+        {% if message.replied %}
+            <div>
+                <p>Reply sent on {{ message.date_replied | date:"d M Y" }}</p>
+                <p>{{ message.reply }}</p>
+            </div>
+        {% else %}
+            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-success btn-edit btn-with-spinner">
+                <span class="btn-text">Reply</span>
+                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+            </a>
+        {% endif %}
+    </div>
+    {% endfor %}
 </div>

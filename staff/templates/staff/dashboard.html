@@ -42,7 +42,7 @@
         <!-- messages tab -->
         <div class="tab-pane fade{% if active_tab == 'Message' %} show active{% endif %}" id="message" role="tabpanel" aria-labelledby="message-tab">
             <div id="message-content">
-
+                {% include 'staff/includes/messages_admin.html' %}
             </div>
         </div>
         <!-- newsletter tab -->
@@ -100,7 +100,9 @@
                                         {{ to_delete.name }}
                                     </div>
                                 </div>
-                            {% endif %}                                
+                            {% endif %}
+                        {% elif active_tab == 'Message' %}
+                            {{ form | crispy }}                                
                         {% endif %}
                     </div>
                     <div class="text-center">

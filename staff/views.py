@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from support.models import Faqs, ContactMessage
-from support.forms import FaqsForm
+from support.forms import FaqsForm, ContactReplyForm
 from products.models import Product
 from products.forms import ProductForm
 
@@ -143,5 +143,27 @@ def manage_product(request, delete=None, product_id=None):
         context['to_delete'] = product
     else:
         context['form'] = form
+
+    return render(request, template, context)
+
+
+@staff_member_required
+def reply_to_message(request, message_id):
+
+    contact_messages = ContactMessage.objects.all()
+    mode = 'Reply to'
+    return_url = f"{reverse('dashboard')}?tab=Message"
+    message = get_object_or_404(ContactMessage, pk=message_id)
+
+    form = ContactReplyForm(instance=message)
+    template = 'staff/dashboard.html'
+    context = {
+        'active_tab': 'Message',
+        'contact_messages': contact_messages,
+        'mode': mode,
+        'return_url': return_url,
+        'form': form,
+        'title': 'Staff Dashboard'
+    }
 
     return render(request, template, context)

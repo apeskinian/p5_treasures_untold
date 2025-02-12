@@ -28,6 +28,25 @@ class ContactForm(forms.ModelForm):
             self.fields[field].label = False
 
 
+class ContactReplyForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = [
+            'reply',
+        ]
+
+    def __init__(self, *args, **kwargs):
+        """
+        add placeholders, remove auto-generated labels and set
+        autofocus  on first field
+        """
+        super().__init__(*args, **kwargs)
+
+        self.fields['reply'].widget.attrs['autofocus'] = True
+        self.fields['reply'].widget.attrs['placeholder'] = 'Reply here...'
+        self.fields['reply'].label = False
+
+
 class FaqsForm(forms.ModelForm):
     class Meta:
         model = Faqs
