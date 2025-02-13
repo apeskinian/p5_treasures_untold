@@ -24,7 +24,7 @@ urlpatterns = [
         views.reply_to_message, name='reply_to_message'
     ),
     path(
-        'unsubscribe/<int:subscriber_id>/',
-        views.unsubscribe, name='unsubscribe'
+        'staff_unsubscribe/<int:subscriber_id>/',
+        views.staff_unsubscribe, name='staff_unsubscribe'
     ),
 ]

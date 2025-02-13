@@ -20,11 +20,11 @@ def sendMessageReplyEmail(message_reply, request):
     email = message_reply.email
     home_url = request.build_absolute_uri(reverse('home'))
     subject = render_to_string(
-        'staff/contact_emails/contact_reply_subject.txt',
+        'staff/support_emails/contact_reply_subject.txt',
         {'ticket': message_reply.ticket_number}
     )
     html_message = render_to_string(
-        'staff/contact_emails/contact_reply_body.html',
+        'staff/support_emails/contact_reply_body.html',
         {
             'message': message_reply,
             'home_url': home_url
@@ -227,7 +227,7 @@ def reply_to_message(request, message_id):
 
 
 @staff_member_required
-def unsubscribe(request, subscriber_id):
+def staff_unsubscribe(request, subscriber_id):
     """
     Removes a subscriber from the newsletter recipients
     """
