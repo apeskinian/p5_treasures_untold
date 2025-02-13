@@ -7,7 +7,7 @@
                 <th class="">Topic</th>
                 <th class="">Question</th>
                 <th class="text-end">
-                    <a class="btn btn-success btn-with-spinner" width="20" height="20"" href="{% url 'manage_faq' %}">
+                    <a class="btn btn-success btn-with-spinner" href="{% url 'manage_faq' %}">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                         <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                     </a>
@@ -20,11 +20,11 @@
             <td>{{ faq.topic.name }}</td>
             <td>{{ faq.question }}</td>
             <td class="text-end">
-                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-warning btn-edit btn-with-spinner" width="20" height="20"">
+                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-warning btn-edit btn-with-spinner">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
-                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-danger btn-delete btn-with-spinner" width="20" height="20"">
+                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-danger btn-delete btn-with-spinner">
                     <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>

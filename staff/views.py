@@ -7,8 +7,8 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.contrib import messages
-from support.models import Faqs, ContactMessage, Subscriber
-from support.forms import FaqsForm, ContactReplyForm, NewsletterForm
+from support.models import Faqs, ContactMessage, Subscriber, Newsletter
+from support.forms import FaqsForm, ContactReplyForm
 from products.models import Product
 from products.forms import ProductForm
 
@@ -50,6 +50,7 @@ def dashboard(request):
     products = Product.objects.all()
     contact_messages = ContactMessage.objects.all()
     subscribers = Subscriber.objects.all()
+    newsletters = Newsletter.objects.all()
 
     active_tab = request.GET.get('tab')
 
@@ -59,6 +60,7 @@ def dashboard(request):
         'products': products,
         'contact_messages': contact_messages,
         'subscribers': subscribers,
+        'newsletters': newsletters,
         'title': 'Staff Dashboard'
     }
 
@@ -225,21 +227,33 @@ def reply_to_message(request, message_id):
 
 
 @staff_member_required
-def manage_newsletter(request):
-
+def unsubscribe(request, subscriber_id):
+    """
+    Removes a subscriber from the newsletter recipients
+    """
     subscribers = Subscriber.objects.all()
-    mode = 'Create'
+    newsletters = Newsletter.objects.all()
+    mode = 'Unsubscribe'
     return_url = f"{reverse('dashboard')}?tab=Newsletter"
+    subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
 
-    form = NewsletterForm()
+    if request.method == 'POST':
+        try:
+            subscriber.delete()
+            messages.success(request, 'Unsubscribed')
+            return redirect(return_url)
+        except Exception as e:
+            messages.error(request, f'Error unsubscribing: {e}')
+            return redirect(return_url)
 
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Newsletter',
         'subscribers': subscribers,
+        'newsletters': newsletters,
         'mode': mode,
         'return_url': return_url,
-        'form': form,
+        'to_delete': subscriber,
         'title': 'Staff Dashboard'
     }
 

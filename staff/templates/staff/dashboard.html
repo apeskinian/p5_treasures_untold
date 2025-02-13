@@ -59,7 +59,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header d-flex align-items-center justify-content-between p-2">
-                <h5 class="modal-title flex-grow-1 text-center" id="dashboard-modal-label">{{ mode }} {{ active_tab }}</h5>
+                <h5 class="modal-title flex-grow-1 text-center" id="dashboard-modal-label">{{ mode }} {% if mode == 'Unsubscribe' %}from {% endif %}{{ active_tab }}</h5>
                 <a href="{{ return_url }}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
             </div>
             <div class="modal-body">
@@ -103,6 +103,16 @@
                             {% endif %}
                         {% elif active_tab == 'Message' %}
                             {{ form | crispy }}                                
+                        {% elif active_tab == 'Newsletter' %}
+                                {% if mode == 'Unsubscribe' %}
+                                    <div>
+                                        Are you sure you want to unsubscribe the following email?
+                                        (This cannot be undone)
+                                        <div>
+                                            {{ to_delete.email }}
+                                        </div>
+                                    </div>
+                                {% endif %}
                         {% endif %}
                     </div>
                     <div class="text-center">

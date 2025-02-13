@@ -1,11 +1,68 @@
 <div class="container messages-container mt-3 mb-3">
     <!-- newsletter -->
-    <div>
-        SUBSCRIBERS
-    </div>
-    <div>
-        {% for subscriber in subscribers %}
-           <p>{{ subscriber.email }}</p>
-        {% endfor %}
+    <div class="row">
+        <div id="newsletters" class="col-12">
+            <h5 class="text-center">Newsletters</h5>
+                <table class="table caption-top">
+                    <caption class="hidden">List of newsletters</caption>
+                    <thead class="staff-table">
+                        <tr>
+                            <th>Newsletter</th>
+                            <th>Date Sent</th>
+                            <th class="text-end">
+                                <a class="btn btn-success btn-with-spinner" href="#">
+                                    <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for newsletter in newsletters %}
+                    <tr>
+                        <td>{{ subscriber.email }}</td>
+                        <td>{{ subscriber.date_joined | date:"d M Y" }}</td>
+                        <td class="text-end">
+                            <a href="#" class="btn btn-info btn-delete btn-with-spinner">
+                                <span class="btn-text"><i class="fa-regular fa-folder-open"></i></i></span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                            <a href="#" class="btn btn-danger btn-delete btn-with-spinner">
+                                <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+        <div id="subscribers"  class="col-12">
+            <h5 class="text-center">Subscribers</h5>
+            <table class="table caption-top">
+                <caption class="hidden">List of subscribers</caption>
+                <thead class="staff-table">
+                    <tr>
+                        <th>Email</th>
+                        <th>Date Signed Up</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for subscriber in subscribers %}
+                <tr>
+                    <td>{{ subscriber.email }}</td>
+                    <td>{{ subscriber.date_joined | date:"d M Y" }}</td>
+                    <td class="text-end">
+                        <a href="{% url 'unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                            <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
