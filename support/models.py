@@ -1,5 +1,5 @@
 import uuid
-
+from django.utils import timezone
 from django.db import models
 
 
@@ -77,7 +77,10 @@ class Subscriber(models.Model):
         ordering = ['date_joined']
 
     email = models.EmailField(null=False, blank=False, unique=True)
-    date_joined = models.DateField(auto_now_add=True)
+    is_active = models.BooleanField(default=False)
+    date_joined = models.DateField(null=True, blank=True)
+    token = models.CharField(max_length=255)
+    token_created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.email

@@ -1,26 +1,66 @@
-from django.views.decorators.http import require_POST
-from django.shortcuts import render, reverse, redirect
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
+from datetime import timedelta
+
 from django.conf import settings
-from .models import Faqs, FaqsTopics
-from .forms import ContactForm, SubscriberForm
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.template.loader import render_to_string
+from django.utils import timezone
+from django.utils.html import strip_tags
+from django.views.decorators.http import require_POST
+
+from itsdangerous import URLSafeTimedSerializer
+
+from .models import Faqs, FaqsTopics, Subscriber
+from .forms import ContactForm, SubscriberForm
+
+
+def generate_confirmation_token(subscriber):
+    """
+    Generate a token for newsletter signup confirmation.
+    """
+    serializer = URLSafeTimedSerializer(settings.DANGEROUS_SECRET)
+    return serializer.dumps(subscriber.email, salt='email-confirmation')
+
+
+def sendSubscriptionConfirmationEmail(email, confirmation_url, request):
+    """
+    Send the user an email to confirm their subscription via link.
+    """
+    home_url = request.build_absolute_uri(reverse('home'))
+    subject = render_to_string(
+        'support/support_emails/subscription_confirmation_subject.txt'
+    )
+    html_message = render_to_string(
+        'support/support_emails/subscription_confirmation_body.html',
+        {
+            'confirmation_url': confirmation_url,
+            'home_url': home_url
+        }
+    )
+    plain_message = strip_tags(html_message)
+
+    send_mail(
+        subject,
+        plain_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [email],
+        html_message=html_message
+    )
 
 
 def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
     """
-    send the user an email to confirm receipt of their message
+    Send the user an email to confirm receipt of their message.
     """
     products_url = request.build_absolute_uri(reverse('products'))
     home_url = request.build_absolute_uri(reverse('home'))
     subject = render_to_string(
-        'support/contact_emails/contact_acknowledgment_subject.txt',
+        'support/support_emails/contact_acknowledgment_subject.txt',
         {'ticket_number': ticket_number}
     )
     html_message = render_to_string(
-        'support/contact_emails/contact_acknowledgment_body.html',
+        'support/support_emails/contact_acknowledgment_body.html',
         {
             'name': name,
             'products_url': products_url,
@@ -41,7 +81,7 @@ def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
 
 def faq(request):
     """
-    a view to show the faqs for the site
+    A view to show the faqs for the site.
     """
     faqs_list = Faqs.objects.all().order_by('topic')
     topics = FaqsTopics.objects.all()
@@ -59,7 +99,7 @@ def faq(request):
 
 def contact(request):
     """
-    a view to show the contact page for the site
+    A view to show the contact page for the site.
     """
     if request.method == 'POST':
         form_data = {
@@ -103,7 +143,7 @@ def contact(request):
 
 def thankyou(request):
     """
-    a confirmation page for when a user sends a message via the contact form
+    A confirmation page for when a user sends a message via the contact form.
     """
     template = 'support/support.html'
     context = {
@@ -116,7 +156,7 @@ def thankyou(request):
 
 def newsletter(request):
     """
-    a view to show the newsletter for the site
+    A view to show the newsletter for the site.
     """
     main_subscriber_form = SubscriberForm()
 
@@ -133,32 +173,106 @@ def newsletter(request):
 @require_POST
 def subscribe(request):
     """
-    Signs the user up to the newsletter
+    Checks to see if a user is already subscribed and then if not:
+    - creates a subscriber instance and generates a token
+    - sends the subscriber an email for them to confirm
     """
     return_url = request.META.get('HTTP_REFERER')
     subscribe_form = SubscriberForm(request.POST)
+
     if subscribe_form.is_valid():
-        subscribe_form.save()
-        messages.success(request, 'Thank you for subscribing!')
+        email = subscribe_form.cleaned_data['email']
+        subscriber, created = Subscriber.objects.get_or_create(email=email)
+
+        if not created and subscriber.is_active:
+            messages.info(request, 'This email has already been subscribed')
+            return redirect(return_url)
+
+        token = generate_confirmation_token(subscriber)
+
+        confirmation_url = (
+            request.build_absolute_uri(reverse('confirm_subscription',
+                                               args=[subscriber.id, token]))
+        )
+
+        subscriber.token = token
+        subscriber.token_created_at = timezone.now()
+        subscriber.save()
+
+        sendSubscriptionConfirmationEmail(email, confirmation_url, request)
+        messages.success(
+            request,
+            'Thank you for subscribing! You will receive an email with a link '
+            'to confirm the subscription'
+        )
     else:
         for errors in subscribe_form.errors.values():
             for error in errors:
                 messages.error(request, error)
         return redirect(return_url)
 
-    template = 'support/support.html'
-    context = {
-        'title': 'Success',
-        'content': 'newsletter_success',
-        'return_url': return_url
-    }
+    return redirect(return_url)
 
-    return render(request, template, context)
+
+def confirm_subscription(request, subscriber_id, token):
+    """
+    Handles the confirmation request when a subscriber clicks on the
+    link in the email that was sent to them. If the link was clicked
+    before the expiration:
+    - the subscriber is marked as active
+    - they are directed to the success page
+    """
+    subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
+
+    if subscriber.token == token:
+
+        token_expiry = timedelta(days=1)
+        if subscriber.token_created_at < timezone.now() - token_expiry:
+            subscriber.delete()
+            messages.error(
+                request,
+                'Your confirmation link has expired, please try again.'
+            )
+            return redirect(reverse('newsletter'))
+
+        subscriber.date_joined = timezone.localdate()
+        subscriber.is_active = True
+        subscriber.save()
+
+        template = 'support/support.html'
+        context = {
+            'title': 'Success',
+            'content': 'newsletter_success',
+        }
+
+        return render(request, template, context)
+    else:
+        messages.error(
+            request,
+            'Invalid token - please try again. If this problem persists please'
+            ' contact us'
+            )
+        return redirect(reverse('newsletter'))
+
+
+def confirm_unsubscription(request, subscriber_id, token):
+    """
+    Handles requests from subscribers to unsubscribe. This will be from a
+    link in emails that are sent to them in the newsletter.
+    """
+    subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
+    if subscriber.token == token:
+        subscriber.delete()
+        messages.error(request, 'Have been unsubscribed')
+        return redirect(reverse('home'))
+    else:
+        messages.error(request, 'The was an error please contact admin')
+        return redirect(reverse('home'))
 
 
 def privacy(request):
     """
-    a view to show the privacy statement for the site
+    A view to show the privacy statement for the site.
     """
     template = 'support/support.html'
     context = {

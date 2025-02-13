@@ -1,16 +1,17 @@
 from datetime import date
 
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.admin.views.decorators import staff_member_required
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from django.conf import settings
 from django.contrib import messages
-from support.models import Faqs, ContactMessage, Subscriber, Newsletter
-from support.forms import FaqsForm, ContactReplyForm
-from products.models import Product
+from django.contrib.admin.views.decorators import staff_member_required
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 from products.forms import ProductForm
+from products.models import Product
+from support.forms import FaqsForm, ContactReplyForm
+from support.models import Faqs, ContactMessage, Subscriber, Newsletter
 
 
 def sendMessageReplyEmail(message_reply, request):
@@ -20,11 +21,11 @@ def sendMessageReplyEmail(message_reply, request):
     email = message_reply.email
     home_url = request.build_absolute_uri(reverse('home'))
     subject = render_to_string(
-        'staff/contact_emails/contact_reply_subject.txt',
+        'staff/staff_emails/contact_reply_subject.txt',
         {'ticket': message_reply.ticket_number}
     )
     html_message = render_to_string(
-        'staff/contact_emails/contact_reply_body.html',
+        'staff/staff_emails/contact_reply_body.html',
         {
             'message': message_reply,
             'home_url': home_url
@@ -227,7 +228,7 @@ def reply_to_message(request, message_id):
 
 
 @staff_member_required
-def unsubscribe(request, subscriber_id):
+def staff_unsubscribe(request, subscriber_id):
     """
     Removes a subscriber from the newsletter recipients
     """
