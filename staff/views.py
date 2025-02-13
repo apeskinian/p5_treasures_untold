@@ -20,11 +20,11 @@ def sendMessageReplyEmail(message_reply, request):
     email = message_reply.email
     home_url = request.build_absolute_uri(reverse('home'))
     subject = render_to_string(
-        'staff/support_emails/contact_reply_subject.txt',
+        'staff/staff_emails/contact_reply_subject.txt',
         {'ticket': message_reply.ticket_number}
     )
     html_message = render_to_string(
-        'staff/support_emails/contact_reply_body.html',
+        'staff/staff_emails/contact_reply_body.html',
         {
             'message': message_reply,
             'home_url': home_url

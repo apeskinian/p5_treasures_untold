@@ -23,6 +23,32 @@ def generate_confirmation_token(subscriber):
     return serializer.dumps(subscriber.email, salt='email-confirmation')
 
 
+def sendSubscriptionConfirmationEmail(email, confirmation_url, request):
+    """
+    Send the user an email to confirm their subscription via link.
+    """
+    home_url = request.build_absolute_uri(reverse('home'))
+    subject = render_to_string(
+        'support/support_emails/subscription_confirmation_subject.txt'
+    )
+    html_message = render_to_string(
+        'support/support_emails/subscription_confirmation_body.html',
+        {
+            'confirmation_url': confirmation_url,
+            'home_url': home_url
+        }
+    )
+    plain_message = strip_tags(html_message)
+
+    send_mail(
+        subject,
+        plain_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [email],
+        html_message=html_message
+    )
+
+
 def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
     """
     Send the user an email to confirm receipt of their message.
@@ -173,13 +199,7 @@ def subscribe(request):
         subscriber.token_created_at = timezone.now()
         subscriber.save()
 
-        send_mail(
-            'Confirm your subscription',
-            f'Click here to confirm your subscription: {confirmation_url}',
-            settings.DEFAULT_FROM_EMAIL,
-            [email],
-            fail_silently=False,
-        )
+        sendSubscriptionConfirmationEmail(email, confirmation_url)
         messages.success(
             request,
             'Thank you for subscribing! You will receive an email with a link '
