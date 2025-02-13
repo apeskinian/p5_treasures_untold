@@ -33,7 +33,7 @@
                 <div class="slideshow-container">
                      {% for product in new_products %}
                         <div class="new-slide">
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}">
                         </div>
                     {% endfor %}
                 </div>
@@ -69,7 +69,7 @@
                 <div class="slideshow-container">
                     {% for product in featured_products %}
                        <div class="featured-slide">
-                           <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                           <img src="{{ product.image_url }}" alt="{{ product.name }}">
                        </div>
                    {% endfor %}
                </div>

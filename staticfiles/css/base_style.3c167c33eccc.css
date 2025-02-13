@@ -1,0 +1,282 @@
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
+/* OVERRIDE BROWSER DEFAULTS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+}
+
+/* GENERAL */
+.hidden {
+    display: none;
+}
+
+.disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+h1 {
+    font-family: 'Pirata One', serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#apeskinian {
+    background-color: #405254;
+    height: 30px;
+    margin-bottom: 60px;
+}
+
+/* START> OVERIDING BOOTSTRAP DEFAULT COLOURS */
+.form-control:focus {
+    box-shadow: 0 0 0 3px #83968066;
+    border-color: #839680;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #839680;
+    color: white;
+}
+/* END> OVERIDING BOOTSTRAP DEFAULT COLOURS */
+
+
+
+/* START> NAVIGATION BARS */
+.top-nav {
+    height: 200px;
+    background: url("/static/images/banner.b5a824397ed3.png") no-repeat top center;
+    background-size: auto 200px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.main-title {
+    padding-bottom: 75px;
+    font-size: 60px;
+    white-space: nowrap;
+}
+
+#navigation-menu {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+#account-and-basket {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    margin-right: calc(-1 * (100vw - 100%));
+}
+
+/* start> rotate dropdown arrow on click*/
+.indicator i {
+    transition: transform 0.3s ease-in-out;
+}
+  
+.collapse.show + #by-realm-menu .indicator i,
+  [data-bs-toggle="collapse"][aria-expanded="true"] .indicator i {
+    transform: rotate(180deg);
+}
+/* end> rotate arrow on click*/
+
+.offcanvas-right-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.offcanvas-left-close {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+#bottom-nav-mobile {
+    height: 60px;
+    background-color: #1B2429;
+}
+
+#bottom-nav-mobile .dropdown-menu {
+    position: fixed;
+    border-radius: 0;
+    width: 100vw;
+    background-color: lightgrey;
+    border-color: #1B2429;
+    bottom: 58px;
+    left: 0;
+}
+/* END> NAVIGATION BARS */
+
+/* START> INFO SECTION */
+.support-container {
+    max-width: 100vw;
+    margin: 0;
+}
+
+#support-links {
+    background-color: #EBDAAF;
+}
+
+#support-social {
+    font-size: 40px;
+    background-color: #839680;
+}
+
+#support-newsletter {
+    background-color: #934B59;
+}
+
+#newsletter-form-email {
+    border-radius: 8px 0px 0px 8px;
+    opacity: 0.50;
+    border: none;
+}
+
+#newsletter-form-submit {
+    background-color: white;
+    border-radius: 0px 8px 8px 0px;
+}
+/* END> INFO SECTION */
+
+/* START> MESSAGES */
+.message-container {
+    z-index: 10000;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+}
+/* END> MESSAGES */
+
+/* START> PRODUCT VIEWS */
+.card-spacer {
+    padding-bottom: 1rem;
+}
+
+.out-of-stock {
+    filter: saturate(0) blur(1.5px) brightness(1.5);
+}
+
+.text-red {
+    color: rgb(200, 0, 0);
+}
+
+.scroll-button {
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 25%;
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.scroll-link {
+    cursor: pointer;
+}
+/* END> PRODUCT VIEWS */
+
+/* START> PRODUCT FORM */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    border-color: #dc3545;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 0;
+}
+/* END> PRODUCT FORM */
+
+@media screen and (min-width: 768px) {
+    .top-nav {
+        height: 300px;
+        background-size: auto 300px;
+        background-attachment: fixed;
+    }
+    
+    .top-nav-small {
+        height: 120px;
+        z-index: 100;
+        position: fixed;
+    }
+
+    .hero-spacer-enabled {
+        height: 300px;
+    }
+    
+    .main-title {
+        position: fixed;
+        width: fit-content;
+        padding-bottom: 0px;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 90px;
+        padding-top: 25px;
+    }
+    
+    .main-title-small {
+        font-size: 60px;
+    }
+    
+    #apeskinian {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .top-nav {
+        height: 500px;
+        background-size: auto 500px;
+    }
+    
+    .top-nav-small {
+        height: 200px;
+    }
+    
+    .hero-spacer-enabled {
+        height: 500px;
+    }
+    
+    .main-title {
+        font-size: 150px;
+        padding-top: 40px;
+    }
+
+    .main-title-small {
+        font-size: 100px;
+    }
+}

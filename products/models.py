@@ -2,6 +2,8 @@ from django.db import models
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
+from django.conf import settings
+from django.templatetags.static import static
 
 
 class Realm(models.Model):
@@ -30,6 +32,15 @@ class Product(models.Model):
     )
     date_added = models.DateField(auto_now_add=True)
     unique_stock = models.BooleanField(default=False)
+
+    # Serving a local dev_placeholder image when debug is on to prevent to
+    # many cloudinary impressions when in testing.
+    @property
+    def image_url(self):
+        if settings.DEBUG:
+            return static('images/dev_placeholder.png')
+        else:
+            return self.image.url
 
     def __str__(self):
         return self.name

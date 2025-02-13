@@ -1,0 +1,19 @@
+/* HOMEPAGE */
+#homepage-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.welcome-container {
+    background-color: rgb(220, 220, 220);
+}
+
+.new-items-container,
+.featured-items-container {
+    height: 400px;
+}
+
+.as-featured-in-container {
+    height: 50px;
+}

@@ -1,0 +1,25 @@
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: inherit;
+}
+
+.new-slide, .featured-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.new-slide img, .featured-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-slide.active, .featured-slide.active {
+    opacity: 1;
+}
