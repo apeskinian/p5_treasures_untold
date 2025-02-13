@@ -1,12 +1,15 @@
 from django.views.decorators.http import require_POST
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
-from .models import Faqs, FaqsTopics
+from .models import Faqs, FaqsTopics, Subscriber
 from .forms import ContactForm, SubscriberForm
 from django.contrib import messages
+from itsdangerous import URLSafeTimedSerializer
+from django.utils import timezone
+from datetime import timedelta
 
 
 def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
@@ -130,6 +133,11 @@ def newsletter(request):
     return render(request, template, context)
 
 
+def generate_confirmation_token(subscriber):
+    serializer = URLSafeTimedSerializer(settings.DANGEROUS_SECRET)
+    return serializer.dumps(subscriber.email, salt='email-confirmation')
+
+
 @require_POST
 def subscribe(request):
     """
@@ -138,7 +146,34 @@ def subscribe(request):
     return_url = request.META.get('HTTP_REFERER')
     subscribe_form = SubscriberForm(request.POST)
     if subscribe_form.is_valid():
-        subscribe_form.save()
+        email = subscribe_form.cleaned_data['email']
+        subscriber, created = Subscriber.objects.get_or_create(email=email)
+
+        if not created and subscriber.is_active:
+            messages.success(request, 'Already subscribed')
+            return redirect(reverse('home'))
+
+        # Generate the token
+        token = generate_confirmation_token(subscriber)
+
+        # Get the confirmation URL
+        confirmation_url = (
+            request.build_absolute_uri(reverse('confirm_subscription',
+                                               args=[subscriber.id, token]))
+        )
+
+        subscriber.token = token
+        subscriber.token_created_at = timezone.now()
+        subscriber.save()
+
+        # Send confirmation email
+        send_mail(
+            'Confirm your subscription',
+            f'Click here to confirm your subscription: {confirmation_url}',
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            fail_silently=False,
+        )
         messages.success(request, 'Thank you for subscribing!')
     else:
         for errors in subscribe_form.errors.values():
@@ -154,6 +189,44 @@ def subscribe(request):
     }
 
     return render(request, template, context)
+
+
+def confirm_subscription(request, subscriber_id, token):
+    subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
+
+    if subscriber.token == token:
+
+        token_expiry = timedelta(days=1)
+        if subscriber.token_created_at < timezone.now() - token_expiry:
+            subscriber.delete()
+            messages.error(request, 'Your confirmation link has expired')
+            return redirect(reverse('home'))
+
+        subscriber.date_joined = timezone.localdate()
+        subscriber.is_active = True
+        subscriber.save()
+
+        template = 'support/support.html'
+        context = {
+            'title': 'Success',
+            'content': 'newsletter_success',
+        }
+
+        return render(request, template, context)
+    else:
+        messages.error(request, 'Token invalid')
+        return redirect(reverse('home'))
+
+
+def confirm_unsubscription(request, subscriber_id, token):
+    subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
+    if subscriber.token == token:
+        subscriber.delete()
+        messages.error(request, 'Have been unsubscribed')
+        return redirect(reverse('home'))
+    else:
+        messages.error(request, 'The was an error please contact admin')
+        return redirect(reverse('home'))
 
 
 def privacy(request):

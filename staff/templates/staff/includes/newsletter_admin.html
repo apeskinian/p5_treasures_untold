@@ -50,16 +50,18 @@
                 </thead>
                 <tbody>
                 {% for subscriber in subscribers %}
-                <tr>
-                    <td>{{ subscriber.email }}</td>
-                    <td>{{ subscriber.date_joined | date:"d M Y" }}</td>
-                    <td class="text-end">
-                        <a href="{% url 'unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
-                            <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
-                            <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                        </a>
-                    </td>
-                </tr>
+                    {% if subscriber.is_active %}
+                        <tr>
+                            <td>{{ subscriber.email }}</td>
+                            <td>{{ subscriber.date_joined | date:"d M Y" }}</td>
+                            <td class="text-end">
+                                <a href="{% url 'unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                                    <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
