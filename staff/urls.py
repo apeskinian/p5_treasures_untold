@@ -27,4 +27,8 @@ urlpatterns = [
         'staff_unsubscribe/<int:subscriber_id>/',
         views.staff_unsubscribe, name='staff_unsubscribe'
     ),
+    path(
+        'clear_expired/',
+        views.clear_expired_subscribers, name='clear_expired_subscribers'
+    ),
 ]

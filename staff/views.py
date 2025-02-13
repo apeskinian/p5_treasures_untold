@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 from django.conf import settings
 from django.contrib import messages
@@ -6,12 +6,29 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.utils.html import strip_tags
 
 from products.forms import ProductForm
 from products.models import Product
 from support.forms import FaqsForm, ContactReplyForm
 from support.models import Faqs, ContactMessage, Subscriber, Newsletter
+
+
+def getSubscribers():
+    expiration_time = timezone.now() - timedelta(days=1)
+    active_subscribers = Subscriber.objects.filter(is_active=True)
+    unconfirmed_subscribers = Subscriber.objects.filter(
+        is_active=False,
+        date_joined__isnull=True,
+        token_created_at__gte=expiration_time
+    )
+    expired_subscribers = Subscriber.objects.filter(
+        is_active=False,
+        date_joined__isnull=True,
+        token_created_at__lt=expiration_time
+    )
+    return (active_subscribers, unconfirmed_subscribers, expired_subscribers)
 
 
 def sendMessageReplyEmail(message_reply, request):
@@ -47,10 +64,12 @@ def dashboard(request):
     """
     a dashboard for staff where they can manage site related admin
     """
+    active_subscribers, unconfirmed_subscribers, expired_subscribers = (
+        getSubscribers()
+    )
     faqs = Faqs.objects.all()
     products = Product.objects.all()
     contact_messages = ContactMessage.objects.all()
-    subscribers = Subscriber.objects.all()
     newsletters = Newsletter.objects.all()
 
     active_tab = request.GET.get('tab')
@@ -60,7 +79,9 @@ def dashboard(request):
         'faqs': faqs,
         'products': products,
         'contact_messages': contact_messages,
-        'subscribers': subscribers,
+        'active_subscribers': active_subscribers,
+        'unconfirmed_subscribers': unconfirmed_subscribers,
+        'expired_subscribers': expired_subscribers,
         'newsletters': newsletters,
         'title': 'Staff Dashboard'
     }
@@ -232,7 +253,9 @@ def staff_unsubscribe(request, subscriber_id):
     """
     Removes a subscriber from the newsletter recipients
     """
-    subscribers = Subscriber.objects.all()
+    active_subscribers, unconfirmed_subscribers, expired_subscribers = (
+        getSubscribers()
+    )
     newsletters = Newsletter.objects.all()
     mode = 'Unsubscribe'
     return_url = f"{reverse('dashboard')}?tab=Newsletter"
@@ -250,11 +273,47 @@ def staff_unsubscribe(request, subscriber_id):
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Newsletter',
-        'subscribers': subscribers,
+        'active_subscribers': active_subscribers,
+        'unconfirmed_subscribers': unconfirmed_subscribers,
+        'expired_subscribers': expired_subscribers,
         'newsletters': newsletters,
         'mode': mode,
         'return_url': return_url,
         'to_delete': subscriber,
+        'title': 'Staff Dashboard'
+    }
+
+    return render(request, template, context)
+
+
+@staff_member_required
+def clear_expired_subscribers(request):
+    active_subscribers, unconfirmed_subscribers, expired_subscribers = (
+        getSubscribers()
+    )
+    expired_subscribers = getSubscribers()[2]
+    newsletters = Newsletter.objects.all()
+    mode = 'Clear'
+    return_url = f"{reverse('dashboard')}?tab=Newsletter"
+
+    if request.method == 'POST':
+        if expired_subscribers.exists():
+            expired_subscribers.delete()
+            messages.success(request, 'All expired subscribers removed')
+        else:
+            messages.error(request, 'There are no expired subscribers')
+        return redirect(return_url)
+
+    template = 'staff/dashboard.html'
+    context = {
+        'active_tab': 'Newsletter',
+        'active_subscribers': active_subscribers,
+        'unconfirmed_subscribers': unconfirmed_subscribers,
+        'expired_subscribers': expired_subscribers,
+        'newsletters': newsletters,
+        'mode': mode,
+        'return_url': return_url,
+        'to_delete': expired_subscribers,
         'title': 'Staff Dashboard'
     }
 

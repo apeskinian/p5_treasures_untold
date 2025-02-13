@@ -1,6 +1,6 @@
 <div class="container messages-container mt-3 mb-3">
     <!-- newsletter -->
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <div id="newsletters" class="col-12">
             <h5 class="text-center">Newsletters</h5>
                 <table class="table caption-top">
@@ -39,32 +39,63 @@
         </div>
         <div id="subscribers"  class="col-12">
             <h5 class="text-center">Subscribers</h5>
-            <table class="table caption-top">
+            <table class="table caption-top subscriber-table">
                 <caption class="hidden">List of subscribers</caption>
                 <thead class="staff-table">
                     <tr>
                         <th>Email</th>
-                        <th>Date Signed Up</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for subscriber in subscribers %}
-                    {% if subscriber.is_active %}
-                        <tr>
-                            <td>{{ subscriber.email }}</td>
-                            <td>{{ subscriber.date_joined | date:"d M Y" }}</td>
-                            <td class="text-end">
-                                <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
-                                    <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
-                                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    {% endif %}
+                {% for subscriber in active_subscribers %}
+                    <tr>
+                        <td>{{ subscriber.email }}</td>
+                        <td class="text-success">ACTIVE</td>
+                        <td class="text-end">
+                            <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                                <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% for subscriber in unconfirmed_subscribers %}
+                    <tr>
+                        <td>{{ subscriber.email }}</td>
+                        <td class="text-secondary">PENDING CONFIRMATION</td>
+                        <td class="text-end">
+                            <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                                <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% for subscriber in expired_subscribers %}
+                    <tr>
+                        <td>{{ subscriber.email }}</td>
+                        <td class="text-danger">EXPIRED</td>
+                        <td class="text-end">
+                            <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                                <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                        </td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
+        <div class="clear-btn-container col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+            {% if expired_subscribers %}
+            <a href="{% url 'clear_expired_subscribers' %}" class="btn btn-danger btn-delete btn-with-spinner btn-clear-subs">
+                <span class="btn-text">CLEAR EXPIRED SUBSCRIBERS</span>
+                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+            </a>
+            {% endif %}
+        </div>
     </div>
 </div>
+  
