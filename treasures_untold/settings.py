@@ -128,16 +128,6 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'treasures_untold.wsgi.application'
 
-# Cloudinary
-cloudinary.config(
-    cloud_name=os.environ.get('CLOUDINARY_NAME'),
-    api_key=os.environ.get('CLOUDINARY_API'),
-    api_secret=os.environ.get('CLOUDINARY_SECRET'),
-    secure=True,
-)
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -196,12 +186,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# Cloudinary
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUDINARY_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API'),
+    api_secret=os.environ.get('CLOUDINARY_SECRET'),
+    secure=True,
+)
+
+if DEBUG:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+else:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STORAGES = {
     "staticfiles": {
