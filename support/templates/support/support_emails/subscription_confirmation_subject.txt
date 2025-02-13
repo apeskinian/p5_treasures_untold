@@ -1,1 +1,1 @@
-{{ ticket_number }} Thank you for your message, a reply is on the horizon!
+Confirm Your Subscription to Treasures Untold!
