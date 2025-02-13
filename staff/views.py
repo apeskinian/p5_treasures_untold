@@ -1,16 +1,17 @@
 from datetime import date
 
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.admin.views.decorators import staff_member_required
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from django.conf import settings
 from django.contrib import messages
-from support.models import Faqs, ContactMessage, Subscriber, Newsletter
-from support.forms import FaqsForm, ContactReplyForm
-from products.models import Product
+from django.contrib.admin.views.decorators import staff_member_required
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 from products.forms import ProductForm
+from products.models import Product
+from support.forms import FaqsForm, ContactReplyForm
+from support.models import Faqs, ContactMessage, Subscriber, Newsletter
 
 
 def sendMessageReplyEmail(message_reply, request):

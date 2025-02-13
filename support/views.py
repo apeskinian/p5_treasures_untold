@@ -199,7 +199,7 @@ def subscribe(request):
         subscriber.token_created_at = timezone.now()
         subscriber.save()
 
-        sendSubscriptionConfirmationEmail(email, confirmation_url)
+        sendSubscriptionConfirmationEmail(email, confirmation_url, request)
         messages.success(
             request,
             'Thank you for subscribing! You will receive an email with a link '
