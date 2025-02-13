@@ -1,0 +1,99 @@
+/* Nav pills */
+.nav-pills .nav-link {
+    background-color: #e7f0e6;
+    color: #333;
+  }
+
+.nav-pills .nav-link:hover {
+    background-color: #d6e0d5;
+}
+
+.nav-pills .nav-link:focus {
+    box-shadow: 0 0 0 3px #83968066;
+    border-color: #839680;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #839680;
+    color: white;
+}
+
+
+/* Tables */
+.table {
+    background-color: #e7f0e6;
+    padding: 0px 20px 20px 20px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border-radius: 10px;
+}
+
+.table th {
+    background-color: #e7f0e6;
+    color: #333;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    background-color: white; /* Rows should stand out */
+    border-radius: 10px;
+}
+
+.table tbody tr td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.table tbody tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-right: 15px;
+}
+
+.table thead tr th:last-child {
+    padding-right: 15px;
+}
+
+td.text-end {
+    white-space: nowrap;
+}
+
+.table a {
+    width: 39px;
+    height: 39px;
+}
+
+/* Hiding new topid field on FAQ form until needed */
+#new-topic-field {
+    display: none;
+}
+
+/* Message Display */
+.messages-container {
+    background-color: #e7f0e6;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.contact-message-container {
+    border-radius: 10px;
+}
+
+.message-content {
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+}
+
+.reply-content {
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px;
+}
+
+.btn-reply {
+    height: 38px;
+    width: 75px;
+}
