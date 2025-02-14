@@ -10,7 +10,7 @@
                             <th>Newsletter</th>
                             <th>Date Sent</th>
                             <th class="text-end">
-                                <a class="btn btn-success btn-with-spinner" href="#">
+                                <a class="btn btn-success btn-with-spinner" href="{% url 'manage_newsletters' %}">
                                     <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                                 </a>
@@ -20,14 +20,14 @@
                     <tbody>
                     {% for newsletter in newsletters %}
                     <tr>
-                        <td>{{ subscriber.email }}</td>
-                        <td>{{ subscriber.date_joined | date:"d M Y" }}</td>
+                        <td>{{ newsletter.subject }}</td>
+                        <td>{{ newsletter.date_sent | date:"d M Y" }}</td>
                         <td class="text-end">
-                            <a href="#" class="btn btn-info btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_newsletters' newsletter_id=newsletter.id %}" class="btn btn-info btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-regular fa-folder-open"></i></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
-                            <a href="#" class="btn btn-danger btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_newsletters' delete='delete' newsletter_id=newsletter.id %}" class="btn btn-danger btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -54,7 +54,7 @@
                         <td>{{ subscriber.email }}</td>
                         <td class="text-success">ACTIVE</td>
                         <td class="text-end">
-                            <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -66,7 +66,7 @@
                         <td>{{ subscriber.email }}</td>
                         <td class="text-secondary">PENDING CONFIRMATION</td>
                         <td class="text-end">
-                            <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -78,7 +78,7 @@
                         <td>{{ subscriber.email }}</td>
                         <td class="text-danger">EXPIRED</td>
                         <td class="text-end">
-                            <a href="{% url 'staff_unsubscribe' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-danger btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>

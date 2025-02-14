@@ -11,7 +11,7 @@ from django.utils.html import strip_tags
 
 from products.forms import ProductForm
 from products.models import Product
-from support.forms import FaqsForm, ContactReplyForm
+from support.forms import FaqsForm, ContactReplyForm, NewsletterForm
 from support.models import Faqs, ContactMessage, Subscriber, Newsletter
 
 
@@ -57,6 +57,49 @@ def sendMessageReplyEmail(message_reply, request):
         [email],
         html_message=html_message
     )
+
+
+def send_newsletter(new_newsletter, request):
+    """
+    Send the latest newsletter to all active subscribers including a link
+    to unsubscribe.
+    """
+    subscribers = getSubscribers()[0]
+    home_url = request.build_absolute_uri(reverse('home'))
+
+    for subscriber in subscribers:
+        email = subscriber.email
+        unsubscribe_url = (
+            request.build_absolute_uri(reverse(
+                'confirm_unsubscription',
+                args=[subscriber.id, subscriber.token]
+            ))
+        )
+        subject = render_to_string(
+            'staff/staff_emails/newsletter_subject.txt',
+            {
+                'date_sent': new_newsletter.date_sent
+            }
+        )
+        html_message = render_to_string(
+            'staff/staff_emails/newsletter_body.html',
+            {
+                'news_body': new_newsletter.news_body,
+                'unsubscribe_url': unsubscribe_url,
+                'home_url': home_url
+            }
+        )
+        plain_message = strip_tags(html_message)
+
+        send_mail(
+            subject,
+            plain_message,
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            html_message=html_message
+        )
+
+    messages.success(request, 'Newsletter sent to all subscribers')
 
 
 @staff_member_required
@@ -249,7 +292,69 @@ def reply_to_message(request, message_id):
 
 
 @staff_member_required
-def staff_unsubscribe(request, subscriber_id):
+def manage_newsletters(request, delete=None, newsletter_id=None):
+    """
+    Send a simple newsletter, view previously sent newsletters and delete
+    previous newsletters
+    """
+    newsletters = Newsletter.objects.all()
+    active_subscribers, unconfirmed_subscribers, expired_subscribers = (
+        getSubscribers()
+    )
+    mode = (
+        'Delete' if delete and newsletter_id else
+        'View' if newsletter_id else 'Send'
+    )
+    return_url = f"{reverse('dashboard')}?tab=Newsletter"
+    newsletter = None
+
+    if newsletter_id:
+        newsletter = get_object_or_404(Newsletter, pk=newsletter_id)
+
+    if request.method == 'POST':
+        if delete:
+            try:
+                newsletter.delete()
+                messages.success(request, 'Newsletter deleted')
+                return redirect(return_url)
+            except Exception as e:
+                messages.error(request, f'Error deleting newsletter: {e}')
+                return redirect(return_url)
+        else:
+            form = NewsletterForm(request.POST, instance=newsletter)
+            if form.is_valid:
+                new_newsletter = form.save()
+                send_newsletter(new_newsletter, request)
+                messages.success(request, 'Newsletter created')
+            else:
+                messages.error(
+                    request,
+                    'Failed to create newsletter, ensure form is valid')
+            return redirect(return_url)
+    else:
+        form = NewsletterForm(instance=newsletter)
+
+    template = 'staff/dashboard.html'
+    context = {
+        'active_tab': 'Newsletter',
+        'active_subscribers': active_subscribers,
+        'unconfirmed_subscribers': unconfirmed_subscribers,
+        'expired_subscribers': expired_subscribers,
+        'newsletters': newsletters,
+        'mode': mode,
+        'return_url': return_url,
+        'title': 'Staff Dashboard'
+    }
+    if mode == 'Delete':
+        context['to_delete'] = newsletter
+    else:
+        context['form'] = form
+
+    return render(request, template, context)
+
+
+@staff_member_required
+def manage_subscriber(request, subscriber_id):
     """
     Removes a subscriber from the newsletter recipients
     """

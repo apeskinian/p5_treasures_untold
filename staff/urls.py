@@ -2,14 +2,28 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
-    path('manage_faq/', views.manage_faq, name='manage_faq'),
-    path('manage_faq/<int:faq_id>/', views.manage_faq, name='manage_faq'),
+    path(
+        '',
+        views.dashboard,
+        name='dashboard'
+    ),
+    path(
+        'manage_faq/',
+        views.manage_faq,
+        name='manage_faq'
+    ),
+    path(
+        'manage_faq/<int:faq_id>/',
+        views.manage_faq,
+        name='manage_faq'
+    ),
     path(
         'manage_faq/<str:delete>/<int:faq_id>/',
         views.manage_faq, name='manage_faq'
     ),
-    path('manage_product/', views.manage_product, name='manage_product'),
+    path('manage_product/',
+         views.manage_product,
+         name='manage_product'),
     path(
         'manage_product/<int:product_id>/',
         views.manage_product,
@@ -17,18 +31,37 @@ urlpatterns = [
     ),
     path(
         'manage_product/<str:delete>/<int:product_id>/',
-        views.manage_product, name='manage_product'
+        views.manage_product,
+        name='manage_product'
     ),
     path(
         'reply_to_message/<int:message_id>/',
-        views.reply_to_message, name='reply_to_message'
+        views.reply_to_message,
+        name='reply_to_message'
     ),
     path(
-        'staff_unsubscribe/<int:subscriber_id>/',
-        views.staff_unsubscribe, name='staff_unsubscribe'
+        'manage_subscriber/<int:subscriber_id>/',
+        views.manage_subscriber,
+        name='manage_subscriber'
     ),
     path(
         'clear_expired/',
-        views.clear_expired_subscribers, name='clear_expired_subscribers'
+        views.clear_expired_subscribers,
+        name='clear_expired_subscribers'
+    ),
+    path(
+        'manage_newsletters/',
+        views.manage_newsletters,
+        name='manage_newsletters'
+    ),
+    path(
+        'manage_newsletters/<int:newsletter_id>/',
+        views.manage_newsletters,
+        name='manage_newsletters'
+    ),
+    path(
+        'manage_newsletters/<str:delete>/<int:newsletter_id>/',
+        views.manage_newsletters,
+        name='manage_newsletters'
     ),
 ]

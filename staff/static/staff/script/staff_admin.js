@@ -52,6 +52,8 @@ if (idTopic) {
 // DASHBOARD BUTTON SPINNERS //
 const spinnerButtons = document.getElementsByClassName('btn-with-spinner');
 const dashboardModalConfirmButton = document.getElementById('dashboard-modal-confirm');
+const dashboardModalCancelButton = document.getElementById('dashboard-modal-cancel');
+const dashboardModalClose = document.getElementById('dashboard-modal-close');
 
 // Activating spinner on anchor elements.
 Array.from(spinnerButtons).forEach(button => {
@@ -62,12 +64,24 @@ Array.from(spinnerButtons).forEach(button => {
         
         buttonElement.querySelector('.btn-text').classList.add('d-none');
         buttonElement.querySelector('.spinner-border').classList.remove('d-none');
+        buttonElement.classList.add("disabled");
         
         setTimeout(() => {
             window.location.href = buttonElement.href;
         }, 1);
     });
 });
+
+if (dashboardModalCancelButton)
+    dashboardModalCancelButton.addEventListener('click', function() {
+
+        dashboardModalConfirmButton.classList.add("disabled");
+        setTimeout(() => {
+            dashboardModalConfirmButton.classList.remove("disabled");
+        }, 5000);
+
+
+    })
 
 // Activating spinner on button elements.
 if (dashboardModalConfirmButton) {
@@ -76,5 +90,16 @@ if (dashboardModalConfirmButton) {
         
         buttonElement.querySelector('.btn-text').classList.add('d-none');
         buttonElement.querySelector('.spinner-border').classList.remove('d-none');
+        buttonElement.classList.add("disabled");
+        dashboardModalCancelButton.classList.add("disabled");
+        dashboardModalClose.classList.add("disabled");
+        
+        setTimeout(() => {
+            buttonElement.querySelector('.btn-text').classList.remove('d-none');
+            buttonElement.querySelector('.spinner-border').classList.add('d-none');
+            buttonElement.classList.remove("disabled");
+            dashboardModalCancelButton.classList.remove("disabled");
+            dashboardModalClose.classList.remove("disabled");
+        }, 5000);
     })
 }

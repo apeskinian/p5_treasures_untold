@@ -62,7 +62,7 @@
                 <h5 class="modal-title flex-grow-1 text-center" id="dashboard-modal-label">
                     {{ mode }} {% if mode == 'Unsubscribe' %}from {% endif %}{{ active_tab }}
                 </h5>
-                <a href="{{ return_url }}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
+                <a id="dashboard-modal-close" href="{{ return_url }}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
@@ -106,7 +106,17 @@
                         {% elif active_tab == 'Message' %}
                             {{ form | crispy }}                                
                         {% elif active_tab == 'Newsletter' %}
-                                {% if mode == 'Unsubscribe' %}
+                                {% if form %}
+                                    {{ form | crispy }}
+                                {% elif to_delete %}
+                                    <div>
+                                        Are you sure you want to delete the following newsletter?
+                                        (This cannot be undone)
+                                        <div>
+                                            <strong>{{ to_delete.subject }}</strong>
+                                        </div>
+                                    </div>
+                                {% elif mode == 'Unsubscribe' %}
                                     <div>
                                         Are you sure you want to unsubscribe the following email?
                                         (This cannot be undone)
@@ -130,13 +140,15 @@
                     <div class="text-center">
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-primary btn-with-spinner w-25" aria-label="Close">
-                                <span class="btn-text">Cancel</span>
+                                <span class="btn-text">{% if mode == 'View' %}Close{% else %}Cancel{% endif %}</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
+                            {% if mode != 'View' %}
                             <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif to_delete %}btn-danger{% endif %} w-25">
                                 <span class="btn-text">{{ mode }}</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </button>
+                            {% endif %}
                         </div>
                     </div>
                 </form>

@@ -107,3 +107,7 @@ td.text-end {
     height: 39px;
     width: 100%;
 }
+
+.form-label {
+    display: none;
+}
