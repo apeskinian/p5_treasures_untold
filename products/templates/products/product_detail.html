@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!-- products_style.css -->
+    <link rel="stylesheet" href="{% static 'products/css/products_style.css' %}">    
+{% endblock %}
+
 {% block content %}
 <div id="product-details" class="container">
     <div class="row mt-3">
@@ -11,7 +16,7 @@
                 </a>
             {% else %}                               
                 <a href="{{ product.image_url }}" target="_blank">
-                <img class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
+                <img {% if user.is_authenticated and product.sku == 'ml002' %}id="magic-lamp"{% endif %} class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
                 </a>
             {% endif %}
         </div>
@@ -60,6 +65,7 @@
         </div>
     </div>
 </div>
+{% include 'products/includes/magic_lamp_modal.html' %}
 {% include 'includes/info_section.html' %}
 {% endblock %}
 
@@ -68,4 +74,5 @@
     <!-- qty modifiers script -->
     <script src="{% static 'script/product_limits.js' %}"></script>
     <script src="{% static 'script/countdown_timer.js' %}"></script>
+    <script src="{% static 'products/script/products_script.js' %}"></script>
 {% endblock %}

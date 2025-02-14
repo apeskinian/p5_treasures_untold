@@ -1,4 +1,8 @@
+// Magic Lamp rubbing detection
 document.addEventListener("DOMContentLoaded", function () {
+    const magicLampModalElement = document.getElementById('magic-lamp-modal');
+    const magicLampModal = new bootstrap.Modal(magicLampModalElement);
+    
     const lamp = document.getElementById("magic-lamp");
     let rubbing = false;
     let movementCount = 0;
@@ -13,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function trackRub(event) {
         if (rubbing && !isThrottling) {
             lamp.classList.add('rubbing')
-            lamp.classList.add('sparkly-effect')
             isThrottling = true;
             setTimeout(() => {
                 movementCount++;
@@ -31,11 +34,24 @@ document.addEventListener("DOMContentLoaded", function () {
         rubbing = false;
         movementCount = 0;
         lamp.classList.remove('rubbing')
-        lamp.classList.remove('sparkly-effect')
     }
 
     function triggerEasterEgg() {
-        alert("INTEGRATE REWARD NOW");
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: '/products/activate_reward/',
+            type: 'POST',
+            data: JSON.stringify({ 'reward': 'magic-lamp' }),
+            contentType: 'application/json',
+            headers: { 'X-CSRFToken': csrfToken },  // 🔹 Add CSRF token here
+            success: function () {
+                magicLampModal.show();  // Show modal on success
+            },
+            error: function () {
+                alert("Something went wrong! Please try again.");
+            }
+        });
     }
 
     lamp.addEventListener("mouseover", startRubbing);

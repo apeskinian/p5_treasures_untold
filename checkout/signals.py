@@ -47,4 +47,5 @@ def reset_discount_on_logout(sender, request, user, **kwargs):
         product.save()
 
     request.session['basket'] = {}
+    request.session['rewards'] = []
     request.session.modified = True

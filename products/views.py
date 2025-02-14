@@ -1,9 +1,10 @@
+import json
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
-from django.conf import settings
 
 
 def all_products(request):
@@ -86,9 +87,9 @@ def all_products(request):
                 return redirect(reverse('products'))
             # bibbidi-bobbidi-boo discount easter-egg
             if query.lower() == 'bibbidi-bobbidi-boo':
-                messages.success(request, '20% activated!!!!')
-                settings.DISCOUNT = 20
-                return redirect(reverse('view_basket'))
+                if request.user.is_authenticated:
+                    activate_reward(request, 'bibbidi-bobbidi-boo')
+                    return redirect(reverse('products'))
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query)
             )
@@ -124,3 +125,32 @@ def product_detail(request, product_id):
     }
 
     return render(request, template, context)
+
+
+def activate_reward(request, reward=None):
+    """
+    Handles reward activations and adds them to the session for processsing
+    at checkout.
+    """
+    if reward:
+        reward = reward
+    else:
+        if request.method == 'POST':
+            try:
+                data = json.loads(request.body)
+                reward = data.get('reward')
+                if not reward:
+                    return JsonResponse(
+                        {'error': 'Reward not found in data'}, status=400
+                    )
+            except json.JSONDecodeError:
+                return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    if reward:
+        rewards = request.session.get('rewards', [])
+        if reward not in rewards:
+            rewards.append(reward)
+            request.session['rewards'] = rewards
+            request.session.modified = True
+        return JsonResponse({'message': f'Reward {reward} activated!'})
+    else:
+        return JsonResponse({'error': 'Reward not specified'}, status=400)
