@@ -4,6 +4,7 @@ from django.shortcuts import (
 )
 from django.contrib import messages
 from products.models import Product
+from products.views import activate_reward
 
 
 def update_stock(product, adjustment):
@@ -56,6 +57,7 @@ def add_to_basket(request, item_id):
         )
 
     request.session['basket'] = basket
+    check_for_cave_of_wonders(request)
 
     return redirect(redirect_url)
 
@@ -117,3 +119,16 @@ def remove_from_basket(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+def check_for_cave_of_wonders(request):
+
+    basket = request.session.get('basket', {})
+    magic_lamp = str(get_object_or_404(Product, sku='ml002').id)
+    beetle_left = str(get_object_or_404(Product, sku='ph020').id)
+    beetle_right = str(get_object_or_404(Product, sku='ph021').id)
+    if magic_lamp not in basket.keys():
+        if beetle_left in basket.keys() and beetle_right in basket.keys():
+            activate_reward(request, 'activate', 'cave-of-wonders')
+    elif magic_lamp in basket.keys():
+        activate_reward(request, 'deactivate', 'cave-of-wonders')

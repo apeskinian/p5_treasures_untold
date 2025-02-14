@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     triggerEasterEgg();
                     resetRub();
                 }
-                console.log(movementCount)
                 isThrottling = false;
             }, 1000);
         }
@@ -42,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
         $.ajax({
             url: '/products/activate_reward/',
             type: 'POST',
-            data: JSON.stringify({ 'reward': 'magic-lamp' }),
+            data: JSON.stringify({
+                 'action': 'activate', 'reward': 'magic-lamp'
+                }),
             contentType: 'application/json',
             headers: { 'X-CSRFToken': csrfToken },  // 🔹 Add CSRF token here
             success: function () {

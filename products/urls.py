@@ -9,7 +9,7 @@ urlpatterns = [
         views.activate_reward,
         name='activate_reward'),
     path(
-        'activate_reward/<str:reward>',
+        'activate_reward/<str:action>/<str:reward>/',
         views.activate_reward,
         name='activate_reward'),
 ]
