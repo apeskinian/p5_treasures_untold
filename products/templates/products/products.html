@@ -2,6 +2,12 @@
 {% load static %}
 {% load product_tags %}
 
+{% block extra_css %}
+    <!-- products_style.css -->
+    <link rel="stylesheet" href="{% static 'products/css/products_style.css' %}">    
+{% endblock %}
+
+
 {% block content %}
     <div id="products-shown" class="container-fluid text-center mt-3">
         <p>
@@ -75,7 +81,7 @@
                                     </a>
                                 {% else %}                               
                                     <a href="{% url 'product_detail' product_id=product.id %}">
-                                        <img class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
+                                        <img {% if product.sku == 'ml002' %}id="magic-lamp"{% endif %} class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
                                     </a>
                                 {% endif %}
                                 <div class="card-body p-1">
@@ -114,4 +120,9 @@
         </a>
     </div>
     {% include 'includes/info_section.html' %}
+{% endblock %}
+{% block extra_js %}
+    {{ block.super }}
+    <!-- Load magic lamp test -->
+    <script src="{% static 'products/script/products_script.js' %}"></script>
 {% endblock %}
