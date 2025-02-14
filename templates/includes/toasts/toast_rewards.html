@@ -1,0 +1,17 @@
+<div id="liveToast" class="toast rounded-4 p-2 bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="d-flex">
+        <div class="toast-body">
+            {% if message.message == 'bibbidi-bobbidi-boo' %}
+                    <p>
+                        Salagadoola menchicka boola<br>
+                        Bibbidi-bobbidi-boo<br>
+                        Put 'em together and what have you got?<br>
+                        20% Discount!
+                    </p>
+            {% elif message.message == 'cave-of-wonders' %}
+                    SOMETHING ELSE
+            {% endif %}
+        </div>
+        <button type="button" class="btn-close my-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>

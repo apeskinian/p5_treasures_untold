@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
+from django.conf import settings
 
 
 def all_products(request):
@@ -89,6 +90,10 @@ def all_products(request):
             if query.lower() == 'bibbidi-bobbidi-boo':
                 if request.user.is_authenticated:
                     activate_reward(request, 'activate', 'bibbidi-bobbidi-boo')
+                    messages.add_message(
+                        request,
+                        settings.REWARDSMESSAGE,
+                        "bibbidi-bobbidi-boo")
                     return redirect(reverse('products'))
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query)

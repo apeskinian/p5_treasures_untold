@@ -17,6 +17,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import dj_database_url
+from django.contrib.messages import constants as messages  # noqa: F401
 if os.path.isfile('env.py'):
     import env  # noqa: F401
 
@@ -106,7 +107,12 @@ TEMPLATES = [
     },
 ]
 
+# Messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+REWARDSMESSAGE = 50
+MESSAGE_TAGS = {
+    50: "rewards-message",  # Custom level
+}
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`

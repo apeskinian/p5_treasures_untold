@@ -5,6 +5,7 @@ from django.shortcuts import (
 from django.contrib import messages
 from products.models import Product
 from products.views import activate_reward
+from django.conf import settings
 
 
 def update_stock(product, adjustment):
@@ -130,5 +131,9 @@ def check_for_cave_of_wonders(request):
     if magic_lamp not in basket.keys():
         if beetle_left in basket.keys() and beetle_right in basket.keys():
             activate_reward(request, 'activate', 'cave-of-wonders')
+            messages.add_message(
+                request,
+                settings.REWARDSMESSAGE,
+                "cave-of-wonders")
     elif magic_lamp in basket.keys():
         activate_reward(request, 'deactivate', 'cave-of-wonders')
