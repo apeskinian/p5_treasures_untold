@@ -1,4 +1,4 @@
-<div id="liveToast" class="toast rounded-4 p-2 bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+<div id="liveToast" class="toast rounded-4 p-2 bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
     <div class="d-flex">
         <div class="toast-body">
             {% if message.message == 'bibbidi-bobbidi-boo' %}
@@ -6,10 +6,21 @@
                         Salagadoola menchicka boola<br>
                         Bibbidi-bobbidi-boo<br>
                         Put 'em together and what have you got?<br>
-                        20% Discount!
+                        <strong>20% Discount!</strong>
                     </p>
             {% elif message.message == 'cave-of-wonders' %}
-                    SOMETHING ELSE
+                    <p>
+                        As the scarab halves unite, the Cave of Wonders opens, offering its treasures freely.<br>
+                        <strong>You've unlocked the Cave of Wonders!</strong><br>
+                        Touch nothing but the lamp...
+                    </p>
+            {% elif message.message == 'magic-lamp' %}
+                    <p>
+                        The lamp’s magic is activated! Enjoy your first three treasures for free!<br>
+                        Who knew a simple rub could unlock so much magic!
+                    </p>
+            {% else %}
+                    {{ message }}
             {% endif %}
         </div>
         <button type="button" class="btn-close my-auto" data-bs-dismiss="toast" aria-label="Close"></button>

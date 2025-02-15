@@ -418,5 +418,19 @@
             "image": "white_rabbits_pocket_watch",
             "date_added": "2025-01-21"
         }
+    },
+    {
+        "pk": 31,
+        "model": "products.product",
+        "fields": {
+            "sku": "ph033",
+            "name": "Shiva Monkey Idol of Agrabah",
+            "description": "A mystical relic from the Cave of Wonders, the Shiva Monkey Idol is etched with golden patterns and clutches the legendary Eye of Shiva—a glowing blood-red ruby said to reveal glimpses of the future. But beware—those who dare claim it may awaken ancient guardians sworn to protect its power.",
+            "price": 1500.00,
+            "realm": 3,
+            "stock": 1,
+            "image": "shiva_monkey_idol",
+            "date_added": "2025-02-15"
+        }
     }
 ]

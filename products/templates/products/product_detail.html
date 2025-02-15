@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_meta %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
 {% block extra_css %}
     <!-- products_style.css -->
     <link rel="stylesheet" href="{% static 'products/css/products_style.css' %}">    

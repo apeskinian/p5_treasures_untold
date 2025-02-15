@@ -90,10 +90,6 @@ def all_products(request):
             if query.lower() == 'bibbidi-bobbidi-boo':
                 if request.user.is_authenticated:
                     activate_reward(request, 'activate', 'bibbidi-bobbidi-boo')
-                    messages.add_message(
-                        request,
-                        settings.REWARDSMESSAGE,
-                        "bibbidi-bobbidi-boo")
                     return redirect(reverse('products'))
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query)
@@ -158,11 +154,15 @@ def activate_reward(request, action=None, reward=None):
             rewards.append(reward)
             request.session['rewards'] = rewards
             request.session.modified = True
+            messages.add_message(request, settings.REWARDSMESSAGE, reward)
             return JsonResponse({'message': f'Reward {reward} activated!'})
         elif reward in rewards and action == 'deactivate':
             rewards.remove(reward)
             request.session['rewards'] = rewards
             request.session.modified = True
             return JsonResponse({'message': f'Reward {reward} deactivated!'})
+        else:
+            messages.add_message(request, settings.REWARDSMESSAGE, reward)
+            return JsonResponse({'message': f'Reward {reward} activated!'})
     else:
         return JsonResponse({'error': 'Reward not specified'}, status=400)

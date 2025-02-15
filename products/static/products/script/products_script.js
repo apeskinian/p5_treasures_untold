@@ -1,7 +1,5 @@
 // Magic Lamp rubbing detection
 document.addEventListener("DOMContentLoaded", function () {
-    const magicLampModalElement = document.getElementById('magic-lamp-modal');
-    const magicLampModal = new bootstrap.Modal(magicLampModalElement);
     
     const lamp = document.getElementById("magic-lamp");
     let rubbing = false;
@@ -45,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
                  'action': 'activate', 'reward': 'magic-lamp'
                 }),
             contentType: 'application/json',
-            headers: { 'X-CSRFToken': csrfToken },  // 🔹 Add CSRF token here
+            headers: { 'X-CSRFToken': csrfToken },
             success: function () {
-                magicLampModal.show();  // Show modal on success
+                location.reload();
             },
             error: function () {
                 alert("Something went wrong! Please try again.");
