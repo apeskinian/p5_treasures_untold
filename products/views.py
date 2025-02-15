@@ -155,14 +155,22 @@ def activate_reward(request, action=None, reward=None):
             request.session['rewards'] = rewards
             request.session.modified = True
             messages.add_message(request, settings.REWARDSMESSAGE, reward)
+            print(rewards)
+            return JsonResponse({'message': f'Reward {reward} activated!'})
+        elif reward in rewards and action == 'activate':
+            messages.info(request, f'{reward} already activated')
+            print(rewards)
             return JsonResponse({'message': f'Reward {reward} activated!'})
         elif reward in rewards and action == 'deactivate':
             rewards.remove(reward)
             request.session['rewards'] = rewards
             request.session.modified = True
+            messages.info(request, f'{reward} deactivated')
+            print(rewards)
             return JsonResponse({'message': f'Reward {reward} deactivated!'})
         else:
-            messages.add_message(request, settings.REWARDSMESSAGE, reward)
-            return JsonResponse({'message': f'Reward {reward} activated!'})
+            messages.info(request, f'{reward} delete this message')
+            print(rewards)
+            return JsonResponse({'message': f'Reward {reward} deactivated!'})
     else:
         return JsonResponse({'error': 'Reward not specified'}, status=400)
