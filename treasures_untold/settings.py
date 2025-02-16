@@ -239,7 +239,6 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get('SUPPORT_EMAIL_ADDRESS')
 
 # Stripe
-DISCOUNT = 0
 DELIVERY = 10.00
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')

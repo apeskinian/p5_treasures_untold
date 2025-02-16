@@ -85,7 +85,7 @@ def all_products(request):
                     "enter search criteria to begin!"
                 )
                 return redirect(reverse('products'))
-            # bibbidi-bobbidi-boo discount easter-egg
+            # bibbidi-bobbidi-boo easter-egg
             if query.lower() == 'bibbidi-bobbidi-boo':
                 if request.user.is_authenticated:
                     activate_reward(request, 'activate', 'bibbidi-bobbidi-boo')

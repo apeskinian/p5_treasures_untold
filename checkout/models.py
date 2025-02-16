@@ -35,7 +35,6 @@ class Order(models.Model):
     order_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0
     )
-    discount = models.PositiveIntegerField(null=False, default=0)
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0
     )
@@ -59,9 +58,8 @@ class Order(models.Model):
             Sum('lineitem_total')
         )['lineitem_total__sum'] or 0
         self.delivery_cost = Decimal(settings.DELIVERY)
-        self.discount = Decimal(1 - (settings.DISCOUNT / 100))
         self.grand_total = (
-            self.order_total * self.discount + self.delivery_cost
+            self.order_total + self.delivery_cost
         )
         self.save()
 
