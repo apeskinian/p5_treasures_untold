@@ -15,8 +15,10 @@ def basket_contents(request):
     basket = request.session.get('basket', {})
     rewards = request.session.get('rewards', [])
 
-    for item_id, quantity in basket.items():
+    for index, (item_id, quantity) in enumerate(basket.items()):
         product = get_object_or_404(Product, pk=item_id)
+        if index < 3 and 'magic-lamp' in rewards:
+            product.price = 0
         total += quantity * product.price
         product_count += quantity
         basket_items.append({
