@@ -13,6 +13,7 @@ def basket_contents(request):
     discount = settings.DISCOUNT
     delivery = settings.DELIVERY
     basket = request.session.get('basket', {})
+    rewards = request.session.get('rewards', [])
 
     for item_id, quantity in basket.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -24,13 +25,21 @@ def basket_contents(request):
             'product': product,
         })
 
-    if discount > 0:
-        discounted_total = (
-            Decimal(total) - (Decimal(total) * Decimal(discount) / 100)
-        )
-        grand_total = discounted_total + Decimal(delivery)
-    else:
-        grand_total = Decimal(total) + Decimal(delivery)
+    # OLD DISCOUNT SYSTEM
+    # if discount > 0:
+    #     discounted_total = (
+    #         Decimal(total) - (Decimal(total) * Decimal(discount) / 100)
+    #     )
+    #     grand_total = discounted_total + Decimal(delivery)
+    # else:
+    #     grand_total = Decimal(total) + Decimal(delivery)
+
+    # Look for rewards and apply
+
+    if 'bibbidi-bobbidi-boo' in rewards:
+        total = Decimal(total) * Decimal(0.8)
+
+    grand_total = Decimal(total) + Decimal(delivery)
 
     context = {
         'basket_items': basket_items,
