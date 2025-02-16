@@ -12,6 +12,7 @@ def basket_contents(request):
     delivery = settings.DELIVERY
     basket = request.session.get('basket', {})
     rewards = request.session.get('rewards', [])
+    request.session.set_expiry(1800)
 
     for index, (item_id, quantity) in enumerate(basket.items()):
         product = get_object_or_404(Product, pk=item_id)

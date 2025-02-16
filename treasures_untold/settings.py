@@ -107,6 +107,11 @@ TEMPLATES = [
     },
 ]
 
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 1800  # 30 minutes until baskets are emptied
+SESSION_SAVE_EVERY_REQUEST = True
+
 # Messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 REWARDSMESSAGE = 50
