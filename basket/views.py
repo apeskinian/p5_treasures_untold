@@ -57,6 +57,7 @@ def add_to_basket(request, item_id):
         )
 
     request.session['basket'] = basket
+
     check_for_cave_of_wonders(request)
 
     return redirect(redirect_url)
@@ -94,6 +95,7 @@ def adjust_basket(request, item_id):
         )
 
     request.session['basket'] = basket
+
     check_for_cave_of_wonders(request)
 
     return redirect(reverse('view_basket'))

@@ -143,13 +143,11 @@ def activate_reward(request, action=None, reward=None, extra=None):
     if action == 'activate' and reward not in rewards:
         rewards.append(reward)
         request.session['rewards'] = rewards
-        request.session.modified = True
         messages.add_message(request, settings.REWARDSMESSAGE, reward)
         return HttpResponse('reward added', status=200)
     elif action == 'deactivate' and reward in rewards:
         rewards.remove(reward)
         request.session['rewards'] = rewards
-        request.session.modified = True
         if extra:
             messages.add_message(request, settings.REWARDSMESSAGE, extra)
         return HttpResponse('reward removed', status=200)

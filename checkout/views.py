@@ -78,6 +78,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST
+
             return redirect(
                 reverse('checkout_success', args=[order.order_number])
             )
@@ -159,6 +160,8 @@ def checkout_success(request, order_number):
                         A confirmation email will be sent to you.')
     if 'basket' in request.session:
         del request.session['basket']
+    if 'rewards' in request.session:
+        del request.session['rewards']
 
     template = 'checkout/checkout_success.html'
     context = {

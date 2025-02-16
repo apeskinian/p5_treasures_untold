@@ -27,15 +27,16 @@ def clear_session_on_logout(sender, request, user, **kwargs):
     """
     clears user session data on user logged out event
     """
-    basket = request.session.get('basket', {})
+    if 'basket' in request.session:
+        basket = request.session.get('basket', {})
 
-    for item_id, quantity in basket.items():
-        product = get_object_or_404(Product, pk=item_id)
-        product.stock += quantity
-        if product.stock < 0:
-            raise ValueError('Stock cannot be negative.')
-        product.save()
+        for item_id, quantity in basket.items():
+            product = get_object_or_404(Product, pk=item_id)
+            product.stock += quantity
+            if product.stock < 0:
+                raise ValueError('Stock cannot be negative.')
+            product.save()
 
-    request.session['basket'] = {}
-    request.session['rewards'] = []
-    request.session.modified = True
+        del request.session['basket']
+    if 'rewards' in request.session:
+        del request.session['rewards']
