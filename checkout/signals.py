@@ -39,4 +39,3 @@ def clear_session_on_logout(sender, request, user, **kwargs):
     request.session['basket'] = {}
     request.session['rewards'] = []
     request.session.modified = True
-    print('SESSION DATA CLEARED')
