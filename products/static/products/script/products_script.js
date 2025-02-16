@@ -44,7 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    lamp.addEventListener("mouseover", startRubbing);
-    lamp.addEventListener("mousemove", trackRub);
-    document.addEventListener("mouseout", resetRub);
+    if (lamp) {
+        lamp.addEventListener("mouseover", startRubbing);
+        lamp.addEventListener("mousemove", trackRub);
+        document.addEventListener("mouseout", resetRub)
+    }
 });
