@@ -1,5 +1,4 @@
-import json
-from django.http import JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
@@ -128,49 +127,31 @@ def product_detail(request, product_id):
     return render(request, template, context)
 
 
-def activate_reward(request, action=None, reward=None):
+def activate_reward(request, action=None, reward=None, extra=None):
     """
     Handles reward activations and adds them to the session for processsing
     at checkout.
     """
-    if reward:
-        reward = reward
-        action = action
+    action = action if action else None
+    reward = reward if reward else None
+
+    if not reward:
+        return HttpResponse('reward not found', status=404)
+
+    rewards = request.session.get('rewards', [])
+
+    if action == 'activate' and reward not in rewards:
+        rewards.append(reward)
+        request.session['rewards'] = rewards
+        request.session.modified = True
+        messages.add_message(request, settings.REWARDSMESSAGE, reward)
+        return HttpResponse('reward added', status=200)
+    elif action == 'deactivate' and reward in rewards:
+        rewards.remove(reward)
+        request.session['rewards'] = rewards
+        request.session.modified = True
+        if extra:
+            messages.add_message(request, settings.REWARDSMESSAGE, extra)
+        return HttpResponse('reward removed', status=200)
     else:
-        if request.method == 'POST':
-            try:
-                data = json.loads(request.body)
-                reward = data.get('reward')
-                action = data.get('action')
-                if not reward:
-                    return JsonResponse(
-                        {'error': 'Reward not found in data'}, status=400
-                    )
-            except json.JSONDecodeError:
-                return JsonResponse({'error': 'Invalid JSON'}, status=400)
-    if reward:
-        rewards = request.session.get('rewards', [])
-        if reward not in rewards and action == 'activate':
-            rewards.append(reward)
-            request.session['rewards'] = rewards
-            request.session.modified = True
-            messages.add_message(request, settings.REWARDSMESSAGE, reward)
-            print(rewards)
-            return JsonResponse({'message': f'Reward {reward} activated!'})
-        elif reward in rewards and action == 'activate':
-            messages.info(request, f'{reward} already activated')
-            print(rewards)
-            return JsonResponse({'message': f'Reward {reward} activated!'})
-        elif reward in rewards and action == 'deactivate':
-            rewards.remove(reward)
-            request.session['rewards'] = rewards
-            request.session.modified = True
-            messages.info(request, f'{reward} deactivated')
-            print(rewards)
-            return JsonResponse({'message': f'Reward {reward} deactivated!'})
-        else:
-            messages.info(request, f'{reward} delete this message')
-            print(rewards)
-            return JsonResponse({'message': f'Reward {reward} deactivated!'})
-    else:
-        return JsonResponse({'error': 'Reward not specified'}, status=400)
+        return HttpResponse('no changes', status=200)

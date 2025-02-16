@@ -129,15 +129,11 @@ def check_for_cave_of_wonders(request):
     monkey_idol = str(get_object_or_404(Product, sku='ph033').id)
     beetle_left = str(get_object_or_404(Product, sku='ph020').id)
     beetle_right = str(get_object_or_404(Product, sku='ph021').id)
-    print(monkey_idol, beetle_left, beetle_right)
-    print(basket)
+
     if monkey_idol not in basket.keys():
         if beetle_left in basket.keys() and beetle_right in basket.keys():
-            print('SHOULD ACTIVATE')
             activate_reward(request, 'activate', 'cave-of-wonders')
         else:
-            print('SHOULD DEACTIVATE')
             activate_reward(request, 'deactivate', 'cave-of-wonders')
     elif monkey_idol in basket.keys():
-        print('SHOULD DEACTIVATE')
-        activate_reward(request, 'deactivate', 'cave-of-wonders')
+        activate_reward(request, 'deactivate', 'cave-of-wonders', 'infidels')

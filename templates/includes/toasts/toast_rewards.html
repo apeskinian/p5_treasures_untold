@@ -19,8 +19,12 @@
                         The lamp’s magic is activated! Enjoy your first three treasures for free!<br>
                         Who knew a simple rub could unlock so much magic!
                     </p>
-            {% else %}
-                    {{ message }}
+            {% elif message.message == 'infidels' %}
+                    <p>
+                        Infidels!<br>
+                        You have touched the forbidden treasure!<br>
+                        The Cave of Wonder reward has been removed!
+                    </p>
             {% endif %}
         </div>
         <button type="button" class="btn-close my-auto" data-bs-dismiss="toast" aria-label="Close"></button>

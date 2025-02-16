@@ -35,22 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function triggerEasterEgg() {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: '/products/activate_reward/',
-            type: 'POST',
-            data: JSON.stringify({
-                 'action': 'activate', 'reward': 'magic-lamp'
-                }),
-            contentType: 'application/json',
-            headers: { 'X-CSRFToken': csrfToken },
-            success: function () {
-                location.reload();
-            },
-            error: function () {
-                alert("Something went wrong! Please try again.");
-            }
-        });
+        var url = '/products/activate_reward/activate/magic-lamp/';
+        $.post(url, {
+            csrfmiddlewaretoken: csrfToken
+        })
+        .done(function () {
+            location.reload();
+        })
     }
 
     lamp.addEventListener("mouseover", startRubbing);
