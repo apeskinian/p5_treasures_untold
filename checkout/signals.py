@@ -1,7 +1,6 @@
 from django.db.models.signals import post_save, post_delete
-from django.contrib.auth.signals import user_logged_in, user_logged_out
+from django.contrib.auth.signals import user_logged_out
 from django.dispatch import receiver
-from django.conf import settings
 from .models import OrderLineItem
 from products.models import Product
 from django.shortcuts import get_object_or_404
@@ -23,20 +22,11 @@ def update_on_delete(sender, instance, **kwargs):
     instance.order.update_total()
 
 
-@receiver(user_logged_in)
-def reset_discount_on_login(sender, request, user, **kwargs):
-    """
-    reset discount to 0 on user logged in event
-    """
-    settings.DISCOUNT = 0
-
-
 @receiver(user_logged_out)
-def reset_discount_on_logout(sender, request, user, **kwargs):
+def clear_session_on_logout(sender, request, user, **kwargs):
     """
-    reset discount to 0 on user logged out event
+    clears user session data on user logged out event
     """
-    settings.DISCOUNT = 0
     basket = request.session.get('basket', {})
 
     for item_id, quantity in basket.items():
@@ -49,3 +39,4 @@ def reset_discount_on_logout(sender, request, user, **kwargs):
     request.session['basket'] = {}
     request.session['rewards'] = []
     request.session.modified = True
+    print('SESSION DATA CLEARED')
