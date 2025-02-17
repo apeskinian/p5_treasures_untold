@@ -48,7 +48,7 @@ main {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    background-color: rgb(180, 180, 180);
+    background-color: rgb(220, 220, 220);
 }
 
 .allauth-inner-content {
@@ -75,7 +75,8 @@ main {
 
 @media screen and (min-width: 768px) {
 
-    .allauth-container {
+    .allauth-container {    
+        background-color: rgb(180, 180, 180);
         padding-top: 40px;
     }
 
