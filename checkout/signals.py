@@ -32,10 +32,17 @@ def clear_session_on_logout(sender, request, user, **kwargs):
 
         for item_id, quantity in basket.items():
             product = get_object_or_404(Product, pk=item_id)
-            product.stock += quantity
-            if product.stock < 0:
+            updated_stock = product.stock
+            updated_stock += quantity
+            if updated_stock < 0:
                 raise ValueError('Stock cannot be negative.')
-            product.save()
+            elif product.unique_stock and updated_stock > 1:
+                raise ValueError(
+                    'Stock cannot be more than one for unique items'
+                )
+            else:
+                product.stock += quantity
+                product.save()
 
         del request.session['basket']
     if 'rewards' in request.session:

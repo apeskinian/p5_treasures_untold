@@ -31,11 +31,18 @@ class Command(BaseCommand):
 
                     for item_id, quantity in basket.items():
                         product = get_object_or_404(Product, pk=item_id)
-                        item_counter += quantity
-                        product.stock += quantity
-                        if product.stock < 0:
+                        updated_stock = product.stock
+                        updated_stock += quantity
+                        if updated_stock < 0:
                             raise ValueError('Stock cannot be negative.')
-                        product.save()
+                        elif product.unique_stock and updated_stock > 1:
+                            raise ValueError(
+                                'Stock cannot be more than 1 for unique items'
+                            )
+                        else:
+                            item_counter += quantity
+                            product.stock += quantity
+                            product.save()
 
                     basket_counter += 1
 
