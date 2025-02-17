@@ -5,6 +5,7 @@ from django.shortcuts import (
 from django.contrib import messages
 from products.models import Product
 from products.views import activate_reward
+from datetime import datetime
 
 
 def update_stock(request, product, adjustment):
@@ -15,7 +16,8 @@ def update_stock(request, product, adjustment):
     if product.stock < 0:
         raise ValueError('Stock cannot be negative.')
     product.save()
-    request.session.set_expiry(1800)
+    request.session.set_expiry(2000)
+    request.session['modified'] = datetime.now().strftime('%d/%m/%Y, %H:%M:%')
 
 
 @login_required
