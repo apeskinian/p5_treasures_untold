@@ -42,6 +42,14 @@ main {
     margin-bottom: 60px;
 }
 
+/* START> ALLAUTH TEMPLATES */
+.allauth-container {
+    background-color: #839680;
+    border-radius: 20px;
+    padding: 20px;
+}
+/* END> ALLAUTH TEMPLATES */
+
 /* START> OVERIDING BOOTSTRAP DEFAULT COLOURS */
 .form-control:focus {
     box-shadow: 0 0 0 3px #83968066;
