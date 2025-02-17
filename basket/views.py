@@ -12,19 +12,23 @@ def update_stock(request, product, adjustment):
     """
     Update stock level of product
     """
-    updated_stock = product.stock
-    updated_stock += adjustment
-    if updated_stock < 0:
-        raise ValueError('Stock cannot be negative.')
-    elif product.unique_stock and updated_stock > 1:
-        raise ValueError(
-            'Stock cannot be more than one for unique items'
-        )
-    else:
-        product.stock += adjustment
-        product.save()
+    try:
+        updated_stock = product.stock
+        updated_stock += adjustment
+        if updated_stock < 0:
+            raise ValueError('Stock cannot be negative')
+        elif product.unique_stock and updated_stock > 1:
+            raise ValueError(
+                'Stock cannot be more than one for unique items'
+            )
+        else:
+            product.stock += adjustment
+            product.save()
+    except ValueError:
+        pass
+
     request.session.set_expiry(2000)
-    request.session['modified'] = datetime.now().strftime('%d/%m/%Y, %H:%M:%')
+    request.session['modified'] = datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
 
 
 @login_required

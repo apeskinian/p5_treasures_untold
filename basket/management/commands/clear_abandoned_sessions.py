@@ -18,31 +18,50 @@ class Command(BaseCommand):
 
         for session in all_sessions:
             session_data = session.get_decoded()
-            last_modified = datetime.strptime(
-                session_data.get('modified'), '%d/%m/%Y, %H:%M:%'
-            )
+            last_modified_str = session_data.get('modified')
 
-            print(last_modified, expiry_time)
+            if not last_modified_str:
+                print(
+                    f'Skipping session {session.session_key}: '
+                    'No modified time found.'
+                )
+                continue
 
-            if last_modified and last_modified < expiry_time:
+            try:
+                last_modified = datetime.strptime(
+                    last_modified_str, '%d/%m/%Y, %H:%M:%S'
+                )
+            except ValueError as e:
+                print(
+                    f'Skipping session {session.session_key}: '
+                    f'Invalid modified format - {e}'
+                )
+                continue
 
+            if last_modified < expiry_time:
                 if 'basket' in session_data:
                     basket = session_data['basket']
 
                     for item_id, quantity in basket.items():
-                        product = get_object_or_404(Product, pk=item_id)
-                        updated_stock = product.stock
-                        updated_stock += quantity
-                        if updated_stock < 0:
-                            raise ValueError('Stock cannot be negative.')
-                        elif product.unique_stock and updated_stock > 1:
-                            raise ValueError(
-                                'Stock cannot be more than 1 for unique items'
+                        try:
+                            product = get_object_or_404(Product, pk=item_id)
+                            updated_stock = product.stock
+                            updated_stock += quantity
+                            if updated_stock < 0:
+                                raise ValueError('Stock cannot be negative.')
+                            elif product.unique_stock and updated_stock > 1:
+                                raise ValueError(
+                                    'Stock cannot be more than 1 '
+                                    'for unique items'
+                                )
+                            else:
+                                item_counter += quantity
+                                product.stock += quantity
+                                product.save()
+                        except ValueError as e:
+                            print(
+                                f"Error updating stock for {product.id}: {e}"
                             )
-                        else:
-                            item_counter += quantity
-                            product.stock += quantity
-                            product.save()
 
                     basket_counter += 1
 
