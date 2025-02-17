@@ -7,7 +7,7 @@ from products.models import Product
 from products.views import activate_reward
 
 
-def update_stock(product, adjustment):
+def update_stock(request, product, adjustment):
     """
     Update stock level of product
     """
@@ -15,6 +15,7 @@ def update_stock(product, adjustment):
     if product.stock < 0:
         raise ValueError('Stock cannot be negative.')
     product.save()
+    request.session.set_expiry(1800)
 
 
 @login_required
@@ -48,7 +49,7 @@ def add_to_basket(request, item_id):
             basket[item_id] = quantity
             messages.success(request, f'{product.name} added to basket')
         # update product stock level
-        update_stock(product, -quantity)
+        update_stock(request, product, -quantity)
     except Exception as e:
         messages.error(
             request,
@@ -86,7 +87,7 @@ def adjust_basket(request, item_id):
             )
         # update product stock level
         quantity_delta = previous_quantity - new_quantity
-        update_stock(product, quantity_delta)
+        update_stock(request, product, quantity_delta)
     except Exception as e:
         messages.error(
             request,
@@ -111,7 +112,7 @@ def remove_from_basket(request, item_id):
         quantity = int(request.POST['quantity'])
 
         # update product stock level
-        update_stock(product, quantity)
+        update_stock(request, product, quantity)
 
         basket.pop(item_id, None)
         messages.info(
