@@ -44,9 +44,44 @@ main {
 
 /* START> ALLAUTH TEMPLATES */
 .allauth-container {
-    background-color: #839680;
-    border-radius: 20px;
-    padding: 20px;
+    padding: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(180, 180, 180);
+}
+
+.allauth-inner-content {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(220, 220, 220);
+    padding: 25px;
+}
+
+.allauth-inner-content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-auth {
+    align-self: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .allauth-container {
+        padding-top: 40px;
+    }
+
+    .allauth-inner-content {
+        border-radius: 20px;
+    }
 }
 /* END> ALLAUTH TEMPLATES */
 

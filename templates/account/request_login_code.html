@@ -20,13 +20,13 @@
             {{ redirect_field }}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" tags="prominent,login" %}
+            {% element button type="submit" class="btn-success" tags="prominent,login" %}
                 {% translate "Request Code" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}
     {% url 'account_login' as login_url %}
-    {% element button href=login_url tags="link" %}
+    {% element button href=login_url class="btn-success" tags="link" %}
         {% translate "Other sign-in options" %}
     {% endelement %}
 {% endblock inner_content %}
