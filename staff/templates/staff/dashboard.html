@@ -66,7 +66,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
-                    <div class="mb-3 text-center">
+                    <div class="mb-3">
                         {% csrf_token %}
                         {% if active_tab == 'FAQ' %}
                             {% if form %}
@@ -88,11 +88,14 @@
                             {% endif %}
                         {% elif active_tab == 'Product' %}
                             {% if form %}
-                                {% for field in form %}
-                                    {% if field.name != "image" %}
-                                        {{ field | as_crispy_field }}
-                                    {% endif %}
-                                {% endfor %}
+                                {{ form.name | as_crispy_field }}
+                                {{ form.realm | as_crispy_field }}
+                                {{ form.description | as_crispy_field }}
+                                <div class="d-flex gap-4">
+                                    {{ form.price | as_crispy_field }}
+                                    {{ form.stock | as_crispy_field }}
+                                </div>
+                                {{ form.unique_stock | as_crispy_field }}
                                 {{ form.image.as_widget }}
                             {% elif to_delete %}
                                 <div>

@@ -20,7 +20,8 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # Setting realm names to display names in the dropdown
         realms = Realm.objects.all().order_by('name')
         display_names = [(r.id, r.display_name()) for r in realms]
-
         self.fields['realm'].choices = display_names
+        self.fields['price'].widget.attrs['placeholder'] = '£'
