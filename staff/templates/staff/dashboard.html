@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load product_tags %}
 
 {% block extra_css %}
     <!-- support_style.css -->
@@ -76,7 +77,7 @@
                                 </div>
                                 {{ form.question | as_crispy_field }}
                                 {{ form.answer | as_crispy_field }}
-                            {% elif to_delete %}
+                                {% elif to_delete %}
                                 <div>
                                     Are you sure you want to delete the following FAQ?
                                     (This cannot be undone)
@@ -85,11 +86,14 @@
                                         <p><strong>A:</strong> {{ to_delete.answer }}</p>
                                     </div>
                                 </div>
-                            {% endif %}
-                        {% elif active_tab == 'Product' %}
-                            {% if form %}
+                                {% endif %}
+                                {% elif active_tab == 'Product' %}
+                                {% if form %}
                                 {{ form.name | as_crispy_field }}
                                 {{ form.realm | as_crispy_field }}
+                                <div id="new-realm-field">
+                                    {{ form.new_realm | as_crispy_field }}
+                                </div>
                                 {{ form.description | as_crispy_field }}
                                 <div class="d-flex gap-4">
                                     {{ form.price | as_crispy_field }}

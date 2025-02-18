@@ -18,6 +18,9 @@ class Realm(models.Model):
 
 
 class Product(models.Model):
+    class Meta:
+        ordering = ['realm__name']
+
     name = models.CharField(max_length=254)
     realm = models.ForeignKey(
         'Realm', null=True, blank=True, on_delete=models.SET_NULL

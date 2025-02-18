@@ -68,8 +68,13 @@ td.text-end {
     height: 39px;
 }
 
-/* Hiding new topid field on FAQ form until needed */
+/* Hiding new topic field on FAQ form until needed */
 #new-topic-field {
+    display: none;
+}
+
+/* Hiding new realm field on FAQ form until needed */
+#new-realm-field {
     display: none;
 }
 

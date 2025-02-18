@@ -49,6 +49,21 @@ if (idTopic) {
     });
 }
 
+// Show new realm field in Product form if new realm is selected
+const idRealm = document.getElementById('id_realm')
+
+if (idRealm) {
+    idRealm.addEventListener('change', function() {
+        let newRealmField = document.getElementById('new-realm-field');
+        if (this.value === 'new') {
+            newRealmField.style.display = 'block';
+        } else {
+            newRealmField.style.display = 'none';
+            document.getElementById('id_new_realm').value = '';
+        }
+    });
+}
+
 // DASHBOARD BUTTON SPINNERS //
 const spinnerButtons = document.getElementsByClassName('btn-with-spinner');
 const dashboardModalConfirmButton = document.getElementById('dashboard-modal-confirm');

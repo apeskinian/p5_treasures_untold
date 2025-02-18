@@ -74,7 +74,7 @@ class FaqsForm(forms.ModelForm):
         self.fields['topic'].label = False
         self.fields['topic'] = forms.ChoiceField(
             choices=[
-                ('', '-- Select a Topic --'), ('new', 'Add New Topic')
+                ('', '- Select a Topic -'), ('new', 'Add New Topic')
             ] + topic_choices,
             required=True
         )

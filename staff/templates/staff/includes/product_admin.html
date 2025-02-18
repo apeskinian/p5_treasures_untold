@@ -23,7 +23,7 @@
         <tr>
             <td><img width="50" height="50" class="rounded-2" src="{{ product.image_url }}" alt="{{ product.name }}"></td>
             <td>{{ product.name }}</td>
-            <td>{{ product.realm }}</td>
+            <td>{{ product.realm.display_name }}</td>
             <td>{{ product.sku }}</td>
             <td>{{ product.stock }}</td>
             <td>£{{ product.price }}</td>
