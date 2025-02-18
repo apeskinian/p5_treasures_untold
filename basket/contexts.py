@@ -16,11 +16,10 @@ def basket_contents(request):
 
     for index, (item_id, quantity) in enumerate(basket.items()):
         product = get_object_or_404(Product, pk=item_id)
+        original_price = product.price
         if index < 3 and 'magic-lamp' in rewards:
-            original_price = product.price
             product.price = 0
         if product.realm.name == 'Agrabah' and 'cave-of-wonders' in rewards:
-            original_price = product.price
             product.price = 0
         total += quantity * product.price
         product_count += quantity
