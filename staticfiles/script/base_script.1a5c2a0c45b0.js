@@ -15,7 +15,6 @@ document.querySelector('#by-realm-menu-mobile a').addEventListener('click', func
 
 // sort items selector
 $('#sort-selector').change(function() {
-  console.log('SELECTOR INITIALISED')
   var selector = $(this);
   var currentUrl = new URL(window.location);
   var selectedVal = selector.val();
@@ -43,7 +42,6 @@ $('#submit-filter').click(function() {
   $('#filter-form input[type="checkbox"]').each(function () {
     if ($(this).is(':checked')) {
       if ($(this).attr('name')=='new') {
-        console.log('new is checked');
         filterNewList.push($(this).val());
       } else if ($(this).attr('name')=='stock') {
         filterStockList.push($(this).val());
@@ -66,7 +64,6 @@ $('#submit-filter').click(function() {
   const queryString = filterList.length > 0 ? `?${filterList.join('&')}` : '';
   const url = `${baseUrl}${queryString}`;
   window.location.replace(url);
-  console.log(queryString);
 })
 
 // scroll to top button

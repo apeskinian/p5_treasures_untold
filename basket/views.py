@@ -27,7 +27,7 @@ def update_stock(request, product, adjustment):
     except ValueError:
         pass
 
-    request.session.set_expiry(604800)
+    request.session.set_expiry(2000)
     request.session['modified'] = datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
 
 

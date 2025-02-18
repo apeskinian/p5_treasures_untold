@@ -1,6 +1,26 @@
 /* import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 
+:root {
+    --tu-green: #839680;
+    --tu-green-hover: #5f6e5d;
+    --tu-green-shadow: #5f6e5d80;
+    --tu-red: #934B59;
+    --tu-red-hover: #713945;
+    --tu-red-shadow: #71394580;
+    --tu-yellow: #E6B86E;
+    --tu-yellow-hover: #C78D4B;
+    --tu-yellow-shadow: #c78d4b80;
+    --tu-blue: #5190a5;
+    --tu-blue-hover: #3F7586;
+    --tu-blue-shadow: #3f758680;
+    --tu-teal: #405254;
+    --tu-off-white: #EEEEEE;
+    --tu-light-grey: #dcdcdc;
+    --tu-light-grey-shadow: #dcdcdc80;
+    --tu-mid-grey: #b4b4b4;
+}
+
 /* OVERRIDE BROWSER DEFAULTS */
 * {
     padding: 0;
@@ -17,6 +37,7 @@
 .disabled {
     cursor: default;
     opacity: 0.6;
+    pointer-events: none;
 }
 
 h1 {
@@ -36,21 +57,143 @@ main {
 }
 
 #apeskinian {
-    background-color: #405254;
+    background-color: var(--tu-teal);
     height: 30px;
     margin-bottom: 60px;
 }
 
+/* START> BUTTON STYLES */
+.btn-red {
+    color: #FFF;
+    background-color: var(--tu-red);
+    border-color: var(--tu-red);
+}
+
+.btn-red:hover {
+    color: #FFF;
+    background-color: var(--tu-red-hover);
+    border-color: var(--tu-red-hover);
+}
+
+.btn-red:focus {
+    color: #FFF;
+    background-color: var(--tu-red);
+    box-shadow: 0 0 0 4px var(--tu-red-shadow);
+}
+
+.btn-green {
+    color: #FFF;
+    background-color: var(--tu-green);
+    border-color: var(--tu-green);
+}
+
+.btn-green:hover {
+    color: #FFF;
+    background-color: var(--tu-green-hover);
+    border-color: var(--tu-green-hover);
+}
+
+.btn-green:focus {
+    color: #FFF;
+    background-color: var(--tu-green);
+    border-color: var(--tu-green);
+    box-shadow: var(--tu-green-shadow);
+}
+
+.btn-blue {
+    color: #FFF;
+    background-color: var(--tu-blue);
+    border-color: var(--tu-blue);
+}
+
+.btn-blue:hover {
+    color: #FFF;
+    background-color: var(--tu-blue-hover);
+    border-color: var(--tu-blue-hover);
+}
+
+.btn-blue:focus {
+    color: #FFF;
+    background-color: var(--tu-blue);
+    border-color: var(--tu-blue);
+    box-shadow: var(--tu-blue-shadow);
+}
+
+.btn-yellow {
+    color: #333333;
+    background-color: var(--tu-yellow);
+    border-color: var(--tu-yellow);
+}
+
+.btn-yellow:hover {
+    color: #333333;
+    background-color: var(--tu-yellow-hover);
+    border-color: var(--tu-yellow-hover);
+}
+
+.btn-yellow:focus {
+    color: #333333;
+    background-color: var(--tu-yellow);
+    border-color: var(--tu-yellow);
+    box-shadow: var(--tu-yellow-shadow);
+}
+
+/* END> BUTTON STYLES */
+
+/* START> ALLAUTH TEMPLATES */
+.allauth-container {
+    padding: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    background-color: var(--tu-light-grey);
+}
+
+.allauth-inner-content {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--tu-light-grey);
+    padding: 25px;
+}
+
+.allauth-inner-content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-auth {
+    align-self: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .allauth-container {    
+        background-color: var(--tu-mid-grey);
+        padding: 40px 0px;
+    }
+
+    .allauth-inner-content {
+        border-radius: 20px;
+    }
+}
+/* END> ALLAUTH TEMPLATES */
+
 /* START> OVERIDING BOOTSTRAP DEFAULT COLOURS */
 .form-control:focus {
-    box-shadow: 0 0 0 3px #83968066;
-    border-color: #839680;
+    box-shadow: 0 0 0 3px var(--tu-green-shadow);
+    border-color: var(--tu-green);
 }
 
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
-    background-color: #839680;
-    color: white;
+    background-color: var(--tu-green);
+    color: #FFF;
 }
 /* END> OVERIDING BOOTSTRAP DEFAULT COLOURS */
 
@@ -112,13 +255,26 @@ main {
 }
 
 #bottom-nav-mobile .dropdown-menu {
+    box-shadow: 0px -5px 15px 0px rgba(0, 0, 0, 0.5);
     position: fixed;
-    border-radius: 0;
     width: 100vw;
-    background-color: lightgrey;
-    border-color: #1B2429;
+    border-color: var(--tu-off-white);
+    border-radius: 0;
+    background-color: var(--tu-off-white);
     bottom: 58px;
     left: 0;
+}
+
+.btn-mob-basket {
+    width: 40%;
+}
+
+.mob-basket-badge {
+    background-color: var(--tu-blue);
+    border: 3px solid #FFF;
+    font-size: 1rem;
+    top: 10%;
+    left: 80%;
 }
 /* END> NAVIGATION BARS */
 

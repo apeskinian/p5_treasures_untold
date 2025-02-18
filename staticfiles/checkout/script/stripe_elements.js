@@ -8,16 +8,11 @@ var stripe = Stripe(stripePublicKey);
 
 const options = {
   clientSecret,
-  appearance: {/*...*/},
+  appearance: {},
 };
 
 // Set up Stripe.js and Elements to use in checkout form, passing the client secret
 const elements = stripe.elements(options);
-
-// // create and mount the address element
-// const addressElementOptions = { mode: 'shipping' }
-// const addressElement = elements.create('address', addressElementOptions)
-// addressElement.mount('#address-element')
 
 // Create and mount the Payment Element
 const paymentElementOptions = { layout: 'accordion'};
@@ -37,14 +32,11 @@ paymentElement.addEventListener('change', function(event) {
 
 const form = document.getElementById('payment-form');
 
-
-
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   setLoading(true);
 
   var saveInfo = Boolean($('#id-save-info').prop('checked'));
-  console.log(saveInfo);
   var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
   var postData = {
     'csrfmiddlewaretoken': csrfToken,
