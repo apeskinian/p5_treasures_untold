@@ -254,7 +254,7 @@ def manage_product(request, delete=None, product_id=None):
 def reply_to_message(request, message_id):
 
     contact_messages = ContactMessage.objects.all()
-    mode = 'Reply to'
+    mode = 'Reply'
     return_url = f"{reverse('dashboard')}?tab=Message"
     message = get_object_or_404(ContactMessage, pk=message_id)
 
