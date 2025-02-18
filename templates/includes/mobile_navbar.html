@@ -1,4 +1,5 @@
 {% load static %}
+{% load basket_tools %}
 <!-- mobile navbar -->
 <nav id="bottom-nav-mobile" class="d-flex justify-content-evenly d-md-none navbar fixed-bottom p-3">
     <div id="account-options" class="dropup">
@@ -71,53 +72,63 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-                <div>
-                    {% if basket_items %}
-                        <div class="table-resposive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Subtotal</th>
-                                    </tr>
-                                    {% for item in basket_items %}
-                                    <tr>
-                                        <td class="w-25">
-                                            <img class="img-fluid" src="{{ item.product.image_url }}" alt="">
-                                        </td>
-                                        <td>
-                                            <p><strong>{{ item.product.name }}</strong></p>
-                                            <p><small>{{ item.product.sku }}</small></p>
-                                        </td>
-                                        <td><p>£{{ item.product.price }}</p></td>
-                                        <td><p>{{ item.quantity }}</p></td>
-                                        <td><p>£{{ item.product.price }}</p></td>
-                                    </tr>
-                                    {% endfor %}
-                                    <tr>
-                                        <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
-                                        <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
-                                        <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
-                                    </tr>
-                                </thead>
-                            </table>
+                {% if basket_items %}
+                    <h1 class="text-center mt-1">Shopping Basket</h1>
+                    <div class="container mb-3 px-4">    
+                        {% for item in basket_items %}
+                        <div class="row mt-3 d-flex mb-2">
+                            <div class="col-3 position-relative">
+                                <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
+                                    {{ item.quantity }}
+                                </span>
+                            </div>
+                            <div class="col-3 flex-grow-1 d-flex flex-column">
+                                <strong>{{ item.product.name }}</strong>
+                                <small>{{ item.product.sku }}</small>
+                                {% if rewards and 'magic-lamp in rewards' %}
+                                    {% if item.product.price == 0.00 %}
+                                    <span>
+                                        <small class="text-decoration-line-through">£{{ item.original_price }}</small>
+                                        <small class="text-danger">£{{ item.product.price }}</small> 
+                                    </span>
+                                    {% endif %}
+                                {% else %}    
+                                    <small>£{{ item.product.price }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="col-3 d-flex justify-content-end">
+                                <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                            </div>
                         </div>
-                        {% else %}
-                        <div class="d-flex flex-column align-items-center mt-5 mb-5">
-                            <p class="mb-1">Your basket is empty</p>
-                            <a href="{% url 'products' %}" class="btn btn-blue w-50">Continue Shopping</a>
+                        {% endfor %}
+                        <div class="row">
+                            <div class="col d-flex flex-column align-items-end">
+                                {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
+                                    <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ original_total|floatformat:2 }}</strong></p>
+                                    <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
+                                    <p class="m-0">Total: <strong>£{{ total|floatformat:2 }}</strong></p>
+                                {% else %}
+                                    <p class="m-0">Basket Total: <strong>£{{ total|floatformat:2 }}</strong></p>
+                                {% endif %}
+                                <p class="m-0">Delivery: <strong>£{{ delivery|floatformat:2 }}</strong></p>
+                                <p class="m-0">Grand Total: <strong>£{{ grand_total|floatformat:2 }}</strong></p>
+                            </div>
                         </div>
-                        {% endif %}
-                </div>
+                    </div>
+                {% else %}
+                    <div class="d-flex flex-column align-items-center mt-4 mb-5">
+                        <p class="mb-1">Your basket is empty</p>
+                        <a href="{% url 'products' %}" class="btn btn-blue w-50">Continue Shopping</a>
+                    </div>
+                {% endif %}
             </li>
             <li>
                 <div class="d-flex gap-2 justify-content-center mb-2">
-                    <a href="{% url 'view_basket' %}" class="btn-mob-basket btn btn-green" aria-label="view the basket">View Basket</a>
+                    <a href="{% url 'view_basket' %}" class="btn-mob-basket btn btn-yellow" aria-label="edit the basket">Edit Basket</a>
                     <a href="{% url 'checkout' %}" class="btn-mob-basket btn btn-green" aria-label="view the basket">Secure Checkout</a>
                 </div>
             </li>
+        </ul>
     </div>
 </nav>

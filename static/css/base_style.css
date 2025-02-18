@@ -8,14 +8,14 @@
     --tu-red: #934B59;
     --tu-red-hover: #713945;
     --tu-red-shadow: #71394580;
-    --tu-yellow: #EBDAAF;
-    --tu-yellow-hover: #d6bb76;
-    --tu-yellow-shadow: #d6bb7680;
+    --tu-yellow: #E6B86E;
+    --tu-yellow-hover: #C78D4B;
+    --tu-yellow-shadow: #c78d4b80;
     --tu-blue: #5190a5;
     --tu-blue-hover: #3F7586;
     --tu-blue-shadow: #3f758680;
     --tu-teal: #405254;
-    --tu-off-white: #f0f0f0;
+    --tu-off-white: #EEEEEE;
     --tu-light-grey: #dcdcdc;
     --tu-light-grey-shadow: #dcdcdc80;
     --tu-mid-grey: #b4b4b4;
@@ -119,6 +119,25 @@ main {
     box-shadow: var(--tu-blue-shadow);
 }
 
+.btn-yellow {
+    color: #333333;
+    background-color: var(--tu-yellow);
+    border-color: var(--tu-yellow);
+}
+
+.btn-yellow:hover {
+    color: #333333;
+    background-color: var(--tu-yellow-hover);
+    border-color: var(--tu-yellow-hover);
+}
+
+.btn-yellow:focus {
+    color: #333333;
+    background-color: var(--tu-yellow);
+    border-color: var(--tu-yellow);
+    box-shadow: var(--tu-yellow-shadow);
+}
+
 /* END> BUTTON STYLES */
 
 /* START> ALLAUTH TEMPLATES */
@@ -167,7 +186,7 @@ main {
 
 /* START> OVERIDING BOOTSTRAP DEFAULT COLOURS */
 .form-control:focus {
-    box-shadow: 0 0 0 3px --tu-green-shadow;
+    box-shadow: 0 0 0 3px var(--tu-green-shadow);
     border-color: var(--tu-green);
 }
 
@@ -236,18 +255,26 @@ main {
 }
 
 #bottom-nav-mobile .dropdown-menu {
-    box-shadow: 0px -2px 15px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -5px 15px 0px rgba(0, 0, 0, 0.5);
     position: fixed;
     width: 100vw;
-    border-radius: 20px 20px 0px 0px;
-    background-color: #FFF;
-    border-color: #FFF;
+    border-color: var(--tu-off-white);
+    border-radius: 0;
+    background-color: var(--tu-off-white);
     bottom: 58px;
     left: 0;
 }
 
 .btn-mob-basket {
     width: 40%;
+}
+
+.mob-basket-badge {
+    background-color: var(--tu-blue);
+    border: 3px solid #FFF;
+    font-size: 1rem;
+    top: 10%;
+    left: 80%;
 }
 /* END> NAVIGATION BARS */
 

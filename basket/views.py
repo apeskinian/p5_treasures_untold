@@ -27,7 +27,7 @@ def update_stock(request, product, adjustment):
     except ValueError:
         pass
 
-    request.session.set_expiry(2000)
+    request.session.set_expiry(604800)
     request.session['modified'] = datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
 
 
@@ -142,9 +142,9 @@ def remove_from_basket(request, item_id):
 def check_for_cave_of_wonders(request):
 
     basket = request.session.get('basket', {})
-    monkey_idol = str(get_object_or_404(Product, sku='ph033').id)
-    beetle_left = str(get_object_or_404(Product, sku='ph020').id)
-    beetle_right = str(get_object_or_404(Product, sku='ph021').id)
+    monkey_idol = str(get_object_or_404(Product, sku='TU-AGR-SMI-U').id)
+    beetle_left = str(get_object_or_404(Product, sku='TU-AGR-LHGSB-U').id)
+    beetle_right = str(get_object_or_404(Product, sku='TU-AGR-RHGSB-U').id)
 
     if monkey_idol not in basket.keys():
         if beetle_left in basket.keys() and beetle_right in basket.keys():
