@@ -14,6 +14,6 @@ class ProductAdmin(admin.ModelAdmin):
         'name', 'realm_name', 'sku', 'price',
         'stock', 'unique_stock', 'date_added'
     )
-    list_editable = ('stock', 'unique_stock')
+    list_editable = ('stock', 'unique_stock',)
     list_filter = ('realm',)
     ordering = ('realm__name', 'name')

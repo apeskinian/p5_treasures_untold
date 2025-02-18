@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ['sku',]
         widgets = {
             'description': forms.Textarea(attrs={'rows': 3})
         }
@@ -20,7 +20,7 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        realms = Realm.objects.all()
+        realms = Realm.objects.all().order_by('name')
         display_names = [(r.id, r.display_name()) for r in realms]
 
         self.fields['realm'].choices = display_names
