@@ -23,15 +23,15 @@
             {{ redirect_field }}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" class="btn-sucess" tags="prominent,confirm" %}
+            {% element button type="submit" class="btn-green" tags="prominent,confirm" %}
                 {% translate "Confirm" %}
             {% endelement %}
             {% if cancel_url %}
-                {% element button href=cancel_url class="btn-danger" tags="link,cancel" %}
+                {% element button href=cancel_url class="btn-red" tags="link,cancel" %}
                     {% translate "Cancel" %}
                 {% endelement %}
             {% else %}
-                {% element button type="submit" class="btn-danger" form="logout-from-stage" tags="link,cancel" %}
+                {% element button type="submit" class="btn-red" form="logout-from-stage" tags="link,cancel" %}
                     {% translate "Cancel" %}
                 {% endelement %}
             {% endif %}

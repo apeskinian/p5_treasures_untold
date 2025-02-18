@@ -1,15 +1,28 @@
 {% load static %}
 <!-- mobile navbar -->
 <nav id="bottom-nav-mobile" class="d-flex justify-content-evenly d-md-none navbar fixed-bottom p-3">
-    <div class="dropup">
-        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+    <div id="account-options" class="dropup">
+        <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-hat-wizard fa-xl"></i>
         </a>
-        <ul class="dropdown-menu">
-            {% include 'includes/login_options.html' %}
+        <ul class="dropdown-menu p-2">
+            {% if user.is_authenticated %}
+                <li class="text-center"><a href="{% url 'profile' %}" class="btn btn-green w-75 mt-3" id="profile-page" aria-label="go to your profile page">Profile</a></li>
+                {% if user.is_staff %}
+                    <li class="text-center"><a href="{% url 'dashboard' %}" class="btn btn-secondary w-75 mt-2" id="staff" aria-label="go to the settings page">Shop Management</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <li class="text-center"><a href="{% url 'admin:index' %}" class="btn btn-secondary w-75 mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></li>
+                {% endif %}
+                <li class="text-center"><a href="{{ logout_url }}" class="btn btn-red w-75 mt-2" aria-label="sign out">Log out</a></li>
+                <li class="text-center mt-2"><p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p></li>
+            {% else %}
+                <li class="text-center"><a href="{{ login_url }}" class="btn btn-green w-75 mt-2">Log in</a></li>
+                <li class="text-center"><a href="{{ signup_url }}" class="btn btn-green w-75 mt-2">Sign up</a></li>
+            {% endif %}
         </ul>
     </div>
-    <div class="dropup">
+    <div id="navigation-options" class="dropup">
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
@@ -52,7 +65,7 @@
             </li>
         </ul>
     </div>
-    <div class="dropup">
+    <div id="basket" class="dropup">
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-basket-shopping fa-xl"></i>
         </a>
@@ -93,13 +106,18 @@
                             </table>
                         </div>
                         {% else %}
-                        <p>Your basket is empty</p>
-                        <a href="{% url 'products' %}" class="">Continue Shopping</a>
+                        <div class="d-flex flex-column align-items-center mt-5 mb-5">
+                            <p class="mb-1">Your basket is empty</p>
+                            <a href="{% url 'products' %}" class="btn btn-blue w-50">Continue Shopping</a>
+                        </div>
                         {% endif %}
                 </div>
             </li>
-            <li class="text-center"><div class="btn btn-secondary"><a href="{% url 'view_basket' %}" class="dropdown-item" aria-label="view the basket">View Basket</a></div></li>
-            <li class="text-center"><div class="btn btn-secondary"><a href="{% url 'checkout' %}" class="dropdown-item btn btn-secondary" aria-label="view the basket">Secure Checkout</a></div></li>
-        </ul>
+            <li>
+                <div class="d-flex gap-2 justify-content-center mb-2">
+                    <a href="{% url 'view_basket' %}" class="btn-mob-basket btn btn-green" aria-label="view the basket">View Basket</a>
+                    <a href="{% url 'checkout' %}" class="btn-mob-basket btn btn-green" aria-label="view the basket">Secure Checkout</a>
+                </div>
+            </li>
     </div>
 </nav>

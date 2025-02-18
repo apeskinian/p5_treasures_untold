@@ -17,7 +17,7 @@
             {{ redirect_field }}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" class="btn-danger" %}
+            {% element button type="submit" class="btn-red" %}
                 {% trans 'Sign Out' %}
             {% endelement %}
             <a href="{% url 'home' %}" class="btn btn-secondary btn-auth mt-2">Cancel</a>

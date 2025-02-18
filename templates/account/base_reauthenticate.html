@@ -20,7 +20,7 @@
         {% endelement %}
         {% element button_group %}
             {% for alt in reauthentication_alternatives %}
-                {% element button href=alt.url tags="primary,outline" %}
+                {% element button href=alt.url class="btn-secondary" tags="primary,outline" %}
                     {{ alt.description }}
                 {% endelement %}
             {% endfor %}

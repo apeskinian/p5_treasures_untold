@@ -33,7 +33,7 @@
                     {% endslot %}
                     {% slot help_text %}
                         {% blocktranslate %}Your email address is still pending verification.{% endblocktranslate %}
-                        {% element button form="pending-email" class="btn-success" type="submit" name="action_send" tags="minor,secondary" %}
+                        {% element button form="pending-email" class="btn-green" type="submit" name="action_send" tags="minor,secondary" %}
                             {% trans 'Re-send Verification' %}
                         {% endelement %}
                         {% if current_emailaddress %}
@@ -51,7 +51,7 @@
             {% endelement %}
         {% endslot %}
         {% slot actions %}
-            {% element button name="action_add" class="btn-success" type="submit" %}
+            {% element button name="action_add" class="btn-green" type="submit" %}
                 {% trans "Change Email" %}
             {% endelement %}
         {% endslot %}
