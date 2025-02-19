@@ -8,18 +8,18 @@
         </a>
         <ul class="dropdown-menu p-2">
             {% if user.is_authenticated %}
-                <li class="text-center"><a href="{% url 'profile' %}" class="btn btn-green w-75 mt-3" id="profile-page" aria-label="go to your profile page">Profile</a></li>
+                <li class="text-center"><a href="{% url 'profile' %}" class="btn btn-green btn-mob-account mt-3" id="profile-page" aria-label="go to your profile page">Profile</a></li>
                 {% if user.is_staff %}
-                    <li class="text-center"><a href="{% url 'dashboard' %}" class="btn btn-secondary w-75 mt-2" id="staff" aria-label="go to the settings page">Shop Management</a></li>
+                    <li class="text-center"><a href="{% url 'dashboard' %}" class="btn btn-secondary btn-mob-account mt-2" id="staff" aria-label="go to the settings page">Shop Management</a></li>
                 {% endif %}
                 {% if user.is_superuser %}
-                    <li class="text-center"><a href="{% url 'admin:index' %}" class="btn btn-secondary w-75 mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></li>
+                    <li class="text-center"><a href="{% url 'admin:index' %}" class="btn btn-secondary btn-mob-account mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></li>
                 {% endif %}
-                <li class="text-center"><a href="{{ logout_url }}" class="btn btn-red w-75 mt-2" aria-label="sign out">Log out</a></li>
+                <li class="text-center"><a href="{{ logout_url }}" class="btn btn-red btn-mob-account mt-2" aria-label="sign out">Log out</a></li>
                 <li class="text-center mt-2"><p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p></li>
             {% else %}
-                <li class="text-center"><a href="{{ login_url }}" class="btn btn-green w-75 mt-2">Log in</a></li>
-                <li class="text-center"><a href="{{ signup_url }}" class="btn btn-green w-75 mt-2">Sign up</a></li>
+                <li class="text-center"><a href="{{ login_url }}" class="btn btn-green btn-mob-account mt-2">Log in</a></li>
+                <li class="text-center mb-2"><a href="{{ signup_url }}" class="btn btn-green btn-mob-account mt-2">Sign up</a></li>
             {% endif %}
         </ul>
     </div>
@@ -27,10 +27,10 @@
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
-        <ul class="dropdown-menu">
-            <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item" aria-label="go to the home page">Home</a></li>
-            <li class="text-center"><a href="{% url 'products' %}?new" class="dropdown-item" aria-label="see the new products">New</a></li>
-            <li class="text-center"><a href="{% url 'products' %}" class="dropdown-item" aria-label="shop all products">All Products</a></li>
+        <ul id="mob-menu-options" class="dropdown-menu p-3">         
+            <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item {% if request.path == '/' %}mob-menu-active{% endif %}" aria-label="go to the home page">Home</a></li>
+            <li class="text-center"><a href="{% url 'products' %}?new" class="dropdown-item {% if 'new' in request.GET %}mob-menu-active{% endif %}" aria-label="see the new products">New</a></li>
+            <li class="text-center"><a href="{% url 'products' %}" class="dropdown-item {% if not request.GET and request.path == '/products/' %}mob-menu-active{% endif %}" aria-label="shop all products">All Products</a></li>
             <li class="text-center">
                 <div id="by-realm-menu-mobile">
                     <a href="#realm-collapse-mobile" class="nav-link text-black" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="realm-collapse-mobile">
@@ -42,14 +42,14 @@
                 </div>
                 <ul id="realm-collapse-mobile" class="collapse list-unstyled ms-3">
                     {% for realm in all_realms %}
-                        <li><a class="nav-link {% if forloop.first %}mt-2{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a></li>
+                        <li><a class="nav-link {% if forloop.first %}mt-2{% endif %}{% if realm.name in request.GET.realm %} mob-menu-active{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
-            <li class="text-center"><a href="{% url 'faq' %}" class="dropdown-item" aria-label="see our faqs">FAQ</a></li>
-            <li class="text-center"><a href="{% url 'contact' %}" class="dropdown-item" aria-label="go to the contact us page">Contact Us</a></li>
-            <li class="text-center"><a href="{% url 'privacy' %}" class="dropdown-item" aria-label="view our privacy statement">Privacy</a></li>
-            <li class="text-center"><a href="{% url 'newsletter' %}" class="dropdown-item" aria-label="sign up to our newsletter">Newsletter</a></li>
+            <li class="text-center"><a href="{% url 'faq' %}" class="dropdown-item {% if request.path == '/support/faq/' %}mob-menu-active{% endif %}" aria-label="see our faqs">FAQ</a></li>
+            <li class="text-center"><a href="{% url 'contact' %}" class="dropdown-item {% if request.path == '/support/contact/' %}mob-menu-active{% endif %}" aria-label="go to the contact us page">Contact Us</a></li>
+            <li class="text-center"><a href="{% url 'privacy' %}" class="dropdown-item {% if request.path == '/support/privacy/' %}mob-menu-active{% endif %}" aria-label="view our privacy statement">Privacy</a></li>
+            <li class="text-center"><a href="{% url 'newsletter' %}" class="dropdown-item {% if request.path == '/support/newsletter/' %}mob-menu-active{% endif %}" aria-label="sign up to our newsletter">Newsletter</a></li>
             <li>
                 <div id="search-box" class="px-3 mb-2 mt-2">
                     <form method="GET" action="{% url 'products' %}">
@@ -74,42 +74,56 @@
             <li>
                 {% if basket_items %}
                     <h1 class="text-center mt-1">Shopping Basket</h1>
-                    <div class="container mb-3 px-4">    
-                        {% for item in basket_items %}
-                        <div class="row mt-3 d-flex mb-2">
-                            <div class="col-3 position-relative">
-                                <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
-                                <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
-                                    {{ item.quantity }}
-                                </span>
+                    <div class="container mb-3 px-4">
+                        <div class="row">
+                            <div id="items-scroller" class="col">
+                                {% for item in basket_items %}
+                                <div class="row mt-3 d-flex mb-2">
+                                    <div class="col-3 d-flex align-items-center">
+                                        <div class="position-relative">
+                                            <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                            <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
+                                                {{ item.quantity }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 flex-grow-1 d-flex flex-column justify-content-center">
+                                        <strong>{{ item.product.name }}</strong>
+                                        <small>{{ item.product.sku }}</small>
+                                        {% if rewards %}
+                                            {% if 'magic-lamp' in rewards %}
+                                                {% if forloop.counter < 4 %}
+                                                    {% if item.product.price == 0.00 %}
+                                                        <small class="text-danger">MAGIC LAMP</small> 
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if 'cave-of-wonders' in rewards %}
+                                                {% if item.product.price == 0.00 %}
+                                                    <small class="text-danger">CAVE OF WONDERS</small> 
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-end align-items-center">
+                                        {% if item.product.price == 0.00 %}
+                                            <strong class="text-danger">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                                        {% else %}
+                                            <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
-                            <div class="col-3 flex-grow-1 d-flex flex-column">
-                                <strong>{{ item.product.name }}</strong>
-                                <small>{{ item.product.sku }}</small>
-                                {% if rewards and 'magic-lamp in rewards' %}
-                                    {% if item.product.price == 0.00 %}
-                                    <span>
-                                        <small class="text-decoration-line-through">£{{ item.original_price }}</small>
-                                        <small class="text-danger">£{{ item.product.price }}</small> 
-                                    </span>
-                                    {% endif %}
-                                {% else %}    
-                                    <small>£{{ item.product.price }}</small>
-                                {% endif %}
-                            </div>
-                            <div class="col-3 d-flex justify-content-end">
-                                <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
-                            </div>
-                        </div>
-                        {% endfor %}
+                        </div>    
                         <div class="row">
                             <div class="col d-flex flex-column align-items-end">
                                 {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
                                     <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ original_total|floatformat:2 }}</strong></p>
                                     <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
-                                    <p class="m-0">Total: <strong>£{{ total|floatformat:2 }}</strong></p>
+                                    <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
                                 {% else %}
-                                    <p class="m-0">Basket Total: <strong>£{{ total|floatformat:2 }}</strong></p>
+                                    <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
                                 {% endif %}
                                 <p class="m-0">Delivery: <strong>£{{ delivery|floatformat:2 }}</strong></p>
                                 <p class="m-0">Grand Total: <strong>£{{ grand_total|floatformat:2 }}</strong></p>
@@ -119,7 +133,7 @@
                 {% else %}
                     <div class="d-flex flex-column align-items-center mt-4 mb-5">
                         <p class="mb-1">Your basket is empty</p>
-                        <a href="{% url 'products' %}" class="btn btn-blue w-50">Continue Shopping</a>
+                        <a href="{% url 'products' %}" class="btn-mob-basket btn btn-blue w-50">Continue Shopping</a>
                     </div>
                 {% endif %}
             </li>

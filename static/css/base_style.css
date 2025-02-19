@@ -265,8 +265,16 @@ main {
     left: 0;
 }
 
+.btn-mob-account {
+    width: 250px;
+}
+
 .btn-mob-basket {
     width: 40%;
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mob-basket-badge {
@@ -274,7 +282,34 @@ main {
     border: 3px solid #FFF;
     font-size: 1rem;
     top: 10%;
-    left: 80%;
+    left:90%;
+}
+
+#mob-menu-options {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+#mob-menu-options li {
+    font-size: 1rem;
+    padding: 3px;
+}
+
+#realm-collapse-mobile li {
+    font-size: 1rem;
+    padding: 3px;
+}
+
+.mob-menu-active {
+    font-weight: bold;
+    background-color: var(--tu-mid-grey);
+    color: #FFF;
+    border-radius: 10px;
+}
+
+#items-scroller {
+    max-height: 260px;
+    overflow: scroll;
 }
 /* END> NAVIGATION BARS */
 
