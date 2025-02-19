@@ -1,32 +1,36 @@
-<div class="row support-container">
-    <div id="support-newsletter" class="col-12 col-lg-4 d-flex flex-column justify-content-evenly">
-        <h4 class="text-white m-0">UNLOCK THE MAGIC!</h4>
-        <P class="text-white m-0">Get informed of all the new item drops and news!</P>
-        <form action="{% url 'subscribe' %}" method="POST" class="w-100">
-            <div class="input-group">
-                {% csrf_token %}
-                {{ subscriber_form | crispy }}
-                <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-regular fa-circle-check"></i></button>
+<div class="container-fluid p-0">
+    <div class="row support-container">
+        <div id="support-newsletter" class="col-12 col-md-4 p-3">
+            <h2 class="text-white m-0">Unlock the Magic!</h2>
+            <p class="text-white text-center m-0 py-1">Get informed of all the new item drops and news!</p>
+            <form action="{% url 'subscribe' %}" method="POST">
+                <div class="input-group">
+                    {% csrf_token %}
+                    {{ subscriber_form | crispy }}
+                    <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+        <div id="support-social" class="col-12 col-sm-6 col-md-4 d-flex justify-content-evenly align-items-center">
+            <i class="fa-brands fa-facebook text-white"></i>
+            <i class="fa-brands fa-instagram text-white"></i>
+            <i class="fa-brands fa-x-twitter text-white"></i>
+        </div>
+        <div id="support-links" class="col-12 col-sm-6 col-md-4 d-flex">
+            <div class="row flex-grow-1">
+                <div  class="col d-flex flex-column align-items-end justify-content-center">
+                    <a href="{% url 'home' %}" class="nav-link fw-bold">Home</a>
+                    <a href="{% url 'products' %}?new" class="nav-link fw-bold">New</a>
+                    <a href="{% url 'products' %}" class="nav-link fw-bold">All Products</a>
+                    <a id="support-link-placeholder" href="#">placeholder</a>
+                </div>
+                <div class="col d-flex flex-column align-items-start justify-content-center">
+                    <a href="{% url 'faq' %}" class="nav-link fw-bold">FAQ</a>
+                    <a href="{% url 'contact' %}" class="nav-link fw-bold">Contact Us</a>
+                    <a href="{% url 'privacy' %}" class="nav-link fw-bold">Privacy</a>
+                    <a href="{% url 'newsletter' %}" class="nav-link fw-bold">Newsletter</a>
+                </div>
             </div>
-        </form>
-    </div>
-    <div id="support-social" class="col-12 col-lg-4 d-flex justify-content-evenly align-items-center">
-        <i class="fa-brands fa-facebook text-white"></i>
-        <i class="fa-brands fa-instagram text-white"></i>
-        <i class="fa-brands fa-x-twitter text-white"></i>
-    </div>
-    <div id="support-links" class="col-12 col-lg-4 d-flex">
-        <div class="row flex-grow-1">
-            <div  class="col">
-                <a href="{% url 'home' %}" class="nav-link fw-bold">Home</a>
-                <a href="{% url 'products' %}?new" class="nav-link fw-bold">New</a>
-                <a href="{% url 'products' %}" class="nav-link fw-bold">All Products</a>
-            </div>
-            <div class="col">
-                <a href="{% url 'faq' %}" class="nav-link fw-bold">FAQ</a>
-                <a href="{% url 'contact' %}" class="nav-link fw-bold">Contact Us</a>
-                <a href="{% url 'privacy' %}" class="nav-link fw-bold">Privacy</a>
-                <a href="{% url 'newsletter' %}" class="nav-link fw-bold">Newsletter</a>
         </div>
     </div>
 </div>

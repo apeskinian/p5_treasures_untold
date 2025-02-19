@@ -1,7 +1,29 @@
 /* import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Cantora+One&family=Pirata+One&display=swap');
 @import url('/static/css/custom_colours.css');
 
+:root {
+    --tu-green: #839680;
+    --tu-green-hover: #5f6e5d;
+    --tu-green-shadow: #5f6e5d80;
+    --tu-red: #934B59;
+    --tu-red-hover: #713945;
+    --tu-red-shadow: #71394580;
+    --tu-yellow: #E6B86E;
+    --tu-yellow-hover: #C78D4B;
+    --tu-yellow-shadow: #c78d4b80;
+    --tu-blue: #5190a5;
+    --tu-blue-hover: #3F7586;
+    --tu-blue-shadow: #3f758680;
+    --tu-teal: #405254;
+    --tu-teal-hover: #28383a;
+    --tu-teal-shadow: #28383a80;
+    --tu-off-white: #EEEEEE;
+    --tu-light-grey: #dcdcdc;
+    --tu-mid-grey: #b4b4b4;
+    --tu-dark-grey: #555555;
+    --tu-light-grey-shadow: #dcdcdc80;
+}
 
 /* OVERRIDE BROWSER DEFAULTS */
 * {
@@ -25,6 +47,14 @@
 h1 {
     font-family: 'Pirata One', serif;
 }
+
+h2 {
+    font-family: 'Cantora One', sans-serif;
+}
+
+/* h3, h4, h5, p {
+    font-family: 'Andika', sans-serif;
+} */
 
 body {
     display: flex;
@@ -77,14 +107,7 @@ main {
 
 @media screen and (min-width: 768px) {
 
-    .allauth-container {    
-        background-color: var(--tu-mid-grey);
-        padding: 40px 0px;
-    }
 
-    .allauth-inner-content {
-        border-radius: 20px;
-    }
 }
 /* END> ALLAUTH TEMPLATES */
 
@@ -233,29 +256,46 @@ main {
     margin: 0;
 }
 
-#support-links {
-    background-color: #EBDAAF;
-}
-
-#support-social {
-    font-size: 40px;
-    background-color: #839680;
-}
-
 #support-newsletter {
-    background-color: #934B59;
+    height: 160px;
+    background-color: var(--tu-red);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-#newsletter-form-email {
+#div_id_email {
+    margin: 0 !important;
+}
+
+#id_email {
     border-radius: 8px 0px 0px 8px;
     opacity: 0.50;
-    border: none;
+    border: 1px solid #FFF;
 }
 
 #newsletter-form-submit {
     background-color: white;
     border-radius: 0px 8px 8px 0px;
 }
+
+#support-social {
+    height: 120px;
+    font-size: 40px;
+    background-color: var(--tu-green);
+}
+
+#support-links {
+    height: 120px;
+    color: #FFF;
+    background-color: var(--tu-blue);
+}
+
+#support-link-placeholder {
+    visibility: hidden;
+}
+
 /* END> INFO SECTION */
 
 /* START> MESSAGES */
@@ -325,6 +365,16 @@ main {
 /* END> PRODUCT FORM */
 
 @media screen and (min-width: 768px) {
+    
+    .allauth-container {    
+        background-color: var(--tu-mid-grey);
+        padding: 40px 0px;
+    }
+
+    .allauth-inner-content {
+        border-radius: 20px;
+    }
+    
     .top-nav {
         height: 300px;
         background-size: auto 300px;
@@ -335,6 +385,14 @@ main {
         height: 120px;
         z-index: 100;
         position: fixed;
+    }
+
+    #support-social {
+        height: 160px;
+    }
+    
+    #support-links {
+        height: 160px;
     }
 
     .hero-spacer-enabled {

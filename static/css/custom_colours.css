@@ -1,26 +1,3 @@
-:root {
-    --tu-green: #839680;
-    --tu-green-hover: #5f6e5d;
-    --tu-green-shadow: #5f6e5d80;
-    --tu-red: #934B59;
-    --tu-red-hover: #713945;
-    --tu-red-shadow: #71394580;
-    --tu-yellow: #E6B86E;
-    --tu-yellow-hover: #C78D4B;
-    --tu-yellow-shadow: #c78d4b80;
-    --tu-blue: #5190a5;
-    --tu-blue-hover: #3F7586;
-    --tu-blue-shadow: #3f758680;
-    --tu-teal: #405254;
-    --tu-teal-hover: #28383a;
-    --tu-teal-shadow: #28383a80;
-    --tu-off-white: #EEEEEE;
-    --tu-light-grey: #dcdcdc;
-    --tu-mid-grey: #b4b4b4;
-    --tu-dark-grey: #555555;
-    --tu-light-grey-shadow: #dcdcdc80;
-}
-
 /* START> BUTTONS */
 /* GREEN */
 .btn-green {
