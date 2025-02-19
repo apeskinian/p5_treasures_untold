@@ -17,8 +17,9 @@
     --tu-teal: #405254;
     --tu-off-white: #EEEEEE;
     --tu-light-grey: #dcdcdc;
-    --tu-light-grey-shadow: #dcdcdc80;
     --tu-mid-grey: #b4b4b4;
+    --tu-dark-grey: #555555;
+    --tu-light-grey-shadow: #dcdcdc80;
 }
 
 /* OVERRIDE BROWSER DEFAULTS */
@@ -219,6 +220,20 @@ main {
     left: 1.5rem;
 }
 
+
+.menu-link {
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+    color: var(--tu-dark-grey);
+}
+
+.menu-active {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.1rem;
+}
+
 #account-and-basket {
     position: fixed;
     top: 1.5rem;
@@ -259,7 +274,7 @@ main {
     position: fixed;
     width: 100vw;
     border-color: var(--tu-off-white);
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
     background-color: var(--tu-off-white);
     bottom: 58px;
     left: 0;

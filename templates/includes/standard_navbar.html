@@ -1,4 +1,5 @@
 {% load static %}
+{% load basket_tools %}
 <!-- larger navbar -->
 <nav class="top-nav container-fluid p-0 navbar d-flex justify-content-center">
     <!-- Navigation Offcanvas -->
@@ -7,7 +8,7 @@
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
     </div>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-nav" aria-labelledby="offcanvas-navLabel">
+    <div id="navigation-off-canvas" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-nav" aria-labelledby="offcanvas-navLabel">
         <div class="offcanvas-header">
             <a data-bs-dismiss="offcanvas" href="#offcanvas-nav" aria-label="Close" role="button" class="offcanvas-left-close text-black">
                 <i class="fa-solid fa-bars fa-xl"></i>
@@ -28,26 +29,26 @@
                 </form>
             </div>
             <div class="mt-3 ms-2">
-                <a href="{% url 'home' %}" class="text-black nav-link">Home</a>
-                <a href="{% url 'products' %}?new" class="text-black nav-link mt-1">New</a>
-                <a href="{% url 'products' %}" class="text-black nav-link mt-1 mb-1">All Products</a>
+                <a href="{% url 'home' %}" class="menu-link {% if request.path == '/' %}menu-active{% endif %}">Home</a>
+                <a href="{% url 'products' %}?new" class="menu-link {% if 'new' in request.GET and not 'realm' in request.GET %}menu-active{% endif %}">New</a>
+                <a href="{% url 'products' %}" class="menu-link {% if not request.GET and request.path == '/products/' %}menu-active{% endif %}">All Products</a>
                 <div id="by-realm-menu">
-                    <a href="#realm-collapse" class="nav-link text-black" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="realm-collapse">
+                    <a href="#realm-collapse" class="menu-link" data-bs-toggle="collapse" role="button" aria-expanded="{% if 'realm' in request.GET %}true{% else %}false{% endif %}" aria-controls="realm-collapse">
                         By Realm
                         <span class="indicator">
                             <i class="fa-solid fa-angle-down ms-5"></i>
                         </span>
                     </a>
                 </div>
-                <ul id="realm-collapse" class="collapse list-unstyled ms-3">
+                <div id="realm-collapse" class="collapse list-unstyled ms-3 {% if 'realm' in request.GET %}show{% endif %}">
                     {% for realm in all_realms %}
-                        <li><a class="nav-link {% if forloop.first %}mt-2{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a></li>
+                        <a class="menu-link {% if realm.name in request.GET.realm %} menu-active{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a>
                     {% endfor %}
-                </ul>
-                <a href="{% url 'faq' %}" class="text-black nav-link mt-1">FAQ</a>
-                <a href="{% url 'contact' %}" class="text-black nav-link mt-1">Contact Us</a>
-                <a href="{% url 'privacy' %}" class="text-black nav-link mt-1">Privacy</a>
-                <a href="{% url 'newsletter' %}" class="text-black nav-link mt-1">Newsletter</a>
+                </div>
+                <a href="{% url 'faq' %}" class="menu-link {% if request.path == '/support/faq/' %}menu-active{% endif %}">FAQ</a>
+                <a href="{% url 'contact' %}" class="menu-link {% if request.path == '/support/contact/' %}menu-active{% endif %}">Contact Us</a>
+                <a href="{% url 'privacy' %}" class="menu-link {% if request.path == '/support/privacy/' %}menu-active{% endif %}">Privacy</a>
+                <a href="{% url 'newsletter' %}" class="menu-link {% if request.path == '/support/newsletter/' %}menu-active{% endif %}">Newsletter</a>
             </div>
         </div>
     </div>
@@ -89,49 +90,75 @@
                 </a>
             </div>
             <div class="offcanvas-body">
-                <div class="col">
+                <h1 class="text-center mt-1">Shopping Basket</h1>
                     {% if basket_items %}
-                        <div class="table-resposive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Subtotal</th>
-                                    </tr>
-                                    {% for item in basket_items %}
-                                    <tr>
-                                        <td class="w-25">
-                                            <img class="img-fluid" src="{{ item.product.image_url }}" alt="">
-                                        </td>
-                                        <td>
-                                            <p><strong>{{ item.product.name }}</strong></p>
-                                            <p><small>{{ item.product.sku }}</small></p>
-                                        </td>
-                                        <td><p>£{{ item.product.price }}</p></td>
-                                        <td><p>{{ item.quantity }}</p></td>
-                                        <td><p>£{{ item.product.price }}</p></td>
-                                    </tr>
-                                    {% endfor %}
-                                    <tr>
-                                        <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
-                                        <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
-                                        <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <div class="container mb-3 px-4">
+                        <div class="row">
+                            <div id="items-scroller" class="col">
+                                {% for item in basket_items %}
+                                <div class="row mt-3 d-flex mb-2">
+                                    <div class="col-3 d-flex align-items-center">
+                                        <div class="position-relative">
+                                            <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                            <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
+                                                {{ item.quantity }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 flex-grow-1 d-flex flex-column justify-content-center">
+                                        <strong>{{ item.product.name }}</strong>
+                                        <small>{{ item.product.sku }}</small>
+                                        {% if rewards %}
+                                            {% if 'magic-lamp' in rewards %}
+                                                {% if forloop.counter < 4 %}
+                                                    {% if item.product.price == 0.00 %}
+                                                        <small class="text-danger">MAGIC LAMP</small> 
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if 'cave-of-wonders' in rewards %}
+                                                {% if item.product.price == 0.00 %}
+                                                    <small class="text-danger">CAVE OF WONDERS</small> 
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-end align-items-center">
+                                        {% if item.product.price == 0.00 %}
+                                            <strong class="text-danger">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                                        {% else %}
+                                            <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>    
+                        <div class="row">
+                            <div class="col d-flex flex-column align-items-end">
+                                {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
+                                    <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ original_total|floatformat:2 }}</strong></p>
+                                    <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
+                                    <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
+                                {% else %}
+                                    <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
+                                {% endif %}
+                                <p class="m-0">Delivery: <strong>£{{ delivery|floatformat:2 }}</strong></p>
+                                <p class="m-0">Grand Total: <strong>£{{ grand_total|floatformat:2 }}</strong></p>
+                            </div>
                         </div>
-                        {% else %}
-                        <p>Your basket is empty</p>
-                        <a href="{% url 'products' %}" class="">Continue Shopping</a>
-                        {% endif %}
                     </div>
-                    <a href="{% url 'view_basket' %}" class="btn btn-secondary">View basket</a>
-                    <a href="{% url 'checkout' %}" class="btn btn-secondary">Secure Checkout</a>
+                {% else %}
+                    <div class="d-flex flex-column align-items-center mt-4 mb-5">
+                        <p class="mb-1">Your basket is empty</p>
+                        <a href="{% url 'products' %}" class="btn-mob-basket btn btn-blue w-50">Continue Shopping</a>
+                    </div>
+                {% endif %}
+                <div class="d-flex gap-2 justify-content-center mb-2">
+                    <a href="{% url 'view_basket' %}" class="btn-mob-basket btn btn-yellow" aria-label="edit the basket">Edit Basket</a>
+                    <a href="{% url 'checkout' %}" class="btn-mob-basket btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
+                </div>
             </div>
-          </div>
     </div>
 </nav>
 <div class="hero-spacer"></div>
