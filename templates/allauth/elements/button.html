@@ -7,7 +7,7 @@
 {% if attrs.value %}value="{{ attrs.value }}"{% endif %}
 {% if attrs.type %}type="{{ attrs.type }}"{% endif %}
 {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
-{% if attrs.class %}class="{{ attrs.class }} btn btn-auth"{% endif %}
+{% if attrs.class %}class="btn btn-auth {{ attrs.class }}"{% endif %}
 >
 {% slot %}
 {% endslot %}
