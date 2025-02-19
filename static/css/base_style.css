@@ -192,8 +192,8 @@ main {
 
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
-    background-color: var(--tu-green);
-    color: #FFF;
+    background-color: var(--tu-light-grey);
+    border-radius: 10px;
 }
 /* END> OVERIDING BOOTSTRAP DEFAULT COLOURS */
 
@@ -291,7 +291,7 @@ main {
 }
 
 #mob-menu-links {
-    max-height: calc(100vh - 148px);
+    max-height: calc(100dvh - 148px);
     overflow-y: scroll;
 }
 
