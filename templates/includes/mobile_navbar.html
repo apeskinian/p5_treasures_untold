@@ -6,65 +6,63 @@
         <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-hat-wizard fa-xl"></i>
         </a>
-        <ul class="dropdown-menu p-2">
+        <div class="dropdown-menu p-2 text-center">
             {% if user.is_authenticated %}
-                <li class="text-center"><a href="{% url 'profile' %}" class="btn btn-green btn-mob-account mt-3" id="profile-page" aria-label="go to your profile page">Profile</a></li>
+                <a href="{% url 'profile' %}" class="btn btn-green btn-mob-account mt-3" id="profile-page" aria-label="go to your profile page">Profile</a>
                 {% if user.is_staff %}
-                    <li class="text-center"><a href="{% url 'dashboard' %}" class="btn btn-secondary btn-mob-account mt-2" id="staff" aria-label="go to the settings page">Shop Management</a></li>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-mob-account mt-2" id="staff" aria-label="go to the settings page">Shop Management</a>
                 {% endif %}
                 {% if user.is_superuser %}
-                    <li class="text-center"><a href="{% url 'admin:index' %}" class="btn btn-secondary btn-mob-account mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></li>
+                    <a href="{% url 'admin:index' %}" class="btn btn-secondary btn-mob-account mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a>
                 {% endif %}
-                <li class="text-center"><a href="{{ logout_url }}" class="btn btn-red btn-mob-account mt-2" aria-label="sign out">Log out</a></li>
-                <li class="text-center mt-2"><p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p></li>
+                <a href="{{ logout_url }}" class="btn btn-red btn-mob-account my-2" aria-label="sign out">Log out</a>
+                <p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p>
             {% else %}
-                <li class="text-center"><a href="{{ login_url }}" class="btn btn-green btn-mob-account mt-2">Log in</a></li>
-                <li class="text-center mb-2"><a href="{{ signup_url }}" class="btn btn-green btn-mob-account mt-2">Sign up</a></li>
+                <a href="{{ login_url }}" class="btn btn-green btn-mob-account mt-2">Log in</a>
+                <a href="{{ signup_url }}" class="btn btn-green btn-mob-account my-2">Sign up</a>
             {% endif %}
-        </ul>
+        </div>
     </div>
     <div id="navigation-options" class="dropup">
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
-        <ul id="mob-menu-options" class="dropdown-menu p-3">         
-            <li class="text-center"><a href="{% url 'home' %}" class="dropdown-item {% if request.path == '/' %}mob-menu-active{% endif %}" aria-label="go to the home page">Home</a></li>
-            <li class="text-center"><a href="{% url 'products' %}?new" class="dropdown-item {% if 'new' in request.GET %}mob-menu-active{% endif %}" aria-label="see the new products">New</a></li>
-            <li class="text-center"><a href="{% url 'products' %}" class="dropdown-item {% if not request.GET and request.path == '/products/' %}mob-menu-active{% endif %}" aria-label="shop all products">All Products</a></li>
-            <li class="text-center">
+        <div id="mob-menu-options" class="dropdown-menu p-3">
+            <div id="mob-menu-links" class="text-center">
+                <a href="{% url 'home' %}" class="dropdown-item {% if request.path == '/' %}mob-menu-active{% endif %}" aria-label="go to the home page">Home</a>
+                <a href="{% url 'products' %}?new" class="dropdown-item {% if 'new' in request.GET %}mob-menu-active{% endif %}" aria-label="see the new products">New</a>
+                <a href="{% url 'products' %}" class="dropdown-item {% if not request.GET and request.path == '/products/' %}mob-menu-active{% endif %}" aria-label="shop all products">All Products</a>
                 <div id="by-realm-menu-mobile">
-                    <a href="#realm-collapse-mobile" class="nav-link text-black" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="realm-collapse-mobile">
+                    <a href="#realm-collapse-mobile" class="nav-link text-black px-3" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="realm-collapse-mobile">
                         By Realm
                         <span class="indicator">
                             <i class="fa-solid fa-angle-down"></i>
                         </span>
                     </a>
                 </div>
-                <ul id="realm-collapse-mobile" class="collapse list-unstyled ms-3">
+                <div id="realm-collapse-mobile" class="collapse list-unstyled">
                     {% for realm in all_realms %}
-                        <li><a class="nav-link {% if forloop.first %}mt-2{% endif %}{% if realm.name in request.GET.realm %} mob-menu-active{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a></li>
+                    <a class="dropdown-item {% if forloop.first %}mt-2{% endif %}{% if realm.name in request.GET.realm %} mob-menu-active{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a>
                     {% endfor %}
-                </ul>
-            </li>
-            <li class="text-center"><a href="{% url 'faq' %}" class="dropdown-item {% if request.path == '/support/faq/' %}mob-menu-active{% endif %}" aria-label="see our faqs">FAQ</a></li>
-            <li class="text-center"><a href="{% url 'contact' %}" class="dropdown-item {% if request.path == '/support/contact/' %}mob-menu-active{% endif %}" aria-label="go to the contact us page">Contact Us</a></li>
-            <li class="text-center"><a href="{% url 'privacy' %}" class="dropdown-item {% if request.path == '/support/privacy/' %}mob-menu-active{% endif %}" aria-label="view our privacy statement">Privacy</a></li>
-            <li class="text-center"><a href="{% url 'newsletter' %}" class="dropdown-item {% if request.path == '/support/newsletter/' %}mob-menu-active{% endif %}" aria-label="sign up to our newsletter">Newsletter</a></li>
-            <li>
-                <div id="search-box" class="px-3 mb-2 mt-2">
-                    <form method="GET" action="{% url 'products' %}">
-                        <div class="input-group">
-                            <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
-                            <button class="btn btn-black" type="submit">
-                                <span class="icon">
-                                    <i class="fa-solid fa-magnifying-glass fa-l"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
                 </div>
-            </li>
-        </ul>
+                <a href="{% url 'faq' %}" class="dropdown-item {% if request.path == '/support/faq/' %}mob-menu-active{% endif %}" aria-label="see our faqs">FAQ</a>
+                <a href="{% url 'contact' %}" class="dropdown-item {% if request.path == '/support/contact/' %}mob-menu-active{% endif %}" aria-label="go to the contact us page">Contact Us</a>
+                <a href="{% url 'privacy' %}" class="dropdown-item {% if request.path == '/support/privacy/' %}mob-menu-active{% endif %}" aria-label="view our privacy statement">Privacy</a>
+                <a href="{% url 'newsletter' %}" class="dropdown-item {% if request.path == '/support/newsletter/' %}mob-menu-active{% endif %}" aria-label="sign up to our newsletter">Newsletter</a>
+            </div>
+            <div id="search-box" class="px-3 mb-2 mt-2">
+                <form method="GET" action="{% url 'products' %}">
+                    <div class="input-group">
+                        <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
+                        <button class="btn btn-black" type="submit">
+                            <span class="icon">
+                                <i class="fa-solid fa-magnifying-glass fa-l"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div id="basket" class="dropup">
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
