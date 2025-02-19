@@ -48,7 +48,7 @@ h1 {
     font-family: 'Pirata One', serif;
 }
 
-h2 {
+h2, h3, h4, h5 {
     font-family: 'Cantora One', sans-serif;
 }
 
@@ -273,6 +273,26 @@ main {
     border-radius: 8px 0px 0px 8px;
     opacity: 0.50;
     border: 1px solid #FFF;
+}
+
+#div_id_main-email {
+    margin: 0 !important;
+}
+
+#id_main-email {
+    border-radius: 8px 0px 0px 8px;
+}
+
+#main-subscriber-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-subscriber-form-submit {
+    color: #FFF;
+    background-color: var(--tu-green);
+    border-radius: 0px 8px 8px 0px;
 }
 
 #newsletter-form-submit {

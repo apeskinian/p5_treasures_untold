@@ -132,7 +132,7 @@
 
  /* START> FORMS */
  .form-control:focus {
-     box-shadow: 0 0 0 3px var(--tu-green-shadow);
+     box-shadow: 0 0 0 4px var(--tu-gree-shadow);
      border-color: var(--tu-green);
     }
 /* END> FORMS */
