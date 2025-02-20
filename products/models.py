@@ -74,16 +74,18 @@ class Product(models.Model):
             else:
                 return static(f'images/dev_mode/{self.sku}.png')
         else:
-            # return self.image.url
-            return cloudinary_url(
-                self.image.public_id,
-                secure=True,
-                fetch_format='auto',
-                quality='auto:best',
-                width=500,
-                height=500,
-                crop='fill'
-            )[0]
+            if str(self.image) == 'placeholder':
+                return static('images/placeholder.png')
+            else:
+                return cloudinary_url(
+                    self.image.public_id,
+                    secure=True,
+                    fetch_format='auto',
+                    quality='auto:best',
+                    width=500,
+                    height=500,
+                    crop='fill'
+                )[0]
 
     def save(self, *args, **kwargs):
         """
