@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
+from cloudinary.utils import cloudinary_url
 from django.conf import settings
 from django.templatetags.static import static
 
@@ -73,7 +74,16 @@ class Product(models.Model):
             else:
                 return static(f'images/dev_mode/{self.sku}.png')
         else:
-            return self.image.url
+            # return self.image.url
+            return cloudinary_url(
+                self.image.public_id,
+                secure=True,
+                fetch_format='auto',
+                quality='auto:best',
+                width=500,
+                height=500,
+                crop='fill'
+            )[0]
 
     def save(self, *args, **kwargs):
         """
