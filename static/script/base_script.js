@@ -80,24 +80,54 @@ $('.back-button').click(function(e) {
 // Hide main title on scroll and reappear when scrolled to top
 document.addEventListener("DOMContentLoaded", function () {
   const mainTitle = document.querySelector("#main-title");
+  const navMenu = document.querySelector("#navigation-menu");
+  const accountAndBasket = document.querySelector("#account-and-basket");
   const topNav = document.querySelector(".top-nav");
+  const floatingNav = document.querySelector(".floating-top-nav");
+
+  let lastScrollTop = 0;
 
   if (!mainTitle || !topNav) return;
 
   function handleScroll() {
-      if (window.innerWidth > 768) {
-          const navBottom = topNav.getBoundingClientRect().bottom;
+    let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
 
-          if (navBottom <= 0) {
-              mainTitle.classList.add("main-title-hide");
-              mainTitle.classList.remove("main-title-show");
-          } else if (window.scrollY === 0) {
-              mainTitle.classList.add("main-title-show");
-              mainTitle.classList.remove("main-title-hide");
-          }
-      } else {
-          mainTitle.classList.remove("main-title-hide", "main-title-show");
-      }
+    if (window.innerWidth > 767) {
+        const navBottom = topNav.getBoundingClientRect().bottom;
+
+        if (navBottom <= 0) {
+          // Looking for scrolling past the navbar
+          mainTitle.classList.add("main-title-hide");
+          mainTitle.classList.remove("main-title-show");
+          navMenu.classList.add("main-title-hide");
+          navMenu.classList.remove("main-title-show");
+          accountAndBasket.classList.add("main-title-hide");
+          accountAndBasket.classList.remove("main-title-show");
+          // Looking to see if page is scrolled to the top
+        } else if (window.scrollY === 0) {
+          mainTitle.classList.add("main-title-show");
+          mainTitle.classList.remove("main-title-hide");
+          navMenu.classList.add("main-title-show");
+          navMenu.classList.remove("main-title-hide");
+          accountAndBasket.classList.add("main-title-show");
+          accountAndBasket.classList.remove("main-title-hide");
+          floatingNav.classList.add("main-title-hide");
+          floatingNav.classList.remove("main-title-show");
+        }
+        // Looking for scrolling up
+        if (currentScrollTop < lastScrollTop && mainTitle.classList.contains("main-title-hide")) {
+          floatingNav.classList.add("main-title-show");
+          floatingNav.classList.remove("main-title-hide");
+        }
+
+
+    } else {
+        mainTitle.classList.remove("main-title-hide", "main-title-show");
+        navMenu.classList.remove("main-title-hide", "main-title-show");
+        accountAndBasket.classList.remove("main-title-hide", "main-title-show");
+        floatingNav.classList.remove("main-title-hide", "main-title-show");
+    }
+    lastScrollTop = currentScrollTop;
   }
 
   window.addEventListener("scroll", handleScroll);

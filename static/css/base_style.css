@@ -17,11 +17,12 @@
     --tu-blue-shadow: #3f758680;
     --tu-teal: #405254;
     --tu-teal-hover: #28383a;
-    --tu-teal-shadow: #28383a80;
+    --tu-teal-shadow: #28383abd;
     --tu-off-white: #EEEEEE;
     --tu-light-grey: #dcdcdc;
     --tu-mid-grey: #b4b4b4;
     --tu-dark-grey: #555555;
+    --tu-dark-grey-shadow: #55555580;
     --tu-light-grey-shadow: #dcdcdc80;
 }
 
@@ -106,6 +107,28 @@ main {
 /* END> ALLAUTH TEMPLATES */
 
 /* START> NAVIGATION BARS */
+.floating-top-nav {
+    display: none;
+    background-color: var(--tu-teal-shadow);
+    position: fixed;
+    height: 75px;
+    width: 100vw;
+    z-index: 1000;
+}
+
+#floating-navigation-menu {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+}
+
+#floating-account-and-basket {
+    position: absolute;
+    top: 1.5rem;
+    right: 2.4rem;
+    
+}
+
 .top-nav {
     position: relative;
     height: 35vw;
@@ -123,11 +146,13 @@ main {
 
 .main-title-hide {
     opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
 }
 
 .main-title-show {
     opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
 
 #main-title {
