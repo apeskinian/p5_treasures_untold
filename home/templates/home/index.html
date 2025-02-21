@@ -23,13 +23,13 @@
                 </div>
             </div>
         </div>
-        <div class="row new-items-container flex-grow-1 bg-white py-4">
-            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-4">
+        <div class="row new-items-container flex-grow-1 bg-white">
+            <div id="new-items-text" class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center p-3 text-center">
                 <h3>Latest Additions!</h3>
                 <p>Explore our newest arrivals and uncover unique treasures and magical items. Add a touch of enchantment to your collection today.</p>
                 <a href="{% url 'products' %}?new" class="btn btn-teal">Shop New</a>
             </div>
-            <div class="col-12 col-md-6 p-2 d-flex justify-content-center">
+            <div id="new-items-images" class="col-12 col-sm-6 d-flex justify-content-center p-3">
                 <div class="slideshow-container">
                      {% for product in new_products %}
                         <div class="new-slide">
@@ -42,6 +42,7 @@
             </div>
         </div>
         <div class="row as-featured-in-container">
+            <h2 class="text-center text-white">As seen in...</h2>
             <div class="marquee marquee--hover-pause">
                 <ul class="marquee__content list-unstyled m-0 text-white">
                     <li class="featured font-tangerine">Arcane Finds</li>
@@ -99,13 +100,13 @@
                 </ul>
             </div>
         </div>
-        <div class="row featured-items-container flex-grow-1 bg-white py-4">
-            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-4 ">
+        <div class="row featured-items-container flex-grow-1 bg-white">
+            <div id="featured-items-text" class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center p-3 text-center">
                 <h4>{{ featured_realm.display_name }}</h4>
                 <p>Explore the magic of {% if featured_realm.the_prefix_required %}the {% endif %}{{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
                 <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-teal">Shop {{ featured_realm.display_name }}</a>
             </div>
-            <div class="col-12 col-md-6 d-flex justify-content-center">
+            <div id="featured-items-images" class="col-12 col-sm-6 d-flex justify-content-center p-3">
                 <div class="slideshow-container">
                     {% for product in featured_products %}
                        <div class="featured-slide">

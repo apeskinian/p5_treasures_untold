@@ -10,11 +10,6 @@
     flex-grow: 1;
 }
 
-/* .new-items-container,
-.featured-items-container {
-    height: 400px;
-} */
-
 .featured {
     font-size: 2rem;
 }
@@ -57,7 +52,21 @@
     height: fit-content;
 }
 
+.as-featured-in-container h2 {
+    font-size: 1.2rem;
+}
+
 .btn-enter {
     max-width: 200px;
 }
 
+
+@media screen and (min-width: 768px) {
+    #new-items-text {
+        justify-content: right;
+    }
+
+    #new-items-images {
+        justify-content: left;
+    }
+}

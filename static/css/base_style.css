@@ -107,24 +107,35 @@ main {
 
 /* START> NAVIGATION BARS */
 .top-nav {
-    height: 200px;
+    position: relative;
+    height: 35vw;
+    max-height: 400px;
     background: url('/static/images/banner.png') no-repeat top center;
-    background-size: auto 200px;
+    background-size: auto min(35vw, 400px);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.main-title {
-    padding-bottom: 75px;
-    font-size: 60px;
-    white-space: nowrap;
+.main-title-container {
+    text-align: center;
+    width: fit-content;
+    margin-bottom: min(8vw, 134px);
+}
+
+#main-title {
+    font-size: min(14vw, 160px);
 }
 
 #navigation-menu {
-    position: fixed;
+    position: absolute;
     top: 1.5rem;
     left: 1.5rem;
 }
 
+#account-and-basket {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
 
 .menu-link {
     display: block;
@@ -139,12 +150,6 @@ main {
     font-size: 1.1rem;
 }
 
-#account-and-basket {
-    position: fixed;
-    top: 1.5rem;
-    right: 2rem;
-    margin-right: calc(-1 * (100vw - 100%));
-}
 
 /* start> rotate dropdown arrow on click*/
 .indicator i {
@@ -389,18 +394,6 @@ main {
         border-radius: 20px;
     }
     
-    .top-nav {
-        height: 300px;
-        background-size: auto 300px;
-        background-attachment: fixed;
-    }
-    
-    .top-nav-small {
-        height: 120px;
-        z-index: 100;
-        position: fixed;
-    }
-
     #support-social {
         height: 160px;
     }
@@ -409,51 +402,7 @@ main {
         height: 160px;
     }
 
-    .hero-spacer-enabled {
-        height: 300px;
-    }
-    
-    .main-title {
-        position: fixed;
-        width: fit-content;
-        padding-bottom: 0px;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: nowrap;
-        font-size: 90px;
-        padding-top: 25px;
-    }
-    
-    .main-title-small {
-        font-size: 60px;
-    }
-    
     #apeskinian {
         margin-bottom: 0;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .top-nav {
-        height: 500px;
-        background-size: auto 500px;
-    }
-    
-    .top-nav-small {
-        height: 200px;
-    }
-    
-    .hero-spacer-enabled {
-        height: 500px;
-    }
-    
-    .main-title {
-        font-size: 150px;
-        padding-top: 40px;
-    }
-
-    .main-title-small {
-        font-size: 100px;
     }
 }
