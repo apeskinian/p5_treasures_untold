@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="row featured-items-container flex-grow-1 bg-white">
-            <div id="featured-items-text" class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center p-3 text-center">
+            <div id="featured-items-text" class="col-12 col-sm-6 order-sm-last d-flex flex-column justify-content-center align-items-center p-3 text-center">
                 <h4>{{ featured_realm.display_name }}</h4>
                 <p>Explore the magic of {% if featured_realm.the_prefix_required %}the {% endif %}{{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
                 <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-teal">Shop {{ featured_realm.display_name }}</a>
