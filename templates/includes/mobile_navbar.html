@@ -10,10 +10,10 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'profile' %}" class="btn btn-green btn-mob-account mt-3" id="profile-page" aria-label="go to your profile page">Profile</a>
                 {% if user.is_staff %}
-                    <a href="{% url 'dashboard' %}" class="btn btn-teal btn-mob-account mt-2" id="staff" aria-label="go to the settings page">Shop Management</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-teal btn-mob-account mt-2" id="staff" aria-label="go to the staff dashboard page">Staff Dashboard</a>
                 {% endif %}
                 {% if user.is_superuser %}
-                    <a href="{% url 'admin:index' %}" class="btn btn-teal btn-mob-account mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a>
+                    <a href="{% url 'admin:index' %}" target="_blank" rel="noopener noreferrer" class="btn btn-teal btn-mob-account mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a>
                 {% endif %}
                 <a href="{{ logout_url }}" class="btn btn-red btn-mob-account my-2" aria-label="sign out">Log out</a>
                 <p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p>
