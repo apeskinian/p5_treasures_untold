@@ -1,15 +1,15 @@
 {% load static %}
 {% load basket_tools %}
 <!-- floating navbar -->
-<nav class="floating-top-nav container-fluid p-0 navbar d-none d-md-flex justify-content-center main-title-hide">
+<nav class="floating-top-nav container-fluid p-0 d-none d-md-block main-title-hide">
     <!-- Navigation Offcanvas -->
-    <div id="floating-navigation-menu" class="d-none d-md-block">
+    <div id="floating-navigation-menu">
         <a data-bs-toggle="offcanvas" href="#offcanvas-nav" aria-controls="offcanvas-nav" role="button" class="text-white">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
     </div>
     <!-- Account and Basket -->
-    <div id="floating-account-and-basket" class="d-none d-md-flex gap-3">
+    <div id="floating-account-and-basket" class="d-flex gap-3">
         <!-- Account Dropdown -->
         <div id="floating-user-account-dropdown" class="dropdown">
             <a class="nav-link" href="#" id="floating-user-options" data-bs-toggle="dropdown" aria-expanded="false">
