@@ -131,17 +131,18 @@ main {
 
 .top-nav {
     position: relative;
-    height: 35vw;
-    max-height: 400px;
+    height: 30vw;
+    max-height: 350px;
     background: url('/static/images/banner.png') no-repeat top center;
-    background-size: auto min(35vw, 400px);
+    background-color: #0B0C13;
+    background-size: auto min(30vw, 350px);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .main-title-container {
     text-align: center;
     width: fit-content;
-    margin-bottom: min(8vw, 134px);
+    margin-bottom: min(8vw, 91px);
 }
 
 .main-title-hide {
@@ -156,7 +157,7 @@ main {
 }
 
 #main-title {
-    font-size: min(14vw, 160px);
+    font-size: min(13vw, 150px);
 }
 
 #navigation-menu {
@@ -298,21 +299,21 @@ main {
     justify-content: space-evenly;
 }
 
-#div_id_email {
+#div_id_newsletter-email {
     margin: 0 !important;
 }
 
-#id_email {
+#id_newsletter-email {
     border-radius: 8px 0px 0px 8px;
     opacity: 0.50;
     border: 1px solid #FFF;
 }
 
-#div_id_main-email {
+#div_id_main_newsletter-email {
     margin: 0 !important;
 }
 
-#id_main-email {
+#id_main_newsletter-email {
     border-radius: 8px 0px 0px 8px;
 }
 

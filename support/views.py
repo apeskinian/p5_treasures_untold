@@ -158,7 +158,7 @@ def newsletter(request):
     """
     A view to show the newsletter for the site.
     """
-    main_subscriber_form = SubscriberForm(prefix='main')
+    main_subscriber_form = SubscriberForm(prefix='main_newsletter')
 
     template = 'support/support.html'
     context = {

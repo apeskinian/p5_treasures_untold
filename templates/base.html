@@ -30,7 +30,7 @@
     {% block extra_css %}
     {% endblock %}
   </head>
-  <body>
+  <body class="{% if request.path == '/products/' %}fading-nav-page{% endif %}"">
     <header>
       {% include 'includes/standard_navbar.html' %}
       {% block page_header %}
@@ -56,7 +56,7 @@
         {% endfor %}
       </div>
       {% endif %}
-      <div class="content d-flex flex-column flex-grow-1">
+      <div class="content d-flex flex-column flex-grow-1 ">
         {% block content %}
         {% endblock %}
       </div>

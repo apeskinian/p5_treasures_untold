@@ -89,46 +89,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!mainTitle || !topNav) return;
 
-  function handleScroll() {
-    let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+  // Check if the 'fading-nav-page' class is present
+  if (document.body.classList.contains('fading-nav-page')) {
+    // Define handleScroll function inside the condition
+    function handleScroll() {
+      let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    if (window.innerWidth > 767) {
-        const navBottom = topNav.getBoundingClientRect().bottom;
+      if (window.innerWidth > 767) {
+          const navBottom = topNav.getBoundingClientRect().bottom;
 
-        if (navBottom <= 0) {
-          // Looking for scrolling past the navbar
-          mainTitle.classList.add("main-title-hide");
-          mainTitle.classList.remove("main-title-show");
-          navMenu.classList.add("main-title-hide");
-          navMenu.classList.remove("main-title-show");
-          accountAndBasket.classList.add("main-title-hide");
-          accountAndBasket.classList.remove("main-title-show");
-          // Looking to see if page is scrolled to the top
-        } else if (window.scrollY === 0) {
-          mainTitle.classList.add("main-title-show");
-          mainTitle.classList.remove("main-title-hide");
-          navMenu.classList.add("main-title-show");
-          navMenu.classList.remove("main-title-hide");
-          accountAndBasket.classList.add("main-title-show");
-          accountAndBasket.classList.remove("main-title-hide");
-          floatingNav.classList.add("main-title-hide");
-          floatingNav.classList.remove("main-title-show");
-        }
-        // Looking for scrolling up
-        if (currentScrollTop < lastScrollTop && mainTitle.classList.contains("main-title-hide")) {
-          floatingNav.classList.add("main-title-show");
-          floatingNav.classList.remove("main-title-hide");
-        }
+          if (navBottom <= 0) {
+            // Scrolled past the navbar
+            mainTitle.classList.add("main-title-hide");
+            mainTitle.classList.remove("main-title-show");
+            navMenu.classList.add("main-title-hide");
+            navMenu.classList.remove("main-title-show");
+            accountAndBasket.classList.add("main-title-hide");
+            accountAndBasket.classList.remove("main-title-show");
+          } else if (window.scrollY === 0) {
+            // Scrolled to the top
+            mainTitle.classList.add("main-title-show");
+            mainTitle.classList.remove("main-title-hide");
+            navMenu.classList.add("main-title-show");
+            navMenu.classList.remove("main-title-hide");
+            accountAndBasket.classList.add("main-title-show");
+            accountAndBasket.classList.remove("main-title-hide");
+            floatingNav.classList.add("main-title-hide");
+            floatingNav.classList.remove("main-title-show");
+          }
 
+          // Scrolling up
+          if (currentScrollTop < lastScrollTop && mainTitle.classList.contains("main-title-hide")) {
+            floatingNav.classList.add("main-title-show");
+            floatingNav.classList.remove("main-title-hide");
+          }
+      } else {
+          // Reset the classes for smaller screens
+          mainTitle.classList.remove("main-title-hide", "main-title-show");
+          navMenu.classList.remove("main-title-hide", "main-title-show");
+          accountAndBasket.classList.remove("main-title-hide", "main-title-show");
+          floatingNav.classList.remove("main-title-hide", "main-title-show");
+      }
 
-    } else {
-        mainTitle.classList.remove("main-title-hide", "main-title-show");
-        navMenu.classList.remove("main-title-hide", "main-title-show");
-        accountAndBasket.classList.remove("main-title-hide", "main-title-show");
-        floatingNav.classList.remove("main-title-hide", "main-title-show");
+      lastScrollTop = currentScrollTop; // Update last scroll position
     }
-    lastScrollTop = currentScrollTop;
-  }
 
-  window.addEventListener("scroll", handleScroll);
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+  }
 });
