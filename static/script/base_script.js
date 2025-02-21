@@ -76,3 +76,30 @@ $('.back-button').click(function(e) {
   e.preventDefault();
   history.back(); screenLeft
 })
+
+// Hide main title on scroll and reappear when scrolled to top
+document.addEventListener("DOMContentLoaded", function () {
+  const mainTitle = document.querySelector("#main-title");
+  const topNav = document.querySelector(".top-nav");
+
+  if (!mainTitle || !topNav) return;
+
+  function handleScroll() {
+      if (window.innerWidth > 768) {
+          const navBottom = topNav.getBoundingClientRect().bottom;
+
+          if (navBottom <= 0) {
+              mainTitle.classList.add("main-title-hide");
+              mainTitle.classList.remove("main-title-show");
+          } else if (window.scrollY === 0) {
+              mainTitle.classList.add("main-title-show");
+              mainTitle.classList.remove("main-title-hide");
+          }
+      } else {
+          mainTitle.classList.remove("main-title-hide", "main-title-show");
+      }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
+});

@@ -121,6 +121,15 @@ main {
     margin-bottom: min(8vw, 134px);
 }
 
+.main-title-hide {
+    opacity: 0;
+}
+
+.main-title-show {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
 #main-title {
     font-size: min(14vw, 160px);
 }
