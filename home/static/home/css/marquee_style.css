@@ -4,7 +4,7 @@ https://ryanmulligan.dev/blog/css-marquee/
 https://codepen.io/hexagoncircle/pen/eYMrGwW
 */
 .marquee {
-    --gap: 1rem;
+    --gap: 1.5rem;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -38,7 +38,7 @@ https://codepen.io/hexagoncircle/pen/eYMrGwW
   
 /* Enable animation */
 .marquee .marquee__content {
-    animation: scroll 60s linear infinite;
+    animation: scroll 300s linear infinite;
 }
 
 /* Pause on hover */

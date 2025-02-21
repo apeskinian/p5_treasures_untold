@@ -13,63 +13,105 @@
 {% endblock %}
 
 {% block content %}
-   <div id="homepage-container" class="container-fluid">
+   <div id="homepage-container" class="container">
         <div class="row welcome-container flex-grow-1">
             <div class="col text-center d-flex flex-column justify-content-center p-4">
                 <h2>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h2>
                 <p>Prepare to discover Treasures Untold, where every corner holds a magical surprise.<br>Browse our collection of enchanted items, and who knows — you might just uncover a secret that unlocks more than just treasures!</p>
-            </div>
-            <div class="text-center mb-3">
-                <a class="btn btn-secondary" href="{% url 'products' %}">Enter</a>
+                <div class="text-center">
+                    <a id="" class="btn btn-blue btn-enter w-25" href="{% url 'products' %}">Enter</a>
+                </div>
             </div>
         </div>
         <div class="row new-items-container flex-grow-1">
-            <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center p-4">
-                <h4>Latest Additions!</h4>
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-white">
+                <h3>Latest Additions!</h3>
                 <p>Explore our newest arrivals and uncover unique treasures and magical items. Add a touch of enchantment to your collection today.</p>
-                <a href="{% url 'products' %}?new" class="btn btn-secondary">Shop New</a>
+                <a href="{% url 'products' %}?new" class="btn btn-teal">Shop New</a>
             </div>
-            <div class="col-12 col-md-6 p-2">
+            <div class="col-12 col-md-6 p-2 bg-white d-flex justify-content-center pb-4">
                 <div class="slideshow-container">
                      {% for product in new_products %}
                         <div class="new-slide">
-                            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                            <a href="{% url 'products' %}?new">
+                                <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                            </a>
                         </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-        <div class="row as-featured-in-container bg-secondary">
+        <div class="row as-featured-in-container">
             <div class="marquee marquee--hover-pause">
                 <ul class="marquee__content list-unstyled m-0 text-white">
-                    <li>Arcane Finds</li>
-                    <li>Mystic Bazaar</li>
-                    <li>Relic Review</li>
-                    <li>The Enchanter</li>
-                    <li>Charm Chronicles</li>
-                    <li>Wondrous Goods</li>
+                    <li class="featured font-tangerine">Arcane Finds</li>
+                    <li class="featured font-tulpen">Mystic Bazaar</li>
+                    <li class="featured font-henny">Relic Review</li>
+                    <li class="featured font-mystery">The Enchanter</li>
+                    <li class="featured font-caesar">Charm Chronicles</li>
+                    <li class="featured font-jim">Wondrous Goods</li>
+                    <li class="featured font-macondo">Celestial Scrolls</li>
+                    <li class="featured font-parisienne">The Arcane Almanac</li>
+                    <li class="featured font-henny">Moonlit Merchants</li>
+                    <li class="featured font-tulpen">The Sorcerer’s Ledger</li>
+                    <li class="featured font-mystery">Mystic Market Gazette</li>
+                    <li class="featured font-caesar">The Gilded Grimoire</li>
+                    <li class="featured font-jim">The Fabled Ledger</li>
+                    <li class="featured font-macondo">Echoes of Enchantment</li>
+                    <li class="featured font-parisienne">The Wizard’s Gazette</li>
+                    <li class="featured font-henny">Phantom’s Folio</li>
+                    <li class="featured font-tangerine">The Secret Keep</li>
+                    <li class="featured font-tulpen">The Eldritch Exchange</li>
+                    <li class="featured font-mystery">Legendary Ledger</li>
+                    <li class="featured font-caesar">The Alchemist’s Archive</li>
+                    <li class="featured font-jim">Runes & Relics Review</li>
+                    <li class="featured font-macondo">The Mystic Codex</li>
+                    <li class="featured font-parisienne">The Arcane Emporium</li>
+                    <li class="featured font-henny">Chronicles of Wonder</li>
+                    <li class="featured font-tulpen">The Enchanted Gazette</li>
                 </ul>
                 <ul aria-hidden="true" class="marquee__content list-unstyled m-0 text-white">
-                    <li>Arcane Finds</li>
-                    <li>Mystic Bazaar</li>
-                    <li>Relic Review</li>
-                    <li>The Enchanter</li>
-                    <li>Charm Chronicles</li>
-                    <li>Wondrous Goods</li>
+                    <li class="featured font-tangerine">Arcane Finds</li>
+                    <li class="featured font-tulpen">Mystic Bazaar</li>
+                    <li class="featured font-henny">Relic Review</li>
+                    <li class="featured font-mystery">The Enchanter</li>
+                    <li class="featured font-caesar">Charm Chronicles</li>
+                    <li class="featured font-jim">Wondrous Goods</li>
+                    <li class="featured font-macondo">Celestial Scrolls</li>
+                    <li class="featured font-parisienne">The Arcane Almanac</li>
+                    <li class="featured font-henny">Moonlit Merchants</li>
+                    <li class="featured font-tulpen">The Sorcerer’s Ledger</li>
+                    <li class="featured font-mystery">Mystic Market Gazette</li>
+                    <li class="featured font-caesar">The Gilded Grimoire</li>
+                    <li class="featured font-jim">The Fabled Ledger</li>
+                    <li class="featured font-macondo">Echoes of Enchantment</li>
+                    <li class="featured font-parisienne">The Wizard’s Gazette</li>
+                    <li class="featured font-henny">Phantom’s Folio</li>
+                    <li class="featured font-tangerine">The Secret Keep</li>
+                    <li class="featured font-tulpen">The Eldritch Exchange</li>
+                    <li class="featured font-mystery">Legendary Ledger</li>
+                    <li class="featured font-caesar">The Alchemist’s Archive</li>
+                    <li class="featured font-jim">Runes & Relics Review</li>
+                    <li class="featured font-macondo">The Mystic Codex</li>
+                    <li class="featured font-parisienne">The Arcane Emporium</li>
+                    <li class="featured font-henny">Chronicles of Wonder</li>
+                    <li class="featured font-tulpen">The Enchanted Gazette</li>
                 </ul>
             </div>
         </div>
         <div class="row featured-items-container flex-grow-1">
-            <div class="col-12 col-md-6 bg-white d-flex flex-column justify-content-evenly align-items-center">
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-4 bg-white">
                 <h4>{{ featured_realm.display_name }}</h4>
                 <p>Explore the magic of {% if featured_realm.the_prefix_required %}the {% endif %}{{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
-                <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-secondary">Shop {{ featured_realm.display_name }}</a>
+                <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-teal">Shop {{ featured_realm.display_name }}</a>
             </div>
-            <div class="col-12 col-md-6 order-md-first p-2">
+            <div class="col-12 col-md-6 p-2 bg-white d-flex justify-content-center pb-4">
                 <div class="slideshow-container">
                     {% for product in featured_products %}
                        <div class="featured-slide">
-                           <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                            <a href="{% url 'products' %}?realm={{ featured_realm.name }}">
+                                <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                            </a>
                        </div>
                    {% endfor %}
                </div>

@@ -1,7 +1,7 @@
 .slideshow-container {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 80dvw;
+    height: 80dvw;
     overflow: hidden;
     z-index: inherit;
 }
@@ -15,6 +15,7 @@
 }
 
 .new-slide img, .featured-slide img {
+    border-radius: 20px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -22,4 +23,12 @@
 
 .new-slide.active, .featured-slide.active {
     opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .slideshow-container {
+        width: 300px;
+        height: 300px;
+    }
+    
 }

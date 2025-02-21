@@ -22,8 +22,8 @@ featuredSlides[featuredSlidesIndex].classList.add("active");
 
 setInterval(() => {
     showNextNewSlide();
-}, 10000);
+}, 6000);
 
 setTimeout(() => {
-    setInterval(showNextFeaturedSlide, 10000);
-}, 5000);
+    setInterval(showNextFeaturedSlide, 6000);
+}, 3000);

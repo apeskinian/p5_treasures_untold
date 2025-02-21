@@ -1,19 +1,63 @@
 /* HOMEPAGE */
+@import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Henny+Penny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&family=Macondo+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Tulpen+One&display=swap');
+
 #homepage-container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.welcome-container {
-    background-color: rgb(220, 220, 220);
-}
-
-.new-items-container,
+/* .new-items-container,
 .featured-items-container {
     height: 400px;
+} */
+
+.featured {
+    font-size: 2rem;
+}
+
+.font-tangerine {
+    font-family: 'Tangerine', cursive;
+}
+
+.font-tulpen {
+    font-family: 'Tulpen One', cursive;
+}
+
+.font-henny {
+    font-family: 'Henny Penny', cursive;
+}
+
+.font-mystery {
+    font-family: 'Mystery Quest', cursive;
+}
+
+.font-caesar {
+    font-family: 'Caesar Dressing', cursive;
+}
+
+.font-jim {
+    font-family: 'Jim Nightshade', cursive;
+}
+
+.font-macondo {
+    font-family: 'Macondo Swash Caps', cursive;
+}
+
+.font-parisienne {
+    font-family: 'Parisienne', cursive;
 }
 
 .as-featured-in-container {
-    height: 50px;
+    background-color: var(--tu-red);
+    padding: 10px 0px;
+    height: fit-content;
 }
+
+.btn-enter {
+    max-width: 200px;
+}
+
