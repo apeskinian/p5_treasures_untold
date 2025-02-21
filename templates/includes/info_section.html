@@ -4,7 +4,7 @@
             <h2 class="text-white m-0">Unlock the Magic!</h2>
             <p class="text-white text-center m-0 py-1">Get informed of all the new item drops and news!</p>
             <form action="{% url 'subscribe' %}" method="POST">
-                <div class="input-group">
+                <div class="input-group flex-nowrap">
                     {% csrf_token %}
                     {{ subscriber_form | crispy }}
                     <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
