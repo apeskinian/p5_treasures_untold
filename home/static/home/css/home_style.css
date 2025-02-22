@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Tulpen+One&display=swap');
 
 #homepage-container {
+    background-color: var(--tu-off-white);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
