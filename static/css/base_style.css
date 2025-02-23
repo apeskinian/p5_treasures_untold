@@ -292,8 +292,8 @@ main {
 
 #support-newsletter {
     background-color: var(--tu-red);
-    background-image: url('/static/images/pattern_aztec.svg');
-    background-size: 32px 64px;
+    background-image: url('/static/images/pattern_lamp.svg');
+    background-size: 40px 40px;
     height: 160px;
     display: flex;
     flex-direction: column;
@@ -337,12 +337,18 @@ main {
 }
 
 #support-social {
+    background-color: var(--tu-green);
+    background-image: url('/static/images/pattern_hook.svg');
+    background-size: 30px 30px;
     height: 120px;
     font-size: 40px;
     background-color: var(--tu-green);
 }
 
 #support-links {
+    background-color: var(--tu-green);
+    background-image: url('/static/images/pattern_broom.svg');
+    background-size: 60px 60px;
     height: 120px;
     color: #FFF;
     background-color: var(--tu-blue);
