@@ -43,7 +43,7 @@
         </p>
         <br>
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div id="sort-and-filter" class="col-6 col-sm-3 col-lg-2">
                 <div class="sort-selector_wrapper m-1">
@@ -57,8 +57,8 @@
                         <option value="realm_desc" {% if current_sorting == 'realm_desc' %}selected{% endif %}>Realm (Z-A)</option>
                     </select>
                 </div>            
-                <a href="{% url 'products' %}" class="btn btn-secondary m-1 w-100">Clear</a>
-                <button id="submit-filter" class="btn btn-success m-1 w-100">Apply</button>
+                <a href="{% url 'products' %}" class="btn btn-teal m-1 w-100">Clear</a>
+                <button id="submit-filter" class="btn btn-green m-1 w-100">Apply</button>
                 <form id="filter-form" action="">
                     <p class="m-0 fw-bold">Stock</p>
                     <input type="checkbox" id="checkbox-new" name="new" value="new" {% if showing_new %}checked{% endif %}>
@@ -77,7 +77,7 @@
             <div id="products-view" class="col-6 col-sm-9 col-lg-10">
                 <div class="row py-3 px-2">
                     {% for product in products %}
-                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <div class="col-sm-6 col-md-4 col-lg-3">
                             <div class="card h-100">
                                 {% if 'placeholder' in product.image.url %}
                                     <a href="{% url 'product_detail' product_id=product.id %}">
@@ -108,10 +108,7 @@
                         <div class="col-12 d-none d-md-block d-lg-none card-spacer"></div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:4 %}
-                        <div class="col-12 d-none d-lg-block d-xl-none card-spacer"></div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:6 %}
-                        <div class="col-12 d-none d-xl-block card-spacer"></div>
+                        <div class="col-12 d-none d-lg-block d-xl-block card-spacer"></div>
                         {% endif %}
                     {% endfor %}
                 </div>

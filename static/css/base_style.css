@@ -339,7 +339,7 @@ main {
 #support-social {
     background-color: var(--tu-green);
     background-image: url('/static/images/pattern_hook.svg');
-    background-size: 30px 30px;
+    background-size: 40px 40px;
     height: 120px;
     font-size: 40px;
     background-color: var(--tu-green);
@@ -348,7 +348,7 @@ main {
 #support-links {
     background-color: var(--tu-green);
     background-image: url('/static/images/pattern_broom.svg');
-    background-size: 60px 60px;
+    background-size: 40px 40px;
     height: 120px;
     color: #FFF;
     background-color: var(--tu-blue);
@@ -357,7 +357,6 @@ main {
 #support-link-placeholder {
     visibility: hidden;
 }
-
 /* END> INFO SECTION */
 
 /* START> MESSAGES */
@@ -370,6 +369,10 @@ main {
 /* END> MESSAGES */
 
 /* START> PRODUCT VIEWS */
+input[type="checkbox"] {
+    accent-color: var(--tu-yellow);
+}
+
 .card-spacer {
     padding-bottom: 1rem;
 }
