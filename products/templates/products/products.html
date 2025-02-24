@@ -13,7 +13,7 @@
 
 
 {% block content %}
-    <div id="products-shown" class="container-fluid text-center mt-3">
+    <div id="products-shown" class="text-center mt-3">
         <p>
             <!-- Amount of products -->
             {% if products|length > 0 %}
@@ -41,43 +41,31 @@
                 {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
             {% endif %}
         </p>
-        <br>
     </div>
     <div class="container">
-        <div class="row">
-            <div id="sort-and-filter" class="col-6 col-sm-3 col-lg-2">
-                <div class="sort-selector_wrapper m-1">
-                    <select id="sort-selector" class="w-100">
-                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                        <option value="realm_asc" {% if current_sorting == 'realm_asc' %}selected{% endif %}>Realm (A-Z)</option>
-                        <option value="realm_desc" {% if current_sorting == 'realm_desc' %}selected{% endif %}>Realm (Z-A)</option>
-                    </select>
-                </div>            
-                <a href="{% url 'products' %}" class="btn btn-teal m-1 w-100">Clear</a>
-                <button id="submit-filter" class="btn btn-green m-1 w-100">Apply</button>
-                <form id="filter-form" action="">
-                    <p class="m-0 fw-bold">Stock</p>
-                    <input type="checkbox" id="checkbox-new" name="new" value="new" {% if showing_new %}checked{% endif %}>
-                    <label for="checkbox-new"> New</label><br>
-                    <input type="checkbox" id="checkbox-instock" name="stock" value="in" {% if "in" in showing_stock %}checked{% endif %}>
-                    <label for="checkbox-instock"> In stock</label><br>
-                    <input type="checkbox" id="checkbox-outofstock" name="stock" value="out" {% if "out" in showing_stock %}checked{% endif %}>
-                    <label for="checkbox-outofstock"> Out of stock</label><br>
-                    <p class="m-0 fw-bold">Realm</p>
-                    {% for realm in all_realms %}
-                        <input type="checkbox" id="checkbox-{{ realm.name|lower }}" name="realm" value="{{ realm.name }}" {% if realm.name in current_realms_names %}checked{% endif %}>
-                        <label for="checkbox-{{ realm.name|lower }}"> {{ realm.display_name }}</label><br>
-                    {% endfor %}
-                </form>
+        <div id="sort-and-filter-offcanvas" class="row d-md-none sticky-top">
+            <div id="filter-menu" class="text-center">
+                <a data-bs-toggle="offcanvas" href="#offcanvas-filter" aria-controls="offcanvas-filter" role="button" class="btn btn-blue">
+                    FILTER
+                </a>
             </div>
-            <div id="products-view" class="col-6 col-sm-9 col-lg-10">
+            <div id="offcanvas-filter" class="offcanvas offcanvas-bottom h-auto" tabindex="-1" aria-labelledby="offcanvas-filterLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div id="sort-and-filter-mobile" class="offcanvas-body">
+                    {% include 'products/includes/sort_and_filter_mobile.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="sort-and-filter-desktop" class="d-none d-md-block col-3 col-xl-2 mt-3">
+                {% include 'products/includes/sort_and_filter.html' %}
+            </div>
+            <div id="products-view" class="col-12 col-md-9 col-xl-10">
                 <div class="row py-3 px-2">
                     {% for product in products %}
-                        <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-6 col-lg-4 col-xl-3">
                             <div class="card h-100">
                                 {% if 'placeholder' in product.image.url %}
                                     <a href="{% url 'product_detail' product_id=product.id %}">
@@ -98,17 +86,14 @@
                                 </div>
                             </div>
                         </div>
-                        {% if forloop.counter|divisibleby:1 %}
-                        <div class="col-12 d-sm-none card-spacer"></div>
-                        {% endif %}
                         {% if forloop.counter|divisibleby:2 %}
-                        <div class="col-12 d-none d-sm-block d-md-none card-spacer"></div>
+                        <div class="col-12 d-block d-lg-none card-spacer"></div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:3 %}
-                        <div class="col-12 d-none d-md-block d-lg-none card-spacer"></div>
+                        <div class="col-12 d-none d-lg-block d-xl-none card-spacer"></div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:4 %}
-                        <div class="col-12 d-none d-lg-block d-xl-block card-spacer"></div>
+                        <div class="col-12 d-none d-xl-block card-spacer"></div>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -120,8 +105,7 @@
             <i class="fa-solid fa-angle-up mx-auto my-auto"></i>
         </a>
     </div>
-    {% include 'products/includes/magic_lamp_modal.html' %}
-    {% include 'includes/info_section.html' %}
+{% include 'includes/info_section.html' %}
 {% endblock %}
 
 {% block extra_js %}

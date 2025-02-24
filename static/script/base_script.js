@@ -13,7 +13,61 @@ document.querySelector('#by-realm-menu-mobile a').addEventListener('click', func
     event.stopPropagation();
   });
 
-// sort items selector
+
+// sort items selector mobile
+$('#sort-selector-mobile').change(function() {
+  var selector = $(this);
+  var currentUrl = new URL(window.location);
+  var selectedVal = selector.val();
+
+  if(selectedVal != 'reset') {
+    var sort = selectedVal.split('_')[0];
+    var direction = selectedVal.split('_')[1];
+    currentUrl.searchParams.set('sort', sort);
+    currentUrl.searchParams.set('direction', direction);
+    window.location.replace(currentUrl);
+  } else {
+    currentUrl.searchParams.delete('sort');
+    currentUrl.searchParams.delete('direction');
+    window.location.replace(currentUrl);
+  }
+})
+
+// product filter menu mobile
+const baseUrlMobile = '/products/';
+var filterStockList = [];
+var filterRealmList = [];
+var filterNewList = [];
+
+$('#submit-filter-mobile').click(function() {
+  $('#filter-form-mobile input[type="checkbox"]').each(function () {
+    if ($(this).is(':checked')) {
+      if ($(this).attr('name')=='new') {
+        filterNewList.push($(this).val());
+      } else if ($(this).attr('name')=='stock') {
+        filterStockList.push($(this).val());
+      } else if ($(this).attr('name')=='realm') {
+        filterRealmList.push($(this).val());
+      }
+    }
+  })
+
+  var filterList = [];
+  if (filterNewList.length > 0) {
+      filterList.push(`${filterNewList}`);
+  }
+  if (filterStockList.length > 0) {
+      filterList.push(`stock=${filterStockList}`);
+  }
+  if (filterRealmList.length > 0) {
+      filterList.push(`realm=${filterRealmList}`);
+  }
+  const queryString = filterList.length > 0 ? `?${filterList.join('&')}` : '';
+  const url = `${baseUrlMobile}${queryString}`;
+  window.location.replace(url);
+})
+
+// sort items selector 
 $('#sort-selector').change(function() {
   var selector = $(this);
   var currentUrl = new URL(window.location);
