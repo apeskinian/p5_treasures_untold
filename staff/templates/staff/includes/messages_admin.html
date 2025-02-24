@@ -1,31 +1,61 @@
 <div class="container messages-container mt-3 mb-3 d-flex flex-column gap-3">
-    <!-- messages -->
-    {% for message in contact_messages %}
-    <div class="contact-message-container bg-white p-3">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <div class="ms-1">
-                <span><strong>{{ message.ticket_number }}</strong></span>
-                <span>- {{ message.name }} ({{ message.email }})</span>
-            </div>
-            <div>
-                {% if not message.replied %}            
-                <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-warning btn-with-spinner">
-                    <span class="btn-text">Reply</span>
-                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                </a>
-                {% endif %}
-            </div>
-        </div>
-        <div class="message-content p-3">
-            <p>Received on: <strong>{{ message.date_received | date:"d M Y" }}</strong></p>
-            <p>{{ message.message }}</p>
-        </div>
-        {% if message.replied %}
-            <div class="reply-content mt-3 p-3">
-                <p>Reply sent on: <strong>{{ message.date_replied | date:"d M Y" }}</strong></p>
-                <p>{{ message.reply }}</p>
-            </div>
+    {% regroup contact_messages by replied as grouped_messages %}
+
+    {% for group in grouped_messages %}
+        <h4 class="mt-4 text-center">{{ group.grouper|yesno:"Replied,Unreplied" }}</h4>
+
+        {% if group.grouper %}
+            {% for message in group.list|dictsortreversed:"date_replied" %}
+                <div class="contact-message-container bg-white p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="ms-1">
+                            <span><strong>{{ message.ticket_number }}</strong></span>
+                            <span>- {{ message.name }} ({{ message.email }})</span>
+                        </div>
+                        <div>
+                            {% if not message.replied %}
+                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-warning btn-with-spinner">
+                                <span class="btn-text">Reply</span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="message-content p-3">
+                        <p>Received on: <strong>{{ message.date_received | date:"d M Y" }}</strong></p>
+                        <p>{{ message.message }}</p>
+                    </div>
+                    {% if message.replied %}
+                    <div class="reply-content mt-3 p-3">
+                        <p>Reply sent on: <strong>{{ message.date_replied | date:"d M Y" }}</strong></p>
+                        <p>{{ message.reply }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            {% for message in group.list|dictsort:"date_received" %}
+                <div class="contact-message-container bg-white p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="ms-1">
+                            <span><strong>{{ message.ticket_number }}</strong></span>
+                            <span>- {{ message.name }} ({{ message.email }})</span>
+                        </div>
+                        <div>
+                            {% if not message.replied %}
+                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-warning btn-with-spinner">
+                                <span class="btn-text">Reply</span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="message-content p-3">
+                        <p>Received on: <strong>{{ message.date_received | date:"d M Y" }}</strong></p>
+                        <p>{{ message.message }}</p>
+                    </div>
+                </div>
+            {% endfor %}
         {% endif %}
-    </div>
     {% endfor %}
 </div>
