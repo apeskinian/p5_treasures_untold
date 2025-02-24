@@ -21,6 +21,21 @@ urlpatterns = [
         'manage_faq/<str:delete>/<int:faq_id>/',
         views.manage_faq, name='manage_faq'
     ),
+    path(
+        'manage_faq_topic/',
+        views.manage_faq_topic,
+        name='manage_faq_topic'
+    ),
+    path(
+        'manage_faq_topic/<int:faq_topic_id>/',
+        views.manage_faq_topic,
+        name='manage_faq_topic'
+    ),
+    path(
+        'manage_faq_topic/<str:delete>/<int:faq_topic_id>/',
+        views.manage_faq_topic,
+        name='manage_faq_topic'
+    ),
     path('manage_product/',
          views.manage_product,
          name='manage_product'),

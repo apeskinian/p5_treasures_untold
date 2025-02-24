@@ -47,6 +47,21 @@ class ContactReplyForm(forms.ModelForm):
         self.fields['reply'].label = False
 
 
+class FaqsTopicsForm(forms.ModelForm):
+    class Meta:
+        model = FaqsTopics
+        fields = ('name',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        add placeholders and remove auto-generated label
+        """
+        super().__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs['placeholder'] = 'Topic name...'
+        self.fields['name'].label = False
+
+
 class FaqsForm(forms.ModelForm):
     class Meta:
         model = Faqs

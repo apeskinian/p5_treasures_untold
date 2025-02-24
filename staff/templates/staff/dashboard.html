@@ -17,7 +17,7 @@
             <a class="nav-link{% if active_tab == 'Product' %} show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link{% if active_tab == 'FAQ' %} show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
+            <a class="nav-link{% if active_tab == 'FAQ' or active_tab == 'FAQ Topic' %} show active{% endif %}" id="faq-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ Admin</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link{% if active_tab == 'Message' %} show active{% endif %}" id="message-tab" data-bs-toggle="tab" href="#message" role="tab" aria-controls="message" aria-selected="false">Message Admin</a>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <!-- FAQ tab -->
-        <div class="tab-pane fade{% if active_tab == 'FAQ' %} show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+        <div class="tab-pane fade{% if active_tab == 'FAQ' or active_tab == 'FAQ Topic' %} show active{% endif %}" id="faq" role="tabpanel" aria-labelledby="faq-tab">
             <div id="faq-content">
                 {% include 'staff/includes/faq_admin.html' %}
             </div>
@@ -77,7 +77,7 @@
                                 </div>
                                 {{ form.question | as_crispy_field }}
                                 {{ form.answer | as_crispy_field }}
-                                {% elif to_delete %}
+                            {% elif to_delete %}
                                 <div>
                                     Are you sure you want to delete the following FAQ?
                                     (This cannot be undone)
@@ -86,9 +86,21 @@
                                         <p><strong>A:</strong> {{ to_delete.answer }}</p>
                                     </div>
                                 </div>
-                                {% endif %}
-                                {% elif active_tab == 'Product' %}
-                                {% if form %}
+                            {% endif %}
+                        {% elif active_tab == 'FAQ Topic' %}
+                            {% if form %}
+                                {{ form | crispy }}
+                            {% elif  to_delete %}
+                                <div>
+                                    Are you sure you want to delete the following topic?
+                                    (This cannot be undone)
+                                    <div>
+                                        {{ to_delete.name }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% elif active_tab == 'Product' %}
+                            {% if form %}
                                 {{ form.name | as_crispy_field }}
                                 {{ form.realm | as_crispy_field }}
                                 <div id="new-realm-field">
@@ -113,35 +125,35 @@
                         {% elif active_tab == 'Message' %}
                             {{ form | crispy }}                                
                         {% elif active_tab == 'Newsletter' %}
-                                {% if form %}
-                                    {{ form | crispy }}
-                                {% elif to_delete %}
+                            {% if form %}
+                                {{ form | crispy }}
+                            {% elif to_delete %}
+                                <div>
+                                    Are you sure you want to delete the following newsletter?
+                                    (This cannot be undone)
                                     <div>
-                                        Are you sure you want to delete the following newsletter?
-                                        (This cannot be undone)
-                                        <div>
-                                            <strong>{{ to_delete.subject }}</strong>
-                                        </div>
+                                        <strong>{{ to_delete.subject }}</strong>
                                     </div>
-                                {% elif mode == 'Unsubscribe' %}
+                                </div>
+                            {% elif mode == 'Unsubscribe' %}
+                                <div>
+                                    Are you sure you want to unsubscribe the following email?
+                                    (This cannot be undone)
                                     <div>
-                                        Are you sure you want to unsubscribe the following email?
-                                        (This cannot be undone)
-                                        <div>
-                                            {{ to_delete.email }}
-                                        </div>
+                                        {{ to_delete.email }}
                                     </div>
-                                {% elif mode == 'Clear' %}
-                                    <div>Clear the following expired subscribers?</div>
+                                </div>
+                            {% elif mode == 'Clear' %}
+                                <div>Clear the following expired subscribers?</div>
+                                <div>
+                                    {% for subscriber in to_delete %}
                                     <div>
-                                        {% for subscriber in to_delete %}
-                                        <div>
-                                            <strong>{{ subscriber.email }}</strong>
-                                        </div>
-                                        {% endfor %}
+                                        <strong>{{ subscriber.email }}</strong>
                                     </div>
-                                    <div>(This cannot be undone.)</div>
-                                {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div>(This cannot be undone.)</div>
+                            {% endif %}
                         {% endif %}
                     </div>
                     <div class="text-center">
