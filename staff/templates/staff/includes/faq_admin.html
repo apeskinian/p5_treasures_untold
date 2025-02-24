@@ -4,7 +4,7 @@
         <caption class="hidden">List of FAQs</caption>
         <thead class="staff-table">
             <tr>
-                <th class="">Topic</th>
+                <th class="d-none d-md-table-cell">Topic</th>
                 <th class="">Question</th>
                 <th class="text-end">
                     <a class="btn btn-success btn-with-spinner" href="{% url 'manage_faq' %}">
@@ -17,7 +17,7 @@
         <tbody>
         {% for faq in faqs %}
         <tr>
-            <td>{{ faq.topic.name }}</td>
+            <td class="d-none d-md-table-cell">{{ faq.topic.name }}</td>
             <td>{{ faq.question }}</td>
             <td class="text-end">
                 <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-warning btn-edit btn-with-spinner">

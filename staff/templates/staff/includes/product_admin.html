@@ -6,10 +6,10 @@
             <tr>
                 <th class="product-image"></th>
                 <th class="">Product</th>
-                <th class="">Realm</th>
-                <th class="">SKU</th>
-                <th class="">Stock</th>
-                <th class="">Price</th>
+                <th class="d-none d-lg-table-cell">Realm</th>
+                <th class="d-none d-lg-table-cell">SKU</th>
+                <th class="d-none d-lg-table-cell">Stock</th>
+                <th class="d-none d-lg-table-cell">Price</th>
                 <th class="text-end">
                     <a href="{% url 'manage_product' %}" class="btn btn-success btn-with-spinner ms-auto">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
@@ -23,10 +23,10 @@
         <tr>
             <td><img width="50" height="50" class="rounded-2" src="{{ product.image_url }}" alt="{{ product.name }}"></td>
             <td>{{ product.name }}</td>
-            <td>{{ product.realm.display_name }}</td>
-            <td>{{ product.sku }}</td>
-            <td>{{ product.stock }}</td>
-            <td>£{{ product.price }}</td>
+            <td class="d-none d-lg-table-cell">{{ product.realm.display_name }}</td>
+            <td class="d-none d-lg-table-cell">{{ product.sku }}</td>
+            <td class="d-none d-lg-table-cell">{{ product.stock }}</td>
+            <td class="d-none d-lg-table-cell">£{{ product.price }}</td>
             <td class="text-end">
                 <a href="{% url 'manage_product' product_id=product.id %}" class="btn btn-warning btn-edit btn-with-spinner">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
