@@ -13,101 +13,89 @@
 
 
 {% block content %}
-    <div id="products-shown" class="text-center mt-3">
-        <p>
-            <!-- Amount of products -->
-            {% if products|length > 0 %}
-                Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
-            {% else %}    
-                No {% if showing_new %}new {% endif %}products
-            {% endif %}
-                <!-- If there was a stock check -->
-                {% if "in" in showing_stock and "out" not in showing_stock %}in stock{% endif %}
-                {% if "out" in showing_stock and "in" not in showing_stock %}out of stock{% endif %}
-            <!-- If there was a search term -->
-            {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
-            <!-- If there is a filter for realms -->
-            {% if current_realms_names %}
-                from
-                {% for realm in current_realms_names %}{% if forloop.first %}{{ realm|friendly_name }}{% elif forloop.last %} and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endfor %}
-            {% endif %}
-            <!-- If there is an order -->
-            {% if current_sorting != 'None_None' %} ordered by 
-                {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
-                {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
-                {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
-                {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
-                {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
-                {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
-            {% endif %}
-        </p>
-    </div>
-    <div class="container">
-        <div id="sort-and-filter-offcanvas" class="row d-md-none sticky-top">
-            <div id="filter-menu" class="text-center">
-                <a data-bs-toggle="offcanvas" href="#offcanvas-filter" aria-controls="offcanvas-filter" role="button" class="btn btn-blue">
-                    FILTER
+    <div id="product-page-container" class="container-fluid flex-grow-1">
+        <div class="container bg-white rounded-4 p-3 my-4">
+            <div id="products-shown" class="text-center mt-2">
+                <h5>
+                    <!-- Amount of products -->
+                    {% if products|length > 0 %}
+                        Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
+                    {% else %}    
+                        No {% if showing_new %}new {% endif %}products
+                    {% endif %}
+                        <!-- If there was a stock check -->
+                        {% if "in" in showing_stock and "out" not in showing_stock %}in stock{% endif %}
+                        {% if "out" in showing_stock and "in" not in showing_stock %}out of stock{% endif %}
+                    <!-- If there was a search term -->
+                    {% if search_term %} for <strong>"{{ search_term }}"</strong>{% endif %}
+                    <!-- If there is a filter for realms -->
+                    {% if current_realms_names %}
+                        from
+                        {% for realm in current_realms_names %}{% if forloop.first %}{{ realm|friendly_name }}{% elif forloop.last %} and {{ realm|friendly_name }}{% else %}, {{ realm|friendly_name }}{% endif %}{% endfor %}
+                    {% endif %}
+                    <!-- If there is an order -->
+                    {% if current_sorting != 'None_None' %} ordered by 
+                        {% if current_sorting == 'price_asc' %}price (low to high){% endif %}
+                        {% if current_sorting == 'price_desc' %}price (high to low){% endif %}
+                        {% if current_sorting == 'name_asc' %}name (A-Z){% endif %}
+                        {% if current_sorting == 'name_desc' %}name (Z-A){% endif %}
+                        {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
+                        {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
+                    {% endif %}
+                </h5>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div id="sort-and-filter-desktop" class="d-none d-md-block col-3 col-xl-2 mt-3">
+                        {% include 'products/includes/sort_and_filter.html' %}
+                    </div>
+                    <div id="products-view" class="col-12 col-md-9 col-xl-10">
+                        <div class="row py-3 px-2">
+                            {% for product in products %}
+                                <div class="col-6 col-lg-4 col-xl-3">
+                                    <div class="card h-100">
+                                        {% if 'placeholder' in product.image.url %}
+                                            <a href="{% url 'product_detail' product_id=product.id %}">
+                                                <img class="card-img-top" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
+                                            </a>
+                                        {% else %}                               
+                                            <a href="{% url 'product_detail' product_id=product.id %}">
+                                                <img {% if user.is_authenticated and product.sku == 'TU-AGR-ML-U' %}id="magic-lamp"{% endif %} class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
+                                            </a>
+                                        {% endif %}
+                                        <div class="card-body p-1">
+                                            <h6 class="card-title text-center">{{ product.name }}</h6>
+                                            {% if product.stock < 1 %}
+                                                <p class="card-text text-center text-red fw-bold"><small>SOLD</small></p>
+                                            {% else %}
+                                                <p class="card-text text-center">£{{ product.price }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if forloop.counter|divisibleby:2 %}
+                                <div class="col-12 d-block d-lg-none card-spacer"></div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:3 %}
+                                <div class="col-12 d-none d-lg-block d-xl-none card-spacer"></div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:4 %}
+                                <div class="col-12 d-none d-xl-block card-spacer"></div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-button">
+                <a class="scroll-link d-flex h-100 nav-link" href="">
+                    <i class="fa-solid fa-angle-up mx-auto my-auto"></i>
                 </a>
             </div>
-            <div id="offcanvas-filter" class="offcanvas offcanvas-bottom h-auto" tabindex="-1" aria-labelledby="offcanvas-filterLabel">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div id="sort-and-filter-mobile" class="offcanvas-body">
-                    {% include 'products/includes/sort_and_filter_mobile.html' %}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div id="sort-and-filter-desktop" class="d-none d-md-block col-3 col-xl-2 mt-3">
-                {% include 'products/includes/sort_and_filter.html' %}
-            </div>
-            <div id="products-view" class="col-12 col-md-9 col-xl-10">
-                <div class="row py-3 px-2">
-                    {% for product in products %}
-                        <div class="col-6 col-lg-4 col-xl-3">
-                            <div class="card h-100">
-                                {% if 'placeholder' in product.image.url %}
-                                    <a href="{% url 'product_detail' product_id=product.id %}">
-                                        <img class="card-img-top" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
-                                    </a>
-                                {% else %}                               
-                                    <a href="{% url 'product_detail' product_id=product.id %}">
-                                        <img {% if user.is_authenticated and product.sku == 'TU-AGR-ML-U' %}id="magic-lamp"{% endif %} class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
-                                    </a>
-                                {% endif %}
-                                <div class="card-body p-1">
-                                    <h6 class="card-title text-center">{{ product.name }}</h6>
-                                    {% if product.stock < 1 %}
-                                        <p class="card-text text-center text-red fw-bold"><small>SOLD</small></p>
-                                    {% else %}
-                                        <p class="card-text text-center">£{{ product.price }}</p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        {% if forloop.counter|divisibleby:2 %}
-                        <div class="col-12 d-block d-lg-none card-spacer"></div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:3 %}
-                        <div class="col-12 d-none d-lg-block d-xl-none card-spacer"></div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:4 %}
-                        <div class="col-12 d-none d-xl-block card-spacer"></div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
         </div>
     </div>
-    <div class="scroll-button">
-        <a class="scroll-link d-flex h-100 nav-link" href="">
-            <i class="fa-solid fa-angle-up mx-auto my-auto"></i>
-        </a>
-    </div>
-{% include 'includes/info_section.html' %}
-{% endblock %}
-
+    {% include 'includes/info_section.html' %}
+    {% endblock %}
 {% block extra_js %}
     {{ block.super }}
     <!-- Load magic lamp test -->

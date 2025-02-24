@@ -262,6 +262,11 @@ main {
     overflow-y: scroll;
 }
 
+#mob-filter-menu {
+    max-height: calc(100dvh - 236px);
+    overflow-y: scroll;
+}
+
 #mob-menu-links a {
     font-size: 1rem;
 }
@@ -369,6 +374,10 @@ main {
 /* END> MESSAGES */
 
 /* START> PRODUCT VIEWS */
+#product-page-container {
+    background-color: var(--tu-off-white);
+}
+
 input[type="checkbox"] {
     accent-color: var(--tu-yellow);
 }

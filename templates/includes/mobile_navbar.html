@@ -3,7 +3,7 @@
 <!-- mobile navbar -->
 <nav id="bottom-nav-mobile" class="d-flex justify-content-evenly d-md-none navbar fixed-bottom p-3">
     <div id="account-options" class="dropup">
-        <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-hat-wizard fa-xl"></i>
         </a>
         <div class="dropdown-menu p-2 text-center">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div id="navigation-options" class="dropup">
-        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
         <div id="mob-menu-options" class="dropdown-menu p-3">
@@ -64,8 +64,54 @@
             </div>
         </div>
     </div>
+    {% if request.path == '/products/' %}
+    <div id="filter-options" class="dropup">
+        <a class="text-white" href="#" id="filter-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
+            <i class="fa-solid fa-filter fa-xl"></i>
+        </a>
+        <div id="mob-filter-options" class="dropdown-menu p-3">
+            <div id="mob-filter-menu" class="d-flex flex-column justify-content-start align-items-center">
+                <form id="filter-form-mobile" action="" class="mb-3">
+                    <div class="mb-2">
+                        <p class="mb-1 fw-bold">Stock</p>
+                        <input type="checkbox" id="checkbox-new-mobile" name="new" value="new" {% if showing_new %}checked{% endif %}>
+                        <label for="checkbox-new-mobile"> New</label><br>
+                        <input type="checkbox" id="checkbox-instock-mobile" name="stock" value="in" {% if "in" in showing_stock %}checked{% endif %}>
+                        <label for="checkbox-instock-mobile"> In stock</label><br>
+                        <input type="checkbox" id="checkbox-outofstock-mobile" name="stock" value="out" {% if "out" in showing_stock %}checked{% endif %}>
+                        <label for="checkbox-outofstock-mobile"> Out of stock</label><br>
+                    </div>
+                    <div>
+                        <p class="mb-1 fw-bold">Realm</p>
+                        {% for realm in all_realms %}
+                        <input type="checkbox" id="checkbox-{{ realm.name|lower }}-mobile" name="realm" value="{{ realm.name }}" {% if realm.name in current_realms_names %}checked{% endif %}>
+                        <label for="checkbox-{{ realm.name|lower }}-mobile"> {{ realm.display_name }}</label><br>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+            <div id="clear-apply-sort" class="px-3 mt-2">
+                <div class="sort-and-filter-buttons">
+                    <div class="sort-selector_wrapper w-100">
+                        <select id="sort-selector-mobile" class="form-control">
+                            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                            <option value="realm_asc" {% if current_sorting == 'realm_asc' %}selected{% endif %}>Realm (A-Z)</option>
+                            <option value="realm_desc" {% if current_sorting == 'realm_desc' %}selected{% endif %}>Realm (Z-A)</option>
+                        </select>
+                    </div>            
+                    <a href="{% url 'products' %}" class="btn btn-teal m-1 mt-2 w-100">Clear</a>
+                    <button id="submit-filter-mobile" class="btn btn-green m-1 w-100">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     <div id="basket" class="dropup">
-        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-basket-shopping fa-xl"></i>
         </a>
         <div class="dropdown-menu">
@@ -132,10 +178,10 @@
                     <a href="{% url 'checkout' %}" class="btn-mob-basket btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
                 </div>
             {% else %}
-                <div class="d-flex flex-column align-items-center mt-4 mb-5">
-                    <p class="mb-1">Your basket is empty</p>
-                    <a href="{% url 'products' %}" class="btn-mob-basket btn btn-blue w-50">Continue Shopping</a>
-                </div>
+            <div class="d-flex flex-column align-items-center mt-4 mb-5">
+                <p class="mb-1">Your basket is empty</p>
+                <a href="{% url 'products' %}" class="btn-mob-basket btn btn-blue w-50">Continue Shopping</a>
+            </div>
             {% endif %}
         </div>
     </div>

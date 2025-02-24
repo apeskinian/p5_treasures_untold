@@ -130,11 +130,11 @@
 }
 /* END> BUTTONS */
 
- /* START> FORMS */
- .form-control:focus {
-     box-shadow: 0 0 0 4px var(--tu-gree-shadow);
-     border-color: var(--tu-green);
-    }
+/* START> FORMS */
+.form-control:focus {
+    box-shadow: 0 0 0 4px var(--tu-gree-shadow);
+    border-color: var(--tu-green);
+}
 
 .form-control:hover {
     background-color: var(--tu-off-white);
