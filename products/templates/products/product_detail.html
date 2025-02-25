@@ -11,61 +11,67 @@
 {% endblock %}
 
 {% block content %}
-<div id="product-details" class="container">
-    <div class="row mt-3">
-        <div id="product-details-image" class="col">
-            {% if 'placeholder' in product.image.url %}
-                <a href="{{ product.image_url }}" target="_blank">
-                <img class="card-img-top" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
+<div id="product-details-page" class="container-fluid flex-grow-1">
+    <div id="product-details" class="container bg-white rounded-4 my-4 p-5">
+        <div class="row">
+            <div id="product-details-image-container" class="col-12 col-md">
+                {% if 'placeholder' in product.image.url %}
+                    <a href="{{ product.image_url }}" target="_blank">
+                    <img class="product-details-image card-img-top rounded-4" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
+                    </a>
+                {% else %}                               
+                    <a href="{{ product.image_url }}" target="_blank">
+                    <img {% if user.is_authenticated and product.sku == 'TU-AGR-ML-U' %}id="magic-lamp"{% endif %} class="product-details-image card-img-top {% if product.stock < 1 %}out-of-stock{% endif %} rounded-4" src="{{ product.image_url }}" alt="{{ product.name }}">
+                    </a>
+                {% endif %}
+            </div>
+            <div id="product-details-info" class="col-12 col-md mt-3">
+                <h3 id="product-name">{{ product.name }}</h3>
+                <a id="product-realm-link" href="{% url 'products' %}?realm={{ product.realm }}">
+                    <h5>{{ product.realm.display_name }}</h5>
                 </a>
-            {% else %}                               
-                <a href="{{ product.image_url }}" target="_blank">
-                <img {% if user.is_authenticated and product.sku == 'TU-AGR-ML-U' %}id="magic-lamp"{% endif %} class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
-                </a>
-            {% endif %}
-        </div>
-        <div id="product-details-info" class="col">
-            <h3>{{ product.name }}</h3>
-            <a href="{% url 'products' %}?realm={{ product.realm }}">
-                <h5>{{ product.realm.display_name }}</h5>
-            </a>
-            <p>{{ product.description }}</p>
-            {% if product.stock > 0 %}
-                <p class="fw-bold">£{{ product.price }}</p>
-                <p>Available: {{ product.stock }}</p>
-                <form action="{% url 'add_to_basket' product.id %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group w-50">
-                            <span class="input-group-text">QTY</span>
-                            <button class="btn btn-secondary decrement-qty" id="decrement-qty-{{ product.id }}" data-item-id="{{ product.id }}"><i class="fa-solid fa-minus"></i></i></button>
-                            <input id="id-qty-{{ product.id }}" class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" data-item-id="{{ product.id }}">
-                            <button class="btn btn-secondary increment-qty" id="increment-qty-{{ product.id }}" data-item-id="{{ product.id }}"><i class="fa-solid fa-plus"></i></button>
+                <p id="product-description">{{ product.description }}</p>
+                {% if product.stock > 0 %}
+                    <h4 id="product-price">£{{ product.price }}</h4>
+                    <p id="product-availability" class="m-0">Available: {{ product.stock }}</p>
+                    <form id="quantity-form" action="{% url 'add_to_basket' product.id %}" method="POST">
+                        {% csrf_token %}
+                        {% if product.stock > 1 %}
+                        <div id="quantity-input" class="form-group mt-2">
+                            <div class="input-group">
+                                <span class="input-group-text">QTY</span>
+                                <button class="btn btn-secondary decrement-qty" id="decrement-qty-{{ product.id }}" data-item-id="{{ product.id }}"><i class="fa-solid fa-minus"></i></i></button>
+                                <input id="id-qty-{{ product.id }}" class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" data-item-id="{{ product.id }}">
+                                <button class="btn btn-secondary increment-qty" id="increment-qty-{{ product.id }}" data-item-id="{{ product.id }}"><i class="fa-solid fa-plus"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mt-3">
-                        {% if user.is_authenticated %}
-                        <input type="submit" class="btn btn-secondary" value="Add to Basket">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        {% else %}
-                            <p>You must log in to add items to your basket.</p>
-                            <a href="{{ login_url }}" class="btn btn-secondary">Log In</a>
-                            <a href="{{ signup_url }}" class="btn btn-secondary">Sign Up</a>
                         {% endif %}
+                        <div class="mt-3">
+                            {% if user.is_authenticated %}
+                            <input id="add-button" type="submit" class="btn btn-green" value="Add to Basket">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            {% else %}
+                                <p id="login-prompt">You must log in to add items to your basket.</p>
+                                <div id="login-buttons">
+                                    <a href="{{ login_url }}" class="btn btn-green btn-prompt mx-1">Log In</a>
+                                    <a href="{{ signup_url }}" class="btn btn-blue btn-prompt mx-1">Sign Up</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </form>
+                    <div id="countdown-container" class="mt-3">
+                        <i class="fa-solid fa-clock-rotate-left fa-flip-horizontal"></i>
+                        <span id="countdown"></span>
                     </div>
-                </form>
-                <div mt-3>
-                    <i class="fa-solid fa-clock-rotate-left fa-flip-horizontal"></i>
-                    <span id="countdown"></span>
-                </div>
-            {% else %}
-                <p class="fw-bold text-red">SOLD</p>
-            {% endif %}
+                {% else %}
+                    <p id="sold=text" class="fw-bold text-red">SOLD</p>
+                {% endif %}
+            </div>
         </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <a href="" class="btn btn-secondary back-button">Back to results</a>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <a href="{{ return_url }}" class="btn btn-blue back-button">Back to results</a>
+            </div>
         </div>
     </div>
 </div>

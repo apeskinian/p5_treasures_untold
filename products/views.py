@@ -123,11 +123,13 @@ def product_detail(request, product_id):
     A view to show a single product in more detail
     """
     product = get_object_or_404(Product, pk=product_id)
+    return_url = request.META.get('HTTP_REFERER')
 
     # setting up view parameters
     template = 'products/product_detail.html'
     context = {
         'product': product,
+        'return_url': return_url
     }
 
     return render(request, template, context)
