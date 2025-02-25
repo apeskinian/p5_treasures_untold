@@ -50,3 +50,42 @@ document.addEventListener("DOMContentLoaded", function () {
         document.addEventListener("mouseout", resetRub)
     }
 });
+
+// Set scrollbutton bottom margin so that is does not go below the products div
+function adjustMarginBottom() {
+    const scrollButton = document.querySelector('#scroll-button');
+    const footer = document.querySelector('footer');
+    const supportLinksDiv = document.querySelector('#support-links');
+    const supportSocialDiv = document.querySelector('#support-social');
+    const supportNewsletterDiv = document.querySelector('#support-newsletter');
+  
+    if (!scrollButton || !footer || !supportLinksDiv || !supportSocialDiv || !supportNewsletterDiv) return;
+  
+    const viewportHeight = window.innerHeight;
+  
+    let combinedHeight = footer.offsetHeight + supportLinksDiv.offsetHeight + 4;
+    if (window.innerWidth < 576) {
+        combinedHeight += supportNewsletterDiv.offsetHeight + supportSocialDiv.offsetHeight;
+    } else if (window.innerWidth < 768) {
+        combinedHeight += supportNewsletterDiv.offsetHeight;
+    }
+
+    const scrollY = window.scrollY;
+  
+    const distanceFromBottom = document.documentElement.scrollHeight - (scrollY + viewportHeight);
+  
+    if (distanceFromBottom <= combinedHeight) {
+      let offset = combinedHeight - distanceFromBottom;
+      console.log(offset)
+      let maxMargin = 600;
+      scrollButton.style.marginBottom = `${Math.min(offset, maxMargin)}px`;
+    } else {
+      scrollButton.style.marginBottom = "0px";
+      if (window.innerWidth < 768) {
+            scrollButton.style.marginBottom = "60px";
+        }
+    }
+  }
+
+window.addEventListener('scroll', adjustMarginBottom);
+window.addEventListener('load', adjustMarginBottom);
