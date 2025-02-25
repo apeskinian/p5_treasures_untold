@@ -19,6 +19,7 @@
     --tu-teal-hover: #28383a;
     --tu-teal-shadow: #28383abd;
     --tu-dark-teal: #1B2429;
+    --tu-purple: #885b92;
     --tu-off-white: #EEEEEE;
     --tu-light-grey: #dcdcdc;
     --tu-mid-grey: #b4b4b4;
@@ -103,8 +104,6 @@ main {
     width: 100%;
     max-width: 400px;
 }
-
-
 /* END> ALLAUTH TEMPLATES */
 
 /* START> NAVIGATION BARS */
@@ -185,7 +184,6 @@ main {
     color: #000;
     font-size: 1.1rem;
 }
-
 
 /* start> rotate dropdown arrow on click*/
 .indicator i {
@@ -275,7 +273,6 @@ main {
 #by-realm-menu-mobile {
     padding: 4px 0px;
 }
-
 
 #realm-collapse-mobile li {
     font-size: 1rem;
@@ -369,12 +366,41 @@ main {
 .message-container {
     z-index: 10000;
     position: fixed;
-    top: 70px;
-    right: 20px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toast {
+    margin: 10px;
+    background-color: var(--tu-off-white);
+    border-radius: 8px;
+}
+
+.toast-body p {
+    margin: none !important;
+}
+
+.toast-success {
+    border: 4px solid var(--tu-green);
+}
+
+.toast-reward {
+    border: 4px solid var(--tu-purple);
+}
+
+.toast-info {
+    border: 4px solid var(--tu-blue);
+}
+
+.toast-error {
+    border: 4px solid var(--tu-red);
+}
+
+.toast-warning {
+    border: 4px solid var(--tu-yellow);
 }
 /* END> MESSAGES */
-
-
 
 /* START> PRODUCT FORM */
 .btn-file {
@@ -425,5 +451,13 @@ main {
 
     #apeskinian {
         margin-bottom: 0;
+    }
+
+    .message-container {
+        top: auto;
+        left: auto;
+        bottom: 20px;
+        right: 20px;
+        transform: none;
     }
 }
