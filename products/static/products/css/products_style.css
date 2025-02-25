@@ -48,6 +48,14 @@ input[type="checkbox"] {
     accent-color: var(--tu-yellow);
 }
 
+.card {
+    border-radius: 15px;
+}
+
+.card-img-top {
+    border-radius: 15px 15px 0px 0px;
+}
+
 .card-spacer {
     padding-bottom: 1rem;
 }

@@ -16,7 +16,7 @@
     <div id="product-page" class="container-fluid flex-grow-1">
         <div id="products-container" class="container rounded-4 p-3 my-4">
             <div id="products-shown" class="text-center mt-2">
-                <h5>
+                <h4>
                     <!-- Amount of products -->
                     {% if products|length > 0 %}
                         Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
@@ -42,7 +42,7 @@
                         {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
                         {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
                     {% endif %}
-                </h5>
+                </h4>
             </div>
             <div class="container">
                 <div class="row">
@@ -63,12 +63,12 @@
                                                 <img {% if user.is_authenticated and product.sku == 'TU-AGR-ML-U' %}id="magic-lamp"{% endif %} class="card-img-top {% if product.stock < 1 %}out-of-stock{% endif %}" src="{{ product.image_url }}" alt="{{ product.name }}">
                                             </a>
                                         {% endif %}
-                                        <div class="card-body p-1">
-                                            <h6 class="card-title text-center">{{ product.name }}</h6>
+                                        <div class="card-body p-1 d-flex flex-column justify-content-evenly">
+                                            <h5 class="card-title text-center m-0">{{ product.name }}</h5>
                                             {% if product.stock < 1 %}
-                                                <p class="card-text text-center text-red fw-bold"><small>SOLD</small></p>
+                                                <p class="card-text text-center text-red fw-bold m-0">SOLD</p>
                                             {% else %}
-                                                <p class="card-text text-center">£{{ product.price }}</p>
+                                                <p class="card-text text-center m-0">£{{ product.price }}</p>
                                             {% endif %}
                                         </div>
                                     </div>
