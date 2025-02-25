@@ -456,7 +456,7 @@ main {
     .message-container {
         top: auto;
         left: auto;
-        bottom: 20px;
+        bottom: 40px;
         right: 20px;
         transform: none;
     }
