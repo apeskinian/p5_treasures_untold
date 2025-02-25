@@ -120,17 +120,6 @@ $('#submit-filter').click(function() {
   window.location.replace(url);
 })
 
-// scroll to top button
-$('.scroll-link').click(function(e) {
-  window.scrollTo(0,0);
-})
-
-// back button
-$('.back-button').click(function(e) {
-  e.preventDefault();
-  history.back(); screenLeft
-})
-
 // Hide main title on scroll and reappear when scrolled to top
 document.addEventListener("DOMContentLoaded", function () {
   const mainTitle = document.querySelector("#main-title");
@@ -138,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const accountAndBasket = document.querySelector("#account-and-basket");
   const topNav = document.querySelector(".top-nav");
   const floatingNav = document.querySelector(".floating-top-nav");
+  const scrollButton = document.querySelector('#scroll-button')
 
   let lastScrollTop = 0;
 
@@ -160,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             navMenu.classList.remove("main-title-show");
             accountAndBasket.classList.add("main-title-hide");
             accountAndBasket.classList.remove("main-title-show");
+            scrollButton.classList.remove('scroll-button-hide')
           } else if (window.scrollY === 0) {
             // Scrolled to the top
             mainTitle.classList.add("main-title-show");
@@ -170,14 +161,20 @@ document.addEventListener("DOMContentLoaded", function () {
             accountAndBasket.classList.remove("main-title-hide");
             floatingNav.classList.add("main-title-hide");
             floatingNav.classList.remove("main-title-show");
+            scrollButton.classList.add('scroll-button-hide')
           }
-
           // Scrolling up
           if (currentScrollTop < lastScrollTop && mainTitle.classList.contains("main-title-hide")) {
             floatingNav.classList.add("main-title-show");
             floatingNav.classList.remove("main-title-hide");
           }
       } else {
+          const navBottom = topNav.getBoundingClientRect().bottom;
+          if (navBottom <= 0) {
+            scrollButton.classList.remove('scroll-button-hide')
+          } else if (window.scrollY === 0) {
+            scrollButton.classList.add('scroll-button-hide')
+          }
           // Reset the classes for smaller screens
           mainTitle.classList.remove("main-title-hide", "main-title-show");
           navMenu.classList.remove("main-title-hide", "main-title-show");

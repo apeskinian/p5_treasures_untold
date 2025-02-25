@@ -51,6 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
+// scroll to top button
+$('.scroll-link').click(function(e) {
+    window.scrollTo(0,0);
+})
+
 // Set scrollbutton bottom margin so that is does not go below the products div
 function adjustMarginBottom() {
     const scrollButton = document.querySelector('#scroll-button');
