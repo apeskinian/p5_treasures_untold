@@ -5,10 +5,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Tulpen+One&display=swap');
 
 #homepage-container {
-    background-color: var(--tu-off-white);
+    background-color: var(--tu-mid-grey);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+.welcome-container,
+.new-items-container,
+.featured-items-container {
+    background-color: var(--tu-off-white);
 }
 
 .featured {

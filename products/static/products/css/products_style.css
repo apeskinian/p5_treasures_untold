@@ -1,12 +1,16 @@
 #product-page,
 #product-details-page {
-    background-color: var(--tu-off-white);
+    background-color: var(--tu-mid-grey);
 }
 
 #product-details-image-container {
-
     display: flex;
     justify-content: center;
+}
+
+#products-container,
+#product-details-container {
+    background-color: var(--tu-off-white);
 }
 
 .product-details-image {
