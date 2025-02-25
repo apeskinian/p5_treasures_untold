@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Case, When, Value, IntegerField
 from django.db.models.functions import Lower, TruncDate
 from .models import Product, Realm
 from django.conf import settings
@@ -11,7 +11,13 @@ def all_products(request):
     """
     A view to show all products including sorting and search queries
     """
-    products = Product.objects.all()
+    products = Product.objects.annotate(
+        in_stock=Case(
+            When(stock=0, then=Value(1)),
+            default=Value(0),
+            output_field=IntegerField(),
+        )
+    ).order_by('in_stock', 'realm__name')
     query = None
     realms = None
     sort = None
