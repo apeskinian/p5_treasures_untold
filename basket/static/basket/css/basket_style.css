@@ -5,3 +5,25 @@
 #basket-container {
     background-color: var(--tu-off-white);
 }
+
+.image-column {
+    max-width: 80px;
+}
+
+.info-column {
+    padding-left: 0;
+}
+
+.product-total-column {
+    max-width: fit-content;
+}
+
+.basket-buttons a {
+    width: 60%;
+    min-width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+
+
+}
