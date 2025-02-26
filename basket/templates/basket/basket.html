@@ -13,14 +13,14 @@
 
 {% block content %}
 <div id="basket-page" class="container-fluid flex-grow-1">
-    <div id="basket-container" class="container rounded-4 my-4 p-1">
+    <div id="basket-container" class="container rounded-4 my-4">
         <h1 class="text-center mt-2">Shopping Basket</h1>
         {% if basket_items %}
             {% for item in basket_items %}
                 {% if forloop.counter > 1 %}
-                    <hr class="m-2">
+                    <hr class="item-rule m-2">
                 {% endif %}
-                <div class="item-row row p-2">
+                <div class="item-row row">
                     
                     <div class="image-column col">
                         <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
@@ -32,22 +32,27 @@
                             <div class="product-info col d-flex flex-column">
                                 <strong>{{ item.product.name }}</strong>
                                 <small>{{ item.product.sku }}</small>
-                                <small class="{% if item.product.price == 0.00 %}text-danger{% endif %} m-0">£{{ item.product.price }}
+                                {% if item.product.price == 0.00 %}
+                                    <small class="m-0 text-danger text-decoration-line-through">£{{ item.original_price }}</small>
+                                {% else %}
+                                    <small class="m-0">£{{ item.product.price }}</small>
+                                {% endif %}
+                                <small>
                                     <span>
                                         {% if rewards %}
                                             {% if 'magic-lamp' in rewards %}
                                                 {% if forloop.counter < 4 %}
                                                     {% if item.product.price == 0.00 %}
-                                                        <small class="text-danger">MAGIC LAMP</small> 
+                                                        <small class="text-danger text-decoration-none">MAGIC LAMP</small> 
                                                     {% endif %}
                                                 {% endif %}
                                             {% endif %}
                                             {% if 'cave-of-wonders' in rewards %}
                                                 {% if item.product.price == 0.00 and item.product.realm.name == 'Agrabah' %}
                                                     {% if 'magic-lamp' not in rewards %}
-                                                        <small class="text-danger">CAVE OF WONDERS</small>
+                                                        <small class="text-danger text-decoration-none">CAVE OF WONDERS</small>
                                                     {% elif 'magic-lamp' in rewards and forloop.counter > 3 %}
-                                                        <small class="text-danger">CAVE OF WONDERS</small>
+                                                        <small class="text-danger text-decoration-none">CAVE OF WONDERS</small>
                                                     {% endif %}
                                                 {% endif %}
                                             {% endif %}
@@ -57,16 +62,14 @@
                             </div>
                             <div class="product-total-column col text-end d-flex flex-column justify-content-between">
                                 <strong class="{% if item.product.price == 0.00 %}text-danger{% endif %}">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
-                                {% if item.product.unique_stock %}
-                                    <div>
-                                        <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
-                                    </div>
-                                {% endif %}
+                                <div>
+                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
+                                </div>
                             </div>
                         </div>
 
                         <div class="adjustment-row row">
-                            <div class="col d-flex gap-1 {% if item.product.unique_stock %}d-none{% endif %}">
+                            <div class="col d-flex gap-2 justify-content-end {% if item.product.unique_stock %}d-none{% endif %}">
                                 <form class="update-form" method="POST" action="{% url 'adjust_basket' item.item_id %}">
                                     {% csrf_token %}
                                     <div class="form-group">
@@ -79,7 +82,6 @@
                                     <input type="hidden" name="previous-quantity" value="{{ item.quantity }}">
                                 </form>
                                 <a href="" class="btn btn-sm btn-blue update-basket" data-item-id="{{ item.item_id }}" data-action="update"><i class="fa-solid fa-rotate"></i></a>
-                                <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item ms-auto" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
                             </div>
                         </div>
 
@@ -88,7 +90,7 @@
                 </div>
             {% endfor %}
 
-            <div class="row p-2">
+            <div class="totals-row row p-2">
                 <div class="col d-flex flex-column align-items-end">
                     {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
                         <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ original_total|floatformat:2 }}</strong></p>
