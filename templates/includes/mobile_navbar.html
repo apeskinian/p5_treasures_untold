@@ -142,8 +142,12 @@
                                             {% endif %}
                                         {% endif %}
                                         {% if 'cave-of-wonders' in rewards %}
-                                            {% if item.product.price == 0.00 %}
-                                                <small class="text-danger">CAVE OF WONDERS</small> 
+                                            {% if item.product.price == 0.00 and item.product.realm.name == 'Agrabah' %}
+                                                {% if 'magic-lamp' not in rewards %}
+                                                    <small class="text-danger">CAVE OF WONDERS</small>
+                                                {% elif 'magic-lamp' in rewards and forloop.counter > 3 %}
+                                                    <small class="text-danger">CAVE OF WONDERS</small>
+                                                {% endif %}
                                             {% endif %}
                                         {% endif %}
                                     {% endif %}

@@ -51,7 +51,7 @@ $('.update-basket').click(function(e) {
   if (updateLink.hasClass('disabled')) return;
   updateLink.addClass('disabled');
 
-  var form = $(this).prev('.update-form');
+  var form = $(this).closest('.col').find('.update-form');
   var inputField = form.find('input[type="number"]')[0];
 
   if (inputField.checkValidity()) {

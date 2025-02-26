@@ -229,6 +229,7 @@ main {
 }
 
 .btn-basket {
+    border-radius: 10px;
     width: 45%;
     display: flex;
     align-items: center;

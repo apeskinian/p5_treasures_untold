@@ -185,6 +185,7 @@ main {
 /* END> ALLAUTH TEMPLATES */
 
 /* START> OVERIDING BOOTSTRAP DEFAULT COLOURS */
+.form-control-sm:focus,
 .form-control:focus {
     box-shadow: 0 0 0 3px var(--tu-green-shadow);
     border-color: var(--tu-green);

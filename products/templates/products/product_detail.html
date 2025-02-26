@@ -36,7 +36,7 @@
                     <p id="product-availability" class="m-0">Available: {{ product.stock }}</p>
                     <form id="quantity-form" action="{% url 'add_to_basket' product.id %}" method="POST">
                         {% csrf_token %}
-                        {% if product.stock > 1 %}
+                        {% if not product.unique_stock %}
                         <div id="quantity-input" class="form-group mt-2">
                             <div class="input-group">
                                 <span class="input-group-text">QTY</span>
