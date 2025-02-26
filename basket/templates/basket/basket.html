@@ -2,7 +2,6 @@
 {% load static %}
 {% load basket_tools %}
 
-
 {% block extra_meta %}
     <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock %}
@@ -15,104 +14,15 @@
 {% block content %}
 <div id="basket-page" class="container-fluid flex-grow-1">
     <div id="basket-container" class="container rounded-4 my-4 p-1">
-        <h1 class="text-center mt-2">Shopping Basket</h1>
-        <div class="row">
-            <div class="col">
-                {% if basket_items %}
-                    <div class="container">
-                        {% for item in basket_items %}
-                        {% if forloop.counter > 1 %}
-                            <hr class="m-3">
-                        {% endif %}
-                        <div class="row mb-2">
-                            <div class="col-3 d-flex align-items-center">
-                                <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
-                            </div>
-                            <div class="col d-flex flex-grow-1 flex-column justify-content-center">
-                                <strong>{{ item.product.name }}</strong>
-                                <small>{{ item.product.sku }}</small>
-                                <small class="{% if item.product.price == 0.00 %}text-danger{% endif %} m-0">£{{ item.product.price }}
-                                    <span>
-                                        {% if rewards %}
-                                            {% if 'magic-lamp' in rewards %}
-                                                {% if forloop.counter < 4 %}
-                                                    {% if item.product.price == 0.00 %}
-                                                        <small class="text-danger">MAGIC LAMP</small> 
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endif %}
-                                            {% if 'cave-of-wonders' in rewards %}
-                                                {% if item.product.price == 0.00 and item.product.realm.name == 'Agrabah' %}
-                                                    {% if 'magic-lamp' not in rewards %}
-                                                        <small class="text-danger">CAVE OF WONDERS</small>
-                                                    {% elif 'magic-lamp' in rewards and forloop.counter > 3 %}
-                                                        <small class="text-danger">CAVE OF WONDERS</small>
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endif %}
-                                        {% endif %}
-                                    </span>
-                                </small>
-                            </div>
-                            <div class="col-3 d-flex flex-column justify-content-between align-items-end">
-                                {% if item.product.price == 0.00 %}
-                                    <strong class="text-danger">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
-                                {% else %}
-                                    <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
-                                {% endif %}
-                                {% if item.product.unique_stock %}
-                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="row {% if item.product.unique_stock %}d-none{% endif %}">
-                            <div class="col d-flex">
-                                <form class="update-form w-50 {% if item.product.unique_stock %}d-none{% endif %}" method="POST" action="{% url 'adjust_basket' item.item_id %}">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <button class="btn btn-sm btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-minus"></i></i></button>
-                                            <input id="id-qty-{{ item.item_id }}" class="form-control form-control-sm qty-input" type="number" name="quantity" value="{{ item.quantity }}" min="0" max="{{ item.product.stock|add:item.quantity }}" data-item-id="{{ item.item_id }}">
-                                            <button class="btn btn-sm btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="previous-quantity" value="{{ item.quantity }}">
-                                </form>
-                                <div class="d-flex gap-1 ms-auto">
-                                    <a href="" class="btn btn-sm btn-blue update-basket" data-item-id="{{ item.item_id }}" data-action="update"><i class="fa-solid fa-rotate"></i></a>
-                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                        <div class="row my-3">
-                            <div class="col d-flex flex-column align-items-end">
-                                {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
-                                    <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ original_total|floatformat:2 }}</strong></p>
-                                    <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
-                                    <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
-                                {% else %}
-                                    <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
-                                {% endif %}
-                                <p class="m-0">Delivery: <strong>£{{ delivery|floatformat:2 }}</strong></p>
-                                <p class="m-0">Grand Total: <strong>£{{ grand_total|floatformat:2 }}</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-2 justify-content-center mb-2">
-                        <a href="{% url 'products' %}" class="btn-basket btn btn-blue " aria-label="edit the basket">Continue Shopping</a>
-                        <a href="{% url 'checkout' %}" class="btn-basket btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
-                    </div>
-                {% else %}
-                    <div class="d-flex flex-column align-items-center my-3">
-                        <p class="mb-2">Your basket is empty</p>
-                        <a href="{% url 'products' %}" class="btn btn-blue">Continue Shopping</a>
-                    </div>
-                {% endif %}
-            </div>
+        <div id="mobile-basket" class="d-md-none">
+            {% include 'basket/includes/mobile_basket.html' %}
+        </div>
+        <div id="mobile-basket" class="d-none d-md-block">
+            {% include 'basket/includes/desktop_basket.html' %}
         </div>
     </div>
 </div>
+{% include 'includes/info_section.html' %}
 {% endblock %}
 
 {% block extra_js %}
