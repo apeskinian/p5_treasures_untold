@@ -26,6 +26,7 @@ def all_products(request):
     showing_stock = None
     current_realms_names = None
     showing_stock = []
+    return_url = request.META.get('HTTP_REFERER')
 
     if request.GET:
         # looking for latest additions query
@@ -95,7 +96,7 @@ def all_products(request):
             if query.lower() == 'bibbidi-bobbidi-boo':
                 if request.user.is_authenticated:
                     activate_reward(request, 'activate', 'bibbidi-bobbidi-boo')
-                    return redirect(reverse('products'))
+                    return redirect(return_url)
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query)
             )

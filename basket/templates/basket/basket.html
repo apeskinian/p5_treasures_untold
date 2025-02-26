@@ -15,7 +15,7 @@
 {% block content %}
 <div id="basket-page" class="container-fluid flex-grow-1">
     <div id="basket-container" class="container rounded-4 my-4 p-1">
-        <h1 class="text-center">Shopping Basket</h1>
+        <h1 class="text-center mt-2">Shopping Basket</h1>
         <div class="row">
             <div class="col">
                 {% if basket_items %}
@@ -104,7 +104,7 @@
                         <a href="{% url 'checkout' %}" class="btn-basket btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
                     </div>
                 {% else %}
-                    <div class="d-flex flex-column align-items-center mt-4">
+                    <div class="d-flex flex-column align-items-center my-3">
                         <p class="mb-2">Your basket is empty</p>
                         <a href="{% url 'products' %}" class="btn btn-blue">Continue Shopping</a>
                     </div>
