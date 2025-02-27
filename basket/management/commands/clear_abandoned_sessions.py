@@ -9,7 +9,6 @@ class Command(BaseCommand):
     help = "Retrieves stock from abandoned sessions"
 
     def handle(self, *args, **kwargs):
-        print('CURRENTLY DISABLED BUT WHY IS THIS BEING CALLED???')
         basket_counter = 0
         item_counter = 0
         now = datetime.now()
