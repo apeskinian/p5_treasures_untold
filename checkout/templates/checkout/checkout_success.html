@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!-- checkout_syle.css -->
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout_style.css' %}">    
+{% endblock %}
 
 {% block content %}
-    <h1>Order Summary</h1>
-    <div class="container">
+
+<div id="checkout-success-page" class="container-fluid flex-grow-1">
+    <div id="checkout-success-container" class="container rounded-4 my-4">
+        <h1 class="text-center mb-2">Order Summary</h1>
         <div class="row">
-            <div class="col bg-success">
+            <div class="col order-details-confirmation">
                 <p class="text-center">Thank you for your order! A confirmation email will be sent to <strong>PUT DYNAMIC EMAIL HERE</strong></p>
                 <div id="order-number">
                     Order number: <strong>{{ order.order_number }}</strong>
@@ -34,7 +40,7 @@
                     <div>Billing Info:</div>
                 </div>
             </div>
-            <div class="col bg-info">
+            <div class="col oder-summary">
                 <div class="table-resposive">
                     <table>
                         <thead>
@@ -68,11 +74,7 @@
                 </div>
             </div>
         </div>
-        {% if from_profile %}
-        <div class="div">
-            <a href="{% url 'profile' %}" class="btn btn-secondary">Return to profile</a>
-        </div>
-        {% endif %}
     </div>
-    {% include 'includes/info_section.html' %}
+</div>
+{% include 'includes/info_section.html' %}
 {% endblock %}

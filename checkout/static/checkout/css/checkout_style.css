@@ -1,8 +1,10 @@
-#checkout-page {
+#checkout-page,
+#checkout-success-page {
     background-color: var(--tu-mid-grey);
 }
 
-#checkout-container {
+#checkout-container,
+#checkout-success-container {
     background-color: var(--tu-off-white);
     padding: 1rem;
 }
