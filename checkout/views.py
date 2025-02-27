@@ -26,6 +26,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'basket_contents': json.dumps(request.session.get('basket', {})),
             'active_rewards': json.dumps(request.session.get('rewards', [])),
+            'session_key': request.session.session_key,
             'save_info': request.POST.get('save_info'),
             'current_user': request.user,
         })

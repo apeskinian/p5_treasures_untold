@@ -4,6 +4,7 @@ from decimal import Decimal
 
 import stripe
 
+from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -59,6 +60,7 @@ class StripeWH_Handler:
         pid = intent.id
         basket_contents = intent.metadata.basket_contents
         active_rewards = intent.metadata.active_rewards
+        session_key = intent.metadata.session_key
         save_info = intent.metadata.save_info
 
         # getting the charge object
@@ -186,10 +188,27 @@ class StripeWH_Handler:
             order.save()
 
         self._send_confirmation_email(order)
-        return HttpResponse(
-            content=f'TU Webhook received: {event['type']} |'
-            'SUCCESS order created in webhook', status=200
-        )
+
+        if session_key:
+            try:
+                session = Session.objects.get(session_key=session_key)
+                session_data = session.get_decoded()
+
+                session_data.pop('basket', None)
+                session_data.pop('rewards', None)
+
+                session.session_data = Session.objects.encode(session_data)
+                session.save()
+                return HttpResponse(
+                    content=f'TU Webhook received: {event['type']} | '
+                    'SUCCESS order created in webhook.', status=200
+                )
+            except Session.DoesNotExist:
+                return HttpResponse(
+                    content=f'TU Webhook received: {event['type']} | '
+                    'SUCCESS order created in webhook. '
+                    'WARNING basket not cleared contact admin.', status=200
+                )
 
     def handle_payment_intent_payment_failed(self, event):
         """
