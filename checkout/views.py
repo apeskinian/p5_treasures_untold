@@ -1,4 +1,5 @@
 import json
+from decimal import Decimal
 
 import stripe
 
@@ -91,6 +92,13 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST
+
+            if 'bibbidi-bobbidi-boo' in rewards:
+                order.order_total *= Decimal(0.8)
+                order.grand_total = (
+                    order.order_total + order.delivery_cost
+                )
+                order.save()
 
             return redirect(
                 reverse('checkout_success', args=[order.order_number])

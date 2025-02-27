@@ -1,5 +1,6 @@
 import json
 import time
+from decimal import Decimal
 
 import stripe
 
@@ -176,6 +177,14 @@ class StripeWH_Handler:
                     content=f': {event['type']} | ERRROR: {e}',
                     status=500
                 )
+
+        if 'bibbidi-bobbidi-boo' in json.loads(active_rewards):
+            order.order_total *= Decimal(0.8)
+            order.grand_total = (
+                order.order_total + order.delivery_cost
+            )
+            order.save()
+
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'TU Webhook received: {event['type']} |'

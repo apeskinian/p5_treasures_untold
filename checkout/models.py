@@ -62,6 +62,7 @@ class Order(models.Model):
         self.grand_total = (
             self.order_total + self.delivery_cost
         )
+        print('UPDATE TOTAL CALLED, NEW TOTAL IS:', self.grand_total)
         self.save()
 
     def save(self, *args, **kwargs):
