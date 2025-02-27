@@ -35,6 +35,14 @@
                         <div>{{ order.postcode }}</div>
                     {% endif %}
                     <div>{{ order.country }}</div>
+                    <div>
+                        {% if 'bibbidi-bobbidi-boo' in order.rewards_used %}
+                            BIBBIDI BOBBIDI BOO USED
+                        {% endif %}
+                        {% if 'magic-lamp' in order.rewards_used %}
+                            MAGIC LAMP USED
+                        {% endif %}
+                    </div>
                 </div>
                 <div id="billing-details">
                     <div>Billing Info:</div>

@@ -1,4 +1,5 @@
 import json
+from decimal import Decimal
 
 import stripe
 
@@ -24,6 +25,8 @@ def cache_checkout_data(request):
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'basket_contents': json.dumps(request.session.get('basket', {})),
+            'active_rewards': json.dumps(request.session.get('rewards', [])),
+            'session_key': request.session.session_key,
             'save_info': request.POST.get('save_info'),
             'current_user': request.user,
         })
@@ -41,6 +44,7 @@ def checkout(request):
 
     if request.method == 'POST':
         basket = request.session.get('basket', {})
+        rewards = request.session.get('rewards', [])
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -60,13 +64,24 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
+            order.rewards_used = json.dumps(rewards)
             order.save()
-            for item_id, quantity in basket.items():
+
+            for index, (item_id, quantity) in enumerate(basket.items()):
                 try:
-                    product = Product.objects.get(pk=item_id)
+                    product = get_object_or_404(Product, pk=item_id)
+                    original_price = product.price
+                    if index < 3 and 'magic-lamp' in rewards:
+                        product.price = 0
+                    if (
+                        product.realm.name == 'Agrabah'
+                        and 'cave-of-wonders' in rewards
+                    ):
+                        product.price = 0
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
+                        original_price=original_price,
                         quantity=quantity,
                     )
                     order_line_item.save()
@@ -78,6 +93,13 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST
+
+            if 'bibbidi-bobbidi-boo' in rewards:
+                order.order_total *= Decimal(0.8)
+                order.grand_total = (
+                    order.order_total + order.delivery_cost
+                )
+                order.save()
 
             return redirect(
                 reverse('checkout_success', args=[order.order_number])

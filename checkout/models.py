@@ -39,6 +39,7 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, null=False, default=0
     )
     original_basket = models.TextField(null=False, blank=False, default='')
+    rewards_used = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default=''
     )
@@ -61,6 +62,7 @@ class Order(models.Model):
         self.grand_total = (
             self.order_total + self.delivery_cost
         )
+        print('UPDATE TOTAL CALLED, NEW TOTAL IS:', self.grand_total)
         self.save()
 
     def save(self, *args, **kwargs):
@@ -84,6 +86,9 @@ class OrderLineItem(models.Model):
     )
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE
+    )
+    original_price = models.DecimalField(
+        null=True, blank=True, max_digits=6, decimal_places=2, default=0.00
     )
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(

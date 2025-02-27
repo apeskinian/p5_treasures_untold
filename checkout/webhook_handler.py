@@ -1,8 +1,10 @@
 import json
 import time
+from decimal import Decimal
 
 import stripe
 
+from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -57,6 +59,8 @@ class StripeWH_Handler:
         intent = event.data.object
         pid = intent.id
         basket_contents = intent.metadata.basket_contents
+        active_rewards = intent.metadata.active_rewards
+        session_key = intent.metadata.session_key
         save_info = intent.metadata.save_info
 
         # getting the charge object
@@ -113,6 +117,7 @@ class StripeWH_Handler:
                     country__iexact=shipping_details.address.country,
                     grand_total=grand_total,
                     original_basket=basket_contents,
+                    rewards_used=active_rewards,
                     stripe_pid=pid,
                 )
                 order_exists = True
@@ -141,13 +146,29 @@ class StripeWH_Handler:
                     country=shipping_details.address.country,
                     grand_total=grand_total,
                     original_basket=basket_contents,
+                    rewards_used=active_rewards,
                     stripe_pid=pid,
                 )
-                for item_id, quantity in json.loads(basket_contents).items():
+
+                for index, (item_id, quantity) in enumerate(
+                    json.loads(basket_contents).items()
+                ):
                     product = Product.objects.get(pk=item_id)
+                    original_price = product.price
+                    if (
+                        index < 3
+                        and 'magic-lamp' in json.loads(active_rewards)
+                    ):
+                        product.price = 0
+                    if (
+                        product.realm.name == 'Agrabah'
+                        and 'cave-of-wonders' in json.loads(active_rewards)
+                    ):
+                        product.price = 0
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
+                        original_price=original_price,
                         quantity=quantity,
                     )
                     order_line_item.save()
@@ -158,11 +179,36 @@ class StripeWH_Handler:
                     content=f': {event['type']} | ERRROR: {e}',
                     status=500
                 )
+
+        if 'bibbidi-bobbidi-boo' in json.loads(active_rewards):
+            order.order_total *= Decimal(0.8)
+            order.grand_total = (
+                order.order_total + order.delivery_cost
+            )
+            order.save()
+
         self._send_confirmation_email(order)
-        return HttpResponse(
-            content=f'TU Webhook received: {event['type']} |'
-            'SUCCESS order created in webhook', status=200
-        )
+
+        if session_key:
+            try:
+                session = Session.objects.get(session_key=session_key)
+                session_data = session.get_decoded()
+
+                session_data.pop('basket', None)
+                session_data.pop('rewards', None)
+
+                session.session_data = Session.objects.encode(session_data)
+                session.save()
+                return HttpResponse(
+                    content=f'TU Webhook received: {event['type']} | '
+                    'SUCCESS order created in webhook.', status=200
+                )
+            except Session.DoesNotExist:
+                return HttpResponse(
+                    content=f'TU Webhook received: {event['type']} | '
+                    'SUCCESS order created in webhook. '
+                    'WARNING basket not cleared contact admin.', status=200
+                )
 
     def handle_payment_intent_payment_failed(self, event):
         """
