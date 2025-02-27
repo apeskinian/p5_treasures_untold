@@ -24,6 +24,7 @@ def cache_checkout_data(request):
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'basket_contents': json.dumps(request.session.get('basket', {})),
+            'active_rewards': json.dumps(request.session.get('rewards', [])),
             'save_info': request.POST.get('save_info'),
             'current_user': request.user,
         })
@@ -41,6 +42,7 @@ def checkout(request):
 
     if request.method == 'POST':
         basket = request.session.get('basket', {})
+        rewards = request.session.get('rewards', [])
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -60,6 +62,7 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
+            order.rewards_used = json.dumps(rewards)
             order.save()
             for item_id, quantity in basket.items():
                 try:
