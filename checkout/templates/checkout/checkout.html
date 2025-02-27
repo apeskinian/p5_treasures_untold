@@ -8,57 +8,78 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Checkout</h1>
-    <div class="container">
+<div id="checkout-page" class="container-fluid flex-grow-1">
+    <div id="checkout-container" class="container rounded-4 my-4">
+        <h1 class="text-center mb-2">Checkout</h1>
         <div class="row">
-            <!-- order summary -->
-            <div class="col order-md-last">
-                <div class="table-resposive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col"></th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                            {% for item in basket_items %}
-                            <tr>
-                                <td class="w-25">
-                                    <img class="img-fluid" src="{{ item.product.image_url }}" alt="">
-                                </td>
-                                <td>
-                                    <p><strong>{{ item.product.name }}</strong></p>
-                                    <p><small>{{ item.product.sku }}</small></p>
-                                </td>
-                                <td><p>£{{ item.product.price }}</p></td>
-                                <td><p>{{ item.quantity }}</p></td>
-                                <td><p>£{{ item.product.price }}</p></td>
-                            </tr>
-                            {% endfor %}
-                            <tr>
-                                <td><p>Basket Total: £{{ total|floatformat:2 }}</p></td>
-                                <td><p>Delivery: £{{ delivery|floatformat:2 }}</p></td>
-                                <td><p>Grand Total: £{{ grand_total|floatformat:2 }}</p></td>
-                            </tr>
-                        </thead>
-                    </table>
+
+            <div id="order-summary" class="col-12 col-md-6 order-md-last">
+                <h4 id="order-summary-title" class="text-center mt-2">Order Summary</h4>
+                {% for item in basket_items %}
+                <div class="row my-3">
+                    <div class="col d-flex image-column align-items-center">
+                        <div class=" position-relative">
+                            <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                            <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
+                                {{ item.quantity }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col flex-grow-1 d-flex flex-column">
+                        <strong>{{ item.product.name }}</strong>
+                        <small>{{ item.product.sku }}</small>
+                        {% if rewards %}
+                            {% if 'magic-lamp' in rewards %}
+                                {% if forloop.counter < 4 %}
+                                    {% if item.product.price == 0.00 %}
+                                        <small class="text-danger">MAGIC LAMP</small> 
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if 'cave-of-wonders' in rewards %}
+                                {% if item.product.price == 0.00 and item.product.realm.name == 'Agrabah' %}
+                                    {% if 'magic-lamp' not in rewards %}
+                                        <small class="text-danger">CAVE OF WONDERS</small>
+                                    {% elif 'magic-lamp' in rewards and forloop.counter > 3 %}
+                                        <small class="text-danger">CAVE OF WONDERS</small>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="col d-flex item-total-column justify-content-end">
+                        <strong class="{% if item.product.price == 0.00 %}text-danger{% endif %}">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                    </div>
                 </div>
+                {% endfor %}
+                <div class="row mt-3">
+                    <div class="col d-flex flex-column align-items-end">
+                        {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
+                            <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ original_total|floatformat:2 }}</strong></p>
+                            <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
+                            <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
+                        {% else %}
+                            <p class="m-0">Subtotal: <strong>£{{ total|floatformat:2 }}</strong></p>
+                        {% endif %}
+                        <p class="m-0">Delivery: <strong>£{{ delivery|floatformat:2 }}</strong></p>
+                        <p class="m-0">Grand Total: <strong>£{{ grand_total|floatformat:2 }}</strong></p>
+                    </div>
+                </div>
+                <hr class="d-md-none">
             </div>
-            <!-- payment -->
-            <div class="col">
-                <p>Please fill out the form</p>
+
+            <div id="billing-and-payment" class="col-12 col-md-6">
+                <h4 class="text-center mb-3 mt-2">Payment & Delivery</h4>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="px-3 mb-5">
-                        <legend class="fieldset-label">Details</legend>
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label"><h5>Contact Details</h5></legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.phone_number | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="px-3 mb-5">
-                        <legend class="fieldset-label">Delivery</legend>
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label"><h5>Delivery</h5></legend>
                         {{ order_form.street_address_1 | as_crispy_field }}
                         {{ order_form.street_address_2 | as_crispy_field }}
                         {{ order_form.town_city | as_crispy_field }}
@@ -70,19 +91,20 @@
                             <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info">
                         </div>
                     </fieldset>
-                    <fieldset class="px-3 mb-3">
-                        <legend class="fieldset-label">Payment</legend>
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label"><h5>Payment</h5></legend>
                         <!-- stripe payment element -->
                         <div id="payment-element"></div>
                         <!-- form errors -->
                         <div id="payment-errors" class="text-red text-center mt-2" role="alert"></div>
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
-                    <div class="button-container text-center mb-2">
-                        <button class="btn btn-secondary w-25" id="adjust-button">
-                            <a class="nav-link" href="{% url 'view_basket' %}">Adjust Basket</a>
+                    <h5 class="text-center mb-3">Your card will be charged £{{ grand_total|floatformat:2 }}</h5>
+                    <div class="button-container d-flex flex-column align-items-center gap-2 mb-3">
+                        <button class="btn btn-blue" id="adjust-button">
+                            <a class="nav-link" href="{% url 'view_basket' %}">Edit Basket</a>
                         </button>
-                        <button id="submit-button" type="submit" class="btn btn-success w-25">
+                        <button id="submit-button" type="submit" class="btn btn-green">
                             <div class="spinner hidden" id="spinner">
                                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                                 <span role="status"></span>
@@ -90,17 +112,19 @@
                             <span id="button-text">Complete Order</span>
                         </button>
                     </div>
-                    <p class="text-center">Your card will be charged £{{ grand_total|floatformat:2 }}</p>
                 </form>
             </div>
         </div>
+
     </div>
-    <div id="loading-overlay" class="hidden">
-        <h1 id="loading-spinner">
-            <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-2xl"></i>
-        </h1>
-    </div>
-    {% include 'includes/info_section.html' %}
+</div>
+<div id="loading-overlay" class="hidden">
+    <h1 id="loading-spinner">
+        <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-2xl"></i>
+    </h1>
+</div>
+
+{% include 'includes/info_section.html' %}
 {% endblock %}
 
 {% block extra_js %}
