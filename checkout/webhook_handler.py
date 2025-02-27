@@ -146,11 +146,26 @@ class StripeWH_Handler:
                     rewards_used=active_rewards,
                     stripe_pid=pid,
                 )
-                for item_id, quantity in json.loads(basket_contents).items():
+
+                for index, (item_id, quantity) in enumerate(
+                    json.loads(basket_contents).items()
+                ):
                     product = Product.objects.get(pk=item_id)
+                    original_price = product.price
+                    if (
+                        index < 3
+                        and 'magic-lamp' in json.loads(active_rewards)
+                    ):
+                        product.price = 0
+                    if (
+                        product.realm.name == 'Agrabah'
+                        and 'cave-of-wonders' in json.loads(active_rewards)
+                    ):
+                        product.price = 0
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
+                        original_price=original_price,
                         quantity=quantity,
                     )
                     order_line_item.save()
