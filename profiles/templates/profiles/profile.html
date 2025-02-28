@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!-- profiles_style.css -->
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles_style.css' %}">    
+{% endblock %}
+
 {% block content %}
-    <h1 class="text-center">User Profile</h1>
-    <p class="text-center">Welcome {{ profile.user }}!</p>
-    <div class="container">
+<div id="profiles-page" class="container-fluid flex-grow-1">
+    <div id="profiles-page-container" class="container rounded-4 my-4 p-4">
+        <h2 class="text-center mb-3">Profile - {{ profile.user }}</h2>
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-6 user-details">
+                <h4 class="text-center mt-2">Personal Details</h4>
                 <form id="user-profile-form" action="{% url 'profile' %}" method="POST">
                     {% csrf_token %}
-                    <fieldset class="px-3 mb-5">
-                        <legend class="fieldset-label">Personal Details</legend>
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label"><h5>Contact Information</h5></legend>
                         {{ form.default_full_name | as_crispy_field }}
                         {{ form.email | as_crispy_field }}
                         {{ form.default_phone_number | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="px-3 mb-5">
-                        <legend class="fieldset-label">Address Details</legend>
+                    <fieldset class="mb-3">
+                        <legend class="fieldset-label"><h5>Address Information</h5></legend>
                         {{ form.default_street_address_1 | as_crispy_field }}
                         {{ form.default_street_address_2 | as_crispy_field }}
                         {{ form.default_town_city | as_crispy_field }}
@@ -24,7 +30,7 @@
                         {{ form.default_postcode | as_crispy_field }}
                         {{ form.default_country | as_crispy_field }}
                     </fieldset>
-                    <button id="profile-submit-button" type="submit" class="btn btn-secondary mb-3">
+                    <button id="profile-submit-button" type="submit" class="btn btn-blue">
                         <div class="spinner hidden" id="spinner">
                             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                             <span role="status"></span>
@@ -33,15 +39,14 @@
                     </button>
                 </form>
             </div>
-            <div class="col">
-                <p>Order History</p>
+            <div class="col-12 col-md-6 order-history">
+                <h4 class="text-center mt-2">Order History</h4>
                 <div class="order-history" table-responsive>
                     <table>
                         <thead>
                             <tr>
                                 <th>Order Number</th>
                                 <th>Date</th>
-                                <th>Items</th>
                                 <th>Order Total</th>
                             </tr>
                         </thead>
@@ -51,17 +56,10 @@
                                 <td>
                                     <a href="{% url 'order_history' order.order_number %}"
                                     title="{{ order.order_number }}">
-                                    {{ order.order_number | truncatechars:11 }}
+                                    {{ order.order_number }}
                                     </a>
                                 </td>
                                 <td>{{ order.date }}</td>
-                                <td>
-                                    <ul class="list-unstyled">
-                                        {% for item in order.lineitems.all %}
-                                            <li>{{ item.product.name }} x{{ item.quantity }}</li>
-                                        {% endfor %} 
-                                    </ul>
-                                </td>
                                 <td>£{{ order.grand_total }}</td>
                             </tr>
                             {% endfor %}
@@ -71,5 +69,6 @@
             </div>
         </div>
     </div>
-    {% include 'includes/info_section.html' %}
+</div>
+{% include 'includes/info_section.html' %}
 {% endblock %}
