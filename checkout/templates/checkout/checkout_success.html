@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load basket_tools %}
+{% load checkout_tools %}
 
 {% block extra_css %}
     <!-- checkout_syle.css -->
@@ -48,39 +50,64 @@
                     <div>Billing Info:</div>
                 </div>
             </div>
-            <div class="col oder-summary">
-                <div class="table-resposive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col"></th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                            {% for item in order.lineitems.all %}
-                            <tr>
-                                <td class="w-25">
-                                    <img class="img-fluid" src="{{ item.product.image_url }}" alt="">
-                                </td>
-                                <td>
-                                    <p>{{ item.product.name }}</p>
-                                </td>
-                                <td><p>£{{ item.product.price }}</p></td>
-                                <td><p>{{ item.quantity }}</p></td>
-                                <td><p>£{{ item.lineitem_total }}</p></td>
-                            </tr>
-                            {% endfor %}
-                            <tr>
-                                <td><p>Subtotal: £{{ order.order_total }}</p></td>
-                                <td><p>Delivery: £{{ order.delivery_cost }}</p></td>
-                                <td><p>Grand Total: £{{ order.grand_total }}</p></td>
-                            </tr>
-                        </thead>
-                    </table>
+
+
+            <div id="order-summary" class="col-12 col-md-6 order-md-last">
+                <h4 id="order-summary-title" class="text-center mt-2">Items Ordered</h4>
+                {% for item in order.lineitems.all %}
+                <div class="row my-3">
+                    <div class="col d-flex image-column align-items-center">
+                        <div class=" position-relative">
+                            <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                            <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
+                                {{ item.quantity }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col flex-grow-1 d-flex flex-column">
+                        <strong>{{ item.product.name }}</strong>
+                        <small>{{ item.product.sku }}</small>
+                        {% if order.rewards_used %}
+                            {% if 'magic-lamp' in order.rewards_used %}
+                                {% if forloop.counter < 4 %}
+                                    {% if item.product.price == 0.00 %}
+                                        <small class="text-danger">MAGIC LAMP</small> 
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if 'cave-of-wonders' in order.rewards_used %}
+                                {% if item.product.price == 0.00 and item.product.realm.name == 'Agrabah' %}
+                                    {% if 'magic-lamp' not in order.rewards_used %}
+                                        <small class="text-danger">CAVE OF WONDERS</small>
+                                    {% elif 'magic-lamp' in order.rewards_used and forloop.counter > 3 %}
+                                        <small class="text-danger">CAVE OF WONDERS</small>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="col d-flex item-total-column justify-content-end">
+                        <strong class="{% if item.product.price == 0.00 %}text-danger{% endif %}">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                    </div>
                 </div>
+                {% endfor %}
+                <div class="row mt-3">
+                    <div class="col d-flex flex-column align-items-end">
+                        {% if order.rewards_used and 'bibbidi-bobbidi-boo' in order.rewards_used %}
+                            <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ order.order_total | calc_original_total | floatformat:2 }}</strong></p>
+                            <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
+                            <p class="m-0">Subtotal: <strong>£{{ order.order_total | floatformat:2 }}</strong></p>
+                        {% else %}
+                            <p class="m-0">Subtotal: <strong>£{{ order.order_total | floatformat:2 }}</strong></p>
+                        {% endif %}
+                        <p class="m-0">Delivery: <strong>£{{ order.delivery_cost | floatformat:2 }}</strong></p>
+                        <p class="m-0">Grand Total: <strong>£{{ order.grand_total | floatformat:2 }}</strong></p>
+                    </div>
+                </div>
+                <hr class="d-md-none">
             </div>
+
+            
         </div>
     </div>
 </div>
