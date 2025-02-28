@@ -32,7 +32,9 @@ class StripeWH_Handler:
         home_url = self.request.build_absolute_uri(reverse('home'))
         contact_url = self.request.build_absolute_uri(reverse('contact'))
         order_total = "{:.2f}".format(order.order_total)
-        order_original_total = "{:.2f}".format((order.order_total) / 0.8)
+        order_original_total = "{:.2f}".format(
+            (order.order_total) / Decimal(0.8)
+        )
         order_delivery_cost = "{:.2f}".format(order.delivery_cost)
         order_grand_total = "{:.2f}".format(order.grand_total)
         customer_email = order.email
@@ -54,7 +56,6 @@ class StripeWH_Handler:
         )
         plain_message = strip_tags(html_message)
 
-        print('SENDING MAIL...')
         send_mail(
             subject,
             plain_message,

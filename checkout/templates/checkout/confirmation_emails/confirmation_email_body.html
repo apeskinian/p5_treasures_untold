@@ -9,19 +9,23 @@
     <p><strong>Order Date:</strong> {{ order.date }}</p>
 
     <p>Please review your order details below to ensure everything is correct.</p>
+    <br>
 
-    <table width="100%" cellspacing="0" cellpadding="10">
+    <strong>Order Summary</strong>
+    <table width="40%" cellspacing="0" cellpadding="10">
         {% for item in order.lineitems.all %}
         <tr>
-            <td width="25%" style="text-align:left;"><img src="{{ item.product.image_url }}" alt="{{ item.product.name }}" width="100" style="border-radius:10px;"></td>
-            <td width="50%" style="text-align:left;">
+            <td width="10%" style="text-align:right;">
+                {{ item.quantity }}x
+            </td>
+            <td width="70%" style="text-align:left;">
                 <strong>{{ item.product.name }}</strong><br>
                 <small>{{ item.product.sku }}</small><br>
                 {% if order.rewards_used and 'magic-lamp' in order.rewards_used and forloop.counter < 4 and item.purchase_price == 0.00 %}
                     <small style="color:red;">MAGIC LAMP</small><br>
                 {% endif %}
             </td>
-            <td width="25%" style="text-align:right;">
+            <td width="20%" style="text-align:left;">
                 <strong {% if item.purchase_price == 0.00 %} style="color:red;" {% endif %}>
                     £{{ item.purchase_price }}
                 </strong>
@@ -29,19 +33,14 @@
         </tr>
         {% endfor %}
     </table>
-
     {% if order.rewards_used and 'bibbidi-bobbidi-boo' in order.rewards_used %}
-        <p>Subtotal: <strong style="color:red; text-decoration: line-through;">£{{ order_original_total }}</strong></p>
+        <span><strong>Subtotal:</strong></span><span style="color:red; text-decoration: line-through;">£{{ order_original_total }}</span>
         <p style="color:red;">'Bibbidi Bobbidi Boo' 20% discount.</p>
-        <p>Subtotal: <strong>£{{ order_total }}</strong></p>
-    {% else %}
-        <p>Subtotal: <strong>£{{ order_total }}</strong></p>
     {% endif %}
-    <p>Delivery: <strong>£{{ order_delivery_cost }}</strong></p>
-    <p>Grand Total: <strong>£{{ order_grand_total }}</strong></p>
-
-
-    <p>This link will expire in 24 hours, so don’t let it slip through your fingers like fairy dust!</p>
+        <p><strong>Subtotal:</strong> £{{ order_total }}</p>
+    <p><strong>Delivery:</strong> £{{ order_delivery_cost }}</p>
+    <p><strong>Grand Total:</strong> £{{ order_grand_total }}</p>
+    <br>
 
     <p>If you notice any discrepancies or need to make a change, please <a href="{{ contact_url }}">contact</a> us as soon as possible.</p>
 

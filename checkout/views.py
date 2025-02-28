@@ -100,9 +100,6 @@ def checkout(request):
                 )
                 order.save()
 
-            for item in order.lineitems.all():
-                print(item.purchase_price)
-
             return redirect(
                 reverse('checkout_success', args=[order.order_number])
             )
