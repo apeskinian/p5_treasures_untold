@@ -12,48 +12,46 @@
 
 <div id="checkout-success-page" class="container-fluid flex-grow-1">
     <div id="checkout-success-container" class="container rounded-4 my-4">
-        <h1 class="text-center mb-2">Order Summary</h1>
+        <h1 class="text-center mb-2">Thank you!</h1>
+        <div class="d-flex justify-content-center">
+            <p id="thank-you-message" class="text-center">
+                We’re excited to prepare your treasures for delivery! A confirmation email will be sent to: <strong>{{ order.email }}</strong><br>
+                Please review your order details below to ensure everything is correct. If you need to make any changes or there is a mistake please <a href="{% url 'contact' %}">contact us</a> as soon as possible quoting your order number.
+            </p>
+        </div>
         <div class="row">
-            <div class="col order-details-confirmation">
-                <p class="text-center">Thank you for your order! A confirmation email will be sent to <strong>PUT DYNAMIC EMAIL HERE</strong></p>
-                <div id="order-number">
-                    Order number: <strong>{{ order.order_number }}</strong>
-                </div>
-                <div id="order-date">
-                    Date: <strong>{{ order.date }}</strong>
-                </div>
-                <div id="delivery-details">
-                    <div><strong>Delivery to:</strong></div>
-                    <div>{{ order.full_name }}</div>
-                    <div>{{ order.street_address_1 }}</div>
-                    {% if order.street_address_2 %}
-                        <div>{{ order.street_address_2 }}</div>
-                    {% endif %}
-                    <div>{{ order.town_city }}</div>
-                    {% if order.county %}
-                        <div>{{ order.county }}</div>
-                    {% endif %}
-                    {% if order.postcode %}
-                        <div>{{ order.postcode }}</div>
-                    {% endif %}
-                    <div>{{ order.country }}</div>
+            <div id="order-details" class="col-12 col-md-6">
+                <h4 class="text-center mt-2">Delivery Details</h4>
+                <div class="d-flex justify-content-center my-3">
                     <div>
-                        {% if 'bibbidi-bobbidi-boo' in order.rewards_used %}
-                            BIBBIDI BOBBIDI BOO USED
-                        {% endif %}
-                        {% if 'magic-lamp' in order.rewards_used %}
-                            MAGIC LAMP USED
-                        {% endif %}
+                        <div class="mb-2"><strong>Order number:</strong> {{ order.order_number }}</div>
+                        <div class="mb-2"><strong>Date:</strong> {{ order.date }}</div>
+                        <div class="mb-2"><strong>Contact Details:</strong>
+                            <div><i class="fa-solid fa-envelope"></i> {{ order.email }}</div>
+                            {% if order.phone_number %}
+                            <div><i class="fa-solid fa-phone"></i> {{ order.phone_number }}</div>
+                            {% endif %}
+                        </div>
+                        <div><strong>Delivery Address:</strong>
+                            <div>{{ order.full_name }}</div>
+                            <div>{{ order.street_address_1 }}</div>
+                            {% if order.street_address_2 %}
+                            <div>{{ order.street_address_2 }}</div>
+                            {% endif %}
+                            <div>{{ order.town_city }}</div>
+                            {% if order.county %}
+                            <div>{{ order.county }}</div>
+                            {% endif %}
+                            {% if order.postcode %}
+                            <div>{{ order.postcode }}</div>
+                            {% endif %}
+                            <div>{{ order.country }}</div>
+                        </div>
                     </div>
                 </div>
-                <div id="billing-details">
-                    <div>Billing Info:</div>
-                </div>
             </div>
-
-
-            <div id="order-summary" class="col-12 col-md-6 order-md-last">
-                <h4 id="order-summary-title" class="text-center mt-2">Items Ordered</h4>
+            <div id="order-summary" class="col-12 col-md-6">
+                <h4 id="order-summary-title" class="text-center mt-2">Order Summary</h4>
                 {% for item in order.lineitems.all %}
                 <div class="row my-3">
                     <div class="col d-flex image-column align-items-center">
@@ -104,10 +102,7 @@
                         <p class="m-0">Grand Total: <strong>£{{ order.grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
-                <hr class="d-md-none">
             </div>
-
-            
         </div>
     </div>
 </div>
