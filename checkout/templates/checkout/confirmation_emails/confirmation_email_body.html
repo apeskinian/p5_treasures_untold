@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Hello {{ order.full_name }}</p>
+
+    <p>Thank you for your order! We’re excited to prepare your treasures for delivery.</p>
+
+    <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+    <p><strong>Order Date:</strong> {{ order.date }}</p>
+
+    <p>Please review your order details below to ensure everything is correct.</p>
+
+    <table width="100%" cellspacing="0" cellpadding="10">
+        {% for item in order.lineitems.all %}
+        <tr>
+            <td width="25%" style="text-align:left;"><img src="{{ item.product.image_url }}" alt="{{ item.product.name }}" width="100" style="border-radius:10px;"></td>
+            <td width="50%" style="text-align:left;">
+                <strong>{{ item.product.name }}</strong><br>
+                <small>{{ item.product.sku }}</small><br>
+                {% if order.rewards_used and 'magic-lamp' in order.rewards_used and forloop.counter < 4 and item.purchase_price == 0.00 %}
+                    <small style="color:red;">MAGIC LAMP</small><br>
+                {% endif %}
+            </td>
+            <td width="25%" style="text-align:right;">
+                <strong {% if item.purchase_price == 0.00 %} style="color:red;" {% endif %}>
+                    £{{ item.purchase_price }}
+                </strong>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if order.rewards_used and 'bibbidi-bobbidi-boo' in order.rewards_used %}
+        <p>Subtotal: <strong style="color:red; text-decoration: line-through;">£{{ order_original_total }}</strong></p>
+        <p style="color:red;">'Bibbidi Bobbidi Boo' 20% discount.</p>
+        <p>Subtotal: <strong>£{{ order_total }}</strong></p>
+    {% else %}
+        <p>Subtotal: <strong>£{{ order_total }}</strong></p>
+    {% endif %}
+    <p>Delivery: <strong>£{{ order_delivery_cost }}</strong></p>
+    <p>Grand Total: <strong>£{{ order_grand_total }}</strong></p>
+
+
+    <p>This link will expire in 24 hours, so don’t let it slip through your fingers like fairy dust!</p>
+
+    <p>If you notice any discrepancies or need to make a change, please <a href="{{ contact_url }}">contact</a> us as soon as possible.</p>
+
+    <p>Once your order has been shipped, we’ll send you a tracking update.</p>
+
+    <p>Thank you for shopping with us!</p>
+
+    <p><strong>Best wishes and enchanted tidings,</strong><br>
+    Apeskinian the Wise <br>
+    <strong>Treasures Untold</strong> <br>
+    <a href="{{ home_url }}">Visit Us</a></p>
+</body>
+</html>

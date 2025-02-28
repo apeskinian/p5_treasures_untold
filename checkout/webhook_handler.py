@@ -6,8 +6,10 @@ import stripe
 
 from django.contrib.sessions.models import Session
 from django.http import HttpResponse
+from django.shortcuts import reverse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.conf import settings
 
 from profiles.models import UserProfile
@@ -27,21 +29,38 @@ class StripeWH_Handler:
         """
         sends the user a confirmation email
         """
+        home_url = self.request.build_absolute_uri(reverse('home'))
+        contact_url = self.request.build_absolute_uri(reverse('contact'))
+        order_total = "{:.2f}".format(order.order_total)
+        order_original_total = "{:.2f}".format((order.order_total) / 0.8)
+        order_delivery_cost = "{:.2f}".format(order.delivery_cost)
+        order_grand_total = "{:.2f}".format(order.grand_total)
         customer_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order}
         )
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
+        html_message = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.html',
+            {
+                'order': order,
+                'home_url': home_url,
+                'contact_url': contact_url,
+                'order_total': order_total,
+                'order_original_total': order_original_total,
+                'order_delivery_cost': order_delivery_cost,
+                'order_grand_total': order_grand_total
+            }
         )
+        plain_message = strip_tags(html_message)
 
+        print('SENDING MAIL...')
         send_mail(
             subject,
-            body,
+            plain_message,
             settings.DEFAULT_FROM_EMAIL,
-            [customer_email]
+            [customer_email],
+            html_message=html_message
         )
 
     def handle_event(self, event):

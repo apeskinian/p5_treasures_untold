@@ -1,1 +1,1 @@
-Treasures Untold: Thanks for your order! - {{ order.order_number }}
+Treasures Untold: Order received: {{ order.order_number }}
