@@ -1,24 +1,22 @@
-<div class="container">
-    <div class="row">
-        <div class="col col-lg-8 offset-lg-2 d-flex flex-column">
-            <h5>We’d Love to Hear From You!</h5>
-            <p>Have a question, suggestion, or just want to reach out? Whether you need assistance, want to share your thoughts, or simply have a magical inquiry, we’re here to help!</p>
-            
-            <h5>Get in Touch</h5>
-            <p>Please fill out the form below, and one of our team members will get back to you as soon as possible. We’re always excited to connect with our community!</p>
-            
-            <div>
-                <form action="{% url 'contact' %}" method="POST">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="text-center">
-                        <button class="btn btn-green w-25" type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-            
-            <h5 class="mt-3">Stay Connected</h5>
-            <p>Don’t forget to follow us on our social media channels for the latest updates, magical news, and exclusive offers.</p>
+<div class="row">
+    <div class="col col-lg-8 offset-lg-2 d-flex flex-column">
+        <h2 class="text-center mb-3">We’d Love to Hear From You!</h2>
+        <p>Have a question, suggestion, or just want to reach out? Whether you need assistance, want to share your thoughts, or simply have a magical inquiry, we’re here to help!</p>
+        
+        <h5>Get in Touch</h5>
+        <p>Please fill out the form below, and one of our team members will get back to you as soon as possible. We’re always excited to connect with our community!</p>
+        
+        <div>
+            <form action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-center">
+                    <button class="btn btn-green w-25" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
+        
+        <h5 class="mt-3">Stay Connected</h5>
+        <p>Don’t forget to follow us on our social media channels for the latest updates, magical news, and exclusive offers.</p>
     </div>
 </div>

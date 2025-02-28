@@ -7,9 +7,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container flex-grow-1 mt-4">
-    <h1 class="hidden">Support page</h1>
-    <div class="support-content">
+<div id="support-page" class="container-fluid flex-grow-1">
+    <div id="support-container" class="container rounded-4 my-4 py-4">
         {% if content == 'privacy' %}
             {% include 'support/includes/privacy_policy.html' %}
         {% elif content == 'faq' %}

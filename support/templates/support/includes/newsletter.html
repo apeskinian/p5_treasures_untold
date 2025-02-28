@@ -1,29 +1,27 @@
-<div class="container">
-    <div class="row">
-      <div class="col col-lg-8 offset-lg-2">
-          <h5>Join Our Magical Community</h5>
-          <p>Be the first to know about exciting updates, exclusive offers, and new arrivals from our enchanting realms! Whether you’re looking for the latest magical item or special promotions, our newsletter is your gateway to all the magic happening at Treasures Untold.</p>
-          <h5>How to Join:</h5>
-          <p>Simply enter your email address below to start receiving our magical updates straight to your inbox! We promise no spam—only enchanting content and offers.</p>
-          <div id="main-subscriber-form">
-            <form action="{% url 'subscribe' %}" method="POST">
-              <div class="input-group">
-                {% csrf_token %}
-                {{ main_subscriber_form | crispy }}
-                <button id="main-subscriber-form-submit" type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
-              </div>
-            </form>
-          </div>
-          <h5 class="mt-3">What You’ll Get:</h5>
-          <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Exclusive Discounts:</strong> Special offers only available to our subscribers.<br>
-          <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Behind-the-Scenes Sneak Peeks:</strong> Get the first look at new magical items, designs, and collaborations.<br>
-          <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Special Promotions:</strong> Flash sales, seasonal deals, and giveaways—just for you!<br>
-          <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>News from the Realms:</strong> Updates on our magical products, new realms, and community events.<br>
-          <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Expert Tips & Guides:</strong> Learn how to get the most out of your magical items with our exclusive tips.<br>
-          <br>
-          <h5>Why Subscribe?</h5>
-          <p>By joining our newsletter, you’ll be part of a growing community of enchanted enthusiasts. Stay informed on Treasures Untold news while getting access to rewards and insider info that no one else gets!</p>
-          
+  <div class="row">
+    <div class="col col-lg-8 offset-lg-2">
+        <h2 class="text-center mb-3">Join Our Magical Community</h2>
+        <p>Be the first to know about exciting updates, exclusive offers, and new arrivals from our enchanting realms! Whether you’re looking for the latest magical item or special promotions, our newsletter is your gateway to all the magic happening at Treasures Untold.</p>
+        <h5>How to Join:</h5>
+        <p>Simply enter your email address below to start receiving our magical updates straight to your inbox! We promise no spam—only enchanting content and offers.</p>
+        <div id="main-subscriber-form">
+          <form action="{% url 'subscribe' %}" method="POST">
+            <div class="input-group">
+              {% csrf_token %}
+              {{ main_subscriber_form | crispy }}
+              <button id="main-subscriber-form-submit" type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </form>
         </div>
-    </div>
-</div>
+        <h5 class="mt-3">What You’ll Get:</h5>
+        <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Exclusive Discounts:</strong> Special offers only available to our subscribers.<br>
+        <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Behind-the-Scenes Sneak Peeks:</strong> Get the first look at new magical items, designs, and collaborations.<br>
+        <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Special Promotions:</strong> Flash sales, seasonal deals, and giveaways—just for you!<br>
+        <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>News from the Realms:</strong> Updates on our magical products, new realms, and community events.<br>
+        <i class="fa-solid fa-wand-magic-sparkles fa-xs"></i> <strong>Expert Tips & Guides:</strong> Learn how to get the most out of your magical items with our exclusive tips.<br>
+        <br>
+        <h5>Why Subscribe?</h5>
+        <p>By joining our newsletter, you’ll be part of a growing community of enchanted enthusiasts. Stay informed on Treasures Untold news while getting access to rewards and insider info that no one else gets!</p>
+        
+      </div>
+  </div>
