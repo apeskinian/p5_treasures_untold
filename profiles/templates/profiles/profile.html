@@ -71,4 +71,12 @@
     </div>
 </div>
 {% include 'includes/info_section.html' %}
+
+
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <!-- Load profiles script -->
+    <script src="{% static 'profiles/script/profiles_script.js' %}"></script>
 {% endblock %}
