@@ -47,6 +47,7 @@ def add_to_basket(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    return_url = request.POST.get('return_url')
     basket = request.session.get('basket', {})
 
     try:
@@ -67,6 +68,9 @@ def add_to_basket(request, item_id):
             f'There was a problem adding {product.name} to your basket: {e}'
             'Please try again later'
         )
+
+    if return_url:
+        request.session['return_url'] = return_url
 
     request.session['basket'] = basket
 
