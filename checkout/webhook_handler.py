@@ -154,7 +154,6 @@ class StripeWH_Handler:
                     json.loads(basket_contents).items()
                 ):
                     product = Product.objects.get(pk=item_id)
-                    original_price = product.price
                     if (
                         index < 3
                         and 'magic-lamp' in json.loads(active_rewards)
@@ -168,7 +167,7 @@ class StripeWH_Handler:
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        original_price=original_price,
+                        purchase_price=product.price,
                         quantity=quantity,
                     )
                     order_line_item.save()

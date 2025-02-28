@@ -70,7 +70,6 @@ def checkout(request):
             for index, (item_id, quantity) in enumerate(basket.items()):
                 try:
                     product = get_object_or_404(Product, pk=item_id)
-                    original_price = product.price
                     if index < 3 and 'magic-lamp' in rewards:
                         product.price = 0
                     if (
@@ -81,7 +80,7 @@ def checkout(request):
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        original_price=original_price,
+                        purchase_price=product.price,
                         quantity=quantity,
                     )
                     order_line_item.save()
@@ -100,6 +99,9 @@ def checkout(request):
                     order.order_total + order.delivery_cost
                 )
                 order.save()
+
+            for item in order.lineitems.all():
+                print(item.purchase_price)
 
             return redirect(
                 reverse('checkout_success', args=[order.order_number])

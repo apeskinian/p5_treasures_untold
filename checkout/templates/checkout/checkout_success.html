@@ -70,13 +70,13 @@
                         {% if order.rewards_used %}
                             {% if 'magic-lamp' in order.rewards_used %}
                                 {% if forloop.counter < 4 %}
-                                    {% if item.product.price == 0.00 %}
+                                    {% if item.purchase_price == 0.00 %}
                                         <small class="text-danger">MAGIC LAMP</small> 
                                     {% endif %}
                                 {% endif %}
                             {% endif %}
                             {% if 'cave-of-wonders' in order.rewards_used %}
-                                {% if item.product.price == 0.00 and item.product.realm.name == 'Agrabah' %}
+                                {% if item.purchase_price == 0.00 and item.product.realm.name == 'Agrabah' %}
                                     {% if 'magic-lamp' not in order.rewards_used %}
                                         <small class="text-danger">CAVE OF WONDERS</small>
                                     {% elif 'magic-lamp' in order.rewards_used and forloop.counter > 3 %}
@@ -87,7 +87,7 @@
                         {% endif %}
                     </div>
                     <div class="col d-flex item-total-column justify-content-end">
-                        <strong class="{% if item.product.price == 0.00 %}text-danger{% endif %}">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                        <strong class="{% if item.purchase_price == 0.00 %}text-danger{% endif %}">£{{ item.purchase_price | calc_subtotal:item.quantity }}</strong>
                     </div>
                 </div>
                 {% endfor %}

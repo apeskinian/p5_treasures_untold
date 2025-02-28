@@ -86,7 +86,7 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE
     )
-    original_price = models.DecimalField(
+    purchase_price = models.DecimalField(
         null=True, blank=True, max_digits=6, decimal_places=2, default=0.00
     )
     quantity = models.IntegerField(null=False, blank=False, default=0)
