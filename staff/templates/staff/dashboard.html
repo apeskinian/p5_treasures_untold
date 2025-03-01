@@ -158,12 +158,12 @@
                     </div>
                     <div class="text-center">
                         <div class="d-flex justify-content-center gap-2">
-                            <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-primary btn-with-spinner w-25" aria-label="Close">
+                            <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-teal btn-with-spinner w-25" aria-label="Close">
                                 <span class="btn-text">{% if mode == 'View' %}Close{% else %}Cancel{% endif %}</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
                             {% if mode != 'View' %}
-                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-success{% elif to_delete %}btn-danger{% endif %} w-25">
+                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-green{% elif to_delete %}btn-red{% endif %} w-25">
                                 <span class="btn-text">{{ mode }}</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </button>

@@ -25,6 +25,12 @@
     border-color: var(--tu-green-hover) !important;
 }
 
+.btn-green:disabled {
+    color: #FFF !important;
+    background-color: var(--tu-green-hover) !important;
+    border-color: var(--tu-green-hover) !important;
+}
+
 /* RED */
 .btn-red {
     color: #FFF;

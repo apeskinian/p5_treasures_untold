@@ -14,7 +14,7 @@
                         </div>
                         <div>
                             {% if not message.replied %}
-                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-warning btn-with-spinner">
+                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-yellow btn-with-spinner">
                                 <span class="btn-text">Reply</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -43,7 +43,7 @@
                         </div>
                         <div>
                             {% if not message.replied %}
-                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-warning btn-with-spinner">
+                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-yellow btn-with-spinner">
                                 <span class="btn-text">Reply</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>

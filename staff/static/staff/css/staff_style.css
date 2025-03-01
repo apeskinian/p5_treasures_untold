@@ -8,28 +8,28 @@
 
 /* Nav pills */
 .nav-pills .nav-link {
-    background-color: #e7f0e6;
+    background-color: var(--tu-light-grey);
     color: #333;
   }
 
 .nav-pills .nav-link:hover {
-    background-color: #d6e0d5;
+    background-color: var(--tu-mid-grey);
 }
 
 .nav-pills .nav-link:focus {
-    box-shadow: 0 0 0 3px #8396807e;
-    border-color: #839680;
+    box-shadow: 0 0 0 3px var(--tu-dark-grey-shadow);
+    border-color: var(--tu-dark-grey);
 }
 
 .nav-pills .nav-link.active {
-    background-color: #839680;
+    background-color: var(--tu-dark-grey);
     color: white;
 }
 
 
 /* Tables */
 .table {
-    background-color: #e7f0e6;
+    /* background-color: #d6e0d5; */
     padding: 0px 20px 20px 20px;
     border-collapse: separate;
     border-spacing: 0 10px;
@@ -37,8 +37,19 @@
 }
 
 .table th {
-    background-color: #e7f0e6;
+    background-color: var(--tu-light-grey);
     color: #333;
+}
+
+.table th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 15px;
+}
+
+.table th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .table th,
@@ -87,11 +98,7 @@ td.text-end {
 }
 
 /* Message Display */
-.messages-container {
-    background-color: #e7f0e6;
-    border-radius: 10px;
-    padding: 20px;
-}
+
 
 .contact-message-container {
     border-radius: 10px;
