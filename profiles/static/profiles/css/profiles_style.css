@@ -5,3 +5,16 @@
 #profiles-page-container {
     background-color: var(--tu-off-white);
 }
+
+#order-history-table-container {
+    background-color:#FFF;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+@media screen and (min-width: 768px) {    
+    #order-history-table {
+        max-height: 600px;
+        overflow-y: scroll;
+    }
+}

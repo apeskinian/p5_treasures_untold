@@ -12,19 +12,23 @@
 {% block content %}
 <div id="profiles-page" class="container-fluid flex-grow-1">
     <div id="profiles-page-container" class="container rounded-4 my-4 p-4">
-        <h2 class="text-center mb-3">Profile - {{ profile.user }}</h2>
+        <h2 class="text-center mb-3">{{ profile.user }}'s profile</h2>
+        <p class="text-center">
+            Welcome to your profile! Here, you can update your default details, such as your name, phone number, and delivery address, to make future checkouts faster and easier.<br>
+            You can also view your past orders and access order details whenever you need them.
+        </p>
         <div class="row">
-            <div class="col-12 col-md-6 user-details">
-                <h4 class="text-center mt-2">Personal Details</h4>
-                <form id="user-profile-form" action="{% url 'profile' %}" method="POST">
+            <div class="col-12 col-md-6 user-details mb-3">
+                <h4 class="text-center mt-2 mb-3">Personal Details</h4>
+                <form id="user-profile-form" action="{% url 'profile' %}" method="POST" class="d-flex flex-column align-items-center">
                     {% csrf_token %}
-                    <fieldset class="mb-3">
+                    <fieldset class="mb-3 w-100">
                         <legend class="fieldset-label"><h5>Contact Information</h5></legend>
                         {{ form.default_full_name | as_crispy_field }}
                         {{ form.email | as_crispy_field }}
                         {{ form.default_phone_number | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="mb-3">
+                    <fieldset class="mb-3 w-100">
                         <legend class="fieldset-label"><h5>Address Information</h5></legend>
                         {{ form.default_street_address_1 | as_crispy_field }}
                         {{ form.default_street_address_2 | as_crispy_field }}
@@ -43,31 +47,33 @@
                 </form>
             </div>
             <div class="col-12 col-md-6 order-history">
-                <h4 class="text-center mt-2">Order History</h4>
-                <div class="order-history" table-responsive>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order Number</th>
-                                <th>Date</th>
-                                <th>Order Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for order in orders %}
-                            <tr>
-                                <td>
-                                    <a href="{% url 'order_history' order.order_number %}"
-                                    title="{{ order.order_number }}">
-                                    {{ order.order_number }}
-                                    </a>
-                                </td>
-                                <td>{{ order.date }}</td>
-                                <td>£{{ order.grand_total }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                <h4 class="text-center mt-2 mb-3">Order History</h4>
+                <div id="order-history-table-container">
+                    <div id="order-history-table">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Order Number</th>
+                                    <th scope="col" class="d-none d-xl-table-cell">Date</th>
+                                    <th scope="col" class=" d-none d-sm-table-cell">Order Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}">
+                                        {{ order.order_number }}
+                                        </a>
+                                    </td>
+                                    <td class="d-none d-xl-table-cell">{{ order.date }}</td>
+                                    <td class="text-end d-none d-sm-table-cell">£{{ order.grand_total }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
