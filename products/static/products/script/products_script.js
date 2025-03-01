@@ -82,7 +82,6 @@ function adjustMarginBottom() {
   
     if (distanceFromBottom <= combinedHeight) {
       let offset = combinedHeight - distanceFromBottom;
-      console.log(offset)
       let maxMargin = 600;
       scrollButton.style.marginBottom = `${Math.min(offset, maxMargin)}px`;
     } else {

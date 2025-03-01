@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let lastScrollTop = 0;
 
-  if (!mainTitle || !topNav) return;
+  // if (!mainTitle || !topNav || !navMenu || !accountAndBasket || !floatingNav || !scrollButton) return;
 
   // Check if the 'fading-nav-page' class is present
   if (document.body.classList.contains('fading-nav-page')) {
@@ -150,7 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
             navMenu.classList.remove("main-title-show");
             accountAndBasket.classList.add("main-title-hide");
             accountAndBasket.classList.remove("main-title-show");
-            scrollButton.classList.remove('scroll-button-hide')
+            if (scrollButton) {
+              scrollButton.classList.remove('scroll-button-hide')
+            }
           } else if (window.scrollY === 0) {
             // Scrolled to the top
             mainTitle.classList.add("main-title-show");
@@ -161,7 +163,9 @@ document.addEventListener("DOMContentLoaded", function () {
             accountAndBasket.classList.remove("main-title-hide");
             floatingNav.classList.add("main-title-hide");
             floatingNav.classList.remove("main-title-show");
-            scrollButton.classList.add('scroll-button-hide')
+            if (scrollButton) {
+              scrollButton.classList.add('scroll-button-hide')
+            }
           }
           // Scrolling up
           if (currentScrollTop < lastScrollTop && mainTitle.classList.contains("main-title-hide")) {
