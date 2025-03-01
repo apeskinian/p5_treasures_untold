@@ -7,11 +7,12 @@ from checkout.models import Order
 
 
 @login_required
-def profile(request):
+def profile(request, order_number=None):
     """
     a view to show the user profile and order history
     """
     profile = get_object_or_404(UserProfile, user=request.user)
+    view_order = None
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -26,27 +27,17 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
 
+    if order_number:
+        view_order = get_object_or_404(Order, order_number=order_number)
+
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
-        'profile': profile
-    }
-
-    return render(request, template, context)
-
-
-@login_required
-def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
-    messages.info(request, 'This is a past order confirmation')
-
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-        'from_profile': True,
+        'profile': profile,
+        'view_order': view_order if view_order else None
     }
 
     return render(request, template, context)

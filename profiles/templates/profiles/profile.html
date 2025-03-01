@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load basket_tools %}
+{% load checkout_tools %}
+
 
 {% block extra_css %}
     <!-- profiles_style.css -->
@@ -71,8 +74,107 @@
     </div>
 </div>
 {% include 'includes/info_section.html' %}
-
-
+{% if view_order %}
+<div class="modal" id="order-history-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title flex-grow-1 text-center">ORDER: {{ view_order.order_number }}</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div id="order-details" class="col-12 col-md-6">
+                            <h5 class="text-center mt-2">Delivery Details</h5>
+                            <div class="d-flex justify-content-center my-3">
+                                <div>
+                                    <div class="mb-2"><strong>Order number:</strong> {{ view_order.order_number }}</div>
+                                    <div class="mb-2"><strong>Date:</strong> {{ view_order.date }}</div>
+                                    <div class="mb-2"><strong>Contact Details:</strong>
+                                        <div><i class="fa-solid fa-envelope"></i> {{ view_order.email }}</div>
+                                        {% if view_order.phone_number %}
+                                        <div><i class="fa-solid fa-phone"></i> {{ view_order.phone_number }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div><strong>Delivery Address:</strong>
+                                        <div>{{ view_order.full_name }}</div>
+                                        <div>{{ view_order.street_address_1 }}</div>
+                                        {% if view_order.street_address_2 %}
+                                        <div>{{ view_order.street_address_2 }}</div>
+                                        {% endif %}
+                                        <div>{{ view_order.town_city }}</div>
+                                        {% if view_order.county %}
+                                        <div>{{ view_order.county }}</div>
+                                        {% endif %}
+                                        {% if view_order.postcode %}
+                                        <div>{{ view_order.postcode }}</div>
+                                        {% endif %}
+                                        <div>{{ view_order.country }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="order-summary" class="col-12 col-md-6">
+                            <h5 id="order-summary-title" class="text-center mt-2">Order Summary</h5>
+                            {% for item in view_order.lineitems.all %}
+                            <div class="row my-3">
+                                <div class="col d-flex image-column align-items-center">
+                                    <div class=" position-relative">
+                                        <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                        <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
+                                            {{ item.quantity }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col flex-grow-1 d-flex flex-column">
+                                    <strong>{{ item.product.name }}</strong>
+                                    <small>{{ item.product.sku }}</small>
+                                    {% if view_order.rewards_used %}
+                                        {% if 'magic-lamp' in view_order.rewards_used %}
+                                            {% if forloop.counter < 4 %}
+                                                {% if item.purchase_price == 0.00 %}
+                                                    <small class="text-danger">MAGIC LAMP</small> 
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if 'cave-of-wonders' in view_order.rewards_used %}
+                                            {% if item.purchase_price == 0.00 and item.product.realm.name == 'Agrabah' %}
+                                                {% if 'magic-lamp' not in view_order.rewards_used %}
+                                                    <small class="text-danger">CAVE OF WONDERS</small>
+                                                {% elif 'magic-lamp' in view_order.rewards_used and forloop.counter > 3 %}
+                                                    <small class="text-danger">CAVE OF WONDERS</small>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                <div class="col d-flex item-total-column justify-content-end">
+                                    <strong class="{% if item.purchase_price == 0.00 %}text-danger{% endif %}">£{{ item.purchase_price | calc_subtotal:item.quantity }}</strong>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="row mt-3">
+                                <div class="col d-flex flex-column align-items-end">
+                                    {% if view_order.rewards_used and 'bibbidi-bobbidi-boo' in view_order.rewards_used %}
+                                        <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ view_order.order_total | calc_original_total | floatformat:2 }}</strong></p>
+                                        <p class="m-0 text-danger">'Bibbidi Bobbidi Boo' 20% discount.</p>
+                                        <p class="m-0">Subtotal: <strong>£{{ view_order.order_total | floatformat:2 }}</strong></p>
+                                    {% else %}
+                                        <p class="m-0">Subtotal: <strong>£{{ view_order.order_total | floatformat:2 }}</strong></p>
+                                    {% endif %}
+                                    <p class="m-0">Delivery: <strong>£{{ view_order.delivery_cost | floatformat:2 }}</strong></p>
+                                    <p class="m-0">Grand Total: <strong>£{{ view_order.grand_total | floatformat:2 }}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block extra_js %}
