@@ -130,31 +130,33 @@
                             {% if form %}
                                 {{ form | crispy }}
                             {% elif to_delete %}
-                                <div>
-                                    Are you sure you want to delete the following newsletter?
-                                    (This cannot be undone)
+                                {% if mode == 'Delete' %}
                                     <div>
-                                        <strong>{{ to_delete.subject }}</strong>
+                                        Are you sure you want to delete the following newsletter?
+                                        (This cannot be undone)
+                                        <div>
+                                            <strong>{{ to_delete.subject }}</strong>
+                                        </div>
                                     </div>
-                                </div>
-                            {% elif mode == 'Unsubscribe' %}
-                                <div>
-                                    Are you sure you want to unsubscribe the following email?
-                                    (This cannot be undone)
+                                {% elif mode == 'Unsubscribe' %}
                                     <div>
-                                        {{ to_delete.email }}
+                                        Are you sure you want to unsubscribe the following email?
+                                        (This cannot be undone)
+                                        <div>
+                                            {{ to_delete.email }}
+                                        </div>
                                     </div>
-                                </div>
-                            {% elif mode == 'Clear' %}
-                                <div>Clear the following expired subscribers?</div>
-                                <div>
-                                    {% for subscriber in to_delete %}
+                                {% elif mode == 'Clear' %}
+                                    <div>Clear the following expired subscribers?</div>
                                     <div>
-                                        <strong>{{ subscriber.email }}</strong>
+                                        {% for subscriber in to_delete %}
+                                        <div>
+                                            <strong>{{ subscriber.email }}</strong>
+                                        </div>
+                                        {% endfor %}
                                     </div>
-                                    {% endfor %}
-                                </div>
-                                <div>(This cannot be undone.)</div>
+                                    <div>(This cannot be undone.)</div>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </div>
