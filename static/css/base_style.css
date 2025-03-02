@@ -431,6 +431,29 @@ main {
 }
 /* END> PRODUCT FORM */
 
+/* START> SCROLL BUTTON */
+#scroll-button {
+    background-color: var(--tu-teal);
+    color: #FFF;
+    border-radius: 25%;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.scroll-button-hide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.scroll-link {
+    cursor: pointer;
+}
+/* END> SCROLL BUTTON */
+
 @media screen and (min-width: 768px) {
     
     .allauth-container {    
