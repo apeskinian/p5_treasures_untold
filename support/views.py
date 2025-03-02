@@ -178,9 +178,14 @@ def subscribe(request):
     - sends the subscriber an email for them to confirm
     """
     return_url = request.META.get('HTTP_REFERER')
-    subscribe_form = SubscriberForm(request.POST)
+    form_email = (
+        request.POST.get('newsletter-email') or
+        request.POST.get('main_newsletter-email')
+    )
+    subscribe_form = SubscriberForm({'email': form_email})
 
     if subscribe_form.is_valid():
+
         email = subscribe_form.cleaned_data['email']
         subscriber, created = Subscriber.objects.get_or_create(email=email)
 
