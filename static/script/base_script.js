@@ -129,15 +129,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const floatingNav = document.querySelector(".floating-top-nav");
   const scrollButton = document.querySelector('#scroll-button')
 
-  let lastScrollTop = 0;
+  let lastScrollPositionFromTop = 0;
 
-  // if (!mainTitle || !topNav || !navMenu || !accountAndBasket || !floatingNav || !scrollButton) return;
+  if (!mainTitle || !topNav || !navMenu || !accountAndBasket || !floatingNav) return;
 
   // Check if the 'fading-nav-page' class is present
   if (document.body.classList.contains('fading-nav-page')) {
     // Define handleScroll function inside the condition
     function handleScroll() {
-      let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+      let currentScrollPositionFromTop = window.scrollY;
 
       if (window.innerWidth > 767) {
           const navBottom = topNav.getBoundingClientRect().bottom;
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
           // Scrolling up
-          if (currentScrollTop < lastScrollTop && mainTitle.classList.contains("main-title-hide")) {
+          if (currentScrollPositionFromTop < lastScrollPositionFromTop && mainTitle.classList.contains("main-title-hide")) {
             floatingNav.classList.add("main-title-show");
             floatingNav.classList.remove("main-title-hide");
           }
@@ -186,10 +186,57 @@ document.addEventListener("DOMContentLoaded", function () {
           floatingNav.classList.remove("main-title-hide", "main-title-show");
       }
 
-      lastScrollTop = currentScrollTop; // Update last scroll position
+      lastScrollPositionFromTop = currentScrollPositionFromTop; // Update last scroll position
     }
 
     // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', adjustMarginBottom);
+    window.addEventListener('load', adjustMarginBottom);
   }
 });
+
+// scroll to top button
+$('.scroll-link').click(function(e) {
+  e.preventDefault();
+  window.scrollTo(0,0);
+})
+
+// Set scrollbutton bottom margin so that is does not go below the products div
+function adjustMarginBottom() {
+  const scrollButton = document.querySelector('#scroll-button');
+  const footer = document.querySelector('footer');
+  const supportLinksDiv = document.querySelector('#support-links');
+  const supportSocialDiv = document.querySelector('#support-social');
+  const supportNewsletterDiv = document.querySelector('#support-newsletter');
+
+  if (!scrollButton || !footer) return;
+
+  const viewportHeight = window.innerHeight;
+  let combinedHeight = footer.offsetHeight + 4;
+
+  if (supportLinksDiv) {
+    combinedHeight = footer.offsetHeight + supportLinksDiv.offsetHeight;
+    if (window.innerWidth < 576) {
+      combinedHeight += supportNewsletterDiv.offsetHeight + supportSocialDiv.offsetHeight;
+    } else if (window.innerWidth < 768) {
+      combinedHeight += supportNewsletterDiv.offsetHeight;
+    }
+  }
+
+  const scrollY = window.scrollY;
+
+  const distanceFromBottom = document.documentElement.scrollHeight - (scrollY + viewportHeight);
+
+  if (distanceFromBottom <= combinedHeight) {
+    let offset = combinedHeight - distanceFromBottom;
+    let maxMargin = 600;
+    scrollButton.style.marginBottom = `${Math.min(offset, maxMargin)}px`;
+  } else {
+    scrollButton.style.marginBottom = "0px";
+    if (window.innerWidth < 768) {
+          scrollButton.style.marginBottom = "60px";
+      }
+  }
+}
+
