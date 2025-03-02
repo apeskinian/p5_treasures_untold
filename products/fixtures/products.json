@@ -3,434 +3,434 @@
         "pk": 1,
         "model": "products.product",
         "fields": {
-            "sku": "mm001",
             "name": "Magic Mirror",
             "description": "Gaze into the Magic Mirror and reveal the truth you seek! A mystical relic from the Queen's castle, this enchanted mirror answers your questions with cryptic clarity. Beware—its insights are as honest as they are profound.",
             "price": 900.00,
             "realm": 1,
             "stock": 1,
             "image": "magic_mirror",
-            "date_added": "2024-01-01"
+            "date_added": "2024-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 2,
         "model": "products.product",
         "fields": {
-            "sku": "ml002",
             "name": "Magic Lamp",
             "description": "Unlock the wonders of the Magic Lamp! This ancient treasure grants three wishes to those daring enough to rub its surface. Bound by cosmic laws, its genie promises adventure, mischief, and perhaps a touch of magic to change your destiny.",
             "price": 1200.00,
             "realm": 3,
             "stock": 1,
             "image": "magic_lamp",
-            "date_added": "2024-10-01"
+            "date_added": "2024-10-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 3,
         "model": "products.product",
         "fields": {
-            "sku": "tu003",
             "name": "Rapunzel's Hairbrush",
             "description": "Let your hair shine with the magic of Rapunzel’s enchanted hairbrush! Said to hold traces of the golden flower’s healing power, this elegant brush detangles effortlessly and leaves a radiant, silky glow. A perfect blend of beauty and magic for any aspiring royal.",
             "price": 200.00,
             "realm": 2,
             "stock": 1,
             "image": "rapunzels_hairbrush",
-            "date_added": "2024-10-01"
+            "date_added": "2024-10-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 4,
         "model": "products.product",
         "fields": {
-            "sku": "ch004",
             "name": "Captain Hook's Hook",
             "description": "Command fear and respect on the high seas with Captain Hook’s iconic hook! Forged from gleaming steel and worn with the tales of Neverland, this menacing accessory is a must-have for any aspiring pirate captain.",
             "price": 350.00,
             "realm": 4,
             "stock": 1,
             "image": "captain_hooks_hook",
-            "date_added": "2024-10-01"
+            "date_added": "2024-10-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 5,
         "model": "products.product",
         "fields": {
-            "sku": "br005",
             "name": "Enchanted Rose",
             "description": "A symbol of timeless love, the Enchanted Rose holds the power to change fate. Encased in a glass dome, it slowly loses its petals, each falling like a moment of magic and wonder. Perfect for lovers and dreamers alike.",
             "price": 400.00,
             "realm": 5,
             "stock": 1,
             "image": "enchanted_rose",
-            "date_added": "2024-10-01"
+            "date_added": "2024-10-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 6,
         "model": "products.product",
         "fields": {
-            "sku": "al006",
             "name": "Magic Carpet",
             "description": "Fly through the skies with the enchanted Magic Carpet, a wondrous item that grants the ability to soar above the clouds. Known for its vibrant colors and unmatched comfort, it’s the perfect travel companion for adventurers seeking both style and speed. A must-have for any daring journey, whether through enchanted cities or across desert sands.",
             "price": 500.00,
             "realm": 3,
             "stock": 1,
             "image": "magic_carpet",
-            "date_added": "2024-11-01"
+            "date_added": "2024-11-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 7,
         "model": "products.product",
         "fields": {
-          "sku": "cg007",
-          "name": "Fairy Godmother's Wand",
-          "description": "Wave your troubles away with the Fairy Godmother's magical wand! Infused with the power to transform pumpkins into carriages and rags into gowns, this delicate wand is a must-have for those seeking a touch of enchantment in their lives. Just remember, magic fades at midnight!",
-          "price": 300.00,
-          "realm": 6,
-          "stock": 1,
-          "image": "fairy_godmothers_wand",
-            "date_added": "2024-11-01"
+            "name": "Fairy Godmother's Wand",
+            "description": "Wave your troubles away with the Fairy Godmother's magical wand! Infused with the power to transform pumpkins into carriages and rags into gowns, this delicate wand is a must-have for those seeking a touch of enchantment in their lives. Just remember, magic fades at midnight!",
+            "price": 300.00,
+            "realm": 6,
+            "stock": 1,
+            "image": "fairy_godmothers_wand",
+            "date_added": "2024-11-01",
+            "unique_stock": true
         }
       },
       {
         "pk": 8,
         "model": "products.product",
         "fields": {
-            "sku": "mo008",
             "name": "Maui's Fish Hook",
             "description": "Harness the power of the mighty Maui with his enchanted fish hook. Crafted by the demigod himself, this hook grants the ability to shape-shift and command the seas. A symbol of strength and adventure, perfect for any daring explorer.",
             "price": 600.00,
             "realm": 7,
             "stock": 1,
             "image": "mauis_fish_hook",
-            "date_added": "2024-11-01"
+            "date_added": "2024-11-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 9,
         "model": "products.product",
         "fields": {
-            "sku": "oc009",
             "name": "Cinderella's Glass Slipper",
             "description": "Step into a world of elegance with Cinderella's enchanted glass slipper. Delicate, perfectly crafted, and shimmering with magic, this slipper is said to fit only the true love of the princess. A timeless symbol of grace and love, perfect for any royal occasion.",
             "price": 300.00,
             "realm": 6,
             "stock": 1,
             "image": "cinderellas_glass_slipper",
-            "date_added": "2024-11-01"
+            "date_added": "2024-11-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 10,
         "model": "products.product",
         "fields": {
-            "sku": "lm010",
             "name": "Dinglehopper",
             "description": "The Dinglehopper is an essential tool for any aspiring mermaid! This magical, multi-purpose fork is perfect for combing through even the wildest of underwater tresses, leaving them smooth and shining. With a touch of magic, it’s more than just a utensil – it’s a symbol of the wonders of the sea.",
             "price": 25.00,
             "realm": 8,
             "stock": 8,
             "image": "dinglehopper",
-            "date_added": "2024-11-01"
+            "date_added": "2024-11-01",
+            "unique_stock": false
         }
     },
     {
         "pk": 11,
         "model": "products.product",
         "fields": {
-            "sku": "tu011",
             "name": "Rapunzel's Frying Pan",
             "description": "Unleash your inner hero with Rapunzel's trusty frying pan! Known for its versatility and unexpected power, this iconic kitchen tool doubles as a weapon in the hands of a brave princess. Whether for cooking or defending against foes, it's a must-have for any adventurer.",
             "price": 15.00,
             "realm": 2,
             "stock": 1,
             "image": "rapunzels_frying_pan",
-            "date_added": "2024-12-01"
+            "date_added": "2024-12-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 12,
         "model": "products.product",
         "fields": {
-            "sku": "mt012",
             "name": "Heart of Te Fiti",
             "description": "A mystical green gem said to hold the life-giving power of creation. The Heart of Te Fiti restores barren lands, heals nature, and grants immense life-giving power to its bearer. A treasure for those seeking to harness the essence of creation itself.",
             "price": 1000.00,
             "realm": 7,
             "stock": 1,
             "image": "heart_of_te_fiti",
-            "date_added": "2024-12-01"
+            "date_added": "2024-12-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 13,
         "model": "products.product",
         "fields": {
-            "sku": "fa013",
             "name": "Apprentice's Broom",
             "description": "Step into the shoes of the Sorcerer’s Apprentice with this magical broom. Infused with mystical energy, it brings a spark of enchantment to mundane chores, though caution is advised for novice sorcerers. A timeless artifact from Fantasia's magical world.",
             "price": 100.00,
             "realm": 10,
             "stock": 100,
             "image": "apprentices_broom",
-            "date_added": "2024-12-01"
+            "date_added": "2024-12-01",
+            "unique_stock": false
         }
     },
     {
         "pk": 14,
         "model": "products.product",
         "fields": {
-            "sku": "fa014",
             "name": "Sorcerer's Hat",
             "description": "Wield the power of the cosmos with the iconic Sorcerer's Hat. A symbol of magical mastery, it grants its wearer an aura of mystery and a touch of enchantment. Perfect for dreamers and aspiring apprentices.",
             "price": 200.00,
             "realm": 10,
             "stock": 1,
             "image": "sorcerers_hat",
-            "date_added": "2024-12-01"
+            "date_added": "2024-12-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 15,
         "model": "products.product",
         "fields": {
-            "sku": "nb015",
             "name": "Oogie Boogie's Bathtub",
             "description": "Oogie Boogie's bathtub, a peculiar item from Halloween Town, is as spooky as it is strange. Known for its eerie presence, it's perfect for fans of The Nightmare Before Christmas who want a touch of the bizarre in their collection.",
             "price": 150.00,
             "realm": 11,
             "stock": 1,
             "image": "oogie_boogies_bathtub",
-            "date_added": "2024-12-01"
+            "date_added": "2024-12-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 16,
         "model": "products.product",
         "fields": {
-            "sku": "ph016",
             "name": "Captain Hook's Cutlass",
             "description": "Captain Hook's Cutlass, a fearsome and iconic weapon wielded by the notorious pirate from Neverland. This item captures the essence of Captain Hook's menacing presence, perfect for fans of Peter Pan.",
             "price": 200.00,
             "realm": 4,
             "stock": 1,
             "image": "captain_hooks_cutlass",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 17,
         "model": "products.product",
         "fields": {
-            "sku": "wf017",
             "name": "Eat Me Cookies",
             "description": "Delight in the magic of Wonderland with these 'Eat Me' Cookies. Each bite-sized treat is infused with a touch of enchantment—perfect for curious adventurers seeking a small taste of wonder. Just remember, size can be a tricky thing in Wonderland!",
             "price": 25.00,
             "realm": 13,
             "stock": 10,
             "image": "eat_me_cookies",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": false
         }
     },
     {
         "pk": 18,
         "model": "products.product",
         "fields": {
-            "sku": "ph018",
             "name": "Alarm Clock",
             "description": "A peculiar alarm clock that was once swallowed by Tick-Tock, the crocodile. Known for its ticking sound, it’s a unique and iconic piece of Neverland history.",
             "price": 45.00,
             "realm": 4,
             "stock": 1,
             "image": "alarm_clock",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 19,
         "model": "products.product",
         "fields": {
-            "sku": "ph004",
             "name": "Pixie Dust",
             "description": "A shimmering vial containing the magical pixie dust that can make anyone fly. A must-have item for those seeking to experience the magic of Neverland.",
             "price": 40.00,
             "realm": 4,
             "stock": 10,
             "image": "vial_of_pixie_dust",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 20,
         "model": "products.product",
         "fields": {
-            "sku": "ph020",
             "name": "Left Half of a Golden Scarab Beetle",
             "description": "The left half of a golden beetle, prized for its intricate design. Rumors suggest that when the right half is found, its true magic will be revealed.",
             "price": 50.00,
             "realm": 3,
             "stock": 1,
             "image": "golden_scarab_beetle_left",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 21,
         "model": "products.product",
         "fields": {
-            "sku": "ph021",
             "name": "Right Half of a Golden Scarab Beetle",
             "description": "The right half of a golden beetle, its delicate features hinting at a larger mystery. It is said that when paired with the left half, the beetle’s full power is unlocked.",
             "price": 50.00,
             "realm": 3,
             "stock": 1,
             "image": "golden_scarab_beetle_right",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "model": "products.product",
         "pk": 22,
         "fields": {
-            "sku": "rs022",
             "name": "Bakora Staff",
             "description": "Imbued with wisdom and magic, once used by the wise Rafiki of the Pride Lands. Hold it in your hand and feel the weight of knowledge and the power of the savanna.",
             "price": 25.00,
             "realm": 12,
             "stock": 1,
             "image": "bakora_staff",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "model": "products.product",
         "pk": 23,
         "fields": {
-            "sku": "sb023",
             "name": "Snarfblat",
             "description": "A curious and mysterious artifact from the depths of Atlantica. This Snarfblat, once used to communicate with the surface world, holds the secrets of underwater exploration.",
             "price": 25.00,
             "realm": 8,
             "stock": 1,
             "image": "snarfblat",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": false
         }
     },
     {
         "model": "products.product",
         "pk": 24,
         "fields": {
-            "sku": "tt024",
             "name": "King Triton's Trident",
             "description": "The legendary trident of King Triton, ruler of the seas. With this powerful artifact in hand, you command the waves and the creatures of the deep. A symbol of royal authority and oceanic strength.",
             "price": 75.00,
             "realm": 8,
             "stock": 1,
             "image": "tritons_trident",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 25,
         "model": "products.product",
         "fields": {
-            "sku": "sb025",
             "name": "Spinning Wheel",
             "description": "Cursed by Maleficent, this spinning wheel holds the power to send its victim into an eternal slumber with the prick of its spindle. A hauntingly beautiful relic from the Enchanted Forest, perfect for lovers of legendary artifacts.",
             "price": 600.00,
             "realm": 1,
             "stock": 1,
             "image": "spinning_wheel",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 26,
         "model": "products.product",
         "fields": {
-            "sku": "pe026",
             "name": "Prince Eric's Statue",
             "description": "A grand statue of Prince Eric, gifted to the ocean’s depths by the shipwreck that sealed his destiny. This intricately carved relic captures the prince’s noble visage and stands as a symbol of love and longing beneath the waves of Atlantica. A must-have for collectors and romantics alike.",
             "price": 450.00,
             "realm": 8,
             "stock": 1,
             "image": "prince_erics_statue",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 27,
         "model": "products.product",
         "fields": {
-            "sku": "st027",
             "name": "Sword of Truth",
             "description": "Wield the legendary Sword of Truth, the weapon of Prince Phillip that shines with righteousness and courage. Forged by magic and blessed with purity, this sword is the ultimate tool to vanquish darkness. A symbol of justice and heroism, perfect for any brave adventurer seeking to triumph over evil.",
             "price": 800.00,
             "realm": 1,
             "stock": 1,
             "image": "sword_of_truth",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 28,
         "model": "products.product",
         "fields": {
-            "sku": "sv028",
             "name": "Shield of Virtue",
             "description": "Defend yourself with the Shield of Virtue, the enchanted shield bestowed upon Prince Phillip to protect him against Maleficent's dark magic. A symbol of unwavering resolve and courage, this shield embodies the purity of heart required to face even the greatest evils.",
             "price": 750.00,
             "realm": 1,
             "stock": 1,
             "image": "shield_of_virtue",
-            "date_added": "2025-01-01"
+            "date_added": "2025-01-01",
+            "unique_stock": true
         }
     },
     {
         "pk": 29,
         "model": "products.product",
         "fields": {
-            "sku": "at029",
             "name": "Fishbone Quill",
             "description": "Crafted from the remains of a magical fish, this quill is said to bring the words of the sea to life. Perfect for writing enchanted tales or signing pacts under the waves, the Fishbone Quill is a treasure from the depths of Atlantica.",
             "price": 75.00,
             "realm": 8,
             "stock": 1,
             "image": "fishbone_quill",
-            "date_added": "2025-01-21"
+            "date_added": "2025-01-21",
+            "unique_stock": true
         }
     },
     {
         "pk": 30,
         "model": "products.product",
         "fields": {
-            "sku": "wf030",
             "name": "White Rabbit's Pocket Watch",
             "description": "Never be late for an important date with the White Rabbit's Pocket Watch. This enchanted timepiece from Wonderland always keeps perfect time—unless, of course, you're late on purpose. A must-have for those who appreciate punctuality and whimsy.",
             "price": 150.00,
             "realm": 13,
             "stock": 1,
             "image": "white_rabbits_pocket_watch",
-            "date_added": "2025-01-21"
+            "date_added": "2025-01-21",
+            "unique_stock": true
         }
     },
     {
         "pk": 31,
         "model": "products.product",
         "fields": {
-            "sku": "ph033",
             "name": "Shiva Monkey Idol of Agrabah",
             "description": "A mystical relic from the Cave of Wonders, the Shiva Monkey Idol is etched with golden patterns and clutches the legendary Eye of Shiva—a glowing blood-red ruby said to reveal glimpses of the future. But beware—those who dare claim it may awaken ancient guardians sworn to protect its power.",
             "price": 1500.00,
             "realm": 3,
             "stock": 1,
             "image": "shiva_monkey_idol",
-            "date_added": "2025-02-15"
+            "date_added": "2025-02-15",
+            "unique_stock": true
         }
     }
 ]
