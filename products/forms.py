@@ -63,3 +63,18 @@ class ProductForm(forms.ModelForm):
                 self.add_error('realm', "Invalid realm selected.")
 
         return cleaned_data
+
+
+class RealmForm(forms.ModelForm):
+    class Meta:
+        model = Realm
+        fields = ('name',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        add placeholders and remove auto-generated label
+        """
+        super().__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs['placeholder'] = 'Realm name...'
+        self.fields['name'].label = False

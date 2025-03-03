@@ -9,8 +9,8 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.html import strip_tags
 
-from products.forms import ProductForm
-from products.models import Product
+from products.forms import ProductForm, RealmForm
+from products.models import Product, Realm
 from support.forms import (
     FaqsForm, ContactReplyForm, NewsletterForm, FaqsTopicsForm
 )
@@ -310,6 +310,69 @@ def manage_product(request, delete=None, product_id=None):
     }
     if mode == 'Delete':
         context['to_delete'] = product
+    else:
+        context['form'] = form
+
+    return render(request, template, context)
+
+
+@staff_member_required
+def manage_realm(request, delete=None, realm_id=None):
+    """
+    add, update or delete a realm
+    """
+    products = Product.objects.all()
+    mode = (
+        'Delete' if delete and realm_id else
+        'Update' if realm_id else 'Add'
+    )
+    return_url = f"{reverse('dashboard')}?tab=Product"
+    realm = None
+
+    if realm_id:
+        realm = get_object_or_404(Realm, pk=realm_id)
+
+    if request.method == 'POST':
+        if delete:
+            try:
+                realm.delete()
+                messages.success(request, 'Realm deleted')
+                return redirect(return_url)
+            except Exception as e:
+                messages.error(request, f'Error deleting realm: {e}')
+                return redirect(return_url)
+        else:
+            if realm_id:
+                form = RealmForm(request.POST, instance=realm)
+            else:
+                new_realm_name = request.POST['name'].replace(' ', '_')
+                form = RealmForm({'name': new_realm_name})
+            if form.is_valid():
+                form.save()
+                messages.success(
+                    request,
+                    'Realm updated' if realm_id else 'Realm created'
+                )
+                return redirect(return_url)
+            else:
+                messages.error(
+                    request,
+                    'Failed to update realm'
+                    if realm_id else 'Failed to create realm'
+                )
+    else:
+        form = RealmForm(instance=realm)
+
+    template = 'staff/dashboard.html'
+    context = {
+        'active_tab': 'Realm',
+        'products': products,
+        'mode': mode,
+        'return_url': return_url,
+        'title': 'Staff Dashboard'
+    }
+    if mode == 'Delete':
+        context['to_delete'] = realm
     else:
         context['form'] = form
 

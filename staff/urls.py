@@ -49,6 +49,19 @@ urlpatterns = [
         views.manage_product,
         name='manage_product'
     ),
+    path('manage_realm/',
+         views.manage_realm,
+         name='manage_realm'),
+    path(
+        'manage_realm/<int:realm_id>/',
+        views.manage_realm,
+        name='manage_realm'
+    ),
+    path(
+        'manage_realm/<str:delete>/<int:realm_id>/',
+        views.manage_realm,
+        name='manage_realm'
+    ),
     path(
         'reply_to_message/<int:message_id>/',
         views.reply_to_message,
