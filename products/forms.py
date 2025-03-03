@@ -60,10 +60,7 @@ class ProductForm(forms.ModelForm):
         new_realm_prefix = cleaned_data.get('new_realm_prefix')
 
         if realm == "new":
-            if not new_realm:
-                self.add_error('new_realm', "Please enter a new realm name.")
-            else:
-                print('OH WE IGNORED THE NOT REALM STUFF BRING ON THE CRASH')
+            try:
                 realm_obj, created = (
                     Realm.objects.get_or_create(
                         name=new_realm_model_name,
@@ -71,6 +68,12 @@ class ProductForm(forms.ModelForm):
                     )
                 )
                 cleaned_data['realm'] = realm_obj
+            except Exception as e:
+                self.add_error(
+                    'new_realm',
+                    'An error occured while processing the new realm: '
+                    f'{str(e)}'
+                )
         else:
             try:
                 cleaned_data['realm'] = Realm.objects.get(pk=int(realm))

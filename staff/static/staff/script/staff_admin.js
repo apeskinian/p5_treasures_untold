@@ -42,9 +42,10 @@ if (idTopic) {
         let newTopicField = document.getElementById('new-topic-field');
         if (this.value === 'new') {
             newTopicField.style.display = 'block';
+            document.getElementById('id_new_topic').required = true;
         } else {
             newTopicField.style.display = 'none';
-            document.getElementById('id_new_topic').value = '';
+            document.getElementById('id_new_topic').required = false;
         }
     });
 }
@@ -57,9 +58,10 @@ if (idRealm) {
         let newRealmField = document.getElementById('new-realm-field');
         if (this.value === 'new') {
             newRealmField.style.display = 'block';
+            document.getElementById('id_new_realm').required = true;
         } else {
             newRealmField.style.display = 'none';
-            document.getElementById('id_new_realm').value = '';
+            document.getElementById('id_new_realm').required = false;
         }
     });
 }

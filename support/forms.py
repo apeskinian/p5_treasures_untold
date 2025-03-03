@@ -100,13 +100,17 @@ class FaqsForm(forms.ModelForm):
         new_topic = cleaned_data.get('new_topic')
 
         if topic == "new":
-            if not new_topic:
-                self.add_error('new_topic', "Please enter a new topic.")
-            else:
+            try:
                 topic_obj, created = (
                     FaqsTopics.objects.get_or_create(name=new_topic)
                 )
                 cleaned_data['topic'] = topic_obj
+            except Exception as e:
+                self.add_error(
+                    'new_topic',
+                    'An error occured while processing the new topic: '
+                    f'{str(e)}'
+                )
         else:
             try:
                 cleaned_data['topic'] = FaqsTopics.objects.get(pk=int(topic))
