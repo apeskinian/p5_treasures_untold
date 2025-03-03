@@ -51,7 +51,9 @@ class Faqs(models.Model):
         verbose_name_plural = 'FAQs'
         ordering = ['topic', 'sort_order',]
 
-    topic = models.ForeignKey(FaqsTopics, on_delete=models.CASCADE)
+    topic = models.ForeignKey(
+        FaqsTopics, on_delete=models.CASCADE, related_name='faq_topic'
+    )
     question = models.CharField(max_length=254, null=False, blank=False)
     answer = models.TextField()
     sort_order = models.PositiveIntegerField(default=100)

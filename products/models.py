@@ -24,7 +24,8 @@ class Product(models.Model):
 
     name = models.CharField(max_length=254)
     realm = models.ForeignKey(
-        'Realm', null=True, blank=True, on_delete=models.SET_NULL
+        'Realm', null=True, blank=True, on_delete=models.SET_NULL,
+        related_name='product_realm'
     )
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)

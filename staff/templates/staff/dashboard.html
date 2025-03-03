@@ -80,26 +80,32 @@
                                 {{ form.question | as_crispy_field }}
                                 {{ form.answer | as_crispy_field }}
                             {% elif to_delete %}
-                                <div>
-                                    Are you sure you want to delete the following FAQ?
-                                    (This cannot be undone)
-                                    <div>
-                                        <p><strong>Q:</strong> {{ to_delete.question }}</p>
-                                        <p><strong>A:</strong> {{ to_delete.answer }}</p>
-                                    </div>
+                                <p class="text-center">Are you sure you want to delete the following FAQ?</p>
+                                <div class="mx-md-5">
+                                    <p><strong>Q:</strong> {{ to_delete.question }}</p>
+                                    <p><strong>A:</strong> {{ to_delete.answer }}</p>
                                 </div>
+                                <p class="text-center">(This cannot be undone.)</p>
                             {% endif %}
                         {% elif active_tab == 'FAQ Topic' %}
                             {% if form %}
                                 {{ form | crispy }}
+                                {% if mode == 'Update' %}
+                                    <p class="text-center">
+                                        <strong>Note: </strong>
+                                        {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
+                                        FAQ{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this action.
+                                    </p>
+                                {% endif %}
                             {% elif  to_delete %}
-                                <div>
-                                    Are you sure you want to delete the following topic?
-                                    (This cannot be undone)
-                                    <div>
-                                        {{ to_delete.name }}
-                                    </div>
-                                </div>
+                                <div class="text-center">
+                                    <p>Are you sure you want to delete the topic <strong>{{ to_delete.name }}</strong>?</p>
+                                    <p>
+                                        <strong>Note: </strong>
+                                        {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
+                                        FAQ{% if associated > 1 or associated == 0 %}s{% endif %} will be also deleted by this action.<br>(This cannot be undone.)
+                                    </p>
+                                </div> 
                             {% endif %}
                         {% elif active_tab == 'Product' %}
                             {% if form %}
@@ -116,24 +122,29 @@
                                 {{ form.unique_stock | as_crispy_field }}
                                 {{ form.image.as_widget }}
                             {% elif to_delete %}
-                                <div>
-                                    Are you sure you want to delete the following product?
-                                    (This cannot be undone)
-                                    <div>
-                                        {{ to_delete.name }}
-                                    </div>
-                                </div>
+                                <p class="text-center">
+                                    Are you sure you want to delete <strong>{{ to_delete.name }}</strong>?
+                                    <br>(This cannot be undone.)
+                                </p>
                             {% endif %}
                         {% elif active_tab == 'Realm' %}
                                 {% if form %}
                                     {{ form | crispy }}
+                                        {% if mode == 'Update' %}
+                                            <p class="text-center">
+                                                <strong>Note: </strong>
+                                                {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
+                                                product{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this action.
+                                            </p>
+                                        {% endif %}
                                 {% elif to_delete %}
-                                    <div>
-                                        Are you sure you want to delete the following realm?
-                                        (This cannot be undone)
-                                        <div>
-                                            {{ to_delete.display_name }}
-                                        </div>
+                                    <div class="text-center">
+                                        <p>Are you sure you want to delete <strong>{{ to_delete.display_name }}</strong>?</p>
+                                        <p>
+                                            <strong>Note: </strong>
+                                            {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
+                                            product{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this.<br>(This cannot be undone.)
+                                        </p>
                                     </div>  
                                 {% endif %}
                         {% elif active_tab == 'Message' %}
@@ -143,31 +154,23 @@
                                 {{ form | crispy }}
                             {% elif to_delete %}
                                 {% if mode == 'Delete' %}
-                                    <div>
-                                        Are you sure you want to delete the following newsletter?
-                                        (This cannot be undone)
-                                        <div>
-                                            <strong>{{ to_delete.subject }}</strong>
-                                        </div>
-                                    </div>
+                                    <p class="text-center">
+                                        Are you sure you want to delete the newsletter: <strong>{{ to_delete.subject }}</strong>?
+                                        <br>(This cannot be undone.)
+                                    </p>
                                 {% elif mode == 'Unsubscribe' %}
-                                    <div>
-                                        Are you sure you want to unsubscribe the following email?
-                                        (This cannot be undone)
-                                        <div>
-                                            {{ to_delete.email }}
-                                        </div>
-                                    </div>
+                                    <p class="text-center">
+                                        Are you sure you want to remove <strong>{{ to_delete.email }}</strong> from the newletter recipients?
+                                        <br>(This cannot be undone.)
+                                    </p>
                                 {% elif mode == 'Clear' %}
-                                    <div>Clear the following expired subscribers?</div>
-                                    <div>
+                                    <p class="text-center">Clear the following expired emails?</p>
+                                    <p class="text-center">
                                         {% for subscriber in to_delete %}
-                                        <div>
-                                            <strong>{{ subscriber.email }}</strong>
-                                        </div>
+                                            <strong>{{ subscriber.email }}</strong><br>
                                         {% endfor %}
-                                    </div>
-                                    <div>(This cannot be undone.)</div>
+                                    </p>
+                                    <p class="text-center">(This cannot be undone.)</p>
                                 {% endif %}
                             {% endif %}
                         {% endif %}

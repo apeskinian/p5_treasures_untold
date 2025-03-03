@@ -20,7 +20,7 @@ from support.models import (
 
 
 def getSubscribers():
-    expiration_time = timezone.now() - timedelta(days=1)
+    expiration_time = timezone.now() - timedelta(minutes=1)
     active_subscribers = Subscriber.objects.filter(is_active=True)
     unconfirmed_subscribers = Subscriber.objects.filter(
         is_active=False,
@@ -241,12 +241,15 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
     else:
         form = FaqsTopicsForm(instance=faq_topic)
 
+    associated = faq_topic.faq_topic.count() if faq_topic else None
+
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'FAQ Topic',
         'faq_topics': faq_topics,
         'mode': mode,
         'return_url': return_url,
+        'associated': associated,
         'title': 'Staff Dashboard'
     }
     if mode == 'Delete':
@@ -363,12 +366,15 @@ def manage_realm(request, delete=None, realm_id=None):
     else:
         form = RealmForm(instance=realm)
 
+    associated = realm.product_realm.count() if realm else None
+
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Realm',
         'products': products,
         'mode': mode,
         'return_url': return_url,
+        'associated': associated,
         'title': 'Staff Dashboard'
     }
     if mode == 'Delete':
