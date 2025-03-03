@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
@@ -51,17 +52,16 @@ class Product(models.Model):
         name_part = []
         name_part_words = self.name.split(' ')
         for word in name_part_words:
-            if word[0].isupper():
-                name_part.append(word[0])
+            name_part.append(word[0].upper())
         name_part = ''.join(name_part)
         realm_part = []
         realm_part_words = self.realm.display_name().split(' ')
         for word in realm_part_words:
-            if word[0].isupper():
-                realm_part.append(word[:3].upper())
+            realm_part.append(word[:3].upper())
         realm_part = ''.join(realm_part)
         unique = '-U' if self.unique_stock else ''
-        sku = f'TU-{realm_part}-{name_part}{unique}'
+        uuid_part = uuid.uuid4().hex[:4].upper()
+        sku = f'TU-{realm_part}-{name_part}{unique}-{uuid_part}'
 
         return sku
 
