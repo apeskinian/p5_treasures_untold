@@ -113,6 +113,9 @@
                                 {{ form.realm | as_crispy_field }}
                                 <div id="new-realm-field">
                                     {{ form.new_realm | as_crispy_field }}
+                                    <div class="d-flex justify-content-center">
+                                        {{ form.new_realm_prefix | as_crispy_field }}
+                                    </div>
                                 </div>
                                 {{ form.description | as_crispy_field }}
                                 <div class="d-flex gap-4">
@@ -129,7 +132,10 @@
                             {% endif %}
                         {% elif active_tab == 'Realm' %}
                                 {% if form %}
-                                    {{ form | crispy }}
+                                    {{ form.name | as_crispy_field }}
+                                    <div class="d-flex flex-column align-items-center">
+                                        {{ form.the_prefix_required | as_crispy_field }}
+                                    </div>
                                         {% if mode == 'Update' %}
                                             <p class="text-center">
                                                 <strong>Note: </strong>

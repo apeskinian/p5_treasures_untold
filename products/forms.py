@@ -25,6 +25,15 @@ class ProductForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Enter new realm name'}),
     )
 
+    new_realm_prefix = forms.BooleanField(
+        required=False,
+        label=(
+            'Prefix with "the" (when grammatically applicable, '
+            'e.g. Enchanted Forest)?'
+        ),
+        widget=forms.CheckboxInput()
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -47,13 +56,17 @@ class ProductForm(forms.ModelForm):
         realm = cleaned_data.get('realm')
         new_realm = cleaned_data.get('new_realm')
         new_realm_model_name = new_realm.replace(' ', '_')
+        new_realm_prefix = cleaned_data.get('new_realm_prefix')
 
         if realm == "new":
             if not new_realm:
                 self.add_error('new_realm', "Please enter a new realm name.")
             else:
                 realm_obj, created = (
-                    Realm.objects.get_or_create(name=new_realm_model_name)
+                    Realm.objects.get_or_create(
+                        name=new_realm_model_name,
+                        the_prefix_required=new_realm_prefix
+                    )
                 )
                 cleaned_data['realm'] = realm_obj
         else:
@@ -68,7 +81,10 @@ class ProductForm(forms.ModelForm):
 class RealmForm(forms.ModelForm):
     class Meta:
         model = Realm
-        fields = ('name',)
+        fields = (
+            'name',
+            'the_prefix_required'
+        )
 
     def __init__(self, *args, **kwargs):
         """
@@ -78,3 +94,7 @@ class RealmForm(forms.ModelForm):
 
         self.fields['name'].widget.attrs['placeholder'] = 'Realm name...'
         self.fields['name'].label = False
+        self.fields['the_prefix_required'].label = (
+            'Prefix with "the" (when grammatically applicable,'
+            ' eg. Enchanted Forest)?'
+        )
