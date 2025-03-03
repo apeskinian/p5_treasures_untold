@@ -6,7 +6,7 @@
         <p>Simply enter your email address below to start receiving our magical updates straight to your inbox! We promise no spam—only enchanting content and offers.</p>
         <div id="main-subscriber-form">
           <form action="{% url 'subscribe' %}" method="POST">
-            <div class="input-group">
+            <div class="input-group flex-nowrap">
               {% csrf_token %}
               {{ main_subscriber_form | crispy }}
               <button id="main-subscriber-form-submit" type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>

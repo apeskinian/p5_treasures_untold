@@ -20,7 +20,7 @@ from support.models import (
 
 
 def getSubscribers():
-    expiration_time = timezone.now() - timedelta(minutes=1)
+    expiration_time = timezone.now() - timedelta(days=365)
     active_subscribers = Subscriber.objects.filter(is_active=True)
     unconfirmed_subscribers = Subscriber.objects.filter(
         is_active=False,
