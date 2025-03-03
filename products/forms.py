@@ -70,7 +70,7 @@ class ProductForm(forms.ModelForm):
                 cleaned_data['realm'] = realm_obj
             except Exception as e:
                 self.add_error(
-                    'new_realm',
+                    None,
                     'An error occured while processing the new realm: '
                     f'{str(e)}'
                 )
@@ -78,7 +78,7 @@ class ProductForm(forms.ModelForm):
             try:
                 cleaned_data['realm'] = Realm.objects.get(pk=int(realm))
             except Realm.DoesNotExist:
-                self.add_error('realm', "Invalid realm selected.")
+                self.add_error(None, "Invalid realm selected.")
 
         return cleaned_data
 
