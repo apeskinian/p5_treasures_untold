@@ -107,7 +107,7 @@ class FaqsForm(forms.ModelForm):
                 cleaned_data['topic'] = topic_obj
             except Exception as e:
                 self.add_error(
-                    None,
+                    'topic',
                     'An error occured while processing the new topic: '
                     f'{str(e)}'
                 )
@@ -115,7 +115,10 @@ class FaqsForm(forms.ModelForm):
             try:
                 cleaned_data['topic'] = FaqsTopics.objects.get(pk=int(topic))
             except FaqsTopics.DoesNotExist:
-                self.add_error(None, "Invalid topic selected.")
+                self.add_error(
+                    'topic',
+                    'Invalid topic selected.'
+                )
 
         return cleaned_data
 
