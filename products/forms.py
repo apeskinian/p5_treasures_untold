@@ -1,6 +1,7 @@
 from django import forms
 from .models import Product, Realm
 from .widgets import CustomClearableFileInput
+from django.db.models.functions import Lower
 
 
 class ProductForm(forms.ModelForm):
@@ -40,7 +41,7 @@ class ProductForm(forms.ModelForm):
         self.fields['price'].widget.attrs['placeholder'] = '£'
 
         # Setting realm names to display names in the dropdown
-        realms = Realm.objects.all().order_by('name')
+        realms = Realm.objects.all().order_by(Lower('name'))
         display_names = [(realm.id, realm.display_name()) for realm in realms]
 
         self.fields['realm'].empty_label = '- Select a Realm -'
@@ -62,6 +63,7 @@ class ProductForm(forms.ModelForm):
             if not new_realm:
                 self.add_error('new_realm', "Please enter a new realm name.")
             else:
+                print('OH WE IGNORED THE NOT REALM STUFF BRING ON THE CRASH')
                 realm_obj, created = (
                     Realm.objects.get_or_create(
                         name=new_realm_model_name,

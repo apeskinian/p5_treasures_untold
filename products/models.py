@@ -6,6 +6,7 @@ from cloudinary.models import CloudinaryField
 from cloudinary.utils import cloudinary_url
 from django.conf import settings
 from django.templatetags.static import static
+from django.db.models.functions import Lower
 
 
 class Realm(models.Model):
@@ -21,7 +22,7 @@ class Realm(models.Model):
 
 class Product(models.Model):
     class Meta:
-        ordering = ['realm__name']
+        ordering = [Lower('realm__name')]
 
     name = models.CharField(max_length=254)
     realm = models.ForeignKey(
