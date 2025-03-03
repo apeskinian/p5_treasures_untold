@@ -306,6 +306,8 @@ main {
 }
 
 #div_id_newsletter-email {
+    width: 100%;
+    max-width: 350px;
     margin: 0 !important;
 }
 
@@ -316,17 +318,13 @@ main {
 }
 
 #div_id_main_newsletter-email {
+    width: 100%;
+    max-width: 350px;
     margin: 0 !important;
 }
 
 #id_main_newsletter-email {
     border-radius: 8px 0px 0px 8px;
-}
-
-#main-subscriber-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 #main-subscriber-form-submit {

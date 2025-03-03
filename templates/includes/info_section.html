@@ -3,11 +3,11 @@
         <div id="support-newsletter" class="col-12 col-md-4 p-3">
             <h2 class="text-white m-0">Unlock the Magic!</h2>
             <p class="text-white text-center m-0 py-1">Get informed of all the new item drops and news!</p>
-            <form action="{% url 'subscribe' %}" method="POST">
-                <div class="input-group flex-nowrap">
+            <form action="{% url 'subscribe' %}" method="POST" class="w-100">
+                <div class="input-group flex-nowrap d-flex justify-content-center">
                     {% csrf_token %}
                     {{ subscriber_form | crispy }}
-                    <button id="newsletter-form-submit" type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button id="newsletter-form-submit" type="submit" class="btn input-group-text"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </form>
         </div>
