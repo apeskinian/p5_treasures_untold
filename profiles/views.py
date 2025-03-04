@@ -30,7 +30,7 @@ def profile(request, order_number=None):
     if order_number:
         view_order = get_object_or_404(Order, order_number=order_number)
 
-    orders = profile.orders.all()
+    orders = profile.orders.all().order_by('-date')
 
     template = 'profiles/profile.html'
     context = {
