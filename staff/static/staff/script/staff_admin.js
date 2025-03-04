@@ -71,6 +71,7 @@ const spinnerButtons = document.getElementsByClassName('btn-with-spinner');
 const dashboardModalConfirmButton = document.getElementById('dashboard-modal-confirm');
 const dashboardModalCancelButton = document.getElementById('dashboard-modal-cancel');
 const dashboardModalClose = document.getElementById('dashboard-modal-close');
+const fileButton = document.getElementById('btn-file-select')
 
 // Activating spinner on anchor elements.
 Array.from(spinnerButtons).forEach(button => {
@@ -89,34 +90,71 @@ Array.from(spinnerButtons).forEach(button => {
     });
 });
 
+// Disabling cancelbutton to prevent double clicks
 if (dashboardModalCancelButton)
     dashboardModalCancelButton.addEventListener('click', function() {
 
         dashboardModalConfirmButton.classList.add("disabled");
+        dashboardModalClose.classList.add('disabled');
+        if (fileButton) {
+            fileButton.classList.add('disabled');
+        }
         setTimeout(() => {
-            dashboardModalConfirmButton.classList.remove("disabled");
-        }, 5000);
+            dashboardModalConfirmButton.classList.remove('disabled');
+            dashboardModalClose.classList.remove('disabled')
+        if (fileButton) {
+            fileButton.classList.remove('disabled');
+        }
+        }, 4000);
+    })
 
+if (dashboardModalClose)
+    dashboardModalClose.addEventListener('click', function() {
 
+        dashboardModalClose.classList.add('disabled');
+        dashboardModalCancelButton.querySelector('.btn-text').classList.add('d-none');
+        dashboardModalCancelButton.querySelector('.spinner-border').classList.remove('d-none');
+        dashboardModalCancelButton.classList.add('disabled');
+        dashboardModalConfirmButton.classList.add('disabled');
+        if (fileButton) {
+            fileButton.classList.add('disabled');
+        }
+        setTimeout(() => {
+            dashboardModalClose.classList.remove('disabled');
+            dashboardModalCancelButton.querySelector('.btn-text').classList.remove('d-none');
+            dashboardModalCancelButton.querySelector('.spinner-border').classList.add('d-none');
+            dashboardModalCancelButton.classList.remove('disabled');
+            dashboardModalConfirmButton.classList.remove('disabled');
+        if (fileButton) {
+            fileButton.classList.remove('disabled');
+        }
+        }, 4000);
     })
 
 // Activating spinner on button elements.
 if (dashboardModalConfirmButton) {
     dashboardModalConfirmButton.addEventListener('click', function() {
+        console.log('SPINNERS GO GO GO')
         const buttonElement = this;
         
         buttonElement.querySelector('.btn-text').classList.add('d-none');
         buttonElement.querySelector('.spinner-border').classList.remove('d-none');
-        buttonElement.classList.add("disabled");
-        dashboardModalCancelButton.classList.add("disabled");
-        dashboardModalClose.classList.add("disabled");
+        buttonElement.classList.add('disabled');
+        dashboardModalCancelButton.classList.add('disabled');
+        dashboardModalClose.classList.add('disabled');
+        if (fileButton) {
+            fileButton.classList.add('disabled');
+        }
         
         setTimeout(() => {
             buttonElement.querySelector('.btn-text').classList.remove('d-none');
             buttonElement.querySelector('.spinner-border').classList.add('d-none');
-            buttonElement.classList.remove("disabled");
-            dashboardModalCancelButton.classList.remove("disabled");
-            dashboardModalClose.classList.remove("disabled");
-        }, 5000);
+            buttonElement.classList.remove('disabled');
+            dashboardModalCancelButton.classList.remove('disabled');
+            dashboardModalClose.classList.remove('disabled');
+            if (fileButton) {
+                fileButton.classList.remove('disabled');
+            }
+        }, 4000);
     })
 }
