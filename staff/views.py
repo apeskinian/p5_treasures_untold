@@ -173,11 +173,11 @@ def manage_faq(request, delete=None, faq_id=None):
                 )
                 return redirect(return_url)
             else:
+                print('ERRORS FOUND: ', form.errors)
                 messages.error(
                     request,
                     'Failed to update FAQ' if faq_id else 'Failed to add FAQ'
                 )
-                return redirect(return_url)
     else:
         form = FaqsForm(instance=faq)
 
@@ -237,7 +237,6 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
                     'Failed to update FAQ topic' if faq_topic_id else
                     'Failed to add FAQ topic'
                 )
-                return redirect(return_url)
     else:
         form = FaqsTopicsForm(instance=faq_topic)
 
@@ -465,11 +464,12 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
                 new_newsletter = form.save()
                 send_newsletter(new_newsletter, request)
                 messages.success(request, 'Newsletter created')
+                return redirect(return_url)
             else:
                 messages.error(
                     request,
                     'Failed to create newsletter, ensure form is valid')
-            return redirect(return_url)
+
     else:
         form = NewsletterForm(instance=newsletter)
 

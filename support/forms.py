@@ -81,12 +81,12 @@ class FaqsForm(forms.ModelForm):
         self.fields['answer'].widget.attrs['placeholder'] = 'Answer'
         self.fields['question'].label = False
         self.fields['answer'].label = False
+        self.fields['topic'].label = False
 
         topic_choices = [
             (topic.id, topic.name) for topic in FaqsTopics.objects.all()
         ]
         self.fields['topic'].empty_label = "- Select a Topic -"
-        self.fields['topic'].label = False
         self.fields['topic'] = forms.ChoiceField(
             choices=[
                 ('', '- Select a Topic -'), ('new', 'Add New Topic')
