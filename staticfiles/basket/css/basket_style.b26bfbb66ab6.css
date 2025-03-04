@@ -1,0 +1,54 @@
+#basket-page {
+    background-color: var(--tu-mid-grey);
+}
+
+#basket-container {
+    padding: 0.25rem;
+    background-color: var(--tu-off-white);
+}
+
+.item-row {
+    padding: 0.5rem;
+}
+
+.image-column {
+    max-width: 80px;
+}
+
+.info-column {
+    padding-left: 0;
+}
+
+.product-total-column {
+    max-width: fit-content;
+}
+
+.basket-buttons a {
+    width: 60%;
+    min-width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+    #basket-container {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .image-column {
+        max-width: 150px;
+    }
+
+    .item-rule,
+    .item-row,
+    .totals-row {
+        width: 75%;
+    }
+    
+    .basket-buttons a {
+        width: 200px;
+        min-width: fit-content;
+    }
+
+}

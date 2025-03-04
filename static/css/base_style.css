@@ -296,6 +296,16 @@ main {
 }
 /* END> NAVIGATION BARS */
 
+/* START> ERROR PAGES */
+#error-page {
+    background-color: var(--tu-mid-grey);
+}
+
+#error-page-container {
+    background-color: var(--tu-off-white);
+}
+/* END> ERROR PAGES */
+
 /* START> INFO SECTION */
 .support-container {
     max-width: 100vw;

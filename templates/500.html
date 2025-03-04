@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="error-page" class="container-fluid flex-grow-1">
+	<div id="error-page-container" class="container rounded-4 my-5 p-4">
+		<h2 class="text-center">A rare relic has caused a brief disturbance in our systems.</h2>
+		<p class="text-center">
+			It appears something has gone wrong in our enchanted realm. Our team is investigating and will restore order soon.<br>
+			Click below to return to the homepage.
+		</p>
+		<div class="text-center"><a href="{% url 'home' %}" class="btn btn-green">Home</a></div>
+	</div>
+</div>
+{% endblock %}

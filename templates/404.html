@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="error-page" class="container-fluid flex-grow-1">
+	<div id="error-page-container" class="container rounded-4 my-5 p-4">
+		<h2 class="text-center">Not all treasures are meant to be found...</h2>
+		<p class="text-center">
+			This treasure has long been forgotten. But don’t worry, plenty more treasures await you!<br>
+			Click below to return to the homepage!
+		</p>
+		<div class="text-center"><a href="{% url 'home' %}" class="btn btn-green">Home</a></div>
+	</div>
+</div>
+{% endblock %}
+    
