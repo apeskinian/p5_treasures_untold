@@ -4,8 +4,8 @@
         <caption class="hidden">List of FAQs</caption>
         <thead class="staff-table">
             <tr>
-                <th class="d-none d-md-table-cell">Topic</th>
-                <th class="">Question</th>
+                <th class="d-none d-md-table-cell faq-table-topics-th">Topic</th>
+                <th class="faq-table-questions-th">Question</th>
                 <th class="text-end">
                     <a class="btn btn-green btn-with-spinner" href="{% url 'manage_faq' %}">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
@@ -17,8 +17,8 @@
         <tbody>
         {% for faq in faqs %}
         <tr>
-            <td class="d-none d-md-table-cell">{{ faq.topic.name }}</td>
-            <td>{{ faq.question }}</td>
+            <td class="d-none d-md-table-cell faq-table-topics-td">{{ faq.topic.name }}</td>
+            <td class="faq-table-questions-td">{{ faq.question }}</td>
             <td class="text-end">
                 <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-yellow btn-edit btn-with-spinner">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>

@@ -58,7 +58,7 @@
         <tbody>
         {% for realm in all_realms %}
         <tr>
-            <td class="d-none d-lg-table-cell">{{ realm.display_name }}</td>
+            <td>{{ realm.display_name }}</td>
             <td class="text-end">
                 <a href="{% url 'manage_realm' realm_id=realm.id %}" class="btn btn-yellow btn-with-spinner">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
