@@ -166,8 +166,14 @@
                                     </p>
                                 {% elif mode == 'Unsubscribe' %}
                                     <p class="text-center">
-                                        Are you sure you want to remove <strong>{{ to_delete.email }}</strong> from the newletter recipients?
-                                        <br>(This cannot be undone.)
+                                        Are you sure you want to remove <strong>{{ to_delete.email }}</strong> from the mailing list?<br>
+                                        <p class="text-center">
+                                            Current status: 
+                                            {% for subscriber in active_subscribers %}{% if subscriber.email == to_delete.email %}<span class="text-green"><strong>ACTIVE</strong></span>{% endif %}{% endfor %}
+                                            {% for subscriber in unconfirmed_subscribers %}{% if subscriber.email == to_delete.email %}<span class="text-grey"><strong>PENDING CONFIRMATION</strong></span>{% endif %}{% endfor %}
+                                            {% for subscriber in expired_subscribers %}{% if subscriber.email == to_delete.email %}<span class="text-red"><strong>EXPIRED</strong></span>{% endif %}{% endfor %}
+                                            <br>(This cannot be undone.)
+                                        </p>
                                     </p>
                                 {% elif mode == 'Clear' %}
                                     <p class="text-center">Clear the following expired emails?</p>

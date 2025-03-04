@@ -7,19 +7,9 @@
         {% if group.grouper %}
             {% for message in group.list|dictsortreversed:"date_replied" %}
                 <div class="contact-message-container bg-white p-3">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="ms-1">
-                            <span><strong>{{ message.ticket_number }}</strong></span>
-                            <span>- {{ message.name }} ({{ message.email }})</span>
-                        </div>
-                        <div>
-                            {% if not message.replied %}
-                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-yellow btn-with-spinner">
-                                <span class="btn-text">Reply</span>
-                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                            </a>
-                            {% endif %}
-                        </div>
+                    <div class="ms-1 mb-3">
+                        <span><strong>{{ message.ticket_number }}</strong></span>
+                        <span>- {{ message.name }} ({{ message.email }})</span>
                     </div>
                     <div class="message-content p-3">
                         <p>Received on: <strong>{{ message.date_received | date:"d M Y" }}</strong></p>
@@ -35,13 +25,13 @@
             {% endfor %}
         {% else %}
             {% for message in group.list|dictsort:"date_received" %}
-                <div class="contact-message-container bg-white p-3">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="ms-1">
+                <div class="contact-message-container bg-white p-3 container">
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <div class="ms-1 mb-3">
                             <span><strong>{{ message.ticket_number }}</strong></span>
                             <span>- {{ message.name }} ({{ message.email }})</span>
                         </div>
-                        <div>
+                        <div class="mb-3">
                             {% if not message.replied %}
                             <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-yellow btn-with-spinner">
                                 <span class="btn-text">Reply</span>

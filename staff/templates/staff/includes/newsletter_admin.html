@@ -7,9 +7,9 @@
                 <caption class="hidden">List of newsletters</caption>
                 <thead class="staff-table">
                     <tr>
-                        <th>Newsletter</th>
-                        <th>Date Sent</th>
-                        <th class="text-end">
+                        <th class="newsletter-table-newsletter w-25">Newsletter</th>
+                        <th class="newsletter-table-date text-nowrap">Date Sent</th>
+                        <th class="text-end w-100">
                             <a class="btn btn-green btn-with-spinner" href="{% url 'manage_newsletters' %}">
                                 <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
@@ -20,8 +20,8 @@
                 <tbody>
                 {% for newsletter in newsletters %}
                 <tr>
-                    <td>{{ newsletter.subject }}</td>
-                    <td>{{ newsletter.date_sent | date:"d M Y" }}</td>
+                    <td class="newsletter-table-newsletter w-25">{{ newsletter.subject }}</td>
+                    <td class="newsletter-table-date text-nowrap">{{ newsletter.date_sent | date:"d M Y" }}</td>
                     <td class="text-end">
                         <a href="{% url 'manage_newsletters' newsletter_id=newsletter.id %}" class="btn btn-blue btn-delete btn-with-spinner">
                             <span class="btn-text"><i class="fa-regular fa-folder-open"></i></i></span>
@@ -43,16 +43,16 @@
                 <caption class="hidden">List of subscribers</caption>
                 <thead class="staff-table">
                     <tr>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th></th>
+                        <th class="subscriber-table-emails w-25">Email</th>
+                        <th class="subscriber-table-status">Status</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for subscriber in active_subscribers %}
                     <tr>
-                        <td>{{ subscriber.email }}</td>
-                        <td class="text-success">ACTIVE</td>
+                        <td class="subscriber-table-emails w-25">{{ subscriber.email }}</td>
+                        <td class="subscriber-table-status"><strong class="text-green">ACTIVE</strong></td>
                         <td class="text-end">
                             <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
@@ -63,8 +63,8 @@
                 {% endfor %}
                 {% for subscriber in unconfirmed_subscribers %}
                     <tr>
-                        <td>{{ subscriber.email }}</td>
-                        <td class="text-secondary">PENDING</td>
+                        <td class="subscriber-table-emails w-25">{{ subscriber.email }}</td>
+                        <td class="subscriber-table-status"><strong class="text-grey">PENDING</strong></td>
                         <td class="text-end">
                             <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
@@ -75,8 +75,8 @@
                 {% endfor %}
                 {% for subscriber in expired_subscribers %}
                     <tr>
-                        <td>{{ subscriber.email }}</td>
-                        <td class="text-danger">EXPIRED</td>
+                        <td class="subscriber-table-emails w-25">{{ subscriber.email }}</td>
+                        <td class="subscriber-table-status"><strong class="text-red">EXPIRED</strong></td>
                         <td class="text-end">
                             <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>

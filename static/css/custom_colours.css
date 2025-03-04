@@ -122,3 +122,15 @@
     border-radius: 10px;
 }
 /* END> DROPDOWN ELEMENTS */
+
+.text-green {
+    color: var(--tu-green);
+}
+
+.text-red {
+    color: var(--tu-red);
+}
+
+.text-grey {
+    color: var(--tu-dark-grey);
+}

@@ -29,8 +29,6 @@
 
 /* Tables */
 .table {
-    /* background-color: #d6e0d5; */
-    padding: 0px 20px 20px 20px;
     border-collapse: separate;
     border-spacing: 0 10px;
     border-radius: 10px;
@@ -94,6 +92,20 @@ td.text-end {
     height: 39px;
 }
 
+.product-table-name,
+.newsletter-table-date,
+.subscriber-table-status {
+    display: none;
+}
+
+.subscriber-table-emails {
+    max-width: 40vw !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+
 /* Hiding new topic field on FAQ form until needed */
 #new-topic-field {
     display: none;
@@ -134,6 +146,25 @@ td.text-end {
 .btn-clear-subs {
     height: 39px;
     width: 100%;
+}
+
+@media screen and (min-width: 365px) {
+    .product-table-name {
+        display: table-cell;
+    }
+    .newsletter-table-newsletter {
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width: 470px) {
+    .newsletter-table-date,
+    .subscriber-table-status {
+        display: table-cell;
+    }
+    .subscriber-table-emails {
+        max-width: fit-content !important;
+    }
 }
 
 @media screen and (min-width: 768px) {
