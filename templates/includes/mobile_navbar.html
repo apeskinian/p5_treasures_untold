@@ -1,7 +1,8 @@
 {% load static %}
 {% load basket_tools %}
-<!-- mobile navbar -->
+<!-- Mobile Navbar -->
 <nav id="bottom-nav-mobile" class="d-flex justify-content-evenly d-md-none navbar fixed-bottom p-3">
+    <!-- Account Menu -->
     <div id="account-options" class="dropup">
         <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-hat-wizard fa-xl"></i>
@@ -23,6 +24,7 @@
             {% endif %}
         </div>
     </div>
+    <!-- Site Navigation Links -->
     <div id="navigation-options" class="dropup">
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
@@ -110,12 +112,14 @@
         </div>
     </div>
     {% endif %}
+    <!-- Basket View -->
     <div id="basket" class="dropup">
         <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-basket-shopping fa-xl"></i>
         </a>
         <div class="dropdown-menu">
             <h1 class="text-center mt-1">Shopping Basket</h1>
+            <!-- Check for basket items and show if present -->
             {% if basket_items %}
                 <div class="container mb-3 px-4">
                     <div class="row">
@@ -182,6 +186,7 @@
                     <a href="{% url 'checkout' %}" class="btn-mob-basket btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
                 </div>
             {% else %}
+            <!-- Inform user of empty basket -->
             <div class="d-flex flex-column align-items-center mt-4 mb-5">
                 <p class="mb-1">Your basket is empty</p>
                 <a href="{% url 'products' %}" class="btn-mob-basket btn btn-blue w-50">Continue Shopping</a>
