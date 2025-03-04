@@ -1,7 +1,7 @@
 .slideshow-container {
     position: relative;
-    width: 40dvw;
-    height: 40dvw;
+    width: 232px;
+    height: 232px;
     overflow: hidden;
 }
 
@@ -22,10 +22,9 @@
     opacity: 1;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 768px) {
     .slideshow-container {
         width: 300px;
         height: 300px;
-    }
-    
+    }  
 }
