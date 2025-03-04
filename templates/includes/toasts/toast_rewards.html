@@ -1,30 +1,31 @@
-<div id="liveToast" class="toast toast-reward" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+<div id="liveToast" class="toast toast-reward" role="alert" aria-live="assertive" aria-atomic="true"
+    data-bs-autohide="false">
     <div class="d-flex p-3">
         <div class="toast-body m-0 p-0">
             {% if message.message == 'bibbidi-bobbidi-boo' %}
-                    <p>
-                        Salagadoola menchicka boola<br>
-                        Bibbidi-bobbidi-boo<br>
-                        Put 'em together and what have you got?<br>
-                        <strong>20% Discount!</strong>
-                    </p>
+                <p>
+                    Salagadoola menchicka boola<br>
+                    Bibbidi-bobbidi-boo<br>
+                    Put 'em together and what have you got?<br>
+                    <strong>20% Discount!</strong>
+                </p>
             {% elif message.message == 'cave-of-wonders' %}
-                    <p>
-                        As the scarab halves unite, the Cave of Wonders opens, offering its treasures freely.<br>
-                        <strong>You've unlocked the Cave of Wonders!</strong><br>
-                        Touch nothing but the lamp...
-                    </p>
+                <p>
+                    As the scarab halves unite, the Cave of Wonders opens, offering its treasures freely.<br>
+                    <strong>You've unlocked the Cave of Wonders!</strong><br>
+                    Touch nothing but the lamp...
+                </p>
             {% elif message.message == 'magic-lamp' %}
-                    <p>
-                        The lamp’s magic is activated! Enjoy your first three treasures for free!<br>
-                        Who knew a simple rub could unlock so much magic!
-                    </p>
+                <p>
+                    The lamp’s magic is activated! Enjoy your first three treasures for free!<br>
+                    Who knew a simple rub could unlock so much magic!
+                </p>
             {% elif message.message == 'infidels' %}
-                    <p>
-                        Infidels!<br>
-                        You have touched the forbidden treasure!<br>
-                        The Cave of Wonder reward has been removed!
-                    </p>
+                <p>
+                    Infidels!<br>
+                    You have touched the forbidden treasure!<br>
+                    The Cave of Wonder reward has been removed!
+                </p>
             {% endif %}
         </div>
         <button type="button" class="btn-close mb-auto ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>

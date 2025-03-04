@@ -7,7 +7,9 @@
                 <div class="input-group flex-nowrap d-flex justify-content-center">
                     {% csrf_token %}
                     {{ subscriber_form | crispy }}
-                    <button id="newsletter-form-submit" type="submit" class="btn input-group-text"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button id="newsletter-form-submit" type="submit" class="btn input-group-text">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </div>
             </form>
         </div>
