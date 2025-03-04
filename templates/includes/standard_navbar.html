@@ -13,18 +13,18 @@
         <!-- Account Dropdown -->
         <div id="floating-user-account-dropdown" class="dropdown">
             <a class="nav-link" href="#" id="floating-user-options" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="text-center text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if user.is_authenticated %}{{ user.username }}{% else %}Log In or Sign Up{% endif %}">
+                <div class="text-center text-white">
                     <i class="fa-solid fa-hat-wizard fa-xl"></i>
                 </div>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end mt-3 p-2 rounded-4">
+            <div class="dropdown-menu dropdown-menu-end mt-2 p-2 rounded-4">
                 {% include 'includes/login_options.html' %}
-            </ul>
+            </div>
         </div>
         <!-- Basket Offcanvas -->
         {% if user.is_authenticated %}
             <a data-bs-toggle="offcanvas" href="#offcanvas-basket" aria-controls="offcanvas-basket" role="button" class="text-white">
-                <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="£{{ total|floatformat:2 }}">
+                <div class="text-center">
                     <i class="fa-solid fa-basket-shopping fa-xl"></i>
                 </div>
             </a>
@@ -98,18 +98,18 @@
         <!-- Account Dropdown -->
         <div id="user-account-dropdown" class="dropdown">
             <a class="nav-link" href="#" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="text-center text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="{% if user.is_authenticated %}{{ user.username }}{% else %}Log In or Sign Up{% endif %}">
+                <div class="text-center text-white">
                     <i class="fa-solid fa-hat-wizard fa-xl"></i>
                 </div>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end mt-3 p-2 rounded-4">
+            <div class="dropdown-menu dropdown-menu-end mt-2 p-2 rounded-4">
                 {% include 'includes/login_options.html' %}
-            </ul>
+            </div>
         </div>
         <!-- Basket Offcanvas -->
         {% if user.is_authenticated %}
             <a data-bs-toggle="offcanvas" href="#offcanvas-basket" aria-controls="offcanvas-basket" role="button" class="text-white">
-                <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-offset="0,10" data-bs-title="£{{ total|floatformat:2 }}">
+                <div class="text-center">
                     <i class="fa-solid fa-basket-shopping fa-xl"></i>
                 </div>
             </a>

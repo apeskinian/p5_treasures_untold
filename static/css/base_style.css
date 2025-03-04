@@ -129,6 +129,14 @@ main {
     
 }
 
+.btn-account {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+}
+
 .top-nav {
     position: relative;
     height: 40vw;

@@ -8,18 +8,18 @@
         </a>
         <div class="dropdown-menu p-2 text-center">
             {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}" class="btn btn-green btn-mob-account mt-3" id="profile-page" aria-label="go to your profile page">Profile</a>
+                <div><a href="{% url 'profile' %}" class="btn btn-green btn-mob-account my-1" id="profile-page" aria-label="go to your profile page">Profile</a></div>
                 {% if user.is_staff %}
-                    <a href="{% url 'dashboard' %}" class="btn btn-teal btn-mob-account mt-2" id="staff" aria-label="go to the staff dashboard page">Staff Dashboard</a>
+                    <div><a href="{% url 'dashboard' %}" class="btn btn-teal btn-mob-account my-1" id="staff" aria-label="go to the staff dashboard page">Staff Dashboard</a></div>
                 {% endif %}
                 {% if user.is_superuser %}
-                    <a href="{% url 'admin:index' %}" target="_blank" rel="noopener noreferrer" class="btn btn-teal btn-mob-account mt-2" id="admin-btn" aria-label="go to the admin page">Admin Portal</a>
+                    <div><a href="{% url 'admin:index' %}" target="_blank" rel="noopener noreferrer" class="btn btn-teal btn-mob-account my-1" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></div>
                 {% endif %}
-                <a href="{{ logout_url }}" class="btn btn-red btn-mob-account my-2" aria-label="sign out">Log out</a>
-                <p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p>
+                <div><a href="{{ logout_url }}" class="btn btn-red btn-mob-account my-1" aria-label="sign out">Log out</a></div>
+                <div><p class="m-0">Logged in as: <strong>{{ user.username }}</strong></p></div>
             {% else %}
-                <a href="{{ login_url }}" class="btn btn-green btn-mob-account my-2">Log in</a>
-                <a href="{{ signup_url }}" class="btn btn-green btn-mob-account my-2">Sign up</a>
+                <div><a href="{{ login_url }}" class="btn btn-green btn-mob-account my-1">Log in</a></div>
+                <div><a href="{{ signup_url }}" class="btn btn-green btn-mob-account my-1">Sign up</a></div>
             {% endif %}
         </div>
     </div>
