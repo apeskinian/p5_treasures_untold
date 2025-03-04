@@ -94,17 +94,21 @@ Array.from(spinnerButtons).forEach(button => {
 if (dashboardModalCancelButton)
     dashboardModalCancelButton.addEventListener('click', function() {
 
-        dashboardModalConfirmButton.classList.add("disabled");
         dashboardModalClose.classList.add('disabled');
+        if (dashboardModalConfirmButton) {
+            dashboardModalConfirmButton.classList.add("disabled");
+        }
         if (fileButton) {
             fileButton.classList.add('disabled');
         }
         setTimeout(() => {
-            dashboardModalConfirmButton.classList.remove('disabled');
             dashboardModalClose.classList.remove('disabled')
-        if (fileButton) {
-            fileButton.classList.remove('disabled');
-        }
+            if (dashboardModalConfirmButton) {
+                dashboardModalConfirmButton.classList.remove('disabled');
+            }
+            if (fileButton) {
+                fileButton.classList.remove('disabled');
+            }
         }, 4000);
     })
 
@@ -115,7 +119,9 @@ if (dashboardModalClose)
         dashboardModalCancelButton.querySelector('.btn-text').classList.add('d-none');
         dashboardModalCancelButton.querySelector('.spinner-border').classList.remove('d-none');
         dashboardModalCancelButton.classList.add('disabled');
-        dashboardModalConfirmButton.classList.add('disabled');
+        if (dashboardModalConfirmButton) {
+            dashboardModalConfirmButton.classList.add('disabled');
+        }
         if (fileButton) {
             fileButton.classList.add('disabled');
         }
@@ -124,10 +130,12 @@ if (dashboardModalClose)
             dashboardModalCancelButton.querySelector('.btn-text').classList.remove('d-none');
             dashboardModalCancelButton.querySelector('.spinner-border').classList.add('d-none');
             dashboardModalCancelButton.classList.remove('disabled');
-            dashboardModalConfirmButton.classList.remove('disabled');
-        if (fileButton) {
-            fileButton.classList.remove('disabled');
-        }
+            if (dashboardModalConfirmButton) {
+                dashboardModalConfirmButton.classList.remove('disabled');
+            }
+            if (fileButton) {
+                fileButton.classList.remove('disabled');
+            }
         }, 4000);
     })
 
