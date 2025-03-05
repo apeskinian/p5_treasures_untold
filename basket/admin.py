@@ -2,12 +2,16 @@ from django.contrib import admin
 from django.core.management import call_command
 from django.contrib.sessions.models import Session
 from django.shortcuts import get_object_or_404
+
 from products.models import Product
 
 
 @admin.action(description='Recover abandoned baskets')
 def recover_baskets(modeladmin, request, queryset):
-
+    """
+    Call the management command to check and clear abandoned sessions.
+    This also recovers items in baskets.
+    """
     call_command('clear_abandoned_sessions')
 
     modeladmin.message_user(
@@ -18,7 +22,10 @@ def recover_baskets(modeladmin, request, queryset):
 
 @admin.action(description='Empty basket and recover stock')
 def empty_basket(modeladmin, request, queryset):
-
+    """
+    Empty the basket of the selected session and recover any items that are
+    currently in the basket.
+    """
     if 'basket' in request.session:
         basket = request.session.get('basket', {})
 
@@ -48,7 +55,9 @@ def empty_basket(modeladmin, request, queryset):
 
 @admin.action(description='Clear all currently activated rewards')
 def clear_rewards(modeladmin, request, queryset):
-
+    """
+    Clears any currently activated rewards in the selected session.
+    """
     if 'rewards' in request.session:
         del request.session['rewards']
         modeladmin.message_user(

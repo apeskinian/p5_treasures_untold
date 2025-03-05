@@ -14,7 +14,7 @@ class Command(BaseCommand):
     If so, any basket items are retrieved and rewards deactivated.
     The session is also then deleted logging the user out.
     """
-    help = "Retrieves stock from abandoned sessions"
+    help = 'Retrieves stock from abandoned sessions'
 
     def handle(self, *args, **kwargs):
         basket_counter = 0
