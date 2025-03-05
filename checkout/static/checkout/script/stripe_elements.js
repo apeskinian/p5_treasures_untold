@@ -1,3 +1,6 @@
+/* jshint esversion: 11, globalstrict: true, jquery: true */
+/* globals Stripe */
+
 // Core logic/payment flow for this comes from here:
 // https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=elements
 
@@ -11,7 +14,7 @@ const options = {
     appearance: {},
 };
 
-// Set up Stripe.js and Elements to use in checkout form, passing the client secret
+// Set up Stripe.js and Elements to use in checkout form, passing the client secret.
 const elements = stripe.elements(options);
 
 // Create and mount the Payment Element
@@ -19,7 +22,7 @@ const paymentElementOptions = { layout: 'accordion' };
 const paymentElement = elements.create('payment', paymentElementOptions);
 paymentElement.mount('#payment-element');
 
-// handling realtime validation errors
+// Handling realtime validation errors.
 paymentElement.addEventListener('change', function (event) {
     var errorDiv = $('#payment-errors');
     if (event.error) {
@@ -28,10 +31,11 @@ paymentElement.addEventListener('change', function (event) {
     } else {
         $(errorDiv).html('');
     }
-})
+});
 
 const form = document.getElementById('payment-form');
 
+// Listen for form submission then take over and submit to Stripe.
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     setLoading(true);
@@ -45,9 +49,9 @@ form.addEventListener('submit', function (event) {
     };
     var url = '/checkout/cache_checkout_data/';
 
+    // Get updated metadata from cache_checkout_data view then submit to Stripe.
     $.post(url, postData).done(function () {
         stripe.confirmPayment({
-            //`Elements` instance that was used to create the Payment Element
             elements,
             redirect: 'if_required',
             confirmParams: {
@@ -80,13 +84,13 @@ form.addEventListener('submit', function (event) {
             },
         }).then(function (result) {
             if (result.error) {
-                // show any errors to the user
+                // Show any errors to the user.
                 var errorDiv = $('#payment-errors');
                 var html = result.error.message;
                 $(errorDiv).html(html);
                 setLoading(false);
             } else {
-                // submit the form
+                // Submit the form.
                 if (result.paymentIntent.status === 'succeeded') {
                     form.submit();
                 }
@@ -94,11 +98,11 @@ form.addEventListener('submit', function (event) {
         });
     }).fail(function () {
         location.reload();
-    })
+    });
 
-})
+});
 
-// disable submit and adjust buttons and show a spinner to user
+// Disable submit and adjust buttons and show a spinner to user.
 function setLoading(isLoading) {
     if (isLoading) {
         $('#submit-button').attr('disabled', true);
