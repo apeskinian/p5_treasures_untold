@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    <!-- products_style.css -->
+    <!-- Importing basket_styles.css -->
     <link rel="stylesheet" href="{% static 'basket/css/basket_style.css' %}">    
 {% endblock %}
 
@@ -16,18 +16,16 @@
     <div id="basket-container" class="container rounded-4 my-4">
         <h1 class="text-center mt-2">Shopping Basket</h1>
         {% if basket_items %}
+            <!-- Show basket items -->
             {% for item in basket_items %}
                 {% if forloop.counter > 1 %}
                     <hr class="item-rule m-2">
                 {% endif %}
                 <div class="item-row row">
-                    
                     <div class="image-column col">
                         <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
                     </div>
-                    
                     <div class="info-column col">
-
                         <div class="details-row row mb-2">
                             <div class="product-info col d-flex flex-column">
                                 <strong>{{ item.product.name }}</strong>
@@ -67,7 +65,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="adjustment-row row">
                             <div class="col d-flex gap-2 justify-content-end {% if item.product.unique_stock %}d-none{% endif %}">
                                 <form class="update-form" method="POST" action="{% url 'adjust_basket' item.item_id %}">
@@ -84,12 +81,10 @@
                                 <a href="" class="btn btn-sm btn-blue update-basket" data-item-id="{{ item.item_id }}" data-action="update"><i class="fa-solid fa-rotate"></i></a>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             {% endfor %}
-
+            <!-- Show basket totals including any discounts from rewards. -->
             <div class="totals-row row p-2">
                 <div class="col d-flex flex-column align-items-end">
                     {% if rewards and 'bibbidi-bobbidi-boo' in rewards %}
@@ -103,15 +98,14 @@
                     <p class="m-0">Grand Total: <strong>£{{ grand_total|floatformat:2 }}</strong></p>
                 </div>
             </div>
-
             <div class="row p-2">
                 <div class="basket-buttons col d-flex flex-column align-items-center gap-2">
                     <a href="{% url 'products' %}" class="btn btn-blue" aria-label="edit the basket">Continue Shopping</a>
                     <a href="{% url 'checkout' %}" class="btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
                 </div>
             </div>
-
         {% else %}
+        <!-- Show basket is empty and prompt to shop. -->
         <div class="text-center my-3">
             <p class="mb-2">Your basket is empty</p>
             <a href="{% url 'products' %}" class="btn btn-blue">Continue Shopping</a>
@@ -124,6 +118,6 @@
 
 {% block extra_js %}
     {{ block.super }}
-    <!-- qty modifiers script -->
+    <!-- Importing product_limits.js -->
     <script src="{% static 'script/product_limits.js' %}"></script>
 {% endblock %}
