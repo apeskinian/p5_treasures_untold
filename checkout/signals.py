@@ -1,15 +1,23 @@
 from django.db.models.signals import post_save, post_delete
-from django.contrib.auth.signals import user_logged_out
 from django.dispatch import receiver
-from .models import OrderLineItem
-from products.models import Product
+from django.contrib.auth.signals import user_logged_out
 from django.shortcuts import get_object_or_404
+
+from products.models import Product
+from .models import OrderLineItem
 
 
 @receiver(post_save, sender=OrderLineItem)
 def update_on_save(sender, instance, created, **kwargs):
     """
-    update order total on lineitem update/create
+    Calls the 'update_total' method on the related order when an OrderLineItem
+    is saved (created or updated).
+
+    **Arguments:**
+    - 'sender': The model class that sent the signal.
+    - 'instance': The instance of the OrderLineItem that was saved.
+    - 'created': Boolean indicating if the instance was created or updated.
+    - 'kwargs': Additional keyword arguments passed with the signal.
     """
     instance.order.update_total()
 
@@ -17,7 +25,13 @@ def update_on_save(sender, instance, created, **kwargs):
 @receiver(post_delete, sender=OrderLineItem)
 def update_on_delete(sender, instance, **kwargs):
     """
-    update order total on lineitem delete
+    Calls the 'update_total' method on the related order when an OrderLineItem
+    is deleted.
+
+    **Arguments:**
+    - 'sender': The model class that sent the signal.
+    - 'instance': The instance of the OrderLineItem that was deleted.
+    - 'kwargs': Additional keyword arguments passed with the signal.
     """
     instance.order.update_total()
 
@@ -25,8 +39,17 @@ def update_on_delete(sender, instance, **kwargs):
 @receiver(user_logged_out)
 def clear_session_on_logout(sender, request, user, **kwargs):
     """
-    clears user session data on user logged out event
+    Clears the session's basket and reward data when the user logs out.
+    It also recovers any items left in the basket and updates stock levels
+    accordingly.
+
+    **Arguments:**
+    - 'sender': The sender of the signal, which is the user logged out event.
+    - 'request': The HTTP request object.
+    - 'user': The user who logged out.
+    - 'kwargs': Additional keyword arguments passed with the signal.
     """
+    # Check for items left in basket session data.
     if 'basket' in request.session:
         basket = request.session.get('basket', {})
 
@@ -48,5 +71,7 @@ def clear_session_on_logout(sender, request, user, **kwargs):
                 pass
 
         del request.session['basket']
+
+    # Check for rewards in session data.
     if 'rewards' in request.session:
         del request.session['rewards']
