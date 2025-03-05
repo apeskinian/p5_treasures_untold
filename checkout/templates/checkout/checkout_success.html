@@ -4,12 +4,11 @@
 {% load checkout_tools %}
 
 {% block extra_css %}
-    <!-- checkout_syle.css -->
+    <!-- Import checkout_style.css -->
     <link rel="stylesheet" href="{% static 'checkout/css/checkout_style.css' %}">    
 {% endblock %}
 
 {% block content %}
-
 <div id="checkout-success-page" class="container-fluid flex-grow-1">
     <div id="checkout-success-container" class="container rounded-4 my-4">
         <h1 class="text-center mb-2">Thank you!</h1>
@@ -20,6 +19,7 @@
             </p>
         </div>
         <div class="row">
+            <!-- Order details with users delivery address and other details. -->
             <div id="order-details" class="col-12 col-md-6">
                 <h4 class="text-center mt-2">Delivery Details</h4>
                 <div class="d-flex justify-content-center my-3">
@@ -50,6 +50,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Order summary of products purchased. -->
             <div id="order-summary" class="col-12 col-md-6">
                 <h4 id="order-summary-title" class="text-center mt-2">Order Summary</h4>
                 {% for item in order.lineitems.all %}
