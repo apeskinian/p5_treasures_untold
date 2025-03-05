@@ -1,25 +1,41 @@
-import json
 from decimal import Decimal
-
-import stripe
+import json
 
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.views.decorators.http import require_POST
 
+import stripe
+
+from basket.contexts import basket_contents
 from products.models import Product
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from profiles.models import UserProfile
-from profiles.forms import UserProfileForm
-from basket.contexts import basket_contents
 
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    Modifies the stripe payment intent metadata wih the following additions:
+    - 'basket_contents': A json export of the session basket dictionary.
+    - 'active_rewards': A json export of the session rewards list.
+    - 'session_key': The current session key.
+    - 'save_info': The value from the checkbox in the checkout form.
+    - 'current_user': The current user.
+
+    **Raises:**
+    - Exception: When the metadata fails to modify.
+
+    **Returns:**
+    - `HttpResponse` with status 200 on succesful modification.
+    - `HttpResponse` with status 400 on failed modification.
+    """
+    # Add session and other relevant data to the stripe metadata.
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -39,13 +55,58 @@ def cache_checkout_data(request):
 
 @login_required
 def checkout(request):
+    """
+    Displays the checkout page, handles the checkout process, and creates an
+    order.
+
+    This view handles:
+    - Collecting form data for the order.
+    - Creating and saving an order, including associated line items.
+    - Modifying the order total based on rewards applied.
+    - Creating a Stripe payment intent for the checkout process.
+    - Displaying appropriate messages for errors or success.
+
+    **If the form is valid:**
+    - An order is created with details from the form and session data.
+    - Order line items are created for each product in the basket.
+    - Relevant rewards (such as discounts) are applied to the order total.
+    - A Stripe payment intent is generated for the user.
+
+    **If the form is invalid:**
+    - An error message is shown, and the user is prompted to correct their
+        information.
+
+    **Session Data Modified:**
+    - The session is updated to indicate whether the user wants to save their
+        information for future use.
+
+    **Raises:**
+    - `Product.DoesNotExist`: If a product in the basket cannot be found in the
+        database.
+
+    **Context:**
+    - 'order_form': :form:`forms.OrderForm` instance.
+    - 'stripe_public_key': Stripe public key from environment variables.
+    - 'client_secret': Stripe payment intent.
+
+    **Template:**
+    - :template:`checkout/checkout.html`
+
+    **Returns:**
+    - Redirects to the checkout success page upon successful order creation.
+    - Redirects to the basket view if the basket is empty or there's an error
+        with the form.
+    """
+    # Set variables for method.
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    # Handling submission of order.
     if request.method == 'POST':
         basket = request.session.get('basket', {})
         rewards = request.session.get('rewards', [])
 
+        # Collecting form data.
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -58,6 +119,7 @@ def checkout(request):
             'phone_number': request.POST['phone_number']
         }
 
+        # Process form
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -67,6 +129,8 @@ def checkout(request):
             order.rewards_used = json.dumps(rewards)
             order.save()
 
+            # Iterate through basket and apply reward discounts if and where
+            # appropriate, then save line item.
             for index, (item_id, quantity) in enumerate(basket.items()):
                 try:
                     product = get_object_or_404(Product, pk=item_id)
@@ -93,6 +157,7 @@ def checkout(request):
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST
 
+            # Check for Bibbidi-Bobbidi-Boo reward
             if 'bibbidi-bobbidi-boo' in rewards:
                 order.order_total *= Decimal(0.8)
                 order.grand_total = (
@@ -107,6 +172,7 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                            Please double check your information.')
     else:
+        # Get basket contents and generate payment intent for Stripe.
         basket = request.session.get('basket', {})
         if not basket:
             messages.error(
@@ -123,6 +189,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+    # Prefilling the checkout form from use profile saved info.
     try:
         profile = UserProfile.objects.get(user=request.user)
         order_form = OrderForm(initial={
@@ -139,6 +206,7 @@ def checkout(request):
     except UserProfile.DoesNotExist:
         order_form = OrderForm()
 
+    # Set up view parameters
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -152,15 +220,46 @@ def checkout(request):
 @login_required
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handles the successful completion of a checkout, including updating the
+    user's profile with the order information and clearing the session basket
+    and rewards.
+
+    This view:
+    - Retrieves the order using the order number.
+    - Updates the order with the user's profile data.
+    - Saves the user's default shipping details if the user opted to save them.
+    - Sends a success message and confirms the order.
+    - Clears the basket and rewards session data.
+
+    **If the user opted to save their info:**
+    - The order details are used to update the user profile.
+    - The user profile form is validated and saved.
+
+    **Session Data Modified:**
+    - The session basket and rewards are cleared upon successful checkout.
+
+    **Raises:**
+    - `Order.DoesNotExist`: If the order number provided does not exist.
+    - `UserProfile.DoesNotExist`: If the user does not have a profile
+        associated with their account.
+
+    **Context:**
+    - 'order': Instance of :model:`checkout.Order` that was processed.
+
+    **Template:**
+    - :template:`checkout/checkout_success.html`
+
+    **Returns:**
+    - Renders the 'checkout_success.html'.
     """
+    # Set variables for method.
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-
     profile = UserProfile.objects.get(user=request.user)
     order.user_profile = profile
     order.save()
 
+    # Check if user requested to save the info provided.
     if save_info:
         profile_data = {
             'default_full_name': order.full_name,
@@ -179,11 +278,14 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
                      Your order number is {order_number}. \
                         A confirmation email will be sent to you.')
+
+    # Clear relevant session data.
     if 'basket' in request.session:
         del request.session['basket']
     if 'rewards' in request.session:
         del request.session['rewards']
 
+    # Set up view parameters
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
