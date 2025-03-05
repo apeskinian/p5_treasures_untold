@@ -109,6 +109,7 @@ function setLoading(isLoading) {
         $('#adjust-button').attr('disabled', true);
         $('#payment-form').fadeToggle(100);
         $('#loading-overlay').fadeToggle(100);
+        $('#checkout-container').fadeToggle(100);
         $('#spinner').removeClass('hidden');
         $('#button-text').addClass('hidden');
     } else {
@@ -116,6 +117,7 @@ function setLoading(isLoading) {
         $('#adjust-button').attr('disabled', false);
         $('#payment-form').fadeToggle(100);
         $('#loading-overlay').fadeToggle(100);
+        $('#checkout-container').fadeToggle(100);
         $('#spinner').addClass('hidden');
         $('#button-text').removeClass('hidden');
     }
