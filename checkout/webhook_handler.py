@@ -1,34 +1,62 @@
+from decimal import Decimal
 import json
 import time
-from decimal import Decimal
+
+from django.contrib.sessions.models import Session
+from django.conf import settings
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.shortcuts import reverse
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 import stripe
 
-from django.contrib.sessions.models import Session
-from django.http import HttpResponse
-from django.shortcuts import reverse
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from django.conf import settings
-
-from profiles.models import UserProfile
 from products.models import Product
+from profiles.models import UserProfile
 from .models import Order, OrderLineItem
 
 
 class StripeWH_Handler:
     """
-    Handles webhooks from Stripe
-    """
+    Handles incoming webhooks from Stripe.
 
+    This class is designed to process events sent by Stripe to the server. It
+    listens for webhook events, verifies the event, and performs appropriate
+    actions based on the event type.
+    """
     def __init__(self, request):
         self.request = request
 
     def _send_confirmation_email(self, order):
         """
-        sends the user a confirmation email
+        Sends a confirmation email to the user after a successful order.
+        The email is contructed using context information from the instance of
+        :model:`checkout.Order` that was passed and the email templates.
+
+        **Arguments:**
+        - 'order': Instance of :model:'checkout.Order' containing all the order
+            details.
+
+        **Context:**
+        - `home_url`: Absolute URL to the home page.
+        - `contact_url`: Absolute URL to the contact page.
+        - `order_total`: The total amount for the order
+            (formatted to 2 decimal places).
+        - `order_original_total`: The original total before any discounts
+            (formatted to 2 decimal places).
+        - `order_delivery_cost`: The cost for delivery
+            (formatted to 2 decimal places).
+        - `order_grand_total`: The grand total for the order
+            (formatted to 2 decimal places).
+        - `customer_email`: The email address of the customer receiving the
+            confirmation.
+
+        **Template:**
+        :template:`checkout/confirmation_emails/confirmation_email_subject.txt`
+        :template:`checkout/confirmation_emails/confirmation_email_body.html`
         """
+        # Set variables for method.
         home_url = self.request.build_absolute_uri(reverse('home'))
         contact_url = self.request.build_absolute_uri(reverse('contact'))
         order_total = "{:.2f}".format(order.order_total)
@@ -38,6 +66,8 @@ class StripeWH_Handler:
         order_delivery_cost = "{:.2f}".format(order.delivery_cost)
         order_grand_total = "{:.2f}".format(order.grand_total)
         customer_email = order.email
+
+        # Construct email subject and body.
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order}
@@ -66,7 +96,15 @@ class StripeWH_Handler:
 
     def handle_event(self, event):
         """
-        Handle a generic webhook event
+        Handle a generic webhook event.
+
+        **Arguments:**
+        - 'event': A dictionary containing the event data received from the
+            webhook.
+
+        **Returns:**
+        - `HttpResponse`: A response indicating that the webhook was received
+            and handled, with a status code of 200 for successful processing.
         """
         return HttpResponse(
             content=f'TU Unhandled webhook: {event['type']}', status=200
@@ -232,6 +270,14 @@ class StripeWH_Handler:
     def handle_payment_intent_payment_failed(self, event):
         """
         Handle the payment_intent.payment_failed webhook from Stripe
+
+        **Arguments:**
+        - 'event': A dictionary containing the event data received from the
+            webhook.
+
+        **Returns:**
+        - `HttpResponse`: A response indicating that the webhook was received
+            and handled, with a status code of 200 for successful processing.
         """
         return HttpResponse(
             content=f'TU Payment failed: {event['type']}', status=200
