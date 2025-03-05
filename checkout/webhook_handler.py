@@ -112,8 +112,39 @@ class StripeWH_Handler:
 
     def handle_payment_intent_succeeded(self, event):
         """
-        Handle the payment_intent.succeeded webhook from Stripe
+        Handle the payment_intent.succeeded webhook from Stripe.
+
+        This method processes the 'payment_intent.succeeded' webhook event from
+        Stripe, which indicates that a payment has been successfully processed.
+        It retrieves the necessary order details, updates the user's profile
+        with shipping information if the 'save_info' flag is set, and either
+        verifies an existing order or creates a new order in the database.
+        Afterward, a confirmation email is sent to the user.
+
+        **Arguments:**
+        - 'event': The webhook event from Stripe, containing metadata about the
+            payment intent and other relevant data (such as basket contents,
+            rewards, and session key).
+
+        **Process:**
+        - Retrieves the payment intent and charge details from Stripe.
+        - Checks if the user profile should be updated with the details.
+        - Attempts to find an existing order in the database based on the
+            payment details and shipping address.
+        - If no existing order is found, creates a new order and assigns
+            products, including applying rewards and discounts.
+        - Sends a confirmation email to the user.
+        - If a session key is present, updates the session data to remove
+            basket and reward information.
+
+        **Returns:**
+        - `HttpResponse`:
+            - On success: A response indicating that the order was created or
+                verified successfully.
+            - On error: A response with a relevant error message (e.g., if a
+                user is not found or a database error occurs).
         """
+        # Set method variables.
         intent = event.data.object
         pid = intent.id
         basket_contents = intent.metadata.basket_contents
@@ -121,7 +152,7 @@ class StripeWH_Handler:
         session_key = intent.metadata.session_key
         save_info = intent.metadata.save_info
 
-        # getting the charge object
+        # Getting the charge object.
         stripe_charge = stripe.Charge.retrieve(
             intent.latest_charge
         )
@@ -130,12 +161,12 @@ class StripeWH_Handler:
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)
 
-        # clean the data for the shipping details
+        # Clean the data for the shipping details.
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
 
-        # update user profile information if save_info was checked
+        # Update user profile information if save_info was checked.
         try:
             current_user = intent.metadata.current_user
             profile = UserProfile.objects.get(user__username=current_user)
@@ -159,6 +190,7 @@ class StripeWH_Handler:
                     status=500
                 )
 
+        # Look for order created by views.py
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -189,6 +221,7 @@ class StripeWH_Handler:
                 content='Order verified in database', status=200
             )
         else:
+            # Order not found so proceed to create order here.
             order = None
             try:
                 order = Order.objects.create(
@@ -208,6 +241,8 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
 
+                # Iterate through basket and apply reward discounts if and
+                # where appropriate, then save line item.
                 for index, (item_id, quantity) in enumerate(
                     json.loads(basket_contents).items()
                 ):
@@ -237,6 +272,7 @@ class StripeWH_Handler:
                     status=500
                 )
 
+        # Check for Bibbidi-Bobbidi-Boo reward.
         if 'bibbidi-bobbidi-boo' in json.loads(active_rewards):
             order.order_total *= Decimal(0.8)
             order.grand_total = (
@@ -244,8 +280,10 @@ class StripeWH_Handler:
             )
             order.save()
 
+        # Send confirmation email.
         self._send_confirmation_email(order)
 
+        # Clean up session data.
         if session_key:
             try:
                 session = Session.objects.get(session_key=session_key)

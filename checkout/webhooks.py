@@ -1,8 +1,10 @@
-import stripe
-from django.http import HttpResponse
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
+import stripe
+
 from checkout.webhook_handler import StripeWH_Handler
 
 
@@ -10,7 +12,18 @@ from checkout.webhook_handler import StripeWH_Handler
 @csrf_exempt
 def webhook(request):
     """
-    Listens for webhooks from Stripe
+    Listens for webhooks from Stripe and assigns a relevant handler from
+    webhook_handler.py
+
+    **Arguments:**
+    - 'request': The HTTP request object.
+
+    **Returns:**
+    - `HttpResponse`:
+        - On success: A response from the appropriate event handler, usually
+        indicating successful processing of the event.
+        - On failure: A response indicating an error (e.g., 400 for invalid
+        payload or signature).
     """
     stripe.api_key = settings.STRIPE_SECRET_KEY
     endpoint_secret = settings.STRIPE_WH_SECRET
@@ -27,10 +40,10 @@ def webhook(request):
     except Exception as e:
         return HttpResponse(content=e, status=400)
 
-    # set up webhook handler
+    # Set up webhook handler.
     handler = StripeWH_Handler(request)
 
-    # map webhook events to relevant handler functions
+    # Map webhook events to relevant handler functions.
     event_map = {
         'payment_intent.succeeded':
             handler.handle_payment_intent_succeeded,
@@ -38,13 +51,13 @@ def webhook(request):
             handler.handle_payment_intent_payment_failed,
     }
 
-    # get the webhook type
+    # Get the webhook type.
     event_type = event['type']
 
-    # if there's a handler for that type of event use it, if not use the
-    # generic one
+    # If there's a handler for that type of event use it, if not use the
+    # generic one.
     event_handler = event_map.get(event_type, handler.handle_event)
 
-    # call the event handler with the event
+    # Call the event handler with the event.
     response = event_handler(event)
     return response
