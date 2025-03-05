@@ -3,7 +3,7 @@
 {% load basket_tools %}
 
 {% block extra_css %}
-    <!-- checkout_syle.css -->
+    <!-- Import checkout_style.css -->
     <link rel="stylesheet" href="{% static 'checkout/css/checkout_style.css' %}">    
 {% endblock %}
 
@@ -12,7 +12,7 @@
     <div id="checkout-container" class="container rounded-4 my-4">
         <h1 class="text-center mb-2">Checkout</h1>
         <div class="row">
-
+            <!-- Order summary showing all items in the basket with totals and discounts if applied. -->
             <div id="order-summary" class="col-12 col-md-6 order-md-last">
                 <h4 id="order-summary-title" class="text-center mt-2">Order Summary</h4>
                 {% for item in basket_items %}
@@ -67,7 +67,7 @@
                 </div>
                 <hr class="d-md-none">
             </div>
-
+            <!-- Form for submitting details and payment information. -->
             <div id="billing-and-payment" class="col-12 col-md-6">
                 <h4 class="text-center mb-3 mt-2">Payment & Delivery</h4>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
@@ -93,9 +93,9 @@
                     </fieldset>
                     <fieldset class="mb-3">
                         <legend class="fieldset-label"><h5>Payment</h5></legend>
-                        <!-- stripe payment element -->
+                        <!-- Stripe payment element -->
                         <div id="payment-element"></div>
-                        <!-- form errors -->
+                        <!-- Form errors -->
                         <div id="payment-errors" class="text-red text-center mt-2" role="alert"></div>
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
@@ -115,22 +115,22 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>
+<!-- Overlay to show when order is being processed. -->
 <div id="loading-overlay" class="hidden">
     <h1 id="loading-spinner">
         <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-2xl"></i>
     </h1>
 </div>
-
 {% include 'includes/info_section.html' %}
 {% endblock %}
 
 {% block extra_js %}
     {{ block.super }}
+    <!-- Making stripe public and secret keys available to stripe_elements.js -->
     {{ stripe_public_key|json_script:'id_stripe_public_key' }}
     {{ client_secret|json_script:'id_client_secret' }}
-    <!-- Load stripe element -->
+    <!-- Load stripe_element.js -->
     <script src="{% static 'checkout/script/stripe_elements.js' %}"></script>
 {% endblock %}
