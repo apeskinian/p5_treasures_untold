@@ -1,3 +1,4 @@
+/* Treasures Untold - basket app CSS styling */
 #basket-page {
     background-color: var(--tu-mid-grey);
 }
@@ -28,6 +29,7 @@
     min-width: fit-content;
 }
 
+/* Media queries for larger screens. */
 @media screen and (min-width: 768px) {
     #basket-container {
         padding: 2rem;
@@ -50,5 +52,4 @@
         width: 200px;
         min-width: fit-content;
     }
-
 }
