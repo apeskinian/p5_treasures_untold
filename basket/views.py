@@ -215,7 +215,7 @@ def remove_from_basket(request, item_id):
 
 
 def check_for_cave_of_wonders(request):
-    '''
+    """
     Checks the basket contents and determines whether to activate or deactivate
     the 'Cave of Wonders' reward by calling `activate_reward`.
 
@@ -228,7 +228,7 @@ def check_for_cave_of_wonders(request):
 
     **Arguments:**
     - 'request': The HTTP request.
-    '''
+    """
     # Set variables for method
     basket = request.session.get('basket', {})
     monkey_idol = str(get_object_or_404(Product, sku='TU-AGR-SMI-U').id)

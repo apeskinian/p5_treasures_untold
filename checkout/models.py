@@ -1,14 +1,15 @@
-import uuid
 from datetime import datetime
 from decimal import Decimal
+import uuid
+
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
-from products.models import Product
-from profiles.models import UserProfile
-
 
 from django_countries.fields import CountryField
+
+from products.models import Product
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
@@ -46,14 +47,19 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         """
-        generates an order number using UUID with the date and TU in front
+         Generate a unique order number using UUID with a 'TU' and date prefix.
+
+        **Returns:**
+        - A string in the format 'TU-YYYYMMDD-XXXXXXXX', where:
+          - 'YYYYMMDD' is the current date.
+          - 'XXXXXXXX' is an 8-character uppercase hex from a UUID.
         """
         date_part = datetime.now().strftime('%Y%m%d')
         return f'TU-{date_part}-{uuid.uuid4().hex[:8].upper()}'
 
     def update_total(self):
         """
-        updates grand total each time a line item is added
+        Updates the 'grand_total' field when called.
         """
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total')
@@ -66,13 +72,20 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        set an order number if not already present
+        Overides the standard save method by checking for an order number and
+        generating one if not present.
         """
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """
+        Returns the 'order_number' field as a string.
+
+        **Returns:**
+        - The 'order_number' field as a string.
+        """
         return self.order_number
 
 
@@ -96,10 +109,16 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        set a line item total
+        Overides the save method and calculates the 'lineitem_total' field.
         """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """
+        Returns an f string providing the sku and related order number.
+
+        **Returns:**
+        - An f string with the sku and related order number.
+        """
         return f'SKU {self.product.sku} on order {self.order.order_number}'
