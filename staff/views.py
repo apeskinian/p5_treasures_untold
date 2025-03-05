@@ -501,7 +501,7 @@ def manage_subscriber(request, subscriber_id):
         getSubscribers()
     )
     newsletters = Newsletter.objects.all()
-    mode = 'Unsubscribe'
+    mode = 'Remove'
     return_url = f"{reverse('dashboard')}?tab=Newsletter"
     subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
 

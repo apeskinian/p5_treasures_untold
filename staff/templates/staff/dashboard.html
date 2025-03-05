@@ -63,7 +63,7 @@
         <div class="modal-content">
             <div class="modal-header d-flex align-items-center justify-content-between p-2">
                 <h5 class="modal-title flex-grow-1 text-center" id="dashboard-modal-label">
-                    {{ mode }} {% if mode == 'Unsubscribe' %}from {% elif mode == 'Reply' %}to {% endif %}{{ active_tab }}
+                    {{ mode }} {% if mode == 'Remove' %}from {% elif mode == 'Reply' %}to {% endif %}{{ active_tab }}
                 </h5>
                 <a id="dashboard-modal-close" href="{{ return_url }}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
             </div>
@@ -164,7 +164,7 @@
                                         Are you sure you want to delete the newsletter: <strong>{{ to_delete.subject }}</strong>?
                                         <br>(This cannot be undone.)
                                     </p>
-                                {% elif mode == 'Unsubscribe' %}
+                                {% elif mode == 'Remove' %}
                                     <p class="text-center">
                                         Are you sure you want to remove <strong>{{ to_delete.email }}</strong> from the mailing list?<br>
                                         <p class="text-center">
