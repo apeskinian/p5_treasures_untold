@@ -1,17 +1,27 @@
+from datetime import datetime, timedelta
+
+from django.contrib.sessions.models import Session
 from django.core.management.base import BaseCommand
-from datetime import timedelta, datetime  # noqa
-from django.contrib.sessions.models import Session  # noqa
-from products.models import Product  # noqa
-from django.shortcuts import get_object_or_404  # noqa
+from django.shortcuts import get_object_or_404
+
+from products.models import Product
 
 
 class Command(BaseCommand):
+    """
+    Command to detect abandoned sessions by comparing the last interaction
+    time and seeing if it's more than the specified limit.
+    If so, any basket items are retrieved and rewards deactivated.
+    The session is also then deleted logging the user out.
+    """
     help = "Retrieves stock from abandoned sessions"
 
     def handle(self, *args, **kwargs):
         basket_counter = 0
         item_counter = 0
         now = datetime.now()
+
+        # Set the value that will  determine an abandoned session.
         expiry_time = now - timedelta(minutes=10)
 
         all_sessions = Session.objects.all()
@@ -20,10 +30,13 @@ class Command(BaseCommand):
             session_data = session.get_decoded()
             last_modified_str = session_data.get('modified')
 
+            # Error handling for missing or invalid session data.
             if not last_modified_str:
-                print(
-                    f'Skipping session {session.session_key}: '
-                    'No modified time found.'
+                self.stdout.write(
+                    self.style.WARNING(
+                        f'Skipping session {session.session_key}: '
+                        'No modified time found.'
+                    )
                 )
                 continue
 
@@ -32,16 +45,19 @@ class Command(BaseCommand):
                     last_modified_str, '%d/%m/%Y, %H:%M:%S'
                 )
             except ValueError as e:
-                print(
-                    f'Skipping session {session.session_key}: '
-                    f'Invalid modified format - {e}'
+                self.stderr.write(
+                    self.style.ERROR(
+                        f'Skipping session {session.session_key}: '
+                        f'Invalid modified format - {e}'
+                    )
                 )
                 continue
 
+            # Check valid session data for expired time and perform recovery.
             if last_modified < expiry_time:
+                # Recovery of any basket items.
                 if 'basket' in session_data:
                     basket = session_data['basket']
-
                     for item_id, quantity in basket.items():
                         try:
                             product = get_object_or_404(Product, pk=item_id)
@@ -59,16 +75,18 @@ class Command(BaseCommand):
                                 product.stock += quantity
                                 product.save()
                         except ValueError as e:
-                            print(
-                                f"Error updating stock for {product.id}: {e}"
+                            self.stderr.write(
+                                self.style.ERROR(
+                                    'Error updating stock for '
+                                    f'{product.id}: {e}'
+                                )
                             )
 
                     basket_counter += 1
-
                 session.delete()
 
         self.stdout.write(
             self.style.SUCCESS(
-                f'Recovered {item_counter} items from {basket_counter} baskets'  # noqa
+                f'Recovered {item_counter} items from {basket_counter} baskets'
             )
         )
