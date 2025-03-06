@@ -3,7 +3,7 @@
 {% load product_tags %}
 
 {% block extra_css %}
-    <!-- support_style.css -->
+    <!-- Load staff_style.css -->
     <link rel="stylesheet" href="{% static 'staff/css/staff_style.css' %}">
 {% endblock %}
 
@@ -12,7 +12,7 @@
 {% block content %}
 <div id="staff-dashboard-page" class="container-fluid flex-grow-1">
     <div id="staff-dashboard-page-container" class="container rounded-4 my-4 p-4">
-        <!-- staff dashboard tabs -->
+        <!-- Staff dashboard tabs -->
         <ul class="nav nav-pills nav-fill gap-2" id="staffTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link{% if active_tab == 'Product' or active_tab == 'Realm' %} show active{% endif %}" id="product-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">Product Admin</a>
@@ -27,9 +27,9 @@
                 <a class="nav-link{% if active_tab == 'Newsletter' %} show active{% endif %}" id="newsletter-tab" data-bs-toggle="tab" href="#newsletter" role="tab" aria-controls="newsletter" aria-selected="false">Newsletter Admin</a>
             </li>
         </ul>
-        <!-- tab content -->
+        <!-- Tab content -->
         <div class="tab-content" id="staffTabContent">
-            <!-- product tab -->
+            <!-- Product tab -->
             <div class="tab-pane fade{% if active_tab == 'Product' or active_tab == 'Realm' %} show active{% endif %}" id="product" role="tabpanel" aria-labelledby="product-tab">
                 <div id="product-content">
                     {% include 'staff/includes/product_admin.html' %}
@@ -41,13 +41,13 @@
                     {% include 'staff/includes/faq_admin.html' %}
                 </div>
             </div>
-            <!-- messages tab -->
+            <!-- Messages tab -->
             <div class="tab-pane fade{% if active_tab == 'Message' %} show active{% endif %}" id="message" role="tabpanel" aria-labelledby="message-tab">
                 <div id="message-content">
                     {% include 'staff/includes/messages_admin.html' %}
                 </div>
             </div>
-            <!-- newsletter tab -->
+            <!-- Newsletter tab -->
             <div class="tab-pane fade{% if active_tab == 'Newsletter' %} show active{% endif %}" id="newsletter" role="tabpanel" aria-labelledby="newsletter-tab">
                 <div id="newsletter-content">
                     {% include 'staff/includes/newsletter_admin.html' %}
@@ -56,7 +56,7 @@
         </div>
     </div>
 </div>
-
+<!-- Dynamic modal for staff dashboard CRUD functionality -->
 {% if mode %}
 <div class="modal fade" id="dashboard-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -211,6 +211,6 @@
 
 {% block extra_js %}
     {{ block.super }}
-    <!-- support admin script -->
-    <script src="{% static 'staff/script/staff_admin.js' %}"></script>
+    <!-- Load staff_script.js -->
+    <script src="{% static 'staff/script/staff_script.js' %}"></script>
 {% endblock %}
