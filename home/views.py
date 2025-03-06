@@ -14,14 +14,14 @@ def index(request):
     picked on each page load.
 
     **Arguments:**
-    - 'request': The HTTP request.
+    - `request`: The HTTP request.
 
     **Context:**
-    - 'current_user': The current user if logged in.
-    - 'new_products': queryset of :model:`products.Product` filtered to include
+    - `current_user`: The current user if logged in.
+    - `new_products`: queryset of :model:`products.Product` filtered to include
         the newest products added.
-    - 'featured_realm': queryset of :model:`products.Realm` chosen at random.
-    - 'featured_products': queryset of :model:`products.Product` filtered to
+    - `featured_realm`: queryset of :model:`products.Realm` chosen at random.
+    - `featured_products`: queryset of :model:`products.Product` filtered to
         include products from the featured realm.
 
     **Template:**
