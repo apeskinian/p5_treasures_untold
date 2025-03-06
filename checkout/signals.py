@@ -10,14 +10,14 @@ from .models import OrderLineItem
 @receiver(post_save, sender=OrderLineItem)
 def update_on_save(sender, instance, created, **kwargs):
     """
-    Calls the 'update_total' method on the related order when an OrderLineItem
+    Calls the `update_total` method on the related order when an OrderLineItem
     is saved (created or updated).
 
     **Arguments:**
-    - 'sender': The model class that sent the signal.
-    - 'instance': The instance of the OrderLineItem that was saved.
-    - 'created': Boolean indicating if the instance was created or updated.
-    - 'kwargs': Additional keyword arguments passed with the signal.
+    - `sender`: The model class that sent the signal.
+    - `instance`: The instance of the OrderLineItem that was saved.
+    - `created`: Boolean indicating if the instance was created or updated.
+    - `kwargs`: Additional keyword arguments passed with the signal.
     """
     instance.order.update_total()
 
@@ -25,13 +25,13 @@ def update_on_save(sender, instance, created, **kwargs):
 @receiver(post_delete, sender=OrderLineItem)
 def update_on_delete(sender, instance, **kwargs):
     """
-    Calls the 'update_total' method on the related order when an OrderLineItem
+    Calls the `update_total` method on the related order when an OrderLineItem
     is deleted.
 
     **Arguments:**
-    - 'sender': The model class that sent the signal.
-    - 'instance': The instance of the OrderLineItem that was deleted.
-    - 'kwargs': Additional keyword arguments passed with the signal.
+    - `sender`: The model class that sent the signal.
+    - `instance`: The instance of the OrderLineItem that was deleted.
+    - `kwargs`: Additional keyword arguments passed with the signal.
     """
     instance.order.update_total()
 
@@ -44,10 +44,10 @@ def clear_session_on_logout(sender, request, user, **kwargs):
     accordingly.
 
     **Arguments:**
-    - 'sender': The sender of the signal, which is the user logged out event.
-    - 'request': The HTTP request object.
-    - 'user': The user who logged out.
-    - 'kwargs': Additional keyword arguments passed with the signal.
+    - `sender`: The sender of the signal, which is the user logged out event.
+    - `request`: The HTTP request object.
+    - `user`: The user who logged out.
+    - `kwargs`: Additional keyword arguments passed with the signal.
     """
     # Check for items left in basket session data.
     if 'basket' in request.session:

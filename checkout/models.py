@@ -47,19 +47,19 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         """
-         Generate a unique order number using UUID with a 'TU' and date prefix.
+         Generate a unique order number using UUID with a `TU` and date prefix.
 
         **Returns:**
-        - A string in the format 'TU-YYYYMMDD-XXXXXXXX', where:
-          - 'YYYYMMDD' is the current date.
-          - 'XXXXXXXX' is an 8-character uppercase hex from a UUID.
+        - A string in the format `TU-YYYYMMDD-XXXXXXXX`, where:
+          - `YYYYMMDD` is the current date.
+          - `XXXXXXXX` is an 8-character uppercase hex from a UUID.
         """
         date_part = datetime.now().strftime('%Y%m%d')
         return f'TU-{date_part}-{uuid.uuid4().hex[:8].upper()}'
 
     def update_total(self):
         """
-        Updates the 'grand_total' field when called.
+        Updates the `grand_total` field when called.
         """
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total')
@@ -81,10 +81,10 @@ class Order(models.Model):
 
     def __str__(self):
         """
-        Returns the 'order_number' field as a string.
+        Returns the `order_number` field as a string.
 
         **Returns:**
-        - The 'order_number' field as a string.
+        - The `order_number` field as a string.
         """
         return self.order_number
 
@@ -109,7 +109,7 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Overides the save method and calculates the 'lineitem_total' field.
+        Overides the save method and calculates the `lineitem_total` field.
         """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)

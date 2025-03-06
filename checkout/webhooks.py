@@ -16,7 +16,7 @@ def webhook(request):
     webhook_handler.py
 
     **Arguments:**
-    - 'request': The HTTP request object.
+    - `request`: The HTTP request object.
 
     **Returns:**
     - `HttpResponse`:

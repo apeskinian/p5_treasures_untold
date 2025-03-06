@@ -22,11 +22,11 @@ from .models import Order, OrderLineItem
 def cache_checkout_data(request):
     """
     Modifies the stripe payment intent metadata wih the following additions:
-    - 'basket_contents': A json export of the session basket dictionary.
-    - 'active_rewards': A json export of the session rewards list.
-    - 'session_key': The current session key.
-    - 'save_info': The value from the checkbox in the checkout form.
-    - 'current_user': The current user.
+    - `basket_contents`: A json export of the session basket dictionary.
+    - `active_rewards`: A json export of the session rewards list.
+    - `session_key`: The current session key.
+    - `save_info`: The value from the checkbox in the checkout form.
+    - `current_user`: The current user.
 
     **Raises:**
     - Exception: When the metadata fails to modify.
@@ -85,9 +85,9 @@ def checkout(request):
         database.
 
     **Context:**
-    - 'order_form': :form:`forms.OrderForm` instance.
-    - 'stripe_public_key': Stripe public key from environment variables.
-    - 'client_secret': Stripe payment intent.
+    - `order_form`: :form:`forms.OrderForm` instance.
+    - `stripe_public_key`: Stripe public key from environment variables.
+    - `client_secret`: Stripe payment intent.
 
     **Template:**
     - :template:`checkout/checkout.html`
@@ -244,13 +244,13 @@ def checkout_success(request, order_number):
         associated with their account.
 
     **Context:**
-    - 'order': Instance of :model:`checkout.Order` that was processed.
+    - `order`: Instance of :model:`checkout.Order` that was processed.
 
     **Template:**
     - :template:`checkout/checkout_success.html`
 
     **Returns:**
-    - Renders the 'checkout_success.html'.
+    - Renders the `checkout_success.html`.
     """
     # Set variables for method.
     save_info = request.session.get('save_info')

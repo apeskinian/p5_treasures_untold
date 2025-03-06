@@ -35,7 +35,7 @@ class StripeWH_Handler:
         :model:`checkout.Order` that was passed and the email templates.
 
         **Arguments:**
-        - 'order': Instance of :model:'checkout.Order' containing all the order
+        - `order`: Instance of :model:`checkout.Order` containing all the order
             details.
 
         **Context:**
@@ -99,7 +99,7 @@ class StripeWH_Handler:
         Handle a generic webhook event.
 
         **Arguments:**
-        - 'event': A dictionary containing the event data received from the
+        - `event`: A dictionary containing the event data received from the
             webhook.
 
         **Returns:**
@@ -114,15 +114,15 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe.
 
-        This method processes the 'payment_intent.succeeded' webhook event from
+        This method processes the `payment_intent.succeeded` webhook event from
         Stripe, which indicates that a payment has been successfully processed.
         It retrieves the necessary order details, updates the user's profile
-        with shipping information if the 'save_info' flag is set, and either
+        with shipping information if the `save_info` flag is set, and either
         verifies an existing order or creates a new order in the database.
         Afterward, a confirmation email is sent to the user.
 
         **Arguments:**
-        - 'event': The webhook event from Stripe, containing metadata about the
+        - `event`: The webhook event from Stripe, containing metadata about the
             payment intent and other relevant data (such as basket contents,
             rewards, and session key).
 
@@ -310,7 +310,7 @@ class StripeWH_Handler:
         Handle the payment_intent.payment_failed webhook from Stripe
 
         **Arguments:**
-        - 'event': A dictionary containing the event data received from the
+        - `event`: A dictionary containing the event data received from the
             webhook.
 
         **Returns:**

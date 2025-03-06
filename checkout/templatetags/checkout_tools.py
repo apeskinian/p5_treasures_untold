@@ -12,7 +12,7 @@ def calc_original_total(total):
     discount.
 
     **Args:**
-    - 'total': The total price after the 20% discount.
+    - `total`: The total price after the 20% discount.
 
     **Returns:**
     - Decimal: The original total price before the discount was applied.

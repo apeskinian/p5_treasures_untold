@@ -21,7 +21,7 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """
         Initialize the order form with custom placeholders, remove
-        auto-generated labels, and set autofocus on the 'full_name' field.
+        auto-generated labels, and set autofocus on the `full_name` field.
         """
         super().__init__(*args, **kwargs)
         placeholders = {

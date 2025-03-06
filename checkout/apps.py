@@ -3,7 +3,7 @@ from django.apps import AppConfig
 
 class CheckoutConfig(AppConfig):
     """
-    Configuration for the 'checkout' app.
+    Configuration for the `checkout` app.
     This app manages the checkout process, including order creation and
     payment handling.
     """
