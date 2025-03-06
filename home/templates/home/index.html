@@ -2,19 +2,19 @@
 {% load static %}
 {% load product_tags %}
 
-
 {% block extra_css %}
-    <!-- home_style.css -->
+    <!-- Load home_style.css -->
     <link rel="stylesheet" href="{% static 'home/css/home_style.css' %}">
-    <!-- marquee_style.css -->
+    <!-- Load marquee_style.css -->
     <link rel="stylesheet" href="{% static 'home/css/marquee_style.css' %}">
-    <!-- slideshow_style.css -->
+    <!-- Load slideshow_style.css -->
     <link rel="stylesheet" href="{% static 'home/css/slideshow_style.css' %}">
 {% endblock %}
 
 {% block content %}
     <div id="homepage-container" class="container-fluid">
         <div class="container">
+            <!-- Welcome message with personalised name if logged in. -->
             <div class="row welcome-container flex-grow-1 my-3 rounded-4">
                 <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 text-center d-flex flex-column justify-content-center p-4">
                     <h3>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h3>
@@ -24,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Container for showing new products. -->
             <div class="row new-items-container flex-grow-1 my-3 rounded-4">
                 <div id="new-items-text" class="col-12 col-sm-6 col-lg-5 col-xl-4 offset-lg-1 offset-xl-2 d-flex flex-column justify-content-center align-items-center p-3 text-center">
                     <h3>Latest Additions!</h3>
@@ -43,6 +44,7 @@
                 </div>
             </div>
         </div>
+        <!-- Marquee element to show as seen in companies. -->
         <div class="container-fluid p-0">
             <div class="row as-featured-in-container">
                 <h2 class="text-center text-white">As seen in...</h2>
@@ -104,6 +106,7 @@
                 </div>
             </div>
         </div>
+        <!-- Container to show products from the featured realm. -->
         <div class="container">
             <div class="row featured-items-container flex-grow-1 my-3 rounded-4">
                 <div id="featured-items-text" class="col-12 col-sm-6 col-lg-5 col-xl-4 order-sm-last d-flex flex-column justify-content-center align-items-center p-3 text-center">
@@ -130,6 +133,6 @@
     
 {% block extra_js %}
     {{ block.super }}
-    <!-- carousel script -->
-    <script src="{% static 'home/script/home_script.js' %}"></script>
+    <!-- Load slideshow script -->
+    <script src="{% static 'home/script/slideshow_script.js' %}"></script>
 {% endblock %}
