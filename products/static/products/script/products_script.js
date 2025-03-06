@@ -1,4 +1,6 @@
-// Magic Lamp rubbing detection
+/* jshint esversion: 11, globalstrict: true, jquery: true */
+// Magic lamp script that detects if the user 'rubs' the lamp to activate
+// the 'magic-lamp' reward.
 document.addEventListener("DOMContentLoaded", function () {
     
     const lamp = document.getElementById("magic-lamp");
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function trackRub(event) {
         if (rubbing && !isThrottling) {
-            lamp.classList.add('rubbing')
+            lamp.classList.add('rubbing');
             isThrottling = true;
             setTimeout(() => {
                 movementCount++;
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function resetRub() {
         rubbing = false;
         movementCount = 0;
-        lamp.classList.remove('rubbing')
+        lamp.classList.remove('rubbing');
     }
 
     function triggerEasterEgg() {
@@ -41,12 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .done(function () {
             location.reload();
-        })
+        });
     }
 
     if (lamp) {
         lamp.addEventListener("mouseover", startRubbing);
         lamp.addEventListener("mousemove", trackRub);
-        document.addEventListener("mouseout", resetRub)
+        document.addEventListener("mouseout", resetRub);
     }
 });
