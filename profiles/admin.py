@@ -1,3 +1,1 @@
-from django.contrib import admin
-
-# Register your models here.
+# No models need to be registered in the admin for this app.
