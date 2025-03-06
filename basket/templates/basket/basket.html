@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    <!-- Importing basket_styles.css -->
+    <!-- Load basket_styles.css -->
     <link rel="stylesheet" href="{% static 'basket/css/basket_style.css' %}">    
 {% endblock %}
 
@@ -118,6 +118,6 @@
 
 {% block extra_js %}
     {{ block.super }}
-    <!-- Importing product_limits.js -->
+    <!-- Load product_limits.js -->
     <script src="{% static 'script/product_limits.js' %}"></script>
 {% endblock %}
