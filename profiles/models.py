@@ -27,10 +27,10 @@ class UserProfile(models.Model):
 
     def __str__(self):
         """
-        Returns the 'user.username' field as a string.
+        Returns the `user.username` field as a string.
 
         **Returns:**
-        - The 'user.username' field as a string.
+        - The `user.username` field as a string.
         """
         return self.user.username
 
@@ -41,10 +41,10 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     Creates or updates the user profile when a User instance is saved.
 
     **Arguments:**
-    - 'sender': The model class that sent the signal.
-    - 'instance': The actual instance of the model that was saved.
-    - 'created': A boolean indicating whether the instance was created.
-    - 'kwargs': Additional keyword arguments passed with the signal.
+    - `sender`: The model class that sent the signal.
+    - `instance`: The actual instance of the model that was saved.
+    - `created`: A boolean indicating whether the instance was created.
+    - `kwargs`: Additional keyword arguments passed with the signal.
     """
     if created:
         UserProfile.objects.create(user=instance)

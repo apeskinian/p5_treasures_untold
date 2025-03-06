@@ -25,8 +25,8 @@ class UserProfileForm(forms.ModelForm):
         Override the initialization method to customize form behavior:
         - Set placeholders for specific fields.
         - Remove labels from all fields.
-        - Set the 'name' field to autofocus.
-        - Populate the 'email' field with the current user's email address if
+        - Set the `name` field to autofocus.
+        - Populate the `email` field with the current user's email address if
             available.
         """
         super().__init__(*args, **kwargs)

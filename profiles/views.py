@@ -10,29 +10,29 @@ from .models import UserProfile
 @login_required
 def profile(request, order_number=None):
     """
-    A view to show the user's profile and order history. If an 'order_number'
+    A view to show the user's profile and order history. If an `order_number`
     is provided, it will also show the selected order in a modal.
 
     **Arguments:**
-    - 'request': The HTTP request.
-    - 'order_number': Optional. Used to get the instance of
+    - `request`: The HTTP request.
+    - `order_number`: Optional. Used to get the instance of
         :model:`checkout.Order` to show as context for a specific order.
 
     **Context:**
-    - 'form': Instance of :form:`profiles.UserProfileForm` prefilled with any
+    - `form`: Instance of :form:`profiles.UserProfileForm` prefilled with any
         saved details for the user.
-    - 'orders': Queryset of :model:`checkout.Order` belonging to the user,
+    - `orders`: Queryset of :model:`checkout.Order` belonging to the user,
         sorted by date (latest first).
-    - 'profile': An instance of :model:`profiles.UserProfile` for the current
+    - `profile`: An instance of :model:`profiles.UserProfile` for the current
         user.
-    - 'view_order': If an 'order_number' is provided, this will be an instance
+    - `view_order`: If an `order_number` is provided, this will be an instance
         of :model:`checkout.Order` for the specified order.
 
     **Template:**
-    - 'profiles/profile.html'
+    - `profiles/profile.html`
 
     **Returns:**
-    - A render response with the context and 'view_order' if an 'order_number'
+    - A render response with the context and `view_order` if an `order_number`
         is specified, or an empty context otherwise.
     """
     # Set variables for method.
