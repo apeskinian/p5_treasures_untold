@@ -3,9 +3,8 @@
 {% load basket_tools %}
 {% load checkout_tools %}
 
-
 {% block extra_css %}
-    <!-- profiles_style.css -->
+    <!-- Load profiles_style.css -->
     <link rel="stylesheet" href="{% static 'profiles/css/profiles_style.css' %}">    
 {% endblock %}
 
@@ -20,6 +19,7 @@
             You can also view your past orders and access order details whenever you need them.
         </p>
         <div class="row">
+            <!-- Details section -->
             <div class="col-12 col-md-6 user-details mb-3">
                 <h4 class="text-center mt-2 mb-3">Personal Details</h4>
                 <form id="user-profile-form" action="{% url 'profile' %}" method="POST" class="d-flex flex-column align-items-center">
@@ -48,6 +48,7 @@
                     </button>
                 </form>
             </div>
+            <!-- Order history -->
             <div class="col-12 col-md-6 order-history">
                 <h4 class="text-center mt-2 mb-3">Order History</h4>
                 <div id="order-history-table-container">
@@ -82,6 +83,7 @@
     </div>
 </div>
 {% include 'includes/info_section.html' %}
+<!-- The modal to show previous order details if requested. -->
 {% if view_order %}
 <div class="modal" id="order-history-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -187,6 +189,6 @@
 
 {% block extra_js %}
     {{ block.super }}
-    <!-- Load profiles script -->
+    <!-- Load profiles_script.js -->
     <script src="{% static 'profiles/script/profiles_script.js' %}"></script>
 {% endblock %}
