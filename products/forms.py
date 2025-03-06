@@ -1,11 +1,11 @@
 from django import forms
+from django.db.models.functions import Lower
+
 from .models import Product, Realm
 from .widgets import CustomClearableFileInput
-from django.db.models.functions import Lower
 
 
 class ProductForm(forms.ModelForm):
-
     class Meta:
         model = Product
         exclude = ['sku',]
@@ -36,11 +36,17 @@ class ProductForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
+        """
+        Overide init method by adding extra choices to the realm field. This
+        allows the user to create a new realm at the same time as a creating or
+        adjusting a product.
+        """
         super().__init__(*args, **kwargs)
 
+        # Change placeholder of price field.
         self.fields['price'].widget.attrs['placeholder'] = '£'
 
-        # Setting realm names to display names in the dropdown
+        # Setting realm field choices.
         realms = Realm.objects.all().order_by(Lower('name'))
         display_names = [(realm.id, realm.display_name()) for realm in realms]
 
@@ -53,12 +59,33 @@ class ProductForm(forms.ModelForm):
         )
 
     def clean(self):
+        """
+        Overrides the form's clean method to handle realm selection, allowing
+        the creation of a new realm if 'Add New Realm' is chosen.
+
+        **Behavior:**
+        - If 'Add New Realm' is selected, a new realm is created with its name
+        formatted by replacing spaces with underscores.
+        - If the realm already exists it is retrieved instead of being created.
+        - If an existing realm is selected, it is validated and assigned.
+
+        **Raises:**
+        - Exception: If 'Add New Realm' is selected but the realm creation
+            fails.
+        - `Realm.DoesNotExist`: If the selected existing realm does not exist.
+
+        **Returns:**
+        - `dict`: The cleaned data, with the 'realm' field set to either the
+            new or selected realm instance.
+        """
+        # Set variables for method.
         cleaned_data = super().clean()
         realm = cleaned_data.get('realm')
         new_realm = cleaned_data.get('new_realm')
         new_realm_model_name = new_realm.replace(' ', '_')
         new_realm_prefix = cleaned_data.get('new_realm_prefix')
 
+        # If 'Add New Realm' is selected, process the input from the new field.
         if realm == "new":
             try:
                 realm_obj, created = (
@@ -73,6 +100,7 @@ class ProductForm(forms.ModelForm):
                     'realm',
                     f'An error occured while processing the realm: {str(e)}'
                 )
+        # Process the chosen existing realm as normal.
         else:
             try:
                 cleaned_data['realm'] = Realm.objects.get(pk=int(realm))
@@ -95,7 +123,13 @@ class RealmForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        add placeholders and remove auto-generated label
+        Overrides the form's initialization method to adjust field labels
+        and placeholders.
+
+        **Modifications:**
+        - Removes the label and adds a placeholder for the 'name' field.
+        - Updates the label for the 'the_prefix_required' field to clarify
+            its purpose.
         """
         super().__init__(*args, **kwargs)
 
