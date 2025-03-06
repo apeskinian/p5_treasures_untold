@@ -31,7 +31,7 @@ class StripeWH_Handler:
     def _send_confirmation_email(self, order):
         """
         Sends a confirmation email to the user after a successful order.
-        The email is contructed using context information from the instance of
+        The email is constructed using context information from the instance of
         :model:`checkout.Order` that was passed and the email templates.
 
         **Arguments:**

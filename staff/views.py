@@ -20,7 +20,27 @@ from support.models import (
 
 
 def getSubscribers():
+    """
+    Retrieves and categorizes subscribers into three querysets based on their
+    status.
+
+    The expiration time for confirming email subscriptions is currently set to
+    365 days for testing, though the email states a 24-hour confirmation
+    period.
+
+    **Returns:**
+    - A queryset of active subscribers (`is_active=True`).
+    - A queryset of unconfirmed subscribers (`is_active=False`,
+        `date_joined__isnull=True`), where `token_created_at` is still valid
+        (greater than the expiration time).
+    - A queryset of expired subscribers (`is_active=False`,
+        `date_joined__isnull=True`), where `token_created_at` has expired
+        (less than the expiration time).
+    """
+    # Set expiration limit
     expiration_time = timezone.now() - timedelta(days=365)
+
+    # Get querysets to return
     active_subscribers = Subscriber.objects.filter(is_active=True)
     unconfirmed_subscribers = Subscriber.objects.filter(
         is_active=False,
@@ -37,10 +57,29 @@ def getSubscribers():
 
 def sendMessageReplyEmail(message_reply, request):
     """
-    send the user an email with the reply created from the staff dashbpoard
+    Sends an email reply to a contact message.
+    The email is constructed using context information from the instance of
+    :model:`support.ContactMessage` that was passed and the email templates.
+
+    **Arguments:**
+    - `message_reply`: An instance of :model:`support.ContactMessage`
+        containing the reply content, recipient email, and ticket number.
+    - `request`: The HTTP request used to build an absolute home page URL.
+
+    **Context Data:**
+    - `message_reply`: The contact reply instance.
+    - `home_url`: Absolute URL to the home page.
+    - `email`: The email address of the recipient.
+
+    **Template:**
+    :template:`staff/staff_emails/contact_reply_subject.txt`
+    :template:`staff/staff_emails/contact_reply_body.html`
     """
+    # Set variables for method.
     email = message_reply.email
     home_url = request.build_absolute_uri(reverse('home'))
+
+    # Construct email subject and body.
     subject = render_to_string(
         'staff/staff_emails/contact_reply_subject.txt',
         {'ticket': message_reply.ticket_number}
@@ -65,9 +104,32 @@ def sendMessageReplyEmail(message_reply, request):
 
 def send_newsletter(new_newsletter, request):
     """
-    Send the latest newsletter to all active subscribers including a link
-    to unsubscribe.
+    Sends the latest newsletter to all active subscribers, including a unique
+    unsubscribe link for each recipient.
+
+    The email is constructed using context information from the
+    `new_newsletter` instance, a queryset of active subscribers, and predefined
+    email templates.
+
+    **Arguments:**
+    - `new_newsletter`: An instance of :model:`support.Newsletter` containing
+      the newsletter content.
+    - `request`: The HTTP request used to build absolute URLs for links.
+
+    **Context Data:**
+    - `new_newsletter`: The newsletter instance.
+    - `home_url`: Absolute URL to the home page.
+    - `unsubscribe_url`: A unique absolute URL for each subscriber to
+        unsubscribe.
+    - `subscribers`: A queryset of active subscribers from
+        :model:`support.Subscriber`.
+    - `email`: The email address of each recipient.
+
+    **Template:**
+    :template:`staff/staff_emails/contact_reply_subject.txt`
+    :template:`staff/staff_emails/contact_reply_body.html`
     """
+    # Set variables for method.
     subscribers = getSubscribers()[0]
     home_url = request.build_absolute_uri(reverse('home'))
 
@@ -79,6 +141,8 @@ def send_newsletter(new_newsletter, request):
                 args=[subscriber.id, subscriber.token]
             ))
         )
+
+        # Construct email subject and body.
         subject = render_to_string(
             'staff/staff_emails/newsletter_subject.txt',
             {
@@ -109,8 +173,33 @@ def send_newsletter(new_newsletter, request):
 @staff_member_required
 def dashboard(request):
     """
-    a dashboard for staff where they can manage site related admin
+    Renders the main staff dashboard, organized into tabs:
+
+    - **Products and Realms**
+    - **FAQs and FAQ Topics**
+    - **Contact Messages**
+    - **Newsletters and Subscribers**
+
+    **Context Data:**
+    - `faqs`: QuerySet of :model:`support.Faqs`
+    - `faq_topics`: QuerySet of :model:`support.FaqsTopic`
+    - `products`: QuerySet of :model:`products.Product`
+    - `contact_messages`: QuerySet of :model:`support.ContactMessage`
+    - `active_subscribers`: QuerySet of :model:`support.Subscriber`
+    - `unconfirmed_subscribers`: QuerySet of :model:`support.Subscriber`
+    - `expired_subscribers`: QuerySet of :model:`support.Subscriber`
+    - `newsletters`: QuerySet of :model:`support.Newsletter`
+    - `title`: String used to set the page's H1 title.
+    - `active_tab`: The currently selected dashboard tab
+        (defaults to `"Product"` if not specified).
+
+    **Template Used:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - A rendered response containing the staff dashboard.
     """
+    # Set variables for method.
     active_subscribers, unconfirmed_subscribers, expired_subscribers = (
         getSubscribers()
     )
@@ -122,6 +211,7 @@ def dashboard(request):
 
     active_tab = request.GET.get('tab')
 
+    # Set view parameters
     template = 'staff/dashboard.html'
     context = {
         'faqs': faqs,
@@ -135,6 +225,7 @@ def dashboard(request):
         'title': 'Staff Dashboard'
     }
 
+    # Set current tab to Product if one can't be found.
     if not context.get('active_tab'):
         context['active_tab'] = active_tab or 'Product'
 
@@ -144,13 +235,40 @@ def dashboard(request):
 @staff_member_required
 def manage_faq(request, delete=None, faq_id=None):
     """
-    add, update or delete a faq
+    View to manage FAQs. Staff members can create, edit and delete instances
+    of :model:`support.Faqs'
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `delete` (optional): Whether the request is to delete the specified Faqs
+        instance.
+    - `faq_id` (optional): The ID of an existing :model:`support.Faqs` to edit
+        or delete.
+
+    **Context:**
+    - `active_tab`: set to 'FAQ' to dynamically set the dashboard tab.
+    - `faqs`: Queryset of :model:`support.Faqs`
+    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the FAQs tab active.
+    - `title`: String to dynamically set the H1 page heading.
+    - `to_delete` (if mode is 'Delete'): Instance of :model:`support.Faqs`
+    - `form` (if mode is not 'Delete'): Instance of :form:`support.FaqsForm`
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for FAQs
+    - **POST**: Redirect back to the return_url with message if successful, if
+        not a message is displayed.
     """
+    # Set variables for the method.
     faqs = Faqs.objects.all()
     mode = 'Delete' if delete and faq_id else 'Update' if faq_id else 'Add'
     return_url = f"{reverse('dashboard')}?tab=FAQ"
     faq = None
 
+    # Process request.
     if faq_id:
         faq = get_object_or_404(Faqs, pk=faq_id)
 
@@ -181,6 +299,7 @@ def manage_faq(request, delete=None, faq_id=None):
     else:
         form = FaqsForm(instance=faq)
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'FAQ',
@@ -200,8 +319,38 @@ def manage_faq(request, delete=None, faq_id=None):
 @staff_member_required
 def manage_faq_topic(request, delete=None, faq_topic_id=None):
     """
-    add, update or delete a faq tpoic
+    View to manage FAQ topics. Staff members can create, edit and delete
+    instances of :model:`support.FaqsTopics'
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `delete` (optional): Whether the request is to delete the specified Faqs
+        Topics instance.
+    - `faq_topic_id` (optional): The ID of an existing
+        :model:`support.FaqsTopics` to edit or delete.
+
+    **Context:**
+    - `active_tab`: set to 'FAQ Topic' to dynamically set the dashboard tab.
+    - `faq_topics`: Queryset of :model:`support.FaqsTopics`
+    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the FAQs tab active.
+    - `associated`: Integer of how many instances of :model:`support.Faqs` have
+        this topic as the ForeignKey.
+    - `title`: String to dynamically set the H1 page heading.
+    - `to_delete` (if mode is 'Delete'): Instance of
+        :model:`support.FaqsTopics`
+    - `form` (if mode is not 'Delete'): Instance of
+        :form:`support.FaqsTopicsForm`
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for FAQs
+    - **POST**: Redirect back to the return_url with message if successful, if
+        not a message is displayed.
     """
+    # Set variables for the method.
     faq_topics = FaqsTopics.objects.all()
     mode = (
         'Delete' if delete and faq_topic_id else
@@ -210,6 +359,7 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
     return_url = f"{reverse('dashboard')}?tab=FAQ"
     faq_topic = None
 
+    # Process request.
     if faq_topic_id:
         faq_topic = get_object_or_404(FaqsTopics, pk=faq_topic_id)
 
@@ -242,6 +392,7 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
 
     associated = faq_topic.faq_topic.count() if faq_topic else None
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'FAQ Topic',
@@ -262,8 +413,36 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
 @staff_member_required
 def manage_product(request, delete=None, product_id=None):
     """
-    add, update or delete a product
+    View to manage products. Staff members can create, edit and delete
+    instances of :model:`products.Product'
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `delete` (optional): Whether the request is to delete the specified
+        Product instance.
+    - `product_id` (optional): The ID of an existing
+        :model:`products.Product` to edit or delete.
+
+    **Context:**
+    - `active_tab`: set to 'Product' to dynamically set the dashboard tab.
+    - `products`: Queryset of :model:`products.Product`
+    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the Product tab active.
+    - `title`: String to dynamically set the H1 page heading.
+    - `to_delete` (if mode is 'Delete'): Instance of
+        :model:`products.Product`
+    - `form` (if mode is not 'Delete'): Instance of
+        :form:`products.ProductForm`
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for Products
+    - **POST**: Redirect back to the return_url with message if successful, if
+        not a message is displayed.
     """
+    # Set variables for the method.
     products = Product.objects.all()
     mode = (
         'Delete' if delete and product_id else
@@ -272,6 +451,7 @@ def manage_product(request, delete=None, product_id=None):
     return_url = f"{reverse('dashboard')}?tab=Product"
     product = None
 
+    # Process request.
     if product_id:
         product = get_object_or_404(Product, pk=product_id)
 
@@ -302,6 +482,7 @@ def manage_product(request, delete=None, product_id=None):
     else:
         form = ProductForm(instance=product)
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Product',
@@ -321,8 +502,38 @@ def manage_product(request, delete=None, product_id=None):
 @staff_member_required
 def manage_realm(request, delete=None, realm_id=None):
     """
-    add, update or delete a realm
+    View to manage Realms. Staff members can create, edit and delete
+    instances of :model:`products.Realm'
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `delete` (optional): Whether the request is to delete the specified Realm
+        instance.
+    - `realm_id` (optional): The ID of an existing
+        :model:`products.Realm` to edit or delete.
+
+    **Context:**
+    - `active_tab`: set to 'Product' to dynamically set the dashboard tab.
+    - `products`: Queryset of :model:`products.Product`
+    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the Product tab active.
+    - `associated`: Integer of how many instances of :model:`products.Product`
+        have this realm as the ForeignKey.
+    - `title`: String to dynamically set the H1 page heading.
+    - `to_delete` (if mode is 'Delete'): Instance of
+        :model:`products.Realm`
+    - `form` (if mode is not 'Delete'): Instance of
+        :form:`products.RealmForm`
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for Products
+    - **POST**: Redirect back to the return_url with message if successful, if
+        not a message is displayed.
     """
+    # Set variables for the method.
     products = Product.objects.all()
     mode = (
         'Delete' if delete and realm_id else
@@ -331,6 +542,7 @@ def manage_realm(request, delete=None, realm_id=None):
     return_url = f"{reverse('dashboard')}?tab=Product"
     realm = None
 
+    # Process request.
     if realm_id:
         realm = get_object_or_404(Realm, pk=realm_id)
 
@@ -371,6 +583,7 @@ def manage_realm(request, delete=None, realm_id=None):
 
     associated = realm.product_realm.count() if realm else None
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Realm',
@@ -390,12 +603,39 @@ def manage_realm(request, delete=None, realm_id=None):
 
 @staff_member_required
 def reply_to_message(request, message_id):
+    """
+    View to manage contact messages. Staff members can view and reply to
+    instances of :model:`support.ContactMessage' created via the contact us
+    suport page.
 
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `message_id`: The ID of an existing :model:`support.ContactMessage` to
+        reply to.
+
+    **Context:**
+    - `active_tab`: set to 'Message' to dynamically set the dashboard tab.
+    - `contact_messages`: Queryset of :model:`support.ContactMessage`
+    - `mode`: Set to 'Reply' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the Message tab active.
+    - `form`: Instance of :form:`support.ContactReplyForm`
+    - `title`: String to dynamically set the H1 page heading.
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for Messages
+    - **POST**: Redirect back to the return_url with message if successful, if
+        not a message is displayed.
+    """
+    # Set variables for the method.
     contact_messages = ContactMessage.objects.all()
     mode = 'Reply'
     return_url = f"{reverse('dashboard')}?tab=Message"
     message = get_object_or_404(ContactMessage, pk=message_id)
 
+    # Process request.
     if request.method == 'POST':
         form = ContactReplyForm(request.POST, instance=message)
         if form.is_valid:
@@ -416,6 +656,7 @@ def reply_to_message(request, message_id):
     else:
         form = ContactReplyForm(instance=message)
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Message',
@@ -432,9 +673,40 @@ def reply_to_message(request, message_id):
 @staff_member_required
 def manage_newsletters(request, delete=None, newsletter_id=None):
     """
-    Send a simple newsletter, view previously sent newsletters and delete
-    previous newsletters
+    View to manage newsletters. Staff members can create and send new
+    newsletters, as well as view and delete previous instances of
+    :model:`support.Newsletter`.
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `delete` (optional): Whether the request is to delete the specified
+        Newsletter instance.
+    - `newsletter_id` (optional): The ID of an existing
+        :model:`support.Newsletter` to view or delete.
+
+    **Context:**
+    - `active_tab`: set to 'Newsletter' to dynamically set the dashboard tab.
+    - `active_subscribers`: Queryset of :model:`support.Subscriber`
+    - `unconfirmed_subscribers`: Queryset of :model:`support.Subscriber`
+    - `expired_subscribers`: Queryset of :model:`support.Subscriber`
+    - `newsletters`: Queryset of :model:`support.Newsletter`
+    - `mode`: Set to 'Delete', 'View' or 'Send' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the Newsletter tab
+        active.
+    - `title`: String to dynamically set the H1 page heading.
+    - `to_delete` (if mode is 'Delete'): Instance of
+        :model:`support.Newsletter`
+    - `form` (if mode is not 'Delete'): Instance of
+        :form:`support.NewsletterForm`
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for Newsletter
+    - **POST**: Redirect back to the return_url with message.
     """
+    # Set variables for the method.
     newsletters = Newsletter.objects.all()
     active_subscribers, unconfirmed_subscribers, expired_subscribers = (
         getSubscribers()
@@ -446,6 +718,7 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
     return_url = f"{reverse('dashboard')}?tab=Newsletter"
     newsletter = None
 
+    # Process request.
     if newsletter_id:
         newsletter = get_object_or_404(Newsletter, pk=newsletter_id)
 
@@ -473,6 +746,7 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
     else:
         form = NewsletterForm(instance=newsletter)
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Newsletter',
@@ -495,8 +769,34 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
 @staff_member_required
 def manage_subscriber(request, subscriber_id):
     """
-    Removes a subscriber from the newsletter recipients
+    View to remove (unsubscribe) a subscriber from the mailing list by
+    deleting the specified instance of :model:`support.Subscriber`.
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `subscriber_id`: The int ID of an existing :model:`support.Subscriber` to
+        remove.
+
+    **Context:**
+    - `active_tab`: set to 'Newsletter' to dynamically set the dashboard tab.
+    - `active_subscribers`: Queryset of :model:`support.Subscriber`
+    - `unconfirmed_subscribers`: Queryset of :model:`support.Subscriber`
+    - `expired_subscribers`: Queryset of :model:`support.Subscriber`
+    - `newsletters`: Queryset of :model:`support.Newsletter`
+    - `mode`: Set to 'Remove' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the Newsletter tab
+        active.
+    - `to_delete`: Instance of :model:`support.Subscriber`
+    - `title`: String to dynamically set the H1 page heading.
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for Newsletter
+    - **POST**: Redirect back to the return_url with message.
     """
+    # Set variables for the method.
     active_subscribers, unconfirmed_subscribers, expired_subscribers = (
         getSubscribers()
     )
@@ -505,6 +805,7 @@ def manage_subscriber(request, subscriber_id):
     return_url = f"{reverse('dashboard')}?tab=Newsletter"
     subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
 
+    # Process request.
     if request.method == 'POST':
         try:
             subscriber.delete()
@@ -514,6 +815,7 @@ def manage_subscriber(request, subscriber_id):
             messages.error(request, f'Error unsubscribing: {e}')
             return redirect(return_url)
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Newsletter',
@@ -532,6 +834,32 @@ def manage_subscriber(request, subscriber_id):
 
 @staff_member_required
 def clear_expired_subscribers(request):
+    """
+    View to remove all expired subscribers from the mailing list.
+
+    **Arguments:**
+    - `request`: The HTTP request.
+
+    **Context:**
+    - `active_tab`: set to 'Newsletter' to dynamically set the dashboard tab.
+    - `active_subscribers`: Queryset of :model:`support.Subscriber`
+    - `unconfirmed_subscribers`: Queryset of :model:`support.Subscriber`
+    - `expired_subscribers`: Queryset of :model:`support.Subscriber`
+    - `newsletters`: Queryset of :model:`support.Newsletter`
+    - `mode`: Set to 'Clear' for dynamically setting modal.
+    - `return_url`: Set to return to the dashboard with the Newsletter tab
+        active.
+    - `to_delete`: Queryset of :model:`support.Subscriber`
+    - `title`: String to dynamically set the H1 page heading.
+
+    **Template:**
+    - :template:`staff/dashboard.html`
+
+    **Returns:**
+    - **GET**: A rendered response to the dashboard page for Newsletter
+    - **POST**: Redirect back to the return_url with message.
+    """
+    # Set variables for the method.
     active_subscribers, unconfirmed_subscribers, expired_subscribers = (
         getSubscribers()
     )
@@ -540,6 +868,7 @@ def clear_expired_subscribers(request):
     mode = 'Clear'
     return_url = f"{reverse('dashboard')}?tab=Newsletter"
 
+    # Process request.
     if request.method == 'POST':
         if expired_subscribers.exists():
             expired_subscribers.delete()
@@ -548,6 +877,7 @@ def clear_expired_subscribers(request):
             messages.error(request, 'There are no expired subscribers')
         return redirect(return_url)
 
+    # Set up view parameters
     template = 'staff/dashboard.html'
     context = {
         'active_tab': 'Newsletter',
