@@ -14,22 +14,22 @@ def all_products(request):
     options.
 
     **Arguments:**
-    - 'request': The HTTP request object containing GET parameters for sorting,
+    - `request`: The HTTP request object containing GET parameters for sorting,
       filtering, and search criteria.
 
     **Context:**
-    - 'products': A queryset of :model:`products.Product`, filtered and sorted
+    - `products`: A queryset of :model:`products.Product`, filtered and sorted
       based on the request parameters.
-    - 'search_term': A string containing the user input from the search bar.
-    - 'current_realms': A queryset of :model:`products.Realm` based on the
+    - `search_term`: A string containing the user input from the search bar.
+    - `current_realms`: A queryset of :model:`products.Realm` based on the
         selected realm filter from the request.
-    - 'current_realms_names': A list of realm names derived from the selected
+    - `current_realms_names`: A list of realm names derived from the selected
       realms.
-    - 'current_sorting': A string representing the current sorting key and
+    - `current_sorting`: A string representing the current sorting key and
         direction.
-    - 'showing_new': A boolean indicating if only new products are being shown.
-    - 'showing_stock': A list indicating whether the stock filter is set to
-        'in' or 'out' of stock.
+    - `showing_new`: A boolean indicating if only new products are being shown.
+    - `showing_stock`: A list indicating whether the stock filter is set to
+        `in` or `out` of stock.
 
     **Template:**
     - :template:`products/products.html`
@@ -153,17 +153,17 @@ def product_detail(request, product_id):
     A view to display detailed information for a single product.
 
     **Arguments:**
-    - 'request': The HTTP request object.
-    - 'product_id': The ID used to retrieve the instance of
+    - `request`: The HTTP request object.
+    - `product_id`: The ID used to retrieve the instance of
         :model:`products.Product`.
 
     **Context:**
-    - 'product': The instance of :model:`products.Product` corresponding to the
-        provided 'product_id'.
-    - 'return_url': The URL for redirection. It first tries to retrieve this
-        from the session's 'return_url' key, removing it afterward. If not
-        found, it uses 'HTTP_REFERER'. As a final fallback, it redirects to the
-        'products' view to avoid a potential HTTP_REFERER loop when the user
+    - `product`: The instance of :model:`products.Product` corresponding to the
+        provided `product_id`.
+    - `return_url`: The URL for redirection. It first tries to retrieve this
+        from the session's `return_url` key, removing it afterward. If not
+        found, it uses `HTTP_REFERER`. As a final fallback, it redirects to the
+        `products` view to avoid a potential HTTP_REFERER loop when the user
         adds an item to the basket.
 
     **Returns:**
@@ -193,12 +193,12 @@ def activate_reward(request, action=None, reward=None, extra=None):
     checkout.
 
     **Arguments:**
-    - 'request': The HTTP request object.
-    - 'action': A string that can be either 'activate' or 'deactivate' to
+    - `request`: The HTTP request object.
+    - `action`: A string that can be either `activate` or `deactivate` to
         indicate the desired reward action.
-    - 'reward': A string containing the name of the reward to be activated or
+    - `reward`: A string containing the name of the reward to be activated or
         deactivated.
-    - 'extra': An optional string for any additional arguments needed for the
+    - `extra`: An optional string for any additional arguments needed for the
         reward.
 
     **Returns:**

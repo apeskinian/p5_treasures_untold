@@ -13,7 +13,7 @@ def get_realms(request):
 
     **Returns:**
     - A dictionary containing:
-        - `'all_realms'`: A queryset of :model:`products.Realm`, ordered
+        - `all_realms`: A queryset of :model:`products.Realm`, ordered
         case-insensitively by name.
     """
     all_realms = Realm.objects.all().order_by(Lower('name'))

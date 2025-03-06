@@ -61,21 +61,21 @@ class ProductForm(forms.ModelForm):
     def clean(self):
         """
         Overrides the form's clean method to handle realm selection, allowing
-        the creation of a new realm if 'Add New Realm' is chosen.
+        the creation of a new realm if `Add New Realm` is chosen.
 
         **Behavior:**
-        - If 'Add New Realm' is selected, a new realm is created with its name
+        - If `Add New Realm` is selected, a new realm is created with its name
         formatted by replacing spaces with underscores.
         - If the realm already exists it is retrieved instead of being created.
         - If an existing realm is selected, it is validated and assigned.
 
         **Raises:**
-        - Exception: If 'Add New Realm' is selected but the realm creation
+        - Exception: If `Add New Realm` is selected but the realm creation
             fails.
         - `Realm.DoesNotExist`: If the selected existing realm does not exist.
 
         **Returns:**
-        - `dict`: The cleaned data, with the 'realm' field set to either the
+        - `dict`: The cleaned data, with the `realm` field set to either the
             new or selected realm instance.
         """
         # Set variables for method.
@@ -127,8 +127,8 @@ class RealmForm(forms.ModelForm):
         and placeholders.
 
         **Modifications:**
-        - Removes the label and adds a placeholder for the 'name' field.
-        - Updates the label for the 'the_prefix_required' field to clarify
+        - Removes the label and adds a placeholder for the `name` field.
+        - Updates the label for the `the_prefix_required` field to clarify
             its purpose.
         """
         super().__init__(*args, **kwargs)

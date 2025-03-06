@@ -10,7 +10,7 @@ def friendly_name(name):
     by replacing underscores with spaces.
 
     **Arguments:**
-    - 'name': A string to be formatted.
+    - `name`: A string to be formatted.
 
     **Returns:**
     - A string where all underscores are replaced with spaces.

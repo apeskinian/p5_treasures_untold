@@ -13,9 +13,9 @@ def delete_image_from_cloudinary(sender, instance, **kwargs):
     image is a placeholder.
 
     **Arguments:**
-    - 'sender': The model class that sent the signal.
-    - 'instance': The instance of the product that was deleted.
-    - 'kwargs': Additional keyword arguments passed with the signal.
+    - `sender`: The model class that sent the signal.
+    - `instance`: The instance of the product that was deleted.
+    - `kwargs`: Additional keyword arguments passed with the signal.
     """
     if instance.image and instance.image.public_id != 'placeholder':
         public_id = instance.image.public_id
