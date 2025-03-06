@@ -75,7 +75,7 @@ class ProductForm(forms.ModelForm):
         - `Realm.DoesNotExist`: If the selected existing realm does not exist.
 
         **Returns:**
-        - `dict`: The cleaned data, with the `realm` field set to either the
+        - dict: The cleaned data, with the `realm` field set to either the
             new or selected realm instance.
         """
         # Set variables for method.

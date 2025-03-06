@@ -29,7 +29,7 @@ def all_products(request):
         direction.
     - `showing_new`: A boolean indicating if only new products are being shown.
     - `showing_stock`: A list indicating whether the stock filter is set to
-        `in` or `out` of stock.
+        'in' or 'out' of stock.
 
     **Template:**
     - :template:`products/products.html`
@@ -194,7 +194,7 @@ def activate_reward(request, action=None, reward=None, extra=None):
 
     **Arguments:**
     - `request`: The HTTP request object.
-    - `action`: A string that can be either `activate` or `deactivate` to
+    - `action`: A string that can be either 'activate' or 'deactivate' to
         indicate the desired reward action.
     - `reward`: A string containing the name of the reward to be activated or
         deactivated.

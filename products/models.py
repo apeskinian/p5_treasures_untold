@@ -54,14 +54,14 @@ class Product(models.Model):
         data.
 
         **Format:**
-        `TU-REALM-PRODUCT-UNIQUE-XXXX`
+        'TU-REALM-PRODUCT-UNIQUE-XXXX'
 
         **Components:**
         - **REALM**: The first three letters of each word in the realm's
             display name (capitalized).
         - **PRODUCT**: The first letter of each word in the product name
             (capitalized).
-        - **UNIQUE**: `U` if the product is unique, omitted otherwise.
+        - **UNIQUE**: 'U' if the product is unique, omitted otherwise.
         - **XXXX**: A 4-character uppercase hexadecimal string derived from a
             UUID.
 
@@ -92,11 +92,11 @@ class Product(models.Model):
 
         **Behavior:**
         - **Debug Mode (ON)**:
-        - If the image is `placeholder`, returns a local static placeholder
+        - If the image is 'placeholder', returns a local static placeholder
             image.
         - Otherwise, returns a local static image using the SKU.
         - **Debug Mode (OFF)**:
-        - If the image is `placeholder`, returns a generic static placeholder.
+        - If the image is 'placeholder', returns a generic static placeholder.
         - Otherwise, returns the Cloudinary-hosted image with optimized
             settings.
 
