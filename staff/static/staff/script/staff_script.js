@@ -1,5 +1,5 @@
-// STAFF DASHBOARD SCRIPT //
-
+/* jshint esversion: 11, jquery: true */
+/* globals bootstrap */
 // Showing modal if there is an add, update or delete request.
 window.onload = () => {
     const dashboardModalElement = document.getElementById('dashboard-modal');
@@ -9,16 +9,16 @@ window.onload = () => {
     }
 };
 
-// Display chosen image filename when selecting image for product
+// Display chosen image filename when selecting image for product.
 $('#new-image').change(function() {
     var file = $('#new-image')[0].files[0];
     $('#filename').text(`${file.name}`);
 });
 
-// Display new image next to current image when updating product
+// Display new image next to current image when updating product.
 const imageInput = document.querySelector('input[name="image"]');
 const previewImage = document.getElementById('previewImage');
-const newImagePreview = document.getElementById('new-image-preview')
+const newImagePreview = document.getElementById('new-image-preview');
 
 if (imageInput) {
     imageInput.addEventListener('change', function (event) {
@@ -34,8 +34,8 @@ if (imageInput) {
     });
 }
 
-// Show new topic field in FAQ form if new topic is selected
-const idTopic = document.getElementById('id_topic')
+// Show new topic field in FAQ form if new topic is selected.
+const idTopic = document.getElementById('id_topic');
 
 if (idTopic) {
     idTopic.addEventListener('change', function() {
@@ -50,8 +50,8 @@ if (idTopic) {
     });
 }
 
-// Show new realm field in Product form if new realm is selected
-const idRealm = document.getElementById('id_realm')
+// Show new realm field in Product form if new realm is selected.
+const idRealm = document.getElementById('id_realm');
 
 if (idRealm) {
     idRealm.addEventListener('change', function() {
@@ -66,12 +66,12 @@ if (idRealm) {
     });
 }
 
-// DASHBOARD BUTTON SPINNERS //
+// Dashboard button spinners.
 const spinnerButtons = document.getElementsByClassName('btn-with-spinner');
 const dashboardModalConfirmButton = document.getElementById('dashboard-modal-confirm');
 const dashboardModalCancelButton = document.getElementById('dashboard-modal-cancel');
 const dashboardModalClose = document.getElementById('dashboard-modal-close');
-const fileButton = document.getElementById('btn-file-select')
+const fileButton = document.getElementById('btn-file-select');
 
 // Activating spinner on anchor elements.
 Array.from(spinnerButtons).forEach(button => {
@@ -90,7 +90,7 @@ Array.from(spinnerButtons).forEach(button => {
     });
 });
 
-// Disabling cancelbutton to prevent double clicks
+// Handling dashboard modal cancel button clicks
 if (dashboardModalCancelButton)
     dashboardModalCancelButton.addEventListener('click', function() {
 
@@ -102,7 +102,7 @@ if (dashboardModalCancelButton)
             fileButton.classList.add('disabled');
         }
         setTimeout(() => {
-            dashboardModalClose.classList.remove('disabled')
+            dashboardModalClose.classList.remove('disabled');
             if (dashboardModalConfirmButton) {
                 dashboardModalConfirmButton.classList.remove('disabled');
             }
@@ -110,8 +110,9 @@ if (dashboardModalCancelButton)
                 fileButton.classList.remove('disabled');
             }
         }, 4000);
-    })
+    });
 
+// Handling dashboard modal close button clicks
 if (dashboardModalClose)
     dashboardModalClose.addEventListener('click', function() {
 
@@ -137,12 +138,11 @@ if (dashboardModalClose)
                 fileButton.classList.remove('disabled');
             }
         }, 4000);
-    })
+    });
 
-// Activating spinner on button elements.
+// Handling dashboard modal confirm button clicks
 if (dashboardModalConfirmButton) {
     dashboardModalConfirmButton.addEventListener('click', function() {
-        console.log('SPINNERS GO GO GO')
         const buttonElement = this;
         
         buttonElement.querySelector('.btn-text').classList.add('d-none');
@@ -164,5 +164,5 @@ if (dashboardModalConfirmButton) {
                 fileButton.classList.remove('disabled');
             }
         }, 4000);
-    })
+    });
 }
