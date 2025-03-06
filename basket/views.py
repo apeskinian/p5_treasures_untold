@@ -223,7 +223,7 @@ def check_for_cave_of_wonders(request):
     - **Activate**: Both halves of the Golden Scarab Beetle must be in the
         basket, and the Shiva Monkey Idol of Agrabah must NOT be in the basket.
     - **Deactivate**: If the Shiva Monkey Idol of Agrabah is added at any
-        point, the reward is deactivated immediately, even if the scarab halve
+        point, the reward is deactivated immediately, even if the scarab halves
         are present.
 
     **Arguments:**

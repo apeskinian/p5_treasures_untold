@@ -11,7 +11,7 @@ def basket_contents(request):
     Provide global access to the basket contents across the app
 
     **Context:**
-    - `basket_items`: A list of dictionaries containing the followingf keys:
+    - `basket_items`: A list of dictionaries containing the following keys:
         - `item_id`: the pk of a product
         - `quantity`: the quantity of the product
         - `product`: an instance of the product
