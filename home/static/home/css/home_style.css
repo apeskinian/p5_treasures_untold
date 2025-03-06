@@ -1,4 +1,5 @@
-/* HOMEPAGE */
+/* Treasures Untold - home app CSS styling */
+/* Importing fonts for marquee */
 @import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Henny+Penny&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&family=Macondo+Swash+Caps&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Parisienne&display=swap');
@@ -21,6 +22,7 @@
     font-size: 2rem;
 }
 
+/* Set fonts for classes. */
 .font-tangerine {
     font-family: 'Tangerine', cursive;
 }
@@ -67,7 +69,7 @@
     max-width: 200px;
 }
 
-
+/* Media queries for larger screens. */
 @media screen and (min-width: 768px) {
     #new-items-text {
         justify-content: right;
