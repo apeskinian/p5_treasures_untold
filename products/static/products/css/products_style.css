@@ -1,3 +1,4 @@
+/* Treasures Untold - products app CSS styling */
 #product-page,
 #product-details-page {
     background-color: var(--tu-mid-grey);
@@ -65,14 +66,11 @@ input[type="checkbox"] {
     filter: saturate(0) blur(1.5px) brightness(1.5);
 }
 
-.text-red {
-    color: rgb(200, 0, 0);
-}
-
 .rubbing {
     cursor: grab;
 }
 
+/* Media queries for larger screens. */
 @media screen and (min-width: 768px) {
     #product-name,
     #product-realm-link,
@@ -99,7 +97,6 @@ input[type="checkbox"] {
 }
 
 @media screen and (min-width: 992px) {
-
     #product-details-image-container {
         align-items: center;
     }
