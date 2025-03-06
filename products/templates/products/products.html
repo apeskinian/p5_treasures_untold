@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    <!-- products_style.css -->
+    <!-- Load products_style.css -->
     <link rel="stylesheet" href="{% static 'products/css/products_style.css' %}">    
 {% endblock %}
 
@@ -94,6 +94,6 @@
     {% endblock %}
 {% block extra_js %}
     {{ block.super }}
-    <!-- Load magic lamp test -->
+    <!-- Load product_script.js -->
     <script src="{% static 'products/script/products_script.js' %}"></script>
 {% endblock %}
