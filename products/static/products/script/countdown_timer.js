@@ -1,7 +1,9 @@
+/* jshint esversion: 11, globalstrict: true, jquery: true */
+// Script for delivery timer in product detail views.
 function updateTimer() {
 
-    const now = new Date()
-    const target = new Date()
+    const now = new Date();
+    const target = new Date();
 
     target.setHours(17, 0, 0, 0);
 
