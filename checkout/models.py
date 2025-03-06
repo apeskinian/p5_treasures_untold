@@ -47,12 +47,12 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         """
-         Generate a unique order number using UUID with a `TU` and date prefix.
+         Generate a unique order number using UUID with a 'TU' and date prefix.
 
         **Returns:**
-        - A string in the format `TU-YYYYMMDD-XXXXXXXX`, where:
-          - `YYYYMMDD` is the current date.
-          - `XXXXXXXX` is an 8-character uppercase hex from a UUID.
+        - A string in the format 'TU-YYYYMMDD-XXXXXXXX', where:
+          - 'YYYYMMDD' is the current date.
+          - 'XXXXXXXX' is an 8-character uppercase hex from a UUID.
         """
         date_part = datetime.now().strftime('%Y%m%d')
         return f'TU-{date_part}-{uuid.uuid4().hex[:8].upper()}'
