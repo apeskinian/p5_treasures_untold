@@ -236,7 +236,7 @@ def dashboard(request):
 def manage_faq(request, delete=None, faq_id=None):
     """
     View to manage FAQs. Staff members can create, edit and delete instances
-    of :model:`support.Faqs'
+    of :model:`support.Faqs`
 
     **Arguments:**
     - `request`: The HTTP request.
@@ -246,13 +246,13 @@ def manage_faq(request, delete=None, faq_id=None):
         or delete.
 
     **Context:**
-    - `active_tab`: set to 'FAQ' to dynamically set the dashboard tab.
+    - `active_tab`: set to `FAQ` to dynamically set the dashboard tab.
     - `faqs`: Queryset of :model:`support.Faqs`
-    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `mode`: Set to `Delete`, `Update` or `Add` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the FAQs tab active.
     - `title`: String to dynamically set the H1 page heading.
-    - `to_delete` (if mode is 'Delete'): Instance of :model:`support.Faqs`
-    - `form` (if mode is not 'Delete'): Instance of :form:`support.FaqsForm`
+    - `to_delete` (if mode is `Delete`): Instance of :model:`support.Faqs`
+    - `form` (if mode is not `Delete`): Instance of :form:`support.FaqsForm`
 
     **Template:**
     - :template:`staff/dashboard.html`
@@ -320,7 +320,7 @@ def manage_faq(request, delete=None, faq_id=None):
 def manage_faq_topic(request, delete=None, faq_topic_id=None):
     """
     View to manage FAQ topics. Staff members can create, edit and delete
-    instances of :model:`support.FaqsTopics'
+    instances of :model:`support.FaqsTopics`
 
     **Arguments:**
     - `request`: The HTTP request.
@@ -330,16 +330,16 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
         :model:`support.FaqsTopics` to edit or delete.
 
     **Context:**
-    - `active_tab`: set to 'FAQ Topic' to dynamically set the dashboard tab.
+    - `active_tab`: set to `FAQ Topic` to dynamically set the dashboard tab.
     - `faq_topics`: Queryset of :model:`support.FaqsTopics`
-    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `mode`: Set to `Delete`, `Update` or `Add` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the FAQs tab active.
     - `associated`: Integer of how many instances of :model:`support.Faqs` have
         this topic as the ForeignKey.
     - `title`: String to dynamically set the H1 page heading.
-    - `to_delete` (if mode is 'Delete'): Instance of
+    - `to_delete` (if mode is `Delete`): Instance of
         :model:`support.FaqsTopics`
-    - `form` (if mode is not 'Delete'): Instance of
+    - `form` (if mode is not `Delete`): Instance of
         :form:`support.FaqsTopicsForm`
 
     **Template:**
@@ -414,7 +414,7 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
 def manage_product(request, delete=None, product_id=None):
     """
     View to manage products. Staff members can create, edit and delete
-    instances of :model:`products.Product'
+    instances of :model:`products.Product`
 
     **Arguments:**
     - `request`: The HTTP request.
@@ -424,14 +424,14 @@ def manage_product(request, delete=None, product_id=None):
         :model:`products.Product` to edit or delete.
 
     **Context:**
-    - `active_tab`: set to 'Product' to dynamically set the dashboard tab.
+    - `active_tab`: set to `Product` to dynamically set the dashboard tab.
     - `products`: Queryset of :model:`products.Product`
-    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `mode`: Set to `Delete`, `Update` or `Add` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Product tab active.
     - `title`: String to dynamically set the H1 page heading.
-    - `to_delete` (if mode is 'Delete'): Instance of
+    - `to_delete` (if mode is `Delete`): Instance of
         :model:`products.Product`
-    - `form` (if mode is not 'Delete'): Instance of
+    - `form` (if mode is not `Delete`): Instance of
         :form:`products.ProductForm`
 
     **Template:**
@@ -503,7 +503,7 @@ def manage_product(request, delete=None, product_id=None):
 def manage_realm(request, delete=None, realm_id=None):
     """
     View to manage Realms. Staff members can create, edit and delete
-    instances of :model:`products.Realm'
+    instances of :model:`products.Realm`
 
     **Arguments:**
     - `request`: The HTTP request.
@@ -513,16 +513,16 @@ def manage_realm(request, delete=None, realm_id=None):
         :model:`products.Realm` to edit or delete.
 
     **Context:**
-    - `active_tab`: set to 'Product' to dynamically set the dashboard tab.
+    - `active_tab`: set to `Product` to dynamically set the dashboard tab.
     - `products`: Queryset of :model:`products.Product`
-    - `mode`: Set to 'Delete', 'Update' or 'Add' for dynamically setting modal.
+    - `mode`: Set to `Delete`, `Update` or `Add` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Product tab active.
     - `associated`: Integer of how many instances of :model:`products.Product`
         have this realm as the ForeignKey.
     - `title`: String to dynamically set the H1 page heading.
-    - `to_delete` (if mode is 'Delete'): Instance of
+    - `to_delete` (if mode is `Delete`): Instance of
         :model:`products.Realm`
-    - `form` (if mode is not 'Delete'): Instance of
+    - `form` (if mode is not `Delete`): Instance of
         :form:`products.RealmForm`
 
     **Template:**
@@ -605,7 +605,7 @@ def manage_realm(request, delete=None, realm_id=None):
 def reply_to_message(request, message_id):
     """
     View to manage contact messages. Staff members can view and reply to
-    instances of :model:`support.ContactMessage' created via the contact us
+    instances of :model:`support.ContactMessage` created via the contact us
     suport page.
 
     **Arguments:**
@@ -614,9 +614,9 @@ def reply_to_message(request, message_id):
         reply to.
 
     **Context:**
-    - `active_tab`: set to 'Message' to dynamically set the dashboard tab.
+    - `active_tab`: set to `Message` to dynamically set the dashboard tab.
     - `contact_messages`: Queryset of :model:`support.ContactMessage`
-    - `mode`: Set to 'Reply' for dynamically setting modal.
+    - `mode`: Set to `Reply` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Message tab active.
     - `form`: Instance of :form:`support.ContactReplyForm`
     - `title`: String to dynamically set the H1 page heading.
@@ -685,18 +685,18 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
         :model:`support.Newsletter` to view or delete.
 
     **Context:**
-    - `active_tab`: set to 'Newsletter' to dynamically set the dashboard tab.
+    - `active_tab`: set to `Newsletter` to dynamically set the dashboard tab.
     - `active_subscribers`: Queryset of :model:`support.Subscriber`
     - `unconfirmed_subscribers`: Queryset of :model:`support.Subscriber`
     - `expired_subscribers`: Queryset of :model:`support.Subscriber`
     - `newsletters`: Queryset of :model:`support.Newsletter`
-    - `mode`: Set to 'Delete', 'View' or 'Send' for dynamically setting modal.
+    - `mode`: Set to `Delete`, `View` or `Send` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Newsletter tab
         active.
     - `title`: String to dynamically set the H1 page heading.
-    - `to_delete` (if mode is 'Delete'): Instance of
+    - `to_delete` (if mode is `Delete`): Instance of
         :model:`support.Newsletter`
-    - `form` (if mode is not 'Delete'): Instance of
+    - `form` (if mode is not `Delete`): Instance of
         :form:`support.NewsletterForm`
 
     **Template:**
@@ -778,12 +778,12 @@ def manage_subscriber(request, subscriber_id):
         remove.
 
     **Context:**
-    - `active_tab`: set to 'Newsletter' to dynamically set the dashboard tab.
+    - `active_tab`: set to `Newsletter` to dynamically set the dashboard tab.
     - `active_subscribers`: Queryset of :model:`support.Subscriber`
     - `unconfirmed_subscribers`: Queryset of :model:`support.Subscriber`
     - `expired_subscribers`: Queryset of :model:`support.Subscriber`
     - `newsletters`: Queryset of :model:`support.Newsletter`
-    - `mode`: Set to 'Remove' for dynamically setting modal.
+    - `mode`: Set to `Remove` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Newsletter tab
         active.
     - `to_delete`: Instance of :model:`support.Subscriber`
@@ -841,12 +841,12 @@ def clear_expired_subscribers(request):
     - `request`: The HTTP request.
 
     **Context:**
-    - `active_tab`: set to 'Newsletter' to dynamically set the dashboard tab.
+    - `active_tab`: set to `Newsletter` to dynamically set the dashboard tab.
     - `active_subscribers`: Queryset of :model:`support.Subscriber`
     - `unconfirmed_subscribers`: Queryset of :model:`support.Subscriber`
     - `expired_subscribers`: Queryset of :model:`support.Subscriber`
     - `newsletters`: Queryset of :model:`support.Newsletter`
-    - `mode`: Set to 'Clear' for dynamically setting modal.
+    - `mode`: Set to `Clear` for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Newsletter tab
         active.
     - `to_delete`: Queryset of :model:`support.Subscriber`
