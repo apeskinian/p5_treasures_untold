@@ -1,12 +1,14 @@
 import uuid
-from django.db import models
-from django.core.validators import MinValueValidator
+
+from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
+from django.db import models
+from django.db.models.functions import Lower
+from django.templatetags.static import static
+
 from cloudinary.models import CloudinaryField
 from cloudinary.utils import cloudinary_url
-from django.conf import settings
-from django.templatetags.static import static
-from django.db.models.functions import Lower
 
 
 class Realm(models.Model):
@@ -48,7 +50,23 @@ class Product(models.Model):
 
     def _generate_sku(self):
         """
-        Generate an order number from the item details
+        Generates a unique SKU (Stock Keeping Unit) using UUID and product
+        data.
+
+        **Format:**
+        'TU-REALM-PRODUCT-UNIQUE-XXXX'
+
+        **Components:**
+        - **REALM**: The first three letters of each word in the realm's
+            display name (capitalized).
+        - **PRODUCT**: The first letter of each word in the product name
+            (capitalized).
+        - **UNIQUE**: 'U' if the product is unique, omitted otherwise.
+        - **XXXX**: A 4-character uppercase hexadecimal string derived from a
+            UUID.
+
+        **Returns:**
+        - A string representing the generated SKU.
         """
         name_part = []
         name_part_words = self.name.split(' ')
@@ -66,10 +84,28 @@ class Product(models.Model):
 
         return sku
 
-    # Serving a local dev_mode image when debug is on to prevent too
-    # many cloudinary impressions when in testing.
     @property
     def image_url(self):
+        """
+        Returns the appropriate image URL for the instance based on the app's
+        debug mode. This reduces the amount of impressions when testing.
+
+        **Behavior:**
+        - **Debug Mode (ON)**:
+        - If the image is 'placeholder', returns a local static placeholder
+            image.
+        - Otherwise, returns a local static image using the SKU.
+        - **Debug Mode (OFF)**:
+        - If the image is 'placeholder', returns a generic static placeholder.
+        - Otherwise, returns the Cloudinary-hosted image with optimized
+            settings.
+
+        **Returns:**
+        - A static image URL if debug mode is enabled or if the image is a
+            placeholder.
+        - A Cloudinary URL if debug mode is disabled and the image is not a
+            placeholder.
+        """
         if settings.DEBUG:
             if str(self.image) == 'placeholder':
                 return static('images/dev_placeholder.png')
@@ -91,21 +127,52 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        set an sku if not already present
+        Assigns an SKU before saving if one is not already present.
+
+        **Behavior:**
+        - If the instance does not have an SKU, generates one using
+            `_generate_sku()`.
+        - Calls the parent `save` method to complete the save operation.
+
+        **Returns:**
+        - Saves the instance with an assigned SKU if missing.
         """
         if not self.sku:
             self.sku = self._generate_sku()
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """
+        Returns the 'name' field as a string.
+
+        **Returns:**
+        - The 'name' field as a string.
+        """
         return self.name
 
     def realm_name(self):
+        """
+        Returns the 'realm.name' field as a string with underscores replaced
+        with spaces.
+
+        **Returns:**
+        - The 'realm.name' field as a string with underscores replaced
+        with spaces.
+        """
         return self.realm.name.replace('_', ' ')
 
     def clean(self):
         """
-        validation to enforce a maximum stock limit for unique products
+        Override the clean method to enforce stock level validation for unique
+        items.
+
+        **Validation:**
+        - If the item is marked as unique (`unique_stock = True`) and the stock
+        level is adjusted to exceed 1, a `ValidationError` is raised.
+
+        **Raises:**
+        - `ValidationError`: If stock exceeds the allowed limit for unique
+        items (i.e., stock > 1 when `unique_stock = True`).
         """
         super().clean()
         if self.unique_stock and self.stock > 1:
