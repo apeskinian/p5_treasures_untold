@@ -1,1 +1,1 @@
-# this app does not require models
+# This app does not require models
