@@ -3,7 +3,7 @@ from django.apps import AppConfig
 
 class StaffConfig(AppConfig):
     """
-    Configuration for the `staff` app.
+    Configuration for the 'staff' app.
 
     This app provides a staff dashboard where authorized users can:
     - Manage products and realms (add, edit, delete).
