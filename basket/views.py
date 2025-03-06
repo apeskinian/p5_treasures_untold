@@ -14,9 +14,9 @@ def update_stock(request, product, adjustment):
     deleting items in the basket.
 
     **Arguments:**
-    - 'request': The HTTP request.
-    - 'product': An instance of :model:`products.Product`.
-    - 'adjustment': An integer value to apply to the stock level
+    - `request`: The HTTP request.
+    - `product`: An instance of :model:`products.Product`.
+    - `adjustment`: An integer value to apply to the stock level
         (positive or negative).
 
     **Raises:**
@@ -47,7 +47,7 @@ def view_basket(request):
     A view to show the basket contents.
 
     **Arguments:**
-    - 'request': The HTTP request.
+    - `request`: The HTTP request.
 
     **Template:**
     - :template:`basket/basket.html`
@@ -67,17 +67,17 @@ def add_to_basket(request, item_id):
     is already in the basket, the quantity is updated. Stock levels are also
     updated accordingly. The user is then redirected back to the page they were
     on.
-    There is also a call to check for the 'cave of wonders' reward.
+    There is also a call to check for the `cave of wonders` reward.
 
     **Arguments:**
-    - 'request': The HTTP request.
-    - 'item_id': The ID of the product to be added to the basket.
+    - `request`: The HTTP request.
+    - `item_id`: The ID of the product to be added to the basket.
 
     **Raises:**
     - Exception: If there is a problem in updating the basket or stock.
 
     **Returns:**
-    - A redirect to the URL specified by 'redirect_url'.
+    - A redirect to the URL specified by `redirect_url`.
     """
     # Set up variables for the method
     product = get_object_or_404(Product, pk=item_id)
@@ -124,18 +124,18 @@ def adjust_basket(request, item_id):
     """
     Adjusts the quantity of an item in the basket. If the new quantity is
     set to 0, the item is removed from the basket. Stock levels are updated
-    accordingly. The user is then redirected to the 'view_basket' view.
-    Additionally, it checks for the 'cave of wonders' reward.
+    accordingly. The user is then redirected to the `view_basket` view.
+    Additionally, it checks for the `cave of wonders` reward.
 
     **Arguments:**
-    - 'request': The HTTP request.
-    - 'item_id': The ID of the product to be adjusted in the basket.
+    - `request`: The HTTP request.
+    - `item_id`: The ID of the product to be adjusted in the basket.
 
     **Raises:**
     - Exception: If there is an issue updating the basket or stock levels.
 
     **Returns:**
-    - A redirect to the 'view_basket' view.
+    - A redirect to the `view_basket` view.
     """
     # Set up variables for the method
     product = get_object_or_404(Product, pk=item_id)
@@ -179,11 +179,11 @@ def adjust_basket(request, item_id):
 def remove_from_basket(request, item_id):
     """
     Removes an item from the basket and updates stock levels accordingly.
-    Additionally, it checks for the 'cave of wonders' reward.
+    Additionally, it checks for the `cave of wonders` reward.
 
     **Arguments:**
-    - 'request': The HTTP request.
-    - 'item_id': The ID of the product to be removed from the basket.
+    - `request`: The HTTP request.
+    - `item_id`: The ID of the product to be removed from the basket.
 
     **Raises:**
     - Exception: If there is an issue removing the item or updating stock
@@ -217,7 +217,7 @@ def remove_from_basket(request, item_id):
 def check_for_cave_of_wonders(request):
     """
     Checks the basket contents and determines whether to activate or deactivate
-    the 'Cave of Wonders' reward by calling `activate_reward`.
+    the `Cave of Wonders` reward by calling `activate_reward`.
 
     **Conditions:**
     - **Activate**: Both halves of the Golden Scarab Beetle must be in the
@@ -227,7 +227,7 @@ def check_for_cave_of_wonders(request):
         are present.
 
     **Arguments:**
-    - 'request': The HTTP request.
+    - `request`: The HTTP request.
     """
     # Set variables for method
     basket = request.session.get('basket', {})

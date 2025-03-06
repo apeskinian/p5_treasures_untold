@@ -3,7 +3,7 @@ from datetime import datetime
 
 class UpdateSessionMiddleware:
     """
-    Middleware to update the 'modified' timestamp of the session.
+    Middleware to update the `modified` timestamp of the session.
     Used when checking for abandoned baskets.
     """
     def __init__(self, get_response):
@@ -14,7 +14,7 @@ class UpdateSessionMiddleware:
 
     def __call__(self, request):
         """
-        Sets the 'modified' timestamp in the session data.
+        Sets the `modified` timestamp in the session data.
         **Returns:**
         - The response from the next middleware or view in the stack.
         """
