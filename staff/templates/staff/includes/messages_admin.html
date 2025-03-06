@@ -1,9 +1,8 @@
 <div class="container messages-container mt-3 mb-3 d-flex flex-column gap-3">
+    <!-- Grouping messages by replied -->
     {% regroup contact_messages by replied as grouped_messages %}
-
     {% for group in grouped_messages %}
         <h4 class="mt-4 text-center">{{ group.grouper|yesno:"Replied,Unreplied" }}</h4>
-
         {% if group.grouper %}
             {% for message in group.list|dictsortreversed:"date_replied" %}
                 <div class="contact-message-container bg-white p-3">
