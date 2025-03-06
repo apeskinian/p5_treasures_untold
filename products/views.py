@@ -1,16 +1,44 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib import messages
 from django.db.models import Q, Case, When, Value, IntegerField
 from django.db.models.functions import Lower, TruncDate
-from .models import Product, Realm
 from django.conf import settings
+from django.contrib import messages
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+
+from .models import Product, Realm
 
 
 def all_products(request):
     """
-    A view to show all products including sorting and search queries
+    A view to display all products with sorting, searching, and filtering
+    options.
+
+    **Arguments:**
+    - 'request': The HTTP request object containing GET parameters for sorting,
+      filtering, and search criteria.
+
+    **Context:**
+    - 'products': A queryset of :model:`products.Product`, filtered and sorted
+      based on the request parameters.
+    - 'search_term': A string containing the user input from the search bar.
+    - 'current_realms': A queryset of :model:`products.Realm` based on the
+        selected realm filter from the request.
+    - 'current_realms_names': A list of realm names derived from the selected
+      realms.
+    - 'current_sorting': A string representing the current sorting key and
+        direction.
+    - 'showing_new': A boolean indicating if only new products are being shown.
+    - 'showing_stock': A list indicating whether the stock filter is set to
+        'in' or 'out' of stock.
+
+    **Template:**
+    - :template:`products/products.html`
+
+    **Returns:**
+    - A rendered response displaying the filtered and sorted products based on
+        the request parameters.
     """
+    # Set up variables for method.
     products = Product.objects.annotate(
         in_stock=Case(
             When(stock=0, then=Value(1)),
@@ -28,8 +56,9 @@ def all_products(request):
     showing_stock = []
     return_url = request.META.get('HTTP_REFERER')
 
+    # Handling GET parameters.
     if request.GET:
-        # looking for latest additions query
+        # Looking for latest additions query.
         if 'new' in request.GET:
             showing_new = True
             most_recent_dates = (
@@ -48,7 +77,7 @@ def all_products(request):
                 )
             else:
                 products = Product.objects.none()
-        # looking for product sorting
+        # Looking for product sorting.
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -62,7 +91,7 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-        # looking for stock filter
+        # Looking for stock filter.
         if 'stock' in request.GET:
             stock_requests = request.GET['stock'].split(',')
             in_stock_products = products.none()
@@ -74,7 +103,7 @@ def all_products(request):
                 out_of_stock_products = products.filter(stock__exact=0)
                 showing_stock.append('out')
             products = in_stock_products | out_of_stock_products
-        # looking for realm filter
+        # Looking for realm filter.
         if 'realm' in request.GET:
             realms = request.GET['realm'].split(',')
             products = products.filter(realm__name__in=realms)
@@ -82,7 +111,7 @@ def all_products(request):
             current_realms_names = (
                 realms.order_by('name').values_list('name', flat=True)
             )
-        # handling search bar queries
+        # Handling search bar queries.
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -92,7 +121,7 @@ def all_products(request):
                     "enter search criteria to begin!"
                 )
                 return redirect(reverse('products'))
-            # bibbidi-bobbidi-boo easter-egg
+            # Bibbidi-Bobbidi-Boo reward handling.
             if query.lower() == 'bibbidi-bobbidi-boo':
                 if request.user.is_authenticated:
                     activate_reward(request, 'activate', 'bibbidi-bobbidi-boo')
@@ -104,7 +133,7 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
-    # setting up view parameters
+    # Setting up view parameters
     template = 'products/products.html'
     context = {
         'products': products,
@@ -121,16 +150,34 @@ def all_products(request):
 
 def product_detail(request, product_id):
     """
-    A view to show a single product in more detail
-    """
-    product = get_object_or_404(Product, pk=product_id)
+    A view to display detailed information for a single product.
 
+    **Arguments:**
+    - 'request': The HTTP request object.
+    - 'product_id': The ID used to retrieve the instance of
+        :model:`products.Product`.
+
+    **Context:**
+    - 'product': The instance of :model:`products.Product` corresponding to the
+        provided 'product_id'.
+    - 'return_url': The URL for redirection. It first tries to retrieve this
+        from the session's 'return_url' key, removing it afterward. If not
+        found, it uses 'HTTP_REFERER'. As a final fallback, it redirects to the
+        'products' view to avoid a potential HTTP_REFERER loop when the user
+        adds an item to the basket.
+
+    **Returns:**
+    - A rendered response displaying the product detail page for the specified
+        product.
+    """
+    # Set variables for method.
+    product = get_object_or_404(Product, pk=product_id)
     return_url = request.session.pop(
         'return_url',
         request.META.get('HTTP_REFERER', reverse('products'))
     )
 
-    # setting up view parameters
+    # Setting up view parameters
     template = 'products/product_detail.html'
     context = {
         'product': product,
@@ -142,12 +189,27 @@ def product_detail(request, product_id):
 
 def activate_reward(request, action=None, reward=None, extra=None):
     """
-    Handles reward activations and adds them to the session for processsing
-    at checkout.
+    Activates or deactivates a reward and updates the session for processing at
+    checkout.
+
+    **Arguments:**
+    - 'request': The HTTP request object.
+    - 'action': A string that can be either 'activate' or 'deactivate' to
+        indicate the desired reward action.
+    - 'reward': A string containing the name of the reward to be activated or
+        deactivated.
+    - 'extra': An optional string for any additional arguments needed for the
+        reward.
+
+    **Returns:**
+    - `HttpResponse`: A response with status 200 on successful actions.
+    - `HttpResponse`: A response with status 404 if the reward is not found.
     """
+    # Set up variables for the method.
     action = action if action else None
     reward = reward if reward else None
 
+    # Handling no argument error.
     if not reward:
         return HttpResponse('reward not found', status=404)
 
