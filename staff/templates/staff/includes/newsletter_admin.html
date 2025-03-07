@@ -24,7 +24,7 @@
                     <td class="newsletter-table-date text-nowrap">{{ newsletter.date_sent | date:"d M Y" }}</td>
                     <td class="text-end">
                         <a href="{% url 'manage_newsletters' newsletter_id=newsletter.id %}" class="btn btn-blue btn-delete btn-with-spinner">
-                            <span class="btn-text"><i class="fa-regular fa-folder-open"></i></i></span>
+                            <span class="btn-text"><i class="fa-regular fa-folder-open"></i></span>
                             <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                         </a>
                         <a href="{% url 'manage_newsletters' delete='delete' newsletter_id=newsletter.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1">
