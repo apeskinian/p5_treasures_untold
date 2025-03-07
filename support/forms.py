@@ -11,8 +11,8 @@ class ContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        add placeholders, remove auto-generated labels and set
-        autofocus  on first field
+        Hides field labels, adds placeholders with asterisks for required
+        fields, and sets focus on the `name` field.
         """
         super().__init__(*args, **kwargs)
         placeholders = {
@@ -37,8 +37,8 @@ class ContactReplyForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        add placeholders, remove auto-generated labels and set
-        autofocus  on first field
+        Hides label, adds placeholder and sets focus on the `reply`
+        field.
         """
         super().__init__(*args, **kwargs)
 
@@ -54,7 +54,7 @@ class FaqsTopicsForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        add placeholders and remove auto-generated label
+        Hides label and adds placeholder to `name` field.
         """
         super().__init__(*args, **kwargs)
 
@@ -75,6 +75,15 @@ class FaqsForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
+        """
+        Hides labels and adds placeholders to fields.
+
+        Replaces the `topic` field with a `ChoiceField` containing:
+        - An empty label ("- Select a Topic -") to prompt the user to choose a
+            topic.
+        - A "new" option ("Add New Topic") that allows users to create a new
+            topic.
+        """
         super().__init__(*args, **kwargs)
 
         self.fields['question'].widget.attrs['placeholder'] = 'Question'
@@ -95,6 +104,24 @@ class FaqsForm(forms.ModelForm):
         )
 
     def clean(self):
+        """
+        Overrides the form's clean method to handle topic selection, allowing
+        the creation of a new topic if `Add New Topic` is chosen.
+
+        **Behavior:**
+        - If `Add New Topic` is selected, a new topic is created.
+        - If the topic already exists it is retrieved instead of being created.
+        - If an existing topic is selected, it is validated and assigned.
+
+        **Raises:**
+        - Exception: If `Add New Topic` is selected but the topic creation
+            fails.
+        - `Topic.DoesNotExist`: If the selected existing topic does not exist.
+
+        **Returns:**
+        - dict: The cleaned data, with the `topic` field set to either the
+            new or selected topic instance.
+        """
         cleaned_data = super().clean()
         topic = cleaned_data.get('topic')
         new_topic = cleaned_data.get('new_topic')
@@ -129,6 +156,9 @@ class NewsletterForm(forms.ModelForm):
         fields = ['subject', 'news_body']
 
     def __init__(self, *args, **kwargs):
+        """
+        Hides labels and adds placeholders to fields.
+        """
         super().__init__(*args, **kwargs)
 
         self.fields['subject'].widget.attrs['placeholder'] = 'Subject'
@@ -143,12 +173,28 @@ class SubscriberForm(forms.ModelForm):
         fields = ['email']
 
     def __init__(self, *args, **kwargs):
+        """
+        Hides label and adds placeholder to `email` field.
+        """
         super().__init__(*args, **kwargs)
 
         self.fields['email'].widget.attrs['placeholder'] = 'email@example.com'
         self.fields['email'].label = False
 
     def clean_email(self):
+        """
+        Validates the email field to prevent duplicate subscriptions.
+
+        Overrides `clean_email()` to check if an instance of
+        :model:`support.Subscriber` with the provided email already exists.
+        If so, a `ValidationError` is raised.
+
+        **Raises:**
+        - `ValidationError`: If the email is already subscribed.
+
+        **Returns:**
+        - str: The cleaned email.
+        """
         email = self.cleaned_data.get('email')
         if email and Subscriber.objects.filter(email=email).exists():
             raise forms.ValidationError("This email is already subscribed.")
