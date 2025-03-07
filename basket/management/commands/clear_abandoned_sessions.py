@@ -25,7 +25,7 @@ class Command(BaseCommand):
         now = datetime.now()
 
         # Set the value that will  determine an abandoned session.
-        expiry_time = now - timedelta(minutes=10)
+        expiry_time = now - timedelta(minutes=30)
 
         all_sessions = Session.objects.all()
 
@@ -60,10 +60,19 @@ class Command(BaseCommand):
             if last_modified < expiry_time:
                 # Recovery of any basket items.
                 if 'basket' in session_data:
+
+                    # create report list for email
+                    report = []
+
                     basket = session_data['basket']
                     for item_id, quantity in basket.items():
                         try:
                             product = get_object_or_404(Product, pk=item_id)
+
+                            # Add items to a report list.
+                            report.append(product.name)
+
+                            # Recover stock.
                             updated_stock = product.stock
                             updated_stock += quantity
                             if updated_stock < 0:
@@ -85,21 +94,26 @@ class Command(BaseCommand):
                                 )
                             )
 
+                    # Send an email report with the items recovered.
+                    if report:
+                        time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
+                        subject = 'Abandoned Basket Recovered'
+                        message = (
+                            'Items have been recovered from a basket.\n'
+                            f'Time: {time_stamp}\n'
+                            f'Products recovered:\n' + '\n'.join(report)
+                        )
+                        recipient_list = [settings.DEFAULT_FROM_EMAIL]
+
+                        send_mail(
+                            subject,
+                            message,
+                            settings.DEFAULT_FROM_EMAIL,
+                            recipient_list,
+                        )
+
                     basket_counter += 1
                 session.delete()
-
-        # Testing to see if the deployment worker sleeps...
-        time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
-        subject = 'Test Email'
-        message = f'It seems the worker never sleeps... {time_stamp}'
-        recipient_list = ['apeskinian@gmail.com']
-
-        send_mail(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            recipient_list,
-        )
 
         self.stdout.write(
             self.style.SUCCESS(
