@@ -58,20 +58,6 @@ class Command(BaseCommand):
 
             # Check valid session data for expired time and perform recovery.
             if last_modified < expiry_time:
-
-                # Testing to see if the deployment worker sleeps...
-                time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
-                subject = 'Test Email'
-                message = f'It seems the worker never sleeps... {time_stamp}'
-                recipient_list = ['apeskinian@gmail.com']
-
-                send_mail(
-                    subject,
-                    message,
-                    settings.DEFAULT_FROM_EMAIL,
-                    recipient_list,
-                )
-
                 # Recovery of any basket items.
                 if 'basket' in session_data:
                     basket = session_data['basket']
@@ -101,6 +87,19 @@ class Command(BaseCommand):
 
                     basket_counter += 1
                 session.delete()
+
+        # Testing to see if the deployment worker sleeps...
+        time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
+        subject = 'Test Email'
+        message = f'It seems the worker never sleeps... {time_stamp}'
+        recipient_list = ['apeskinian@gmail.com']
+
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            recipient_list,
+        )
 
         self.stdout.write(
             self.style.SUCCESS(
