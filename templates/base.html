@@ -29,7 +29,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous"
     >
-    <!-- base.css -->
+    <!-- Load base_style.css -->
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
     {% endblock %}
 
@@ -44,6 +44,7 @@
         {% endblock %}
     </header>
     <main>
+        <!-- Message container for django messages in toasts. -->
         {% if messages %}
         <div class="message-container">
             {% for message in messages %}
@@ -63,6 +64,7 @@
             {% endfor %}
         </div>
         {% endif %}
+        <!-- Main page content in here. -->
         <div class="content d-flex flex-column flex-grow-1 ">
             {% block content %}
             {% endblock %}
@@ -74,6 +76,7 @@
         </div>
     </main>
     <footer>
+        <!-- Standard footer -->
         <div id="apeskinian" class="d-flex justify-content-center align-items-center">
             <h6 class="m-0 text-white">@ apeskinian 2025</h6>
         </div>
@@ -98,7 +101,7 @@
     <script src="https://kit.fontawesome.com/d2d31a9014.js" crossorigin="anonymous"></script>
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-    <!-- Custom Script -->
+    <!-- Load base_script.js -->
     <script src="{% static 'script/base_script.js' %}"></script>
     {% endblock %}
 
