@@ -7,6 +7,26 @@ from django_countries.fields import CountryField
 
 
 class UserProfile(models.Model):
+    """
+    Stores user profile information, including default shipping details.
+
+    **Fields:**
+    - `user (OneToOneField)`: A one-to-one relationship with Django's built-in
+      `User` model.
+    - `default_full_name (CharField)`: The user's default full name.
+    - `default_street_address_1 (CharField)`: The first line of the user's
+      default street address.
+    - `default_street_address_2 (CharField)`: The second line of the user's
+      default street address (optional).
+    - `default_town_city (CharField)`: The user's default town or city.
+    - `default_county (CharField)`: The user's default county or region.
+    - `default_postcode (CharField)`: The user's default postal code.
+    - `default_country (CountryField)`: The user's default country.
+    - `default_phone_number (CharField)`: The user's default phone number.
+
+    **Methods:**
+    - `__str__()`: Returns the associated user's username as a string.
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_full_name = models.CharField(max_length=50, null=True, blank=True)
     default_street_address_1 = models.CharField(

@@ -16,8 +16,8 @@ class Realm(models.Model):
     Represents a realm from which a product originates.
 
     **Fields:**
-    - `name` (CharField): The name of the realm.
-    - `the_prefix_required` (BooleanField): Indicates whether the definite
+    - `name (CharField)`: The name of the realm.
+    - `the_prefix_required (BooleanField)`: Indicates whether the definite
         article 'the' is required as a prefix in certain grammatical contexts.
 
     **Methods:**

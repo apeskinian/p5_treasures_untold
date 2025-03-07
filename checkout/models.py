@@ -127,12 +127,14 @@ class OrderLineItem(models.Model):
     Represents a line item for an order.
 
     **Fields:**
-    - `order` (ForeignKey): Links to :model:`checkout.Order`.
-    - `product` (ForeignKey): Links to :model:`products.Product`.
-    - `purchase_price`: The value that the line item was purchased for taking
-        into account any active rewards at the time of checkout.
-    - `quantity`: The quantity of the product purchased.
-    - `lineitem_total`: The product price multiplied by the quantity.
+    - `order (ForeignKey)`: Links to :model:`checkout.Order`.
+    - `product (ForeignKey)`: Links to :model:`products.Product`.
+    - `purchase_price (DecimalField)`: The value that the line item was
+        purchased for taking into account any active rewards at the time of
+        checkout.
+    - `quantity (IntegerField)`: The quantity of the product purchased.
+    - `lineitem_total (DecimalField)`: The product price multiplied by the
+        quantity.
 
     **Methods:**
     - `save()`: Overrides the default save method to calculate the
