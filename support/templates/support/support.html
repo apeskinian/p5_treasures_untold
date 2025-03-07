@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <!-- support_style.css -->
+    <!-- Load support_style.css -->
     <link rel="stylesheet" href="{% static 'support/css/support_style.css' %}">
 {% endblock %}
 
@@ -11,6 +11,7 @@
 {% block content %}
 <div id="support-page" class="container-fluid flex-grow-1">
     <div id="support-container" class="container rounded-4 my-4 py-4">
+        <!-- Dynamically load content. -->
         {% if content == 'privacy' %}
             {% include 'support/includes/privacy_policy.html' %}
         {% elif content == 'faq' %}
