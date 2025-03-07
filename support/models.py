@@ -18,19 +18,30 @@ class ContactMessage(models.Model):
 
     def _generate_ticket_number(self):
         """
-        generates a ticket number using UUID and TU- in front
+        Generate a unique ticket number using UUID with a 'TU' prefix.
+
+        **Returns:**
+        - A string in the format 'TU-XXXXXXXX', where:
+        - 'XXXXXXXX' is an 8-character uppercase hex from a UUID.
         """
         return f'TU-{uuid.uuid4().hex[:8].upper()}'
 
     def save(self, *args, **kwargs):
         """
-        set a ticket number
+        Overides the standard save method by checking for a ticket number and
+        generating one if not present.
         """
         if not self.ticket_number:
             self.ticket_number = self._generate_ticket_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """
+        Returns the `ticket_number` and `name` fields as an f string.
+
+        **Returns:**
+        - The `ticket_number` and `name` fields as an f string.
+        """
         return f'{self.ticket_number} - {self.name}'
 
 
@@ -43,6 +54,12 @@ class FaqsTopics(models.Model):
     sort_order = models.PositiveIntegerField(default=100)
 
     def __str__(self):
+        """
+        Returns the `name` field as a string.
+
+        **Returns:**
+        - The `name` field as a string.
+        """
         return self.name
 
 
@@ -59,6 +76,12 @@ class Faqs(models.Model):
     sort_order = models.PositiveIntegerField(default=100)
 
     def __str__(self):
+        """
+        Returns the `question` field as a string.
+
+        **Returns:**
+        - The `question` field as a string.
+        """
         return self.question
 
 
@@ -71,6 +94,12 @@ class Newsletter(models.Model):
     date_sent = models.DateField(auto_now_add=True)
 
     def __str__(self):
+        """
+        Returns the `subject` field as a string.
+
+        **Returns:**
+        - The `subject` field as a string.
+        """
         return self.subject
 
 
@@ -85,4 +114,10 @@ class Subscriber(models.Model):
     token_created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
+        """
+        Returns the `email` field as a string.
+
+        **Returns:**
+        - The `email` field as a string.
+        """
         return self.email
