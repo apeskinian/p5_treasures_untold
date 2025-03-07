@@ -67,13 +67,13 @@
         </div>
     </div>
     {% if request.path == '/products/' %}
-    <div id="filter-options" class="dropup">
+    <div id="filter-options-dropup" class="dropup">
         <a class="text-white" href="#" id="filter-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-filter fa-xl"></i>
         </a>
         <div id="mob-filter-options" class="dropdown-menu p-3">
             <div id="mob-filter-menu" class="d-flex flex-column justify-content-start align-items-center">
-                <form id="filter-form-mobile" action="" class="mb-3">
+                <form id="filter-form-mobile" class="mb-3">
                     <div class="mb-2">
                         <p class="mb-1 fw-bold">Stock</p>
                         <input type="checkbox" id="checkbox-new-mobile" name="new" value="new" {% if showing_new %}checked{% endif %}>
