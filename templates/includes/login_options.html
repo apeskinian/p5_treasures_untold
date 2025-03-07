@@ -1,11 +1,11 @@
 <!-- Account menu options depending on level of user. -->
 {% if user.is_authenticated %}
-    <div class="text-center"><a href="{% url 'profile' %}" class="btn btn-account btn-green" id="profile-page" aria-label="go to your profile page">Profile</a></div>
+    <div class="text-center"><a href="{% url 'profile' %}" class="btn btn-account btn-green" aria-label="go to your profile page">Profile</a></div>
     {% if user.is_staff %}
-        <div class="text-center"><a href="{% url 'dashboard' %}" class="btn btn-account btn-teal" id="staff" aria-label="go to the staff dashboard page">Staff Dashboard</a></div>
+        <div class="text-center"><a href="{% url 'dashboard' %}" class="btn btn-account btn-teal" aria-label="go to the staff dashboard page">Staff Dashboard</a></div>
     {% endif %}
     {% if user.is_superuser %}
-        <div class="text-center"><a href="{% url 'admin:index' %}" target="_blank" rel="noopener noreferrer" class="btn btn-account btn-teal" id="admin-btn" aria-label="go to the admin page">Admin Portal</a></div>
+        <div class="text-center"><a href="{% url 'admin:index' %}" target="_blank" rel="noopener noreferrer" class="btn btn-account btn-teal" aria-label="go to the admin page">Admin Portal</a></div>
     {% endif %}
     <div class="text-center"><a href="{{ logout_url }}" class="btn btn-account btn-red" aria-label="sign out">Log out</a></div>
     <p class="mb-1 text-center logged-in-as"><strong>{{ user.username }}</strong></p>
