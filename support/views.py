@@ -11,13 +11,23 @@ from django.views.decorators.http import require_POST
 
 from itsdangerous import URLSafeTimedSerializer
 
-from .models import Faqs, FaqsTopics, Subscriber
 from .forms import ContactForm, SubscriberForm
+from .models import Faqs, FaqsTopics, Subscriber
 
 
 def generate_confirmation_token(subscriber):
     """
-    Generate a token for newsletter signup confirmation.
+    Generates a time-sensitive token for newsletter signup confirmation.
+
+    Uses `itsdangerous.URLSafeTimedSerializer` to create a signed token
+    based on the subscriber's email. This token can later be used to verify
+    the signup request.
+
+    **Arguments:**
+    - subscriber (:model:`support.Subscriber`): The subscriber instance.
+
+    **Returns:**
+    - str: A signed token for email confirmation.
     """
     serializer = URLSafeTimedSerializer(settings.DANGEROUS_SECRET)
     return serializer.dumps(subscriber.email, salt='email-confirmation')
@@ -25,9 +35,32 @@ def generate_confirmation_token(subscriber):
 
 def sendSubscriptionConfirmationEmail(email, confirmation_url, request):
     """
-    Send the user an email to confirm their subscription via link.
+    Sends a confirmation email after a user subscribes to the newsletter.
+
+    The email contains a unique `confirmation_url`, generated using an
+    `itsdangerous` token, allowing the user to confirm their subscription.
+
+    The email is constructed using `email` and `confirmation_url` that is
+    passed and the email templates.
+
+    **Arguments:**
+    - `email`: The email address of the subscriber.
+    - `confirmation_url`: A unique URL generated with an `itsdangerous` token.
+    - `request`: The HTTP request used to generate an absolute url.
+
+    **Context:**
+    - `home_url`: Absolute URL to the home page.
+    - `confirmation_url`: The generated confirmation link.
+    - `email`: The email address of the subscriber.
+
+    **Template:**
+    :template:`support/support_emails/subscription_confirmation_subject.txt`
+    :template:`support/support_emails/subscription_confirmation_body.html`
     """
+    # Set variables for method.
     home_url = request.build_absolute_uri(reverse('home'))
+
+    # Construct email subject and body.
     subject = render_to_string(
         'support/support_emails/subscription_confirmation_subject.txt'
     )
@@ -51,10 +84,34 @@ def sendSubscriptionConfirmationEmail(email, confirmation_url, request):
 
 def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
     """
-    Send the user an email to confirm receipt of their message.
+    Sends an acknowledgment email after a user submits a contact form.
+    The email informs the user that their message has been received and
+    provides a unique `ticket_number` for reference.
+
+    The email is constructed using the context information and the templates.
+
+    **Arguments:**
+    - `name`: The name of the recipient.
+    - `email`: The email address of the recipient.
+    - `ticket_number`: A unique ticket number generated when the the message
+        was created.
+    - `request`: The HTTP request used to generate absolute urls.
+
+    **Context:**
+    - `products_url`: Absolute URL to the products page.
+    - `home_url`: Absolute URL to the home page.
+    - `ticket_number`: The generated ticket number.
+    - `email`: The email address of the recipient.
+
+    **Template:**
+    :template:`support/support_emails/contact_acknowledgment_subject.txt`
+    :template:`support/support_emails/contact_acknowledgment_body.html`
     """
+    # Set variables for method.
     products_url = request.build_absolute_uri(reverse('products'))
     home_url = request.build_absolute_uri(reverse('home'))
+
+    # Construct email subject and body.
     subject = render_to_string(
         'support/support_emails/contact_acknowledgment_subject.txt',
         {'ticket_number': ticket_number}
@@ -81,11 +138,26 @@ def sendMessageAcknowledgementEmail(name, email, request, ticket_number):
 
 def faq(request):
     """
-    A view to show the faqs for the site.
+    Displays the Frequently Asked Questions (FAQs) page.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+    - `faqs_list`: Queryset of :model:`support.Faqs`
+    - `topics`: Queryset of :model:`support.FaqsTopics`
+
+    **Template:**
+    - :template:`support/support.html`
+
+    **Returns:**
+    - A render response to show the FAQs page.
     """
+    # Set up variables for method.
     faqs_list = Faqs.objects.all().order_by('topic')
     topics = FaqsTopics.objects.all()
 
+    # Set up view parameters.
     template = 'support/support.html'
     context = {
         'title': 'FAQs',
@@ -99,8 +171,27 @@ def faq(request):
 
 def contact(request):
     """
-    A view to show the contact page for the site.
+    Displays the contact us page for the site where users can submit a
+    message including their name and email for a reply.
+
+    Upon successful form submission the `sendMessageAcknowledgementEmail`
+    method is called to send them an email.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+    - `form`: Instance of :form:`support.ContactForm`
+
+    **Template:**
+    - :template:`support/contact.html`
+
+    **Returns:**
+    - **GET**: A render response to the show the contact us page.
+    - **POST**: On successful form submission a redirect to `thankyou`
+        otherwise an error message to check form validation.
     """
+    # Handle form submission.
     if request.method == 'POST':
         form_data = {
             'name': request.POST['name'],
@@ -129,8 +220,10 @@ def contact(request):
                 'please ensure the form is valid'
             )
     else:
+        # Initiate form.
         contact_form = ContactForm()
 
+    # Set up view parameters.
     template = 'support/support.html'
     context = {
         'title': 'Contact Us',
@@ -143,8 +236,18 @@ def contact(request):
 
 def thankyou(request):
     """
-    A confirmation page for when a user sends a message via the contact form.
+    Displays a thank you message when a user successfully sends a message
+    from the contact us page.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+
+    **Returns:**
+    - A render response to show the thank you page.
     """
+    # Set up view parameters
     template = 'support/support.html'
     context = {
         'title': 'Thank You',
@@ -156,10 +259,25 @@ def thankyou(request):
 
 def newsletter(request):
     """
-    A view to show the newsletter for the site.
+    Displays the newsletter information page where a user can sign up to
+    reieve the letter via email.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+    - `main_subscriber_form`: Instance of :form:`support.SubscriberForm`
+        prefixed with 'main_newsletter' to avoid interference with the other
+        newsletter sign-up form in the `info_section.html` included at the
+        bottom of the template.
+
+    **Returns:**
+    - A render response to show the newsletter page.
     """
+    # Set variables for method.
     main_subscriber_form = SubscriberForm(prefix='main_newsletter')
 
+    # Set view parameters.
     template = 'support/support.html'
     context = {
         'title': 'Newsletter',
@@ -173,10 +291,25 @@ def newsletter(request):
 @require_POST
 def subscribe(request):
     """
-    Checks to see if a user is already subscribed and then if not:
-    - creates a subscriber instance and generates a token
-    - sends the subscriber an email for them to confirm
+    Handles subscription requests to the newsletter, which can come from
+    any page with the `info_section.html` includes file or the main
+    newsletter support page.
+
+    **Process:**
+    - On successful form submission, the email is checked against the
+        subscriber model to determine if the email exists and whether it
+        has been confirmed.
+    - If the email already exists and is confirmed, the user is shown
+        a message: 'This email has already been subscribed'.
+    - If the email does not exist or is not confirmed, a confirmation URL
+        is generated and sent via email to the user.
+    - After processing, the user is redirected to the `HTTP_REFERER` page.
+
+    **Returns:**
+    - A redirect to the page the user came from, using the `HTTP_REFERER`
+        header.
     """
+    # Set variables for method.
     return_url = request.META.get('HTTP_REFERER')
     form_email = (
         request.POST.get('newsletter-email') or
@@ -184,11 +317,13 @@ def subscribe(request):
     )
     subscribe_form = SubscriberForm({'email': form_email})
 
+    # Handle form submission.
     if subscribe_form.is_valid():
 
         email = subscribe_form.cleaned_data['email']
         subscriber, created = Subscriber.objects.get_or_create(email=email)
 
+        # Check for email already in db of subscribers.
         if not created and subscriber.is_active:
             messages.info(request, 'This email has already been subscribed')
             return redirect(return_url)
@@ -204,6 +339,7 @@ def subscribe(request):
         subscriber.token_created_at = timezone.now()
         subscriber.save()
 
+        # Send email to confirm subscription.
         sendSubscriptionConfirmationEmail(email, confirmation_url, request)
         messages.success(
             request,
@@ -221,14 +357,34 @@ def subscribe(request):
 
 def confirm_subscription(request, subscriber_id, token):
     """
-    Handles the confirmation request when a subscriber clicks on the
-    link in the email that was sent to them. If the link was clicked
-    before the expiration:
-    - the subscriber is marked as active
-    - they are directed to the success page
+    Handles the subscription confirmation process when a subscriber
+    clicks on the link in the email sent to them.
+
+    **Process:**
+    - The `token_created_at` timestamp is compared to the `token_expiry`
+      limit (set to 1 day).
+    - If the token has expired or is invalid, the user is shown the message:
+      'Your confirmation link has expired, please try again.' and redirected
+      to the newsletter page.
+    - If the token is valid and within the expiry time, the subscriber's
+      status is updated to active, and they are redirected to a success page.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+
+    **Template:**
+    - :template:`support/support.html`
+
+    **Returns:**
+    - A render response to the success page on successful confirmation.
+    - A redirect to the newsletter page for all other results.
     """
+    # Set variables for method.
     subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
 
+    # Validate token and process.
     if subscriber.token == token:
 
         token_expiry = timedelta(days=1)
@@ -244,6 +400,7 @@ def confirm_subscription(request, subscriber_id, token):
         subscriber.is_active = True
         subscriber.save()
 
+        # Set view parameters.
         template = 'support/support.html'
         context = {
             'title': 'Success',
@@ -262,8 +419,18 @@ def confirm_subscription(request, subscriber_id, token):
 
 def confirm_unsubscription(request, subscriber_id, token):
     """
-    Handles requests from subscribers to unsubscribe. This will be from a
-    link in emails that are sent to them in the newsletter.
+    Handles the unsubscription process when a user clicks on the unique
+    unsubscribe link in the newsletter.
+
+    **Process:**
+    - If the provided token is valid, the subscriber is unsubscribed,
+        and the message 'You have been unsubscribed' is shown.
+    - If the token is invalid, the message 'There was an error, please
+        contact admin' is shown.
+
+    **Returns:**
+    - A redirect to the home page (`home`) after either unsubscription or
+        error.
     """
     subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
     if subscriber.token == token:
@@ -277,8 +444,20 @@ def confirm_unsubscription(request, subscriber_id, token):
 
 def privacy(request):
     """
-    A view to show the privacy statement for the site.
+    Displays the privacy policy.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+
+    **Template:**
+    - :template:`support/support.html`
+
+    **Returns:**
+    - A render response to show the privacy policy page.
     """
+    # Set view parameters
     template = 'support/support.html'
     context = {
         'title': 'Privacy Statement',
