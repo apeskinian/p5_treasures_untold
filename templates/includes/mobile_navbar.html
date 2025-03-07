@@ -26,7 +26,7 @@
     </div>
     <!-- Site Navigation Links -->
     <div id="navigation-options" class="dropup">
-        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
+        <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-bars fa-xl"></i>
         </a>
         <div id="mob-menu-options" class="dropdown-menu p-3">
@@ -52,7 +52,7 @@
                 <a href="{% url 'privacy' %}" class="dropdown-item {% if request.path == '/support/privacy/' %}mob-menu-active{% endif %}" aria-label="view our privacy statement">Privacy</a>
                 <a href="{% url 'newsletter' %}" class="dropdown-item {% if request.path == '/support/newsletter/' %}mob-menu-active{% endif %}" aria-label="sign up to our newsletter">Newsletter</a>
             </div>
-            <div id="search-box" class="px-3 mb-2 mt-2">
+            <div id="mob-search-box" class="px-3 mb-2 mt-2">
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group">
                         <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
@@ -114,7 +114,7 @@
     {% endif %}
     <!-- Basket View -->
     <div id="basket" class="dropup">
-        <a class="text-white" href="#" id="user-options" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
+        <a class="text-white" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false">
             <i class="fa-solid fa-basket-shopping fa-xl"></i>
         </a>
         <div class="dropdown-menu">

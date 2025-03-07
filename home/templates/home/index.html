@@ -20,7 +20,7 @@
                     <h3>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h3>
                     <p>Prepare to discover Treasures Untold, where every corner holds a magical surprise.<br>Browse our collection of enchanted items, and who knows — you might just uncover a secret that unlocks more than just treasures!</p>
                     <div class="text-center">
-                        <a id="" class="btn btn-blue btn-enter w-25" href="{% url 'products' %}">Enter</a>
+                        <a class="btn btn-blue btn-enter w-25" href="{% url 'products' %}">Enter</a>
                     </div>
                 </div>
             </div>
