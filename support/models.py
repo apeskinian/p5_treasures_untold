@@ -4,6 +4,35 @@ from django.db import models
 
 
 class ContactMessage(models.Model):
+    """
+    Represents a customer support message submitted via the contact form.
+
+    **Fields:**
+    - `ticket_number (CharField)`: A unique identifier for the message,
+      generated automatically if not provided.
+    - `name (CharField)`: The name of the person submitting the message.
+    - `email (EmailField)`: The email address of the sender.
+    - `message (TextField)`: The content of the message.
+    - `replied (BooleanField)`: A flag indicating whether the message has
+      been replied to (default: `False`).
+    - `date_received (DateField)`: The date when the message was received,
+      automatically set upon creation.
+    - `date_replied (DateField)`: The date when a reply was sent
+      (optional, set when a reply is made).
+    - `reply (TextField)`: The content of the reply (optional).
+
+    **Meta:**
+    - Messages are ordered by `replied` status, ensuring unreplied messages
+      appear first.
+
+    **Methods:**
+    - `_generate_ticket_number()`: Generates a unique ticket number with a
+      'TU' prefix and an 8-character hexadecimal string.
+    - `save()`: Overrides the default save method to ensure a ticket number
+      is assigned if not already present.
+    - `__str__()`: Returns a string representation of the contact message,
+      including the ticket number and sender's name.
+    """
     class Meta:
         ordering = ['replied',]
 
@@ -46,6 +75,21 @@ class ContactMessage(models.Model):
 
 
 class FaqsTopics(models.Model):
+    """
+    Represents a topic category for Frequently Asked Questions (FAQs).
+
+    **Fields:**
+    - `name (CharField)`: The name of the FAQ topic.
+    - `sort_order (PositiveIntegerField)`: Determines the display order of
+      topics (default: 100).
+
+    **Meta:**
+    - `verbose_name_plural`: Sets the plural name to 'FAQ Topics'.
+    - `ordering`: Topics are ordered by `sort_order` in ascending order.
+
+    **Methods:**
+    - `__str__()`: Returns the topic name as its string representation.
+    """
     class Meta:
         verbose_name_plural = 'FAQ Topics'
         ordering = ['sort_order',]
@@ -64,6 +108,23 @@ class FaqsTopics(models.Model):
 
 
 class Faqs(models.Model):
+    """
+    Represents an individual Frequently Asked Question (FAQ).
+
+    **Fields:**
+    - `topic (ForeignKey)`: Links the FAQ to a specific `FaqsTopics` category.
+    - `question (CharField)`: The FAQ question text.
+    - `answer (TextField)`: The answer to the question.
+    - `sort_order (PositiveIntegerField)`: Determines the display order of
+      questions within a topic (default: 100).
+
+    **Meta:**
+    - `verbose_name_plural`: Sets the plural name to 'FAQs'.
+    - `ordering`: FAQs are ordered by `topic` and `sort_order`.
+
+    **Methods:**
+    - `__str__()`: Returns the FAQ question as its string representation.
+    """
     class Meta:
         verbose_name_plural = 'FAQs'
         ordering = ['topic', 'sort_order',]
@@ -86,6 +147,21 @@ class Faqs(models.Model):
 
 
 class Newsletter(models.Model):
+    """
+    Represents a newsletter entry that has been sent.
+
+    **Fields:**
+    - `subject (CharField)`: The subject line of the newsletter.
+    - `news_body (TextField)`: The main content of the newsletter.
+    - `date_sent (DateField)`: The date the newsletter was sent
+        (auto-populated).
+
+    **Meta:**
+    - `ordering`: Newsletters are ordered by `date_sent`.
+
+    **Methods:**
+    - `__str__()`: Returns the newsletter subject as its string representation.
+    """
     class Meta:
         ordering = ['date_sent']
 
@@ -104,6 +180,24 @@ class Newsletter(models.Model):
 
 
 class Subscriber(models.Model):
+    """
+    Represents a newsletter subscriber.
+
+    **Fields:**
+    - `email (EmailField)`: The subscriber's email address (unique).
+    - `is_active (BooleanField)`: Indicates whether the subscription is active.
+    - `date_joined (DateField)`: The date the user subscribed (optional).
+    - `token (CharField)`: A unique token for confirming or managing the
+        subscription.
+    - `token_created_at (DateTimeField)`: Timestamp for when the token was
+        generated.
+
+    **Meta:**
+    - `ordering`: Subscribers are ordered by `date_joined`.
+
+    **Methods:**
+    - `__str__()`: Returns the subscriber's email as its string representation.
+    """
     class Meta:
         ordering = ['date_joined']
 
