@@ -12,6 +12,19 @@ from cloudinary.utils import cloudinary_url
 
 
 class Realm(models.Model):
+    """
+    Represents a realm from which a product originates.
+
+    **Fields:**
+    - `name` (CharField): The name of the realm.
+    - `the_prefix_required` (BooleanField): Indicates whether the definite
+        article 'the' is required as a prefix in certain grammatical contexts.
+
+    **Methods:**
+    - `__str__()`: Returns the realm's name as its string representation.
+    - `display_name()`: Formats the `name` field by replacing underscores
+        with spaces for a more human-readable display.
+    """
     name = models.CharField(max_length=254)
     the_prefix_required = models.BooleanField(default=False)
 
@@ -23,6 +36,29 @@ class Realm(models.Model):
 
 
 class Product(models.Model):
+    """
+    Represents a product available for purchase in the store.
+
+    **Fields:**
+    - `name (CharField)`: The name of the product.
+    - `realm (ForeignKey)`: The realm this product belongs to. Links to
+        :model:`products.Realm`
+    - `sku (CharField)`: The unique Stock Keeping Unit (SKU) for the product.
+    - `image (CloudinaryField)`: The image associated with the product.
+    - `stock (IntegerField)`: The current stock level of the product.
+    - `unique_stock (BooleanField)`: Indicates whether the product is a
+      one-of-a-kind item (stock cannot exceed 1).
+
+    **Methods:**
+    - `_generate_sku()`: Generates a unique SKU using UUID and product data.
+    - `image_url() (property)`: Returns the correct image URL based on debug
+      mode and hosting conditions.
+    - `save()`: Assigns an SKU before saving if one is not already present.
+    - `__str__()`: Returns the name of the product as a string.
+    - `realm_name()`: Returns the realm name formatted for display.
+    - `clean()`: Validates stock levels for unique items to prevent more than
+      one in stock.
+    """
     class Meta:
         ordering = [Lower('realm__name')]
 
