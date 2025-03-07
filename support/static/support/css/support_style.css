@@ -1,3 +1,4 @@
+/* Treasures Untold - support app CSS styling */
 #support-page {
     background-color: var(--tu-mid-grey);
 }
@@ -5,7 +6,6 @@
 #support-container {
     background-color: var(--tu-off-white);
 }
-
 
 .accordion-button:not(.collapsed) {
     background-color: #839680;
