@@ -6,9 +6,11 @@
 {% endblock %}
 
 {% block extra_css %}
-    <!-- Load products_style.css -->
+<!-- Load products_style.css -->
     <link rel="stylesheet" href="{% static 'products/css/products_style.css' %}">    
 {% endblock %}
+
+{% block extra_title %} - Products{% endblock %}
 
 {% block content %}
 <div id="product-details-page" class="container-fluid flex-grow-1">
