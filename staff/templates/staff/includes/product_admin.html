@@ -11,7 +11,7 @@
                 <th class="d-none d-lg-table-cell">Stock</th>
                 <th class="d-none d-lg-table-cell">Price</th>
                 <th class="text-end">
-                    <a href="{% url 'manage_product' %}" class="btn btn-green btn-with-spinner ms-auto">
+                    <a href="{% url 'manage_product' %}" class="btn btn-green btn-with-spinner ms-auto" aria-label="create new product listing">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                         <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                     </a>
@@ -28,11 +28,11 @@
             <td class="d-none d-lg-table-cell">{{ product.stock }}</td>
             <td class="d-none d-lg-table-cell">£{{ product.price }}</td>
             <td class="text-end">
-                <a href="{% url 'manage_product' product_id=product.id %}" class="btn btn-yellow btn-with-spinner">
+                <a href="{% url 'manage_product' product_id=product.id %}" class="btn btn-yellow btn-with-spinner" aria-label="edit {{ product.name }}">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
-                <a href="{% url 'manage_product' delete='delete' product_id=product.id %}" class="btn btn-red btn-with-spinner ms-1">
+                <a href="{% url 'manage_product' delete='delete' product_id=product.id %}" class="btn btn-red btn-with-spinner ms-1" aria-label="delete {{ product.name }}">
                     <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
@@ -48,7 +48,7 @@
             <tr>
                 <th class="">Realms</th>
                 <th class="text-end">
-                    <a href="{% url 'manage_realm' %}" class="btn btn-green btn-with-spinner ms-auto">
+                    <a href="{% url 'manage_realm' %}" class="btn btn-green btn-with-spinner ms-auto" aria-label="create new realm">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                         <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                     </a>
@@ -60,11 +60,11 @@
         <tr>
             <td>{{ realm.display_name }}</td>
             <td class="text-end">
-                <a href="{% url 'manage_realm' realm_id=realm.id %}" class="btn btn-yellow btn-with-spinner">
+                <a href="{% url 'manage_realm' realm_id=realm.id %}" class="btn btn-yellow btn-with-spinner" aria-label="edit {{ realm.display_name }}">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
-                <a href="{% url 'manage_realm' delete='delete' realm_id=realm.id %}" class="btn btn-red btn-with-spinner ms-1">
+                <a href="{% url 'manage_realm' delete='delete' realm_id=realm.id %}" class="btn btn-red btn-with-spinner ms-1" aria-label="delete {{ realm.display_name }}">
                     <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>

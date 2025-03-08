@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-3">
                             {% if not message.replied %}
-                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-yellow btn-with-spinner">
+                            <a href="{% url 'reply_to_message' message_id=message.id %}" class="btn btn-reply btn-yellow btn-with-spinner" aria-label="reply to {{ message.name }} from {{ message.email }}">
                                 <span class="btn-text">Reply</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>

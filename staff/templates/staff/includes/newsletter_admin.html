@@ -10,7 +10,7 @@
                         <th class="newsletter-table-newsletter w-25">Newsletter</th>
                         <th class="newsletter-table-date text-nowrap">Date Sent</th>
                         <th class="text-end w-100">
-                            <a class="btn btn-green btn-with-spinner" href="{% url 'manage_newsletters' %}">
+                            <a class="btn btn-green btn-with-spinner" href="{% url 'manage_newsletters' %}" aria-label="create newsletter">
                                 <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -23,11 +23,11 @@
                     <td class="newsletter-table-newsletter w-25">{{ newsletter.subject }}</td>
                     <td class="newsletter-table-date text-nowrap">{{ newsletter.date_sent | date:"d M Y" }}</td>
                     <td class="text-end">
-                        <a href="{% url 'manage_newsletters' newsletter_id=newsletter.id %}" class="btn btn-blue btn-delete btn-with-spinner">
+                        <a href="{% url 'manage_newsletters' newsletter_id=newsletter.id %}" class="btn btn-blue btn-delete btn-with-spinner" aria-label="view {{ newsletter.subject }}">
                             <span class="btn-text"><i class="fa-regular fa-folder-open"></i></span>
                             <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                         </a>
-                        <a href="{% url 'manage_newsletters' delete='delete' newsletter_id=newsletter.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1">
+                        <a href="{% url 'manage_newsletters' delete='delete' newsletter_id=newsletter.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1" aria-label="delete {{ newsletter.subject }}">
                             <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                             <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                         </a>
@@ -55,7 +55,7 @@
                         <td class="subscriber-table-emails w-25">{{ subscriber.email }}</td>
                         <td class="subscriber-table-status"><strong class="text-green">ACTIVE</strong></td>
                         <td class="text-end">
-                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner" aria-label="remove {{ subscriber.email }} from mailing list">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -67,7 +67,7 @@
                         <td class="subscriber-table-emails w-25">{{ subscriber.email }}</td>
                         <td class="subscriber-table-status"><strong class="text-grey">PENDING</strong></td>
                         <td class="text-end">
-                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner" aria-label="remove {{ subscriber.email }} from mailing list">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -79,7 +79,7 @@
                         <td class="subscriber-table-emails w-25">{{ subscriber.email }}</td>
                         <td class="subscriber-table-status"><strong class="text-red">EXPIRED</strong></td>
                         <td class="text-end">
-                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner">
+                            <a href="{% url 'manage_subscriber' subscriber_id=subscriber.id %}" class="btn btn-red btn-delete btn-with-spinner" aria-label="remove {{ subscriber.email }} from mailing list">
                                 <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
@@ -91,7 +91,7 @@
         </div>
         <div class="clear-btn-container col-12 col-md-6 col-lg-4 d-flex justify-content-center">
             {% if expired_subscribers %}
-            <a href="{% url 'clear_expired_subscribers' %}" class="btn btn-red btn-delete btn-with-spinner btn-clear-subs">
+            <a href="{% url 'clear_expired_subscribers' %}" class="btn btn-red btn-delete btn-with-spinner btn-clear-subs" aria-label="remove all subscribers from mailing list">
                 <span class="btn-text">CLEAR EXPIRED SUBSCRIBERS</span>
                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
             </a>

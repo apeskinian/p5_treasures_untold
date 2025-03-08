@@ -7,7 +7,7 @@
                 <th class="d-none d-md-table-cell faq-table-topics-th">Topic</th>
                 <th class="faq-table-questions-th">Question</th>
                 <th class="text-end">
-                    <a class="btn btn-green btn-with-spinner" href="{% url 'manage_faq' %}">
+                    <a class="btn btn-green btn-with-spinner" href="{% url 'manage_faq' %}" aria-label="create new FAQ">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                         <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                     </a>
@@ -20,11 +20,11 @@
             <td class="d-none d-md-table-cell faq-table-topics-td">{{ faq.topic.name }}</td>
             <td class="faq-table-questions-td">{{ faq.question }}</td>
             <td class="text-end">
-                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-yellow btn-edit btn-with-spinner">
+                <a href="{% url 'manage_faq' faq_id=faq.id %}" class="btn btn-yellow btn-edit btn-with-spinner" aria-label="edit {{ faq.question }}">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
-                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1">
+                <a href="{% url 'manage_faq' delete='delete' faq_id=faq.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1" aria-label="delete {{ faq.question }}">
                     <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
@@ -39,7 +39,7 @@
             <tr>
                 <th class="">Topics</th>
                 <th class="text-end">
-                    <a class="btn btn-green btn-with-spinner" href="{% url 'manage_faq_topic' %}">
+                    <a class="btn btn-green btn-with-spinner" href="{% url 'manage_faq_topic' %}"  aria-label="create new FAQ topic">
                         <span class="btn-text"><i class="fa-solid fa-plus"></i></span>
                         <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                     </a>
@@ -51,11 +51,11 @@
         <tr>
             <td>{{ topic.name }}</td>
             <td class="text-end">
-                <a href="{% url 'manage_faq_topic' faq_topic_id=topic.id %}" class="btn btn-yellow btn-edit btn-with-spinner">
+                <a href="{% url 'manage_faq_topic' faq_topic_id=topic.id %}" class="btn btn-yellow btn-edit btn-with-spinner" aria-label="edit {{ topic.name }}">
                     <span class="btn-text"><i class="fa-solid fa-pen-to-square"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>
-                <a href="{% url 'manage_faq_topic' delete='delete' faq_topic_id=topic.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1">
+                <a href="{% url 'manage_faq_topic' delete='delete' faq_topic_id=topic.id %}" class="btn btn-red btn-delete btn-with-spinner ms-1" aria-label="edit {{ topic.name }}">
                     <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
                     <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </a>

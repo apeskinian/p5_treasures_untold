@@ -10,7 +10,7 @@
             <option value="realm_desc" {% if current_sorting == 'realm_desc' %}selected{% endif %}>Realm (Z-A)</option>
         </select>
     </div>            
-    <a href="{% url 'products' %}" class="btn btn-teal m-1 w-100">Clear</a>
+    <a href="{% url 'products' %}" class="btn btn-teal m-1 w-100" aria-label="clear selection">Clear</a>
     <button id="submit-filter" class="btn btn-green m-1 mb-3 w-100">Apply</button>
     <form id="filter-form">
         <div class="mb-2">

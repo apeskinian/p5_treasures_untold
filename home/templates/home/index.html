@@ -22,7 +22,7 @@
                     <h3>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h3>
                     <p>Prepare to discover Treasures Untold, where every corner holds a magical surprise.<br>Browse our collection of enchanted items, and who knows — you might just uncover a secret that unlocks more than just treasures!</p>
                     <div class="text-center">
-                        <a class="btn btn-blue btn-enter w-25" href="{% url 'products' %}">Enter</a>
+                        <a class="btn btn-blue btn-enter w-25" href="{% url 'products' %}" aria-label="view all products">Enter</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <div class="slideshow-container">
                         {% for product in new_products %}
                             <div class="new-slide">
-                                <a href="{% url 'products' %}?new">
+                                <a href="{% url 'products' %}?new" aria-label="shop new products">
                                     <img src="{{ product.image_url }}" alt="{{ product.name }}">
                                 </a>
                             </div>
@@ -120,7 +120,7 @@
                     <div id="featured-slide-main" class="slideshow-container">
                         {% for product in featured_products %}
                             <div class="featured-slide">
-                                <a href="{% url 'products' %}?realm={{ featured_realm.name }}">
+                                <a href="{% url 'products' %}?realm={{ featured_realm.name }}" aria-label="shop products from {{ featured_realm.name }}">
                                     <img src="{{ product.image_url }}" alt="{{ product.name }}">
                                 </a>
                             </div>

@@ -63,7 +63,7 @@
                             <div class="product-total-column col text-end d-flex flex-column justify-content-between">
                                 <strong class="{% if item.product.price == 0.00 %}text-danger{% endif %}">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
                                 <div>
-                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}"><i class="fa-solid fa-trash-can"></i></a>
+                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}" aria-label="remove item from basket"><i class="fa-solid fa-trash-can"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -102,8 +102,8 @@
             </div>
             <div class="row p-2">
                 <div class="basket-buttons col d-flex flex-column align-items-center gap-2">
-                    <a href="{% url 'products' %}" class="btn btn-blue" aria-label="edit the basket">Continue Shopping</a>
-                    <a href="{% url 'checkout' %}" class="btn btn-green" aria-label="go to secure checkout">Secure Checkout</a>
+                    <a href="{% url 'products' %}" class="btn btn-blue">Continue Shopping</a>
+                    <a href="{% url 'checkout' %}" class="btn btn-green">Secure Checkout</a>
                 </div>
             </div>
         {% else %}

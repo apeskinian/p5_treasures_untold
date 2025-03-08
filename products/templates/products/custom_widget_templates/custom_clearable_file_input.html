@@ -2,8 +2,8 @@
     <div class="d-flex justify-content-center gap-5">
         <div id="current-image-preview">
             <p class="text-center"><strong>{{ widget.initial_text }}</strong></p>
-            <a href="{{ widget.value.url }}" target="_blank">
-                <img width="200" height="200" class="rounded shadow-sm" src="{{ widget.value.url }}">
+            <a href="{{ widget.value.url }}" target="_blank"  aria-label="view larger image of {{ widget.value }}">
+                <img width="200" height="200" class="rounded shadow-sm" src="{{ widget.value.url }}" alt="{{ widget.value }}">
             </a>
             {% if not widget.required %}
                 <div class="custom-control custom-checkbox mt-2 text-center">
