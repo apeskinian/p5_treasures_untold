@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /basket/
+Disallow: /checkout/
+Disallow: /staff/
+Disallow: /profile/
+Disallow: /?*
+Sitemap: https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com/sitemap.xml
