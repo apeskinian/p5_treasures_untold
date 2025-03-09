@@ -465,3 +465,53 @@ def privacy(request):
     }
 
     return render(request, template, context)
+
+
+def returns(request):
+    """
+    Displays the returns policy.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+
+    **Template:**
+    - :template:`support/support.html`
+
+    **Returns:**
+    - A render response to show the returns policy page.
+    """
+    # Set view parameters
+    template = 'support/support.html'
+    context = {
+        'title': 'Returns Policy',
+        'content': 'returns'
+    }
+
+    return render(request, template, context)
+
+
+def terms(request):
+    """
+    Displays the terms and conditions.
+
+    **Context:**
+    - `title`: Used to dynamically set the H1 page heading.
+    - `content`: Used to dynamically load the correct includes file in the
+        template.
+
+    **Template:**
+    - :template:`support/support.html`
+
+    **Returns:**
+    - A render response to show the terms and conditions page.
+    """
+    # Set view parameters
+    template = 'support/support.html'
+    context = {
+        'title': 'Terms and Conditions',
+        'content': 'terms'
+    }
+
+    return render(request, template, context)

@@ -17,6 +17,12 @@ urlpatterns = [
      # View to the privacy policy page.
      path('privacy/', views.privacy, name='privacy'),
 
+     # View to the return policy page.
+     path('returns/', views.returns, name='returns'),
+
+     # View to the terms and conditions page.
+     path('terms/', views.terms, name='terms'),
+
      # View the contact us receipt page.
      path('thankyou/', views.thankyou, name='thankyou'),
 

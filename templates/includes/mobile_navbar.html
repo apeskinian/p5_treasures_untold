@@ -35,7 +35,7 @@
                 <a href="{% url 'products' %}?new" class="dropdown-item {% if 'new' in request.GET and not 'realm' in request.GET %}mob-menu-active{% endif %}" aria-label="see the new products">New</a>
                 <a href="{% url 'products' %}" class="dropdown-item {% if not request.GET and request.path == '/products/' %}mob-menu-active{% endif %}" aria-label="shop all products">All Products</a>
                 <div id="by-realm-menu-mobile">
-                    <a href="#realm-collapse-mobile" class="nav-link text-black px-3" data-bs-toggle="collapse" role="button" aria-expanded="{% if 'realm' in request.GET %}true{% else %}false{% endif %}" aria-controls="realm-collapse-mobile">
+                    <a href="#realm-collapse-mobile" class="nav-link text-black px-3" data-bs-toggle="collapse" role="button" aria-expanded="{% if 'realm' in request.GET %}true{% else %}false{% endif %}" aria-controls="realm-collapse-mobile" aria-label="select a realm">
                         By Realm
                         <span class="indicator">
                             <i class="fa-solid fa-angle-down"></i>
@@ -44,13 +44,15 @@
                 </div>
                 <div id="realm-collapse-mobile" class="collapse list-unstyled {% if 'realm' in request.GET %}show{% endif %}">
                     {% for realm in all_realms %}
-                    <a class="dropdown-item {% if forloop.first %}mt-2{% endif %}{% if realm.name in request.GET.realm %} mob-menu-active{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}">{{ realm.display_name }}</a>
+                    <a class="dropdown-item {% if forloop.first %}mt-2{% endif %}{% if realm.name in request.GET.realm %} mob-menu-active{% endif %}" href="{% url 'products' %}?realm={{ realm.name }}" aria-label="view products from {{ realm.display_name }}">{{ realm.display_name }}</a>
                     {% endfor %}
                 </div>
                 <a href="{% url 'faq' %}" class="dropdown-item {% if request.path == '/support/faq/' %}mob-menu-active{% endif %}" aria-label="see our faqs">FAQ</a>
                 <a href="{% url 'contact' %}" class="dropdown-item {% if request.path == '/support/contact/' %}mob-menu-active{% endif %}" aria-label="go to the contact us page">Contact Us</a>
-                <a href="{% url 'privacy' %}" class="dropdown-item {% if request.path == '/support/privacy/' %}mob-menu-active{% endif %}" aria-label="view our privacy statement">Privacy</a>
                 <a href="{% url 'newsletter' %}" class="dropdown-item {% if request.path == '/support/newsletter/' %}mob-menu-active{% endif %}" aria-label="sign up to our newsletter">Newsletter</a>
+                <a href="{% url 'returns' %}" class="dropdown-item {% if request.path == '/support/returns/' %}mob-menu-active{% endif %}" aria-label="view our returns policy">Returns Policy</a>
+                <a href="{% url 'privacy' %}" class="dropdown-item {% if request.path == '/support/privacy/' %}mob-menu-active{% endif %}" aria-label="view our privacy statement">Privacy Statement</a>
+                <a href="{% url 'terms' %}" class="dropdown-item {% if request.path == '/support/terms/' %}mob-menu-active{% endif %}" aria-label="view our terms and conditions">Terms and Conditions</a>
             </div>
             <div id="mob-search-box" class="px-3 mb-2 mt-2">
                 <form method="GET" action="{% url 'products' %}">
