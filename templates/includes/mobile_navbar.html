@@ -56,7 +56,7 @@
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group">
                         <input class="form-control rounded-5" type="text" name="q" placeholder="Search the trove...">
-                        <button class="btn btn-black" type="submit">
+                        <button class="btn btn-black" type="submit" aria-label="search">
                             <span class="icon">
                                 <i class="fa-solid fa-magnifying-glass fa-l"></i>
                             </span>
@@ -105,8 +105,8 @@
                             <option value="realm_desc" {% if current_sorting == 'realm_desc' %}selected{% endif %}>Realm (Z-A)</option>
                         </select>
                     </div>            
-                    <a href="{% url 'products' %}" class="btn btn-teal m-1 mt-2 w-100">Clear</a>
-                    <button id="submit-filter-mobile" class="btn btn-green m-1 w-100">Apply</button>
+                    <a href="{% url 'products' %}" class="btn btn-teal m-1 mt-2 w-100" aria-label="clear filters">Clear</a>
+                    <button id="submit-filter-mobile" class="btn btn-green m-1 w-100" aria-label="apply selected filters">Apply</button>
                 </div>
             </div>
         </div>

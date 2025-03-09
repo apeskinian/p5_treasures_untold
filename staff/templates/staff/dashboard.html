@@ -196,7 +196,7 @@
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
                             {% if mode != 'View' %}
-                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-green{% elif to_delete %}btn-red{% endif %} w-25">
+                            <button id="dashboard-modal-confirm" type="submit" class="btn {% if form %}btn-green{% elif to_delete %}btn-red{% endif %} w-25" aria-label="{{ mode }}">
                                 <span class="btn-text">{{ mode }}</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </button>

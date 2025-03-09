@@ -73,14 +73,14 @@
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <button class="btn btn-sm btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-minus"></i></i></button>
+                                            <button class="btn btn-sm btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}" aria-label="decrease item quantity"><i class="fa-solid fa-minus"></i></i></button>
                                             <input id="id-qty-{{ item.item_id }}" class="form-control form-control-sm qty-input" type="number" name="quantity" value="{{ item.quantity }}" min="0" max="{{ item.product.stock|add:item.quantity }}" data-item-id="{{ item.item_id }}">
-                                            <button class="btn btn-sm btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}"><i class="fa-solid fa-plus"></i></button>
+                                            <button class="btn btn-sm btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}" aria-label="increase item quantity"><i class="fa-solid fa-plus"></i></button>
                                         </div>
                                     </div>
                                     <input type="hidden" name="previous-quantity" value="{{ item.quantity }}">
                                 </form>
-                                <button type="button" class="btn btn-sm btn-blue update-basket" data-item-id="{{ item.item_id }}" data-action="update"><i class="fa-solid fa-rotate"></i></button>
+                                <button type="button" class="btn btn-sm btn-blue update-basket" data-item-id="{{ item.item_id }}" data-action="update" aria-label="update basket"><i class="fa-solid fa-rotate"></i></button>
                             </div>
                         </div>
                     </div>

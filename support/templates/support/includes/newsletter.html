@@ -13,7 +13,7 @@
             <div class="input-group flex-nowrap d-flex justify-content-center">
                 {% csrf_token %}
                 {{ main_subscriber_form | crispy }}
-                <button id="main-subscriber-form-submit" type="submit" class="btn input-group-text"><i
+                <button id="main-subscriber-form-submit" type="submit" class="btn input-group-text" aria-label="submit email address"><i
                         class="fa-solid fa-paper-plane"></i></button>
             </div>
         </form>
