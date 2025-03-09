@@ -1,7 +1,9 @@
-/* import fonts */
+/* Treasures Untold - CSS styling*/
+/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Cantora+One&family=Pirata+One&display=swap');
 @import url('/static/css/custom_colours.css');
 
+/* Configuring custom colours */
 :root {
     --tu-green: #839680;
     --tu-green-hover: #5f6e5d;
@@ -28,7 +30,7 @@
     --tu-light-grey-shadow: #dcdcdc80;
 }
 
-/* OVERRIDE BROWSER DEFAULTS */
+/* Override browser defaults */
 * {
     padding: 0;
     margin: 0;
@@ -36,7 +38,7 @@
     overscroll-behavior: none;
 }
 
-/* GENERAL */
+/* General attributes */
 .hidden {
     display: none;
 }
@@ -68,13 +70,14 @@ main {
     background-color: #FFF;
 }
 
+/* Footer Styling */
 #apeskinian {
     background-color: var(--tu-teal);
     height: 30px;
     margin-bottom: 59px;
 }
 
-/* START> ALLAUTH TEMPLATES */
+/* START> Allauth */
 .h1-style {
     font-family: 'Pirata One', serif;
     font-size: calc(1.375rem + 1.5vw);
@@ -109,9 +112,9 @@ main {
     width: 100%;
     max-width: 400px;
 }
-/* END> ALLAUTH TEMPLATES */
+/* END> Allauth */
 
-/* START> NAVIGATION BARS */
+/* START> Navigation elements */
 .floating-top-nav {
     display: none;
     background-color: var(--tu-teal-shadow);
@@ -198,7 +201,7 @@ main {
     font-size: 1.1rem;
 }
 
-/* start> rotate dropdown arrow on click*/
+/* START> rotate dropdown arrow on click */
 .indicator i {
     transition: transform 0.3s ease-in-out;
 }
@@ -207,7 +210,7 @@ main {
   [data-bs-toggle="collapse"][aria-expanded="true"] .indicator i {
     transform: rotate(180deg);
 }
-/* end> rotate arrow on click*/
+/* END> rotate arrow on click */
 
 .offcanvas-right-close {
     position: absolute;
@@ -221,6 +224,16 @@ main {
     left: 1.5rem;
 }
 
+.btn-basket {
+    border-radius: 10px;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* END> Navigation elements */
+
+/* START> Mobile navigation elements */
 #bottom-nav-mobile {
     height: 60px;
     background-color: var(--tu-dark-teal);
@@ -239,14 +252,6 @@ main {
 
 .btn-mob-account {
     width: 250px;
-}
-
-.btn-basket {
-    border-radius: 10px;
-    width: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-mob-basket {
@@ -299,9 +304,9 @@ main {
     color: #FFF;
     border-radius: 10px;
 }
-/* END> NAVIGATION BARS */
+/* END> Mobile navigation elements */
 
-/* START> ERROR PAGES */
+/* START> Error pages */
 #error-page {
     background-color: var(--tu-mid-grey);
 }
@@ -309,9 +314,9 @@ main {
 #error-page-container {
     background-color: var(--tu-off-white);
 }
-/* END> ERROR PAGES */
+/* END> Error pages */
 
-/* START> INFO SECTION */
+/* START> Info section */
 .support-container {
     max-width: 100vw;
     margin: 0;
@@ -382,9 +387,9 @@ main {
 #support-link-placeholder {
     visibility: hidden;
 }
-/* END> INFO SECTION */
+/* END> Info section */
 
-/* START> MESSAGES */
+/* START> Messages */
 .message-container {
     z-index: 10000;
     position: fixed;
@@ -422,9 +427,9 @@ main {
 .toast-warning {
     border: 4px solid var(--tu-yellow);
 }
-/* END> MESSAGES */
+/* END> Messages */
 
-/* START> PRODUCT FORM */
+/* START> Custom clearable file input */
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -442,17 +447,17 @@ main {
 
 .custom-checkbox .custom-control-label::before {
     border-radius: 0;
-    border-color: #dc3545;
+    border-color: var(--tu-red);
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: var(--tu-red);
+    border-color: var(--tu-red);
     border-radius: 0;
 }
-/* END> PRODUCT FORM */
+/* END> Custom clearable file input */
 
-/* START> SCROLL BUTTON */
+/* START> Scroll button */
 #scroll-button {
     background-color: var(--tu-teal);
     color: #FFF;
@@ -473,10 +478,11 @@ main {
 .scroll-link {
     cursor: pointer;
 }
-/* END> SCROLL BUTTON */
+/* END> Scroll button */
 
+/* Media queries for larger screens. */
 @media screen and (min-width: 768px) {
-    
+    /* Allauth */
     .allauth-container {    
         background-color: var(--tu-mid-grey);
         padding: 40px 0px;
@@ -486,6 +492,7 @@ main {
         border-radius: 20px;
     }
     
+    /* Info section */
     #support-social {
         height: 160px;
     }
@@ -494,10 +501,12 @@ main {
         height: 160px;
     }
 
+    /* Footer */
     #apeskinian {
         margin-bottom: 0;
     }
 
+    /* Messages */
     .message-container {
         top: auto;
         left: auto;
