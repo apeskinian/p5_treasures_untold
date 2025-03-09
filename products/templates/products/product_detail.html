@@ -43,7 +43,7 @@
                             <div class="input-group">
                                 <span class="input-group-text">QTY</span>
                                 <button class="btn btn-secondary decrement-qty" id="decrement-qty-{{ product.id }}" data-item-id="{{ product.id }}" aria-label="decrease item quantity"><i class="fa-solid fa-minus"></i></i></button>
-                                <input id="id-qty-{{ product.id }}" class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" data-item-id="{{ product.id }}">
+                                <input id="id-qty-{{ product.id }}" class="form-control qty-input" type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" data-item-id="{{ product.id }}" aria-label="product quantity input">
                                 <button class="btn btn-secondary increment-qty" id="increment-qty-{{ product.id }}" data-item-id="{{ product.id }}" aria-label="increase item quantity"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         {% endif %}
                         <div class="mt-3">
                             {% if user.is_authenticated %}
-                            <input id="add-button" type="submit" class="btn btn-green" value="Add to Basket">
+                            <input id="add-button" type="submit" class="btn btn-green" value="Add to Basket" aria-label="add to basket">
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             <input type="hidden" name="return_url" value="{{ return_url }}">
                             {% else %}

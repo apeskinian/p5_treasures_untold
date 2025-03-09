@@ -22,6 +22,6 @@
 {% endif %}
 <div class="d-flex justify-content-center">
     <span id="btn-file-select" class="btn btn-blue btn-file mb-1 mt-2 w-25">
-        Select New Image <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+        Select New Image <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}" aria-label="select new image"{% include "django/forms/widgets/attrs.html" %}>
     </span>
 </div>
