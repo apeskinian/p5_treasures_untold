@@ -2,7 +2,7 @@
 /* GREEN */
 .btn-green,
 .btn-green:focus {
-    color: #FFF;
+    color: var(--tu-white);
     background-color: var(--tu-green);
     border-color: var(--tu-green);
 }
@@ -14,7 +14,7 @@
 .btn-green:hover,
 .btn-green:active,
 .btn-green.disabled {
-    color: #FFF !important;
+    color: var(--tu-white) !important;
     background-color: var(--tu-green-hover) !important;
     border-color: var(--tu-green-hover) !important;
 }
@@ -22,7 +22,7 @@
 /* RED */
 .btn-red,
 .btn-red:focus {
-    color: #FFF;
+    color: var(--tu-white);
     background-color: var(--tu-red);
     border-color: var(--tu-red);
 }
@@ -34,7 +34,7 @@
 .btn-red:hover,
 .btn-red:active,
 .btn-red.disabled {
-    color: #FFF !important;
+    color: var(--tu-white) !important;
     background-color: var(--tu-red-hover) !important;
     border-color: var(--tu-red-hover) !important;
 }
@@ -62,7 +62,7 @@
 /* BLUE */
 .btn-blue,
 .btn-blue:focus {
-    color: #FFF;
+    color: var(--tu-white);
     background-color: var(--tu-blue);
     border-color: var(--tu-blue);
 }
@@ -74,7 +74,7 @@
 .btn-blue:hover,
 .btn-blue:active,
 .btn-blue.disabled {
-    color: #FFF !important;
+    color: var(--tu-white) !important;
     background-color: var(--tu-blue-hover) !important;
     border-color: var(--tu-blue-hover) !important;
 }
@@ -82,7 +82,7 @@
 /* TEAL */
 .btn-teal,
 .btn-teal:focus {
-    color: #FFF;
+    color: var(--tu-white);
     background-color: var(--tu-teal);
     border-color: var(--tu-teal);
 }
@@ -94,7 +94,7 @@
 .btn-teal:hover,
 .btn-teal:active,
 .btn-teal.disabled {
-    color: #FFF !important;
+    color: var(--tu-white) !important;
     background-color: var(--tu-teal-hover) !important;
     border-color: var(--tu-teal-hover) !important;
 }
@@ -111,7 +111,7 @@
 }
 
 .form-control:active {
-    background-color: #FFF;
+    background-color: var(--tu-white);
 }
 /* END> FORMS */
 

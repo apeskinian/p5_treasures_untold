@@ -32,98 +32,175 @@ A staff dashboard reserved for users with staff and admin privileges allows mana
 
 source: [Techsini Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/?url=https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com/)
 
-> [!IMPORTANT]
-> The examples in these templates are strongly influenced by the Code Institute walkthrough project called "I Think Therefore I Blog".
-
-> [!IMPORTANT]
-> The examples in these templates are strongly influenced by the Code Institute walkthrough project called "Boutique Ado".
 
 ## UX
 
-### The 5 Planes of UX
+### Strategy
 
-#### 1. Strategy Plane
-##### Purpose
-- Provide a seamless and intuitive e-commerce experience for customers to browse, filter, and purchase products.
-- Empower site owners to manage the store's inventory and customer orders efficiently.
+**Purpose**
+- Provide a seamless and intuitive e-commerce experience for customers to browse, filter, and purchase magical items found in the Disney realms.
+- Empower site owners to manage the store's inventory and support content efficiently.
 
-##### Primary User Needs
-- Guest users need to browse products and checkout with ease.
+**Primary User Needs**
+- Guest users need to be able to browse products and use support features with ease.
 - Registered customers need a streamlined shopping experience with account and order history features.
-- Site owners need robust tools for inventory and order management.
+- Site owners need robust tools for inventory and support content management.
 
-##### Business Goals
+**Business Goals**
 - Drive sales by providing a user-friendly shopping experience.
 - Build customer loyalty through personalized and efficient account features.
 - Maintain an organized and up-to-date store inventory.
 
-#### 2. Scope Plane
-##### Features
-- A full list of [Features](#features) can be viewed in detail below.
+### Scope
 
-##### Content Requirements
-- Product details, including name, price, description, category, and images.
+**Features**
+
+A full list of [Features](#features) can be viewed in detail below but essentially I wanted to include:
+ - Browsing and support avaible for guests.
+ - Account requirement for purchases.
+ - Full sort, filter, and search functionality for browsing products.
+ - Smooth checkout experience with redundancy built it.
+ - Stock recovery for abandoned/lost baskets.
+ - Intuitive feature rich staff dashboard.
+ - Some Easter eggs to unlock special discounts.
+
+
+**Content Requirements**
+- Product details, including name, price, description, stock level, category, and images.
 - Clear prompts and instructions for browsing, filtering, and purchasing.
 - Order details, confirmation pages, and email notifications.
 - Secure payment processing using Stripe.
 - Payment success emails sent to users.
 - 404 page for lost users.
+- 500 page for any server errors.
 
-#### 3. Structure Plane
-##### Information Architecture
+### Structure
+
+The homepage of the site is where the user is welcomed. This page features products available in the store in two sections, one for recently added items and one for a featured realm, which is cycled every time the page loads to create more exposure for the products. A scrolling banner divides these to advertise where the site has been featured.
+
+At the bottom of most pages there is an information and support panel that gives all users quick access to newsletter sign up, social media links and common site links.
+
+Navigation for the site is provided via a menu that slides out upon activation by the well recognised burger menu icon on the top left. This menu gives the user full navigation and search functionality.
+
+The account and basket menus are situated to the top right of the screen. The account menu drops down to give the user options relevant to their access privileges. The basket menu acts in a similar way to the navigation menu sliding out from the side to show the user their basket contents and then links to checkout or manage their basket.
+
+The navigation, account and basket access for mobile users is all done from a menu at the bottom of the screen for easier access on smaller devices.
+
+When viewing products user will be able to filter and sort further using options either to the side of the products for desktop devices or via another filter menu option in the mobile navigation bar. Items can be added to a registered users basket from the product detail page.
+
+The users next step will either be to navigate to the basket view where they can adjust quantities and remove items or go straight to the checkout page to complete their purchase.
+
+Once completed they will be shown a confirmation of the order.
+
+Users can also access their profile page via the account menu to see past order details and update their details.
+
+Staff members can access the dashboard via the account menu and from there select which area they wish to manage via a tabbed layout.
+
+All logged in users will have confirmation of their login displayed along with a button to log out in the account menu.
+
+**Information Architecture**
+
 - **Navigation Menu**:
-  - Links to Home, Products, Cart, Newsletter, and Account sections.
+  - Home
+  - New
+  - All Products
+  - Products by Realm
+  - FAQ
+  - Contact Us
+  - Newsletter
+  - Returns Policy
+  - Privacy Statement
+  - Terms and Conditions
+- **Account and Basket Menu**:
+  - Account options (including dashboard for staff and admin panel for admin)
+  - Basket (leading to checkout or basket management)
 - **Hierarchy**:
   - Prominent product categories and filters for easy navigation.
-  - Cart and checkout options displayed prominently for convenience.
+  - Basket and checkout options displayed prominently for convenience.
 
-##### User Flow
-1. Guest user browses the store → filters and sorts products by category, price, or name.
-2. Guest user adds items to the cart → proceeds to checkout.
-3. Guest user creates an account or logs in during checkout → completes purchase.
-4. Returning customers log in → view past orders and track purchase history.
-5. Site owners manage inventory → add, update, or delete products and categories.
-6. Users signup to the newsletter → potentially receive advanced notice of upcoming sales.
 
-#### 4. Skeleton Plane
-##### Wireframe Suggestions
-- A full list of [Wireframes](#wireframes) can be viewed in detail below.
+### Skeleton
 
-#### 5. Surface Plane
-##### Visual Design Elements
+In the wireframing process, I decided the navigation should be simple and remain constant throughout the site where possible. Having navigation on the bottom for mobile devices makes it easier for the user to interact with while keeping the screen visible. The navigation would move to the top for larger screens for a more traditional layout.
+
+A full list of [Wireframes](#wireframes) can be viewed in detail below.
+
+### Surface
+
+**Visual Design Elements**
+
 - **[Colours](#colour-scheme)**: see below.
 - **[Typography](#typography)**: see below.
 
 ### Colour Scheme
 
-⚠️INSTRUCTIONS ⚠️
+The colour scheme for the site was based around colours used in the main hero image. This image was created using [Canva Dream Lab](https://www.canva.com/dream-lab) and the prompt *"A hero image for an online shop selling magical items without text"*
 
-Explain your colors and color scheme. Consider adding a link and screenshot for your color scheme using [coolors](https://coolors.co/generate).
+![Original Canva Image](documentation/ux/canva_dream_lab_image.png)
 
-When you add a color to the palette, the URL is dynamically updated, making it easier for you to return back to your color palette later if needed. See example below:
+I used Affinity Photo 2 to remove the text, clean it up and use the colour picker to select complimentary colours for the site listed below. The image was then plugged back into Canva to expand the width. The edges were given a fade to transparent for the final edit in Affinity Photo 2.
 
-⚠️ --- END --- ⚠️
+![Final Hero Banner](documentation/ux/final_hero_banner.png)
 
-I used [coolors.co](https://coolors.co/080708-3772ff-df2935-fdca40-e6e8e6) to generate my color palette.
+For the colours I decided to use :root in the css to define them. This made referencing them easier when styling.
 
-- `#000000` primary text.
-- `#3772FF` primary highlights.
-- `#DF2935` secondary text.
-- `#FDCA40` secondary highlights.
+The action buttons are grouped by colour for specific types of action. This should lead the user naturally to each button when presented, depending on what they want to do.
 
-![screenshot](documentation/coolors.png)
+| :root Reference | Colour Reference | Site Elements |
+| --- | --- | --- |
+| --tu-green: | #839680 | Sign In / Sign Up / Add / Confirm / Constructive Actions |
+| --tu-green-hover: | #5f6e5d | Used when --tu-green items are hovered over |
+| --tu-green-shadow: | #5f6e5d80 | Used for the border when --tu-green items are focused |
+| --tu-red: | #934B59 | Sign Out / Delete Buttons / Destructive Actions |
+| --tu-red-hover: | #713945 | Used when --tu-red items are hovered over |
+| --tu-red-shadow: | #71394580 | Used for the border when tu-red-items are focused  |
+| --tu-yellow: | #E6B86E | Edit Buttons / Alteration Actions |
+| --tu-yellow-hover: | #C78D4B | Used when --tu-yellow items are hovered over |
+| --tu-yellow-shadow: | #c78d4b80 | Used for the border when --tu-yellow items are focused |
+| --tu-blue: | #5190a5 | Used for main navigational links / Progressive Actions |
+| --tu-blue-hover: | #3F7586 | Used when --tu-blue items are hovered over |
+| --tu-blue-shadow: | #3f758680 | Used for the border when --tu-blue items are focused |
+| --tu-teal: | #405254 | Used for a contrasting alternative for --tu-green for similar actions but giving an aesthetic variance |
+| --tu-teal-hover: | #28383a | Used when --tu-teal items are hovered over |
+| --tu-teal-shadow: | #28383abd | Used for the border when --tu-teal items are focused |
+| --tu-dark-teal: | #1B2429 | Mobile navigation menu background |
+| --tu-purple: | #885b92 | Unloacked rewards message border |
+| --tu-white: | #FFF | All contrasting text and icons that are on a dark background |
+| --tu-off-white: | #f0f0f0 | Page content containers |
+| --tu-light-grey: | #dcdcdc | Nav pills / Table headers / Message reply content background |
+| --tu-mid-grey: | #b4b4b4 | Page backgrounds / Mobile menu highlighted background |
+| --tu-dark-grey: | #555555 | Focused and Active nav pills / Menu link text |
+| --tu-dark-grey-shadow: | #55555580 | Nav pill shadow |
 
 ### Typography
 
-⚠️ INSTRUCTIONS ⚠️
+- [Pirata One](https://fonts.google.com/specimen/Pirata+One) was used for the main logo and h1 elements.
 
-Explain any fonts and icon libraries used, like **Google Fonts**, **Font Awesome**, etc. Consider adding a link to each font used, the Font Awesome site (if used), or similar icon library.
+- [Cantora One](https://fonts.google.com/specimen/Cantora+One) was used for all h2-h6 elements.
 
-⚠️ --- END --- ⚠️
+- [Roboto](https://fonts.google.com/specimen/Roboto) was used for all other text.
 
-- [Montserrat](https://fonts.google.com/specimen/Montserrat) was used for the primary headers and titles.
-- [Lato](https://fonts.google.com/specimen/Lato) was used for all other secondary text.
-- [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
+- [Font Awesome](https://fontawesome.com) icons were used across the site for various uses:
+
+    | Icon | Name | Use |
+    | --- | --- | --- |
+    | ![Bars](documentation/ux/bars-solid.svg) | [bars](https://fontawesome.com/icons/bars?f=classic&s=solid "font awesome link") | Navigation menu toggle |
+    | ![Wizard Hat](documentation/ux/hat-wizard-solid.svg) | [hat-wizard](https://fontawesome.com/icons/hat-wizard?f=classic&s=solid "font awesome link") | Account menu toggle |
+    | ![Shopping Basket](documentation/ux/basket-shopping-solid.svg) | [basket-shopping](https://fontawesome.com/icons/basket-shopping?f=classic&s=solid "font awesome link") | Shopping basket |
+    | ![Filter](documentation/ux/filter-solid.svg) | [filter](https://fontawesome.com/icons/filter?f=classic&s=solid "font awesome link") | Mobile sort and filter menu toggle |
+    | ![Magnifying Glass](documentation/ux/magnifying-glass-solid.svg) | [magnifying-glass](https://fontawesome.com/icons/magnifying-glass?f=classic&s=solid "font awesome link") | Search bar submit button |
+    | ![Angle Down](documentation/ux/angle-down-solid.svg) | [angle-down](https://fontawesome.com/icons/angle-down?f=classic&s=solid "font awesome link") | By realm product view dropdown menu |
+    | ![Angle Up](documentation/ux/angle-up-solid.svg) | [angle-up](https://fontawesome.com/icons/angle-up?f=classic&s=solid "font awesome link") | Scroll to top button |
+    | ![Plus Sign](documentation/ux/plus-solid.svg) | [plus](https://fontawesome.com/icons/plus?f=classic&s=solid "font awesome link") | Quantity adjustment in basket view |
+    | ![Minus Sign](documentation/ux/minus-solid.svg) | [minus](https://fontawesome.com/icons/minus?f=classic&s=solid "font awesome link") | Quantity adjustment in basket view |
+    | ![Rotate](documentation/ux/rotate-solid.svg) | [rotate](https://fontawesome.com/icons/rotate?f=classic&s=solid "font awesome link") | Basket refresh button |
+    | ![Trash Can](documentation/ux/trash-can-solid.svg) | [trash-can](https://fontawesome.com/icons/trash-can?f=classic&s=solid "font awesome link") | Delete/Remove buttons |
+    | ![Envelope](documentation/ux/envelope-solid.svg) | [envelope](https://fontawesome.com/icons/envelope?f=classic&s=solid "font awesome link") | Email address icon in profile page |
+    | ![Phone](documentation/ux/phone-solid.svg) | [phone](https://fontawesome.com/icons/phone?f=classic&s=solid "font awesome link") | Phone number icon in profile page |
+    | ![Sparkling Magic Wand](documentation/ux/wand-magic-sparkles-solid.svg) | [wand-magic-sparkles](https://fontawesome.com/icons/wand-magic-sparkles?f=classic&s=solid "font awesome link") | Used in overlay when processing transactions |
+    | ![Clock Rotating Left](documentation/ux/clock-rotate-left-solid.svg) | [clock-rotate-left](https://fontawesome.com/icons/clock-rotate-left?f=classic&s=solid "font awesome link") | Delivery window timer in product views |
+    | ![Pen to Square](documentation/ux/pen-to-square-solid.svg) | [pen-to-square](https://fontawesome.com/icons/pen-to-square?f=classic&s=solid "font awesome link") | Edit buttons |
+    | ![Paper Plane](documentation/ux/paper-plane-solid.svg) | [paper-plane](https://fontawesome.com/icons/paper-plane?f=classic&s=solid "font awesome link") | Newsletter sign up submit button |
 
 ## User Stories
 

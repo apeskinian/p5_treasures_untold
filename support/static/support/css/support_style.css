@@ -9,7 +9,7 @@
 
 .accordion-button:not(.collapsed) {
     background-color: #839680;
-    color: #fff;
+    color: var(--tu-white);
 }
 
 .accordion-item {

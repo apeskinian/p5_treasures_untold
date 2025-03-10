@@ -8,7 +8,7 @@
 }
 
 #order-history-table-container {
-    background-color:#FFF;
+    background-color: var(--tu-white);
     padding: 2rem;
     border-radius: 12px;
 }
