@@ -1,35 +1,36 @@
-# [p5_treasures_untold](https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com)
+# [P5 TREASURES UNTOLD](https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com)
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/commits/main)
 [![GitHub repo size](https://img.shields.io/github/repo-size/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold)
 
-⚠️ INSTRUCTIONS ⚠️
+**An online store for all your magical Disney items!**
 
-In this section, include a few paragraphs providing an overview of your project. Essentially, this part is your "sales pitch". Describe what the project hopes to accomplish, who it is intended to target, and how it will be useful to the target audience.
+Look at your stuff..<br>
+Isn't it neat?<br>
+Wouldn't you think your collection's complete?
 
-⚠️ --- END --- ⚠️
+**No!** You can always find something more to add to your magical collection at Treasures Untold!
 
-🛑 NOTES 🛑
+Treasures Untold is an e-commerce solution to selling the rare and difficult to acquire items from some of the most famous realms featured in Disney. From a frying pan to glass slipper, there's a whole trove of products to browse. Items can be filtered, sorted, and searched using the site's easily accessible features. Each product can then be viewed in more detail and added to a shopping basket ready for secure checkout processing using Stripe. For security, users do need to register an account to be able to purchase items but can freely browse as a guest. There are also opportunities to unlock rewards that grant certain perks...
 
-Do not add a **Table of Contents** to your Markdown files. GitHub has these built-in automatically using the headers/hashtags.
+A well featured list of support pages also offers help for users including:
+  - **FAQs** page for the common questions that users have.
+  - **Contact Us** where users can submit a question directly.
+  - **Newsletter** page where users can learn about the newsletter and sign up. Confirmation is required via a link sent via email after initially signing up. Users signed up to the newsletter can also unsubscribe at any time by using the unsubscribe link in each newsletter they receive.
+  - **Returns Policy** for information and terms about product returns.
+  - **Privacy Policy** for how information about users is stored and used.
+  - **Terms and Conditions** for general site terms.
 
-Don't add screenshots for the README/TESTING into your `assets` or `static` folders. Create a new folder at the root-level called `documentation`. Consider creating sub-directories within `documentation` to handle things like `wireframes`, `features`, `validation`, `responsiveness`, etc.
+A staff dashboard reserved for users with staff and admin privileges allows management of products, FAQs, contact messages, and newsletter admin:
+  - New products and realms can be created, and existing ones can be modified and deleted.
+  - FAQs that appear in the support pages of the site can also be managed with full CRUD functionality.
+  - The contact messages section allows staff to read the messages sent via the contact us page and send an initial reply straight from the dashboard.
+  - The newsletter section allows management of both newsletters and subscribers. Newsletters can be created and sent to the current list of subscribers. The list of subscribers is also found here, and staff can see the status of the email addresses that have been submitted. Each address can be removed individually, and if there are email addresses that have expired, they can all be cleared in one easy action.
 
-**Site Mockups**
-*([amiresponsive](https://ui.dev/amiresponsive?url=https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com), [techsini](https://techsini.com/multi-mockup), etc.)*
-Having issues generating site mockups? This is likely due to security policies with your deployed site.
-If you open up your DevTools, there may be an error referencing `X-Frame-Options`.
+![screenshot](documentation/tu-mockup.png)
 
-For Chrome users, head over to http://bit.ly/3iRPn4u and install the extension within your browser. Once installed, navigate back to the mockup site of your choice. You should find your site rendering in the various devices now.
-
-Alternatively, open your project in Gitpod and run the server. Once the site is running, click the `Ports` tab from your Gitpod Terminal. Click the padlock on the appropriate port for your project (`Flask: 5000`, `Django: 8000`). This will make your local page public temporarily. Now, copy the URL of your live-preview page into the responsive tool above. You should find your site rendering in the various devices.
-
-🛑 --- END ---- 🛑
-
-![screenshot](documentation/mockup.png)
-
-source: [p5_treasures_untold amiresponsive](https://ui.dev/amiresponsive?url=https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com)
+source: [Techsini Multi Device Website Mockup Generator](https://techsini.com/multi-mockup/?url=https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com/)
 
 > [!IMPORTANT]
 > The examples in these templates are strongly influenced by the Code Institute walkthrough project called "I Think Therefore I Blog".
