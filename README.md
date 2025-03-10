@@ -174,11 +174,23 @@ The action buttons are grouped by colour for specific types of action. This shou
 
 ### Typography
 
+**Fonts**
+
 - [Pirata One](https://fonts.google.com/specimen/Pirata+One) was used for the main logo and h1 elements.
 
 - [Cantora One](https://fonts.google.com/specimen/Cantora+One) was used for all h2-h6 elements.
 
 - [Roboto](https://fonts.google.com/specimen/Roboto) was used for all other text.
+
+**Icons**
+
+- The favicon for the site is from [Flaticon](https://www.flaticon.com/):
+
+    | Icon | Name |
+    | --- | --- |
+    | ![Favicon](documentation/ux/lamp_favicon.png) | [Lamp](https://www.flaticon.com/free-icon/lamp_867845?term=magic&page=1&position=59&origin=tag&related_id=867845) |
+
+
 
 - [Font Awesome](https://fontawesome.com) icons were used across the site for various uses:
 
@@ -201,6 +213,7 @@ The action buttons are grouped by colour for specific types of action. This shou
     | ![Clock Rotating Left](documentation/ux/clock-rotate-left-solid.svg) | [clock-rotate-left](https://fontawesome.com/icons/clock-rotate-left?f=classic&s=solid "font awesome link") | Delivery window timer in product views |
     | ![Pen to Square](documentation/ux/pen-to-square-solid.svg) | [pen-to-square](https://fontawesome.com/icons/pen-to-square?f=classic&s=solid "font awesome link") | Edit buttons |
     | ![Paper Plane](documentation/ux/paper-plane-solid.svg) | [paper-plane](https://fontawesome.com/icons/paper-plane?f=classic&s=solid "font awesome link") | Newsletter sign up submit button |
+
 
 ## User Stories
 
