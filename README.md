@@ -323,7 +323,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Existing Features
 
-- #### User Accounts
+- ### User Accounts
 
     #### Individual Accounts
     Users can browse the shop as a guest but must create an account in order to purchase items. Account management is handled by Allauth.
@@ -375,12 +375,58 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Mobile | ![Mobile Super](documentation/features/user_accounts/mobile_super.png "Super User Menu Mobile") | ![Mobile Staff](documentation/features/user_accounts/mobile_staff.png "Staff User Menu Mobile") | ![Mobile User](documentation/features/user_accounts/mobile_user.png "User Menu Mobile") |
     | Desktop | ![Desktop Super](documentation/features/user_accounts/desktop_super.png "Super User Menu Desktop") | ![Desktop Staff](documentation/features/user_accounts/desktop_staff.png "Staff User Menu Desktop") | ![Desktop User](documentation/features/user_accounts/desktop_user.png "User Menu Desktop") |
 
-- #### Hero Image and Title
+- ### Navigation
+
+    **Note:** Tapping/clicking on the main logo will bring you back to the home page on both mobile and desktop versions.
+
+    ### Mobile
+
+    Navigation on mobile devices is found at the bottom of the view for easy access without compromising what the user can see. The standard navigation bar as the following options:
+    - Account Menu
+    - Site Navigation
+    - Basket Preview
+
+    ![Standard Mobile Navbar](documentation/features/navigation/mobile_standard_nav.png "Standard Mobile Navbar")
+
+    With an additional option when on the products page:
+    - Sort, Filter, and Search
+    
+    ![Products Mobile Navbar](documentation/features/navigation/mobile_products_nav.png "Products Mobile Navbar")
+    
+    Each is accessed by tapping the appropriate icon.
+
+    | Account Menu | Site Navigation | Sort, Filter and Search | Basket Preview |
+    | --- | --- | --- | --- |
+    | ![Mobile Account Menu](documentation/features/navigation/mobile_account_menu.png "Mobile Account Menu") | ![Mobile Site Navigation](documentation/features/navigation/mobile_navigation_menu.png "Mobile Site Navigation") |  ![Mobile Sort, Filter, Search](documentation/features/navigation/mobile_sort_filter.png "Mobile Sort, Filter, and Search") | ![Mobile Basker Preview](documentation/features/navigation/mobile_basket_preview.png "Mobile Basket Preview") |
+
+    ### Desktop
+
+    Navigation on desktop devices is found at the top of the screen in the hero image and title banner. Site navigation is located at the top left which is expanded by clicking on the burger menu icon. The account menu is opened by clicking on the wizard hat and the basket icon will open the basket preview panel.
+
+    ![Desktop Navbar](documentation/features/navigation/desktop_navigation_icons.png "Desktop Navbar")
+
+    | Account Menu | Site Navigation | Basket Preview |
+    | --- | --- | --- |
+    | ![Desktop Account Menu](documentation/features/navigation/desktop_account_menu.png "Desktop Account Menu") | ![Desktop Site Navigation](documentation/features/navigation/desktop_navigation_menu.png "Desktop Site Navigation") | ![Desktop Basket Preview](documentation/features/navigation/desktop_basket_preview.png "Desktop Basket Preview") |
+
+    To ensure easy navigation for desktop users on pages that may require a lot of scrolling, a floating menu becomes active once the page is scrolled past the hero banner. It appears when the user scrolls up slightly and remains visible until the page is scrolled back to the top, where it seamlessly fades into the main menu.
+
+    ![Dynamic Floating Menu](documentation/features/navigation/dynamic_navbar.gif "Dynamic Desktop Navbar")
+
+
+- ### Hero Image and Title
     The hero image and title remain in the same place throughout the site. It is responsive and the title is dynamic so changes depending on what page is being viewed. For desktop views the navigation, account, and basket menus are also part of the title banner.
 
     | Mobile | Desktop |
     | --- | --- |
     | ![Mobile Hero](documentation/features/hero/mobile_hero.png "Mobile Hero") | ![Desktop Hero](documentation/features/hero/desktop_hero.png "Desktop Hero") |
+
+
+
+
+
+
+
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
