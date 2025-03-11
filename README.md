@@ -321,15 +321,66 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ## Features
 
-⚠️ INSTRUCTIONS ⚠️
-
-In this section, you should go over the different parts of your project, and describe each feature. You should explain what value each of the features provides for the user, focusing on your target audience, what they want to achieve, and how your project can help them achieve these things.
-
-**IMPORTANT**: Remember to always include a screenshot of each individual feature!
-
-⚠️ --- END --- ⚠️
-
 ### Existing Features
+
+- #### User Accounts
+
+    #### Individual Accounts
+    Users can browse the shop as a guest but must create an account in order to purchase items. Account management is handled by Allauth.
+
+    | Register Mobile | Register Desktop | Login Mobile | Login Desktop | Logout Mobile | Logout Desktop | Recover Mobile | Recover Desktop |
+    | --- | --- | --- | --- | --- | --- | --- | --- |
+    | ![Register Mobile](documentation/features/user_accounts/mobile_register.png "Register Mobile") | ![Register Desktop](documentation/features/user_accounts/desktop_register.png "Register Desktop") | ![Login Mobile](documentation/features/user_accounts/mobile_login.png "Login Mobile") |![Login Desktop](documentation/features/user_accounts/desktop_login.png "Login Desktop") | ![Logout Mobile](documentation/features/user_accounts/mobile_logout.png "Logout Mobile") | ![Logout Desktop](documentation/features/user_accounts/desktop_logout.png "Logout Desktop") | ![Recover Mobile](documentation/features/user_accounts/mobile_reset.png "Recover Mobile") | ![Recover Desktop](documentation/features/user_accounts/desktop_reset.png "Recover Desktop") |
+
+    When logged in, your username is displayed so that you know you are logged in to the correct account. Every page also has access the log-out button.
+
+    | Logged in Mobile | Logged in Desktop |
+    | --- | --- |
+    | ![Logged in Mobile](documentation/features/user_accounts/mobile_logged_in.png "Logged in Mobile") | ![Logged in Desktop](documentation/features/user_accounts/desktop_logged_in.png "Logged in Desktop") |
+
+    #### Different Account Levels
+    - There are three levels of user, each with different levels of access:
+        - **User**: this is the default level with the following privileges:
+
+            - Access their account.
+            - Make purchases from the site.
+            - View their purchase history with previous order details.
+            - Update their personal details used for orders.
+
+        - **Staff Member**: this is the standard level that would be given to a client user. They have all the same privileges as User with the additions:
+
+            - Access to the staff dashboard page.
+            - Create, update or delete Products
+            - Create, update or delete Realms
+            - Create, update or delete FAQs
+            - Create, update or delete FAQ Topics
+            - View and reply to messages received from the Contact Us page
+            - Create and send newsletters
+            - View and delete previous newletters
+            - View subscriber list and current status for each
+            - Remove individual subscribers
+            - Clear all expired subscribers
+
+        - **Super User**: this is the highest level and only for site administrators. In addition to User and Staff Member privileges, they can:
+
+            - Access the Django Admin Panel.
+            - Create, update and delete any type of user.
+            - Create, update and delete orders.
+            - Access custom session management commands (clear rewards, empty baskets, recover abandoned baskets)
+    
+    If you are a staff member or super user (admin), you will be presented with extra buttons to access the appropriate settings given to you.
+
+    |  | Super | Staff | User |
+    | --- | --- | --- | --- |
+    | Mobile | ![Mobile Super](documentation/features/user_accounts/mobile_super.png "Super User Menu Mobile") | ![Mobile Staff](documentation/features/user_accounts/mobile_staff.png "Staff User Menu Mobile") | ![Mobile User](documentation/features/user_accounts/mobile_user.png "User Menu Mobile") |
+    | Desktop | ![Desktop Super](documentation/features/user_accounts/desktop_super.png "Super User Menu Desktop") | ![Desktop Staff](documentation/features/user_accounts/desktop_staff.png "Staff User Menu Desktop") | ![Desktop User](documentation/features/user_accounts/desktop_user.png "User Menu Desktop") |
+
+- #### Hero Image and Title
+    The hero image and title remain in the same place throughout the site. It is responsive and the title is dynamic so changes depending on what page is being viewed. For desktop views the navigation, account, and basket menus are also part of the title banner.
+
+    | Mobile | Desktop |
+    | --- | --- |
+    | ![Mobile Hero](documentation/features/hero/mobile_hero.png "Mobile Hero") | ![Desktop Hero](documentation/features/hero/desktop_hero.png "Desktop Hero") |
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
