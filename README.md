@@ -422,13 +422,11 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Mobile | Desktop |
     | --- | --- |
     | ![Mobile Hero](documentation/features/hero/mobile_hero.png "Mobile Hero") | ![Desktop Hero](documentation/features/hero/desktop_hero.png "Desktop Hero") |
-    | ![Mobile FAQs](documentation/features/hero/mobile_faqs.png "Mobile FAQs") | ![Desktop FAQs](documentation/features/hero/desktop_faqs.png "Desktop FAQs") |
-    | ![Mobile Contact](documentation/features/hero/mobile_contact.png "Mobile Contact") | ![Desktop Contact](documentation/features/hero/desktop_contact.png "Desktop Contact") |
-    | ![Mobile Newsletter](documentation/features/hero/mobile_newsletter.png "Mobile Newsletter") | ![Desktop Newsletter](documentation/features/hero/desktop_newsletter.png "Desktop Newsletter") |
-    | ![Mobile Returns](documentation/features/hero/mobile_returns.png "Mobile Returns") | ![Desktop Returns](documentation/features/hero/desktop_returns.png "Desktop Returns") |
-    | ![Mobile Privacy](documentation/features/hero/mobile_privacy.png "Mobile Privacy") | ![Desktop Privacy](documentation/features/hero/desktop_privacy.png "Desktop Privacy") |
-    | ![Mobile Terms](documentation/features/hero/mobile_terms.png "Mobile Terms") | ![Desktop Terms](documentation/features/hero/desktop_terms.png "Desktop Terms") |
-    | ![Mobile Dashboard](documentation/features/hero/mobile_dashboard.png "Mobile Dashboard") | ![Desktop Dashboard](documentation/features/hero/desktop_dashboard.png "Desktop Dashboard") |
+
+    |  | FAQs | Contact Us | Newsletter | Returns Policy | Privacy Policy | T&Cs | Dashboard |
+    | --- | --- | --- | --- | --- | --- | --- | --- |
+    | Mobile | ![Mobile FAQs](documentation/features/hero/mobile_faqs.png "Mobile FAQs") | ![Mobile Contact](documentation/features/hero/mobile_contact.png "Mobile Contact") | ![Mobile Newsletter](documentation/features/hero/mobile_newsletter.png "Mobile Newsletter") | ![Mobile Returns](documentation/features/hero/mobile_returns.png "Mobile Returns") | ![Mobile Privacy](documentation/features/hero/mobile_privacy.png "Mobile Privacy") | ![Mobile Terms](documentation/features/hero/mobile_terms.png "Mobile Terms") | ![Mobile Dashboard](documentation/features/hero/mobile_dashboard.png "Mobile Dashboard") |
+    | Desktop | ![Desktop FAQs](documentation/features/hero/desktop_faqs.png "Desktop FAQs") | ![Desktop Contact](documentation/features/hero/desktop_contact.png "Desktop Contact") | ![Desktop Newsletter](documentation/features/hero/desktop_newsletter.png "Desktop Newsletter") | ![Desktop Returns](documentation/features/hero/desktop_returns.png "Desktop Returns") | ![Desktop Privacy](documentation/features/hero/desktop_privacy.png "Desktop Privacy") | ![Desktop Terms](documentation/features/hero/desktop_terms.png "Desktop Terms") | ![Desktop Dashboard](documentation/features/hero/desktop_dashboard.png "Desktop Dashboard") |
 
 - ### Info Section & Footer
     The footer is found on every page with a simple copyright. The info section can be found accompanying the footer on all pages except for staff dashboard pages
@@ -446,6 +444,14 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     > [!NOTE]  
     > The links for Instagram and X just point to the social media platforms homepage as there is not account for Treasures Untold on these platforms at this time. The facebook link should take the user to the Facebook business page if it is still active.
 
+- ### Scroll Button
+    For pages that require a lot of scrolling there is a scroll button that will appear after the page has scrolled past the main hero banner. Tapping or clicking on this button will gracefully take the user back to the top of the page.
+
+    ![Scroll Button](documentation/features/scroll_button/scroll_button.png "Scroll Button")
+
+    | Mobile | Desktop |
+    | --- | --- |
+    | ![Mobile Scrolling](documentation/features/scroll_button/mobile_scroll.gif "Mobile Scrolling") | ![Desktop Scrolling](documentation/features/scroll_button/desktop_scroll.gif "Desktop Scrolling") |
 
 
 
