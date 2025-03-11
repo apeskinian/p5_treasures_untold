@@ -380,7 +380,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     **Note:** Tapping/clicking on the main title will bring you back to the home page on both mobile and desktop versions.
 
     ### Mobile
-
     Navigation on mobile devices is found at the bottom of the view for easy access without compromising what the user can see. The standard navigation bar as the following options:
     - Account Menu
     - Site Navigation
@@ -400,7 +399,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Mobile Account Menu](documentation/features/navigation/mobile_account_menu.png "Mobile Account Menu") | ![Mobile Site Navigation](documentation/features/navigation/mobile_navigation_menu.png "Mobile Site Navigation") |  ![Mobile Sort, Filter, Search](documentation/features/navigation/mobile_sort_filter.png "Mobile Sort, Filter, and Search") | ![Mobile Basker Preview](documentation/features/navigation/mobile_basket_preview.png "Mobile Basket Preview") |
 
     ### Desktop
-
     Navigation on desktop devices is found at the top of the screen in the hero image and title banner. Site navigation is located at the top left which is expanded by clicking on the burger menu icon. The account menu is opened by clicking on the wizard hat and the basket icon will open the basket preview panel.
 
     ![Desktop Navbar](documentation/features/navigation/desktop_navigation_icons.png "Desktop Navbar")
@@ -414,7 +412,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     ![Dynamic Floating Menu](documentation/features/navigation/dynamic_navbar.gif "Dynamic Desktop Navbar")
 
     **Note:** Both mobile and desktop site navigation menus also feature a dropdown so that the user can select a specific realm to browse.
-
 
 - ### Hero Image and Title
     The hero image and title remain in the same place throughout the site. It is responsive and the title is dynamic so changes depending on what page is being viewed. For desktop views the navigation, account, and basket menus are also part of the title banner.
@@ -447,16 +444,48 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - ### Scroll Button
     For pages that require a lot of scrolling there is a scroll button that will appear after the page has scrolled past the main hero banner. Tapping or clicking on this button will gracefully take the user back to the top of the page.
 
-    ![Scroll Button](documentation/features/scroll_button/scroll_button.png "Scroll Button")
+    | The Scroll Button |
+    | :---: |
+    | ![Scroll Button](documentation/features/scroll_button/scroll_button.png "Scroll Button") |
 
     | Mobile | Desktop |
     | --- | --- |
     | ![Mobile Scrolling](documentation/features/scroll_button/mobile_scroll.gif "Mobile Scrolling") | ![Desktop Scrolling](documentation/features/scroll_button/desktop_scroll.gif "Desktop Scrolling") |
 
+- ### Homepage
+    The homepage has four main elements:
+    - Welcome Message
+    - New products slideshow
+    - As seen in banner
+    - Featured Realm slideshow
+
+    **Welcome Message**
+    
+    A short welcome messages to the site with a link to view all products. If the user is logged in it will address them by their username instead of 'Traveler'.
+
+    ![Welcome Message](documentation/features/homepage/homepage_welcome.png "Welcome message")
+
+    **New Products**
+
+    This section showcases the latest products added to the store's inventory. If there is more then one item, the image will transition in a slideshow looping through all of the new items. The user can either tap/click on the image or link to take them to the products view filtered to show new products.
+
+    ![New Products](documentation/features/homepage/homepage_new.png "New items showcase")
+
+    **As Seen In**
+
+    This scrolling banner showcases where Treasures Untold has been featured in.
+
+    ![As seen in banner](documentation/features/homepage/homepage_marquee.gif "As seen in")
+
+    **Featured Realm**
+
+    This section highlights a particular realm and shows the items from that realm in the slideshow. Tapping/clicking on the image or link will take the user to view the products from that realm. This feature is refreshed every time the page loads to show a different realm.
+
+    ![Featured Realm](documentation/features/homepage/homepage_featured.png "Featured Realm")
 
 
 
-
+**WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
