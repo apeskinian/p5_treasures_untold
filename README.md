@@ -190,8 +190,6 @@ The action buttons are grouped by colour for specific types of action. This shou
     | --- | --- |
     | ![Favicon](documentation/ux/lamp_favicon.png) | [Lamp](https://www.flaticon.com/free-icon/lamp_867845?term=magic&page=1&position=59&origin=tag&related_id=867845) |
 
-
-
 - [Font Awesome](https://fontawesome.com) icons were used across the site for various uses:
 
     | Icon | Name | Use |
@@ -217,45 +215,91 @@ The action buttons are grouped by colour for specific types of action. This shou
 
 ## User Stories
 
-⚠️ INSTRUCTIONS ⚠️
-
-In this section, list all of your possible user stories for the project. Samples have been provided below using the example walkthrough project for your inspiration. Make sure to adjust to match your own project features!
-
-⚠️ --- END --- ⚠️
-
-| Target | Expectation | Outcome |
+**Database Setup**
+| User | Capability | Benefit |
 | --- | --- | --- |
-| As a guest user | I would like to browse products without needing to register | so that I can shop freely before deciding to create an account. |
-| As a guest user | I would like to be prompted to create an account or log in at checkout | so that I can complete my purchase and track my order history. |
-| As a user | I would like to sign up to the site's newsletter | so that I can stay up to date with any upcoming sales or promotions. |
-| As a customer | I would like to browse various product categories (clothing, toys, jewelry, kitchen gadgets, etc.) | so that I can easily find what I'm looking for. |
-| As a customer | I would like to sort products by price (low-to-high/high-to-low) and name (alphabetical) | so that I can quickly organize items in a way that suits my shopping style. |
-| As a customer | I would like to filter products by category | so that I can narrow down the products to the types I am most interested in. |
-| As a customer | I would like to click on individual products to view more details (description, price, image, etc.) | so that I can make an informed decision about my purchase. |
-| As a customer | I would like to add items to my shopping cart using quantity increment/decrement buttons | so that I can adjust how many units of a product I want before checkout. |
-| As a customer | I would like to view and manage my shopping cart | so that I can review, add, or remove items before proceeding to checkout. |
-| As a customer | I would like to adjust the quantity of items in my cart | so that I can modify my purchase preferences without leaving the cart. |
-| As a customer | I would like to remove items from my cart | so that I can remove products I no longer wish to buy. |
-| As a customer | I would like to proceed to checkout where I see my cart items, grand total, and input my name, email, shipping address, and card details | so that I can complete my purchase. |
-| As a customer | I would like to receive a confirmation email after my purchase | so that I can have a record of my transaction and order details. |
-| As a customer | I would like to see an order confirmation page with a checkout order number after completing my purchase | so that I know my order has been successfully placed. |
-| As a customer | I would like to securely enter my card details using Stripe at checkout | so that I can feel confident my payment information is protected. |
-| As a returning customer | I would like to be able to log in and view my past orders | so that I can track my previous purchases and order history. |
-| As a returning customer | I would like the checkout process to remember my shipping address | so that future purchases are quicker and easier. |
-| As a site owner | I would like to create new products with a name, description, price, images, and category | so that I can add additional items to the store inventory. |
-| As a site owner | I would like to update product details (name, price, description, image, category) at any time | so that I can keep my product listings accurate and up to date. |
-| As a site owner | I would like to delete products that are no longer available or relevant | so that I can maintain a clean and accurate inventory. |
-| As a site owner | I would like to view all orders placed on the website | so that I can track and manage customer purchases. |
-| As a site owner | I would like to manage product categories | so that I can ensure items are correctly organized and easy for customers to find. |
-| As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. |
+| As a developer | I can create a JSON fixtures file for the product model | so that I can quickly and easily load products into the database. |
+| As a developer | I can create a JSON fixtures file for the realm model | so that I can quickly and easily load realms into the database. |
+| As a developer | I need images for the products | so that site users can see the product. |
+
+**Viewing and Navigating Products**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a site user | I can see a homepage full of useful information | so that I can see what the site is and why I should spend my time here. |
+| As a user | I can view the available items | so that I can decide if I'd like to buy one or some of them. |
+| As a user | I can click on a product | so that I can see more detailed info on the product. |
+| As a user | I can access my shopping basket from anywhere | so that I can keep track of my current total and avoid spending too much. |
+| As a user | I can easily see if items are out of stock | so that I know I cannot buy them. |
+| As a user | I can see a custom 404 error page | so that I know the page I’m looking for doesn’t exist and can easily navigate back to the rest of the site. |
+| As a user | I can see a custom 500 error page | so that I understand something went wrong on the server and can find a way to navigate back to the site. |
+
+**User Accounts**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a user | I can create an account | so that I can purchase items and view/edit my own profile. |
+| As a user | I can easily log in and out of my account | so that my details remain private and secure. |
+| As a user | I can easily recover my account and change password | so that I can continue to log in and out if I forget my password. |
+| As a user | I should receive a confirmation email when my account is created | so that I know it was created successfully. |
+| As a user | I can view a user profile page | so that I can see my purchase history and update my details. |
+
+**Sorting and searching for items**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a user | I can search manually for an item from an input field | so that I can find and view specific items quickly. |
+| As a user | I can sort products | so that view the list of products sorted based on a selected property. |
+| As a user | I can filter products | so that only products that match the filter property are shown. |
+| As a user | I can order any of the sort or filter results by ascending or descending order | so that I can view the list in the order that I want to. |
+
+**Purchasing and checkout**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a user | I can select how many of a product I wish to buy | so that I can add the amount I need in one process to the basket. |
+| As a user | I can view the basket | so that see the total cost and all the items I have added to it. |
+| As a user | I can adjust the quantity of product from the basket | so that I can easily edit how many I want. |
+| As a user | I can remove an item directly from the basket | so that I can quickly adjust what I'm buying. |
+| As a user | I can easily enter my payment details | so that checkout quickly and hassle free. |
+| As a user | I can see an order confirmation after completing a purchase | so that I know the transaction was successful. |
+| As a user | I receive an email confirming my order confirmation and details | so that I know the transaction was successful. |
+
+**Help and support page**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a user | I can send a message to the shop owner | so that if I have a question or message I can send it directly with my details so that they can get back to me. |
+| As a user | I can view the FAQ on the help and support page | so that I may find the answer to a question I have before sending a message to ask. |
+| As a user | I can sign up to a newsletter | so that I can be informed when new magical items have been found and added to the store for sale. |
+| As a user | I can view the sites privacy policy | so that I can see how my data is stored and used. |
+| As a user | I can view the sites returns policy | so that I can see how the returns process works should I not be happy with a purchase. |
+| As a user | I can view the sites general terms and conditions | so that I can I can understand the rules, policies, and my rights when using the website. |
+
+**Admin and store management**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a shop owner | I can access a shop admin page | so that they add edit and delete products so that they can keep the catalogue up to date. |
+| As a shop owner | I can add a new product | so that the shop can be updated with new items. |
+| As a shop owner | I can edit products | so that I can update prices, stock levels and keep the catalogue up to date. |
+| As a shop owner | I can delete products from the catalogue | so that I can make sure the catalogue is up to date. |
+| As a shop owner | I can add new questions and answers to the FAQ section of the help and support page | so that site users have the most up to date FAQ. |
+| As a shop owner | I can edit any FAQ entries | so that amend any that I need to. |
+| As a shop owner | I can delete FAQ entries | so that I can keep the list up to date by removing any redundant entries. |
+| As a shop owner | I can view the messages sent from the contact us form | so that I can send an initial reply. |
+| As a shop owner | I can manage newsletters including viewing previous newsletters and creating and sending newsletters | so that subscribers can be updated on any offers and news from the site. |
+| As a shop owner | I can see a list of the current subscribers including active, pending and expired memberships. I can also remove any individual subscriber and clear all expired subscribers from the list | so that I can I can keep the subscriber list accurate, organised, and up to date. |
+
+**Easter Eggs**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a curious user | I can enter a classic phrase in the search bar | so that a special reward is unlocked! |
+| As a curious user | I might notice that upon hovering over a certain item the cursor changes, | should I perform a certain action a special reward is unlocked! |
+| As a curious user | I might know about the Cave of Wonders in Agrabah and know what I need to gain access | to unlock a special reward... |
+| As a greedy user | I might not be able to stop myself from wanting a particular product when a certain reward is activated | and I will see the consequences... |
+
+**SEO and Marketing**
+| User | Capability | Benefit |
+| --- | --- | --- |
+| As a developer | I need to implement good marketing strategies | so that the site gains exposure and attracts customers. |
+| As a developer | I can make sure that SEO methods are used in the site | so that it ranks higher in search engine results, attracts more organic traffic, and provides a better user experience. |
 
 ## Wireframes
-
-⚠️ INSTRUCTIONS ⚠️
-
-If you've created wireframes or mock-ups, use this section to display screenshots of your wireframes. The example table below uses sample pages from the walkthrough project to give you some inspiration for your own project, so please adjust accordingly.
-
-⚠️ --- END --- ⚠️
 
 To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
 I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
