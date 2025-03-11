@@ -377,7 +377,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 - ### Navigation
 
-    **Note:** Tapping/clicking on the main logo will bring you back to the home page on both mobile and desktop versions.
+    **Note:** Tapping/clicking on the main title will bring you back to the home page on both mobile and desktop versions.
 
     ### Mobile
 
@@ -413,6 +413,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     ![Dynamic Floating Menu](documentation/features/navigation/dynamic_navbar.gif "Dynamic Desktop Navbar")
 
+    **Note:** Both mobile and desktop site navigation menus also feature a dropdown so that the user can select a specific realm to browse.
+
 
 - ### Hero Image and Title
     The hero image and title remain in the same place throughout the site. It is responsive and the title is dynamic so changes depending on what page is being viewed. For desktop views the navigation, account, and basket menus are also part of the title banner.
@@ -420,7 +422,29 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Mobile | Desktop |
     | --- | --- |
     | ![Mobile Hero](documentation/features/hero/mobile_hero.png "Mobile Hero") | ![Desktop Hero](documentation/features/hero/desktop_hero.png "Desktop Hero") |
+    | ![Mobile FAQs](documentation/features/hero/mobile_faqs.png "Mobile FAQs") | ![Desktop FAQs](documentation/features/hero/desktop_faqs.png "Desktop FAQs") |
+    | ![Mobile Contact](documentation/features/hero/mobile_contact.png "Mobile Contact") | ![Desktop Contact](documentation/features/hero/desktop_contact.png "Desktop Contact") |
+    | ![Mobile Newsletter](documentation/features/hero/mobile_newsletter.png "Mobile Newsletter") | ![Desktop Newsletter](documentation/features/hero/desktop_newsletter.png "Desktop Newsletter") |
+    | ![Mobile Returns](documentation/features/hero/mobile_returns.png "Mobile Returns") | ![Desktop Returns](documentation/features/hero/desktop_returns.png "Desktop Returns") |
+    | ![Mobile Privacy](documentation/features/hero/mobile_privacy.png "Mobile Privacy") | ![Desktop Privacy](documentation/features/hero/desktop_privacy.png "Desktop Privacy") |
+    | ![Mobile Terms](documentation/features/hero/mobile_terms.png "Mobile Terms") | ![Desktop Terms](documentation/features/hero/desktop_terms.png "Desktop Terms") |
+    | ![Mobile Dashboard](documentation/features/hero/mobile_dashboard.png "Mobile Dashboard") | ![Desktop Dashboard](documentation/features/hero/desktop_dashboard.png "Desktop Dashboard") |
 
+- ### Info Section & Footer
+    The footer is found on every page with a simple copyright. The info section can be found accompanying the footer on all pages except for staff dashboard pages
+    
+    | Mobile | Tablet | Desktop |
+    | --- | --- | --- |
+    | ![Mobile Info Bar](documentation/features/footer_and_info/mobile_info.png "Mobile Info Bar") | ![Tablet Info Bar](documentation/features/footer_and_info/tablet_info.png "Tablet Info Bar") | ![Desktop Info Bar](documentation/features/footer_and_info/desktop_info.png "Desktop Info Bar") |
+    
+    The info section consists of three separate responsive sections:
+    - **Newsletter quick sign up:** provides users a quick and simple way to sign up to the newsletter.
+    - **Social media links:** provides links to the sites social media account pages.
+    - **Helpful site links:** provides the user easy access to the main site pages.
+    <br>
+    <br>
+    > [!NOTE]  
+    > The links for Instagram and X just point to the social media platforms homepage as there is not account for Treasures Untold on these platforms at this time. The facebook link should take the user to the Facebook business page if it is still active.
 
 
 
@@ -430,9 +454,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| Register | Authentication is handled by allauth, allowing users to register accounts. | ![screenshot](documentation/features/register.png) |
-| Login | Authentication is handled by allauth, allowing users to log in to their existing accounts. | ![screenshot](documentation/features/login.png) |
-| Logout | Authentication is handled by allauth, allowing users to log out of their accounts. | ![screenshot](documentation/features/logout.png) |
 | Product List | Users can browse all available products with sorting, filtering by categories, and search functionality. | ![screenshot](documentation/features/product-list.png) |
 | Product Details | Displays detailed information about a selected product, including its name, description, price, an image, and available sizes. | ![screenshot](documentation/features/product-details.png) |
 | Add to Bag | Users can add items to their shopping bag, with support for selecting different sizes if applicable. | ![screenshot](documentation/features/add-to-bag.png) |
