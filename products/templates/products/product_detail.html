@@ -70,7 +70,7 @@
                         <span id="countdown"></span>
                     </div>
                 {% else %}
-                    <p id="sold-text" class="fw-bold text-red">SOLD</p>
+                    <p id="sold-text" class="fw-bold text-red">{% if product.unique_stock %}SOLD{% else %}OUT OF STOCK{% endif %}</p>
                 {% endif %}
             </div>
         </div>

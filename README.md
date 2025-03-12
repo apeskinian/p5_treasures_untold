@@ -232,6 +232,8 @@ The action buttons are grouped by colour for specific types of action. This shou
 | As a user | I can easily see if items are out of stock | so that I know I cannot buy them. |
 | As a user | I can see a custom 404 error page | so that I know the page I’m looking for doesn’t exist and can easily navigate back to the rest of the site. |
 | As a user | I can see a custom 500 error page | so that I understand something went wrong on the server and can find a way to navigate back to the site. |
+| As a user | I can sign up to be notified if an item that is sold or out of stock becomes available | so that I can purchase it. |
+| As a user | I can share products directly to social media platforms | so that I can share items with my friends easily. |
 
 **User Accounts**
 | User | Capability | Benefit |
@@ -241,6 +243,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | As a user | I can easily recover my account and change password | so that I can continue to log in and out if I forget my password. |
 | As a user | I should receive a confirmation email when my account is created | so that I know it was created successfully. |
 | As a user | I can view a user profile page | so that I can see my purchase history and update my details. |
+| As a developer | I can implement a social media login | so that users can create accounts quickly and easily. |
 
 **Sorting and searching for items**
 | User | Capability | Benefit |
@@ -260,6 +263,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | As a user | I can easily enter my payment details | so that checkout quickly and hassle free. |
 | As a user | I can see an order confirmation after completing a purchase | so that I know the transaction was successful. |
 | As a user | I receive an email confirming my order confirmation and details | so that I know the transaction was successful. |
+| As a developer | I can expand the application to support multiple currencies | so that users can view and complete transactions in their preferred currency, improving accessibility and user experience. |
 
 **Help and support page**
 | User | Capability | Benefit |
@@ -482,6 +486,17 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     This section highlights a particular realm and shows the items from that realm in the slideshow. Tapping/clicking on the image or link will take the user to view the products from that realm. This feature is refreshed every time the page loads to show a different realm.
 
     ![Featured Realm](documentation/features/homepage/homepage_featured.png "Featured Realm")
+
+- ### Viewing Products
+    Users can browse all the products in a responsive layout. They can search for specific products or keywords using the search bar and also sort and filter any results. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top.
+
+    The filter, sort and search functions for mobile can be found in the extra filter menu on the navigation bar at the bottom of the view. For desktop users, the sort and filter controls are to the left of the displayed products and the search bar can be found in the navigation panel accessed via the burger menu icon.
+
+    Any items that are out of stock or sold are shown at the bottom of the page, their image is desaturated and the price is replaced with the text 'SOLD' if the item is unique or 'OUT OF STOCK' if not.
+
+    To view a product in more detail the user can tap/click on the product image. Products that are sold or out of stock can still be viewed in more detail.
+
+    |  | Showing all products | Filter results
 
 
 
