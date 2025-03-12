@@ -488,7 +488,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     ![Featured Realm](documentation/features/homepage/homepage_featured.png "Featured Realm")
 
 - ### Viewing Products
-    Products are displayed in a responsive layout, allowing users to easily search for specific products or keywords. They can also sort and filter the results to refine their search. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top. Search, sort and filter actions can be combined together, for example you can search for 'hook' and then filter and sort those results further.
+    Products are displayed in a responsive layout, allowing users to easily search for specific products or keywords. They can also sort and filter the results to refine their search. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top. Search, sort and filter actions can be combined together, for example you can search for 'hook' and then filter and sort those results further. Searches also look for matches in the product description.
 
     The filter, sort and search functions for mobile can be found in the extra filter menu on the navigation bar at the bottom of the view. For desktop users, the sort and filter controls are to the left of the displayed products and the search bar can be found in the navigation panel accessed via the burger menu icon.
 
@@ -504,10 +504,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     |  | Mobile | Desktop |
     | --- | --- | --- |
-    | Sold Items | ![Mobile sold products](documentation/features/viewing_products/mobile_sold.png "Mobile sold products") | ![Desktop sold products](documentation/features/viewing_products/desktop_sold.png "Desktop sold products") |
+    | Search Results | ![Mobile search products](documentation/features/viewing_products/mobile_search_results.png "Mobile search products") | ![Desktop search products](documentation/features/viewing_products/desktop_search_results.png "Desktop search products") |
+    | Sort Results | ![Mobile sort products](documentation/features/viewing_products/mobile_sort_results.png "Mobile sort products") | ![Desktop sort products](documentation/features/viewing_products/desktop_sort_results.png "Desktop sort products") |
     | Filter Results | ![Mobile filter products](documentation/features/viewing_products/mobile_filter_results.png "Mobile filter products") | ![Desktop filter products](documentation/features/viewing_products/desktop_filter_results.png "Desktop filter products") |
     | Combined Results | ![Mobile combined products](documentation/features/viewing_products/mobile_combined.png "Mobile combined products") | ![Desktop combined products](documentation/features/viewing_products/desktop_combined.png "Desktop combined products") |
     | No Results | ![Mobile no products](documentation/features/viewing_products/mobile_no_results.png "Mobile no products") | ![Desktop no products](documentation/features/viewing_products/desktop_no_results.png "Desktop no products") |
+    | Sold Items | ![Mobile sold products](documentation/features/viewing_products/mobile_sold.png "Mobile sold products") | ![Desktop sold products](documentation/features/viewing_products/desktop_sold.png "Desktop sold products") |
+
 
 
 
@@ -517,7 +520,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| Product List | Users can browse all available products with sorting, filtering by categories, and search functionality. | ![screenshot](documentation/features/product-list.png) |
 | Product Details | Displays detailed information about a selected product, including its name, description, price, an image, and available sizes. | ![screenshot](documentation/features/product-details.png) |
 | Add to Bag | Users can add items to their shopping bag, with support for selecting different sizes if applicable. | ![screenshot](documentation/features/add-to-bag.png) |
 | View Bag | Users can view the contents of their shopping bag, adjust quantities, or remove items. | ![screenshot](documentation/features/view-bag.png) |
