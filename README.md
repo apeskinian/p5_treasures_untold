@@ -530,20 +530,46 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Desktop | ![Desktop guest details](documentation/features/product_details/desktop_detail_logged_off.png "Desktop guest view") | ![Desktop unique view](documentation/features/product_details/desktop_detail_unique.png "Desktop unique view") |![Desktop stocked view](documentation/features/product_details/desktop_detail_stocked.png "Desktop stocked view") |
 
 - ### Adding Products to the Basket
-
     To add an item to the basket a user simply taps/clicks on the 'Add to Basket' button on the product detail page. If the product is not unique the user can specify the quantity required in the input field by either typing or using the plus/minus buttons. When the user adds the product to their basket, the page is updated to reflect any stock changes and availability.
 
     | Unique Product Availability Adjusting | Product Quantity Adjusting | Product Quantity Zero Adjusting |
     | --- | --- | --- |
     | ![Product Adjusting Availability](documentation/features/product_details/unique_product_updating.gif "Product updating availability") | ![Product Adjusting Quantity](documentation/features/product_details/stocked_product_updating.gif "Product updating quantity") | ![Product Adjusting Quantity to Zero](documentation/features/product_details/stocked_product_zero.gif "Product updating quantity to zero") |
 
+- ### Viewing and Editing the Basket
+    Users can view their baskets in two ways. Via the basket preview or the basket page.
+    
+    **Basket Preview**
+    The basket preview is easily accessible from any page via the basket icon on both mobile and desktop navigation. When expanded it provides a summary of the basket contents including:
+    - Products with image, name, sku and quantity with total cost for that product
+    - Current subtotal
+    - Delivery cost
+    - Current Grand total
+
+    It also shows any current rewards or discounts that have been activated and updated totals/costs.
+    There is also a button to open the basket page and another to proceed straight to the secure checkout.
+
+    | Mobile Basket Preview | Desktop Basket Preview |
+    | --- | --- |
+    | ![Mobile Basket Preview](documentation/features/basket_view/mobile_basket_preview.png "Mobile basket preview") | ![Desktop Basket Preview](documentation/features/basket_view/desktop_basket_preview.png "Desktop basket preview") |
+
+    **Basket Page**
+    The basket page shows everything that the preview does with the additions of:
+    - Product cost each
+    This page is also where a user can also edit the contents of their basket before proceeding to the secure checkout. For each line item the user can:
+    - Remove the product from the basket using the bin icon
+    - If the product is not unique, the quantity required can also be adjusted. To confirm the adjustment the refresh icon must be tapped/clicked which is situated next to the quantity adjuster. Adjusting the quantity to 0 will remove the product from the basket.
+
+    This page shows two buttons at the bottom, one to contine shopping which navigates to the products page, the other is to proceed to secure checkout.
+
+    | Mobile Basket Page | Desktop Basket Page |
+    | --- | --- |
+    | ![Mobile Basket Page](documentation/features/basket_view/mobile_basket_page.png "Mobile basket page") | ![Desktop Basket Page](documentation/features/basket_view/desktop_basket_page.png "Desktop basket page") |
 
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-
-| Add to Bag | Users can add items to their shopping bag, with support for selecting different sizes if applicable. | ![screenshot](documentation/features/add-to-bag.png) |
 | View Bag | Users can view the contents of their shopping bag, adjust quantities, or remove items. | ![screenshot](documentation/features/view-bag.png) |
 | Checkout | Users can proceed to checkout, where they provide their delivery details and payment information using Stripe integration. | ![screenshot](documentation/features/checkout.png) |
 | Order Confirmation | Users receive an on-screen and email confirmation with details of their purchase. | ![screenshot](documentation/features/order-confirmation.png) |
