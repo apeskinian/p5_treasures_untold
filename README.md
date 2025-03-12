@@ -488,13 +488,26 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     ![Featured Realm](documentation/features/homepage/homepage_featured.png "Featured Realm")
 
 - ### Viewing Products
-    Users can browse all the products in a responsive layout. They can search for specific products or keywords using the search bar and also sort and filter any results. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top.
+    Products are displayed in a responsive layout, allowing users to easily search for specific products or keywords. They can also sort and filter the results to refine their search. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top. Search, sort and filter actions can be combined together, for example you can search for 'hook' and then filter and sort those results further.
 
     The filter, sort and search functions for mobile can be found in the extra filter menu on the navigation bar at the bottom of the view. For desktop users, the sort and filter controls are to the left of the displayed products and the search bar can be found in the navigation panel accessed via the burger menu icon.
+
+    To clear all searches, sort orders or filters the user can tap/click on the clear button to show all products again.
 
     Any items that are out of stock or sold are shown at the bottom of the page, their image is desaturated and the price is replaced with the text 'SOLD' if the item is unique or 'OUT OF STOCK' if not.
 
     To view a product in more detail the user can tap/click on the product image. Products that are sold or out of stock can still be viewed in more detail.
+
+    | Mobile | Desktop |
+    | --- | --- |
+    | ![Mobile Products View](documentation/features/viewing_products/mobile_all_products.png "Mobile products view") | ![Desktop Products View](documentation/features/viewing_products/desktop_all_products.png "Desktop all products") |
+
+    |  | Mobile | Desktop |
+    | --- | --- | --- |
+    | Sold Items | ![Mobile sold products](documentation/features/viewing_products/mobile_sold.png "Mobile sold products") | ![Desktop sold products](documentation/features/viewing_products/desktop_sold.png "Desktop sold products") |
+    | Filter Results | ![Mobile filter products](documentation/features/viewing_products/mobile_filter_results.png "Mobile filter products") | ![Desktop filter products](documentation/features/viewing_products/desktop_filter_results.png "Desktop filter products") |
+    | Combined Results | ![Mobile combined products](documentation/features/viewing_products/mobile_combined.png "Mobile combined products") | ![Desktop combined products](documentation/features/viewing_products/desktop_combined.png "Desktop combined products") |
+    | No Results | ![Mobile no products](documentation/features/viewing_products/mobile_no_results.png "Mobile no products") | ![Desktop no products](documentation/features/viewing_products/desktop_no_results.png "Desktop no products") |
 
 
 
