@@ -511,16 +511,38 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | No Results | ![Mobile no products](documentation/features/viewing_products/mobile_no_results.png "Mobile no products") | ![Desktop no products](documentation/features/viewing_products/desktop_no_results.png "Desktop no products") |
     | Sold Items | ![Mobile sold products](documentation/features/viewing_products/mobile_sold.png "Mobile sold products") | ![Desktop sold products](documentation/features/viewing_products/desktop_sold.png "Desktop sold products") |
 
+- ### Viewing Product Details
+    By tapping/clicking on a products image the user is show the product in more detail including:
+    - Larger image
+    - Name
+    - Realm (also a link to show all products from that realm)
+    - Product Description
+    - Cost
+    - Availablity
+    - A quantity input if the item is not unique
+    - If the user is logged in an 'Add to Basket' button is shown otherwise 'Log In' and 'Sign Up' buttons are shown. With a message to say you need to log in to add items to the basket.
+    - A live timer counting down to 5pm local time for same day dispatch. If the time is past 5pm, the timer then counts to 5pm the following day and the message changes appropriately.
+    - A button to return to the previous product page, this includes any search, sort or filters that were active at the time.
 
+    |  | Product Detail Guest View | Product Detail User View - Unique Product | Product Detail User View - Non Unique Product |
+    | --- | --- | --- | --- |
+    | Mobile | ![Mobile guest details](documentation/features/product_details/mobile_detail_logged_off.png "Mobile guest view") | ![Mobile unique view](documentation/features/product_details/mobile_detail_unique.png "Mobile unique view") |![Mobile stocked view](documentation/features/product_details/mobile_detail_stocked.png "Mobile stocked view") |
+    | Desktop | ![Desktop guest details](documentation/features/product_details/desktop_detail_logged_off.png "Desktop guest view") | ![Desktop unique view](documentation/features/product_details/desktop_detail_unique.png "Desktop unique view") |![Desktop stocked view](documentation/features/product_details/desktop_detail_stocked.png "Desktop stocked view") |
 
+- ### Adding Products to the Basket
 
+    To add an item to the basket a user simply taps/clicks on the 'Add to Basket' button on the product detail page. If the product is not unique the user can specify the quantity required in the input field by either typing or using the plus/minus buttons. When the user adds the product to their basket, the page is updated to reflect any stock changes and availability.
+
+    | Unique Product Availability Adjusting | Product Quantity Adjusting | Product Quantity Zero Adjusting |
+    | --- | --- | --- |
+    | ![Product Adjusting Availability](documentation/features/product_details/unique_product_updating.gif "Product updating availability") | ![Product Adjusting Quantity](documentation/features/product_details/stocked_product_updating.gif "Product updating quantity") | ![Product Adjusting Quantity to Zero](documentation/features/product_details/stocked_product_zero.gif "Product updating quantity to zero") |
 
 
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| Product Details | Displays detailed information about a selected product, including its name, description, price, an image, and available sizes. | ![screenshot](documentation/features/product-details.png) |
+
 | Add to Bag | Users can add items to their shopping bag, with support for selecting different sizes if applicable. | ![screenshot](documentation/features/add-to-bag.png) |
 | View Bag | Users can view the contents of their shopping bag, adjust quantities, or remove items. | ![screenshot](documentation/features/view-bag.png) |
 | Checkout | Users can proceed to checkout, where they provide their delivery details and payment information using Stripe integration. | ![screenshot](documentation/features/checkout.png) |
