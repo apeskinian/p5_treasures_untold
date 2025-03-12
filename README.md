@@ -591,6 +591,20 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     ![Processinf Overlay](documentation/features/checkout_view/processing_overlay.gif "Processing overlay")
 
+- ### Order Confirmation
+    Upon completing a successful order, the user is directed to a confirmation page. This page informs them that a confirmation email will be sent to the provided address and includes a link to the contact page in case they need to report any issues. Additionally, it displays the following details of their purchase:
+    - Order Number
+    - Date
+    - Contact and Delivery details provided during checkout
+    - Order summary including any activated rewards and relevant price adjustments
+
+    There are two buttons at the bottom of the page, one to go straight to the users profile page, the other to continue shopping which goes to the products page.
+
+    | Checkout Success Mobile | Checkout Success Desktop |
+    | --- | --- |
+    | ![Mobile Checkout Success](documentation/features/checkout_view/mobile_checkout_success.png "Mobile checkout success") | ![Desktop Checkout Success](documentation/features/checkout_view/desktop_checkout_success.png "Desktop checkout success") |
+    
+
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |

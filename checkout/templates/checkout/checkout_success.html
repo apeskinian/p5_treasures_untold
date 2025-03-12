@@ -107,6 +107,12 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-3">
+            <div id="success-button-container" class="col gap-2">
+                <a href="{% url 'profile' %}" class="btn btn-green btn-success" aria-label="go to your profile page">View Profile</a>
+                <a href="{% url 'products' %}" class="btn btn-blue btn-success" aria-label="continue shopping">Continue Shopping</a>
+            </div>
+        </div>
     </div>
 </div>
 {% include 'includes/info_section.html' %}

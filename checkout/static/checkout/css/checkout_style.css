@@ -18,9 +18,21 @@
     max-width: fit-content;
 }
 
-.button-container button {
+.button-container button,
+.btn-success {
     width: 60%;
     min-width: fit-content;
+}
+
+#success-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-success {
+    max-width: 250px;
 }
 
 #loading-overlay {
@@ -42,6 +54,12 @@
 
     #order-summary-title {
         margin-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #success-button-container {
+        flex-direction: row;
     }
 }
 
