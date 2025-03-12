@@ -1,20 +1,18 @@
-// enable tooltips
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-// show toasts
+/* jshint esversion: 11, globalstrict: true, jquery: true */
+/* globals bootstrap */
+// Show toasts
 $('.toast').each(function (toastEl) {
     var toast = new bootstrap.Toast(this);
     toast.show();
 });
 
-// stop the realm collapse menu from triggering the dropdowns
+// Stop the realm collapse menu from triggering the dropdowns
 document.querySelector('#by-realm-menu-mobile a').addEventListener('click', function (event) {
     event.stopPropagation();
 });
 
 
-// sort items selector mobile
+// Sort items selector mobile
 $('#sort-selector-mobile').change(function () {
     var selector = $(this);
     var currentUrl = new URL(window.location);
@@ -31,9 +29,13 @@ $('#sort-selector-mobile').change(function () {
         currentUrl.searchParams.delete('direction');
         window.location.replace(currentUrl);
     }
-})
+});
 
-// product filter menu mobile
+// Product filter menu mobile
+const currentParamsMobile = new URLSearchParams(window.location.search);
+const searchValueMobile = currentParamsMobile.get('q');
+const sortValueMobile = currentParamsMobile.get('sort');
+const directionValueMobile = currentParamsMobile.get('direction');
 const baseUrlMobile = '/products/';
 var filterStockList = [];
 var filterRealmList = [];
@@ -50,22 +52,31 @@ $('#submit-filter-mobile').click(function () {
                 filterRealmList.push($(this).val());
             }
         }
-    })
+    });
 
-    var filterList = [];
+    var queryList = [];
+    if (searchValueMobile !== null) {
+        queryList.push(`q=${encodeURIComponent(searchValue)}`);
+    }
     if (filterNewList.length > 0) {
-        filterList.push(`${filterNewList}`);
+        queryList.push(`${filterNewList}`);
     }
     if (filterStockList.length > 0) {
-        filterList.push(`stock=${filterStockList}`);
+        queryList.push(`stock=${filterStockList}`);
     }
     if (filterRealmList.length > 0) {
-        filterList.push(`realm=${filterRealmList}`);
+        queryList.push(`realm=${filterRealmList}`);
     }
-    const queryString = filterList.length > 0 ? `?${filterList.join('&')}` : '';
+    if (sortValueMobile !== null) {
+        queryList.push(`sort=${encodeURIComponent(sortValue)}`);
+    }
+    if (directionValueMobile !== null) {
+        queryList.push(`direction=${encodeURIComponent(directionValue)}`);
+    }
+    const queryString = queryList.length > 0 ? `?${queryList.join('&')}` : '';
     const url = `${baseUrlMobile}${queryString}`;
     window.location.replace(url);
-})
+});
 
 // sort items selector 
 $('#sort-selector').change(function () {
@@ -84,9 +95,13 @@ $('#sort-selector').change(function () {
         currentUrl.searchParams.delete('direction');
         window.location.replace(currentUrl);
     }
-})
+});
 
 // product filter menu
+const currentParams = new URLSearchParams(window.location.search);
+const searchValue = currentParams.get('q');
+const sortValue = currentParams.get('sort');
+const directionValue = currentParams.get('direction');
 const baseUrl = '/products/';
 var filterStockList = [];
 var filterRealmList = [];
@@ -103,22 +118,31 @@ $('#submit-filter').click(function () {
                 filterRealmList.push($(this).val());
             }
         }
-    })
+    });
 
-    var filterList = [];
+    var queryList = [];
+    if (searchValue !== null) {
+        queryList.push(`q=${encodeURIComponent(searchValue)}`);
+    }
     if (filterNewList.length > 0) {
-        filterList.push(`${filterNewList}`);
+        queryList.push(`${filterNewList}`);
     }
     if (filterStockList.length > 0) {
-        filterList.push(`stock=${filterStockList}`);
+        queryList.push(`stock=${filterStockList}`);
     }
     if (filterRealmList.length > 0) {
-        filterList.push(`realm=${filterRealmList}`);
+        queryList.push(`realm=${filterRealmList}`);
     }
-    const queryString = filterList.length > 0 ? `?${filterList.join('&')}` : '';
+    if (sortValue !== null) {
+        queryList.push(`sort=${encodeURIComponent(sortValue)}`);
+    }
+    if (directionValue !== null) {
+        queryList.push(`direction=${encodeURIComponent(directionValue)}`);
+    }
+    const queryString = queryList.length > 0 ? `?${queryList.join('&')}` : '';
     const url = `${baseUrl}${queryString}`;
     window.location.replace(url);
-})
+});
 
 // Hide main title on scroll and reappear when scrolled to top
 document.addEventListener("DOMContentLoaded", function () {
@@ -127,68 +151,68 @@ document.addEventListener("DOMContentLoaded", function () {
     const accountAndBasket = document.querySelector("#account-and-basket");
     const topNav = document.querySelector(".top-nav");
     const floatingNav = document.querySelector(".floating-top-nav");
-    const scrollButton = document.querySelector('#scroll-button')
+    const scrollButton = document.querySelector('#scroll-button');
 
     let lastScrollPositionFromTop = 0;
 
     if (!mainTitle || !topNav || !navMenu || !accountAndBasket || !floatingNav) return;
 
-    // Check if the 'fading-nav-page' class is present
-    if (document.body.classList.contains('fading-nav-page')) {
-        // Define handleScroll function inside the condition
-        function handleScroll() {
-            let currentScrollPositionFromTop = window.scrollY;
+    // Define handleScroll function
+    function handleScroll() {
+        let currentScrollPositionFromTop = window.scrollY;
 
-            if (window.innerWidth > 767) {
-                const navBottom = topNav.getBoundingClientRect().bottom;
+        if (window.innerWidth > 767) {
+            const navBottom = topNav.getBoundingClientRect().bottom;
 
-                if (navBottom <= 0) {
-                    // Scrolled past the navbar
-                    mainTitle.classList.add("main-title-hide");
-                    mainTitle.classList.remove("main-title-show");
-                    navMenu.classList.add("main-title-hide");
-                    navMenu.classList.remove("main-title-show");
-                    accountAndBasket.classList.add("main-title-hide");
-                    accountAndBasket.classList.remove("main-title-show");
-                    if (scrollButton) {
-                        scrollButton.classList.remove('scroll-button-hide')
-                    }
-                } else if (window.scrollY === 0) {
-                    // Scrolled to the top
-                    mainTitle.classList.add("main-title-show");
-                    mainTitle.classList.remove("main-title-hide");
-                    navMenu.classList.add("main-title-show");
-                    navMenu.classList.remove("main-title-hide");
-                    accountAndBasket.classList.add("main-title-show");
-                    accountAndBasket.classList.remove("main-title-hide");
-                    floatingNav.classList.add("main-title-hide");
-                    floatingNav.classList.remove("main-title-show");
-                    if (scrollButton) {
-                        scrollButton.classList.add('scroll-button-hide')
-                    }
+            if (navBottom <= 0) {
+                // Scrolled past the navbar
+                mainTitle.classList.add("main-title-hide");
+                mainTitle.classList.remove("main-title-show");
+                navMenu.classList.add("main-title-hide");
+                navMenu.classList.remove("main-title-show");
+                accountAndBasket.classList.add("main-title-hide");
+                accountAndBasket.classList.remove("main-title-show");
+                if (scrollButton) {
+                    scrollButton.classList.remove('scroll-button-hide');
                 }
-                // Scrolling up
-                if (currentScrollPositionFromTop < lastScrollPositionFromTop && mainTitle.classList.contains("main-title-hide")) {
-                    floatingNav.classList.add("main-title-show");
-                    floatingNav.classList.remove("main-title-hide");
+            } else if (window.scrollY === 0) {
+                // Scrolled to the top
+                mainTitle.classList.add("main-title-show");
+                mainTitle.classList.remove("main-title-hide");
+                navMenu.classList.add("main-title-show");
+                navMenu.classList.remove("main-title-hide");
+                accountAndBasket.classList.add("main-title-show");
+                accountAndBasket.classList.remove("main-title-hide");
+                floatingNav.classList.add("main-title-hide");
+                floatingNav.classList.remove("main-title-show");
+                if (scrollButton) {
+                    scrollButton.classList.add('scroll-button-hide');
                 }
-            } else {
-                const navBottom = topNav.getBoundingClientRect().bottom;
-                if (navBottom <= 0) {
-                    scrollButton.classList.remove('scroll-button-hide')
-                } else if (window.scrollY === 0) {
-                    scrollButton.classList.add('scroll-button-hide')
-                }
-                // Reset the classes for smaller screens
-                mainTitle.classList.remove("main-title-hide", "main-title-show");
-                navMenu.classList.remove("main-title-hide", "main-title-show");
-                accountAndBasket.classList.remove("main-title-hide", "main-title-show");
-                floatingNav.classList.remove("main-title-hide", "main-title-show");
             }
-
-            lastScrollPositionFromTop = currentScrollPositionFromTop; // Update last scroll position
+            // Scrolling up
+            if (currentScrollPositionFromTop < lastScrollPositionFromTop && mainTitle.classList.contains("main-title-hide")) {
+                floatingNav.classList.add("main-title-show");
+                floatingNav.classList.remove("main-title-hide");
+            }
+        } else {
+            const navBottom = topNav.getBoundingClientRect().bottom;
+            if (navBottom <= 0) {
+                scrollButton.classList.remove('scroll-button-hide');
+            } else if (window.scrollY === 0) {
+                scrollButton.classList.add('scroll-button-hide');
+            }
+            // Reset the classes for smaller screens
+            mainTitle.classList.remove("main-title-hide", "main-title-show");
+            navMenu.classList.remove("main-title-hide", "main-title-show");
+            accountAndBasket.classList.remove("main-title-hide", "main-title-show");
+            floatingNav.classList.remove("main-title-hide", "main-title-show");
         }
 
+        lastScrollPositionFromTop = currentScrollPositionFromTop; // Update last scroll position
+    }
+
+    // Check if the 'fading-nav-page' class is present
+    if (document.body.classList.contains('fading-nav-page')) {
         // Add scroll event listener
         window.addEventListener("scroll", handleScroll);
         window.addEventListener('scroll', adjustMarginBottom);
@@ -200,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 $('.scroll-link').click(function (e) {
     e.preventDefault();
     window.scrollTo(0, 0);
-})
+});
 
 // Set scrollbutton bottom margin so that is does not go below the products div
 function adjustMarginBottom() {
@@ -239,4 +263,3 @@ function adjustMarginBottom() {
         }
     }
 }
-

@@ -496,7 +496,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     To view a product in more detail the user can tap/click on the product image. Products that are sold or out of stock can still be viewed in more detail.
 
-    |  | Showing all products | Filter results
+
 
 
 
