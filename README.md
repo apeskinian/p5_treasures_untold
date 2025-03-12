@@ -566,12 +566,32 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Basket Page](documentation/features/basket_view/mobile_basket_page.png "Mobile basket page") | ![Desktop Basket Page](documentation/features/basket_view/desktop_basket_page.png "Desktop basket page") |
 
+- ### Secure Checkout
+    When users are ready to checkout, they are directed to the checkout page. Here they are presented with a from to complete for delivery and payment details along with a summary of the items they are buying.
+    
+    The order summary is in the same format as the basket preview described above.
+
+    The Payment and Delivery section is split into three sub sections:
+    - Contact Details
+    - Delivery
+    - Payment
+
+    The contact and delivery sections will be prefilled with any details currently saved in the user's profile page with a checkbox option to save any details added or amended during the checkout process (any email change will not be saved, this will always default to the users email defined for their account).
+
+    When the user has completed the form they can then click on the 'Complete Order' button to complete payment via Stripe. On a successul payment they will be taken to the order confirmation page. If any errors occur the user will be notified and any corrections can be made before attempting payment again.
+
+    The user also has the option to go back to the edit basket page directly from the checkout page should they see something they need to change before proceeding.
+
+    | Mobile Checkout | Desktop Checkout |
+    | --- | --- |
+    | ![Mobile Checkout](documentation/features/checkout_view/mobile_checkout.png "Mobile Checkout") | ![Desktop Checkout](documentation/features/checkout_view/desktop_checkout.png "Desktop Checkout") |
+
+
+
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| View Bag | Users can view the contents of their shopping bag, adjust quantities, or remove items. | ![screenshot](documentation/features/view-bag.png) |
-| Checkout | Users can proceed to checkout, where they provide their delivery details and payment information using Stripe integration. | ![screenshot](documentation/features/checkout.png) |
 | Order Confirmation | Users receive an on-screen and email confirmation with details of their purchase. | ![screenshot](documentation/features/order-confirmation.png) |
 | Profile Management | Users can manage their profile information, including their default delivery address and order history. | ![screenshot](documentation/features/profile-management.png) |
 | Order History | Users can view their past orders and access details of each order, including products purchased and the delivery status. | ![screenshot](documentation/features/order-history.png) |
