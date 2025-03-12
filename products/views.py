@@ -90,7 +90,7 @@ def all_products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+            products = products.order_by('in_stock', sortkey)
         # Looking for stock filter.
         if 'stock' in request.GET:
             stock_requests = request.GET['stock'].split(',')
