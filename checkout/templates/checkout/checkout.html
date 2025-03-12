@@ -118,12 +118,13 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Overlay to show when order is being processed. -->
-<div id="loading-overlay" class="hidden">
-    <h1 id="loading-spinner">
-        <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-2xl"></i>
-    </h1>
+    <!-- Overlay to show when order is being processed. -->
+    <div id="loading-overlay" class="container rounded-4 my-4 gap-3">
+        <h2 class="h1-style">Processing transaction...</h2>
+        <h2 class="">
+            <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-lg"></i>
+        </h2>
+    </div>
 </div>
 {% include 'includes/info_section.html' %}
 {% endblock %}

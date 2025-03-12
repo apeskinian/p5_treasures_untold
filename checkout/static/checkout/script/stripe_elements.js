@@ -108,7 +108,8 @@ function setLoading(isLoading) {
         $('#submit-button').attr('disabled', true);
         $('#adjust-button').attr('disabled', true);
         $('#payment-form').fadeToggle(100);
-        $('#loading-overlay').fadeToggle(100);
+        $('#loading-overlay').removeClass('d-none');
+        $('#loading-overlay').addClass('d-flex');
         $('#checkout-container').fadeToggle(100);
         $('#spinner').removeClass('hidden');
         $('#button-text').addClass('hidden');
@@ -116,7 +117,8 @@ function setLoading(isLoading) {
         $('#submit-button').attr('disabled', false);
         $('#adjust-button').attr('disabled', false);
         $('#payment-form').fadeToggle(100);
-        $('#loading-overlay').fadeToggle(100);
+        $('#loading-overlay').removeClass('d-flex');
+        $('#loading-overlay').addClass('d-none');
         $('#checkout-container').fadeToggle(100);
         $('#spinner').addClass('hidden');
         $('#button-text').removeClass('hidden');

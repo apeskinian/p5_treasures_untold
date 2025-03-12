@@ -586,7 +586,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Checkout](documentation/features/checkout_view/mobile_checkout.png "Mobile Checkout") | ![Desktop Checkout](documentation/features/checkout_view/desktop_checkout.png "Desktop Checkout") |
 
+- ### Order Processing
+    When a user submits their order for payment, a processing overlay is displayed before either going back to the checkout page if there was an error, or continuing to the confirmation page. This encourages the user to be patient while the transaction is processed as it gives them a visual indication of something happening. 
 
+    ![Processinf Overlay](documentation/features/checkout_view/processing_overlay.gif "Processing overlay")
 
 **WIP UNDER THIS LINE**
 
