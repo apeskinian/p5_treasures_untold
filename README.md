@@ -649,6 +649,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Privacy Statement](documentation/features/support_pages/mobile_privacy.png "Mobile Privacy Statement") | ![Desktop Privacy Statement](documentation/features/support_pages/desktop_privacy.png "Desktop Privacy Statement") |
 
+    ### Terms and Conditions
+    This page displays the terms and conditions for Treasures Untold.
+
+    | Mobile Terms and Conditions | Desktop Terms and Conditions |
+    | --- | --- |
+    | ![Mobile Terms and Conditions](documentation/features/support_pages/mobile_terms.png "Mobile Terms and Conditions") | ![Desktop Terms and Conditions](documentation/features/support_pages/desktop_terms.png "Desktop Terms and Conditions") |
+
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
