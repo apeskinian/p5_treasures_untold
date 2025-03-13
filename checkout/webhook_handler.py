@@ -225,7 +225,8 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                    full_name=shipping_details.name,
+                    # full_name=shipping_details.name,
+                    full_name='DEPLOYED WEBHOOK HANDLER CREATED ME',
                     user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
