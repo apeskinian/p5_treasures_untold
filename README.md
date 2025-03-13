@@ -619,6 +619,23 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Order History](documentation/features/profile_page/mobile_order_history.png "Mobile Order History") | ![Desktop Order History](documentation/features/profile_page/desktop_order_history.png "Desktop order history") |
 
+- ### Support and Help Pages
+    Tresures Untold has the following support pages for users which can be accessed via the navigation menus or the links at the bottom of each page:
+    - FAQs
+    - Newsletter
+    - Contact Us
+    - Returns Policy
+    - Privacy Statement
+    - Terms and Conditions
+
+    **FAQs**
+    This page offers a comprehensive FAQ section, covering a variety of topics to help users find the information they need.
+
+    | Mobile FAQ | Mobile FAQ Expanded | Desktop FAQ | Desktop FAQ Expanded |
+    | --- | --- | --- | --- |
+    | ![Mobile FAQ](documentation/features/support_pages/mobile_faq_collapsed.png "Mobile FAQ") | ![Mobile FAQ Expanded](documentation/features/support_pages/mobile_faq_expanded.png "Mobile FAQ expanded") | ![Desktop FAQ](documentation/features/support_pages/desktop_faq_collapsed.png "Desktop FAQ") | ![Desktop FAQ Expanded](documentation/features/support_pages/desktop_faq_expanded.png "Desktop FAQ expanded") |
+
+
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
