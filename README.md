@@ -712,16 +712,28 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 **WIP UNDER THIS LINE**
 
-| Feature | Notes | Screenshot |
-| --- | --- | --- |
-| Product Management | Superusers can add, edit, and delete products from the site via a CRUD interface. | ![screenshot](documentation/features/product-management.png) |
-| Newsletter | Users can register their email address to receive newsletters from the site. Currently, this only stores the email in the database. | ![screenshot](documentation/features/newsletter.png) |
-| User Feedback | Clear and concise Django messages are used to provide feedback to users when interacting with various features (e.g., adding products to the bag, checking out, etc.). | ![screenshot](documentation/features/user-feedback.png) |
-| Heroku Deployment | The site is deployed to Heroku, making it accessible online for users. | ![screenshot](documentation/features/heroku.png) |
-| SEO | SEO optimization with a sitemap.xml, robots.txt, and appropriate meta tags to improve search engine visibility. | ![screenshot](documentation/features/seo.png) |
-| Marketing | Social media presence is available in the footer using external links, as well as a Facebook Marketplace wireframe in the README for future integrations. | ![screenshot](documentation/features/marketing.png) |
-| 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel. | ![screenshot](documentation/features/404.png) |
-| BACKEND FEATURES | STOCK RECOVERY |  |
+- ### Error Pages
+    The 404 error page in Treasures Untold features a themed message, gently informing users that the page they seek is lost in the magical realms. It provides navigation options to help them find their way back.
+
+    The 500 error page maintains the enchanted theme while reassuring users that something has gone wrong on our end. It offers guidance on what to do next and encourages them to try again later.
+
+    
+
+- ### Staff Dashboard
+
+- ### Super User Privileges
+
+- ### Communication to the User
+
+- ### Easter Eggs
+
+- ### Backend Features
+
+- ### SEO & Marketing Features
+    A full explanation of the [SEO & Marketing](#seo--marketing) features can be viewed in detail below.
+
+- ### Heroku Deployment
+    The site is deployed to Heroku, making it accessible online for users. More inforation on [deployment](#deployment) can be found below.
 
 ### Future Features
 
