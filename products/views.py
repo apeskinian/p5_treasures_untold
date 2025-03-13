@@ -115,7 +115,7 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(
+                messages.info(
                     request,
                     "Your spell needs a little more magic, "
                     "enter search criteria to begin!"
