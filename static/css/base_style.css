@@ -305,6 +305,14 @@ main {
     color: var(--tu-white);
     border-radius: 10px;
 }
+
+.mob-nav-btn {
+    color: var(--tu-mid-grey);
+}
+
+.mob-nav-btn[aria-expanded="true"] {
+    color: var(--tu-white);
+}
 /* END> Mobile navigation elements */
 
 /* START> Error pages */
