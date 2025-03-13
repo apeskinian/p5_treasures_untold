@@ -603,6 +603,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Checkout Success Mobile | Checkout Success Desktop |
     | --- | --- |
     | ![Mobile Checkout Success](documentation/features/checkout_view/mobile_checkout_success.png "Mobile checkout success") | ![Desktop Checkout Success](documentation/features/checkout_view/desktop_checkout_success.png "Desktop checkout success") |
+
+    | Example Confirmation Email |
+    | --- |
+    | ![Confirmation Email](documentation/features/checkout_view/checkout_success_email.png "Example confirmation email") |
     
 - ### User Profile Page
     Registered users can access a profile page where they can view their order history and also update their details that are used for orders during checkout.
