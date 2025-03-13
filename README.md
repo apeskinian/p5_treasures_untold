@@ -635,6 +635,12 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- | --- | --- |
     | ![Mobile FAQ](documentation/features/support_pages/mobile_faq_collapsed.png "Mobile FAQ") | ![Mobile FAQ Expanded](documentation/features/support_pages/mobile_faq_expanded.png "Mobile FAQ expanded") | ![Desktop FAQ](documentation/features/support_pages/desktop_faq_collapsed.png "Desktop FAQ") | ![Desktop FAQ Expanded](documentation/features/support_pages/desktop_faq_expanded.png "Desktop FAQ expanded") |
 
+    **Returns Policy**
+    This page displays the return policy for Treasures Untold.
+
+    | Mobile Returns Policy | Desktop Returns Policy |
+    | --- | --- |
+    | ![Mobile Returns Policy](documentation/features/support_pages/mobile_returns_policy.png "Mobile Returns Policy") | ![Desktop Returns Policy](documentation/features/support_pages/desktop_returns_policy.png "Desktop Returns Policy") |
 
 **WIP UNDER THIS LINE**
 
