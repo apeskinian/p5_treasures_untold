@@ -710,14 +710,20 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Terms and Conditions](documentation/features/support_pages/mobile_terms.png "Mobile Terms and Conditions") | ![Desktop Terms and Conditions](documentation/features/support_pages/desktop_terms.png "Desktop Terms and Conditions") |
 
-**WIP UNDER THIS LINE**
-
 - ### Error Pages
     The 404 error page in Treasures Untold features a themed message, gently informing users that the page they seek is lost in the magical realms. It provides navigation options to help them find their way back.
 
+    | Mobile 404 | Desktop 404 |
+    | --- | --- |
+    | ![Mobile 404](documentation/features/error_pages/mobile_404.png "Mobile 404 Page") | ![Desktop 404](documentation/features/error_pages/desktop_404.png "Desktop 404 Page") |
+
     The 500 error page maintains the enchanted theme while reassuring users that something has gone wrong on our end. It offers guidance on what to do next and encourages them to try again later.
 
-    
+    | Mobile 500 | Desktop 500 |
+    | --- | --- |
+    | ![Mobile 500](documentation/features/error_pages/mobile_500.png "Mobile 500 Page") | ![Desktop 500](documentation/features/error_pages/desktop_500.png "Desktop 500 Page") |
+
+**WIP UNDER THIS LINE**
 
 - ### Staff Dashboard
 
