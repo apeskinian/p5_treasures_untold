@@ -124,7 +124,6 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
-            order.full_name = 'VIEW CREATED ME'
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
             order.rewards_used = json.dumps(rewards)

@@ -165,6 +165,8 @@ class StripeWH_Handler:
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
+        if shipping_details.phone == '':
+            shipping_details.phone = None
 
         # Update user profile information if save_info was checked.
         try:
@@ -225,8 +227,7 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                    # full_name=shipping_details.name,
-                    full_name='DEPLOYED WEBHOOK HANDLER CREATED ME',
+                    full_name=shipping_details.name,
                     user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
