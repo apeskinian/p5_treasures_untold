@@ -9,7 +9,7 @@
 
 #order-history-table-container {
     background-color: var(--tu-white);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 12px;
 }
 
@@ -22,9 +22,12 @@
 
 /* Media queries for larger screens. */
 @media screen and (min-width: 768px) {    
+    #order-history-table-container {
+        height: 636px;
+    }
     #order-history-table {
-        max-height: 600px;
-        overflow-y: scroll;
+        height: 100%;
+        overflow-y: auto;
     }
 }
 
