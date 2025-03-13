@@ -604,14 +604,25 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Checkout Success](documentation/features/checkout_view/mobile_checkout_success.png "Mobile checkout success") | ![Desktop Checkout Success](documentation/features/checkout_view/desktop_checkout_success.png "Desktop checkout success") |
     
+- ### User Profile Page
+    Registered users can access a profile page where they can view their order history and also update their details that are used for orders during checkout.
+
+    To update their details, users can enter new details into the form and tap/click on the submit button.
+
+    | Mobile Profile Page | Desktop Profile Page |
+    | --- | --- |
+    | ![Mobile Profile Page](documentation/features/profile_page/mobile_profile_page.png "Mobile profile page") | ![Desktop Profile Page](documentation/features/profile_page/desktop_profile_page.png "Desktop profile page") |
+
+    To view details of previous orders, users can tap/click on the relevant order number shown in the table to bring up details of that order.
+
+    | Mobile Order History View | Desktop Order History View |
+    | --- | --- |
+    | ![Mobile Order History](documentation/features/profile_page/mobile_order_history.png "Mobile Order History") | ![Desktop Order History](documentation/features/profile_page/desktop_order_history.png "Desktop order history") |
 
 **WIP UNDER THIS LINE**
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| Order Confirmation | Users receive an on-screen and email confirmation with details of their purchase. | ![screenshot](documentation/features/order-confirmation.png) |
-| Profile Management | Users can manage their profile information, including their default delivery address and order history. | ![screenshot](documentation/features/profile-management.png) |
-| Order History | Users can view their past orders and access details of each order, including products purchased and the delivery status. | ![screenshot](documentation/features/order-history.png) |
 | Product Management | Superusers can add, edit, and delete products from the site via a CRUD interface. | ![screenshot](documentation/features/product-management.png) |
 | Newsletter | Users can register their email address to receive newsletters from the site. Currently, this only stores the email in the database. | ![screenshot](documentation/features/newsletter.png) |
 | Contact | Users can submit a message via the contact form, which stores their name, email, and message in the database. | ![screenshot](documentation/features/contact.png) |
