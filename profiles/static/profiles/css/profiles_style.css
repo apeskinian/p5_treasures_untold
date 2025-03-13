@@ -13,10 +13,23 @@
     border-radius: 12px;
 }
 
+.order-table-order-number {
+    max-width: 15vw !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
 /* Media queries for larger screens. */
 @media screen and (min-width: 768px) {    
     #order-history-table {
         max-height: 600px;
         overflow-y: scroll;
+    }
+}
+
+@media screen and (min-width: 992px) {    
+    .order-table-order-number {
+        max-width: fit-content !important;
     }
 }
