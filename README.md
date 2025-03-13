@@ -654,6 +654,41 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- |
     | ![Example Acknowledgement Email](documentation/features/support_pages/contact_example_acknowledgement_email.png "Example acknowledgement email") |
 
+    ### Newsletter
+    Users can sign up to receive the Treasures Untold newsletter by entering their email into the newsletter form at the bottom of most pages or from the dedicated newsletter page which is accessed via the navigation menus or the links at the bottom of each page.
+
+    | Newsletter Form | Mobile Newsletter Page | Desktop Newsletter Page |
+    | --- | --- | --- |
+    | ![Newsletter Form](documentation/features/support_pages/newsletter_form_section.png "Newsletter Form") | ![Mobile Newsletter Page](documentation/features/support_pages/mobile_newsletter_page.png "Mobile newsletter page") | ![Desktop Newsletter Page](documentation/features/support_pages/desktop_newsletter_page.png "Desktop newsletter page") |
+
+    Upon submitting the form the user is given a message informing them that they will receive an email for them to confirm their subsription.
+
+    | Acknowledgement Message |
+    | --- |
+    | ![Acknowledgement Message](documentation/features/support_pages/newsletter_message.png "Newsletter message") |
+
+    A unique token is generated to create a confirmation link, which is then sent to the user. They are informed that the link is valid for 24 hours, after which it will expire if not used to confirm the subscription.
+
+    | Confirmation Email |
+    | --- |
+    | ![Confirmation Email](documentation/features/support_pages/newsletter_email.png "Confirmation email") |
+
+    If the user clicks the link within 24 hours, they are redirected to a success page, and their status is set to active, allowing them to receive newsletter emails. If the token has expired, they are shown an expiration message and directed to the newsletter page to re-subscribe.
+
+    | Mobile Newsletter Success | Desktop Newsletter Success | Expired Token Message |
+    | --- | --- | --- |
+    | ![Mobile Newsletter Success](documentation/features/support_pages/mobile_newsletter_success.png "Mobile newsletter success") | ![Desktop Newsletter Success](documentation/features/support_pages/desktop_newsletter_success.png "Desktop newsletter success") | ![Expired Token](documentation/features/support_pages/newsletter_expired_message.png "Expired token message") |
+
+    Newsletters can be sent to all active email subscribers through the staff dashboard. Users can unsubscribe at any time by:
+    - Clicking the unique unsubscribe link at the bottom of each newsletter.
+    - Requesting removal via the contact form, which staff can process through the dashboard.
+
+    If a user unsubscribes via the email link, they are redirected to the homepage with a confirmation message.
+
+    | Example Newsletter | Unsubscribe Message |
+    | --- | --- |
+    | ![Example Newsletter](documentation/features/support_pages/example_newsletter.png "Example Newsletter") | ![Unsubscription Message](documentation/features/support_pages/unsubscribe_message.png "Unsubscription Message") |
+
     ### Returns Policy
     This page displays the return policy for Treasures Untold.
 
@@ -681,7 +716,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | --- | --- | --- |
 | Product Management | Superusers can add, edit, and delete products from the site via a CRUD interface. | ![screenshot](documentation/features/product-management.png) |
 | Newsletter | Users can register their email address to receive newsletters from the site. Currently, this only stores the email in the database. | ![screenshot](documentation/features/newsletter.png) |
-| Contact | Users can submit a message via the contact form, which stores their name, email, and message in the database. | ![screenshot](documentation/features/contact.png) |
 | User Feedback | Clear and concise Django messages are used to provide feedback to users when interacting with various features (e.g., adding products to the bag, checking out, etc.). | ![screenshot](documentation/features/user-feedback.png) |
 | Heroku Deployment | The site is deployed to Heroku, making it accessible online for users. | ![screenshot](documentation/features/heroku.png) |
 | SEO | SEO optimization with a sitemap.xml, robots.txt, and appropriate meta tags to improve search engine visibility. | ![screenshot](documentation/features/seo.png) |

@@ -435,7 +435,7 @@ def confirm_unsubscription(request, subscriber_id, token):
     subscriber = get_object_or_404(Subscriber, pk=subscriber_id)
     if subscriber.token == token:
         subscriber.delete()
-        messages.error(request, 'You have been unsubscribed')
+        messages.info(request, 'You have been unsubscribed')
         return redirect(reverse('home'))
     else:
         messages.error(request, 'The was an error please contact admin')
