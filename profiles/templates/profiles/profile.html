@@ -60,7 +60,7 @@
                                 <tr>
                                     <th scope="col">Order Number</th>
                                     <th scope="col" class="d-none d-xl-table-cell">Date</th>
-                                    <th scope="col" class=" d-none d-sm-table-cell">Order Total</th>
+                                    <th scope="col" class="text-end d-none d-sm-table-cell">Order Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,7 +72,7 @@
                                         {{ order.order_number }}
                                         </a>
                                     </td>
-                                    <td class="d-none d-xl-table-cell">{{ order.date }}</td>
+                                    <td class="d-none d-xl-table-cell">{{ order.date | date:"F j, Y" }}</td>
                                     <td class="text-end d-none d-sm-table-cell">£{{ order.grand_total }}</td>
                                 </tr>
                                 {% endfor %}
