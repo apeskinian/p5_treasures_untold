@@ -622,8 +622,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - ### Support and Help Pages
     Tresures Untold has the following support pages for users which can be accessed via the navigation menus or the links at the bottom of each page:
     - FAQs
-    - Newsletter
     - Contact Us
+    - Newsletter
     - Returns Policy
     - Privacy Statement
     - Terms and Conditions
@@ -634,6 +634,21 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Mobile FAQ | Mobile FAQ Expanded | Desktop FAQ | Desktop FAQ Expanded |
     | --- | --- | --- | --- |
     | ![Mobile FAQ](documentation/features/support_pages/mobile_faq_collapsed.png "Mobile FAQ") | ![Mobile FAQ Expanded](documentation/features/support_pages/mobile_faq_expanded.png "Mobile FAQ expanded") | ![Desktop FAQ](documentation/features/support_pages/desktop_faq_collapsed.png "Desktop FAQ") | ![Desktop FAQ Expanded](documentation/features/support_pages/desktop_faq_expanded.png "Desktop FAQ expanded") |
+
+    ### Contact Us
+    This page allows users to easily contact the staff/admin of Treasures Untold by submitting a message. To do so, users simply fill out a form with their name, email address, and message. Once submitted, a unique ticket number is generated, and an acknowledgment email is sent to the provided address. Users are then redirected to a thank you page outlining the next steps. The submitted message is accessible to staff members via the dashboard, where they can review and respond accordingly.
+
+    | Mobile Contact Us | Desktop Contact Us |
+    | --- | --- |
+    | ![Mobile Contact Us](documentation/features/support_pages/mobile_contact_us.png "Mobile contact us") | ![Desktop Contact Us](documentation/features/support_pages/desktop_contact_us.png "Desktop contact us") |
+
+    | Mobile Contact Us Thank You | Desktop Contact Us Thank You |
+    | --- | --- |
+    | ![Mobile Contact Us Thank You](documentation/features/support_pages/mobile_contact_thanks.png "Mobile contact us thanks") | ![Desktop Contact Us Thank You](documentation/features/support_pages/desktop_contact_thanks.png "Desktop contact us thanks") |
+
+    | Example Acknowledgement Email |
+    | --- |
+    | ![Example Acknowledgement Email](documentation/features/support_pages/contact_example_acknowledgement_email.png "Example acknowledgement email") |
 
     ### Returns Policy
     This page displays the return policy for Treasures Untold.
