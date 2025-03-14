@@ -900,10 +900,21 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     To reply to a message the yellow reply icon button is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by tapping/clicking on the 'Reply' button or cancel and return to the dashboard by tapping/clicking on the 'Cancel' or modal close buttons.
 
+    | Mobile Message Reply | Desktop Message Reply |
+    | :---: | :---: |
+    | ![Mobile Message Reply](documentation/features/dashboard/message_admin/mobile_message_reply.png "Mobile message reply") | ![Desktop Message Reply](documentation/features/dashboard/message_admin/desktop_message_reply.png "Desktop messsage reply") |
+
     Once a message reply has been created, an email will be sent to the original user who created the message and the message will be updated in the dashboard to reflect the replied status.
+
+    | Example Reply Email |
+    | :---: |
+    | ![Example Reply Email](documentation/features/dashboard/message_admin/message_reply_email.png "Example reply email") |
 
     To delete a message the red bin icon can be tapped/clicked. A prompt asking the user to confirm will be displayed. The can then either tap/click on 'Delete' to confirm or return to the dashboard with the 'Cancel' or model close button.
 
+    | Mobile Message Delete | Desktop Message Delete |
+    | :---: | :---: |
+    | ![Mobile Message Delete](documentation/features/dashboard/message_admin/mobile_message_delete.png "Mobile message delete") | ![Desktop Message Delete](documentation/features/dashboard/message_admin/desktop_message_delete.png "Desktop message delete") |
 
     ### Newsletter Admin
 
