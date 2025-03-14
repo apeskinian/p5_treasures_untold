@@ -737,148 +737,144 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Desktop | ![Desktop Product Admin](documentation/features/dashboard/desktop_product_admin.png "Dektop product admin") | ![Desktop FAQ Admin](documentation/features/dashboard/desktop_faq_admin.png "Desktop faq admin") | ![Desktop Message Admin](documentation/features/dashboard/desktop_message_admin.png "Desktop message admin") | ![Desktop Newsletter Admin](documentation/features/dashboard/desktop_newsletter_admin.png "Desktop newsletter admin") | 
 
     ### Product Admin
-    The products and realms are displayed in table format that is responsive showing details relevant to display size. Both products and realms can be managed separately here. To create a new product or realm the user can tap/click on the green plus button at the right hand side of the relevant table header. To update a product or realm the yellow edit button can be tapped/clicked, and to delete a product or realm the red bin button can be tapped/clicked.
+    The products and realms are displayed in table format that is responsive showing details relevant to display size. Both products and realms can be managed separately here.
 
-    - #### Creating a product
+    - ### Products
+    | Products |
+    | :---: |
+    | ![Products](documentation/features/dashboard/product_admin/products.png "Products") |
 
-        When the green plus icon button is clicked, a prompt is displayed with the input form to create a new product with the following fields:
-        - Name
-        - Realm
-        - Description
-        - Price
-        - Stock
+    When the green plus icon is clicked, a prompt is displayed with the input form to create a new product with the following fields:
+    - Name
+    - Realm
+    - Description
+    - Price
+    - Stock
 
-        All the above criteria are required to create a new product, additionally the product can be set as unique via the checkbox and an image can be uploaded using the 'Select New Image' button.
-        
-        Any selected image will then be shown and if no image is selected, a placeholder is used.
-
-        If adding a new product requires the creation of a new realm, you can easily do so through the same form. Simply select ‘Add New Realm’ in the realm selector. This will reveal an input field for entering the new realm’s name. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
-
-        The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile Product Creation | Desktop Product Creation |
-        | :---: | :---: |
-        | ![Mobile Product Creation](documentation/features/dashboard/product_admin/mobile_product_add.png "Mobile product creation") | ![Desktop Product Creation](documentation/features/dashboard/product_admin/desktop_product_add.png "Desktop product creation") |
-
-    - #### Updating a product
-
-        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
-
-        The user can then save the product by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile Product Update | Desktop Product Update |
-        | :---: | :---: |
-        | ![Mobile Product Update](documentation/features/dashboard/product_admin/mobile_product_update.png "Mobile product update") | ![Desktop Product Update](documentation/features/dashboard/product_admin/desktop_product_update.png "Desktop product update") |
-
-    - #### Deleting a product
-
-        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
-
-        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile Product Delete | Desktop Product Delete |
-        | :---: | :---: |
-        | ![Mobile Product Delete](documentation/features/dashboard/product_admin/mobile_product_delete.png "Mobile product delete") | ![Desktop Product Delete](documentation/features/dashboard/product_admin/desktop_product_delete.png "Desktop product delete") |
-
-    - #### Creating a realm
-
-        Tapping/clicking on the green plus icon button in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
-
-        The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile Realm Creation | Desktop Realm Creation |
-        | :---: | :---: |
-        | ![Mobile Realm Creation](documentation/features/dashboard/product_admin/mobile_realm_add.png "Mobile realm creation") | ![Desktop Realm Creation](documentation/features/dashboard/product_admin/desktop_realm_add.png "Desktop realm creation") |
+    All the above criteria are required to create a new product, additionally the product can be set as unique via the checkbox and an image can be uploaded using the 'Select New Image' button.
     
-    - #### Updating a realm
+    Any selected image will then be shown and if no image is selected, a placeholder is used.
 
-        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
+    If adding a new product requires the creation of a new realm, you can easily do so through the same form. Simply select ‘Add New Realm’ in the realm selector. This will reveal an input field for entering the new realm’s name. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
-        The user can then save the realm by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
-        | Mobile Realm Update | Desktop Realm Update |
-        | :---: | :---: |
-        | ![Mobile Realm Update](documentation/features/dashboard/product_admin/mobile_realm_update.png "Mobile realm update") | ![Desktop Realm Update](documentation/features/dashboard/product_admin/desktop_realm_update.png "Desktop realm update") |
+    | Mobile Product Creation | Desktop Product Creation |
+    | :---: | :---: |
+    | ![Mobile Product Creation](documentation/features/dashboard/product_admin/mobile_product_add.png "Mobile product creation") | ![Desktop Product Creation](documentation/features/dashboard/product_admin/desktop_product_add.png "Desktop product creation") |
 
-    - #### Deleting a realm
+    When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 
-        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
+    The user can then save the product by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
-        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    | Mobile Product Update | Desktop Product Update |
+    | :---: | :---: |
+    | ![Mobile Product Update](documentation/features/dashboard/product_admin/mobile_product_update.png "Mobile product update") | ![Desktop Product Update](documentation/features/dashboard/product_admin/desktop_product_update.png "Desktop product update") |
 
-        | Mobile Realm Delete | Desktop Realm Delete |
-        | :---: | :---: |
-        | ![Mobile Realm Delete](documentation/features/dashboard/product_admin/mobile_realm_delete.png "Mobile realm delete") | ![Desktop Realm Delete](documentation/features/dashboard/product_admin/desktop_realm_delete.png "Desktop realm delete") |
+    When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
+
+    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Product Delete | Desktop Product Delete |
+    | :---: | :---: |
+    | ![Mobile Product Delete](documentation/features/dashboard/product_admin/mobile_product_delete.png "Mobile product delete") | ![Desktop Product Delete](documentation/features/dashboard/product_admin/desktop_product_delete.png "Desktop product delete") |
+
+    - ### Realms
+    | Realms |
+    | :---: |
+    | ![Realms](documentation/features/dashboard/product_admin/realms.png "Realms") |
+
+    Tapping/clicking on the green plus icon in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
+
+    The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Realm Creation | Desktop Realm Creation |
+    | :---: | :---: |
+    | ![Mobile Realm Creation](documentation/features/dashboard/product_admin/mobile_realm_add.png "Mobile realm creation") | ![Desktop Realm Creation](documentation/features/dashboard/product_admin/desktop_realm_add.png "Desktop realm creation") |
+    
+    When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
+
+    The user can then save the realm by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Realm Update | Desktop Realm Update |
+    | :---: | :---: |
+    | ![Mobile Realm Update](documentation/features/dashboard/product_admin/mobile_realm_update.png "Mobile realm update") | ![Desktop Realm Update](documentation/features/dashboard/product_admin/desktop_realm_update.png "Desktop realm update") |
+
+    When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
+
+    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Realm Delete | Desktop Realm Delete |
+    | :---: | :---: |
+    | ![Mobile Realm Delete](documentation/features/dashboard/product_admin/mobile_realm_delete.png "Mobile realm delete") | ![Desktop Realm Delete](documentation/features/dashboard/product_admin/desktop_realm_delete.png "Desktop realm delete") |
 
     ### FAQ Admin
-    The FAQs and topics are displayed in table format that is responsive showing details relevant to display size. Both FAQs and topics can be managed separately here. To create a new FAQ or topic the user can tap/click on the green plus button at the right hand side of the relevant table header. To update a FAQ or topic the yellow edit button can be tapped/clicked, and to delete a FAQ or topic the red bin button can be tapped/clicked.
+    The FAQs and topics are displayed in table format that is responsive showing details relevant to display size. Both FAQs and topics can be managed separately here.
 
-    - ### Creating a FAQ
+    - ### FAQs
+    | FAQs |
+    | :---: |
+    | ![FAQs](documentation/features/dashboard/faq_admin/faqs.png "FAQs") |
 
-        When the green plus icon button is clicked, a prompt is displayed with the input form to create a new FAQ with the following fields:
-        - Topic
-        - Question
-        - Answer
+    To create a a FAQ the green plus icon is tapped/clicked, a prompt is displayed with the input form to create a new FAQ with the following fields:
+    - Topic
+    - Question
+    - Answer
 
-        All the above criteria are required to create a new FAQ
-        
-        If adding a new FAQ requires the creation of a new topic, you can easily do so through the same form. Simply select ‘Add New Topic' in the topic selector. This will reveal an input field for entering the new topic.
-
-        The user can then save the new FAQ by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile FAQ Creation | Desktop FAQ Creation |
-        | :---: | :---: |
-        | ![Mobile FAQ Creation](documentation/features/dashboard/faq_admin/mobile_faq_add.png "Mobile faq creation") | ![Desktop FAQ Creation](documentation/features/dashboard/faq_admin/desktop_faq_add.png "Desktop faq creation") |
+    All the above criteria are required to create a new FAQ
     
-    - ### Updating a FAQ
+    If adding a new FAQ requires the creation of a new topic, you can easily do so through the same form. Simply select ‘Add New Topic' in the topic selector. This will reveal an input field for entering the new topic.
 
-        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected FAQ details. These can be edited in the same manner as the creation of a new FAQ.
+    The user can then save the new FAQ by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
-        The user can then save the FAQ by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile FAQ Update | Desktop FAQ Update |
-        | :---: | :---: |
-        | ![Mobile FAQ Update](documentation/features/dashboard/faq_admin/mobile_faq_update.png "Mobile faq update") | ![Desktop FAQ Update](documentation/features/dashboard/faq_admin/desktop_faq_update.png "Desktop faq update") |
-
-    - ### Deleting a FAQ
-
-        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected FAQ.
-
-        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile FAQ Delete | Desktop FAQ Delete |
-        | :---: | :---: |
-        | ![Mobile FAQ Delete](documentation/features/dashboard/faq_admin/mobile_faq_delete.png "Mobile faq delete") | ![Desktop FAQ Delete](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "Desktop faq delete") |
-
-    - ### Creating a topic
-
-        Tapping/clicking on the green plus icon button in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
-
-        The user can then save the new topic by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
-
-        | Mobile Topic Creation | Desktop Topic Creation |
-        | :---: | :---: |
-        | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
+    | Mobile FAQ Creation | Desktop FAQ Creation |
+    | :---: | :---: |
+    | ![Mobile FAQ Creation](documentation/features/dashboard/faq_admin/mobile_faq_add.png "Mobile faq creation") | ![Desktop FAQ Creation](documentation/features/dashboard/faq_admin/desktop_faq_add.png "Desktop faq creation") |
     
-    - ### Updating a topic
+    To update a FAQ the yellow edit icon is tapped/clicked. A prompt is displayed prefilled with the selected FAQ details. These can be edited in the same manner as the creation of a new FAQ.
 
-        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected topic details. These can be edited in the same manner as the creation of a new topic. The user will also be informed of how many FAQs will be affected by this change.
+    The user can then save the FAQ by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
-        The user can then save the topic by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    | Mobile FAQ Update | Desktop FAQ Update |
+    | :---: | :---: |
+    | ![Mobile FAQ Update](documentation/features/dashboard/faq_admin/mobile_faq_update.png "Mobile faq update") | ![Desktop FAQ Update](documentation/features/dashboard/faq_admin/desktop_faq_update.png "Desktop faq update") |
 
-        | Mobile Topic Update | Desktop Topic Update |
-        | :---: | :---: |
-        | ![Mobile Topic Update](documentation/features/dashboard/faq_admin/mobile_topic_update.png "Mobile topic update") | ![Desktop Topic Update](documentation/features/dashboard/faq_admin/desktop_topic_update.png "Desktop topic update") |
+    To delete a FAQ the red bin icon is tapped/clicked. A prompt is displayed asking the user to confirm the deletion of the selected FAQ.
 
-    - ### Deleting a topic
+    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
-        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected topic. The user will also be informed of how many FAQs will be affected by this deletion.
+    | Mobile FAQ Delete | Desktop FAQ Delete |
+    | :---: | :---: |
+    | ![Mobile FAQ Delete](documentation/features/dashboard/faq_admin/mobile_faq_delete.png "Mobile faq delete") | ![Desktop FAQ Delete](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "Desktop faq delete") |
 
-        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    - ### FAQ Topics
+    | FAQ Topics |
+    | :---: |
+    | ![FAQ Topics](documentation/features/dashboard/faq_admin/topics.png "FAQ Topics") |
 
-        | Mobile Topic Delete | Desktop Topic Delete |
-        | :---: | :---: |
-        | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
+    Tapping/clicking on the green plus icon in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
+
+    The user can then save the new topic by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Topic Creation | Desktop Topic Creation |
+    | :---: | :---: |
+    | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
+
+    To update a topic the user taps/clicks on the yellow edit icon. A prompt is displayed prefilled with the selected topic details. These can be edited in the same manner as the creation of a new topic. The user will also be informed of how many FAQs will be affected by this change.
+
+    The user can then save the topic by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Topic Update | Desktop Topic Update |
+    | :---: | :---: |
+    | ![Mobile Topic Update](documentation/features/dashboard/faq_admin/mobile_topic_update.png "Mobile topic update") | ![Desktop Topic Update](documentation/features/dashboard/faq_admin/desktop_topic_update.png "Desktop topic update") |
+
+    When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected topic. The user will also be informed of how many FAQs will be affected by this deletion.
+
+    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+    | Mobile Topic Delete | Desktop Topic Delete |
+    | :---: | :---: |
+    | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
 
     ### Message Admin
     Messages are grouped into two sections:
@@ -896,9 +892,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     If the message has been replied to the additional information is visible:
     - Date the reply was sent
-    - Reply content
+    - Reply content<br><br>
 
-    To reply to a message the yellow reply icon button is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by tapping/clicking on the 'Reply' button or cancel and return to the dashboard by tapping/clicking on the 'Cancel' or modal close buttons.
+    | Messages |
+    | :---: |
+    | ![Messages](documentation/features/dashboard/message_admin/messages.png "Messages") |
+
+    To reply to a message the yellow reply icon is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by tapping/clicking on the 'Reply' button or cancel and return to the dashboard by tapping/clicking on the 'Cancel' or modal close buttons.
 
     | Mobile Message Reply | Desktop Message Reply |
     | :---: | :---: |
@@ -917,7 +917,64 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Mobile Message Delete](documentation/features/dashboard/message_admin/mobile_message_delete.png "Mobile message delete") | ![Desktop Message Delete](documentation/features/dashboard/message_admin/desktop_message_delete.png "Desktop message delete") |
 
     ### Newsletter Admin
+    The newsletter admin page is split into two sections:
 
+    - ### Newsletters
+    Staff can see a list of previously sent newsletters which they can view and delete. They can also create and send a newsletter.
+
+    | Newsletters |
+    | :---: |
+    | ![Newsletters](documentation/features/dashboard/newsletter_admin/newsletters.png "Newsletters") |
+
+    To create a newsletter the green plus icon is clicked. A prompt is then displayed with the input form to create a newsletter with the following fields:
+    - Subject
+    - ... (for content)
+
+    To send the newsletter the user taps/clicks on the 'Send' button. An email is then sent to every active subscriber in the list. Newsletter creation can also be cancelled using the 'Cancel' or modal close button to return to the dashboard.
+
+    | Mobile Newsletter Creation | Desktop Newsletter Creation |
+    | :---: | :---: |
+    | ![Mobile Newsletter Creation](documentation/features/dashboard/newsletter_admin/mobile_newsletter_send.png "Mobile newsletter send") | ![Desktop Newsletter Send](documentation/features/dashboard/newsletter_admin/desktop_newsletter_send.png "Desktop Newsletter Send") |
+
+    | Example Newsletter |
+    | :---: |
+    | ![Example Newsletter](documentation/features/support_pages/example_newsletter.png "Example Newsletter") |
+
+    Previously sent newsletters can also be viewed by tapping/clicking on the blue open icon next to each newsletter. This will open the newsletter in a prompt. This can be closed with the 'Close' or modal close button to return to the dashboard.
+
+    | Mobile Newsletter View | Desktop Newsletter View |
+    | :---: | :---: |
+    | ![Mobile Newsletter View](documentation/features/dashboard/newsletter_admin/mobile_newsletter_view.png "Mobile newsletter view") | ![Desktop Newsletter View](documentation/features/dashboard/newsletter_admin/desktop_newsletter_view.png "Desktop newsletter view") |
+
+    Newsletters can also be deleted by tapping/clicking on the red bin icon. A prompt will be displayed to confirm the deletion. To confirm deletion the user must tap/click on the 'Delete' button. This can be cancelled with the 'Cancel' or modal close buttons to return to the dashboard.
+
+    | Mobile Newsletter Delete | Desktop Newsletter Delete |
+    | :---: | :---: |
+    | ![Mobile Newsletter Delete](documentation/features/dashboard/newsletter_admin/mobile_newsletter_delete.png "Mobile newsletter delete") | ![Desktop Newsletter Delete](documentation/features/dashboard/newsletter_admin/desktop_newsletter_delete.png "Desktop newsletter delete") |
+
+    - ### Subscribers
+    Staff can see the list of subscribers and their current status. This will be one of the following:
+
+    - **ACTIVE**: The user has confirmed their subscription by clicking on the link in the email sent to them when signing up. They will receive newsletters.
+    - **PENDING**: The user has not yet confirmed their subscription by clicking on the link. The token to activate their subscription is still valid. They will not recieve newsletters until they confirm their subscription.
+    - **EXPIRED**: The user has not yet confirmed their subscription and the token has expired.<br><br>
+
+    | Subscribers |
+    | :---: |
+    | ![Subscribers](documentation/features/dashboard/newsletter_admin/subscribers.png "Subscribers") |
+
+    Staff members can remove individual subscribers by tapping/clicking the red bin icon next to their email address. A confirmation prompt will appear, displaying their current status. To proceed with removal, select ‘Remove.’ To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
+
+    |  | Remove Active Subscriber | Remove Pending Subscriber | Remove Expired Subscriber |
+    | :---: | :---: | :---: | :---: |
+    | Mobile | ![Mobile Remove Active Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_active.png "Mobile remove active subscriber") | ![Mobile Remove Pending Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_pending.png "Mobile remove pending subscriber") | ![Mobile Remove Expired Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_expired.png "Mobile remove expired subscriber") |
+    | Desktop | ![Desktop Remove Active Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_active.png "Desktop remove active subscriber") | ![Desktop Remove Pending Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_pending.png "Desktop remove pending subscriber") | ![Desktop Remove Expired Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_expired.png "Desktop remove expired subscriber") |
+
+    Staff members can also clear all current expired subscribers by tapping/clicking on the 'Clear Expired Subscribers' button. This will display a prompt listing all emails that are expired. To confirm removal the 'Clear' button can be tapped/clicked. To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
+
+    | Mobile Clear Expired | Desktop Clear Expired |
+    | :---: | :---: |
+    | ![Mobile Clear Expires Subscribers](documentation/features/dashboard/newsletter_admin/mobile_clear_expired.png "Mobile clear expired subscribers") | ![Desktop Clear Expired Subscribers](documentation/features/dashboard/newsletter_admin/desktop_clear_expired.png "Desktop clear expired subscribers") |
 
 - ### Super User Privileges
 
