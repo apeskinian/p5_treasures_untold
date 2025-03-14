@@ -740,7 +740,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     ### Product Admin
     The products and realms are displayed in table format that is responsive showing details relevant to display size. Both products and realms can be managed separately here. To create a new product or realm the user can tap/click on the green plus button at the right hand side of the relevant table header. To update a product or realm the yellow edit button can be tapped/clicked, and to delete a product or realm the red bin button can be tapped/clicked.
 
-    - **Creating a product**
+    - #### Creating a product
 
         When the green plus icon button is clicked, a modal is displayed with the input form to create a new product with the following fields:
         - Name
@@ -761,7 +761,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Mobile Product Creation](documentation/features/dashboard/product_admin/mobile_product_add.png "Mobile product creation") | ![Desktop Product Creation](documentation/features/dashboard/product_admin/desktop_product_add.png "Desktop product creation") |
 
-    - **Updating a product**
+    - #### Updating a product
 
         When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 
@@ -771,7 +771,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Mobile Product Update](documentation/features/dashboard/product_admin/mobile_product_update.png "Mobile product update") | ![Desktop Product Update](documentation/features/dashboard/product_admin/desktop_product_update.png "Desktop product update") |
 
-    - **Deleting a product**
+    - #### Deleting a product
 
         When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
 
@@ -781,7 +781,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Mobile Product Delete](documentation/features/dashboard/product_admin/mobile_product_delete.png "Mobile product delete") | ![Desktop Product Delete](documentation/features/dashboard/product_admin/desktop_product_delete.png "Desktop product delete") |
 
-    - **Creating a realm**
+    - #### Creating a realm
 
         Tapping/clicking on the green plus icon button in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
@@ -791,7 +791,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Mobile Realm Creation](documentation/features/dashboard/product_admin/mobile_realm_add.png "Mobile realm creation") | ![Desktop Realm Creation](documentation/features/dashboard/product_admin/desktop_realm_add.png "Desktop realm creation") |
     
-    - **Updating a realm**
+    - #### Updating a realm
 
         When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
 
@@ -801,7 +801,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Mobile Realm Update](documentation/features/dashboard/product_admin/mobile_realm_update.png "Mobile realm update") | ![Desktop Realm Update](documentation/features/dashboard/product_admin/desktop_realm_update.png "Desktop realm update") |
 
-    - **Deleting a realm**
+    - #### Deleting a realm
 
         When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
 
@@ -810,6 +810,45 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | Mobile Realm Delete | Desktop Realm Delete |
         | :---: | :---: |
         | ![Mobile Realm Delete](documentation/features/dashboard/product_admin/mobile_realm_delete.png "Mobile realm delete") | ![Desktop Realm Delete](documentation/features/dashboard/product_admin/desktop_realm_delete.png "Desktop realm delete") |
+
+    ### FAQ Admin
+    The FAQs and topics are displayed in table format that is responsive showing details relevant to display size. Both FAQs and topics can be managed separately here. To create a new FAQ or topic the user can tap/click on the green plus button at the right hand side of the relevant table header. To update a FAQ or topic the yellow edit button can be tapped/clicked, and to delete a FAQ or topic the red bin button can be tapped/clicked.
+
+    - ### Creating a FAQ
+
+    | Mobile FAQ Creation | Desktop FAQ Creation |
+    | :---: | :---: |
+    | ![Mobile FAQ Creation](documentation/features/dashboard/faq_admin/mobile_faq_add.png "Mobile faq creation") | ![Desktop FAQ Creation](documentation/features/dashboard/faq_admin/desktop_faq_add.png "Desktop faq creation") |
+    
+    - ### Updating a FAQ
+
+    | Mobile FAQ Update | Desktop FAQ Update |
+    | :---: | :---: |
+    | ![Mobile FAQ Update](documentation/features/dashboard/faq_admin/mobile_faq_update.png "Mobile faq update") | ![Desktop FAQ Update](documentation/features/dashboard/faq_admin/desktop_faq_update.png "Desktop faq update") |
+
+    - ### Deleting a FAQ
+
+    | Mobile FAQ Delete | Desktop FAQ Delete |
+    | :---: | :---: |
+    | ![Mobile FAQ Delete](documentation/features/dashboard/faq_admin/mobile_faq_delete.png "Mobile faq delete") | ![Desktop FAQ Delete](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "Desktop faq delete") |
+
+    - ### Creating a topic
+
+    | Mobile Topic Creation | Desktop Topic Creation |
+    | :---: | :---: |
+    | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
+    
+    - ### Updating a topic
+
+    | Mobile Topic Update | Desktop Topic Update |
+    | :---: | :---: |
+    | ![Mobile Topic Update](documentation/features/dashboard/faq_admin/mobile_topic_update.png "Mobile topic update") | ![Desktop Topic Update](documentation/features/dashboard/faq_admin/desktop_topic_update.png "Desktop topic update") |
+
+    - ### Deleting a topic
+
+    | Mobile Topic Delete | Desktop Topic Delete |
+    | :---: | :---: |
+    | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
 
 - ### Super User Privileges
 
