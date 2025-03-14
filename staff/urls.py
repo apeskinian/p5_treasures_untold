@@ -91,9 +91,16 @@ urlpatterns = [
 
     # View to reply to a message.
     path(
-        'reply_to_message/<int:message_id>/',
-        views.reply_to_message,
-        name='reply_to_message'
+        'manage_message/<int:message_id>/',
+        views.manage_message,
+        name='manage_message'
+    ),
+
+    # View to delete a message.
+    path(
+        'manage_message/<int:message_id>/<str:delete>/',
+        views.manage_message,
+        name='manage_message'
     ),
 
     # View to remove a specific subscriber.

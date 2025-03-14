@@ -133,30 +133,37 @@
                                 </p>
                             {% endif %}
                         {% elif active_tab == 'Realm' %}
-                                {% if form %}
-                                    {{ form.name | as_crispy_field }}
-                                    <div class="d-flex flex-column align-items-center">
-                                        {{ form.the_prefix_required | as_crispy_field }}
-                                    </div>
-                                        {% if mode == 'Update' %}
-                                            <p class="text-center">
-                                                <strong>Note: </strong>
-                                                {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
-                                                product{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this action.
-                                            </p>
-                                        {% endif %}
-                                {% elif to_delete %}
-                                    <div class="text-center">
-                                        <p>Are you sure you want to delete <strong>{{ to_delete.display_name }}</strong>?</p>
-                                        <p>
+                            {% if form %}
+                                {{ form.name | as_crispy_field }}
+                                <div class="d-flex flex-column align-items-center">
+                                    {{ form.the_prefix_required | as_crispy_field }}
+                                </div>
+                                    {% if mode == 'Update' %}
+                                        <p class="text-center">
                                             <strong>Note: </strong>
                                             {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
-                                            product{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this.<br>(This cannot be undone.)
+                                            product{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this action.
                                         </p>
-                                    </div>  
-                                {% endif %}
+                                    {% endif %}
+                            {% elif to_delete %}
+                                <div class="text-center">
+                                    <p>Are you sure you want to delete <strong>{{ to_delete.display_name }}</strong>?</p>
+                                    <p>
+                                        <strong>Note: </strong>
+                                        {% if associated == 0 %}No{% else %}{{ associated }}{% endif%}
+                                        product{% if associated > 1 or associated == 0 %}s{% endif %} will be affected by this.<br>(This cannot be undone.)
+                                    </p>
+                                </div>  
+                            {% endif %}
                         {% elif active_tab == 'Message' %}
-                            {{ form | crispy }}                                
+                            {% if form %}
+                                {{ form | crispy }}
+                            {% elif to_delete %}
+                                <p class="text-center">
+                                    Are you sure you want to delete the message from <strong>{{ to_delete.name }}</strong>?
+                                    <br>(This cannot be undone.)
+                                </p>
+                            {% endif %}
                         {% elif active_tab == 'Newsletter' %}
                             {% if form %}
                                 {{ form | crispy }}

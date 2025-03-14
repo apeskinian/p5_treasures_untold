@@ -131,9 +131,10 @@ td.text-end {
     border-radius: 10px;
 }
 
-.btn-reply {
-    height: 38px;
-    width: 75px;
+.message-email {
+    max-width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 .clear-btn-container {

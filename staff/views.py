@@ -602,14 +602,16 @@ def manage_realm(request, delete=None, realm_id=None):
 
 
 @staff_member_required
-def reply_to_message(request, message_id):
+def manage_message(request, message_id, delete=None):
     """
-    View to manage contact messages. Staff members can view and reply to
-    instances of :model:`support.ContactMessage` created via the contact us
-    suport page.
+    View to manage contact messages. Staff members can view, reply to
+    and delete instances of :model:`support.ContactMessage` created via the
+    contact us support page.
 
     **Arguments:**
     - `request`: The HTTP request.
+    - `delete` (optional): Whether the request is to delete the specified
+        message instance.
     - `message_id`: The ID of an existing :model:`support.ContactMessage` to
         reply to.
 
@@ -618,8 +620,11 @@ def reply_to_message(request, message_id):
     - `contact_messages`: Queryset of :model:`support.ContactMessage`
     - `mode`: Set to 'Reply' for dynamically setting modal.
     - `return_url`: Set to return to the dashboard with the Message tab active.
-    - `form`: Instance of :form:`support.ContactReplyForm`
     - `title`: String to dynamically set the H1 page heading.
+    - `to_delete` (if mode is 'Delete'): Instance of
+        :model:`support.ContactMessage`
+    - `form` (if mode is not 'Delete'): Instance of
+        :form:`support.ContactReplyForm`
 
     **Template:**
     - :template:`staff/dashboard.html`
@@ -631,28 +636,39 @@ def reply_to_message(request, message_id):
     """
     # Set variables for the method.
     contact_messages = ContactMessage.objects.all()
-    mode = 'Reply'
+    mode = (
+        'Delete' if delete and message_id else 'Reply'
+    )
     return_url = f"{reverse('dashboard')}?tab=Message"
     message = get_object_or_404(ContactMessage, pk=message_id)
 
     # Process request.
     if request.method == 'POST':
-        form = ContactReplyForm(request.POST, instance=message)
-        if form.is_valid:
-            message.date_replied = date.today()
-            message.replied = True
-            message_reply = form.save()
-            messages.success(request, 'Reply sent')
-            sendMessageReplyEmail(
-                message_reply,
-                request,
-            )
-            return redirect(return_url)
+        if delete:
+            try:
+                message.delete()
+                messages.success(request, 'Message deleted')
+                return redirect(return_url)
+            except Exception as e:
+                messages.error(request, f'Error deleting message: {e}')
+                return redirect(return_url)
         else:
-            messages.error(
-                request,
-                'Failed to send reply, please ensure form is valid'
-            )
+            form = ContactReplyForm(request.POST, instance=message)
+            if form.is_valid:
+                message.date_replied = date.today()
+                message.replied = True
+                message_reply = form.save()
+                messages.success(request, 'Reply sent')
+                sendMessageReplyEmail(
+                    message_reply,
+                    request,
+                )
+                return redirect(return_url)
+            else:
+                messages.error(
+                    request,
+                    'Failed to send reply, please ensure form is valid'
+                )
     else:
         form = ContactReplyForm(instance=message)
 
@@ -663,9 +679,12 @@ def reply_to_message(request, message_id):
         'contact_messages': contact_messages,
         'mode': mode,
         'return_url': return_url,
-        'form': form,
         'title': 'Staff Dashboard'
     }
+    if mode == 'Delete':
+        context['to_delete'] = message
+    else:
+        context['form'] = form
 
     return render(request, template, context)
 
