@@ -742,7 +742,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - #### Creating a product
 
-        When the green plus icon button is clicked, a modal is displayed with the input form to create a new product with the following fields:
+        When the green plus icon button is clicked, a prompt is displayed with the input form to create a new product with the following fields:
         - Name
         - Realm
         - Description
@@ -765,7 +765,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 
-        The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+        The user can then save the product by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
         | Mobile Product Update | Desktop Product Update |
         | :---: | :---: |
@@ -775,7 +775,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
 
-        The user can the confrim the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
         | Mobile Product Delete | Desktop Product Delete |
         | :---: | :---: |
@@ -795,7 +795,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
 
-        The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+        The user can then save the realm by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
         | Mobile Realm Update | Desktop Realm Update |
         | :---: | :---: |
@@ -805,7 +805,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
 
-        The user can the confrim the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
         | Mobile Realm Delete | Desktop Realm Delete |
         | :---: | :---: |
@@ -816,39 +816,70 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - ### Creating a FAQ
 
-    | Mobile FAQ Creation | Desktop FAQ Creation |
-    | :---: | :---: |
-    | ![Mobile FAQ Creation](documentation/features/dashboard/faq_admin/mobile_faq_add.png "Mobile faq creation") | ![Desktop FAQ Creation](documentation/features/dashboard/faq_admin/desktop_faq_add.png "Desktop faq creation") |
+        When the green plus icon button is clicked, a prompt is displayed with the input form to create a new FAQ with the following fields:
+        - Topic
+        - Question
+        - Answer
+
+        All the above criteria are required to create a new FAQ
+        
+        If adding a new FAQ requires the creation of a new topic, you can easily do so through the same form. Simply select ‘Add New Topic' in the topic selector. This will reveal an input field for entering the new topic.
+
+        The user can then save the new FAQ by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile FAQ Creation | Desktop FAQ Creation |
+        | :---: | :---: |
+        | ![Mobile FAQ Creation](documentation/features/dashboard/faq_admin/mobile_faq_add.png "Mobile faq creation") | ![Desktop FAQ Creation](documentation/features/dashboard/faq_admin/desktop_faq_add.png "Desktop faq creation") |
     
     - ### Updating a FAQ
 
-    | Mobile FAQ Update | Desktop FAQ Update |
-    | :---: | :---: |
-    | ![Mobile FAQ Update](documentation/features/dashboard/faq_admin/mobile_faq_update.png "Mobile faq update") | ![Desktop FAQ Update](documentation/features/dashboard/faq_admin/desktop_faq_update.png "Desktop faq update") |
+        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected FAQ details. These can be edited in the same manner as the creation of a new FAQ.
+
+        The user can then save the FAQ by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile FAQ Update | Desktop FAQ Update |
+        | :---: | :---: |
+        | ![Mobile FAQ Update](documentation/features/dashboard/faq_admin/mobile_faq_update.png "Mobile faq update") | ![Desktop FAQ Update](documentation/features/dashboard/faq_admin/desktop_faq_update.png "Desktop faq update") |
 
     - ### Deleting a FAQ
 
-    | Mobile FAQ Delete | Desktop FAQ Delete |
-    | :---: | :---: |
-    | ![Mobile FAQ Delete](documentation/features/dashboard/faq_admin/mobile_faq_delete.png "Mobile faq delete") | ![Desktop FAQ Delete](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "Desktop faq delete") |
+        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected FAQ.
+
+        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile FAQ Delete | Desktop FAQ Delete |
+        | :---: | :---: |
+        | ![Mobile FAQ Delete](documentation/features/dashboard/faq_admin/mobile_faq_delete.png "Mobile faq delete") | ![Desktop FAQ Delete](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "Desktop faq delete") |
 
     - ### Creating a topic
 
-    | Mobile Topic Creation | Desktop Topic Creation |
-    | :---: | :---: |
-    | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
+        Tapping/clicking on the green plus icon button in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
+
+        The user can then save the new topic by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Topic Creation | Desktop Topic Creation |
+        | :---: | :---: |
+        | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
     
     - ### Updating a topic
 
-    | Mobile Topic Update | Desktop Topic Update |
-    | :---: | :---: |
-    | ![Mobile Topic Update](documentation/features/dashboard/faq_admin/mobile_topic_update.png "Mobile topic update") | ![Desktop Topic Update](documentation/features/dashboard/faq_admin/desktop_topic_update.png "Desktop topic update") |
+        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected topic details. These can be edited in the same manner as the creation of a new topic. The user will also be informed of how many FAQs will be affected by this change.
+
+        The user can then save the topic by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Topic Update | Desktop Topic Update |
+        | :---: | :---: |
+        | ![Mobile Topic Update](documentation/features/dashboard/faq_admin/mobile_topic_update.png "Mobile topic update") | ![Desktop Topic Update](documentation/features/dashboard/faq_admin/desktop_topic_update.png "Desktop topic update") |
 
     - ### Deleting a topic
 
-    | Mobile Topic Delete | Desktop Topic Delete |
-    | :---: | :---: |
-    | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
+        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected topic. The user will also be informed of how many FAQs will be affected by this deletion.
+
+        The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Topic Delete | Desktop Topic Delete |
+        | :---: | :---: |
+        | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
 
 - ### Super User Privileges
 
