@@ -763,7 +763,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - **Updating a product**
 
-        When the yellow edit icon button is tapped/clicked, a modal is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
+        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 
         The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -773,7 +773,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - **Deleting a product**
 
-        When the red bin icon button is tapped/clicked, a modal is displayed asking the user to confirm the deletion of the selected product.
+        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
 
         The user can the confrim the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -781,9 +781,35 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Mobile Product Delete](documentation/features/dashboard/product_admin/mobile_product_delete.png "Mobile product delete") | ![Desktop Product Delete](documentation/features/dashboard/product_admin/desktop_product_delete.png "Desktop product delete") |
 
+    - **Creating a realm**
 
+        Tapping/clicking on the green plus icon button in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
- 
+        The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Realm Creation | Desktop Realm Creation |
+        | :---: | :---: |
+        | ![Mobile Realm Creation](documentation/features/dashboard/product_admin/mobile_realm_add.png "Mobile realm creation") | ![Desktop Realm Creation](documentation/features/dashboard/product_admin/desktop_realm_add.png "Desktop realm creation") |
+    
+    - **Updating a realm**
+
+        When the yellow edit icon button is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
+
+        The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Realm Update | Desktop Realm Update |
+        | :---: | :---: |
+        | ![Mobile Realm Update](documentation/features/dashboard/product_admin/mobile_realm_update.png "Mobile realm update") | ![Desktop Realm Update](documentation/features/dashboard/product_admin/desktop_realm_update.png "Desktop realm update") |
+
+    - **Deleting a realm**
+
+        When the red bin icon button is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
+
+        The user can the confrim the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Realm Delete | Desktop Realm Delete |
+        | :---: | :---: |
+        | ![Mobile Realm Delete](documentation/features/dashboard/product_admin/mobile_realm_delete.png "Mobile realm delete") | ![Desktop Realm Delete](documentation/features/dashboard/product_admin/desktop_realm_delete.png "Desktop realm delete") |
 
 - ### Super User Privileges
 
