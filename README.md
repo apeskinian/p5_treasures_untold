@@ -211,6 +211,7 @@ The action buttons are grouped by colour for specific types of action. This shou
     | ![Clock Rotating Left](documentation/ux/clock-rotate-left-solid.svg) | [clock-rotate-left](https://fontawesome.com/icons/clock-rotate-left?f=classic&s=solid "font awesome link") | Delivery window timer in product views |
     | ![Pen to Square](documentation/ux/pen-to-square-solid.svg) | [pen-to-square](https://fontawesome.com/icons/pen-to-square?f=classic&s=solid "font awesome link") | Edit buttons |
     | ![Paper Plane](documentation/ux/paper-plane-solid.svg) | [paper-plane](https://fontawesome.com/icons/paper-plane?f=classic&s=solid "font awesome link") | Newsletter sign up submit button |
+    | ![Reply](documentation/ux/reply-solid.svg) | [paper-plane](https://fontawesome.com/icons/reply?f=classic&s=solid "font awesome link") | Reply to message submit button |
 
 
 ## User Stories
@@ -723,14 +724,12 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile 500](documentation/features/error_pages/mobile_500.png "Mobile 500 Page") | ![Desktop 500](documentation/features/error_pages/desktop_500.png "Desktop 500 Page") |
 
-**WIP UNDER THIS LINE**
-
 - ### Staff Dashboard
     The staff dashboard is an area of the site with access reserved for users with a level of **staff** or **super user**. This is where shop owners can manage the day to day admin of the site, the page is split into four sections:
-    - **Product Admin**: This is where products can be created, updated and deleted. Product realms can also be managed here too.
-    - **FAQ Admin**: FAQs can be created, updated and deleted here, including FAQ topics.
-    - **Message Admin**: This is where messages sent via the contact us page can be viewed. Staff members can also send an initial reply to the message.
-    - **Newsletter Admin**: Staff can create and send newsletters here, they can also read and delete previously sent newsletters. The current list of subscribers and their status is also manageable here.<br><br>
+    - [Product Admin](#product-admin): This is where products can be created, updated and deleted. Product realms can also be managed here too.
+    - [FAQ Admin](#faq-admin): FAQs can be created, updated and deleted here, including FAQ topics.
+    - [Message Admin](#message-admin): This is where messages sent via the contact us page can be viewed, replied to and deleted.
+    - [Newsletter Admin](#newsletter-admin): Staff can create and send newsletters here, they can also read and delete previously sent newsletters. The current list of subscribers and their status is also manageable here.<br><br>
 
     |  | Product Admin | FAQ Admin | Message Admin | Newsletter Admin |
     | --- | --- | --- | --- | --- |
@@ -880,6 +879,34 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | Mobile Topic Delete | Desktop Topic Delete |
         | :---: | :---: |
         | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
+
+    ### Message Admin
+    Messages are grouped into two sections:
+    - Unreplied
+    - Replied
+
+    The unreplied messages are shown at the top and are also ordered chronologically with the oldest messages at the top. This gives the staff a clear indication of which messages need replying to.
+
+    Each message pane show the following information:
+    - Unique ticket number
+    - Name of sender
+    - Email address of sender
+    - Date the message was received
+    - Message content
+
+    If the message has been replied to the additional information is visible:
+    - Date the reply was sent
+    - Reply content
+
+    To reply to a message the yellow reply icon button is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by tapping/clicking on the 'Reply' button or cancel and return to the dashboard by tapping/clicking on the 'Cancel' or modal close buttons.
+
+    Once a message reply has been created, an email will be sent to the original user who created the message and the message will be updated in the dashboard to reflect the replied status.
+
+    To delete a message the red bin icon can be tapped/clicked. A prompt asking the user to confirm will be displayed. The can then either tap/click on 'Delete' to confirm or return to the dashboard with the 'Cancel' or model close button.
+
+
+    ### Newsletter Admin
+
 
 - ### Super User Privileges
 
