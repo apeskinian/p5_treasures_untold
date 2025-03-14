@@ -1,4 +1,7 @@
 from django.contrib import admin
+
+from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
+
 from .models import ContactMessage, Faqs, FaqsTopics, Newsletter, Subscriber
 
 
@@ -34,3 +37,8 @@ class SubscriberAdmin(admin.ModelAdmin):
         'email', 'date_joined'
     )
     ordering = ['-date_joined']
+
+
+admin.site.unregister(SocialToken)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialApp)

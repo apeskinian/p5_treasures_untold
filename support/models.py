@@ -163,7 +163,7 @@ class Newsletter(models.Model):
     - `__str__()`: Returns the newsletter subject as its string representation.
     """
     class Meta:
-        ordering = ['date_sent']
+        ordering = ['-date_sent']
 
     subject = models.CharField(max_length=254, null=False, blank=False)
     news_body = models.TextField()
