@@ -1,27 +1,27 @@
-{% if widget.is_initial %}
-    <div class="d-flex justify-content-center gap-5">
-        <div id="current-image-preview">
-            <p class="text-center"><strong>{{ widget.initial_text }}</strong></p>
-            <a href="{{ widget.value.url }}" target="_blank" aria-label="view larger image of {{ widget.value }}">
-                <img width="200" height="200" class="rounded shadow-sm" src="{{ widget.value.url }}" alt="{{ widget.value }}">
-            </a>
-            {% if not widget.required %}
-                <div class="custom-control custom-checkbox mt-2 text-center">
-                    <input class="custom-control-input" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
-                    <label class="custom-control-label text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
-                </div>
-            {% endif %}
-        </div>
-        <div id="new-image-preview" style="display: none;">
-            <p class="text-center"><strong>New Image</strong></p>
-            <img id="previewImage" src="" alt="Preview Image" width="200" height="200" class="rounded shadow-sm">
-            <p class="text-danger mt-2" id="filename"></p>
-        </div>
+<div class="d-flex justify-content-center flex-wrap gap-3">
+    {% if widget.is_initial %}
+    <div id="current-image-preview">
+        <p class="text-center"><strong>{{ widget.initial_text }}</strong></p>
+        <a href="{{ widget.value.url }}" target="_blank" aria-label="view larger image of {{ widget.value }}">
+            <img width="200" height="200" class="rounded shadow-sm" src="{{ widget.value.url }}" alt="{{ widget.value }}">
+        </a>
+        {% if not widget.required %}
+            <div class="custom-control custom-checkbox mt-2 text-center">
+                <input class="custom-control-input" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
+                <label class="custom-control-label text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+            </div>
+        {% endif %}
     </div>
     {{ widget.input_text }}
-{% endif %}
+    {% endif %}
+    <div id="new-image-preview" style="display: none;">
+        <p class="text-center"><strong>New Image</strong></p>
+        <img id="previewImage" src="" alt="Preview Image" width="200" height="200" class="rounded shadow-sm">
+        <p class="text-center text-danger mt-2" id="filename"></p>
+    </div>
+</div>
 <div class="d-flex justify-content-center">
-    <span id="btn-file-select" class="btn btn-blue btn-file mb-1 mt-2 w-25">
+    <span id="btn-file-select" class="btn btn-blue btn-file mt-2 w-50">
         Select New Image <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}" aria-label="select new image"{% include "django/forms/widgets/attrs.html" %}>
     </span>
 </div>

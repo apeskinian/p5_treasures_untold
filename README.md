@@ -726,6 +726,64 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 **WIP UNDER THIS LINE**
 
 - ### Staff Dashboard
+    The staff dashboard is an area of the site with access reserved for users with a level of **staff** or **super user**. This is where shop owners can manage the day to day admin of the site, the page is split into four sections:
+    - **Product Admin**: This is where products can be created, updated and deleted. Product realms can also be managed here too.
+    - **FAQ Admin**: FAQs can be created, updated and deleted here, including FAQ topics.
+    - **Message Admin**: This is where messages sent via the contact us page can be viewed. Staff members can also send an initial reply to the message.
+    - **Newsletter Admin**: Staff can create and send newsletters here, they can also read and delete previously sent newsletters. The current list of subscribers and their status is also manageable here.<br><br>
+
+    |  | Product Admin | FAQ Admin | Message Admin | Newsletter Admin |
+    | --- | --- | --- | --- | --- |
+    | Mobile | ![Mobile Product Admin](documentation/features/dashboard/mobile_product_admin.png "Mobile Product Admin") | ![Mobile FAQ Admin](documentation/features/dashboard/mobile_faq_admin.png "Mobile faq admin") | ![Mobile Message Admin](documentation/features/dashboard/mobile_message_admin.png "Mobile message admin") | ![Mobile Newsletter Admin](documentation/features/dashboard/mobile_newsletter_admin.png "Mobile newsletter admin") |
+    | Desktop | ![Desktop Product Admin](documentation/features/dashboard/desktop_product_admin.png "Dektop product admin") | ![Desktop FAQ Admin](documentation/features/dashboard/desktop_faq_admin.png "Desktop faq admin") | ![Desktop Message Admin](documentation/features/dashboard/desktop_message_admin.png "Desktop message admin") | ![Desktop Newsletter Admin](documentation/features/dashboard/desktop_newsletter_admin.png "Desktop newsletter admin") | 
+
+    ### Product Admin
+    The products and realms are displayed in table format that is responsive showing details relevant to display size. Both products and realms can be managed separately here. To create a new product or realm the user can tap/click on the green plus button at the right hand side of the relevant table header. To update a product or realm the yellow edit button can be tapped/clicked, and to delete a product or realm the red bin button can be tapped/clicked.
+
+    - **Creating a product**
+
+        When the green plus icon button is clicked, a modal is displayed with the input form to create a new product with the following fields:
+        - Name
+        - Realm
+        - Description
+        - Price
+        - Stock
+
+        All the above criteria are required to create a new product, additionally the product can be set as unique via the checkbox and an image can be uploaded using the 'Select New Image' button.
+        
+        Any selected image will then be shown and if no image is selected, a placeholder is used.
+
+        If adding a new product requires the creation of a new realm, you can easily do so through the same form. Simply select ‘Add New Realm’ in the realm selector. This will reveal an input field for entering the new realm’s name. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
+
+        The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Product Creation | Desktop Product Creation |
+        | :---: | :---: |
+        | ![Mobile Product Creation](documentation/features/dashboard/product_admin/mobile_product_add.png "Mobile product creation") | ![Desktop Product Creation](documentation/features/dashboard/product_admin/desktop_product_add.png "Desktop product creation") |
+
+    - **Updating a product**
+
+        When the yellow edit icon button is tapped/clicked, a modal is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
+
+        The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Product Update | Desktop Product Update |
+        | :---: | :---: |
+        | ![Mobile Product Update](documentation/features/dashboard/product_admin/mobile_product_update.png "Mobile product update") | ![Desktop Product Update](documentation/features/dashboard/product_admin/desktop_product_update.png "Desktop product update") |
+
+    - **Deleting a product**
+
+        When the red bin icon button is tapped/clicked, a modal is displayed asking the user to confirm the deletion of the selected product.
+
+        The user can the confrim the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+
+        | Mobile Product Delete | Desktop Product Delete |
+        | :---: | :---: |
+        | ![Mobile Product Delete](documentation/features/dashboard/product_admin/mobile_product_delete.png "Mobile product delete") | ![Desktop Product Delete](documentation/features/dashboard/product_admin/desktop_product_delete.png "Desktop product delete") |
+
+
+
+ 
 
 - ### Super User Privileges
 
