@@ -1004,7 +1004,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         | Mobile Basket Recovery | Desktop Basket Recovery |
         | --- | --- |
-        |  |  |
+        | ![Mobile Basket Recovery](documentation/features/admin_panel/mobile_admin_empty.png "Mobile basket recovery") | ![Desktop Basket Recovery](documentation/features/admin_panel/desktop_admin_empty.png "Desktop basket recovery") |
 
 - ### Communication to the User
 
