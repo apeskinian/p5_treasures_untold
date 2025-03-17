@@ -986,16 +986,25 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     ### Mainentance Methods
 
     - ### Product Restock
-
         Found in the product model settings, this method quickly sets the stock levels of all products selected. If the item is not unique, a default level of 50 is set, otherwise a level of 1 is set. This is primarily for any maintenance that requires testing of the checkout process where stock levels will be affected. As a lot of items are unique this has an impact of availability of stock.
 
         | Mobile Product Restock | Desktop Product Restock |
         | --- | --- |
         | ![Mobile Product Restock](documentation/features/admin_panel/mobile_admin_restock.png "Mobile product restock") | ![Desktop Product Restock](documentation/features/admin_panel/desktop_admin_restock.png "Desktop admin restock") |
 
+    - ### Deactivate Session Rewards
+        Found in the session settings, this removes any currently active rewards in the selected session.
 
-    
+        | Mobile Rewards Deactivation | Desktop Rewards Deactivation |
+        | --- | --- |
+        | ![Mobile Rewards Deactivation](documentation/features/admin_panel/mobile_admin_rewards.png "Mobile rewards deactivation") | ![Desktop Rewards Deactivation](documentation/features/admin_panel/desktop_admin_rewards.png "Desktop rewards deactivations") |
 
+    - ### Empty Basket and Recover Stock
+        Found in the session settings, this method will empty the basket of the selected session and recover stock levels for the products that were in the basket.
+
+        | Mobile Basket Recovery | Desktop Basket Recovery |
+        | --- | --- |
+        |  |  |
 
 - ### Communication to the User
 
