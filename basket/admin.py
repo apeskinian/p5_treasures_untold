@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 
-@admin.action(description='Recover abandoned baskets')
+@admin.action(description='Recover abandoned basket')
 def recover_baskets(modeladmin, request, queryset):
     """
     Call the management command to check and clear abandoned sessions.
@@ -53,7 +53,7 @@ def empty_basket(modeladmin, request, queryset):
         )
 
 
-@admin.action(description='Clear all currently activated rewards')
+@admin.action(description='Deactivate rewards')
 def clear_rewards(modeladmin, request, queryset):
     """
     Clears any currently activated rewards in the selected session.

@@ -977,6 +977,25 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Mobile Clear Expires Subscribers](documentation/features/dashboard/newsletter_admin/mobile_clear_expired.png "Mobile clear expired subscribers") | ![Desktop Clear Expired Subscribers](documentation/features/dashboard/newsletter_admin/desktop_clear_expired.png "Desktop clear expired subscribers") |
 
 - ### Super User Privileges
+    The only people with super user access are the site admin/s. They will be given access to the Django admin panel. From here they can manage all the data stored for the site. They also have access to some extra methods to help manage session data and stock management for maintenance. As this is a powerful interface, access to this panel is restricted for clients.
+
+    | Mobile Admin Panel | Desktop Admin Panel |
+    | --- | --- |
+    | ![Mobile Django Panel](documentation/features/admin_panel/mobile_django_admin.png "Mobile admin panel") | ![Desktop Admin Panel](documentation/features/admin_panel/desktop_django_admin.png "Desktop admin panel") |
+    
+    ### Mainentance Methods
+
+    - ### Product Restock
+
+        Found in the product model settings, this method quickly sets the stock levels of all products selected. If the item is not unique, a default level of 50 is set, otherwise a level of 1 is set. This is primarily for any maintenance that requires testing of the checkout process where stock levels will be affected. As a lot of items are unique this has an impact of availability of stock.
+
+        | Mobile Product Restock | Desktop Product Restock |
+        | --- | --- |
+        | ![Mobile Product Restock](documentation/features/admin_panel/mobile_admin_restock.png "Mobile product restock") | ![Desktop Product Restock](documentation/features/admin_panel/desktop_admin_restock.png "Desktop admin restock") |
+
+
+    
+
 
 - ### Communication to the User
 
