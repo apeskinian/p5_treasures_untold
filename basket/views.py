@@ -211,7 +211,7 @@ def remove_from_basket(request, item_id):
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
-        return HttpResponse(status=500)
+        return HttpResponse(status=200)
 
 
 def check_for_cave_of_wonders(request):

@@ -276,7 +276,7 @@ def manage_faq(request, delete=None, faq_id=None):
         if delete:
             try:
                 faq.delete()
-                messages.success(request, 'FAQ deleted')
+                messages.info(request, 'FAQ deleted')
                 return redirect(return_url)
             except Exception as e:
                 messages.error(request, f'Error deleting FAQ: {e}')
@@ -367,7 +367,7 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
         if delete:
             try:
                 faq_topic.delete()
-                messages.success(request, 'FAQ topic deleted')
+                messages.info(request, 'FAQ topic deleted')
                 return redirect(return_url)
             except Exception as e:
                 messages.error(request, f'Error deleting FAQ topic: {e}')
@@ -459,7 +459,7 @@ def manage_product(request, delete=None, product_id=None):
         if delete:
             try:
                 product.delete()
-                messages.success(request, 'Product deleted')
+                messages.info(request, 'Product deleted')
                 return redirect(return_url)
             except Exception as e:
                 messages.error(request, f'Error deleting product: {e}')
@@ -550,7 +550,7 @@ def manage_realm(request, delete=None, realm_id=None):
         if delete:
             try:
                 realm.delete()
-                messages.success(request, 'Realm deleted')
+                messages.info(request, 'Realm deleted')
                 return redirect(return_url)
             except Exception as e:
                 messages.error(request, f'Error deleting realm: {e}')
@@ -647,7 +647,7 @@ def manage_message(request, message_id, delete=None):
         if delete:
             try:
                 message.delete()
-                messages.success(request, 'Message deleted')
+                messages.info(request, 'Message deleted')
                 return redirect(return_url)
             except Exception as e:
                 messages.error(request, f'Error deleting message: {e}')
@@ -745,7 +745,7 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
         if delete:
             try:
                 newsletter.delete()
-                messages.success(request, 'Newsletter deleted')
+                messages.info(request, 'Newsletter deleted')
                 return redirect(return_url)
             except Exception as e:
                 messages.error(request, f'Error deleting newsletter: {e}')

@@ -181,21 +181,10 @@ class SubscriberForm(forms.ModelForm):
         self.fields['email'].widget.attrs['placeholder'] = 'email@example.com'
         self.fields['email'].label = False
 
-    def clean_email(self):
+    def validate_unique(self):
         """
-        Validates the email field to prevent duplicate subscriptions.
-
-        Overrides `clean_email()` to check if an instance of
-        :model:`support.Subscriber` with the provided email already exists.
-        If so, a `ValidationError` is raised.
-
-        **Raises:**
-        - `ValidationError`: If the email is already subscribed.
-
-        **Returns:**
-        - str: The cleaned email.
+        Override default unique validation to prevent automatic errors.
+        Unique validation is handled in the view to present an info message
+        rather then an error.
         """
-        email = self.cleaned_data.get('email')
-        if email and Subscriber.objects.filter(email=email).exists():
-            raise forms.ValidationError("This email is already subscribed.")
-        return email
+        pass

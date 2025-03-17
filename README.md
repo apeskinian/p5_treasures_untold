@@ -1007,6 +1007,54 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | ![Mobile Basket Recovery](documentation/features/admin_panel/mobile_admin_empty.png "Mobile basket recovery") | ![Desktop Basket Recovery](documentation/features/admin_panel/desktop_admin_empty.png "Desktop basket recovery") |
 
 - ### Communication to the User
+    Communication to the user while they are using the site is important. It helps to let them know actions have been performed correctly, update them on events, and inform them if errors occur. It is also important to give a visual indication for background activity so that they do not think clicking on something did not work properly. Treasures Untold uses Django messages with Bootstrap toasts and Bootstrap spinners to fulfil this task.
+
+    #### Messaging
+
+    Messages are displayed to the user in the following circumstances:
+    - All sign-in and sign-out processes
+    - Basket adjustments including adding, removing and quantity changes
+    - Order processing
+    - Reward activations
+    - Profile detail updates
+    - Support Feedback
+        - Contact message acknowledgement
+        - Newsletter sign up acknowledgement
+    - Staff dashboard actions
+        - Product and realm management
+        - FAQ and topic management
+        - Contact Message admin
+        - Newsletter and subscriber admin
+    - Form errors
+
+    Colour-coded messages are used for clear understanding of what a message is about:
+    - Green messages are confirmation of a process completing successfully
+    - Blue messages are indicators of an event or process that the user should be aware of
+    - Purple messagea are related to rewards and inform the user when a reward has been activated
+    - Red messages indicate that there has been an error
+
+    All messages except green success messages require acknowledgement by the user and so do not autohide. Success messages will hide after a few seconds as they are confirming successful events.
+
+    | Message | Screenshot |
+    | :---: | :---: |
+    | Sign in | ![Sign in message](documentation/features/communication/message_toasts/success_sign_in.png "Sign in message") |
+    | Sign out | ![Sign out message](documentation/features/communication/message_toasts/success_sign_out.png "Sign out message") |
+    | Item added to basket | ![Add to basket message](documentation/features/communication/message_toasts/success_added_to_basket.png "Add to basket message") |
+    | Item quantity adjusted in basket | ![Basket quantity adjustment message](documentation/features/communication/message_toasts/success_basket_qty_adjustment.png "Basket quantity adjustment message") |
+    | Item removed from basket | ![Item removed from basker message](documentation/features/communication/message_toasts/info_removed_from_basket.png "Item removed from basket message") |
+    | Order succssfully processed | ![Order processed message](documentation/features/communication/message_toasts/success_order_processing.png "Order processed message") |
+    | Reward Activations | ![Reward activation message](documentation/features/communication/message_toasts/reward_notification.png "Reward activation message") |
+    | Profile updates | ![Profile update message](documentation/features/communication/message_toasts/success_details_updated.png "Profile update message") |
+    | Contact message acknowledgement | ![Contact message acknowledgement](documentation/features/communication/message_toasts/success_message_received.png "Contact message acknowledgement") |
+    | Newsletter sign up acknowledgement | ![Newsletter sign up acknowledgement](documentation/features/communication/message_toasts/sucess_subscribing.png "Newsletter sign up acknowledgement") |
+    | Newsletter sign up event | ![Newsletter already subscribed message](documentation/features/communication/message_toasts/info_already_subscribed.png "Newsletter already subscribed message") |
+    | Product management | ![Product management message](documentation/features/communication/message_toasts/success_product_updated.png "Product management message") |
+    | FAQ management | ![FAQ management message](documentation/features/communication/message_toasts/info_deleted_faq.png "FAQ management message") |
+    | Contact message admin | ![Contact message admin message](documentation/features/communication/message_toasts/success_message_replied.png "Contect message admin message") |
+    | Newsletter admin | ![Newsletter admin message](documentation/features/communication/message_toasts/success_newsletter.png "Newsletter admin message") |
+    | Expired token error | ![Expired token message](documentation/features/communication/message_toasts/error_expired_token.png "Expired token messsage") |
+    | Error deleting | ![Error deleting message](documentation/features/communication/message_toasts/error_realm_deletion.png "Error deleting message") |
+    | Error basket item removal | ![Basket removal error message](documentation/features/communication/message_toasts/error_removing_item.png "Basket removal error message") |
 
 - ### Easter Eggs
 
