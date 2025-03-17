@@ -1068,6 +1068,54 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 - ### Easter Eggs
 
+    There's more than meets the eye in Treasures Untold. I have implemented 4 Easter eggs into the site that if discovered will unlock special rewards. These rewards can only be activated by users that are logged in.
+
+    <details>
+    <summary>Click here to reveal the hidden Easter eggs in Treasures Untold.</summary>
+    <br>
+    <details>
+    <summary>Last chance to change your mind.</summary>
+    <br>
+    
+    - **Bibbidi-Bobbidi-Boo:**
+
+        If users type the phrase 'bibbidi-bobbidi-boo' into the search bar they will activate a 20% discount that is applied to the total of their shopping basket. This is shown in the basket views and throughout the checkout process.
+
+        | Reward Activation | Message to user |
+        | --- | --- |
+        | ![Bibbidi-Bobbidi-Boo Activation](documentation/features/easter_eggs/reward_bibbidi-bobbidi-boo.gif "Bibbidi-Bobbidi-Boo activation") | ![Reward Message](documentation/features/communication/message_toasts/reward_notification.png "Reward message") |
+
+    - **Magic Lamp:**
+
+        Users can activate a special reward by interacting with the Magic Lamp product image. Moving the mouse cursor over the lamp will simulate “rubbing” it, and after sufficient interaction, the reward will be triggered. Once activated, this reward applies a 100% discount to the first three items in the user’s basket.
+
+        NOTE: This currently only works for desktop devices with a mouse as it tracks the cursor movement.
+
+        | Reward Activation | Message to user |
+        | --- | --- |
+        | ![Magic Lamp Activation](documentation/features/easter_eggs/reward_magic_lamp.gif "Magic Lamp activation") | ![Reward Message](documentation/features/easter_eggs/reward_message_magic_lamp.png "Reward message") |
+
+    - **Cave of Wonders:**
+
+        Users can activate the Cave of Wonders reward by adding both halves of the Golden Scarab Beetle to their basket. Upon activation users are shown a message to say that the Cave of Wonders is unlocked but not explicitly told what this does...
+
+        The Cave of Wonders reward lets users have anything from the realm of Agrabah for free, however if they are too greedy the reward will be deactivated.
+
+        | Reward Activation | Message to user |
+        | --- | --- |
+        | ![Cave of Wonders Activation](documentation/features/easter_eggs/reward_cave_of_wonders.gif "Cave of Wonders activation") | ![Reward Message](documentation/features/easter_eggs/reward_message_cave_of_wonders.png "Reward message") |
+
+    - **Infidels!:**
+
+        Unlocking the Cave of Wonders grants users a special reward, but it also comes with a risk. If the reward has been activated and the Shiva Monkey Idol of Agrabah is added to the basket, the user will face the consequences of greed! Whenever the Shiva Monkey Idol of Agrabah is in the basket, the Cave of Wonders reward is deactivated!
+
+        | Reward Activation | Message to user |
+        | --- | --- |
+        | ![Infidels Activation](documentation/features/easter_eggs/reward_infidels.gif "Infidels activation") | ![Reward Message](documentation/features/easter_eggs/reward_message_infidels.png "Reward message") |
+
+    </details>
+    </details>
+
 - ### Backend Features
 
 - ### SEO & Marketing Features
