@@ -86,26 +86,37 @@ def add_to_basket(request, item_id):
     return_url = request.POST.get('return_url')
     basket = request.session.get('basket', {})
 
-    # Create updated basket data.
-    try:
-        if item_id in list(basket.keys()):
-            basket[item_id] += quantity
-            messages.success(
-                request,
-                f'{product.name} quantity updated to {basket[item_id]}'
+    product.refresh_from_db()
+    if quantity > product.stock:
+        if product.stock > 0:
+            messages.error(
+                request, f'There are only {product.stock} items available now.'
             )
         else:
-            basket[item_id] = quantity
-            messages.success(request, f'{product.name} added to basket')
+            messages.error(
+                request, 'Sorry but this product is currently unavailable.'
+            )
+    else:
+        # Create updated basket data.
+        try:
+            if item_id in list(basket.keys()):
+                basket[item_id] += quantity
+                messages.success(
+                    request,
+                    f'{product.name} quantity updated to {basket[item_id]}'
+                )
+            else:
+                basket[item_id] = quantity
+                messages.success(request, f'{product.name} added to basket')
 
-        # Update product stock level
-        update_stock(request, product, -quantity)
-    except Exception as e:
-        messages.error(
-            request,
-            f'There was a problem adding {product.name} to your basket: {e}'
-            'Please try again later'
-        )
+            # Update product stock level
+            update_stock(request, product, -quantity)
+        except Exception as e:
+            messages.error(
+                request,
+                f'There was a problem adding {product.name} to your basket: '
+                f'{e} Please try again later.'
+            )
 
     # Adjusting return_url to prevent loop.
     if return_url:
@@ -143,35 +154,45 @@ def adjust_basket(request, item_id):
     new_quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
 
-    # Create updated basket data.
-    try:
-        if new_quantity > 0:
-            basket[item_id] = new_quantity
-            messages.success(
-                request,
-                f'{product.name} quantity updated to {basket[item_id]}'
-            )
-        else:
-            basket.pop(item_id, None)
-            messages.info(
-                request, f'{product.name} removed from basket'
-            )
+    product.refresh_from_db()
+    maximum_available = previous_quantity + product.stock
+    quantity_delta = previous_quantity - new_quantity
 
-        # Update product stock level
-        quantity_delta = previous_quantity - new_quantity
-        update_stock(request, product, quantity_delta)
-    except Exception as e:
+    if quantity_delta < 0 and product.stock < abs(quantity_delta):
         messages.error(
             request,
-            f'There was a problem adjusting {product.name} in your basket: {e}'
-            'Please try again later'
+            f'Sorry, the maximum available now are {maximum_available} '
+            'items.'
         )
+    else:
+        # Create updated basket data.
+        try:
+            if new_quantity > 0:
+                basket[item_id] = new_quantity
+                messages.success(
+                    request,
+                    f'{product.name} quantity updated to {basket[item_id]}'
+                )
+            else:
+                basket.pop(item_id, None)
+                messages.info(
+                    request, f'{product.name} removed from basket'
+                )
 
-    # Save basket data to session.
-    request.session['basket'] = basket
+            # Update product stock level
+            update_stock(request, product, quantity_delta)
+        except Exception as e:
+            messages.error(
+                request,
+                f'There was a problem adjusting {product.name} in your '
+                f'basket: {e} Please try again later'
+            )
 
-    # Call to check for 'cave of wonders' reward.
-    check_for_cave_of_wonders(request)
+        # Save basket data to session.
+        request.session['basket'] = basket
+
+        # Call to check for 'cave of wonders' reward.
+        check_for_cave_of_wonders(request)
 
     return redirect(reverse('view_basket'))
 

@@ -1067,7 +1067,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Delete Spinner](documentation/features/communication/spinners/spinner_delete.gif "Delete spinner") |
 
 - ### Easter Eggs
-
     There's more than meets the eye in Treasures Untold. I have implemented 4 Easter eggs into the site that if discovered will unlock special rewards. These rewards can only be activated by users that are logged in.
 
     <details>
@@ -1117,6 +1116,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     </details>
 
 - ### Backend Features
+
 
 - ### SEO & Marketing Features
     A full explanation of the [SEO & Marketing](#seo--marketing) features can be viewed in detail below.
