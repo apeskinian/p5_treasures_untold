@@ -1056,6 +1056,16 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Error deleting | ![Error deleting message](documentation/features/communication/message_toasts/error_realm_deletion.png "Error deleting message") |
     | Error basket item removal | ![Basket removal error message](documentation/features/communication/message_toasts/error_removing_item.png "Basket removal error message") |
 
+    #### Working Spinner
+
+    A spinner is used when a user clicks on a button or link that then performs some database interaction. This is when a visual indication help to show the user that something is being processed.
+
+    | Working Spinner Examples |
+    | :---: |
+    | ![Add Spinner](documentation/features/communication/spinners/spinner_add.gif "Add spinner") |
+    | ![Edit Spinner](documentation/features/communication/spinners/spinner_edit.gif "Edit spinner") |
+    | ![Delete Spinner](documentation/features/communication/spinners/spinner_delete.gif "Delete spinner") |
+
 - ### Easter Eggs
 
 - ### Backend Features
