@@ -1482,134 +1482,398 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ## Database Design
 
-### Data Model
-
 Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models. Understanding the relationships between different tables can save time later in the project.
 
-![screenshot](documentation/erd.png)
+I created an ERD to help code the models for the database. This was done using a free version of [Lucid chart](https://www.lucidchart.com/pages)
 
-⚠️ INSTRUCTIONS ⚠️
+- #### Product Models
 
-Using your defined models, create an ERD with the relationships identified. A couple of recommendations for building your own free ERDs:
-- [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning)
-- [Draw.io](https://draw.io)
+```
+class Realm(models.Model):
+    """
+    Represents a realm from which a product originates.
 
-Looking for an interactive version of your ERD? Consider using a [`Mermaid flowchart`](https://mermaid.live). To simplify the process, you can ask ChatGPT (or similar) the following prompt:
+    **Fields:**
+    - `name (CharField)`: The name of the realm.
+    - `the_prefix_required (BooleanField)`: Indicates whether the definite
+        article 'the' is required as a prefix in certain grammatical contexts.
 
-> ChatGPT Prompt:
-> "Generate a Markdown syntax Mermaid ERD using my Django models"
-> [paste-your-django-models-into-ChatGPT]
-
-The "Boutique Ado" sample ERD in Markdown syntax using Mermaid can be seen below as an example.
-
-**NOTE**: A Markdown Preview tool doesn't show the interactive ERD; you must first commit/push the code to your GitHub repository in order to see it live in action.
-
-⚠️ --- END --- ⚠️
-
-I have used `Mermaid` to generate an interactive ERD of my project.
-
-```mermaid
-erDiagram
-    User {
-        int id PK
-        varchar username
-        varchar email
-        varchar password
-    }
-
-    UserProfile {
-        int id PK
-        varchar default_phone_number
-        varchar default_street_address1
-        varchar default_street_address2
-        varchar default_town_or_city
-        varchar default_county
-        varchar default_postcode
-        varchar default_country
-    }
-
-    User ||--|| UserProfile : has_one
-
-    Category {
-        int id PK
-        varchar name
-        varchar friendly_name
-    }
-
-    Product {
-        int id PK
-        varchar sku
-        varchar name
-        text description
-        bool has_sizes
-        decimal price
-        decimal rating
-        varchar image_url
-        image image
-    }
-
-    Product ||--o| Category : belongs_to
-
-    Order {
-        int id PK
-        varchar order_number
-        varchar full_name
-        varchar email
-        varchar phone_number
-        varchar country
-        varchar postcode
-        varchar town_or_city
-        varchar street_address1
-        varchar street_address2
-        varchar county
-        datetime date
-        decimal delivery_cost
-        decimal order_total
-        decimal grand_total
-        text original_bag
-        varchar stripe_pid
-    }
-
-    OrderLineItem {
-        int id PK
-        int quantity
-        decimal lineitem_total
-        varchar product_size
-    }
-
-    Order ||--o| OrderLineItem : has_many
-    OrderLineItem ||--o| Product : belongs_to
-
-    Order ||--o| UserProfile : belongs_to
-
-    Newsletter {
-        int id PK
-        varchar email
-    }
-
-    Contact {
-        int id PK
-        varchar name
-        varchar email
-        text message
-    }
-
-    FAQ {
-        int id PK
-        varchar question
-        text answer
-    }
+    **Methods:**
+    - `__str__()`: Returns the realm's name as its string representation.
+    - `display_name()`: Formats the `name` field by replacing underscores
+        with spaces for a more human-readable display.
+    """
+    name = models.CharField(max_length=254)
+    the_prefix_required = models.BooleanField(default=False)
 ```
 
-source: [Mermaid](https://mermaid.live/edit#pako:eNqVVcFu2zAM_RVD57RIHLdpfRs6DBg2bB2GXYYAhmIxjlBZcimqqdvk3yfbSVPHceP5kBh8TyRFPtKvLDUCWMwAP0ueIc_nOvDPHwsYvDbv1SM1BVIE998OpieO6Ypj4DxV8xy6CORcqq654NauDYoG2c71IeQ9mqVUMDCygCV3ipJiZTQk2uULwH6WJQSghAuBYO1kKDHsJ5JZ68Rgkkoq-1mpcfojvDCWqiac8YDliXoFm83FxWbTql0crLhNfEX2xDtOkBksB1b1dC-XKEELVSYH-C0TH1m4lAb6tw_uXFCCZ_K3tynKgqTRB2RhjKrvZ-UL2INdQCpzroICZQpdM3KSOuuG9WAGicN3Kq1NzW_PNauam82hrHGwAGV0Zr0g9tyfKAYPkKm4vfJdOqWS_5uvD8ehJabWsV4dfqzzs3N1dp6OJ0T4ypLMoX7pNlOAkk-ApZ8LS124KScZ4qoL-g2nxTFYy82gzKTmKlnw7OQdZAFJIY-3Vt3o71LDV4L8TMMr06Pjmlp13KemvBPpnRxn99afRn618k8lsddlO6NmG-Rcl6fy3R3ZK7tfyTtie890yT9gbRUQDdb-Owm_3ebOaOKD18mg0ag7nHv1daf6y6dfAyM9OrDtbVS75dqu94O2ZSOWA_rgwn9Ta7dzRivwKbLYvwqOD3M21xWPOzK_S52ymNDBiLmikvvuK8ziJVfWWwuuWfzKnlk8jSaXN9ez8HoyHc_C8TiajVjJ4ovp5XUUTqMovLqdXd2Et-FsO2Ivxngfk8vxZBpGkT_m_zxW-_tbY01QNC5b7YJt_wE0ZoQj)
+```
+class Product(models.Model):
+    """
+    Represents a product available for purchase in the store.
 
-⚠️ RECOMMENDED ⚠️
+    **Fields:**
+    - `name (CharField)`: The name of the product.
+    - `realm (ForeignKey)`: The realm this product belongs to. Links to
+        :model:`products.Realm`
+    - `description (TextField)`: A description of the product.
+    - `price (DecimalField)`: The price of the product.
+    - `stock (IntegerField)`: The current stock level of the product.
+    - `sku (CharField)`: The unique Stock Keeping Unit (SKU) for the product.
+    - `image (CloudinaryField)`: The image associated with the product.
+    - `date_added (DateField)`: Date the product was addded to inventory.
+    - `unique_stock (BooleanField)`: Indicates whether the product is a
+      one-of-a-kind item (stock cannot exceed 1).
 
-Alternatively, or in addition to, a more comprehensive ERD can be auto-generated once you're at the end of your development stages, just before you submit. Follow the steps below to obtain a thorough ERD that you can include. Feel free to leave the steps below in the README for future use to yourself.
+    **Methods:**
+    - `_generate_sku()`: Generates a unique SKU using UUID and product data.
+    - `image_url() (property)`: Returns the correct image URL based on debug
+      mode and hosting conditions.
+    - `save()`: Assigns an SKU before saving if one is not already present.
+    - `__str__()`: Returns the name of the product as a string.
+    - `realm_name()`: Returns the realm name formatted for display.
+    - `clean()`: Validates stock levels for unique items to prevent more than
+      one in stock.
+    """
+    class Meta:
+        ordering = [Lower('realm__name')]
 
-⚠️ --- END --- ⚠️
+    name = models.CharField(max_length=254)
+    realm = models.ForeignKey(
+        'Realm', null=True, blank=True, on_delete=models.SET_NULL,
+        related_name='product_realm'
+    )
+    description = models.TextField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    stock = models.IntegerField(validators=[MinValueValidator(0)])
+    sku = models.CharField(
+        max_length=254,
+        null=True,
+        blank=True,
+        unique=True,
+        editable=False
+    )
+    image = CloudinaryField(
+        'image', default='placeholder', asset_folder='/treasures/',
+        use_filename=True, unique_filename=False
+    )
+    date_added = models.DateField(auto_now_add=True)
+    unique_stock = models.BooleanField(default=False)
+```
 
-I have used `pygraphviz` and `django-extensions` to auto-generate an ERD.
+- #### Checkout Models
+
+```
+class Order(models.Model):
+    """
+    Represents a customer's order, storing details such as user profile,
+    contact information, delivery address, order totals, and payment details.
+
+    **Fields:**
+    - `order_number (CharField)`: A unique, non-editable order identifier.
+    - `user_profile (ForeignKey)`: Links to the `UserProfile` model.
+    - `full_name (CharField)`: The customer's full name.
+    - `email (EmailField)`: The customer's email address.
+    - `phone_number (CharField)`: Optional contact number.
+    - `street_address_1 (CharField)`: First line of the street address.
+    - `street_address_2 (CharField)`: Optional second line of street address.
+    - `town_city (CharField)`: City or town of the customer.
+    - `county (CharField)`: Optional county field.
+    - `postcode (CharField)`: Optional postal code.
+    - `country (CountryField)`: Customer's country.
+    - `date (DateField)`: The order creation date (auto-generated).
+    - `delivery_cost (DecimalField)`: The cost of delivery.
+    - `order_total (DecimalField)`: Total cost of items before delivery.
+    - `grand_total (DecimalField)`: Total order cost including delivery.
+    - `original_basket (TextField)`: Stores the original basket contents.
+    - `rewards_used (TextField)`: Stores any rewards applied to the order.
+    - `stripe_pid (CharField)`: The Stripe payment ID.
+
+    **Methods:**
+    - `_generate_order_number()`: Generates a unique order number with a
+      'TU-YYYYMMDD-XXXXXXXX' format.
+    - `update_total()`: Recalculates and updates the `grand_total` field.
+    - `save()`: Overrides the default save method to ensure an order number
+      is generated if missing.
+    - `__str__()`: Returns the order number as the string representation of
+      the order.
+    """
+    order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(
+        UserProfile,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='orders'
+    )
+    full_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
+    street_address_1 = models.CharField(max_length=80, null=False, blank=False)
+    street_address_2 = models.CharField(max_length=80, null=True, blank=True)
+    town_city = models.CharField(max_length=40, null=False, blank=False)
+    county = models.CharField(max_length=80, null=True, blank=True)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
+    date = models.DateTimeField(auto_now_add=True)
+    delivery_cost = models.DecimalField(
+        max_digits=6, decimal_places=2, null=False, default=0
+    )
+    order_total = models.DecimalField(
+        max_digits=6, decimal_places=2, null=False, default=0
+    )
+    grand_total = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0
+    )
+    original_basket = models.TextField(null=False, blank=False, default='')
+    rewards_used = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default=''
+    )
+```
+
+```
+class OrderLineItem(models.Model):
+    """
+    Represents a line item for an order.
+
+    **Fields:**
+    - `order (ForeignKey)`: Links to :model:`checkout.Order`.
+    - `product (ForeignKey)`: Links to :model:`products.Product`.
+    - `purchase_price (DecimalField)`: The value that the line item was
+        purchased for taking into account any active rewards at the time of
+        checkout.
+    - `quantity (IntegerField)`: The quantity of the product purchased.
+    - `lineitem_total (DecimalField)`: The product price multiplied by the
+        quantity.
+
+    **Methods:**
+    - `save()`: Overrides the default save method to calculate the
+        `lineitem_total` value.
+    - `__str__()`: Returns the sku and order in an f string representation of
+      the orderlineitem.
+    """
+    order = models.ForeignKey(
+        Order, null=False,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name='lineitems'
+    )
+    product = models.ForeignKey(
+        Product, null=False, blank=False, on_delete=models.CASCADE
+    )
+    purchase_price = models.DecimalField(
+        null=True, blank=True, max_digits=6, decimal_places=2, default=0.00
+    )
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(
+        max_digits=8, decimal_places=2, null=False, blank=False, editable=False
+    )
+```
+
+- #### Profiles Models
+
+```
+class UserProfile(models.Model):
+    """
+    Stores user profile information, including default shipping details.
+
+    **Fields:**
+    - `user (OneToOneField)`: A one-to-one relationship with Django's built-in
+      `User` model.
+    - `default_full_name (CharField)`: The user's default full name.
+    - `default_street_address_1 (CharField)`: The first line of the user's
+      default street address.
+    - `default_street_address_2 (CharField)`: The second line of the user's
+      default street address (optional).
+    - `default_town_city (CharField)`: The user's default town or city.
+    - `default_county (CharField)`: The user's default county or region.
+    - `default_postcode (CharField)`: The user's default postal code.
+    - `default_country (CountryField)`: The user's default country.
+    - `default_phone_number (CharField)`: The user's default phone number.
+
+    **Methods:**
+    - `__str__()`: Returns the associated user's username as a string.
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_full_name = models.CharField(max_length=50, null=True, blank=True)
+    default_street_address_1 = models.CharField(
+        max_length=80, null=True, blank=True
+    )
+    default_street_address_2 = models.CharField(
+        max_length=80, null=True, blank=True
+    )
+    default_town_city = models.CharField(max_length=40, null=True, blank=True)
+    default_county = models.CharField(max_length=80, null=True, blank=True)
+    default_postcode = models.CharField(max_length=20, null=True, blank=True)
+    default_country = CountryField(
+        blank_label='Country', null=True, blank=True
+    )
+    default_phone_number = models.CharField(
+        max_length=20, null=True, blank=True
+    )
+```
+
+- #### Support Models
+
+```
+class ContactMessage(models.Model):
+    """
+    Represents a customer support message submitted via the contact form.
+
+    **Fields:**
+    - `ticket_number (CharField)`: A unique identifier for the message,
+      generated automatically if not provided.
+    - `name (CharField)`: The name of the person submitting the message.
+    - `email (EmailField)`: The email address of the sender.
+    - `message (TextField)`: The content of the message.
+    - `replied (BooleanField)`: A flag indicating whether the message has
+      been replied to (default: `False`).
+    - `date_received (DateField)`: The date when the message was received,
+      automatically set upon creation.
+    - `date_replied (DateField)`: The date when a reply was sent
+      (optional, set when a reply is made).
+    - `reply (TextField)`: The content of the reply (optional).
+
+    **Meta:**
+    - Messages are ordered by `replied` status, ensuring unreplied messages
+      appear first.
+
+    **Methods:**
+    - `_generate_ticket_number()`: Generates a unique ticket number with a
+      'TU' prefix and an 8-character hexadecimal string.
+    - `save()`: Overrides the default save method to ensure a ticket number
+      is assigned if not already present.
+    - `__str__()`: Returns a string representation of the contact message,
+      including the ticket number and sender's name.
+    """
+    class Meta:
+        ordering = ['replied',]
+
+    ticket_number = models.CharField(max_length=32, null=False, blank=False)
+    name = models.CharField(max_length=254, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    message = models.TextField(null=False, blank=False)
+    replied = models.BooleanField(default=False)
+    date_received = models.DateField(auto_now_add=True)
+    date_replied = models.DateField(null=True, blank=True)
+    reply = models.TextField(null=True, blank=True)
+```
+
+```
+class FaqsTopics(models.Model):
+    """
+    Represents a topic category for Frequently Asked Questions (FAQs).
+
+    **Fields:**
+    - `name (CharField)`: The name of the FAQ topic.
+    - `sort_order (PositiveIntegerField)`: Determines the display order of
+      topics (default: 100).
+
+    **Meta:**
+    - `verbose_name_plural`: Sets the plural name to 'FAQ Topics'.
+    - `ordering`: Topics are ordered by `sort_order` in ascending order.
+
+    **Methods:**
+    - `__str__()`: Returns the topic name as its string representation.
+    """
+    class Meta:
+        verbose_name_plural = 'FAQ Topics'
+        ordering = ['sort_order',]
+
+    name = models.CharField(max_length=100, null=False, blank=False)
+    sort_order = models.PositiveIntegerField(default=100)
+```
+
+```
+class Faqs(models.Model):
+    """
+    Represents an individual Frequently Asked Question (FAQ).
+
+    **Fields:**
+    - `topic (ForeignKey)`: Links the FAQ to a specific `FaqsTopics` category.
+    - `question (CharField)`: The FAQ question text.
+    - `answer (TextField)`: The answer to the question.
+    - `sort_order (PositiveIntegerField)`: Determines the display order of
+      questions within a topic (default: 100).
+
+    **Meta:**
+    - `verbose_name_plural`: Sets the plural name to 'FAQs'.
+    - `ordering`: FAQs are ordered by `topic` and `sort_order`.
+
+    **Methods:**
+    - `__str__()`: Returns the FAQ question as its string representation.
+    """
+    class Meta:
+        verbose_name_plural = 'FAQs'
+        ordering = ['topic', 'sort_order',]
+
+    topic = models.ForeignKey(
+        FaqsTopics, on_delete=models.CASCADE, related_name='faq_topic'
+    )
+    question = models.CharField(max_length=254, null=False, blank=False)
+    answer = models.TextField()
+    sort_order = models.PositiveIntegerField(default=100)
+```
+
+```
+class Newsletter(models.Model):
+    """
+    Represents a newsletter entry that has been sent.
+
+    **Fields:**
+    - `subject (CharField)`: The subject line of the newsletter.
+    - `news_body (TextField)`: The main content of the newsletter.
+    - `date_sent (DateField)`: The date the newsletter was sent
+        (auto-populated).
+
+    **Meta:**
+    - `ordering`: Newsletters are ordered by `date_sent`.
+
+    **Methods:**
+    - `__str__()`: Returns the newsletter subject as its string representation.
+    """
+    class Meta:
+        ordering = ['-date_sent']
+
+    subject = models.CharField(max_length=254, null=False, blank=False)
+    news_body = models.TextField()
+    date_sent = models.DateField(auto_now_add=True)
+```
+
+```
+class Subscriber(models.Model):
+    """
+    Represents a newsletter subscriber.
+
+    **Fields:**
+    - `email (EmailField)`: The subscriber's email address (unique).
+    - `is_active (BooleanField)`: Indicates whether the subscription is active.
+    - `date_joined (DateField)`: The date the user subscribed (optional).
+    - `token (CharField)`: A unique token for confirming or managing the
+        subscription.
+    - `token_created_at (DateTimeField)`: Timestamp for when the token was
+        generated.
+
+    **Meta:**
+    - `ordering`: Subscribers are ordered by `date_joined`.
+
+    **Methods:**
+    - `__str__()`: Returns the subscriber's email as its string representation.
+    """
+    class Meta:
+        ordering = ['date_joined']
+
+    email = models.EmailField(null=False, blank=False, unique=True)
+    is_active = models.BooleanField(default=False)
+    date_joined = models.DateField(null=True, blank=True)
+    token = models.CharField(max_length=255)
+    token_created_at = models.DateTimeField(default=timezone.now)
+```
+
+![ERD](documentation/charts/treasures_untold_erd.png "Treasures Untold ERD")
+
+
+I have also used `pygraphviz` and `django-extensions` to auto-generate an ERD.
 
 The steps taken were as follows:
 - In the terminal: `sudo apt update`

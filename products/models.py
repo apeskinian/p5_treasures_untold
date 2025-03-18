@@ -43,9 +43,12 @@ class Product(models.Model):
     - `name (CharField)`: The name of the product.
     - `realm (ForeignKey)`: The realm this product belongs to. Links to
         :model:`products.Realm`
+    - `description (TextField)`: A description of the product.
+    - `price (DecimalField)`: The price of the product.
+    - `stock (IntegerField)`: The current stock level of the product.
     - `sku (CharField)`: The unique Stock Keeping Unit (SKU) for the product.
     - `image (CloudinaryField)`: The image associated with the product.
-    - `stock (IntegerField)`: The current stock level of the product.
+    - `date_added (DateField)`: Date the product was addded to inventory.
     - `unique_stock (BooleanField)`: Indicates whether the product is a
       one-of-a-kind item (stock cannot exceed 1).
 
