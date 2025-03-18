@@ -1464,8 +1464,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![badge](https://img.shields.io/badge/Heroku_Scheduler-white?logo=heroku&logoColor=430098)](https://www.heroku.com) | Running the abandoned session management command. |
 | [![badge](https://img.shields.io/badge/Bootstrap-white?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com) | Front-end CSS framework for modern responsiveness and pre-built components. |
 | [![badge](https://img.shields.io/badge/Django-white?logo=django&logoColor=092E20)](https://www.djangoproject.com) | Python framework for the site. |
+| [![badge](https://img.shields.io/badge/ItsDangerous-white?logo=pypi&logoColor=3775A9)](https://pypi.org/project/itsdangerous/) | Token generation for newsletter subscription management |
 | [![badge](https://img.shields.io/badge/PostgreSQL-white?logo=postgresql&logoColor=4169E1)](https://www.postgresql.org) | Relational database management. |
-| [![badge](https://img.shields.io/badge/Cloudinary-white?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com) | Online static file storage. |
+| [![badge](https://img.shields.io/badge/Cloudinary-white?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com) | Online image storage. |
 | [![badge](https://img.shields.io/badge/WhiteNoise-white?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io) | Serving static files with Heroku. |
 | [![badge](https://img.shields.io/badge/Stripe-white?logo=stripe&logoColor=008CDD)](https://stripe.com) | Online secure payments of e-commerce products/services. |
 | [![badge](https://img.shields.io/badge/Gmail_API-white?logo=gmail&logoColor=EA4335)](https://mail.google.com) | Sending emails in my application. |
@@ -1476,15 +1477,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![Lucid](https://img.shields.io/badge/Lucidchart-white?logo=lucid&logoColor=FF9E0F)](https://www.lucidchart.com/pages) | Creating an erd for the database models. |
 | [![badge](https://img.shields.io/badge/Mermaid-white?logo=mermaid&logoColor=FF3670)](https://mermaid.live) | Generate an interactive diagram for the data/schema. |
 | [![badge](https://img.shields.io/badge/Affinity_Photo_2-white?logo=affinity&logoColor=4E3188)](https://affinity.serif.com/en-gb/photo/) | Image editing. |
-
-Its Dangerous
-Clop
-Cleanshot X
-
-
-- Tutorial: https://shields.io/badges/static-badge
-- Icons/Logos: https://simpleicons.org
-
+| [![badge](https://img.shields.io/badge/Clop-white)](https://lowtechguys.com/clop/) | Image optimisation. |
+| [![badge](https://img.shields.io/badge/Cleanshot_X-white)](https://cleanshot.com/) | Screenshot and screen recording capture. |
 
 ## Database Design
 
