@@ -1484,7 +1484,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models. Understanding the relationships between different tables can save time later in the project.
 
-- #### Product Models
+#### Product Models
 
 ```python
 class Realm(models.Model):
@@ -1559,7 +1559,7 @@ class Product(models.Model):
     unique_stock = models.BooleanField(default=False)
 ```
 
-- #### Checkout Models
+#### Checkout Models
 
 ```python
 class Order(models.Model):
@@ -1668,7 +1668,7 @@ class OrderLineItem(models.Model):
     )
 ```
 
-- #### Profiles Models
+#### Profiles Models
 
 ```python
 class UserProfile(models.Model):
@@ -1711,7 +1711,7 @@ class UserProfile(models.Model):
     )
 ```
 
-- #### Support Models
+#### Support Models
 
 ```python
 class ContactMessage(models.Model):
@@ -1868,148 +1868,148 @@ class Subscriber(models.Model):
     token_created_at = models.DateTimeField(default=timezone.now)
 ```
 
-- ### Lucid Chart ERD
-    I created an ERD to help code the models for the database. This was done using a free version of [Lucid chart](https://www.lucidchart.com/pages)
+### Lucid Chart ERD
+I created an ERD to help code the models for the database. This was done using a free version of [Lucid chart](https://www.lucidchart.com/pages)
 
-    ![ERD](documentation/charts/treasures_untold_erd.png "Treasures Untold ERD")
+![ERD](documentation/charts/treasures_untold_erd.png "Treasures Untold ERD")
 
-- ### Mermaid Interactive ERD
-    I have created an interactive ERD of my project using `Mermaid`
+### Mermaid Interactive ERD
+I have created an interactive ERD of my project using `Mermaid`
 
-    ```mermaid
-    ---
-    config:
-    theme: forest
-    ---
-    erDiagram
-        User ||--|| UserProfile : has
-        UserProfile ||--o{ Order : makes
-        Order ||--o{ OrderLineItem : contains
-        OrderLineItem ||--|| Product : is
-        Product }o--|| Realm : from
-        FaqsTopics ||--o{ Faqs : has
+```mermaid
+---
+config:
+theme: forest
+---
+erDiagram
+    User ||--|| UserProfile : has
+    UserProfile ||--o{ Order : makes
+    Order ||--o{ OrderLineItem : contains
+    OrderLineItem ||--|| Product : is
+    Product }o--|| Realm : from
+    FaqsTopics ||--o{ Faqs : has
 
-        UserProfile {
-            id user_id FK
-            string default_full_name
-            string default_street_address_1
-            string default_street_address_2
-            string default_town_city
-            string default_county
-            string default_postcode
-            string default_country
-            string default_phone_number
-        }
-        Order {
-            string order_number
-            int userprofile_id FK
-            string full_name
-            string email
-            string phone_number
-            string street_address_1
-            string street_address_2
-            string town_city
-            string county
-            string postcode
-            string country
-            datetime date
-            decimal delivery_cost
-            decimal order_total
-            decimal grand_total
-            text original_basket
-            text rewards_used
-            string stripe_pid
-        }
-        OrderLineItem {
-            int order_id FK
-            int product_id FK
-            decimal purchase_price
-            int quantity
-            decimal lineitem_total
-        }
-        Product {
-            string name
-            int realm_id FK
-            string description
-            decimal price
-            int stock
-            string sku
-            string image
-            date date_added
-            boolean unique_stock
-        }
-        Realm {
-            string name
-            boolean the_prefix_required
-        }
+    UserProfile {
+        id user_id FK
+        string default_full_name
+        string default_street_address_1
+        string default_street_address_2
+        string default_town_city
+        string default_county
+        string default_postcode
+        string default_country
+        string default_phone_number
+    }
+    Order {
+        string order_number
+        int userprofile_id FK
+        string full_name
+        string email
+        string phone_number
+        string street_address_1
+        string street_address_2
+        string town_city
+        string county
+        string postcode
+        string country
+        datetime date
+        decimal delivery_cost
+        decimal order_total
+        decimal grand_total
+        text original_basket
+        text rewards_used
+        string stripe_pid
+    }
+    OrderLineItem {
+        int order_id FK
+        int product_id FK
+        decimal purchase_price
+        int quantity
+        decimal lineitem_total
+    }
+    Product {
+        string name
+        int realm_id FK
+        string description
+        decimal price
+        int stock
+        string sku
+        string image
+        date date_added
+        boolean unique_stock
+    }
+    Realm {
+        string name
+        boolean the_prefix_required
+    }
 
-        FaqsTopics {
-            string name
-            int sort_order
-        }
-        Faqs {
-            int faqstopics_id FK
-            string question
-            text answer
-            int sort_order
-        }
-        ContactMessage {
-            string ticket_number
-            string name
-            string email
-            text message
-            boolean replied
-            date date_received
-            date date_replied
-            text reply
-        }
-        Newsletter {
-            string subject
-            text news_body
-            datetime date_sent
-        }
-        Subscriber {
-            string email
-            boolean is_active
-            date date_joined
-            string token
-            datetime token_created_at
-        }
+    FaqsTopics {
+        string name
+        int sort_order
+    }
+    Faqs {
+        int faqstopics_id FK
+        string question
+        text answer
+        int sort_order
+    }
+    ContactMessage {
+        string ticket_number
+        string name
+        string email
+        text message
+        boolean replied
+        date date_received
+        date date_replied
+        text reply
+    }
+    Newsletter {
+        string subject
+        text news_body
+        datetime date_sent
+    }
+    Subscriber {
+        string email
+        boolean is_active
+        date date_joined
+        string token
+        datetime token_created_at
+    }
+```
+
+source: [Mermaid](https://mermaid.live/edit#pako:eNqNVllv2kAQ_ivWPkMEpiTEr60iVT3V46VCWi3rMWywd80eJRT47x2vTfCZhAdsz3yzM_PNYR8JVzGQiIzH46XkSiZiHS1lENgNZBAFidJg7FJ6NegPgq01ywpAEPw2oIPTaTw-nfz9d60SkUIQBRtmrpCLuECqY_BNx2gWBRnbQoUqRXX9ZyHho4UMcRiTZULWoc_ayjl6iB23CBYV7CI5Kw_4ASwtzkq0qmJ_YDvzS-WCm4vfQjIU-rEUFT8RBw41FK8Pn65iY7WQ6yCGhLnU0sSlKZUsg0EEPgJYyuIYCTZ0-lZgOAi0ai8pF_YwiODKyRfUuTK26IaX7fULB2yUBCpdtgJdgs71Ah87hqqQNww8xdJ6jvOS_QGqhymGjIm0I-0GV1O-Wo1XqzDM_gDrg2x3WI6ZBSsy8Dc1MXCRsRSvqfgL-oDlKSa1rS45tsqytKvEYZZxW2nhyaKZWAvJUrpiZgu2pdWwZzo2FMsU93ElcqC5iLtN8Dy6x2a9yyhblS4UeTnJbdUlgdxpjiOL3rTg0DTdOSZtoyIXqxSjEBhFPfNzc3N0m7XZa4UDXayVwU1gONJghZI9UXeDNVbxbZfKrevI8IQ1NLvD_xXNWa_GSqkUmAycFDsHtOagSrXciq8lejkGXwhIMiTiiWrYOaGhWd7aRn0Ld0ZpS33VO6e0eyNBmfUnD3CN6Zkm0b5JmTT79l4ZcPu-eMlw-wVnG8ntScAKjlMwtD7esoZ8SFnpoMuuhjwV9epdy6qBAw74gK5lVk1nnh4a-X2FvUnB2t4tbNzqEXh7xCWa0JWKhxYRNSBtw8lPtyp6ftXrpMXGJW9hKPKO6fVl96hwTuOeVbsF2ROVl1OOU2khpuwaHBmRDDQGEOOHjg9tSfz3zZJEeFu9vpZkKc8IZc6qnwfJSWS1gxHRyq03JEpYavDJ5YW_6jvoWZozSaIjeSLRdDq7mcxuw8X87vY-XMzC-YgcSDSf3Ezv5otwcXt_h9L784j8UwoPmNzcT8NwNpnPp-G7EAEzf9ofrywCOP8HjLkMPg)
+
+### PyGraphViz ERD
+I have also used `pygraphviz` and `django-extensions` to auto-generate an ERD.
+
+The steps taken were as follows (for macOS assuming brew is installed):
+
+- In the macOS terminal: `brew install graphviz`
+- In the venv terminal in VSCode: `pip3 install django-extensions`
+- In the venv terminal in VSCode:
     ```
+    pip3 install --config-settings="--global-option=build_ext" \
+            --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
+            --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
+            pygraphviz
+    ```
+- in my `settings.py` file, I added the following to my `INSTALLED_APPS`:
 
-    source: [Mermaid](https://mermaid.live/edit#pako:eNqNVllv2kAQ_ivWPkMEpiTEr60iVT3V46VCWi3rMWywd80eJRT47x2vTfCZhAdsz3yzM_PNYR8JVzGQiIzH46XkSiZiHS1lENgNZBAFidJg7FJ6NegPgq01ywpAEPw2oIPTaTw-nfz9d60SkUIQBRtmrpCLuECqY_BNx2gWBRnbQoUqRXX9ZyHho4UMcRiTZULWoc_ayjl6iB23CBYV7CI5Kw_4ASwtzkq0qmJ_YDvzS-WCm4vfQjIU-rEUFT8RBw41FK8Pn65iY7WQ6yCGhLnU0sSlKZUsg0EEPgJYyuIYCTZ0-lZgOAi0ai8pF_YwiODKyRfUuTK26IaX7fULB2yUBCpdtgJdgs71Ah87hqqQNww8xdJ6jvOS_QGqhymGjIm0I-0GV1O-Wo1XqzDM_gDrg2x3WI6ZBSsy8Dc1MXCRsRSvqfgL-oDlKSa1rS45tsqytKvEYZZxW2nhyaKZWAvJUrpiZgu2pdWwZzo2FMsU93ElcqC5iLtN8Dy6x2a9yyhblS4UeTnJbdUlgdxpjiOL3rTg0DTdOSZtoyIXqxSjEBhFPfNzc3N0m7XZa4UDXayVwU1gONJghZI9UXeDNVbxbZfKrevI8IQ1NLvD_xXNWa_GSqkUmAycFDsHtOagSrXciq8lejkGXwhIMiTiiWrYOaGhWd7aRn0Ld0ZpS33VO6e0eyNBmfUnD3CN6Zkm0b5JmTT79l4ZcPu-eMlw-wVnG8ntScAKjlMwtD7esoZ8SFnpoMuuhjwV9epdy6qBAw74gK5lVk1nnh4a-X2FvUnB2t4tbNzqEXh7xCWa0JWKhxYRNSBtw8lPtyp6ftXrpMXGJW9hKPKO6fVl96hwTuOeVbsF2ROVl1OOU2khpuwaHBmRDDQGEOOHjg9tSfz3zZJEeFu9vpZkKc8IZc6qnwfJSWS1gxHRyq03JEpYavDJ5YW_6jvoWZozSaIjeSLRdDq7mcxuw8X87vY-XMzC-YgcSDSf3Ezv5otwcXt_h9L784j8UwoPmNzcT8NwNpnPp-G7EAEzf9ofrywCOP8HjLkMPg)
+    ```python
+    INSTALLED_APPS = [
+        ...
+        'django_extensions',
+        ...
+    ]
+    ```
+- back in the venv terminal: `python3 manage.py graph_models -a -o erd.png`
+- drag the new `erd.png` file into my `documentation/charts/` folder and rename to `graphviz_erd.png`
+- removed `'django_extensions',` from my `INSTALLED_APPS`
+- finally, in the venv terminal: `pip3 uninstall django-extensions pygraphviz -y`
 
-- ### PyGraphViz ERD
-    I have also used `pygraphviz` and `django-extensions` to auto-generate an ERD.
+![GraphViz ERD](documentation/charts/graphviz_erd.png "GraphViz ERD")
 
-    The steps taken were as follows (for macOS assuming brew is installed):
-
-    - In the macOS terminal: `brew install graphviz`
-    - In the venv terminal in VSCode: `pip3 install django-extensions`
-    - In the venv terminal in VSCode:
-        ```
-        pip3 install --config-settings="--global-option=build_ext" \
-                --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
-                --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
-                pygraphviz
-        ```
-    - in my `settings.py` file, I added the following to my `INSTALLED_APPS`:
-
-        ```python
-        INSTALLED_APPS = [
-            ...
-            'django_extensions',
-            ...
-        ]
-        ```
-    - back in the venv terminal: `python3 manage.py graph_models -a -o erd.png`
-    - drag the new `erd.png` file into my `documentation/charts/` folder and rename to `graphviz_erd.png`
-    - removed `'django_extensions',` from my `INSTALLED_APPS`
-    - finally, in the venv terminal: `pip3 uninstall django-extensions pygraphviz -y`
-
-    ![GraphViz ERD](documentation/charts/graphviz_erd.png "GraphViz ERD")
-
-    source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
+source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
 
 ## Agile Development Process
 
