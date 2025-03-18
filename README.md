@@ -1895,10 +1895,10 @@ The steps taken were as follows (for macOS assuming brew is installed):
         ...
     ]
     ```
-- back in the terminal: `python3 manage.py graph_models -a -o erd.png`
+- back in the venv terminal: `python3 manage.py graph_models -a -o erd.png`
 - drag the new `erd.png` file into my `documentation/charts/` folder and rename to `graphviz_erd.png`
 - removed `'django_extensions',` from my `INSTALLED_APPS`
-- finally, in the terminal: `pip3 uninstall django-extensions pygraphviz -y`
+- finally, in the venv terminal: `pip3 uninstall django-extensions pygraphviz -y`
 
 ![GraphViz ERD](documentation/charts/graphviz_erd.png "GraphViz ERD")
 
