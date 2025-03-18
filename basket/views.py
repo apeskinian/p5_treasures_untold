@@ -161,7 +161,7 @@ def adjust_basket(request, item_id):
     if quantity_delta < 0 and product.stock < abs(quantity_delta):
         messages.error(
             request,
-            f'Sorry, the maximum available now are {maximum_available} '
+            f'Sorry, the maximum available now is {maximum_available} '
             'items.'
         )
     else:

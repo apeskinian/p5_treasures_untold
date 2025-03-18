@@ -1115,7 +1115,323 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     </details>
     </details>
 
-- ### Backend Features
+- ### Stock Control
+    A large proportion of the items that Treasures Untold sells are unique and so stock control is an important factor. I have implemented the following features to manage stock and minimise problems:
+
+    - ### Stock update on basket adjustments
+        Every time a user adds an item or adjusts the quantity of an item in their basket it calls a method to adjust the stock levels of the product in the database accordingly, this maintains a real time stock level for the site and it's users
+        
+        It also includes error checking to make sure that unique items stock levels are never set above 1 and any product stock level is never set below 0.
+
+        ```
+        def update_stock(request, product, adjustment):
+            """
+            Updates the stock level of a product. Called when adding, updating and
+            deleting items in the basket.
+
+            **Arguments:**
+            - `request`: The HTTP request.
+            - `product`: An instance of :model:`products.Product`.
+            - `adjustment`: An integer value to apply to the stock level
+                (positive or negative).
+
+            **Raises:**
+            - ValueError: If stock becomes negative or exceeds the limit for unique
+                items.
+            """
+            try:
+                updated_stock = product.stock
+                updated_stock += adjustment
+                if updated_stock < 0:
+                    raise ValueError('Stock cannot be negative')
+                elif product.unique_stock and updated_stock > 1:
+                    raise ValueError(
+                        'Stock cannot be more than one for unique items'
+                    )
+                else:
+                    product.stock += adjustment
+                    product.save()
+            except ValueError:
+                pass
+
+            request.session.set_expiry(86400)
+        ```
+
+        The line that sets the session expiry is required for the [abandoned session](#abandoned-sessions-and-baskets) feature described below.
+
+    - ### Items left in basket after users log out
+        If a user logs out with items in their basket, these items can be lost as the stock levels are updated in real time when users add and adjust item quantities in their baskets.
+        
+        To prevent this I implemented a signal that acts when a user logs out.
+        
+        This signal then iterates through any basket items and adjusts the database quantities by adding the relevant amount for each item that was in the basket back to stock.
+        
+        This also has error checking to make sure stock levels in the database cannot be less than 1 and if an item is unique that the stock level cannot exceed 1.
+
+        ```
+        @receiver(user_logged_out)
+        def clear_session_on_logout(sender, request, user, **kwargs):
+            """
+            Clears the session's basket and reward data when the user logs out.
+            It also recovers any items left in the basket and updates stock levels
+            accordingly.
+
+            **Arguments:**
+            - `sender`: The sender of the signal, which is the user logged out event.
+            - `request`: The HTTP request object.
+            - `user`: The user who logged out.
+            - `kwargs`: Additional keyword arguments passed with the signal.
+            """
+            # Check for items left in basket session data.
+            if 'basket' in request.session:
+                basket = request.session.get('basket', {})
+
+                for item_id, quantity in basket.items():
+                    try:
+                        product = get_object_or_404(Product, pk=item_id)
+                        updated_stock = product.stock
+                        updated_stock += quantity
+                        if updated_stock < 0:
+                            raise ValueError('Stock cannot be negative.')
+                        elif product.unique_stock and updated_stock > 1:
+                            raise ValueError(
+                                'Stock cannot be more than one for unique items'
+                            )
+                        else:
+                            product.stock += quantity
+                            product.save()
+                    except ValueError:
+                        pass
+
+                del request.session['basket']
+
+            # Check for rewards in session data.
+            if 'rewards' in request.session:
+                del request.session['rewards']
+        ```
+
+    - ### Secondary stock check on basket adjustments
+        One of the main issues that can arise is if there are multiple sessions running. The stock levels shown in the templates are only accurate from the last request made and so there is the risk that two users could be on the same page and add the same item to their basket at the same time.
+        
+        Neither session would see this as an issue as when the template was loaded there was stock available. The template will still allow the item to be added to the basket. The potential issues with this are:
+        
+        - Unique items could be purchased twice by two different users.
+        - Items that are not unique may be oversold as the stock levels become innacurate.
+
+        To prevent this I have implemented a secondary stock check in the view before the item is added or adjusted in the basket.
+        
+        If there is a stock level discrepancy between the template and the view when adding an item, the user will be notified accordingly. If the item is out of stock, they will be informed that it is no longer available via a message. For non-unique items, the stock level will be updated to reflect the latest availability and a message will be shown to inform them of this. They can then proceed with their purchase within the revised stock limits.
+
+        | Unavailable Message | Update Stock Level Message |
+        | :---: | :---: |
+        | ![Unavailable Stock Message](documentation/features/stock_control/stock_unavailable.png "Unavailable stock message") | ![Updated Stock Level Message](documentation/features/stock_control/stock_updated.png "Update stock level message") |
+
+        ```
+        product.refresh_from_db()
+        if quantity > product.stock:
+            if product.stock > 0:
+                messages.error(
+                    request, f'There are only {product.stock} items available now.'
+                )
+            else:
+                messages.error(
+                    request, 'Sorry but this product is currently unavailable.'
+                )
+        else:
+        # Continue with adding to basket...  
+        ```
+
+        When updating items in their basket, if another discrepancy is detected the user will be informed via a message of the updated maximum and then allowed to continue.
+
+        | New Maximum Available Message |
+        | :---: |
+        | ![New Maximum Message](documentation/features/stock_control/stock_new_max.png "New maximum message") |
+
+        ```
+        product.refresh_from_db()
+        maximum_available = previous_quantity + product.stock
+        quantity_delta = previous_quantity - new_quantity
+
+        if quantity_delta < 0 and product.stock < abs(quantity_delta):
+            messages.error(
+                request,
+                f'Sorry, the maximum available now are {maximum_available} '
+                'items.'
+            )
+        else:
+        # Continue with basket adjustment...
+        ```
+    
+    - ### Abandoned sessions and baskets
+        One of the most challenging issues to manage occurs when a user’s connection to the site is disrupted. Whether due to an unintentional loss of connection, closing the browser, or navigating away while their session is still active.
+
+        The signal to manage log out actions will not pick this up and any items that were in the users basket can be lost leading to innacurate stock levels for the site.
+
+        To mitigate this I have implemented a management command that is run via [Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler). This is a free add-on that can run specific commands at set time intervals for your app. It is currently set to run every 10 minutes.
+
+        The command runs through every current session and looks for 'modified' in the session data. This will be a timestamp in string format created by custom middleware. The timestamp is the last time that the user interacted with the site as the middleware is activated on every request.
+        
+        The session is deemed as abandoned if the time delta is more than **30 minutes**. This can be altered in the command if required.
+
+        Sessions that are flagged as abandoned are terminated and items that were in any baskets are recovered in the same way as they are for the logout signal with the same error checking.
+
+        An email is also sent to the site admin informing them of the sessions that were abandoned and an items that were recovered.
+
+        ### Management Command
+
+        ```
+        class Command(BaseCommand):
+            """
+            Command to detect abandoned sessions by comparing the last interaction
+            time and seeing if it's more than the specified limit.
+            If so, any basket items are retrieved and rewards deactivated.
+            The session is also then deleted logging the user out.
+            """
+            help = 'Retrieves stock from abandoned sessions'
+
+            def handle(self, *args, **kwargs):
+                basket_counter = 0
+                item_counter = 0
+                now = datetime.now()
+
+                # Set the value that will  determine an abandoned session.
+                expiry_time = now - timedelta(minutes=30)
+
+                all_sessions = Session.objects.all()
+
+                for session in all_sessions:
+                    session_data = session.get_decoded()
+                    last_modified_str = session_data.get('modified')
+
+                    # Error handling for missing or invalid session data.
+                    if not last_modified_str:
+                        self.stdout.write(
+                            self.style.WARNING(
+                                f'Skipping session {session.session_key}: '
+                                'No modified time found.'
+                            )
+                        )
+                        continue
+
+                    try:
+                        last_modified = datetime.strptime(
+                            last_modified_str, '%d/%m/%Y, %H:%M:%S'
+                        )
+                    except ValueError as e:
+                        self.stderr.write(
+                            self.style.ERROR(
+                                f'Skipping session {session.session_key}: '
+                                f'Invalid modified format - {e}'
+                            )
+                        )
+                        continue
+
+                    # Check valid session data for expired time and perform recovery.
+                    if last_modified < expiry_time:
+                        # Recovery of any basket items.
+                        if 'basket' in session_data:
+
+                            # create report list for email
+                            report = []
+
+                            basket = session_data['basket']
+                            for item_id, quantity in basket.items():
+                                try:
+                                    product = get_object_or_404(Product, pk=item_id)
+
+                                    # Add items to a report list.
+                                    report.append(product.name)
+
+                                    # Recover stock.
+                                    updated_stock = product.stock
+                                    updated_stock += quantity
+                                    if updated_stock < 0:
+                                        raise ValueError('Stock cannot be negative.')
+                                    elif product.unique_stock and updated_stock > 1:
+                                        raise ValueError(
+                                            'Stock cannot be more than 1 '
+                                            'for unique items'
+                                        )
+                                    else:
+                                        item_counter += quantity
+                                        product.stock += quantity
+                                        product.save()
+                                except ValueError as e:
+                                    self.stderr.write(
+                                        self.style.ERROR(
+                                            'Error updating stock for '
+                                            f'{product.id}: {e}'
+                                        )
+                                    )
+
+                            # Send an email report with the items recovered.
+                            if report:
+                                time_stamp = now.strftime('%Y-%m-%d %H:%M:%S')
+                                subject = 'Abandoned Basket Recovered'
+                                message = (
+                                    'Items have been recovered from a basket.\n'
+                                    f'Time: {time_stamp}\n'
+                                    f'Products recovered:\n' + '\n'.join(report)
+                                )
+                                recipient_list = [settings.DEFAULT_FROM_EMAIL]
+
+                                send_mail(
+                                    subject,
+                                    message,
+                                    settings.DEFAULT_FROM_EMAIL,
+                                    recipient_list,
+                                )
+
+                            basket_counter += 1
+                        session.delete()
+
+                self.stdout.write(
+                    self.style.SUCCESS(
+                        f'Recovered {item_counter} items from {basket_counter} baskets'
+                    )
+                )
+        ```
+
+        ### Custom Middleware
+
+        Below is the middleware that updates the 'modified' timestamp. This is registered in the MIDDLEWARE section of settings.py
+
+        ```
+        'basket.middleware.UpdateSessionMiddleware',
+        ```
+
+        ```
+        class UpdateSessionMiddleware:
+            """
+            Middleware to update the `modified` timestamp of the session.
+            Used when checking for abandoned baskets.
+            """
+            def __init__(self, get_response):
+                """
+                Initiliazes the middleware.
+                """
+                self.get_response = get_response
+
+            def __call__(self, request):
+                """
+                Sets the `modified` timestamp in the session data.
+                **Returns:**
+                - The response from the next middleware or view in the stack.
+                """
+                if request.session.session_key:
+                    request.session['modified'] = (
+                        datetime.now().strftime('%d/%m/%Y, %H:%M:%S')
+                    )
+                    request.session.modified = True
+                return self.get_response(request)
+        ```
+
+        ### Setting the session expiry
+        The method update_stock sets the expiry time to 86400 because if a user logs in without checking the remember me box, the default sesssion time is set to **'Session'**.
+
+        Sessions with an expiry of **'Session'** will terminate when the browser is closed and therefore will lose any data stored in that session including basket contents. By overriding this, the session data is preserved until the management command can recover the data and terminate the session safely.
+
+        The expiry time is only overridden when the basket is adjusted as it is only needed to preserve basket data. If the user logs in and just browses without adding anything to the basket, their session will terminate as normal when the browser is closed.
 
 
 - ### SEO & Marketing Features
