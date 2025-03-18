@@ -1908,15 +1908,13 @@ source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to
 
 ### GitHub Projects
 
-⚠️ TIP ⚠️
+[GitHub Projects](https://github.com/users/apeskinian/projects/8) served as an Agile tool for this project. Through it, EPICs, User Stories, issues/bugs, and Milestone tasks were planned, then subsequently tracked on a regular basis using the Kanban project board.
 
-Consider adding screenshots of your Projects Board(s), Issues (open and closed), and Milestone tasks.
+![Agile Tracker](documentation/agile/agile_tracker.png "Project Tracker")
 
-⚠️ --- END ---⚠️
+I also created an overview page where I could easily see at a glance the current progress in development. This allowed me to track start and finish dates along with adding prioritisation for bugs.
 
-[GitHub Projects](https://www.github.com/apeskinian/p5_treasures_untold/projects) served as an Agile tool for this project. Through it, EPICs, User Stories, issues/bugs, and Milestone tasks were planned, then subsequently tracked on a regular basis using the Kanban project board.
-
-![screenshot](documentation/gh-projects.png)
+![Agile Overview](documentation/agile/agile_overview.png "Project Overview")
 
 ### GitHub Issues
 
