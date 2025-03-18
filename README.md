@@ -1488,7 +1488,7 @@ I created an ERD to help code the models for the database. This was done using a
 
 - #### Product Models
 
-```
+```python
 class Realm(models.Model):
     """
     Represents a realm from which a product originates.
@@ -1507,7 +1507,7 @@ class Realm(models.Model):
     the_prefix_required = models.BooleanField(default=False)
 ```
 
-```
+```python
 class Product(models.Model):
     """
     Represents a product available for purchase in the store.
@@ -1563,7 +1563,7 @@ class Product(models.Model):
 
 - #### Checkout Models
 
-```
+```python
 class Order(models.Model):
     """
     Represents a customer's order, storing details such as user profile,
@@ -1631,7 +1631,7 @@ class Order(models.Model):
     )
 ```
 
-```
+```python
 class OrderLineItem(models.Model):
     """
     Represents a line item for an order.
@@ -1672,7 +1672,7 @@ class OrderLineItem(models.Model):
 
 - #### Profiles Models
 
-```
+```python
 class UserProfile(models.Model):
     """
     Stores user profile information, including default shipping details.
@@ -1715,7 +1715,7 @@ class UserProfile(models.Model):
 
 - #### Support Models
 
-```
+```python
 class ContactMessage(models.Model):
     """
     Represents a customer support message submitted via the contact form.
@@ -1759,7 +1759,7 @@ class ContactMessage(models.Model):
     reply = models.TextField(null=True, blank=True)
 ```
 
-```
+```python
 class FaqsTopics(models.Model):
     """
     Represents a topic category for Frequently Asked Questions (FAQs).
@@ -1784,7 +1784,7 @@ class FaqsTopics(models.Model):
     sort_order = models.PositiveIntegerField(default=100)
 ```
 
-```
+```python
 class Faqs(models.Model):
     """
     Represents an individual Frequently Asked Question (FAQ).
@@ -1815,7 +1815,7 @@ class Faqs(models.Model):
     sort_order = models.PositiveIntegerField(default=100)
 ```
 
-```
+```python
 class Newsletter(models.Model):
     """
     Represents a newsletter entry that has been sent.
@@ -1840,7 +1840,7 @@ class Newsletter(models.Model):
     date_sent = models.DateField(auto_now_add=True)
 ```
 
-```
+```python
 class Subscriber(models.Model):
     """
     Represents a newsletter subscriber.
@@ -1875,25 +1875,32 @@ class Subscriber(models.Model):
 
 I have also used `pygraphviz` and `django-extensions` to auto-generate an ERD.
 
-The steps taken were as follows:
-- In the terminal: `sudo apt update`
-- then: `sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config`
-- then type `Y` to proceed
-- then: `pip3 install django-extensions pygraphviz`
+The steps taken were as follows (for macOS assuming brew is installed):
+
+- In the macOS terminal: `brew install graphviz`
+- In the venv terminal in VSCode: `pip3 install django-extensions`
+- In the venv terminal in VSCode:
+    ```
+    pip3 install --config-settings="--global-option=build_ext" \
+            --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
+            --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
+            pygraphviz
+    ```
 - in my `settings.py` file, I added the following to my `INSTALLED_APPS`:
-```python
-INSTALLED_APPS = [
-    ...
-    'django_extensions',
-    ...
-]
-```
+
+    ```python
+    INSTALLED_APPS = [
+        ...
+        'django_extensions',
+        ...
+    ]
+    ```
 - back in the terminal: `python3 manage.py graph_models -a -o erd.png`
-- drag the new `erd.png` file into my `documentation/` folder
+- drag the new `erd.png` file into my `documentation/charts/` folder and rename to `graphviz_erd.png`
 - removed `'django_extensions',` from my `INSTALLED_APPS`
 - finally, in the terminal: `pip3 uninstall django-extensions pygraphviz -y`
 
-![screenshot](documentation/advanced-erd.png)
+![GraphViz ERD](documentation/charts/graphviz_erd.png "GraphViz ERD")
 
 source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
 
