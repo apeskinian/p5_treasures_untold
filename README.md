@@ -1442,30 +1442,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Future Features
 
-⚠️ INSTRUCTIONS ⚠️
-
-Do you have additional ideas that you'd like to include on your project in the future? Fantastic, list them here! It's always great to have plans for future improvements. Consider adding any helpful links or notes to help remind you in the future, if you revisit the project in a couple years.
-
-A few examples are listed below to align with possible ways to improve on the sample walkthrough project, to give you some inspiration.
-
-⚠️ --- END ---⚠️
-
-- **Product Reviews & Ratings**: Allow customers to leave reviews and rate products, with admin moderation. Display average ratings and review counts on product pages.
-- **Wishlist Functionality**: Enable users to save products to a personal wishlist for future purchases. Notify users if wishlist items go on sale or are back in stock.
-- **Product Recommendations**: Implement a "Customers who bought this also bought" or "You might also like" feature to suggest related products.
-- **Live Chat Support**: Provide real-time customer support through an integrated live chat or chatbot.
-- **Abandoned Cart Recovery**: Automatically send emails to users who add items to their cart but don't complete the purchase, offering discounts or reminders.
-- **Discount Codes and Vouchers**: Allow the admin to create discount codes or vouchers for promotions and marketing campaigns.
-- **Loyalty Program**: Introduce a points-based loyalty system where customers earn points for purchases, which can be redeemed for discounts.
-- **Product Inventory Alerts**: Notify customers when out-of-stock items are back in stock, or when low inventory is approaching.
-- **Multi-Currency and Multi-Language Support**: Expand the application to support multiple currencies and languages to reach a global audience.
-- **Product Bundles**: Offer discounted product bundles (e.g., buy 3 for the price of 2) or custom product kits.
-- **Social Media Integration**: Enable users to share products directly to social media platforms or implement a social login for quick account creation.
-- **Shipping Tracking Integration**: Provide real-time shipping updates and tracking information directly within the user’s order history.
-- **Advanced Analytics Dashboard for Admin**: Offer an in-depth dashboard that displays sales trends, popular products, customer behavior, and more.
-- **Subscription-Based Products**: Allow users to subscribe to certain products (e.g., monthly deliveries of consumables like coffee or skincare products).
-- **Product Video Demos**: Support product videos to better showcase features, especially for high-tech or complex items.
-- **Mobile App**: Develop a mobile app for iOS and Android, providing users with a more optimized shopping experience on mobile devices.
+- **Product Restock Alerts**: If an item is marked as sold or out of stock, users should have the option to register for notifications, allowing them to be informed if and when the product becomes available again.
+- **Sharing to Social Media etc**: A share button on product details pages would be good for users to be able to share items to their friends and family via social media, email or messaging apps.
+- **Social Media Log in**: Allowing users to register an account using their social media credentials would be good.
+- **Multi Currency Support**: Allowing users to choose which currency to browse and purchase in would be a good feature to implement.
 
 ## Tools & Technologies
 
@@ -1481,6 +1461,7 @@ A few examples are listed below to align with possible ways to improve on the sa
 | [![badge](https://img.shields.io/badge/jQuery-grey?logo=jquery&logoColor=0769AD)](https://jquery.com) | User interaction on the site. |
 | [![badge](https://img.shields.io/badge/Python-grey?logo=python&logoColor=3776AB)](https://www.python.org) | Back-end programming language. |
 | [![badge](https://img.shields.io/badge/Heroku-grey?logo=heroku&logoColor=430098)](https://www.heroku.com) | Hosting the deployed back-end site. |
+| [![badge](https://img.shields.io/badge/Heroku_Scheduler-grey?logo=heroku&logoColor=430098)](https://www.heroku.com) | Running the abandoned session management command. |
 | [![badge](https://img.shields.io/badge/Bootstrap-grey?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com) | Front-end CSS framework for modern responsiveness and pre-built components. |
 | [![badge](https://img.shields.io/badge/Django-grey?logo=django&logoColor=092E20)](https://www.djangoproject.com) | Python framework for the site. |
 | [![badge](https://img.shields.io/badge/PostgreSQL-grey?logo=postgresql&logoColor=4169E1)](https://www.postgresql.org) | Relational database management. |
