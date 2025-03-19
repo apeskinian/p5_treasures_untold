@@ -13,3 +13,4 @@ cloudinary_python.txt
 .venv_mac
 .venv_win
 static/images/dev_mode/
+.VSCodeCounter
