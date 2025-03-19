@@ -1126,7 +1126,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         
         It also includes error checking to make sure that unique items stock levels are never set above 1 and any product stock level is never set below 0.
 
-        ```
+        ```python
         def update_stock(request, product, adjustment):
             """
             Updates the stock level of a product. Called when adding, updating and
@@ -1171,7 +1171,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         
         This also has error checking to make sure stock levels in the database cannot be less than 1 and if an item is unique that the stock level cannot exceed 1.
 
-        ```
+        ```python
         @receiver(user_logged_out)
         def clear_session_on_logout(sender, request, user, **kwargs):
             """
@@ -1229,7 +1229,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: | :---: |
         | ![Unavailable Stock Message](documentation/features/stock_control/stock_unavailable.png "Unavailable stock message") | ![Updated Stock Level Message](documentation/features/stock_control/stock_updated.png "Update stock level message") |
 
-        ```
+        ```python
         product.refresh_from_db()
         if quantity > product.stock:
             if product.stock > 0:
@@ -1250,7 +1250,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         | :---: |
         | ![New Maximum Message](documentation/features/stock_control/stock_new_max.png "New maximum message") |
 
-        ```
+        ```python
         product.refresh_from_db()
         maximum_available = previous_quantity + product.stock
         quantity_delta = previous_quantity - new_quantity
@@ -1282,7 +1282,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         ### Management Command
 
-        ```
+        ```python
         class Command(BaseCommand):
             """
             Command to detect abandoned sessions by comparing the last interaction
@@ -1399,11 +1399,11 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         Below is the middleware that updates the 'modified' timestamp. This is registered in the MIDDLEWARE section of settings.py
 
-        ```
+        ```python
         'basket.middleware.UpdateSessionMiddleware',
         ```
 
-        ```
+        ```python
         class UpdateSessionMiddleware:
             """
             Middleware to update the `modified` timestamp of the session.
@@ -1996,7 +1996,7 @@ The steps taken were as follows (for macOS assuming brew is installed):
 - In the macOS terminal: `brew install graphviz`
 - In the venv terminal in VSCode: `pip3 install django-extensions`
 - In the venv terminal in VSCode:
-    ```
+    ```sh
     pip3 install --config-settings="--global-option=build_ext" \
             --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
             --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
