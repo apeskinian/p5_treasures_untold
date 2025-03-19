@@ -27,7 +27,8 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | --- | --- | --- | --- | --- |
 | templates | 404.html | n/a | ![Html validation](documentation/testing/validation/html/valid_404.png "Valid 404") | No errors or warnings found. |
 | templates | 500.html | n/a | ![Html validation](documentation/testing/validation/html/valid_500.png "Valid 500") | No errors or warnings found. |
-|  |  |  |  |  |
+| home/templates | index.html | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F) | ![HTML Validation](documentation/testing/validation/html/valid_index.png "Valid Index") | No errors or warnings found. |
+| products/templates | products.html | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fproducts%2F) | ![HTML Validation](documentation/testing/validation/html/valid_products.png "Valid Products") | No errors or warnings found. |
 
 
 
