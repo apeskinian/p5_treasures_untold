@@ -24,9 +24,9 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 > - sort_and_filter.html
 
 | Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | templates | 404.html | n/a | ![Html validation](documentation/testing/validation/html/valid_404.png "Valid 404") | No errors or warnings found. |
-| templates | 500.html | n/a |  |  |
+| templates | 500.html | n/a | ![Html validation](documentation/testing/validation/html/valid_500.png "Valid 500") | No errors or warnings found. |
 |  |  |  |  |  |
 
 
