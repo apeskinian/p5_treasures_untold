@@ -2110,9 +2110,9 @@ Further links for future implementation:
 
 Creating a strong social base (with participation) and linking that to the business site can help drive sales. Using more popular providers with a wider user base, such as Facebook, typically maximizes site views.
 
-I've created a mockup Facebook business account using the [Balsamiq template](https://code-institute-org.github.io/5P-Assessments-Handbook/files/Facebook_Mockups.zip) provided by Code Institute.
+I've created a mockup Facebook business account using the [Free Facebook Page Mockup 2022](https://unblast.com/free-facebook-page-mockup-2022-psd/) provided free from [Unblast](https://unblast.com/).
 
-![screenshot](documentation/mockup-facebook.png)
+![Fcebook Mockup](documentation/seo_marketing/marketing_facebook.png "Facebook Mockup")
 
 ### Newsletter Marketing
 
