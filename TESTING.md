@@ -23,19 +23,11 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 > - standard_navbar.html
 > - sort_and_filter.html
 
-| Directory | File | Screenshot | Notes |
+| Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| templates | 404.html |  |  |
-| templates | 500.html |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| templates | 404.html | n/a | ![Html validation](documentation/testing/validation/html/valid_404.png "Valid 404") | No errors or warnings found. |
+| templates | 500.html | n/a |  |  |
+|  |  |  |  |  |
 
 
 
