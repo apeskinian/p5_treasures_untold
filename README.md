@@ -2116,39 +2116,84 @@ I've created a mockup Facebook business account using the [Free Facebook Page Mo
 
 ### Newsletter Marketing
 
-I have incorporated a newsletter sign-up form on my application, to allow users to supply their email address if they are interested in learning more. 
+I have incorporated a newsletter in my application, to allow users to supply their email address if they are interested in learning more. Staff members can send newsletters to current subscribers and manage the mailing list.
 
-⚠️ OPTION 1: RECOMMENDED ⚠️
+The newsletter comprises of two models, one for the newsletters and one for the subscriber list. For full details of this feature please see details for [newsletter sign up](#newsletter) and [newsletter admin](#newsletter-admin).
 
-**Custom Django Model Newsletter**
+#### Newsletter model
+```python
+class Newsletter(models.Model):
+    """
+    Represents a newsletter entry that has been sent.
 
-- Create a custom `newsletter` app in your project, with a custom model/class called `Newsletter`.
-- This method satisfies two assessment criteria:
-    1. include a newsletter
-    2. one of your 3 required custom models
-- It doesn't need anything except the `email` field on the model, but feel free to add more if you need.
-- Example: (keep this in your README if you've done this method, attach your `Newsletter` model in a code block like the following example)
-    ```python
-    class Newsletter(models.Model):
-        email = models.EmailField(null=False, blank=False)
+    **Fields:**
+    - `subject (CharField)`: The subject line of the newsletter.
+    - `news_body (TextField)`: The main content of the newsletter.
+    - `date_sent (DateField)`: The date the newsletter was sent
+        (auto-populated).
 
-        def __str__(self):
-            return self.email
-    ```
-- Consider using the same `send_mail()` functionality used on the `webhook_handler.py` file.
-    - You can trigger an email to be sent out to subscribed users when new products are added to the site!
+    **Meta:**
+    - `ordering`: Newsletters are ordered by `date_sent`.
 
-⚠️ --- END --- ⚠️
+    **Methods:**
+    - `__str__()`: Returns the newsletter subject as its string representation.
+    """
+    class Meta:
+        ordering = ['-date_sent']
 
-🛑 OPTION 2 🛑
+    subject = models.CharField(max_length=254, null=False, blank=False)
+    news_body = models.TextField()
+    date_sent = models.DateField(auto_now_add=True)
 
-**MailChimp Newsletter**
+    def __str__(self):
+        """
+        Returns the `subject` field as a string.
 
-- Sign up for a Mailchimp account
-- This allows up to 2,500 subscription email sends per month
-- Incorporate the code and scripts into your project like in the Code Institute lessons.
+        **Returns:**
+        - The `subject` field as a string.
+        """
+        return self.subject
+```
 
-🛑 --- END --- 🛑
+#### Subscriber model
+```python
+class Subscriber(models.Model):
+    """
+    Represents a newsletter subscriber.
+
+    **Fields:**
+    - `email (EmailField)`: The subscriber's email address (unique).
+    - `is_active (BooleanField)`: Indicates whether the subscription is active.
+    - `date_joined (DateField)`: The date the user subscribed (optional).
+    - `token (CharField)`: A unique token for confirming or managing the
+        subscription.
+    - `token_created_at (DateTimeField)`: Timestamp for when the token was
+        generated.
+
+    **Meta:**
+    - `ordering`: Subscribers are ordered by `date_joined`.
+
+    **Methods:**
+    - `__str__()`: Returns the subscriber's email as its string representation.
+    """
+    class Meta:
+        ordering = ['date_joined']
+
+    email = models.EmailField(null=False, blank=False, unique=True)
+    is_active = models.BooleanField(default=False)
+    date_joined = models.DateField(null=True, blank=True)
+    token = models.CharField(max_length=255)
+    token_created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        """
+        Returns the `email` field as a string.
+
+        **Returns:**
+        - The `email` field as a string.
+        """
+        return self.email
+```
 
 ## Testing
 
