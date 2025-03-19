@@ -1484,6 +1484,122 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models. Understanding the relationships between different tables can save time later in the project.
 
+### Lucid Chart ERD
+I created an ERD to help code the models for the database. This was done using a free version of [Lucid chart](https://www.lucidchart.com/pages)
+
+![ERD](documentation/charts/treasures_untold_erd.png "Treasures Untold ERD")
+
+### Mermaid Interactive ERD
+I have created an interactive ERD of my project using `Mermaid`
+
+```mermaid
+---
+config:
+theme: forest
+---
+erDiagram
+    User ||--|| UserProfile : has
+    UserProfile ||--o{ Order : makes
+    Order ||--o{ OrderLineItem : contains
+    OrderLineItem ||--|| Product : is
+    Product }o--|| Realm : from
+    FaqsTopics ||--o{ Faqs : has
+
+    UserProfile {
+        id user_id FK
+        string default_full_name
+        string default_street_address_1
+        string default_street_address_2
+        string default_town_city
+        string default_county
+        string default_postcode
+        string default_country
+        string default_phone_number
+    }
+    Order {
+        string order_number
+        int userprofile_id FK
+        string full_name
+        string email
+        string phone_number
+        string street_address_1
+        string street_address_2
+        string town_city
+        string county
+        string postcode
+        string country
+        datetime date
+        decimal delivery_cost
+        decimal order_total
+        decimal grand_total
+        text original_basket
+        text rewards_used
+        string stripe_pid
+    }
+    OrderLineItem {
+        int order_id FK
+        int product_id FK
+        decimal purchase_price
+        int quantity
+        decimal lineitem_total
+    }
+    Product {
+        string name
+        int realm_id FK
+        string description
+        decimal price
+        int stock
+        string sku
+        string image
+        date date_added
+        boolean unique_stock
+    }
+    Realm {
+        string name
+        boolean the_prefix_required
+    }
+
+    FaqsTopics {
+        string name
+        int sort_order
+    }
+    Faqs {
+        int faqstopics_id FK
+        string question
+        text answer
+        int sort_order
+    }
+    ContactMessage {
+        string ticket_number
+        string name
+        string email
+        text message
+        boolean replied
+        date date_received
+        date date_replied
+        text reply
+    }
+    Newsletter {
+        string subject
+        text news_body
+        datetime date_sent
+    }
+    Subscriber {
+        string email
+        boolean is_active
+        date date_joined
+        string token
+        datetime token_created_at
+    }
+```
+
+source: [Mermaid](https://mermaid.live/edit#pako:eNqNVllv2kAQ_ivWPkMEpiTEr60iVT3V46VCWi3rMWywd80eJRT47x2vTfCZhAdsz3yzM_PNYR8JVzGQiIzH46XkSiZiHS1lENgNZBAFidJg7FJ6NegPgq01ywpAEPw2oIPTaTw-nfz9d60SkUIQBRtmrpCLuECqY_BNx2gWBRnbQoUqRXX9ZyHho4UMcRiTZULWoc_ayjl6iB23CBYV7CI5Kw_4ASwtzkq0qmJ_YDvzS-WCm4vfQjIU-rEUFT8RBw41FK8Pn65iY7WQ6yCGhLnU0sSlKZUsg0EEPgJYyuIYCTZ0-lZgOAi0ai8pF_YwiODKyRfUuTK26IaX7fULB2yUBCpdtgJdgs71Ah87hqqQNww8xdJ6jvOS_QGqhymGjIm0I-0GV1O-Wo1XqzDM_gDrg2x3WI6ZBSsy8Dc1MXCRsRSvqfgL-oDlKSa1rS45tsqytKvEYZZxW2nhyaKZWAvJUrpiZgu2pdWwZzo2FMsU93ElcqC5iLtN8Dy6x2a9yyhblS4UeTnJbdUlgdxpjiOL3rTg0DTdOSZtoyIXqxSjEBhFPfNzc3N0m7XZa4UDXayVwU1gONJghZI9UXeDNVbxbZfKrevI8IQ1NLvD_xXNWa_GSqkUmAycFDsHtOagSrXciq8lejkGXwhIMiTiiWrYOaGhWd7aRn0Ld0ZpS33VO6e0eyNBmfUnD3CN6Zkm0b5JmTT79l4ZcPu-eMlw-wVnG8ntScAKjlMwtD7esoZ8SFnpoMuuhjwV9epdy6qBAw74gK5lVk1nnh4a-X2FvUnB2t4tbNzqEXh7xCWa0JWKhxYRNSBtw8lPtyp6ftXrpMXGJW9hKPKO6fVl96hwTuOeVbsF2ROVl1OOU2khpuwaHBmRDDQGEOOHjg9tSfz3zZJEeFu9vpZkKc8IZc6qnwfJSWS1gxHRyq03JEpYavDJ5YW_6jvoWZozSaIjeSLRdDq7mcxuw8X87vY-XMzC-YgcSDSf3Ezv5otwcXt_h9L784j8UwoPmNzcT8NwNpnPp-G7EAEzf9ofrywCOP8HjLkMPg)
+
+
+### Final Models
+
+Below are the models that were created for the app (class methods have been excluded).
+
 #### Product Models
 
 ```python
@@ -1868,119 +1984,8 @@ class Subscriber(models.Model):
     token_created_at = models.DateTimeField(default=timezone.now)
 ```
 
-### Lucid Chart ERD
-I created an ERD to help code the models for the database. This was done using a free version of [Lucid chart](https://www.lucidchart.com/pages)
-
-![ERD](documentation/charts/treasures_untold_erd.png "Treasures Untold ERD")
-
-### Mermaid Interactive ERD
-I have created an interactive ERD of my project using `Mermaid`
-
-```mermaid
----
-config:
-theme: forest
----
-erDiagram
-    User ||--|| UserProfile : has
-    UserProfile ||--o{ Order : makes
-    Order ||--o{ OrderLineItem : contains
-    OrderLineItem ||--|| Product : is
-    Product }o--|| Realm : from
-    FaqsTopics ||--o{ Faqs : has
-
-    UserProfile {
-        id user_id FK
-        string default_full_name
-        string default_street_address_1
-        string default_street_address_2
-        string default_town_city
-        string default_county
-        string default_postcode
-        string default_country
-        string default_phone_number
-    }
-    Order {
-        string order_number
-        int userprofile_id FK
-        string full_name
-        string email
-        string phone_number
-        string street_address_1
-        string street_address_2
-        string town_city
-        string county
-        string postcode
-        string country
-        datetime date
-        decimal delivery_cost
-        decimal order_total
-        decimal grand_total
-        text original_basket
-        text rewards_used
-        string stripe_pid
-    }
-    OrderLineItem {
-        int order_id FK
-        int product_id FK
-        decimal purchase_price
-        int quantity
-        decimal lineitem_total
-    }
-    Product {
-        string name
-        int realm_id FK
-        string description
-        decimal price
-        int stock
-        string sku
-        string image
-        date date_added
-        boolean unique_stock
-    }
-    Realm {
-        string name
-        boolean the_prefix_required
-    }
-
-    FaqsTopics {
-        string name
-        int sort_order
-    }
-    Faqs {
-        int faqstopics_id FK
-        string question
-        text answer
-        int sort_order
-    }
-    ContactMessage {
-        string ticket_number
-        string name
-        string email
-        text message
-        boolean replied
-        date date_received
-        date date_replied
-        text reply
-    }
-    Newsletter {
-        string subject
-        text news_body
-        datetime date_sent
-    }
-    Subscriber {
-        string email
-        boolean is_active
-        date date_joined
-        string token
-        datetime token_created_at
-    }
-```
-
-source: [Mermaid](https://mermaid.live/edit#pako:eNqNVllv2kAQ_ivWPkMEpiTEr60iVT3V46VCWi3rMWywd80eJRT47x2vTfCZhAdsz3yzM_PNYR8JVzGQiIzH46XkSiZiHS1lENgNZBAFidJg7FJ6NegPgq01ywpAEPw2oIPTaTw-nfz9d60SkUIQBRtmrpCLuECqY_BNx2gWBRnbQoUqRXX9ZyHho4UMcRiTZULWoc_ayjl6iB23CBYV7CI5Kw_4ASwtzkq0qmJ_YDvzS-WCm4vfQjIU-rEUFT8RBw41FK8Pn65iY7WQ6yCGhLnU0sSlKZUsg0EEPgJYyuIYCTZ0-lZgOAi0ai8pF_YwiODKyRfUuTK26IaX7fULB2yUBCpdtgJdgs71Ah87hqqQNww8xdJ6jvOS_QGqhymGjIm0I-0GV1O-Wo1XqzDM_gDrg2x3WI6ZBSsy8Dc1MXCRsRSvqfgL-oDlKSa1rS45tsqytKvEYZZxW2nhyaKZWAvJUrpiZgu2pdWwZzo2FMsU93ElcqC5iLtN8Dy6x2a9yyhblS4UeTnJbdUlgdxpjiOL3rTg0DTdOSZtoyIXqxSjEBhFPfNzc3N0m7XZa4UDXayVwU1gONJghZI9UXeDNVbxbZfKrevI8IQ1NLvD_xXNWa_GSqkUmAycFDsHtOagSrXciq8lejkGXwhIMiTiiWrYOaGhWd7aRn0Ld0ZpS33VO6e0eyNBmfUnD3CN6Zkm0b5JmTT79l4ZcPu-eMlw-wVnG8ntScAKjlMwtD7esoZ8SFnpoMuuhjwV9epdy6qBAw74gK5lVk1nnh4a-X2FvUnB2t4tbNzqEXh7xCWa0JWKhxYRNSBtw8lPtyp6ftXrpMXGJW9hKPKO6fVl96hwTuOeVbsF2ROVl1OOU2khpuwaHBmRDDQGEOOHjg9tSfz3zZJEeFu9vpZkKc8IZc6qnwfJSWS1gxHRyq03JEpYavDJ5YW_6jvoWZozSaIjeSLRdDq7mcxuw8X87vY-XMzC-YgcSDSf3Ezv5otwcXt_h9L784j8UwoPmNzcT8NwNpnPp-G7EAEzf9ofrywCOP8HjLkMPg)
-
 ### PyGraphViz ERD
-I have also used `pygraphviz` and `django-extensions` to auto-generate an ERD.
+I have also used `pygraphviz` and `django-extensions` to auto-generate an ERD from the created models.
 
 The steps taken were as follows (for macOS assuming brew is installed):
 
@@ -2027,10 +2032,15 @@ I also created an overview page where I could easily see at a glance the current
 
 [GitHub Issues](https://www.github.com/apeskinian/p5_treasures_untold/issues) served as an another Agile tool. There, I managed my User Stories and Milestone tasks, and tracked any issues/bugs.
 
-| Link | Screenshot |
-| --- | --- |
-| [![GitHub issues](https://img.shields.io/github/issues/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/issues) | ![screenshot](documentation/gh-issues-open.png) |
-| [![GitHub closed issues](https://img.shields.io/github/issues-closed/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue+is%3Aclosed) | ![screenshot](documentation/gh-issues-closed.png) |
+[![GitHub issues](https://img.shields.io/github/issues/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/issues) [![GitHub closed issues](https://img.shields.io/github/issues-closed/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue+is%3Aclosed)
+
+| Open Issues |
+| :---: |
+| ![Open Issues](documentation/agile/agile_issues_open.png "Open Issues") |
+
+| Closed Issues |
+| :---: |
+| ![Closed Issues](documentation/agile/agile_issues_closed.png "Closed Issues") |
 
 ### MoSCoW Prioritization
 
@@ -2040,6 +2050,10 @@ I've decomposed my Epics into User Stories for prioritizing and implementing the
 - **Should Have**: adds significant value, but not vital (*~20% of stories*)
 - **Could Have**: has small impact if left out (*the rest ~20% of stories*)
 - **Won't Have**: not a priority for this iteration - future features
+
+The GitHub projects helped keep track of this with the creation of a graph.
+
+![MoSCoW Graph](documentation/agile/agile_moscow.png "Agile MoSCoW Graph")
 
 ## Ecommerce Business Model
 
