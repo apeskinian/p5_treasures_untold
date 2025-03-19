@@ -2057,19 +2057,15 @@ The GitHub projects helped keep track of this with the creation of a graph.
 
 ## Ecommerce Business Model
 
-⚠️ INSTRUCTIONS ⚠️
+Treasures Untold follows a **Business to Customer** model selling rare curated magical items from the Disney realms to customers.
 
-Use this space to discuss the business model for your e-commerce project. An example is provided below that aligns closely with **Boutique Ado's B2C** strategy. Be sure to align to your own project requirements.
+The revenue model focuses on a one-time purchase system as there are no services offered which would require a reccuring payment. There is also incentivised engagement in the form of [easter eggs](#easter-eggs) that give surprise discounts.
 
-⚠️ --- END --- ⚠️
+Treasures Untold is in its exciting early stages of development and already features a newsletter and social media links to connect with its growing community.
 
-This site sells goods to individual customers, and therefore follows a **Business to Customer** model. It is of the simplest **B2C** forms, as it focuses on individual transactions, and doesn't need anything such as monthly/annual subscriptions.
+Using social media platforms such as Facebook can help to build a community of users around the business. Content such as product showcases, behind the scenes procurement videos and polls can help to drive sales.
 
-It is still in its early development stages, although it already has a newsletter, and links for social media marketing.
-
-Social media can potentially build a community of users around the business, and boost site visitor numbers, especially when using larger platforms such a Facebook.
-
-A newsletter list can be used by the business to send regular messages to site users. For example, what items are on special offer, new items in stock, updates to business hours, notifications of events, and much more!
+The newsletter can be used to inform site users of new products that arrive, current promotional events and more.
 
 ## SEO & Marketing
 
@@ -2090,11 +2086,17 @@ After it finished crawling the entire site, it created a [sitemap.xml](sitemap.x
 
 ### Robots
 
-I've created the [robots.txt](robots.txt) file at the root-level. Inside, I've included the default settings:
+I've created the [robots.txt](robots.txt) file at the root-level. Inside, I've included the default settings and disallowed access admin and sensitive pages:
 
 ```txt
 User-agent: *
-Disallow:
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /basket/
+Disallow: /checkout/
+Disallow: /staff/
+Disallow: /profile/
+Disallow: /?*
 Sitemap: https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com/sitemap.xml
 ```
 
