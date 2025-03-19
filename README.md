@@ -174,7 +174,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 
 ### Typography
 
-**Fonts**
+#### Fonts
 
 - [Pirata One](https://fonts.google.com/specimen/Pirata+One) was used for the main logo and h1 elements.
 
@@ -182,7 +182,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 
 - [Roboto](https://fonts.google.com/specimen/Roboto) was used for all other text.
 
-**Icons**
+#### Icons
 
 - The favicon for the site is from [Flaticon](https://www.flaticon.com/):
 
@@ -212,6 +212,9 @@ The action buttons are grouped by colour for specific types of action. This shou
     | ![Pen to Square](documentation/ux/pen-to-square-solid.svg) | [pen-to-square](https://fontawesome.com/icons/pen-to-square?f=classic&s=solid "font awesome link") | Edit buttons |
     | ![Paper Plane](documentation/ux/paper-plane-solid.svg) | [paper-plane](https://fontawesome.com/icons/paper-plane?f=classic&s=solid "font awesome link") | Newsletter sign up submit button |
     | ![Reply](documentation/ux/reply-solid.svg) | [paper-plane](https://fontawesome.com/icons/reply?f=classic&s=solid "font awesome link") | Reply to message submit button |
+    | ![Facebook](documentation/ux/facebook-brands.svg) | [facebook](https://fontawesome.com/icons/facebook?f=classic&s=brands) | Facebook link |
+    | ![Instagram](documentation/ux/instagram-brands.svg) | [instagram](https://fontawesome.com/icons/instagram?f=classic&s=brands) | Instagram link |
+    | ![X](documentation/ux/x-twitter-brands.svg) | [x-twitter](https://fontawesome.com/icons/x-twitter?f=classic&s=brands) | X (Twitter) link |
 
 
 ## User Stories
@@ -444,7 +447,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     <br>
     <br>
     > [!NOTE]  
-    > The links for Instagram and X just point to the social media platforms homepage as there is not account for Treasures Untold on these platforms at this time. The facebook link should take the user to the Facebook business page if it is still active.
+    > The social media links point to the social media platforms homepage as there is no actual account for Treasures Untold on these platforms at this time.
 
 - ### Scroll Button
     For pages that require a lot of scrolling there is a scroll button that will appear after the page has scrolled past the main hero banner. Tapping or clicking on this button will gracefully take the user back to the top of the page.
@@ -1477,6 +1480,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![Lucid](https://img.shields.io/badge/Lucidchart-white?logo=lucid&logoColor=FF9E0F)](https://www.lucidchart.com/pages) | Creating an erd for the database models. |
 | [![badge](https://img.shields.io/badge/Mermaid-white?logo=mermaid&logoColor=FF3670)](https://mermaid.live) | Generate an interactive diagram for the data/schema. |
 | [![badge](https://img.shields.io/badge/Affinity_Photo_2-white?logo=affinity&logoColor=4E3188)](https://affinity.serif.com/en-gb/photo/) | Image editing. |
+| [![badge](https://img.shields.io/badge/Notion-white?logo=notion&logoColor=000000)](https://www.notion.com/) | Mentor call note taking and temporary project note/code storage. |
 | [![badge](https://img.shields.io/badge/Clop-white)](https://lowtechguys.com/clop/) | Image optimisation. |
 | [![badge](https://img.shields.io/badge/Cleanshot_X-white)](https://cleanshot.com/) | Screenshot and screen recording capture. |
 
@@ -2454,84 +2458,43 @@ There are no remaining major differences between the local version when compared
 
 ## Credits
 
-⚠️ INSTRUCTIONS ⚠️
-
-In the following sections, you need to reference where you got your content, media, and any extra help. It is common practice to use code from other repositories and tutorials (which is totally acceptable), however, it is important to be very specific about these sources to avoid potential plagiarism.
-
-⚠️ --- END ---⚠️
-
 ### Content
-
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution links for any borrowed code snippets, elements, and resources. Ideally, you should provide an actual link to every resource used, not just a generic link to the main site. If you've used multiple components from the same source (such as Bootstrap), then you only need to list it once, but if it's multiple Codepen samples, then you should list each example individually. If you've used AI for some assistance (such as ChatGPT or Perplexity), be sure to mention that as well. A few examples have been provided below to give you some ideas.
-
-⚠️ --- END ---⚠️
 
 | Source | Notes |
 | --- | --- |
-| [Markdown Builder](https://markdown.2bn.dev) | Help generating Markdown files |
-| [Chris Beams](https://chris.beams.io/posts/git-commit) | "How to Write a Git Commit Message" |
+| [Markdown Builder](https://markdown.2bn.dev/) | Tool to help generate the Markdown files |
+| [Bootrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) | Using Bootstrap |
 | [Boutique Ado](https://codeinstitute.net) | Code Institute walkthrough project inspiration |
-| [Bootstrap](https://getbootstrap.com) | Various components / responsive front-end framework |
-| [AWS S3](https://aws.amazon.com/s3) | Cloud storage for static/media files |
+| [Cloudinary](https://cloudinary.com/) | Hosting user uploaded images |
 | [Whitenoise](https://whitenoise.readthedocs.io) | Static file service |
 | [Stripe](https://docs.stripe.com/payments/elements) | Online payment services |
 | [Gmail API](https://developers.google.com/gmail/api/guides) | Sending payment confirmation emails |
-| [Python Tutor](https://pythontutor.com) | Additional Python help |
+| [ItsDangerous](https://pypi.org/project/itsdangerous/) | Token generation for newsletter |
 | [ChatGPT](https://chatgpt.com) | Help with code logic and explanations |
+| [Reddit](https://www.reddit.com/r/django/comments/1bykhnl/remove_white_space/) | Managing white space in django template tags |
+| [W3Schools](https://www.w3schools.com/howto/howto_js_countdown.asp) | Creating the JavaScript countdown timer |
+| [W3Schools](https://www.w3schools.com/howto/howto_js_slideshow.asp) | Creating the Javascript slideshow |
+| [The Infinite Marquee - Ryan Mulligan](https://ryanmulligan.dev/blog/css-marquee/) | Information on scrolling marquee |
+| [CSS Marquee Examples](https://codepen.io/hexagoncircle/pen/eYMrGwW) | Base code for homepage marquee |
+| [Privacy Policy](https://www.privacypolicygenerator.info/) | Generating the privacy policy |
+| [Return Policy](https://www.freeprivacypolicy.com/free-return-refund-policy-generator/) | Generating the returns policy |
+| [Terms and Conditions](https://www.termsfeed.com/terms-conditions-generator/) | Generatin the terms and conditions |
+| [Virtual Environments in Visual Studio Code on macOS](https://medium.com/@apartha77/creating-and-using-virtual-environments-in-visual-studio-code-on-macos-0e50fe1b8501) | Creating a venv in macOS |
 
 ### Media
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution links to any media files borrowed from elsewhere (images, videos, audio, etc.). If you're the owner (or a close acquaintance) of some/all media files, then make sure to specify this information. Let the assessors know that you have explicit rights to use the media files within your project. Ideally, you should provide an actual link to every media file used, not just a generic link to the main site, unless it's AI-generated artwork.
-
-Looking for some media files? Here are some popular sites to use. The list of examples below is by no means exhaustive. Within the Code Institute Slack community, you can find more "free media" links by sending yourself (or Slackbot) the following command: `!freemedia`.
-
-- Images
-    - [Pexels](https://www.pexels.com)
-    - [Unsplash](https://unsplash.com)
-    - [Pixabay](https://pixabay.com)
-    - [Lorem Picsum](https://picsum.photos) (placeholder images)
-    - [Wallhere](https://wallhere.com) (wallpaper / backgrounds)
-    - [This Person Does Not Exist](https://thispersondoesnotexist.com) (reload to get a new person)
-- Audio
-    - [Audio Micro](https://www.audiomicro.com/free-sound-effects)
-- Video
-    - [Videvo](https://www.videvo.net)
-- Image Compression
-    - [TinyPNG](https://tinypng.com) (for images <5MB)
-    - [CompressPNG](https://compresspng.com) (for images >5MB)
-
-A few examples have been provided below to give you some ideas on how to do your own Media credits.
-
-⚠️ --- END ---⚠️
-
-| Source | Notes |
-| --- | --- |
-| [favicon.io](https://favicon.io) | Generating the favicon |
-| [Boutique Ado](https://codeinstitute.net) | Sample images provided from the walkthrough projects |
-| [Font Awesome](https://fontawesome.com) | Icons used throughout the site |
-| [Pexels](https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg) | Hero image |
-| [Wallhere](https://c.wallhere.com/images/9c/c8/da4b4009f070c8e1dfee43d25f99-2318808.jpg!d) | Background wallpaper |
-| [Pixabay](https://cdn.pixabay.com/photo/2017/09/04/16/58/passport-2714675_1280.jpg) | Background wallpaper |
-| [DALL-E 3](https://openai.com/index/dall-e-3) | AI generated artwork |
-| [TinyPNG](https://tinypng.com) | Compressing images < 5MB |
-| [CompressPNG](https://compresspng.com) | Compressing images > 5MB |
-| [CloudConvert](https://cloudconvert.com/webp-converter) | Converting images to `.webp` |
+| Source | Location | Type | Notes |
+| --- | --- | --- | --- |
+| [FlatIcon](https://www.flaticon.com/free-icon/lamp_867845?term=magic&page=1&position=59&origin=tag&related_id=867845) | Entire site | Favicon | PNG used for favicon generation |
+| [Favicon Generator](https://favicon.io/favicon-converter/) | Entire site | Favicon | Icon generated from Lamp png downloaded from FlatIcon |
+| [Font Awesome](https://fontawesome.com) | Icons used throughout the site | Icons | See [typography](#icons) full all icons used |
+| [Canva](https://www.canva.com/) | Entire site | AI generated and edited images | Free trial used to expand images with AI |
+| [Disney Fandom](https://disney.fandom.com/wiki/The_Disney_Wiki) | Products and realms | Images and information | Image and names for products and realms |
+| [Disney Villainous Fandom](https://disney-villainous.fandom.com/wiki/Disney_Villainous_Wiki) | Products and realms | Images and information | Image and names for products and realms |
 
 ### Acknowledgements
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution and acknowledgement to any supports that helped, encouraged, or supported you throughout the development stages of this project. It's always lovely to appreciate those that help us grow and improve our developer skills. A few examples have been provided below to give you some ideas.
-
-⚠️ --- END ---⚠️
-
-- I would like to thank my Code Institute mentor, [Tim Nelson](https://www.github.com/TravelTimN) for the support throughout the development of this project.
-- I would like to thank the [Code Institute](https://codeinstitute.net) Tutor Team for their assistance with troubleshooting and debugging some project issues.
-- I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and impostor syndrome.
-- I would like to thank my partner, for believing in me, and allowing me to make this transition into software development.
-- I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
-
+- I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for his support throughout the development of this project.
+- I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
+- I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
+- I would like to thank my daughter Niamh, my sisters Laura & Natalie and my whole family for believing in me, and supporting me while making this transition into software development.
