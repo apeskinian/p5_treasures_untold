@@ -2217,25 +2217,24 @@ Deployment steps are as follows, after account setup:
 > [!IMPORTANT]
 > This is a sample only; you would replace the values with your own if cloning/forking my repository.
 
-🛑 !!! ATTENTION apeskinian !!! 🛑
-
-⚠️ DO NOT update the environment variables to your own! These should never be public; only use the demo values below! ⚠️
-
-🛑 --- END --- 🛑
-
 | Key | Value |
 | --- | --- |
-| `AWS_ACCESS_KEY_ID` | user-inserts-own-aws-access-key-id |
-| `AWS_SECRET_ACCESS_KEY` | user-inserts-own-aws-secret-access-key |
-| `DATABASE_URL` | user-inserts-own-postgres-database-url |
+| `CLOUDINARY_API` | Your cloudinary api key |
+| `CLOUDINARY_NAME` | Your cloudinary product environment name  |
+| `CLOUDINARY_SECRET` | Your cloudinary secret key |
+| `CLOUDINARY_URL` | A combination of the above in this format `cloudinary://<your_api_key>:<your_api_secret>@<your_environment_name>` |
+| `CSRF_ORIGINS` | A list of trusted origins allowed to make cross-site requests  |
+| `DANGEROUS_SECRET` | Your ItsDangerous secret key |
+| `DATABASE_URL` | Url for your database |
+| `HOSTS` | A list of allowed hostnames that can serve this application |
+| `SECRET_KEY` | Your secret key for the django application |
+| `STRIPE_PUBLIC_KEY` | Your Stripe public key |
+| `STRIPE_SECRET_KEY` | Your Stripe secret key |
+| `STRIPE_WH_SECRET` | Your Stripe webhook secret key |
+| `SUPPORT_EMAIL_ADDRESS` | Your email address used for sending emails |
+| `SUPPORT_EMAIL_HOST` | The host for your email |
+| `SUPPORT_EMAIL_PASS` | Your application password for accessing your email account from the app |
 | `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
-| `EMAIL_HOST_PASS` | user-inserts-own-gmail-api-key |
-| `EMAIL_HOST_USER` | user-inserts-own-gmail-email-address |
-| `SECRET_KEY` | any-random-secret-key |
-| `STRIPE_PUBLIC_KEY` | user-inserts-own-stripe-public-key |
-| `STRIPE_SECRET_KEY` | user-inserts-own-stripe-secret-key |
-| `STRIPE_WH_SECRET` | user-inserts-own-stripe-webhook-secret |
-| `USE_AWS` | True |
 
 Heroku needs some additional files in order to deploy properly.
 
@@ -2342,8 +2341,9 @@ Once you've created a Gmail (Google) account and logged-in, follow these series 
 - You'll be provided with a 16-character password (API key).
     - Save this somewhere locally, as you cannot access this key again later!
     - If your 16-character password contains *spaces*, make sure to remove them entirely.
-    - `EMAIL_HOST_PASS` = user's 16-character API key
-    - `EMAIL_HOST_USER` = user's own personal Gmail email address
+    - `SUPPORTEMAILPASSWORD` = user's 16-character API key
+    - `SUPPORTEMAIL` = user's own personal Gmail email address
+    - `SUPPORTEMAILHOST` = `smtp.gmail.com` if using Gmail.
 
 ### WhiteNoise
 
@@ -2381,30 +2381,32 @@ You will need to create a new file called `env.py` at the root-level, and includ
 > [!IMPORTANT]
 > This is a sample only; you would replace the values with your own if cloning/forking my repository.
 
-🛑 !!! ATTENTION apeskinian !!! 🛑
-
-⚠️ DO NOT update the environment variables to your own! These should never be public; only use the demo values below! ⚠️
-
-🛑 --- END --- 🛑
 
 Sample `env.py` file:
 
 ```python
 import os
 
-os.environ.setdefault("AWS_ACCESS_KEY_ID", "user-inserts-own-aws-access-key-id")
-os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "user-inserts-own-aws-secret-access-key")
-os.environ.setdefault("DATABASE_URL", "user-inserts-own-postgres-database-url")
-os.environ.setdefault("EMAIL_HOST_PASS", "user-inserts-own-gmail-host-api-key")
-os.environ.setdefault("EMAIL_HOST_USER", "user-inserts-own-gmail-email-address")
-os.environ.setdefault("SECRET_KEY", "any-random-secret-key")
-os.environ.setdefault("STRIPE_PUBLIC_KEY", "user-inserts-own-stripe-public-key")
-os.environ.setdefault("STRIPE_SECRET_KEY", "user-inserts-own-stripe-secret-key")
-os.environ.setdefault("STRIPE_WH_SECRET", "user-inserts-own-stripe-webhook-secret")  # only if using Stripe Webhooks
+# Managing debug and test emails in settings.py (do not include these in production/deployment!)
+os.environ['DEVELOPMENT'] = 'True'
+# os.environ['TEST_EMAIL'] = 'True'
 
-# local environment only (do not include these in production/deployment!)
-os.environ.setdefault("DEBUG", "True")
-os.environ.setdefault("DEVELOPMENT", "True")
+# Environment variables for app
+os.environ.setdefault('DATABASE_URL', 'Url for your database')  # noqa
+os.environ.setdefault('CLOUDINARY_API', 'Your cloudinary api key')
+os.environ.setdefault('CLOUDINARY_NAME', 'Your cloudinary product environment name')
+os.environ.setdefault('CLOUDINARY_SECRET', 'Your cloudinary secret key')
+os.environ.setdefault('CLOUDINARY_URL', 'A combination of the above in this format cloudinary://<your_api_key>:<your_api_secret>@<your_environment_name>')  # noqa
+os.environ.setdefault('SECRET_KEY', 'Your secret key for the django application')  # noqa
+os.environ.setdefault('SUPPORT_EMAIL_ADDRESS', 'Your email address used for sending emails')
+os.environ.setdefault('SUPPORT_EMAIL_HOST', 'The host for your email')
+os.environ.setdefault('SUPPORT_EMAIL_PASS', 'Your application password for accessing your email account from the app')
+os.environ.setdefault('HOSTS', 'A list of allowed hostnames that can serve this application')  # noqa
+os.environ.setdefault('CSRF_ORIGINS', 'A list of trusted origins allowed to make cross-site requests')  # noqa
+os.environ.setdefault('STRIPE_PUBLIC_KEY', 'Your Stripe public key')  # noqa
+os.environ.setdefault('STRIPE_SECRET_KEY', 'Your Stripe secret key')  # noqa
+os.environ.setdefault('STRIPE_WH_SECRET', 'Your Stripe webhook secret key')  # noqa
+os.environ.setdefault('DANGEROUS_SECRET', 'Your ItsDangerous secret key')  # noqa
 ```
 
 Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps:
@@ -2436,12 +2438,6 @@ You can clone the repository by following these steps:
 	- `git clone https://www.github.com/apeskinian/p5_treasures_untold.git`
 7. Press "Enter" to create your local clone.
 
-Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://www.github.com/apeskinian/p5_treasures_untold)
-
-**Please Note**: in order to directly open the project in Gitpod, you should have the browser extension installed. A tutorial on how to do that can be found [here](https://www.gitpod.io/docs/configure/user-settings/browser-extension).
-
 #### Forking
 
 By forking the GitHub Repository, you make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository. You can fork this repository by using the following steps:
@@ -2452,11 +2448,7 @@ By forking the GitHub Repository, you make a copy of the original repository on 
 
 ### Local VS Deployment
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss any differences between the local version you've developed, and the live deployment site. Generally, there shouldn't be [m]any major differences, so if you honestly cannot find any differences, feel free to use the following example:
-
-⚠️ --- END --- ⚠️
+The local version of this project contains a folder of product images that are used when in debug mode to prevent excessive impressions on the cloudinary server when testing.
 
 There are no remaining major differences between the local version when compared to the deployed version online.
 
