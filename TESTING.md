@@ -38,11 +38,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | support/templates/support | [support.html](support/templates/support/support.html) | [returns_policy](support/templates/support/includes/returns_policy.html) | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fsupport%2Freturns%2F) | ![HTML Validation](documentation/testing/validation/html/valid_returns.png "Valid Returns") | No errors or warnings found. |
 | support/templates/support | [support.html](support/templates/support/support.html) | [privacy_policy.html](support/templates/support/includes/privacy_policy.html) | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fsupport%2Fprivacy%2F) | ![HTML Validation](documentation/testing/validation/html/valid_privacy.png "Valid Privacy") | No errors or warnings found. |
 | support/templates/support | [support.html](support/templates/support/support.html) | [terms.html](support/templates/support/includes/terms.html) | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fsupport%2Fterms%2F) | ![HTML Validation](documentation/testing/validation/html/valid_terms.png "Valid Terms") | No errors or warnings found. |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
+| staff/templates/staff | [dashboard.html](staff/templates/staff/dashboard.html) | [product_admin.html](staff/templates/staff/includes/product_admin.html) | n/a | ![HTML Validation](documentation/testing/validation/html/valid_dashboard_products.png "Valid Dashboard Products") | No errors or warnings found. |
 
 
 
