@@ -8,3 +8,12 @@ window.onload = () => {
         orderHistoryModal.show();
     }
 };
+
+//Adding spinner to submit button on submit
+const submitButton = document.getElementById('profile-submit-button');
+
+submitButton.addEventListener('click', function(event) {
+    submitButton.querySelector('#btn-text').classList.add('d-none');
+    submitButton.querySelector('.spinner').classList.remove('d-none');
+    submitButton.classList.add('disabled');
+})

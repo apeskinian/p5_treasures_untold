@@ -13,6 +13,10 @@
     border-radius: 12px;
 }
 
+#profile-submit-button {
+    min-width: 140px;
+}
+
 .order-table-order-number {
     max-width: 15vw !important;
     white-space: nowrap !important;
