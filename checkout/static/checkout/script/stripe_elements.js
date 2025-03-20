@@ -106,7 +106,7 @@ form.addEventListener('submit', function (event) {
 function setLoading(isLoading) {
     if (isLoading) {
         $('#submit-button').attr('disabled', true);
-        $('#adjust-button').attr('disabled', true);
+        $('#adjust-button').addClass('disabled');
         $('#payment-form').fadeToggle(100);
         $('#loading-overlay').removeClass('d-none');
         $('#loading-overlay').addClass('d-flex');
@@ -115,7 +115,7 @@ function setLoading(isLoading) {
         $('#button-text').addClass('hidden');
     } else {
         $('#submit-button').attr('disabled', false);
-        $('#adjust-button').attr('disabled', false);
+        $('#adjust-button').removeClass('disabled');
         $('#payment-form').fadeToggle(100);
         $('#loading-overlay').removeClass('d-flex');
         $('#loading-overlay').addClass('d-none');

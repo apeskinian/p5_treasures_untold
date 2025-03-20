@@ -12,7 +12,7 @@
 {% block content %}
 <div id="checkout-page" class="container-fluid flex-grow-1">
     <div id="checkout-container" class="container rounded-4 my-4">
-        <h1 class="text-center mb-2">Checkout</h1>
+        <h2 class="text-center mb-2 h1-style">Checkout</h2>
         <div class="row">
             <!-- Order summary showing all items in the basket with totals and discounts if applied. -->
             <div id="order-summary" class="col-12 col-md-6 order-md-last">
@@ -103,14 +103,12 @@
                     </fieldset>
                     <h5 class="text-center mb-3">Your card will be charged £{{ grand_total|floatformat:2 }}</h5>
                     <div class="button-container d-flex flex-column align-items-center gap-2 mb-3">
-                        <button class="btn btn-blue" id="adjust-button">
-                            <a class="nav-link" href="{% url 'view_basket' %}">Edit Basket</a>
-                        </button>
+                        <a id="adjust-button" class="btn btn-blue" href="{% url 'view_basket' %}">Edit Basket</a>
                         <button id="submit-button" type="submit" class="btn btn-green">
-                            <div class="spinner hidden" id="spinner">
+                            <span class="spinner hidden" id="spinner">
                                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                                 <span role="status"></span>
-                            </div>
+                            </span>
                             <span id="button-text">Complete Order</span>
                         </button>
                     </div>
@@ -121,9 +119,9 @@
     <!-- Overlay to show when order is being processed. -->
     <div id="loading-overlay" class="container rounded-4 my-4 gap-3">
         <h2 class="h1-style">Processing transaction...</h2>
-        <h2 class="">
+        <div>
             <i class="fa-solid fa-wand-magic-sparkles fa-shake fa-lg"></i>
-        </h2>
+        </div>
     </div>
 </div>
 {% include 'includes/info_section.html' %}
