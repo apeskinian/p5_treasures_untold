@@ -52,38 +52,11 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 ### CSS
 
-⚠️ INSTRUCTIONS ⚠️
-
-1. [*recommended*] If you are using the live deployed site, use this link: https://jigsaw.w3.org/css-validator/#validate_by_uri
-2. If you are copying/pasting your CSS code, use this link: https://jigsaw.w3.org/css-validator/#validate_by_input
-
-It's recommended to validate the live site for your primary CSS file on the deployed URL. This will give you a custom URL as well, which you can use below on your testing documentation. It makes it easier to return back to a page for validating it again in the future. The URL will look something like this:
-
-- https://jigsaw.w3.org/css-validator/validator?uri=https://apeskinian-treasures-untold-568a3e176ede.herokuapp.com
-
-If you have additional/multiple CSS files, then individual "[validation by input](https://jigsaw.w3.org/css-validator/#validate_by_input)" is recommended for the extra CSS files.
-
-**IMPORTANT**: Third-Party tools
-
-If you're using external libraries/frameworks (e.g: Bootstrap, Materialize, Font Awesome, etc.), then sometimes the tool will attempt to also validate these, even though it's not part of your own actual code that you wrote. You are not required to validate the external libraries or frameworks!
-
-⚠️ --- END --- ⚠️
-
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| basket | [basket_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/basket/static/basket/css/basket_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-basket-basket_style.png) | Notes (if applicable) |
-| checkout | [checkout_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/checkout/static/checkout/css/checkout_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-checkout-checkout_style.png) | Notes (if applicable) |
-| home | [home_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/home/static/home/css/home_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-home-home_style.png) | Notes (if applicable) |
-| home | [marquee_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/home/static/home/css/marquee_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-home-marquee_style.png) | Notes (if applicable) |
-| home | [slideshow_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/home/static/home/css/slideshow_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-home-slideshow_style.png) | Notes (if applicable) |
-| products | [products_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/products/static/products/css/products_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-products-products_style.png) | Notes (if applicable) |
-| profiles | [profiles_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/profiles/static/profiles/css/profiles_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-profiles-profiles_style.png) | Notes (if applicable) |
-| staff | [staff_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/staff/static/staff/css/staff_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-staff-staff_style.png) | Notes (if applicable) |
-| static | [base_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/static/css/base_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-static-base_style.png) | Notes (if applicable) |
-| static | [custom_colours.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/static/css/custom_colours.css) | Link (if applicable) | ![screenshot](documentation/validation/css-static-custom_colours.png) | Notes (if applicable) |
-| support | [support_style.css](https://github.com/apeskinian/p5_treasures_untold/blob/main/support/static/support/css/support_style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-support-support_style.png) | Notes (if applicable) |
+| static | [base_style.css](static/css/base_style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![CSS Validation](documentation/testing/validation/css/valid_base_style.png "Valid base_style.cc") | No errors, warnings for CSS variables and Bootstrap |
 
 
 ### JavaScript
