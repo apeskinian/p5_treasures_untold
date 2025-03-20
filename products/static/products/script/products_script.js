@@ -56,8 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // Set spinner on add to basket button when clicked
 const addToBasketButton = document.getElementById('add-button');
 
-addToBasketButton.addEventListener('click', function() {
-    $('#add-button').addClass('disabled');
-    $('#spinner').removeClass('hidden');
-    $('#button-text').addClass('hidden');
-})
+if (addToBasketButton) {
+    addToBasketButton.addEventListener('click', function() {
+        $('#add-button').addClass('disabled');
+        $('#spinner').removeClass('hidden');
+        $('#button-text').addClass('hidden');
+    })
+}
+

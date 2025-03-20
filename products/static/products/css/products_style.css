@@ -36,7 +36,8 @@
 
 #quantity-input,
 #add-button {
-    width: 130px
+    width: 130px;
+    min-width: fit-content;
 }
 
 #quantity-form {

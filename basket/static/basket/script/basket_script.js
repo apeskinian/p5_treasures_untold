@@ -8,6 +8,9 @@ Array.from(spinnerButtons).forEach(button => {
         
         buttonElement.querySelector('.btn-text').classList.add('d-none');
         buttonElement.querySelector('.spinner-border').classList.remove('d-none');
-        buttonElement.classList.add("disabled");
+
+        Array.from(spinnerButtons).forEach(btn => {
+            btn.classList.add('disabled');
+        });
     });
 });
