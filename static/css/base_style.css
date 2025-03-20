@@ -418,7 +418,7 @@ main {
 }
 
 .toast-body p {
-    margin: none !important;
+    margin: 0 !important;
 }
 
 .toast-success {
