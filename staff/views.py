@@ -17,7 +17,6 @@ from support.forms import (
 from support.models import (
     Faqs, ContactMessage, Subscriber, Newsletter, FaqsTopics
 )
-from support.views import shorten_url
 
 
 def getSubscribers():
@@ -142,7 +141,6 @@ def send_newsletter(new_newsletter, request):
                 args=[subscriber.id, subscriber.token]
             ))
         )
-        short_url = shorten_url(unsubscribe_url)
 
         # Construct email subject and body.
         subject = render_to_string(
@@ -155,7 +153,7 @@ def send_newsletter(new_newsletter, request):
             'staff/staff_emails/newsletter_body.html',
             {
                 'news_body': new_newsletter.news_body,
-                'unsubscribe_url': short_url,
+                'unsubscribe_url': unsubscribe_url,
                 'home_url': home_url
             }
         )
