@@ -25,6 +25,8 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | Template | Specific Includes File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- | --- |
+| templates/account | [login.html](templates/account/login.html) | n/a |  |  |  |
+| templates/account | [logout.html](templates/account/logout.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_logout.png "Valid Logout") | No errors or warnings found. |
 | templates | [404.html](templates/404.html) | n/a | n/a | ![Html validation](documentation/testing/validation/html/valid_404.png "Valid 404") | No errors or warnings found. |
 | templates | [500.html](templates/500.html) | n/a | n/a | ![Html validation](documentation/testing/validation/html/valid_500.png "Valid 500") | No errors or warnings found. |
 | home/templates/home | [index.html](home/templates/home/index.html) | n/a | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F) | ![HTML Validation](documentation/testing/validation/html/valid_index.png "Valid Index") | No errors or warnings found. |
@@ -41,6 +43,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | staff/templates/staff | [dashboard.html](staff/templates/staff/dashboard.html) | [product_admin.html](staff/templates/staff/includes/product_admin.html) | n/a | ![HTML Validation](documentation/testing/validation/html/valid_products_admin.png "Valid Dashboard Products") | No errors or warnings found. |
 | staff/templates/staff | [dashboard.html](staff/templates/staff/dashboard.html) | [faq_admin.html](staff/templates/staff/includes/faq_admin.html) | n/a | ![HTML Validation](documentation/testing/validation/html/valid_faq_admin.png "Valid Dashboard FAQs") | No errors or warnings found. |
 | staff/templates/staff | [dashboard.html](staff/templates/staff/dashboard.html) | [messages_admin.html](staff/templates/staff/includes/messages_admin.html) | n/a | ![HTML Validation](documentation/testing/validation/html/valid_message_admin.png "Valid Dashboard Messages") | No errors or warnings found. |
+| staff/templates/staff | [dashboard.html](staff/templates/staff/dashboard.html) | [newsletter_admin.html](staff/templates/staff/includes/newsletter_admin.html) | n/a | ![HTML Validation](documentation/testing/validation/html/valid_newsletter_admin.png "Valid Dashboard Newsletter") | No errors or warnings found. |
 
 
 
