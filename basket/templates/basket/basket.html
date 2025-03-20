@@ -63,7 +63,10 @@
                             <div class="product-total-column col text-end d-flex flex-column justify-content-between">
                                 <strong class="{% if item.product.price == 0.00 %}text-danger{% endif %}">£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
                                 <div>
-                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}" aria-label="remove item from basket"><i class="fa-solid fa-trash-can"></i></a>
+                                    <a href="{% url 'remove_from_basket' item.item_id %}" class="btn btn-sm btn-red remove-item btn-with-spinner" id="remove-{{ item.item_id }}" data-qty="{{ item.quantity }}" aria-label="remove item from basket">
+                                        <span class="btn-text"><i class="fa-solid fa-trash-can"></i></span>
+                                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +83,10 @@
                                     </div>
                                     <input type="hidden" name="previous-quantity" value="{{ item.quantity }}">
                                 </form>
-                                <button type="button" class="btn btn-sm btn-blue update-basket" data-item-id="{{ item.item_id }}" data-action="update" aria-label="update basket"><i class="fa-solid fa-rotate"></i></button>
+                                <button type="button" class="btn btn-sm btn-blue update-basket btn-with-spinner" data-item-id="{{ item.item_id }}" data-action="update" aria-label="update basket">
+                                    <span class="btn-text"><i class="fa-solid fa-rotate"></i></span>
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -122,4 +128,5 @@
     {{ block.super }}
     <!-- Load product_limits.js -->
     <script src="{% static 'script/product_limits.js' %}"></script>
+    <script src="{% static 'basket/script/basket_script.js' %}"></script>
 {% endblock %}

@@ -52,7 +52,13 @@
                         {% endif %}
                         <div class="mt-3">
                             {% if user.is_authenticated %}
-                            <input id="add-button" type="submit" class="btn btn-green" value="Add to Basket" aria-label="add to basket">
+                            <button id="add-button" type="submit" class="btn btn-green">
+                                <span class="spinner hidden" id="spinner">
+                                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                    <span role="status"></span>
+                                </span>
+                                <span id="button-text">Add to Basket</span>
+                            </button>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             <input type="hidden" name="return_url" value="{{ return_url }}">
                             {% else %}
