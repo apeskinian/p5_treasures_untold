@@ -1,4 +1,5 @@
 from datetime import timedelta
+import hashlib
 
 from django.conf import settings
 from django.contrib import messages
@@ -29,8 +30,11 @@ def generate_confirmation_token(subscriber):
     **Returns:**
     - str: A signed token for email confirmation.
     """
-    serializer = URLSafeTimedSerializer(settings.DANGEROUS_SECRET)
-    return serializer.dumps(subscriber.email, salt='email-confirmation')
+    serializer = URLSafeTimedSerializer(
+        settings.DANGEROUS_SECRET,
+        signer_kwargs={"digest_method": hashlib.sha256}
+    )
+    return serializer.dumps(subscriber.email, salt='ec', compact=True)
 
 
 def sendSubscriptionConfirmationEmail(email, confirmation_url, request):
