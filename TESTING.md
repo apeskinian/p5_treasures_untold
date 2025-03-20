@@ -9,6 +9,8 @@
 
 I have used the recommended [HTML W3C Validator](https://validator.w3.org) to validate all of my HTML files.
 
+#### Page Templates
+
 > [!NOTE]  
 > The main template and also other partial html files listed below were tested as part of the main site files as they include them.
 > - base.html
@@ -49,6 +51,17 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | basket/templates/basket | [basket.html](basket/templates/basket/basket.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_basket.png "Valid Basket") | No errors or warnings found. |
 | checkout/templates/checkout | [checkout.html](checkout/templates/checkout/checkout.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_checkout.png "Valid Checkout") |  No errors or warnings found. |
 | checkout/templates/checkout | [checkout_success.html](checkout/templates/checkout/checkout_success.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_checkout_success.png "Valid Checkout Success") | No errors or warnings found. |
+
+#### Email Body Templates
+
+| Directory | Template | Screenshot | Notes |
+| --- | --- | --- | --- |
+| support/templates/support_emails | [contact_acknowledgment_body.html](support/templates/support/support_emails/contact_acknowledgment_body.html) |  |  |
+| support/templates/support_emails | [subscription_confirmation_body.html](support/templates/support/support_emails/subscription_confirmation_body.html) |  |  |
+| staff/templates/staff_emails | [contact_reply_body.html](staff/templates/staff/staff_emails/contact_reply_body.html) |  |  |
+| staff/templates/staff_emails | [newsletter_body.html](staff/templates/staff/staff_emails/newsletter_body.html) |  |  |
+| staff/checkout/confirmation_emails | [confirmation_email_body.html](checkout/templates/checkout/confirmation_emails/confirmation_email_body.html) |  |  |
+
 
 ### CSS
 

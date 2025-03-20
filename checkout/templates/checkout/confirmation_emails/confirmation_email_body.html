@@ -1,56 +1,61 @@
 <!DOCTYPE html>
-<html>
-<body>
-    <p>Hello {{ order.full_name }}</p>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order confirmation</title>
+    </head>
+    <body>
+        <p>Hello {{ order.full_name }}</p>
 
-    <p>Thank you for your order! We’re excited to prepare your treasures for delivery.</p>
+        <p>Thank you for your order! We’re excited to prepare your treasures for delivery.</p>
 
-    <p><strong>Order Number:</strong> {{ order.order_number }}</p>
-    <p><strong>Order Date:</strong> {{ order.date }}</p>
+        <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+        <p><strong>Order Date:</strong> {{ order.date }}</p>
 
-    <p>Please review your order details below to ensure everything is correct.</p>
-    <br>
+        <p>Please review your order details below to ensure everything is correct.</p>
+        <br>
 
-    <strong>Order Summary</strong>
-    <table width="40%" cellspacing="0" cellpadding="10">
-        {% for item in order.lineitems.all %}
-        <tr>
-            <td width="10%" style="text-align:right;">
-                {{ item.quantity }}x
-            </td>
-            <td width="70%" style="text-align:left;">
-                <strong>{{ item.product.name }}</strong><br>
-                <small>{{ item.product.sku }}</small><br>
-                {% if order.rewards_used and 'magic-lamp' in order.rewards_used and forloop.counter < 4 and item.purchase_price == 0.00 %}
-                    <small style="color:red;">MAGIC LAMP</small><br>
-                {% endif %}
-            </td>
-            <td width="20%" style="text-align:left;">
-                <strong {% if item.purchase_price == 0.00 %} style="color:red;" {% endif %}>
-                    £{{ item.purchase_price }}
-                </strong>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% if order.rewards_used and 'bibbidi-bobbidi-boo' in order.rewards_used %}
-        <span><strong>Subtotal:</strong></span><span style="color:red; text-decoration: line-through;">£{{ order_original_total }}</span>
-        <p style="color:red;">'Bibbidi Bobbidi Boo' 20% discount.</p>
-    {% endif %}
-        <p><strong>Subtotal:</strong> £{{ order_total }}</p>
-    <p><strong>Delivery:</strong> £{{ order_delivery_cost }}</p>
-    <p><strong>Grand Total:</strong> £{{ order_grand_total }}</p>
-    <br>
+        <strong>Order Summary</strong>
+        <table width="40%" cellspacing="0" cellpadding="10">
+            {% for item in order.lineitems.all %}
+            <tr>
+                <td width="10%" style="text-align:right;">
+                    {{ item.quantity }}x
+                </td>
+                <td width="70%" style="text-align:left;">
+                    <strong>{{ item.product.name }}</strong><br>
+                    <small>{{ item.product.sku }}</small><br>
+                    {% if order.rewards_used and 'magic-lamp' in order.rewards_used and forloop.counter < 4 and item.purchase_price == 0.00 %}
+                        <small style="color:red;">MAGIC LAMP</small><br>
+                    {% endif %}
+                </td>
+                <td width="20%" style="text-align:left;">
+                    <strong {% if item.purchase_price == 0.00 %} style="color:red;" {% endif %}>
+                        £{{ item.purchase_price }}
+                    </strong>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if order.rewards_used and 'bibbidi-bobbidi-boo' in order.rewards_used %}
+            <span><strong>Subtotal:</strong></span><span style="color:red; text-decoration: line-through;">£{{ order_original_total }}</span>
+            <p style="color:red;">'Bibbidi Bobbidi Boo' 20% discount.</p>
+        {% endif %}
+            <p><strong>Subtotal:</strong> £{{ order_total }}</p>
+        <p><strong>Delivery:</strong> £{{ order_delivery_cost }}</p>
+        <p><strong>Grand Total:</strong> £{{ order_grand_total }}</p>
+        <br>
 
-    <p>If you notice any discrepancies or need to make a change, please <a href="{{ contact_url }}">contact</a> us as soon as possible.</p>
+        <p>If you notice any discrepancies or need to make a change, please <a href="{{ contact_url }}">contact</a> us as soon as possible.</p>
 
-    <p>Once your order has been shipped, we’ll send you a tracking update.</p>
+        <p>Once your order has been shipped, we’ll send you a tracking update.</p>
 
-    <p>Thank you for shopping with us!</p>
+        <p>Thank you for shopping with us!</p>
 
-    <p><strong>Best wishes and enchanted tidings,</strong><br>
-    Apeskinian the Wise <br>
-    <strong>Treasures Untold</strong> <br>
-    <a href="{{ home_url }}">Visit Us</a></p>
-</body>
+        <p><strong>Best wishes and enchanted tidings,</strong><br>
+        Apeskinian the Wise <br>
+        <strong>Treasures Untold</strong> <br>
+        <a href="{{ home_url }}">Visit Us</a></p>
+    </body>
 </html>
