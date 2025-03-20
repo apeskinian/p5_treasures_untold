@@ -25,7 +25,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | Template | Specific Includes File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- | --- |
-| templates/account | [login.html](templates/account/login.html) | n/a |  |  |  |
+| templates/account | [login.html](templates/account/login.html) | n/a | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Faccounts%2Flogin%2F) | ![HTML Validation](documentation/testing/validation/html/valid_login.png) | No errors or warnings found. |
 | templates/account | [logout.html](templates/account/logout.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_logout.png "Valid Logout") | No errors or warnings found. |
 | templates | [404.html](templates/404.html) | n/a | n/a | ![Html validation](documentation/testing/validation/html/valid_404.png "Valid 404") | No errors or warnings found. |
 | templates | [500.html](templates/500.html) | n/a | n/a | ![Html validation](documentation/testing/validation/html/valid_500.png "Valid 500") | No errors or warnings found. |
