@@ -31,6 +31,18 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | products/templates/products | [products.html](products/templates/products/products.html) | n/a | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fproducts%2F) | ![HTML Validation](documentation/testing/validation/html/valid_products.png "Valid Products") | No errors or warnings found. |
 | products/templates/products | [product_detail.html](products/templates/products/product_detail.html) | n/a | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fproducts%2F26%2F) | ![HTML Validation](documentation/testing/validation/html/valid_product_detail.png "Valid Product Detail") | No errors or warnings found. Link goes to specific product but same template used for all products. |
 | support/templates/support | [support.html](support/templates/support/support.html) | [faqs.html](support/templates/support/includes/faqs.html) | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fsupport%2Ffaq%2F) | ![HTML Validation](documentation/testing/validation/html/valid_faq.png "Valid FAQs") | No errors or warnings found. |
+| support/templates/support | [support.html](support/templates/support/support.html) | [contact.html](support/templates/support/includes/contact.html) | [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fsupport%2Fcontact%2F) | ![HTML Validation](documentation/testing/validation/html/valid_contact.png "Valid Contact") | No errors or warnings found. |
+| support/templates/support | [support.html](support/templates/support/support.html) | [thankyou.html](support/templates/support/includes/thankyou.html) | [W3 Validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2Fsupport%2Fthankyou%2F) | ![HTML Validation](documentation/testing/validation/html/valid_thankyou.png "Valid Thankyou") | No errors or warnings found. |
+| support/templates/support | [support.html](support/templates/support/support.html) | [newsletter.html](support/templates/support/includes/newsletter.html) |  |  |  |
+| support/templates/support | [support.html](support/templates/support/support.html) | [newsletter_success.html](support/templates/support/includes/newsletter_success.html) | n/a |  |  |
+| support/templates/support | [support.html](support/templates/support/support.html) | [returns_policy](support/templates/support/includes/returns_policy.html) |  |  |  |
+| support/templates/support | [support.html](support/templates/support/support.html) | [privacy_policy.html](support/templates/support/includes/privacy_policy.html) |  |  |  |
+| support/templates/support | [support.html](support/templates/support/support.html) | [terms.html](support/templates/support/includes/terms.html) |  |  |  |
+|  |  |  |  |  |  |
+|  |  |  |  |  |  |
+|  |  |  |  |  |  |
+|  |  |  |  |  |  |
+|  |  |  |  |  |  |
 
 
 
