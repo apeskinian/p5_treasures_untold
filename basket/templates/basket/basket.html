@@ -16,7 +16,7 @@
 {% block content %}
 <div id="basket-page" class="container-fluid flex-grow-1">
     <div id="basket-container" class="container rounded-4 my-4">
-        <h1 class="text-center mt-2">Shopping Basket</h1>
+        <h2 class="text-center mt-2 h1-style">Shopping Basket</h2>
         {% if basket_items %}
             <!-- Show basket items -->
             {% for item in basket_items %}
@@ -73,7 +73,7 @@
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <button class="btn btn-sm btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}" aria-label="decrease item quantity"><i class="fa-solid fa-minus"></i></i></button>
+                                            <button class="btn btn-sm btn-secondary decrement-qty" id="decrement-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}" aria-label="decrease item quantity"><i class="fa-solid fa-minus"></i></button>
                                             <input id="id-qty-{{ item.item_id }}" class="form-control form-control-sm qty-input" type="number" name="quantity" value="{{ item.quantity }}" min="0" max="{{ item.product.stock|add:item.quantity }}" data-item-id="{{ item.item_id }}" aria-label="product quantity input">
                                             <button class="btn btn-sm btn-secondary increment-qty" id="increment-qty-{{ item.item_id }}" data-item-id="{{ item.item_id }}" aria-label="increase item quantity"><i class="fa-solid fa-plus"></i></button>
                                         </div>
