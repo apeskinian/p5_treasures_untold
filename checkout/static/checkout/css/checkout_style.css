@@ -18,6 +18,7 @@
     max-width: fit-content;
 }
 
+.button-container a,
 .button-container button,
 .btn-success {
     width: 60%;
