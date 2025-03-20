@@ -56,7 +56,11 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static | [base_style.css](static/css/base_style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![CSS Validation](documentation/testing/validation/css/valid_base_style.png "Valid base_style.cc") | No errors, warnings for CSS variables and Bootstrap |
+| static | [base_style.css](static/css/base_style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![CSS Validation](documentation/testing/validation/css/valid_base_style.png "Valid base_style.cc") | No errors. Warnings for CSS variables and Bootstrap |
+| static | [custom_colours.css](static/css/custom_colours.css) | n/a | ![CSS Validaton](documentation/testing/validation/css/valid_custom_colours.png "Valid custom_colours.css") | No errors. Warnings for CSS variables |
+| home/static/home | [home_style.css](home/static/home/css/home_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_home_style.png "Valid home_style.css") | No errors. Warnings for imported style sheets and CSS variables |
+| home/static/home |  | n/a |  |  |
+| home/static/home |  | n/a |  |  |
 
 
 ### JavaScript
