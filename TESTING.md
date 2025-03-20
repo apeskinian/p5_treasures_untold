@@ -48,7 +48,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | profiles/templates/profiles | [profile.html](profiles/templates/profiles/profile.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_profile.png "Valid Profile") | No errors or warnings found. |
 | basket/templates/basket | [basket.html](basket/templates/basket/basket.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_basket.png "Valid Basket") | No errors or warnings found. |
 | checkout/templates/checkout | [checkout.html](checkout/templates/checkout/checkout.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_checkout.png "Valid Checkout") |  No errors or warnings found. |
-| checkout/templates/checkout | [checkout.html](checkout/templates/checkout/checkout_success.html) | n/a | n/a |  |  |
+| checkout/templates/checkout | [checkout_success.html](checkout/templates/checkout/checkout_success.html) | n/a | n/a | ![HTML Validation](documentation/testing/validation/html/valid_checkout_success.png "Valid Checkout Success") | No errors or warnings found. |
 
 ### CSS
 
