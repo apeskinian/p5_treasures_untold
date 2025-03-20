@@ -1,5 +1,5 @@
 from datetime import timedelta
-import hashlib
+import requests
 
 from django.conf import settings
 from django.contrib import messages
@@ -16,6 +16,20 @@ from .forms import ContactForm, SubscriberForm
 from .models import Faqs, FaqsTopics, Subscriber
 
 
+def shorten_url(url):
+    """
+    Shortens an URL using the TinyURL API.
+
+    **Arguments**:
+    - url (str): The long URL to shorten.
+
+    **Returns**:
+    - str: The shortened URL returned by the TinyURL API.
+    """
+    response = requests.get(f'http://tinyurl.com/api-create.php?url={url}')
+    return response.text
+
+
 def generate_confirmation_token(subscriber):
     """
     Generates a time-sensitive token for newsletter signup confirmation.
@@ -30,11 +44,8 @@ def generate_confirmation_token(subscriber):
     **Returns:**
     - str: A signed token for email confirmation.
     """
-    serializer = URLSafeTimedSerializer(
-        settings.DANGEROUS_SECRET,
-        signer_kwargs={"digest_method": hashlib.sha256}
-    )
-    return serializer.dumps(subscriber.email, salt='ec', compact=True)
+    serializer = URLSafeTimedSerializer(settings.DANGEROUS_SECRET)
+    return serializer.dumps(subscriber.email, salt='email-confirmation')
 
 
 def sendSubscriptionConfirmationEmail(email, confirmation_url, request):
@@ -338,13 +349,14 @@ def subscribe(request):
             request.build_absolute_uri(reverse('confirm_subscription',
                                                args=[subscriber.id, token]))
         )
+        short_url = shorten_url(confirmation_url)
 
         subscriber.token = token
         subscriber.token_created_at = timezone.now()
         subscriber.save()
 
         # Send email to confirm subscription.
-        sendSubscriptionConfirmationEmail(email, confirmation_url, request)
+        sendSubscriptionConfirmationEmail(email, short_url, request)
         messages.success(
             request,
             'Thank you for subscribing! You will receive an email with a link '
