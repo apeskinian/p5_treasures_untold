@@ -526,3 +526,7 @@ def newsletter_success(request):
     }
 
     return render(request, template, context)
+
+
+def error(request):
+    raise Exception('500PAGE')

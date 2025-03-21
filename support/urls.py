@@ -43,5 +43,7 @@ urlpatterns = [
          'newsletter_success/',
          views.newsletter_success,
          name='newslettter_success'
-     )
+          ),
+
+     path('error/', views.error, name='error')
 ]
