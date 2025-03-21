@@ -208,7 +208,7 @@ I've tested my deployed project to check for responsiveness issues.
 | Mobile (devtools) |  |  |  |  |  |  |
 | Tablet (devtools) |  |  |  |  |  |  |
 | Desktop (devtools) |  |  |  |  |  |  |
-| 4K Screen (devtools) |  |  |  |  |  |  |
+| 2K Screen (devtools) |  |  |  |  |  |  |
 | iPhone 16 Pro |  |  |  |  |  |  |
 | iPad Mini |  |  |  |  |  |  |
 | Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |
@@ -221,7 +221,7 @@ I've tested my deployed project to check for responsiveness issues.
 | Mobile (devtools) |  |  |  |  |
 | Tablet (devtools) |  |  |  |  |
 | Desktop (devtools) |  |  |  |  |
-| 4K Screen (devtools) |  |  |  |  |
+| 2K Screen (devtools) |  |  |  |  |
 | iPhone 16 Pro |  |  |  |  |
 | iPad Mini |  |  |  |  |
 | Samsung Galaxy Tab 6 Lite |  |  |  |  |
@@ -234,7 +234,7 @@ I've tested my deployed project to check for responsiveness issues.
 | Mobile (devtools) |  |  |  |  |  |
 | Tablet (devtools) |  |  |  |  |  |
 | Desktop (devtools) |  |  |  |  |  |
-| 4K Screen (devtools) |  |  |  |  |  |
+| 2K Screen (devtools) |  |  |  |  |  |
 | iPhone 16 Pro |  |  |  |  |  |
 | iPad Mini |  |  |  |  |  |
 | Samsung Galaxy Tab 6 Lite |  |  |  |  |  |
@@ -247,7 +247,7 @@ I've tested my deployed project to check for responsiveness issues.
 | Mobile (devtools) |  |  |  |  |  |  |  |
 | Tablet (devtools) |  |  |  |  |  |  |  |
 | Desktop (devtools) |  |  |  |  |  |  |  |
-| 4K Screen (devtools) |  |  |  |  |  |  |  |
+| 2K Screen (devtools) |  |  |  |  |  |  |  |
 | iPhone 16 Pro |  |  |  |  |  |  |  |
 | iPad Mini |  |  |  |  |  |  |  |
 | Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |  |
