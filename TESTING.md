@@ -71,11 +71,19 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static | [base_style.css](static/css/base_style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![CSS Validation](documentation/testing/validation/css/valid_base_style.png "Valid base_style.cc") | No errors. Warnings for CSS variables and Bootstrap |
-| static | [custom_colours.css](static/css/custom_colours.css) | n/a | ![CSS Validaton](documentation/testing/validation/css/valid_custom_colours.png "Valid custom_colours.css") | No errors. Warnings for CSS variables |
-| home/static/home | [home_style.css](home/static/home/css/home_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_home_style.png "Valid home_style.css") | No errors. Warnings for imported style sheets and CSS variables |
-| home/static/home | [marquee_style.css](home/static/home/css/marquee_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_marquee_style.png "Valid marquee_style.css") | No errors. Warning for CSS variable |
-| home/static/home | [slideshow_style.css](home/static/home/css/slideshow_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_slideshow_style.png "Valid slideshow_style.css") | No errors or warnings found. |
+| static/css | [base_style.css](static/css/base_style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fapeskinian-treasures-untold-568a3e176ede.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![CSS Validation](documentation/testing/validation/css/valid_base_style.png "Valid base_style.cc") | No errors. Warnings for CSS variables and Bootstrap |
+| static/css | [custom_colours.css](static/css/custom_colours.css) | n/a | ![CSS Validaton](documentation/testing/validation/css/valid_custom_colours.png "Valid custom_colours.css") | No errors. Warnings for CSS variables. |
+| basket/static/basket/css | [basket_style.css](basket/static/basket/css/basket_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_basket_style.png "Valid basket_style.css") | No errors. Warnings for CSS variables. |
+| checkout/static/checkout/css | [checkout_style.css](checkout/static/checkout/css/checkout_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_checkout_style.png "Valid checkout_style.css") | No errors or warnings found. |
+| home/static/home/css | [home_style.css](home/static/home/css/home_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_home_style.png "Valid home_style.css") | No errors. Warnings for imported style sheets and CSS variables. |
+| home/static/home/css | [marquee_style.css](home/static/home/css/marquee_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_marquee_style.png "Valid marquee_style.css") | No errors. Warning for CSS variable. |
+| home/static/home/css | [slideshow_style.css](home/static/home/css/slideshow_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_slideshow_style.png "Valid slideshow_style.css") | No errors or warnings found. |
+| products/static/products/css | [products_style.css](products/static/products/css/products_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_products_style.png "Valid product_style.css") | No errors. Warnings for CSS variables. |
+| profiles/static/profiles/css | [profiles_style.css](profiles/static/profiles/css/profiles_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_profiles_style.png "Valid profiles_style.css") | No errors. Warnings for CSS variables. |
+| staff/static/staff/css | [staff_style.css](staff/static/staff/css/staff_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_staff_style.png "Valid staff_style.css") | No errors. Warnings for CSS variables. |
+| support/static/support/css | [support_style.css](support/static/support/css/support_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_support_style.png "Valid support_style.css") | No errors. Warnings for CSS variables. |
+|  |  | n/a |  |  |
+|  |  | n/a |  |  |
 
 
 ### JavaScript
