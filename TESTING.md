@@ -142,12 +142,12 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 #### Home App Files
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| home | [admin.py](home/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/admin.py) | ![Python Validation](documentation/testing/validation/python) | All clear, no errors found. |
-| home | [apps.py](home/apps.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/apps.py) | ![Python Validation](documentation/testing/validation/python) | All clear, no errors found. |
-| home | [models.py](home/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/models.py) | ![Python Validation](documentation/testing/validation/python) | All clear, no errors found. |
+| home | [admin.py](home/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/admin.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_admin.png "Valid admin.py") | All clear, no errors found. |
+| home | [apps.py](home/apps.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/apps.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_apps.png "Valid apps.py") | All clear, no errors found. |
+| home | [models.py](home/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/models.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_models.png "Valid models.py") | All clear, no errors found. |
 | home | [tests.py](home/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/tests.py) | ![Python Validation](documentation/testing/validation/python) | All clear, no errors found. |
-| home | [urls.py](home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/urls.py) | ![Python Validation](documentation/testing/validation/python) | All clear, no errors found. |
-| home | [views.py](home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/views.py) | ![Python Validation](documentation/testing/validation/python) | All clear, no errors found. |
+| home | [urls.py](home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/urls.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_urls.png "Valid urls.py") | All clear, no errors found. |
+| home | [views.py](home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/views.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_views.png "Valid views.py") | All clear, no errors found. |
 
 #### Products App Files
 | Directory | File | URL | Screenshot | Notes |
