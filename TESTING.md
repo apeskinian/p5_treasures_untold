@@ -206,84 +206,66 @@ I've tested my deployed project to check for responsiveness issues.
 | Device | Login | Logout | Signup | 404 | 500 | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | Mobile (devtools) | ![Login Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_login.png) | ![Logout Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_logout.png) | ![Signup](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_signup.png) | ![404 Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_404.png) | ![500 Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_500.png) | Works as expected. |
-| Tablet (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_tablet/devtools_tablet_500.png) |  |
-| Desktop (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_desktop/devtools_desktop_500.png) |  |
-| 2K Screen (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_2K/devtools_2K_screen.png) |  |
-| iPhone 16 Pro |  |  |  |  | ![500 Page](documentation/testing/responsiveness/iphone/iphone_500.PNG) |  |
-| iPad Mini |  |  |  |  | ![500 Page](documentation/testing/responsiveness/ipad_mini/ipad_mini_500.PNG) |  |
-| Samsung Galaxy Tab 6 Lite |  |  |  |  | ![500 Page](documentation/testing/responsiveness/galaxy_tab/galaxy_tab_500.jpg) |  |
-| MacBook Air M3 |  |  |  |  | ![500 Page](documentation/testing/responsiveness/macbook/macbook_500.png) |  |
-| 2K Monitor |  |  |  |  | ![500 Page](documentation/testing/responsiveness/2K_desktop_screen/2K_screen_500.png) |  |
+| Tablet (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_tablet/devtools_tablet_500.png) | Works as expected. |
+| Desktop (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_desktop/devtools_desktop_500.png) | Works as expected. |
+| 2K Screen (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_2K/devtools_2K_screen.png) | Works as expected. |
+| iPhone 16 Pro |  |  |  |  | ![500 Page](documentation/testing/responsiveness/iphone/iphone_500.PNG) | Works as expected. |
+| iPad Mini |  |  |  |  | ![500 Page](documentation/testing/responsiveness/ipad_mini/ipad_mini_500.PNG) | Works as expected. |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  | ![500 Page](documentation/testing/responsiveness/galaxy_tab/galaxy_tab_500.jpg) | Works as expected. |
+| MacBook Air M3 |  |  |  |  | ![500 Page](documentation/testing/responsiveness/macbook/macbook_500.png) | Works as expected. |
+| 2K Monitor |  |  |  |  | ![500 Page](documentation/testing/responsiveness/2K_desktop_screen/2K_screen_500.png) | Works as expected. |
 
 ### Product Browsing
 | Device | Homepage | Products | Product Details | Notes |
 | --- | --- | --- | --- | --- |
-| Mobile (devtools) |  |  |  |  |
-| Tablet (devtools) |  |  |  |  |
-| Desktop (devtools) |  |  |  |  |
-| 2K Screen (devtools) |  |  |  |  |
-| iPhone 16 Pro |  |  |  |  |
-| iPad Mini |  |  |  |  |
-| Samsung Galaxy Tab 6 Lite |  |  |  |  |
-| MacBook Air M3 |  |  |  |  |
-| 2K Monitor |  |  |  |  |
+| Mobile (devtools) | ![Homepage](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_homepage.png) | ![Products](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_products.png) | ![Product Details](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_product_detail.png) | Works as expected. |
+| Tablet (devtools) | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| Desktop (devtools) | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| 2K Screen (devtools) | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| iPhone 16 Pro | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| iPad Mini | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| Samsung Galaxy Tab 6 Lite | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| MacBook Air M3 | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
+| 2K Monitor | ![Homepage](documentation/testing/responsiveness) | ![Products](documentation/testing/responsiveness) | ![Product Details](documentation/testing/responsiveness) | Works as expected. |
 
 ### Product Purchasing
 | Device | Basket View | Checkout | Checkout Success | Profile | Notes |
 | --- | --- | --- | --- | --- | --- |
-| Mobile (devtools) |  |  |  |  |  |
-| Tablet (devtools) |  |  |  |  |  |
-| Desktop (devtools) |  |  |  |  |  |
-| 2K Screen (devtools) |  |  |  |  |  |
-| iPhone 16 Pro |  |  |  |  |  |
-| iPad Mini |  |  |  |  |  |
-| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |
-| MacBook Air M3 |  |  |  |  |  |
-| 2K Monitor |  |  |  |  |  |
+| Mobile (devtools) | ![Basket View](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_basket.png) | ![Checkout](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_checkout.png) | ![Checkout Success](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_checkout_success.png) | ![Profile](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_profile.png) | Works as expected. |
+| Tablet (devtools) | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| Desktop (devtools) | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| 2K Screen (devtools) | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| iPhone 16 Pro | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| iPad Mini | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| Samsung Galaxy Tab 6 Lite | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| MacBook Air M3 | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
+| 2K Monitor | ![Basket View](documentation/testing/responsiveness) | ![Checkout](documentation/testing/responsiveness) | ![Checkout Success](documentation/testing/responsiveness) | ![Profile](documentation/testing/responsiveness) | Works as expected. |
 
 ### Support Pages
-| Device | FAQ | Contact Us | Newsletter | Returns Policy | Privacy Statement | Terms and Conditions | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Mobile (devtools) |  |  |  |  |  |  |  |
-| Tablet (devtools) |  |  |  |  |  |  |  |
-| Desktop (devtools) |  |  |  |  |  |  |  |
-| 2K Screen (devtools) |  |  |  |  |  |  |  |
-| iPhone 16 Pro |  |  |  |  |  |  |  |
-| iPad Mini |  |  |  |  |  |  |  |
-| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |  |
-| MacBook Air M3 |  |  |  |  |  |  |  |
-| 2K Monitor |  |  |  |  |  |  |  |
+| Device | FAQ | Contact Us | Contact Message Thank You | Newsletter | Newsletter Success | Returns Policy | Privacy Statement | Terms and Conditions | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Mobile (devtools) | ![FAQ](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_faqs.png) | ![Contact Us](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_contact_us.png) | ![Contact Message Thank You](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_thankyou.png) | ![Newsletter](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_newsletter.png) | ![Newsletter Success](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_newsletter_success.png) | ![Returns Policy](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_returns.png) | ![Privacy Statement](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_privacy.png) | ![Terms and Conditions](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_terms.png) | Works as expected. |
+| Tablet (devtools) | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| Desktop (devtools) | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| 2K Screen (devtools) | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| iPhone 16 Pro | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| iPad Mini | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| Samsung Galaxy Tab 6 Lite | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| MacBook Air M3 | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
+| 2K Monitor | ![FAQ](documentation/testing/responsiveness) | ![Contact Us](documentation/testing/responsiveness) | ![Contact Message Thank You](documentation/testing/responsiveness) | ![Newsletter](documentation/testing/responsiveness) | ![Newsletter Success](documentation/testing/responsiveness) | ![Returns Policy](documentation/testing/responsiveness) | ![Privacy Statement](documentation/testing/responsiveness) | ![Terms and Conditions](documentation/testing/responsiveness) | Works as expected. |
 
 ### Staff Pages
 | Device | Product Admin | FAQ Admin | Message Admin | Newsletter Admin | Notes |
 | --- | --- | --- | --- | --- | --- |
-| Mobile (devtools) |  |  |  |  |  |
-| Tablet (devtools) |  |  |  |  |  |
-| Desktop (devtools) |  |  |  |  |  |
-| 2K Screen (devtools) |  |  |  |  |  |
-| iPhone 16 Pro |  |  |  |  |  |
-| iPad Mini |  |  |  |  |  |
-| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |
-| MacBook Air M3 |  |  |  |  |  |
-| 2K Monitor |  |  |  |  |  |
-
-
-| Page | Mobile | Tablet | Desktop | Notes |
-| --- | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/responsiveness/mobile-register.png) | ![screenshot](documentation/responsiveness/tablet-register.png) | ![screenshot](documentation/responsiveness/desktop-register.png) | Works as expected |
-| Login | ![screenshot](documentation/responsiveness/mobile-login.png) | ![screenshot](documentation/responsiveness/tablet-login.png) | ![screenshot](documentation/responsiveness/desktop-login.png) | Works as expected |
-| Profile | ![screenshot](documentation/responsiveness/mobile-profile.png) | ![screenshot](documentation/responsiveness/tablet-profile.png) | ![screenshot](documentation/responsiveness/desktop-profile.png) | Works as expected |
-| Home | ![screenshot](documentation/responsiveness/mobile-home.png) | ![screenshot](documentation/responsiveness/tablet-home.png) | ![screenshot](documentation/responsiveness/desktop-home.png) | Works as expected |
-| Products | ![screenshot](documentation/responsiveness/mobile-products.png) | ![screenshot](documentation/responsiveness/tablet-products.png) | ![screenshot](documentation/responsiveness/desktop-products.png) | Works as expected |
-| Product Details | ![screenshot](documentation/responsiveness/mobile-product-details.png) | ![screenshot](documentation/responsiveness/tablet-product-details.png) | ![screenshot](documentation/responsiveness/desktop-product-details.png) | Works as expected |
-| Bag | ![screenshot](documentation/responsiveness/mobile-bag.png) | ![screenshot](documentation/responsiveness/tablet-bag.png) | ![screenshot](documentation/responsiveness/desktop-bag.png) | Works as expected |
-| Checkout | ![screenshot](documentation/responsiveness/mobile-checkout.png) | ![screenshot](documentation/responsiveness/tablet-checkout.png) | ![screenshot](documentation/responsiveness/desktop-checkout.png) | Works as expected |
-| Checkout Success | ![screenshot](documentation/responsiveness/mobile-checkout-success.png) | ![screenshot](documentation/responsiveness/tablet-checkout-success.png) | ![screenshot](documentation/responsiveness/desktop-checkout-success.png) | Works as expected |
-| Add Product | ![screenshot](documentation/responsiveness/mobile-add-product.png) | ![screenshot](documentation/responsiveness/tablet-add-product.png) | ![screenshot](documentation/responsiveness/desktop-add-product.png) | Works as expected |
-| Edit Product | ![screenshot](documentation/responsiveness/mobile-edit-product.png) | ![screenshot](documentation/responsiveness/tablet-edit-product.png) | ![screenshot](documentation/responsiveness/desktop-edit-product.png) | Works as expected |
-| Newsletter | ![screenshot](documentation/responsiveness/mobile-newsletter.png) | ![screenshot](documentation/responsiveness/tablet-newsletter.png) | ![screenshot](documentation/responsiveness/desktop-newsletter.png) | Works as expected |
-| Contact | ![screenshot](documentation/responsiveness/mobile-contact.png) | ![screenshot](documentation/responsiveness/tablet-contact.png) | ![screenshot](documentation/responsiveness/desktop-contact.png) | Works as expected |
-| 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
+| Mobile (devtools) | ![Product Admin](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_product_admin.png) | ![FAQ Admin](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_faq_admin.png) | ![Message Admin](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_message_admin.png) | ![Newsletter Admin](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_newsletter_admin.png) | Works as expected. |
+| Tablet (devtools) | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| Desktop (devtools) | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| 2K Screen (devtools) | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| iPhone 16 Pro | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| iPad Mini | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| Samsung Galaxy Tab 6 Lite | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| MacBook Air M3 | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
+| 2K Monitor | ![Product Admin](documentation/testing/responsiveness) | ![FAQ Admin](documentation/testing/responsiveness) | ![Message Admin](documentation/testing/responsiveness) | ![Newsletter Admin](documentation/testing/responsiveness) | Works as expected. |
 
 ## Browser Compatibility
 
