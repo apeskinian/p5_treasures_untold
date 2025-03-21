@@ -59,7 +59,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | support/templates/support_emails | [contact_acknowledgment_body.html](support/templates/support/support_emails/contact_acknowledgment_body.html) | ![HTML Validation](documentation/testing/validation/html/valid_contact_message_acknowledgement.png "Valid contact message acknowledgement") | No errors or warnings found. |
 | support/templates/support_emails | [subscription_confirmation_body.html](support/templates/support/support_emails/subscription_confirmation_body.html) | ![HTML Validation](documentation/testing/validation/html/valid_subscription_confirmation.png "Valid subscription confirmation") | No errors or warnings found. |
 | staff/templates/staff_emails | [contact_reply_body.html](staff/templates/staff/staff_emails/contact_reply_body.html) | ![HTML Validation](documentation/testing/validation/html/valid_message_reply.png "Valid contact message reply") | No errors or warnings found. |
-| staff/templates/staff_emails | [newsletter_body.html](staff/templates/staff/staff_emails/newsletter_body.html) |  |  |
+| staff/templates/staff_emails | [newsletter_body.html](staff/templates/staff/staff_emails/newsletter_body.html) | ![HTML Validation](documentation/testing/validation/html/valid_subscription_email.png "Valid subscription email") | No errors or warnings found. |
 | staff/checkout/confirmation_emails | [confirmation_email_body.html](checkout/templates/checkout/confirmation_emails/confirmation_email_body.html) |  |  |
 
 

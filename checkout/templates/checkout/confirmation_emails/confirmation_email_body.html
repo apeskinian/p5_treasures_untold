@@ -17,20 +17,20 @@
         <br>
 
         <strong>Order Summary</strong>
-        <table width="40%" cellspacing="0" cellpadding="10">
+        <table style="border-spacing: 0px; padding: 10px; width:40%">
             {% for item in order.lineitems.all %}
             <tr>
-                <td width="10%" style="text-align:right;">
+                <td style="text-align:right; width: 10%;">
                     {{ item.quantity }}x
                 </td>
-                <td width="70%" style="text-align:left;">
+                <td style="text-align:left; width: 70%;">
                     <strong>{{ item.product.name }}</strong><br>
                     <small>{{ item.product.sku }}</small><br>
                     {% if order.rewards_used and 'magic-lamp' in order.rewards_used and forloop.counter < 4 and item.purchase_price == 0.00 %}
                         <small style="color:red;">MAGIC LAMP</small><br>
                     {% endif %}
                 </td>
-                <td width="20%" style="text-align:left;">
+                <td style="text-align:left; width: 20%;">
                     <strong {% if item.purchase_price == 0.00 %} style="color:red;" {% endif %}>
                         £{{ item.purchase_price }}
                     </strong>
