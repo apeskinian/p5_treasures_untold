@@ -205,15 +205,15 @@ I've tested my deployed project to check for responsiveness issues.
 ### Account Pages
 | Device | Login | Logout | Signup | 404 | 500 | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| Mobile (devtools) |  |  |  |  |  |  |
-| Tablet (devtools) |  |  |  |  |  |  |
-| Desktop (devtools) |  |  |  |  |  |  |
-| 2K Screen (devtools) |  |  |  |  |  |  |
-| iPhone 16 Pro |  |  |  |  |  |  |
-| iPad Mini |  |  |  |  |  |  |
-| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |
-| MacBook Air M3 |  |  |  |  |  |  |
-| 2K Monitor |  |  |  |  |  |  |
+| Mobile (devtools) | ![Login Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_login.png) | ![Logout Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_logout.png) | ![Signup](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_signup.png) | ![404 Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_404.png) | ![500 Page](documentation/testing/responsiveness/devtools_mobile/devtools_mobile_500.png) | Works as expected. |
+| Tablet (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_tablet/devtools_tablet_500.png) |  |
+| Desktop (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_desktop/devtools_desktop_500.png) |  |
+| 2K Screen (devtools) |  |  |  |  | ![500 Page](documentation/testing/responsiveness/devtools_2K/devtools_2K_screen.png) |  |
+| iPhone 16 Pro |  |  |  |  | ![500 Page](documentation/testing/responsiveness/iphone/iphone_500.PNG) |  |
+| iPad Mini |  |  |  |  | ![500 Page](documentation/testing/responsiveness/ipad_mini/ipad_mini_500.PNG) |  |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  | ![500 Page](documentation/testing/responsiveness/galaxy_tab/galaxy_tab_500.jpg) |  |
+| MacBook Air M3 |  |  |  |  | ![500 Page](documentation/testing/responsiveness/macbook/macbook_500.png) |  |
+| 2K Monitor |  |  |  |  | ![500 Page](documentation/testing/responsiveness/2K_desktop_screen/2K_screen_500.png) |  |
 
 ### Product Browsing
 | Device | Homepage | Products | Product Details | Notes |
@@ -253,6 +253,19 @@ I've tested my deployed project to check for responsiveness issues.
 | Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |  |
 | MacBook Air M3 |  |  |  |  |  |  |  |
 | 2K Monitor |  |  |  |  |  |  |  |
+
+### Staff Pages
+| Device | Product Admin | FAQ Admin | Message Admin | Newsletter Admin | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Mobile (devtools) |  |  |  |  |  |
+| Tablet (devtools) |  |  |  |  |  |
+| Desktop (devtools) |  |  |  |  |  |
+| 2K Screen (devtools) |  |  |  |  |  |
+| iPhone 16 Pro |  |  |  |  |  |
+| iPad Mini |  |  |  |  |  |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |
+| MacBook Air M3 |  |  |  |  |  |
+| 2K Monitor |  |  |  |  |  |
 
 
 | Page | Mobile | Tablet | Desktop | Notes |

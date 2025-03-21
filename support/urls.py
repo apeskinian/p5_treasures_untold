@@ -38,4 +38,10 @@ urlpatterns = [
           views.confirm_unsubscription,
           name='confirm_unsubscription'
           ),
+
+     path(
+         'newsletter_success/',
+         views.newsletter_success,
+         name='newslettter_success'
+     )
 ]
