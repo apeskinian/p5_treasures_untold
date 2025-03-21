@@ -34,7 +34,7 @@ class ContactMessage(models.Model):
       including the ticket number and sender's name.
     """
     class Meta:
-        ordering = ['replied',]
+        ordering = ['replied', ]
 
     ticket_number = models.CharField(max_length=32, null=False, blank=False)
     name = models.CharField(max_length=254, null=False, blank=False)
@@ -92,7 +92,7 @@ class FaqsTopics(models.Model):
     """
     class Meta:
         verbose_name_plural = 'FAQ Topics'
-        ordering = ['sort_order',]
+        ordering = ['sort_order', ]
 
     name = models.CharField(max_length=100, null=False, blank=False)
     sort_order = models.PositiveIntegerField(default=100)
@@ -127,7 +127,7 @@ class Faqs(models.Model):
     """
     class Meta:
         verbose_name_plural = 'FAQs'
-        ordering = ['topic', 'sort_order',]
+        ordering = ['topic', 'sort_order', ]
 
     topic = models.ForeignKey(
         FaqsTopics, on_delete=models.CASCADE, related_name='faq_topic'
