@@ -8,7 +8,7 @@ from .widgets import CustomClearableFileInput
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ['sku',]
+        exclude = ['sku', ]
         widgets = {
             'description': forms.Textarea(attrs={'rows': 3})
         }
