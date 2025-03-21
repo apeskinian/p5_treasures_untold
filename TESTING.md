@@ -82,45 +82,22 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | profiles/static/profiles/css | [profiles_style.css](profiles/static/profiles/css/profiles_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_profiles_style.png "Valid profiles_style.css") | No errors. Warnings for CSS variables. |
 | staff/static/staff/css | [staff_style.css](staff/static/staff/css/staff_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_staff_style.png "Valid staff_style.css") | No errors. Warnings for CSS variables. |
 | support/static/support/css | [support_style.css](support/static/support/css/support_style.css) | n/a | ![CSS Validation](documentation/testing/validation/css/valid_support_style.png "Valid support_style.css") | No errors. Warnings for CSS variables. |
-|  |  | n/a |  |  |
-|  |  | n/a |  |  |
-
 
 ### JavaScript
 
-⚠️ INSTRUCTIONS ⚠️
-
-If using modern JavaScript (ES6) methods, then make sure to include the following line at the very top of every single JavaScript file in your project (this should remain in your files for submission as well):
-
-`/* jshint esversion: 11 */`
-
-If you are also including jQuery (`$`), then the updated format will be:
-
-`/* jshint esversion: 11, jquery: true */`
-
-This allows the JShint validator to recognize modern ES6 methods, such as: `let`, `const`, `template literals`, `arrow functions (=>)`, etc.
-
-**IMPORTANT**: External resources
-
-Sometimes we'll write JavaScript that imports variables from other files, such as "an array of questions" from `questions.js`, which are used within the main `script.js` file elsewhere. If that's the case, the JShint validation tool doesn't know how to recognize "unused variables" that would normally be imported locally when running your own project. These warnings are acceptable, so showcase on your screenshot(s).
-
-The same thing applies when using external libraries such as Stripe, Leaflet, Bootstrap, Materialize, etc. To instantiate these components, we need to use their respective declarator. Again, the JShint validation tool would flag these as "undefined/unused variables". These warnings are acceptable, so showcase on your screenshot(s).
-
-⚠️ --- END --- ⚠️
-
 I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| checkout | [stripe_elements.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/checkout/static/checkout/script/stripe_elements.js) | N/A | ![screenshot](documentation/validation/js-checkout-stripe_elements.png) | Notes (if applicable) |
-| home | [home_script.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/home/static/home/script/home_script.js) | N/A | ![screenshot](documentation/validation/js-home-home_script.png) | Notes (if applicable) |
-| products | [products_script.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/products/static/products/script/products_script.js) | N/A | ![screenshot](documentation/validation/js-products-products_script.png) | Notes (if applicable) |
-| profiles | [profiles_script.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/profiles/static/profiles/script/profiles_script.js) | N/A | ![screenshot](documentation/validation/js-profiles-profiles_script.png) | Notes (if applicable) |
-| staff | [staff_admin.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/staff/static/staff/script/staff_admin.js) | N/A | ![screenshot](documentation/validation/js-staff-staff_admin.png) | Notes (if applicable) |
-| static | [base_script.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/static/script/base_script.js) | N/A | ![screenshot](documentation/validation/js-static-base_script.png) | Notes (if applicable) |
-| static | [countdown_timer.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/static/script/countdown_timer.js) | N/A | ![screenshot](documentation/validation/js-static-countdown_timer.png) | Notes (if applicable) |
-| static | [product_limits.js](https://github.com/apeskinian/p5_treasures_untold/blob/main/static/script/product_limits.js) | N/A | ![screenshot](documentation/validation/js-static-product_limits.png) | Notes (if applicable) |
-
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- |
+| static/script | [base_script.js](static/script/base_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_base_script.png "Valid base_script.js") | No errors, 'bootstrap' shown as undefined variable. |
+| static/script | [product_limits.js](static/script/product_limits.js) | ![JSHint Validation](documentation/testing/validation/script/valid_product_limits.png "Valid product_limits.js") | No errors or warnings found. |
+| basket/static/basket/script | [basket_script.js](basket/static/basket/script/basket_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_basket_script.png "Valid basket_script.js") | No errors or warnings found. |
+| checkout/static/checkout/script | [stripe_elements.js](checkout/static/checkout/script/stripe_elements.js) | ![JSHint Validation](documentation/testing/validation/script/valid_stripe_elements.png "Valid stripe_elements.js") | No errors, 'stripe' shown as undefined variable. |
+| home/static/home/script | [slideshow_script.js](home/static/home/script/slideshow_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_slideshow_script.png "Valid slideshow_script.js") | No errors or warnings found. |
+| products/static/products/script | [countdown_timer.js](products/static/products/script/countdown_timer.js) | ![JSHint Validation](documentation/testing/validation/script/valid_countdown_timer.png "Valid countdown_timer.js") | No errors or warnings found. |
+| products/static/products/script | [products_script.js](products/static/products/script/products_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_products_script.png "Valid products_script.js") | No errors or warnings found. |
+| profiles/static/profiles/script | [profiles_script.js](profiles/static/profiles/script/profiles_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_profiles_script.png "Valid profiles_script.js") | No errors, 'bootstrap' shown as undefined variable. |
+| staff/static/staff/script | [staff_script.js](staff/static/staff/script/staff_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_staff_script.png "Valid staff_script.js") | No errors, 'bootstrap' shown as undefined variable. |
 
 ### Python
 

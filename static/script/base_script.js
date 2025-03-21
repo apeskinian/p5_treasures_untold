@@ -1,5 +1,4 @@
-/* jshint esversion: 11, globalstrict: true, jquery: true */
-/* globals bootstrap */
+/* jshint esversion: 11, jquery: true */
 // Show toasts
 $('.toast').each(function (toastEl) {
     var toast = new bootstrap.Toast(this);

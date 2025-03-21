@@ -1,5 +1,4 @@
 /* jshint esversion: 11, jquery: true */
-/* globals bootstrap */
 // Showing modal if there is an add, update or delete request.
 window.onload = () => {
     const dashboardModalElement = document.getElementById('dashboard-modal');

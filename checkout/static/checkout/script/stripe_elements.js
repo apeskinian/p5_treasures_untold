@@ -1,6 +1,4 @@
-/* jshint esversion: 11, globalstrict: true, jquery: true */
-/* globals Stripe */
-
+/* jshint esversion: 11, jquery: true */
 // Core logic/payment flow for this comes from here:
 // https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=elements
 

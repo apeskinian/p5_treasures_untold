@@ -1,4 +1,4 @@
-/* jshint esversion: 11, globalstrict: true, jquery: true */
+/* jshint esversion: 11, jquery: true */
 // Magic lamp script that detects if the user 'rubs' the lamp to activate
 // the 'magic-lamp' reward.
 document.addEventListener("DOMContentLoaded", function () {
@@ -61,6 +61,11 @@ if (addToBasketButton) {
         $('#add-button').addClass('disabled');
         $('#spinner').removeClass('hidden');
         $('#button-text').addClass('hidden');
-    })
-}
 
+        setTimeout(() => {
+            $('#add-button').removeClass('disabled');
+            $('#spinner').addClass('hidden');
+            $('#button-text').removeClass('hidden');
+        }, 2000);
+    });
+}

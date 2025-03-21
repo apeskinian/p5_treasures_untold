@@ -1,13 +1,13 @@
-/* jshint esversion: 11, globalstrict: true, jquery: true */
+/* jshint esversion: 11, jquery: true */
 // Disabling qty modifiers outside of stock ranges
 function handleEnableDisable(itemId) {
-    var currentValue = parseInt($(`#id-qty-${itemId}`).val());
-    var maxPurchase = parseInt($(`#id-qty-${itemId}`).attr('max'));
-    var minPurchase = parseInt($(`#id-qty-${itemId}`).attr('min'));
+    var currentValue = parseInt($('#id-qty-' + itemId).val());
+    var maxPurchase = parseInt($('#id-qty-' + itemId).attr('max'));
+    var minPurchase = parseInt($('#id-qty-' + itemId).attr('min'));
     var minusDisabled = currentValue === minPurchase;
     var plusDisabled = currentValue === maxPurchase;
-    $(`#decrement-qty-${itemId}`).prop('disabled', minusDisabled);
-    $(`#increment-qty-${itemId}`).prop('disabled', plusDisabled);
+    $('#decrement-qty-' + itemId).prop('disabled', minusDisabled);
+    $('#increment-qty-' + itemId).prop('disabled', plusDisabled);
 }
 
 // Check enable/disable inputs on page load

@@ -1,4 +1,4 @@
-/* jshint esversion: 11, globalstrict: true, jquery: true */
+/* jshint esversion: 11, jquery: true */
 // Script for delivery timer in product detail views.
 function updateTimer() {
 
