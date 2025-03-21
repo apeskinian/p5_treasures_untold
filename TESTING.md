@@ -200,25 +200,60 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 ## Responsiveness
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss testing the live/deployed site on various device sizes.
-
-The minimum requirement is to test the following 3 sizes:
-
-- Mobile
-- Tablet
-- Desktop
-
-**IMPORTANT**: You must provide screenshots of your results, to "prove" that you've actually tested them.
-
-Using the [amiresponsive](http://ami.responsivedesign.is) mockup images (*or similar*) does not meet the requirements. Consider using some of the built-in device sizes from the Developer Tools.
-
-If you have tested the project on your actual mobile phone or tablet, consider also including screenshots of these as well. It showcases a higher level of manual tests, and can be seen as a positive inclusion!
-
-⚠️ --- END --- ⚠️
-
 I've tested my deployed project to check for responsiveness issues.
+
+### Account Pages
+| Device | Login | Logout | Signup | 404 | 500 | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| Mobile (devtools) |  |  |  |  |  |  |
+| Tablet (devtools) |  |  |  |  |  |  |
+| Desktop (devtools) |  |  |  |  |  |  |
+| 4K Screen (devtools) |  |  |  |  |  |  |
+| iPhone 16 Pro |  |  |  |  |  |  |
+| iPad Mini |  |  |  |  |  |  |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |
+| MacBook Air M3 |  |  |  |  |  |  |
+| 2K Monitor |  |  |  |  |  |  |
+
+### Product Browsing
+| Device | Homepage | Products | Product Details | Notes |
+| --- | --- | --- | --- | --- |
+| Mobile (devtools) |  |  |  |  |
+| Tablet (devtools) |  |  |  |  |
+| Desktop (devtools) |  |  |  |  |
+| 4K Screen (devtools) |  |  |  |  |
+| iPhone 16 Pro |  |  |  |  |
+| iPad Mini |  |  |  |  |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  |
+| MacBook Air M3 |  |  |  |  |
+| 2K Monitor |  |  |  |  |
+
+### Product Purchasing
+| Device | Basket View | Checkout | Checkout Success | Profile | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Mobile (devtools) |  |  |  |  |  |
+| Tablet (devtools) |  |  |  |  |  |
+| Desktop (devtools) |  |  |  |  |  |
+| 4K Screen (devtools) |  |  |  |  |  |
+| iPhone 16 Pro |  |  |  |  |  |
+| iPad Mini |  |  |  |  |  |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |
+| MacBook Air M3 |  |  |  |  |  |
+| 2K Monitor |  |  |  |  |  |
+
+### Support Pages
+| Device | FAQ | Contact Us | Newsletter | Returns Policy | Privacy Statement | Terms and Conditions | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Mobile (devtools) |  |  |  |  |  |  |  |
+| Tablet (devtools) |  |  |  |  |  |  |  |
+| Desktop (devtools) |  |  |  |  |  |  |  |
+| 4K Screen (devtools) |  |  |  |  |  |  |  |
+| iPhone 16 Pro |  |  |  |  |  |  |  |
+| iPad Mini |  |  |  |  |  |  |  |
+| Samsung Galaxy Tab 6 Lite |  |  |  |  |  |  |  |
+| MacBook Air M3 |  |  |  |  |  |  |  |
+| 2K Monitor |  |  |  |  |  |  |  |
+
 
 | Page | Mobile | Tablet | Desktop | Notes |
 | --- | --- | --- | --- | --- |

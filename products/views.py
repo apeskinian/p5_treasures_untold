@@ -38,6 +38,7 @@ def all_products(request):
     - A rendered response displaying the filtered and sorted products based on
         the request parameters.
     """
+    raise Exception('500 screeshot time!')
     # Set up variables for method.
     products = Product.objects.annotate(
         in_stock=Case(
