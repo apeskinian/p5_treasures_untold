@@ -10,6 +10,12 @@ document.querySelector('#by-realm-menu-mobile a').addEventListener('click', func
     event.stopPropagation();
 });
 
+window.addEventListener("load", function () {
+    const topNav = document.querySelector('.top-nav');
+    if (topNav) {
+        topNav.classList.add('loaded');
+    }
+});
 
 // Sort items selector mobile
 $('#sort-selector-mobile').change(function () {
