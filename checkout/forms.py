@@ -45,3 +45,5 @@ class OrderForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
         self.fields['country'].widget.attrs['aria-label'] = 'country'
+        self.fields['country'].widget.attrs['autocomplete'] = 'no'
+        self.fields['email'].widget.attrs['autocomplete'] = 'no'
