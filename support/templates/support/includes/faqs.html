@@ -3,16 +3,16 @@
     <div class="col col-lg-8 offset-lg-2">
         <div class="accordion mb-3" id="treasures-untold-faq">
             {% for topic in topics %}
-            <h5 class="mb-3 mt-3">{{ topic.name }}</h5>
+            <h2 class="mb-3 mt-3 topic-names text-center">{{ topic.name }}</h2>
             {% for faq in faqs_list %} {% if faq.topic == topic %}
             <div class="accordion-item">
-                <h2 class="accordion-header" id="{{ faq.topic.name|slugify }}-question-{{ forloop.counter }}">
+                <h3 class="accordion-header" id="{{ faq.topic.name|slugify }}-question-{{ forloop.counter }}">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#{{ faq.topic.name|slugify }}{{ forloop.counter }}" aria-expanded="false"
                         aria-controls="{{ faq.topic.name|slugify }}{{ forloop.counter }}">
                         Q: {{ faq.question }}
                     </button>
-                </h2>
+                </h3>
                 <div id="{{ faq.topic.name|slugify }}{{ forloop.counter }}" class="accordion-collapse collapse"
                     aria-labelledby="{{ faq.topic.name|slugify }}-question-{{ forloop.counter }}"
                     data-bs-parent="#treasures-untold-faq">

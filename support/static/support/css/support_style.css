@@ -7,6 +7,10 @@
     background-color: var(--tu-off-white);
 }
 
+.topic-names {
+    font-size: 1.5rem;
+}
+
 .accordion-button:not(.collapsed) {
     background-color: #839680;
     color: var(--tu-white);
