@@ -1,9 +1,4 @@
 /* jshint esversion: 11, jquery: true */
-// Load herobanner
-window.onload = function() {
-    document.querySelector('.top-nav').classList.add('loaded');
-  };
-
 // Show toasts
 $('.toast').each(function (toastEl) {
     var toast = new bootstrap.Toast(this);
