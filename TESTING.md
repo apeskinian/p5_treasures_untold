@@ -300,34 +300,34 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 ## Lighthouse Audit
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss testing the live/deployed site's Lighthouse Audit reports. Avoid testing the local version (Gitpod/VSCode/etc.), as this can have knock-on effects for performance. If you don't have "Lighthouse" in your Developer Tools, it can be added as an [extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk).
-
-Unless your project is a single-page application (SPA), you should test Lighthouse Audit results for all of your pages, for both *mobile* and *desktop*.
-
-**IMPORTANT**: You must provide screenshots of the results, to "prove" that you've actually tested them.
-
-⚠️ --- END --- ⚠️
-
 I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
 
 | Page | Mobile | Desktop |
 | --- | --- | --- |
-| Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
-| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
-| Profile | ![screenshot](documentation/lighthouse/mobile-profile.png) | ![screenshot](documentation/lighthouse/desktop-profile.png) |
-| Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
-| Products | ![screenshot](documentation/lighthouse/mobile-products.png) | ![screenshot](documentation/lighthouse/desktop-products.png) |
-| Product Details | ![screenshot](documentation/lighthouse/mobile-product-details.png) | ![screenshot](documentation/lighthouse/desktop-product-details.png) |
-| Bag | ![screenshot](documentation/lighthouse/mobile-bag.png) | ![screenshot](documentation/lighthouse/desktop-bag.png) |
-| Checkout | ![screenshot](documentation/lighthouse/mobile-checkout.png) | ![screenshot](documentation/lighthouse/desktop-checkout.png) |
-| Checkout Success | ![screenshot](documentation/lighthouse/mobile-checkout-success.png) | ![screenshot](documentation/lighthouse/desktop-checkout-success.png) |
-| Add Product | ![screenshot](documentation/lighthouse/mobile-add-product.png) | ![screenshot](documentation/lighthouse/desktop-add-product.png) |
-| Edit Product | ![screenshot](documentation/lighthouse/mobile-edit-product.png) | ![screenshot](documentation/lighthouse/desktop-edit-product.png) |
-| Newsletter | ![screenshot](documentation/lighthouse/mobile-newsletter.png) | ![screenshot](documentation/lighthouse/desktop-newsletter.png) |
-| Contact | ![screenshot](documentation/lighthouse/mobile-contact.png) | ![screenshot](documentation/lighthouse/desktop-contact.png) |
-| 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
+| Login | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Logout | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Signup | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Homepage | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Products | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Product Detail | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Basket | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Checkout | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Checkout Success | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Profile | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| FAQs | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Contact Us | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Contact Us Acknowledgement | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Newsletter | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Newsletter Success | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Returns Policy | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Privacy Statement | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Terms and Conditions | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Product Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| FAQ Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Message Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Newsletter Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| 404 Page | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| 500 Page | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
 
 ## Defensive Programming
 
