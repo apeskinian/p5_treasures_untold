@@ -19,7 +19,7 @@
     <div id="product-page" class="container-fluid flex-grow-1">
         <div id="products-container" class="container rounded-4 p-3 my-4">
             <div id="products-shown" class="text-center mt-2">
-                <h4>
+                <h2>
                     <!-- Amount of products -->
                     {% if products|length > 0 %}
                         Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
@@ -45,7 +45,7 @@
                         {% if current_sorting == 'realm_asc' %}realm (A-Z){% endif %}
                         {% if current_sorting == 'realm_desc' %}realm (Z-A){% endif %}
                     {% endif %}
-                </h4>
+                </h2>
             </div>
             <div class="container">
                 <div class="row">
