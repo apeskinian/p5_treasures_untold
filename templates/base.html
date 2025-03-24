@@ -42,6 +42,8 @@
     <!-- Load base_style.css -->
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
     {% endblock %}
+    <!-- Preload banner image -->
+    <link rel="preload" href="{% static 'images/banner.webp' %}" as="image">
 
     {% block extra_css %}
     {% endblock %}
