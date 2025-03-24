@@ -154,7 +154,8 @@ main {
     position: relative;
     height: 40vw;
     max-height: 350px;
-    background: url('/static/images/banner.webp') no-repeat top center;
+    background: url(https://res.cloudinary.com/apeskinian/image/upload/v1742845630/banner.png) no-repeat top center;
+    /* background: url('/static/images/banner.webp') no-repeat top center; */
     background-color: #0B0C13;
     background-size: auto min(40vw, 350px);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
