@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
     {% endblock %}
     <!-- Preload banner image -->
-    <link rel="preload" href="{% static 'images/banner.webp' %}" as="image">
+    <link rel="preload" href="{% static 'images/banner.webp' %}" as="image" fetchpriority="high">
 
     {% block extra_css %}
     {% endblock %}
