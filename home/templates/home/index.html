@@ -19,7 +19,7 @@
             <!-- Welcome message with personalised name if logged in. -->
             <div class="row welcome-container flex-grow-1 my-3 rounded-4">
                 <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 text-center d-flex flex-column justify-content-center p-4">
-                    <h3>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h3>
+                    <h2>Welcome {% if user.is_authenticated %}{{ current_user.user }}{% else %}Traveler{% endif %}!</h2>
                     <p>Prepare to discover Treasures Untold, where every corner holds a magical surprise.<br>Browse our collection of enchanted items, and who knows — you might just uncover a secret that unlocks more than just treasures!</p>
                     <div class="text-center">
                         <a class="btn btn-blue btn-enter w-25" href="{% url 'products' %}" aria-label="view all products">Enter</a>
@@ -49,7 +49,7 @@
         <!-- Marquee element to show as seen in companies. -->
         <div class="container-fluid p-0">
             <div class="row as-featured-in-container">
-                <h2 class="text-center text-white">As seen in...</h2>
+                <h3 class="text-center text-white">As seen in...</h3>
                 <div class="marquee marquee--hover-pause">
                     <ul class="marquee__content list-unstyled m-0 text-white">
                         <li class="featured font-tangerine">Arcane Finds</li>
