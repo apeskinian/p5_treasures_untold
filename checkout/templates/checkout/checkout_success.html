@@ -23,7 +23,7 @@
         <div class="row">
             <!-- Order details with users delivery address and other details. -->
             <div id="order-details" class="col-12 col-md-6">
-                <h4 class="text-center mt-2">Delivery Details</h4>
+                <h3 class="text-center mt-2">Delivery Details</h3>
                 <div class="d-flex justify-content-center my-3">
                     <div>
                         <div class="mb-2"><strong>Order number:</strong> {{ order.order_number }}</div>
@@ -54,7 +54,7 @@
             </div>
             <!-- Order summary of products purchased. -->
             <div id="order-summary" class="col-12 col-md-6">
-                <h4 id="order-summary-title" class="text-center mt-2">Order Summary</h4>
+                <h3 id="order-summary-title" class="text-center mt-2">Order Summary</h3>
                 {% for item in order.lineitems.all %}
                 <div class="row my-3">
                     <div class="col d-flex image-column align-items-center">
