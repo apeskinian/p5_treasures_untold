@@ -52,3 +52,5 @@ class UserProfileForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
+        self.fields['email'].widget.attrs['aria-label'] = 'email'
+        self.fields['default_country'].widget.attrs['aria-label'] = 'country'
