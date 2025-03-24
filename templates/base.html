@@ -42,7 +42,7 @@
     <!-- Load base_style.css -->
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
     <!-- Preload banner image -->
-    <link rel="preload" href="https://res.cloudinary.com/apeskinian/image/upload/v1742845630/banner.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="{% static 'images/banner.webp' %}" as="image" fetchpriority="high">
     {% endblock %}
 
     {% block extra_css %}
