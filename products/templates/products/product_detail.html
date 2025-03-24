@@ -30,7 +30,7 @@
             <div id="product-details-info" class="col-12 col-md mt-3">
                 <h3 id="product-name">{{ product.name }}</h3>
                 <a id="product-realm-link" href="{% url 'products' %}?realm={{ product.realm }}">
-                    <h5>{{ product.realm.display_name }}</h5>
+                    <h4>{{ product.realm.display_name }}</h4>
                 </a>
                 <p id="product-description">{{ product.description }}</p>
                 {% if product.stock > 0 %}
