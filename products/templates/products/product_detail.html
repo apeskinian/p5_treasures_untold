@@ -28,9 +28,9 @@
                 {% endif %}
             </div>
             <div id="product-details-info" class="col-12 col-md mt-3">
-                <h3 id="product-name">{{ product.name }}</h3>
+                <h2 id="product-name">{{ product.name }}</h2>
                 <a id="product-realm-link" href="{% url 'products' %}?realm={{ product.realm }}">
-                    <h4>{{ product.realm.display_name }}</h4>
+                    <h3>{{ product.realm.display_name }}</h3>
                 </a>
                 <p id="product-description">{{ product.description }}</p>
                 {% if product.stock > 0 %}
