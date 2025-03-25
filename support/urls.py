@@ -23,9 +23,6 @@ urlpatterns = [
      # View to the terms and conditions page.
      path('terms/', views.terms, name='terms'),
 
-     # View the contact us receipt page.
-     path('thankyou/', views.thankyou, name='thankyou'),
-
      # View to the subscription confirmation page.
      path('confirm/<int:subscriber_id>/<token>/',
           views.confirm_subscription,

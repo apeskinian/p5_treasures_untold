@@ -212,7 +212,13 @@ def contact(request):
                 request,
                 ticket_number=ticket_number,
             )
-            return redirect(reverse('thankyou'))
+            # Set up view parameters
+            template = 'support/support.html'
+            context = {
+                'title': 'Thank You',
+                'content': 'thankyou'
+            }
+            return render(request, template, context)
         else:
             messages.error(
                 request,
@@ -229,29 +235,6 @@ def contact(request):
         'title': 'Contact Us',
         'content': 'contact',
         'form': contact_form
-    }
-
-    return render(request, template, context)
-
-
-def thankyou(request):
-    """
-    Displays a thank you message when a user successfully sends a message
-    from the contact us page.
-
-    **Context:**
-    - `title`: Used to dynamically set the H1 page heading.
-    - `content`: Used to dynamically load the correct includes file in the
-        template.
-
-    **Returns:**
-    - A render response to show the thank you page.
-    """
-    # Set up view parameters
-    template = 'support/support.html'
-    context = {
-        'title': 'Thank You',
-        'content': 'thankyou'
     }
 
     return render(request, template, context)
