@@ -112,11 +112,14 @@ class Product(models.Model):
         for word in name_part_words:
             name_part.append(word[0].upper())
         name_part = ''.join(name_part)
-        realm_part = []
-        realm_part_words = self.realm.display_name().split(' ')
-        for word in realm_part_words:
-            realm_part.append(word[:3].upper())
-        realm_part = ''.join(realm_part)
+        if self.realm:
+            realm_part = []
+            realm_part_words = self.realm.display_name().split(' ')
+            for word in realm_part_words:
+                realm_part.append(word[:3].upper())
+            realm_part = ''.join(realm_part)
+        else:
+            realm_part = 'NR'
         unique = '-U' if self.unique_stock else ''
         uuid_part = uuid.uuid4().hex[:4].upper()
         sku = f'TU-{realm_part}-{name_part}{unique}-{uuid_part}'

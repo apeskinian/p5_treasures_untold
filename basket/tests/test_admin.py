@@ -2,7 +2,7 @@ from django.contrib.admin.sites import site
 from django.test import RequestFactory, TestCase
 from unittest.mock import MagicMock
 
-from products.models import Product, Realm
+from products.models import Product
 from ..admin import clear_rewards, empty_basket
 
 
@@ -16,14 +16,10 @@ class EmptyBasketAdminActionTest(TestCase):
         self.admin_site = site
         self.modeladmin = MagicMock()
 
-        # Create test realm
-        self.realm = Realm.objects.create(name="test realm")
-
         # Create test products
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            realm=self.realm,
             description='product descripton',
             price=10.00,
             stock=0,
@@ -32,7 +28,6 @@ class EmptyBasketAdminActionTest(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            realm=self.realm,
             description='product descripton',
             price=14.00,
             stock=3
