@@ -122,7 +122,7 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | basket | [models.py](basket/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/basket/models.py) | ![Python Validation](documentation/testing/validation/python/basket_app/valid_basket_models.png "Valid models.py") | All clear, no errors found. |
 | basket | [urls.py](basket/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/basket/urls.py) | ![Python Validation](documentation/testing/validation/python/basket_app/valid_basket_urls.png "Valid urls.py") | All clear, no errors found. |
 | basket | [views.py](basket/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/basket/views.py) | ![Python Validation](documentation/testing/validation/python/basket_app/valid_basket_views.png "Valid views.py") | All clear, no errors found. |
-| basket | [test_admin.py](basket/test_admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/basket/test_admin.py) | ![Python Validation](documentation) | All clear, no errors found. |
+| basket/tests | [test_admin.py](basket/tests/test_admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/basket/tests/test_admin.py) | ![Python Validation](documentation/testing/validation/python/basket_app/valid_basket_test_admin.png "Valid test_admin.py") | All clear, no errors found. |
 
 #### Checkout App Files
 | Directory | File | URL | Screenshot | Notes |

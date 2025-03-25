@@ -3,7 +3,7 @@ from django.test import RequestFactory, TestCase
 from unittest.mock import MagicMock
 
 from products.models import Product, Realm
-from .admin import clear_rewards, empty_basket
+from ..admin import clear_rewards, empty_basket
 
 
 class EmptyBasketAdminActionTest(TestCase):
