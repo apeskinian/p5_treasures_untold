@@ -5,8 +5,8 @@
 
 /* Configuring custom colours */
 :root {
-    --tu-green: #839680;
-    --tu-green-hover: #5f6e5d;
+    --tu-green: #687A66;
+    --tu-green-hover: #839680;
     --tu-green-shadow: #5f6e5d80;
     --tu-red: #934B59;
     --tu-red-hover: #713945;
@@ -14,14 +14,15 @@
     --tu-yellow: #E6B86E;
     --tu-yellow-hover: #C78D4B;
     --tu-yellow-shadow: #c78d4b80;
-    --tu-blue: #5190a5;
-    --tu-blue-hover: #3F7586;
+    --tu-blue: #437B93;
+    --tu-blue-hover: #5190a5;
     --tu-blue-shadow: #3f758680;
     --tu-teal: #405254;
-    --tu-teal-hover: #28383a;
+    --tu-teal-hover: #546b6e;
     --tu-teal-shadow: #28383abd;
     --tu-dark-teal: #1B2429;
     --tu-purple: #885b92;
+    --tu-link: #8c5699;
     --tu-white: #FFF;
     --tu-off-white: #f0f0f0;
     --tu-light-grey: #dcdcdc;
@@ -47,6 +48,10 @@
     cursor: default;
     opacity: 0.6;
     pointer-events: none;
+}
+
+a {
+    color: var(--tu-link);
 }
 
 h1 {
@@ -86,6 +91,18 @@ main {
 
 .h2-size {
     font-size: calc(1.325rem + 0.9vw);
+}
+
+.h3-size {
+    font-size: calc(1.25rem + 0.5vw);
+}
+
+.h4-size {
+    font-size: calc(1rem + 0.3vw);
+}
+
+.h5-size {
+    font-size: calc(0.875rem + 0.2vw);
 }
 
 .allauth-container {

@@ -19,7 +19,7 @@
     <div id="product-page" class="container-fluid flex-grow-1">
         <div id="products-container" class="container rounded-4 p-3 my-4">
             <div id="products-shown" class="text-center mt-2">
-                <h2>
+                <h2 class="h4-size">
                     <!-- Amount of products -->
                     {% if products|length > 0 %}
                         Showing {{ products|length }} {% if showing_new %}new {% endif %}product{% if products|length != 1 %}s{% endif %}
@@ -67,7 +67,7 @@
                                             </a>
                                         {% endif %}
                                         <div class="card-body p-1 d-flex flex-column justify-content-evenly">
-                                            <h5 class="card-title text-center m-0">{{ product.name }}</h5>
+                                            <h3 class="card-title text-center m-0 h4-size">{{ product.name }}</h3>
                                             {% if product.stock < 1 %}
                                                 <p class="card-text text-center text-red fw-bold m-0">{% if product.unique_stock %}SOLD{% else %}OUT OF STOCK{% endif %}</p>
                                             {% else %}
