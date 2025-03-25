@@ -302,32 +302,32 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
 
-| Page | Mobile | Desktop |
-| --- | --- | --- |
-| Login | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Logout | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Signup | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Homepage | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Products | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Product Detail | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Basket | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Checkout | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Checkout Success | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Profile | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| FAQs | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Contact Us | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Contact Us Acknowledgement | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Newsletter | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Newsletter Success | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Returns Policy | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Privacy Statement | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Terms and Conditions | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Product Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| FAQ Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Message Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| Newsletter Admin | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| 404 Page | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
-| 500 Page | ![Lighthouse Mobile](documentation/testing/lighthouse) | ![Lighthouse Desktop](documentation/testing/lighthouse) |
+| Page | Mobile | Desktop | Notes |
+| --- | --- | --- | --- |
+| Login | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_login.png "mobile login") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_login.png "desktop login") | n/a |
+| Logout | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_logout.png "mobile logout") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_logout.png "desktop logout") | n/a |
+| Signup | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_signup.png "mobile signup") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_signup.png "desktop signup") | n/a |
+| Homepage | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_homepage.png "mobile homepage") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_homepage.png "desktop homepage") | n/a |
+| Products | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_products.png "mobile products") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_products.png "desktop products") | n/a |
+| Product Detail | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_product_detail.png "mobile product details") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_product_detail.png "desktop product details") | n/a |
+| Basket | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_basket.png "mobile basket") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_basket.png "desktop basket") | n/a |
+| Checkout | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_checkout.png "mobile checkout") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_checkout.png "desktop checkout") | Lower Best Practise scores due to third party cookies from Stripe. |
+| Checkout Success | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_checkout_success.png "mobile checkout success") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_checkout_success.png "desktop checkout success") | n/a |
+| Profile | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_profile.png "mobile profile") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_profile.png "desktop profile") | n/a |
+| FAQs | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_faqs.png "mobile faqs") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_faqs.png "desktop faqs") | n/a |
+| Contact Us | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_contact_us.png "mobile contact us") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_contact_us.png "desktop contact us") | n/a |
+| Contact Us Acknowledgement | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_thankyou.png "mobile contact us acknowledgement") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_thankyou.png "desktop contact us acknowledgement") | n/a |
+| Newsletter | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter.png "mobile newsletter") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter.png "desktop newsletter") | n/a |
+| Newsletter Success | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter_success.png "mobile newsletter success") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter_success.png "desktop newsletter success") | n/a |
+| Returns Policy | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_returns.png "mobile returns") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_returns.png "desktop returns") | n/a |
+| Privacy Statement | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_privacy.png "mobile privacy") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_privacy.png "desktop privacy") | n/a |
+| Terms and Conditions | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_terms.png "mobile terms") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_terms.png "desktop terms") | n/a |
+| Product Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_product_admin.png "mobile product admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_product_admin.png "desktop product admin") | n/a |
+| FAQ Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_faq_admin.png "mobile faq admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_faq_admin.png "desktop faq admin") | n/a |
+| Message Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_message_admin.png "mobile message admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_message_admin.png "desktop message admin") | n/a |
+| Newsletter Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter_admin.png "mobile newsletter admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter_admin.png "desktop newsletter admin") | n/a |
+| 404 Page | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_404.png "mobile 404 page") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_404.png "desktop 404 page") | Lower Best Practise and SEO scores due to 404 error. |
+| 500 Page | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_500.png "mobile 500 page") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_500.png "desktop 500 page") | Lower Best Practise and SEO scores due to 500 error. |
 
 ## Defensive Programming
 
