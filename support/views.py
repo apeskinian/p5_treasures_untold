@@ -515,18 +515,3 @@ def terms(request):
     }
 
     return render(request, template, context)
-
-
-def newsletter_success(request):
-    # Set view parameters
-    template = 'support/support.html'
-    context = {
-        'title': 'Success',
-        'content': 'newsletter_success'
-    }
-
-    return render(request, template, context)
-
-
-def error(request):
-    raise Exception('500PAGE')

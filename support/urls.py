@@ -33,17 +33,9 @@ urlpatterns = [
           ),
 
      # View to the unsubscribe confirmation which send the user to the home
-     # page with a message..
+     # page with a message.
      path('unsubscribe/<int:subscriber_id>/<token>/',
           views.confirm_unsubscription,
           name='confirm_unsubscription'
           ),
-
-     path(
-         'newsletter_success/',
-         views.newsletter_success,
-         name='newslettter_success'
-          ),
-
-     path('error/', views.error, name='error')
 ]
