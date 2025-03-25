@@ -2,7 +2,7 @@
     <!-- Grouping messages by replied -->
     {% regroup contact_messages by replied as grouped_messages %}
     {% for group in grouped_messages %}
-        <h4 class="mt-4 text-center">{{ group.grouper|yesno:"Replied,Unreplied" }}</h4>
+        <h2 class="mt-4 text-center h3-size">{{ group.grouper|yesno:"Replied,Unreplied" }}</h2>
         {% if group.grouper %}
             {% for message in group.list|dictsortreversed:"date_replied" %}
                 <div class="contact-message-container bg-white p-3">
