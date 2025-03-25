@@ -227,7 +227,7 @@ def dashboard(request):
 
     # Set current tab to Product if one can't be found.
     if not context.get('active_tab'):
-        context['active_tab'] = active_tab or 'FAQ'
+        context['active_tab'] = active_tab or 'Message'
 
     return render(request, template, context)
 
