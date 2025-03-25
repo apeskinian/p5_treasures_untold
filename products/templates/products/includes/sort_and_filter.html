@@ -1,6 +1,6 @@
 <div class="sort-and-filter">
     <div class="sort-selector_wrapper m-1 w-100">
-        <select id="sort-selector" class="form-control">
+        <select id="sort-selector" class="form-control" aria-label="sort options">
             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
