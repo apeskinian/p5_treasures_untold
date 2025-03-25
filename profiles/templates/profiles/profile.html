@@ -97,7 +97,7 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <div id="order-details" class="col-12 col-md-6">
+                        <div id="order-details" class="col-12 col-lg-6">
                             <h5 class="text-center mt-2">Delivery Details</h5>
                             <div class="d-flex justify-content-center my-3">
                                 <div>
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="order-summary" class="col-12 col-md-6">
+                        <div id="order-summary" class="col-12 col-lg-6 pe-lg-5">
                             <h5 id="order-summary-title" class="text-center mt-2">Order Summary</h5>
                             {% for item in view_order.lineitems.all %}
                             <div class="row my-3">
@@ -166,7 +166,7 @@
                                 </div>
                             </div>
                             {% endfor %}
-                            <div class="row mt-3">
+                            <div class="row my-3">
                                 <div class="col d-flex flex-column align-items-end">
                                     {% if view_order.rewards_used and 'bibbidi-bobbidi-boo' in view_order.rewards_used %}
                                         <p class="m-0">Subtotal: <strong class="text-decoration-line-through text-danger">£{{ view_order.order_total | calc_original_total | floatformat:2 }}</strong></p>
