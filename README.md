@@ -148,23 +148,24 @@ The action buttons are grouped by colour for specific types of action. This shou
 
 | :root Reference | Colour Reference | Site Elements |
 | --- | --- | --- |
-| --tu-green: | #839680 | Sign In / Sign Up / Add / Confirm / Constructive Actions |
-| --tu-green-hover: | #5f6e5d | Used when --tu-green items are hovered over |
+| --tu-green: | #687A66 | Sign In / Sign Up / Add / Confirm / Constructive Actions |
+| --tu-green-hover: | #839680 | Used when --tu-green items are hovered over |
 | --tu-green-shadow: | #5f6e5d80 | Used for the border when --tu-green items are focused |
 | --tu-red: | #934B59 | Sign Out / Delete Buttons / Destructive Actions |
-| --tu-red-hover: | #713945 | Used when --tu-red items are hovered over |
+| --tu-red-hover: | #9e6671 | Used when --tu-red items are hovered over |
 | --tu-red-shadow: | #71394580 | Used for the border when tu-red-items are focused  |
 | --tu-yellow: | #E6B86E | Edit Buttons / Alteration Actions |
 | --tu-yellow-hover: | #C78D4B | Used when --tu-yellow items are hovered over |
 | --tu-yellow-shadow: | #c78d4b80 | Used for the border when --tu-yellow items are focused |
-| --tu-blue: | #5190a5 | Used for main navigational links / Progressive Actions |
-| --tu-blue-hover: | #3F7586 | Used when --tu-blue items are hovered over |
+| --tu-blue: | #437B93 | Used for main navigational links / Progressive Actions |
+| --tu-blue-hover: | #5190a5 | Used when --tu-blue items are hovered over |
 | --tu-blue-shadow: | #3f758680 | Used for the border when --tu-blue items are focused |
 | --tu-teal: | #405254 | Used for a contrasting alternative for --tu-green for similar actions but giving an aesthetic variance |
-| --tu-teal-hover: | #28383a | Used when --tu-teal items are hovered over |
+| --tu-teal-hover: | #546b6e | Used when --tu-teal items are hovered over |
 | --tu-teal-shadow: | #28383abd | Used for the border when --tu-teal items are focused |
 | --tu-dark-teal: | #1B2429 | Mobile navigation menu background |
 | --tu-purple: | #885b92 | Unloacked rewards message border |
+| --tu-link: | #8c5699 | Link text |
 | --tu-white: | #FFF | All contrasting text and icons that are on a dark background |
 | --tu-off-white: | #f0f0f0 | Page content containers |
 | --tu-light-grey: | #dcdcdc | Nav pills / Table headers / Message reply content background |
@@ -2480,6 +2481,7 @@ There are no remaining major differences between the local version when compared
 | [Return Policy](https://www.freeprivacypolicy.com/free-return-refund-policy-generator/) | Generating the returns policy |
 | [Terms and Conditions](https://www.termsfeed.com/terms-conditions-generator/) | Generatin the terms and conditions |
 | [Virtual Environments in Visual Studio Code on macOS](https://medium.com/@apartha77/creating-and-using-virtual-environments-in-visual-studio-code-on-macos-0e50fe1b8501) | Creating a venv in macOS |
+| [Colour Contrast Tool](https://dequeuniversity.com/rules/axe/4.10/color-contrast) | Testing colour contrast for lighthouse audits |
 
 ### Media
 
