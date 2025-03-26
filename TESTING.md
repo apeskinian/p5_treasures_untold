@@ -412,7 +412,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | --- | --- | --- | --- |
 | As a user | I can create an account | so that I can purchase items and view/edit my own profile. | ![account creation](documentation/features/user_accounts/desktop_register.png "create an account") |
 | As a user | I can easily log in and out of my account | so that my details remain private and secure. | ![logging in](documentation/features/user_accounts/desktop_login.png "log in") ![logging out](documentation/features/user_accounts/desktop_logout.png "log out") |
-| As a user | I can easily recover my account and change password | so that I can continue to log in and out if I forget my password. | ![Account recovery](documentation/testing/user_stories/password_reset.png "password reset") |
+| As a user | I can easily recover my account and change password | so that I can continue to log in and out if I forget my password. | ![Account recovery](documentation/testing/user_stories/password_reset.png "password reset") ![Recovery Email](documentation/testing/user_stories/email_reset_email.png "email reset email") |
 | As a user | I should receive a verification email when I create my account | so that I can confirm my email address and activate my account. | ![Email account creation](documentation/testing/user_stories/account_creation_email.png "account creation email") |
 | As a user | I can view a user profile page | so that I can see my purchase history and update my details. | ![Profile page](documentation/features/profile_page/desktop_profile_page.png "profile page") |
 | As a developer | I can implement a social media login | so that users can create accounts quickly and easily. | **Not implemented in this iteration.** |
