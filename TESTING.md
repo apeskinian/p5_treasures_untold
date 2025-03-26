@@ -298,28 +298,28 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 | Page | Mobile | Desktop | Notes |
 | --- | --- | --- | --- |
-| Login | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_login.png "mobile login") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_login.png "desktop login") | n/a |
-| Logout | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_logout.png "mobile logout") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_logout.png "desktop logout") | n/a |
-| Signup | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_signup.png "mobile signup") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_signup.png "desktop signup") | n/a |
-| Homepage | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_homepage.png "mobile homepage") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_homepage.png "desktop homepage") | n/a |
-| Products | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_products.png "mobile products") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_products.png "desktop products") | n/a |
+| Login | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_login.png "mobile login") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_login.png "desktop login") | Minor performance warnings. |
+| Logout | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_logout.png "mobile logout") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_logout.png "desktop logout") | Minor performance warnings. |
+| Signup | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_signup.png "mobile signup") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_signup.png "desktop signup") | Minor performance warnings. |
+| Homepage | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_homepage.png "mobile homepage") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_homepage.png "desktop homepage") | Minor performance warnings. |
+| Products | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_products.png "mobile products") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_products.png "desktop products") | Minor performance warnings. |
 | Product Detail | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_product_detail.png "mobile product details") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_product_detail.png "desktop product details") | n/a |
-| Basket | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_basket.png "mobile basket") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_basket.png "desktop basket") | n/a |
+| Basket | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_basket.png "mobile basket") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_basket.png "desktop basket") | Minor performance warnings. |
 | Checkout | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_checkout.png "mobile checkout") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_checkout.png "desktop checkout") | Lower Best Practise scores due to third party cookies from Stripe. |
-| Checkout Success | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_checkout_success.png "mobile checkout success") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_checkout_success.png "desktop checkout success") | n/a |
-| Profile | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_profile.png "mobile profile") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_profile.png "desktop profile") | n/a |
-| FAQs | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_faqs.png "mobile faqs") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_faqs.png "desktop faqs") | n/a |
-| Contact Us | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_contact_us.png "mobile contact us") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_contact_us.png "desktop contact us") | n/a |
+| Checkout Success | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_checkout_success.png "mobile checkout success") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_checkout_success.png "desktop checkout success") | Minor performance warnings. |
+| Profile | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_profile.png "mobile profile") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_profile.png "desktop profile") | Minor performance warnings. |
+| FAQs | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_faqs.png "mobile faqs") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_faqs.png "desktop faqs") | Minor performance warnings. |
+| Contact Us | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_contact_us.png "mobile contact us") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_contact_us.png "desktop contact us") | Minor performance warnings. |
 | Contact Us Acknowledgement | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_thankyou.png "mobile contact us acknowledgement") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_thankyou.png "desktop contact us acknowledgement") | n/a |
-| Newsletter | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter.png "mobile newsletter") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter.png "desktop newsletter") | n/a |
+| Newsletter | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter.png "mobile newsletter") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter.png "desktop newsletter") | Minor performance warnings. |
 | Newsletter Success | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter_success.png "mobile newsletter success") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter_success.png "desktop newsletter success") | n/a |
-| Returns Policy | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_returns.png "mobile returns") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_returns.png "desktop returns") | n/a |
-| Privacy Statement | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_privacy.png "mobile privacy") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_privacy.png "desktop privacy") | n/a |
-| Terms and Conditions | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_terms.png "mobile terms") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_terms.png "desktop terms") | n/a |
-| Product Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_product_admin.png "mobile product admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_product_admin.png "desktop product admin") | n/a |
-| FAQ Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_faq_admin.png "mobile faq admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_faq_admin.png "desktop faq admin") | n/a |
-| Message Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_message_admin.png "mobile message admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_message_admin.png "desktop message admin") | n/a |
-| Newsletter Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter_admin.png "mobile newsletter admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter_admin.png "desktop newsletter admin") | n/a |
+| Returns Policy | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_returns.png "mobile returns") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_returns.png "desktop returns") | Minor performance warnings. |
+| Privacy Statement | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_privacy.png "mobile privacy") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_privacy.png "desktop privacy") | Minor performance warnings. |
+| Terms and Conditions | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_terms.png "mobile terms") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_terms.png "desktop terms") | Minor performance warnings. |
+| Product Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_product_admin.png "mobile product admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_product_admin.png "desktop product admin") | Minor performance warnings. |
+| FAQ Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_faq_admin.png "mobile faq admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_faq_admin.png "desktop faq admin") | Minor performance warnings. |
+| Message Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_message_admin.png "mobile message admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_message_admin.png "desktop message admin") | Minor performance warnings. |
+| Newsletter Admin | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_newsletter_admin.png "mobile newsletter admin") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_newsletter_admin.png "desktop newsletter admin") | Minor performance warnings. |
 | 404 Page | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_404.png "mobile 404 page") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_404.png "desktop 404 page") | Lower Best Practise and SEO scores due to 404 error. |
 | 500 Page | ![Lighthouse Mobile](documentation/testing/lighthouse/mobile/mobile_500.png "mobile 500 page") | ![Lighthouse Desktop](documentation/testing/lighthouse/desktop/desktop_500.png "desktop 500 page") | Lower Best Practise and SEO scores due to 500 error. |
 
@@ -387,39 +387,93 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## User Story Testing
 
-⚠️ INSTRUCTIONS ⚠️
+**Database Setup**
+| Target | Expectation | Outcome | File | Screenshot |
+| --- | --- | --- | :---: | --- |
+| As a developer | I can create a JSON fixtures file for the product model | so that I can quickly and easily load products into the database. | [Product Fixtures](products/fixtures/products.json) | ![JSON Product Fixtures](documentation/testing/user_stories/products_fixtures.png "product fixtures") |
+| As a developer | I can create a JSON fixtures file for the realm model | so that I can quickly and easily load realms into the database. | [Realm Fixtures](products/fixtures/realms.json) | ![JSON Realm Fixtures](documentation/testing/user_stories/realms_fixtures.png "realms fixtures") |
+| As a developer | I need images for the products | so that site users can see the product. | n/a | ![Product Images](documentation/testing/user_stories/product_images.png "product images") |
 
-Testing User Stories is actually quite simple, once you've already got the stories defined on your README.
-
-Most of your project's **Features** should already align with the **User Stories**, so this should be as simple as creating a table with the User Story, matching with the re-used screenshot from the respective Feature.
-
-⚠️ --- END --- ⚠️
-
+**Viewing and Navigating Products**
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- | --- |
-| As a guest user | I would like to browse products without needing to register | so that I can shop freely before deciding to create an account. | ![screenshot](documentation/features/feature01.png) |
-| As a guest user | I would like to be prompted to create an account or log in at checkout | so that I can complete my purchase and track my order history. | ![screenshot](documentation/features/feature02.png) |
-| As a user | I would like to sign up to the site's newsletter | so that I can stay up to date with any upcoming sales or promotions. | ![screenshot](documentation/features/feature03.png) |
-| As a customer | I would like to browse various product categories (clothing, toys, jewelry, kitchen gadgets, etc.) | so that I can easily find what I'm looking for. | ![screenshot](documentation/features/feature04.png) |
-| As a customer | I would like to sort products by price (low-to-high/high-to-low) and name (alphabetical) | so that I can quickly organize items in a way that suits my shopping style. | ![screenshot](documentation/features/feature05.png) |
-| As a customer | I would like to filter products by category | so that I can narrow down the products to the types I am most interested in. | ![screenshot](documentation/features/feature06.png) |
-| As a customer | I would like to click on individual products to view more details (description, price, image, etc.) | so that I can make an informed decision about my purchase. | ![screenshot](documentation/features/feature07.png) |
-| As a customer | I would like to add items to my shopping cart using quantity increment/decrement buttons | so that I can adjust how many units of a product I want before checkout. | ![screenshot](documentation/features/feature08.png) |
-| As a customer | I would like to view and manage my shopping cart | so that I can review, add, or remove items before proceeding to checkout. | ![screenshot](documentation/features/feature09.png) |
-| As a customer | I would like to adjust the quantity of items in my cart | so that I can modify my purchase preferences without leaving the cart. | ![screenshot](documentation/features/feature10.png) |
-| As a customer | I would like to remove items from my cart | so that I can remove products I no longer wish to buy. | ![screenshot](documentation/features/feature11.png) |
-| As a customer | I would like to proceed to checkout where I see my cart items, grand total, and input my name, email, shipping address, and card details | so that I can complete my purchase. | ![screenshot](documentation/features/feature12.png) |
-| As a customer | I would like to receive a confirmation email after my purchase | so that I can have a record of my transaction and order details. | ![screenshot](documentation/features/feature13.png) |
-| As a customer | I would like to see an order confirmation page with a checkout order number after completing my purchase | so that I know my order has been successfully placed. | ![screenshot](documentation/features/feature14.png) |
-| As a customer | I would like to securely enter my card details using Stripe at checkout | so that I can feel confident my payment information is protected. | ![screenshot](documentation/features/feature15.png) |
-| As a returning customer | I would like to be able to log in and view my past orders | so that I can track my previous purchases and order history. | ![screenshot](documentation/features/feature16.png) |
-| As a returning customer | I would like the checkout process to remember my shipping address | so that future purchases are quicker and easier. | ![screenshot](documentation/features/feature17.png) |
-| As a site owner | I would like to create new products with a name, description, price, images, and category | so that I can add additional items to the store inventory. | ![screenshot](documentation/features/feature18.png) |
-| As a site owner | I would like to update product details (name, price, description, image, category) at any time | so that I can keep my product listings accurate and up to date. | ![screenshot](documentation/features/feature19.png) |
-| As a site owner | I would like to delete products that are no longer available or relevant | so that I can maintain a clean and accurate inventory. | ![screenshot](documentation/features/feature20.png) |
-| As a site owner | I would like to view all orders placed on the website | so that I can track and manage customer purchases. | ![screenshot](documentation/features/feature21.png) |
-| As a site owner | I would like to manage product categories | so that I can ensure items are correctly organized and easy for customers to find. | ![screenshot](documentation/features/feature22.png) |
-| As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. | ![screenshot](documentation/features/feature23.png) |
+| As a site user | I can see a homepage full of useful information | so that I can see what the site is and why I should spend my time here. | ![Homepage](documentation/testing/browser_compatibility/chrome/chrome_homepage.png "homepage") |
+| As a user | I can view the available items | so that I can decide if I'd like to buy one or some of them. | ![Products page](documentation/features/viewing_products/desktop_all_products.png "products") |
+| As a user | I can click on a product | so that I can see more detailed info on the product. | ![Product detail page](documentation/features/product_details/desktop_detail_stocked.png "product details") |
+| As a user | I can access my shopping basket from anywhere | so that I can keep track of my current total and avoid spending too much. | ![Shopping basket](documentation/features/basket_view/desktop_basket_preview.png "basket preview") |
+| As a user | I can easily see if items are out of stock | so that I know I cannot buy them. | ![Out of stock items](documentation/features/product_details/unavailable_items.png "unavailable stock") |
+| As a user | I can see a custom 404 error page | so that I know the page I’m looking for doesn’t exist and can easily navigate back to the rest of the site. | ![404 page](documentation/features/error_pages/desktop_404.png "404 page") |
+| As a user | I can see a custom 500 error page | so that I understand something went wrong on the server and can find a way to navigate back to the site. | ![500 page](documentation/features/error_pages/desktop_500.png "500 page") |
+| As a user | I can sign up to be notified if an item that is sold or out of stock becomes available | so that I can purchase it. | **Not implemented in this iteration.** |
+| As a user | I can share products directly to social media platforms | so that I can share items with my friends easily. | **Not implemented in this iteration.** |
+
+**User Accounts**
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a user | I can create an account | so that I can purchase items and view/edit my own profile. | ![account creation](documentation/features/user_accounts/desktop_register.png "create an account") |
+| As a user | I can easily log in and out of my account | so that my details remain private and secure. | ![logging in](documentation/features/user_accounts/desktop_login.png "log in") ![logging out](documentation/features/user_accounts/desktop_logout.png "log out") |
+| As a user | I can easily recover my account and change password | so that I can continue to log in and out if I forget my password. | ![Account recovery](documentation/testing/user_stories/password_reset.png "password reset") |
+| As a user | I should receive a verification email when I create my account | so that I can confirm my email address and activate my account. | ![Email account creation](documentation/testing/user_stories/account_creation_email.png "account creation email") |
+| As a user | I can view a user profile page | so that I can see my purchase history and update my details. | ![Profile page](documentation/features/profile_page/desktop_profile_page.png "profile page") |
+| As a developer | I can implement a social media login | so that users can create accounts quickly and easily. | **Not implemented in this iteration.** |
+
+**Sorting and searching for items**
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a user | I can search manually for an item from an input field | so that I can find and view specific items quickly. | ![Search Bar](documentation/testing/user_stories/search_bar.png "search bar") |
+| As a user | I can sort products | so that view the list of products sorted based on a selected property. | ![Result sorting](documentation/testing/user_stories/order_items.png "product sorting") |
+| As a user | I can filter products | so that only products that match the filter property are shown. | ![Filter products](documentation/features/navigation/desktop_sort_filter.png "product filtering") |
+| As a user | I can sort search and filter results | so that I can view the results in the order that I want to. | ![Result sorting](documentation/testing/user_stories/order_items.png "product sorting") |
+
+**Purchasing and checkout**
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a user | I can select how many of a product I wish to buy | so that I can add the amount I need in one process to the basket. | ![Quantity modifier](documentation/features/product_details/stocked_product_updating.gif "quantity selection") |
+| As a user | I can view the basket | so that see the total cost and all the items I have added to it. | ![Basket view](documentation/features/basket_view/desktop_basket_page.png "basket view") |
+| As a user | I can adjust the quantity of product from the basket | so that I can easily edit how many I want. | ![Basket view quantity adjusting](documentation/testing/user_stories/adjusting_quanity_in_basket_view.gif "adjusting quantity in basket view") |
+| As a user | I can remove an item directly from the basket | so that I can quickly adjust what I'm buying. | ![Removing item from basket](documentation/testing/user_stories/removing_item_from_basket.gif "removing item from basket") |
+| As a user | I can easily enter my payment details | so that checkout quickly and hassle free. | ![Checkout payment form](documentation/features/checkout_view/desktop_checkout.png "checkout process") |
+| As a user | I can see an order confirmation after completing a purchase | so that I know the transaction was successful. | ![Order confirmation](documentation/features/checkout_view/desktop_checkout_success.png "order confirmation") |
+| As a user | I receive an email confirming my order confirmation and details | so that I know the transaction was successful. | ![Email order confirmation](documentation/features/checkout_view/checkout_success_email.png "email order confirmation") |
+| As a developer | I can expand the application to support multiple currencies | so that users can view and complete transactions in their preferred currency, improving accessibility and user experience. |  **Not implemented in this iteration.** |
+
+**Help and support page**
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a user | I can send a message to the shop owner | so that if I have a question or message I can send it directly with my details so that they can get back to me. | ![Contact Us](documentation/features/support_pages/desktop_contact_us.png "contact us") |
+| As a user | I can view the FAQ on the help and support page | so that I may find the answer to a question I have before sending a message to ask. | ![FAQs](documentation/features/support_pages/desktop_faq_expanded.png "faqs") |
+| As a user | I can sign up to a newsletter | so that I can be informed when new magical items have been found and added to the store for sale. | ![Newsletter](documentation/features/support_pages/desktop_newsletter_page.png "newsletter") |
+| As a user | I can view the sites privacy policy | so that I can see how my data is stored and used. | ![Privacy Policy](documentation/features/support_pages/desktop_privacy.png "privacy statement") |
+| As a user | I can view the sites returns policy | so that I can see how the returns process works should I not be happy with a purchase. | ![Returns Policy](documentation/features/support_pages/desktop_returns_policy.png "returns policy") |
+| As a user | I can view the sites general terms and conditions | so that I can I can understand the rules, policies, and my rights when using the website. | ![Terms and Conditions](documentation/features/support_pages/desktop_terms.png "terms and conditions") |
+
+**Admin and store management**
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a shop owner | I can access a shop admin page | so that they add edit and delete products so that they can keep the catalogue up to date. | ![Staff Dashboard](documentation/features/dashboard/desktop_product_admin.png "staff dashboard") |
+| As a shop owner | I can add a new product | so that the shop can be updated with new items. | ![Add a product](documentation/features/dashboard/product_admin/desktop_product_add.png "adding a product") |
+| As a shop owner | I can edit products | so that I can update prices, stock levels and keep the catalogue up to date. | ![Edit a product](documentation/features/dashboard/product_admin/desktop_product_update.png "update a product") |
+| As a shop owner | I can delete products from the catalogue | so that I can make sure the catalogue is up to date. | ![Delete a product](documentation/features/dashboard/product_admin/desktop_product_delete.png "deleting a product") |
+| As a shop owner | I can add new questions and answers to the FAQ section of the help and support page | so that site users have the most up to date FAQ. | ![Adding a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_add.png "adding a faq") |
+| As a shop owner | I can edit any FAQ entries | so that amend any that I need to. | ![Editing a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_update.png "updating a faq") |
+| As a shop owner | I can delete FAQ entries | so that I can keep the list up to date by removing any redundant entries. | ![Deleting a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "deleting a faq") |
+| As a shop owner | I can view the messages sent from the contact us form | so that I can send an initial reply. | ![Message Viewing](documentation/features/dashboard/message_admin/messages.png "message viewing") |
+| As a shop owner | I can manage newsletters including viewing previous newsletters and creating and sending newsletters | so that subscribers can be updated on any offers and news from the site. | ![Newsletter admin](documentation/features/dashboard/newsletter_admin/newsletters.png "newsletters") ![Creating newsletter](documentation/features/dashboard/newsletter_admin/desktop_newsletter_send.png "creating newsletter") |
+| As a shop owner | I can see a list of the current subscribers including active, pending and expired memberships. I can also remove any individual subscriber and clear all expired subscribers from the list | so that I can I can keep the subscriber list accurate, organised, and up to date. | ![Subscribers](documentation/features/dashboard/newsletter_admin/subscribers.png "subscribers") ![Clearing expired](documentation/features/dashboard/newsletter_admin/desktop_clear_expired.png "clearing expired") |
+
+**Easter Eggs**
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a curious user | I can enter a classic phrase in the search bar | so that a special reward is unlocked! | ![Easter Egg](documentation/features/communication/message_toasts/reward_notification.png "easter egg notification") |
+| As a curious user | I might notice that upon hovering over a certain item the cursor changes, | should I perform a certain action a special reward is unlocked! | ![Easter Egg](documentation/features/easter_eggs/reward_message_magic_lamp.png "easter egg notification") |
+| As a curious user | I might know about the Cave of Wonders in Agrabah and know what I need to gain access | to unlock a special reward... | ![Easter Egg](documentation/features/easter_eggs/reward_message_cave_of_wonders.png "easter egg notification") |
+| As a greedy user | I might not be able to stop myself from wanting a particular product when a certain reward is activated | and I will see the consequences... | ![Easter Egg](documentation/features/easter_eggs/reward_message_infidels.png "easter egg notification") |
+
+**SEO and Marketing**
+| Target | Expectation | Outcome | File | Screenshot |
+| --- | --- | --- | :---: | --- |
+| As a developer | I need to implement good marketing strategies | so that the site gains exposure and attracts customers. | n/a | ![Facebook Page Mockup](documentation/seo_marketing/marketing_facebook.png "facebook mockup") |
+| As a developer | I can make sure that SEO methods are used in the site | so that it ranks higher in search engine results, attracts more organic traffic, and provides a better user experience. | [robots.txt](/robots.txt) [sitemap.xml](/sitemap.xml) | ![robots.txt](documentation/testing/user_stories/robots.png "robots.txt") ![sitemap.xml](documentation/testing/user_stories/sitemap.png "sitemap.xml") |
 
 ## Automated Testing
 

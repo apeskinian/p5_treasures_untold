@@ -246,7 +246,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | As a user | I can create an account | so that I can purchase items and view/edit my own profile. |
 | As a user | I can easily log in and out of my account | so that my details remain private and secure. |
 | As a user | I can easily recover my account and change password | so that I can continue to log in and out if I forget my password. |
-| As a user | I should receive a confirmation email when my account is created | so that I know it was created successfully. |
+| As a user | I should receive a verification email when I create my account | so that I can confirm my email address and activate my account. |
 | As a user | I can view a user profile page | so that I can see my purchase history and update my details. |
 | As a developer | I can implement a social media login | so that users can create accounts quickly and easily. |
 
@@ -256,7 +256,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | As a user | I can search manually for an item from an input field | so that I can find and view specific items quickly. |
 | As a user | I can sort products | so that view the list of products sorted based on a selected property. |
 | As a user | I can filter products | so that only products that match the filter property are shown. |
-| As a user | I can order any of the sort or filter results by ascending or descending order | so that I can view the list in the order that I want to. |
+| As a user | I can sort search and filter results | so that I can view the results in the order that I want to. |
 
 **Purchasing and checkout**
 | User | Capability | Benefit |
@@ -403,18 +403,18 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     
     Each is accessed by tapping the appropriate icon.
 
-    | Account Menu | Site Navigation | Sort, Filter and Search | Basket Preview |
+    | Account Menu | Site Navigation and Search | Sort and Filter | Basket Preview |
     | --- | --- | --- | --- |
-    | ![Mobile Account Menu](documentation/features/navigation/mobile_account_menu.png "Mobile Account Menu") | ![Mobile Site Navigation](documentation/features/navigation/mobile_navigation_menu.png "Mobile Site Navigation") |  ![Mobile Sort, Filter, Search](documentation/features/navigation/mobile_sort_filter.png "Mobile Sort, Filter, and Search") | ![Mobile Basker Preview](documentation/features/navigation/mobile_basket_preview.png "Mobile Basket Preview") |
+    | ![Mobile Account Menu](documentation/features/navigation/mobile_account_menu.png "Mobile Account Menu") | ![Mobile Site Navigation](documentation/features/navigation/mobile_navigation_menu.png "Mobile Site Navigation") |  ![Mobile Sort and Filter](documentation/features/navigation/mobile_sort_filter.png "Mobile Sort and Filter") | ![Mobile Basker Preview](documentation/features/navigation/mobile_basket_preview.png "Mobile Basket Preview") |
 
     ### Desktop
     Navigation on desktop devices is found at the top of the screen in the hero image and title banner. Site navigation is located at the top left which is expanded by clicking on the burger menu icon. The account menu is opened by clicking on the wizard hat and the basket icon will open the basket preview panel.
 
     ![Desktop Navbar](documentation/features/navigation/desktop_navigation_icons.png "Desktop Navbar")
 
-    | Account Menu | Site Navigation | Basket Preview |
-    | --- | --- | --- |
-    | ![Desktop Account Menu](documentation/features/navigation/desktop_account_menu.png "Desktop Account Menu") | ![Desktop Site Navigation](documentation/features/navigation/desktop_navigation_menu.png "Desktop Site Navigation") | ![Desktop Basket Preview](documentation/features/navigation/desktop_basket_preview.png "Desktop Basket Preview") |
+    | Account Menu | Site Navigation and Search | Sort and Filter | Basket Preview |
+    | --- | --- | --- | --- |
+    | ![Desktop Account Menu](documentation/features/navigation/desktop_account_menu.png "Desktop Account Menu") | ![Desktop Site Navigation](documentation/features/navigation/desktop_navigation_menu.png "Desktop Site Navigation") | ![Desktop Sort and Filter](documentation/features/navigation/desktop_sort_filter.png "Desktop Sort and Filter") | ![Desktop Basket Preview](documentation/features/navigation/desktop_basket_preview.png "Desktop Basket Preview") |
 
     To ensure easy navigation for desktop users on pages that may require a lot of scrolling, a floating menu becomes active once the page is scrolled past the hero banner. It appears when the user scrolls up slightly and remains visible until the page is scrolled back to the top, where it seamlessly fades into the main menu.
 
@@ -493,13 +493,17 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     ![Featured Realm](documentation/features/homepage/homepage_featured.png "Featured Realm")
 
 - ### Viewing Products
-    Products are displayed in a responsive layout, allowing users to easily search for specific products or keywords. They can also sort and filter the results to refine their search. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top. Search, sort and filter actions can be combined together, for example you can search for 'hook' and then filter and sort those results further. Searches also look for matches in the product description.
+    Products are presented in a responsive layout, ensuring a seamless browsing experience across all devices. A search bar allows users to easily search for specific products or keywords. They can also sort and filter the results to refine their search. Filtering can be applied to show items by realm, stock level and new products. The user is notified of what products are being shown at the top. Search, sort and filter actions can be combined together, for example you can search for 'hook' and then filter and sort those results further. Searches also look for matches in the product description.
 
     The filter, sort and search functions for mobile can be found in the extra filter menu on the navigation bar at the bottom of the view. For desktop users, the sort and filter controls are to the left of the displayed products and the search bar can be found in the navigation panel accessed via the burger menu icon.
 
     To clear all searches, sort orders or filters the user can tap/click on the clear button to show all products again.
 
     Any items that are out of stock or sold are shown at the bottom of the page, their image is desaturated and the price is replaced with the text 'SOLD' if the item is unique or 'OUT OF STOCK' if not.
+
+    | Sold and Out of Stock items |
+    | :---: |
+    | ![SOLD and OUT OF STOCK](documentation/features/product_details/unavailable_items.png "unavailable items") |
 
     To view a product in more detail the user can tap/click on the product image. Products that are sold or out of stock can still be viewed in more detail.
 
