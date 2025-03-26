@@ -14,3 +14,5 @@ cloudinary_python.txt
 .venv_win
 static/images/dev_mode/
 .VSCodeCounter
+htmlcov/
+.coverage
