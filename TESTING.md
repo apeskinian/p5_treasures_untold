@@ -325,44 +325,55 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 ## Defensive Programming
 
-⚠️ INSTRUCTIONS ⚠️
-
-Defensive programming (defensive design) is extremely important! When building projects that accept user inputs or forms, you should always test the level of security for each form field. Examples of this could include (but not limited to):
-
-All Projects:
-
-- Users cannot submit an empty form (add the `required` attribute)
-- Users must enter valid field types (ensure the correct input `type=""` is used)
-- Users cannot brute-force a URL to navigate to a restricted pages
-
-Python Projects:
-
-- Users cannot perform CRUD functionality if not authenticated (if login functionality exists)
-- User-A should not be able to manipulate data belonging to User-B, or vice versa
-- Non-Authenticated users should not be able to access pages that require authentication
-- Standard users should not be able to access pages intended for superusers/admins
-
-You'll want to test all functionality on your application, whether it's a standard form, or CRUD functionality, for data manipulation on a database. Try to access various pages on your site as different user types (User-A, User-B, guest user, admin, superuser). You should include any manual tests performed, and the expected results/outcome.
-
-Testing should be replicable (can someone else replicate the same outcome?). Ideally, tests cases should focus on each individual section of every page on the website. Each test case should be specific, objective, and step-wise replicable.
-
-Instead of adding a general overview saying that everything works fine, consider documenting tests on each element of the page (eg. button clicks, input box validation, navigation links, etc.) by testing them in their "happy flow", their "bad/exception flow", mentioning the expected and observed results, and drawing a parallel between them where applicable.
-
-Consider using the following format for manual test cases:
-
-- Expected Outcome / Test Performed / Result Received / Fixes Implemented
-
-- **Expected**: "Feature is expected to do X when the user does Y."
-- **Testing**: "Tested the feature by doing Y."
-- (either) **Result**: "The feature behaved as expected, and it did Y."
-- (or) **Result**: "The feature did not respond to A, B, or C."
-- **Fix**: "I did Z to the code because something was missing."
-
-Use the table below as a basic start, and expand on it using the logic above.
-
-⚠️ --- END --- ⚠️
-
 Defensive programming was manually tested with the below user acceptance testing:
+
+### Creating a new user account
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+| New user clicks on sign up link and is taken to the sign up page | Tested by clicking on the signup link on the login page | SUCCESS - user is taken to signup page | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_link.gif "treasures untold testing signup link") |
+| New user clicks signup without entering any info and is informed of required fields. | Clicking on the signup button without entering data. | SUCCESS - user is informed that the form is not complete | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_blank_form.gif "treasures untold testing signup process") |
+| New user clicks signup after entering just an email and is informed of required fields. | Clicking on the signup button with just an email entered. | SUCCESS - user is informed that the form is not complete | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_just_email.gif "treasures untold testing signup process") |
+| New user clicks signup after entering just a username and is informed of required fields. | Clicking on the signup button with just a username entered. | SUCCESS - user is informed that the form is not complete | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_just_username.gif "treasures untold testing signup process") |
+| New user clicks signup after entering just a password and is informed of required fields. | Clicking on the signup button with just a password entered. | SUCCESS - user is informed that the form is not complete | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_just_password.gif "treasures untold testing signup process") |
+| New user clicks signup after entering an invalid email and is informed of this. | Clicking on the signup button with an invalid email. | SUCCESS - user is informed that the form is not valid | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_invalid_email.gif "treasures untold testing signup process") |
+| New user clicks signup after entering an invalid username and is informed of this. | Clicking on the signup button with an invalid username. | SUCCESS - user is informed that the form is not valid | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_invalid_username.gif "treasures untold testing signup process") |
+| New user clicks signup after entering an invalid password and is informed of this. | Clicking on the signup button with an invalid password. | SUCCESS - user is informed that the form is not valid | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_invalid_password.gif "treasures untold testing signup process") |
+| New user clicks signup after entering mismatching emails and is informed of this. | Clicking on the signup button with mismatched emails. | SUCCESS - user is informed that the form is not valid | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_mismatch_emails.gif "treasures untold testing signup process") |
+| New user clicks signup after entering mismatching passwords and is informed of this. | Clicking on the signup button with mismatched passwords. | SUCCESS - user is informed that the form is not valid | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_mismatch_password.gif "treasures untold testing signup process") |
+| New user clicks signup after entering valid email, username and password. The account activation email is sent.  | Clicking on the signup button with valid info. | SUCCESS - user is sent and activation email | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_success.gif "treasures untold testing signup process") |
+| New user clicks on the link in the email received. They are taken to the site to confirm account activation | Click on the link in the email received and confirm account activation. | SUCCESS - account is activated and the user can now log in | ![screenshot](documentation/testing/manual_testing/signup/mt_signup_activate.gif "treasures untold testing signup process") |
+
+### Logging in
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+| User clicks on sign in without entering username or password and is informed of required fields. | Clicking on sign in without entering username or password. | SUCCESS - user is informed that the form is not complete. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_blank.gif "treasures untold testing login process") |
+| User clicks on sign in without entering password and is informed of required fields. | Clicking on sign in without entering password. | SUCCESS - user is informed that the form is not complete. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_just_username.gif "treasures untold testing login process") |
+| User clicks on sign in without entering username and is informed of required fields. | Clicking on sign in without entering username. | SUCCESS - user is informed that the form is not complete. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_just_password.gif "treasures untold testing login process") |
+| User clicks on sign in with invalid username or password and is informed of invalid input. | Clicking on sign in with invalid username or password. | SUCCESS - user is informed that the form is not valid. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_invalid_match.gif "treasures untold testing login process") |
+| User clicks on sign in with valid username an password and is taken to homepage. | Clicking on sign in with valid username and password. | SUCCESS - user is logged in and taken to homepage. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_success.gif "treasures untold testing login process") |
+
+### Resetting password
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+| User clicks on forgot password link and is taken to the page to enter an email address | Clicking on forgot password link. | SUCCESS - user is taken to the page to input an email address | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_link.gif "treasures untold testing forgot password process") |
+| User enters no email address in forgot password field and is informed of required field. | Not entering an email address into the form. | SUCCESS - user is informed of required field | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_initial_blank.gif "treasures untold testing forgot password process") |
+| User enters invalid email address in forgot password field and is informed of invalid form. | Entering an invalid email into the form. | SUCCESS - user is informed of invalid email address | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_initial_invalid.gif "treasures untold testing forgot password process") |
+| User enters valid email address in forgot password field and is shown confirmation page. | Entering a valid email into the form. | SUCCESS - user is shown the confirmation page | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_initial_success.gif "treasures untold testing forgot password process") |
+| User receives an email with link to reset password. | Checking to see if email is received. | SUCCESS - email is received with link to reset | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_email.png "treasures untold testing forgot password process") |
+| User enters nothing in password reset form and is informed of required fields. | Entering nothing the fields and submitting form. | SUCCESS - user is informed of invalid form | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_blank.gif "treasures untold testing forgot password process") |
+| User enters invalid password in form and is informed of invalid form. | Entering invalid passwords in the fields and submitting form. | SUCCESS - user is informed of invalid form | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_invalid.gif "treasures untold testing forgot password process") |
+| User enters mismatched passwords in form and is informed of invalid form. | Entering mismatched passwords in the fields and submitting form. | SUCCESS - user is informed of invalid form | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_mismatch.gif "treasures untold testing forgot password process") |
+| User enters correct input in password reset form and is shown the confirmation page. | Entering matching valid passwords in the fields and submitting form. | SUCCESS - user is shown the confirmation page | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_success.gif "treasures untold testing forgot password process") |
+| User clicks on Sign In to return to login page. | Clicking on Sign In from the password reset confirmation page. | SUCCESS - user is taken to the login page. | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_complete.gif "treasures untold testing forgot password process") |
+
+### Logging out
+| Expectation | Test | Result | Screenshot Mobile | Screenshot Desktop |
+| --- | --- | --- | --- | --- |
+| User can easily access the sign out button from all main pages in the site. The sign out button is in the same place on all pages. Clicking on the sign out button prompts the user to confirm they want to sign out. | Click on the sign out button. | SUCCESS - Upon clicking the button the user is prompted to confirm. | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_mobile_logout.gif "treasures untold testing logging out") | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_desktop_logout.gif "treasures untold testing logging out") |
+| User can cancel the logout process by clicking on cancel. They will be taken back to the home screen. | Click on the cancel button in the logout prompt. | SUCCESS - the user is taken back to the home page. | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_mobile_cancel.gif "treasures untold testing logging out") | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_desktop_cancel.gif "treasures untold testing logging out") |
+| User clicks on sign out and is taken to the logon screen. They are notified that they logged out. | Click on sign out on the confirmation prompt. | SUCCESS - user is logged out and notified. | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_mobile_confirm.gif "treasures untold testing logging out") | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_desktop_confirm.gif "treasures untold testing logging out") |
+
+
 
 | Page | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
