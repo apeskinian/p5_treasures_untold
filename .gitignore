@@ -16,3 +16,4 @@ static/images/dev_mode/
 .VSCodeCounter
 htmlcov/
 .coverage
+.coveragerc

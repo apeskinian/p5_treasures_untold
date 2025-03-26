@@ -327,7 +327,9 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 Defensive programming was manually tested with the below user acceptance testing:
 
-### Creating a new user account
+### User Accounts
+
+#### Creating a new user account
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
 | New user clicks on sign up link and is taken to the sign up page | Tested by clicking on the signup link on the login page | SUCCESS - user is taken to signup page | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_link.gif "treasures untold testing signup link") |
@@ -343,7 +345,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | New user clicks signup after entering valid email, username and password. The account activation email is sent.  | Clicking on the signup button with valid info. | SUCCESS - user is sent and activation email | ![screenrecording](documentation/testing/manual_testing/signup/mt_signup_success.gif "treasures untold testing signup process") |
 | New user clicks on the link in the email received. They are taken to the site to confirm account activation | Click on the link in the email received and confirm account activation. | SUCCESS - account is activated and the user can now log in | ![screenshot](documentation/testing/manual_testing/signup/mt_signup_activate.gif "treasures untold testing signup process") |
 
-### Logging in
+#### Logging in
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
 | User clicks on sign in without entering username or password and is informed of required fields. | Clicking on sign in without entering username or password. | SUCCESS - user is informed that the form is not complete. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_blank.gif "treasures untold testing login process") |
@@ -352,7 +354,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | User clicks on sign in with invalid username or password and is informed of invalid input. | Clicking on sign in with invalid username or password. | SUCCESS - user is informed that the form is not valid. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_invalid_match.gif "treasures untold testing login process") |
 | User clicks on sign in with valid username an password and is taken to homepage. | Clicking on sign in with valid username and password. | SUCCESS - user is logged in and taken to homepage. | ![screenrecording](documentation/testing/manual_testing/login/mt_login_success.gif "treasures untold testing login process") |
 
-### Resetting password
+#### Resetting password
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
 | User clicks on forgot password link and is taken to the page to enter an email address | Clicking on forgot password link. | SUCCESS - user is taken to the page to input an email address | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_link.gif "treasures untold testing forgot password process") |
@@ -366,12 +368,24 @@ Defensive programming was manually tested with the below user acceptance testing
 | User enters correct input in password reset form and is shown the confirmation page. | Entering matching valid passwords in the fields and submitting form. | SUCCESS - user is shown the confirmation page | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_success.gif "treasures untold testing forgot password process") |
 | User clicks on Sign In to return to login page. | Clicking on Sign In from the password reset confirmation page. | SUCCESS - user is taken to the login page. | ![screenrecording](documentation/testing/manual_testing/account_recovery/mt_recovery_complete.gif "treasures untold testing forgot password process") |
 
-### Logging out
+#### Logging out
 | Expectation | Test | Result | Screenshot Mobile | Screenshot Desktop |
 | --- | --- | --- | --- | --- |
 | User can easily access the sign out button from all main pages in the site. The sign out button is in the same place on all pages. Clicking on the sign out button prompts the user to confirm they want to sign out. | Click on the sign out button. | SUCCESS - Upon clicking the button the user is prompted to confirm. | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_mobile_logout.gif "treasures untold testing logging out") | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_desktop_logout.gif "treasures untold testing logging out") |
 | User can cancel the logout process by clicking on cancel. They will be taken back to the home screen. | Click on the cancel button in the logout prompt. | SUCCESS - the user is taken back to the home page. | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_mobile_cancel.gif "treasures untold testing logging out") | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_desktop_cancel.gif "treasures untold testing logging out") |
 | User clicks on sign out and is taken to the logon screen. They are notified that they logged out. | Click on sign out on the confirmation prompt. | SUCCESS - user is logged out and notified. | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_mobile_confirm.gif "treasures untold testing logging out") | ![screenrecording](documentation/testing/manual_testing/logout/mt_logout_desktop_confirm.gif "treasures untold testing logging out") |
+
+### Browsing Products
+
+### Purchasing Products
+
+### User Profiles
+
+### Support Pages
+
+### Staff Dashboard
+
+### Site Maintenance
 
 
 
@@ -495,31 +509,39 @@ I have conducted a series of automated tests on my application.
 
 ### Python (Unit Testing)
 
-⚠️ INSTRUCTIONS ⚠️
+I have used Django's built-in unit testing framework along with coverage to test the application functionality.
 
-Adjust the code below (file names, function names, etc.) to match your own project files/folders. Use these notes loosely when documenting your own Python Unit tests, and remove/adjust where applicable.
-
-⚠️ SAMPLE ⚠️
-
-I have used Django's built-in unit testing framework to test the application functionality. In order to run the tests, I ran the following command in the terminal each time:
-
-- `python3 manage.py test name-of-app`
-
-To create the coverage report, I would then run the following commands:
+To install the coverage, I ran the following commands:
 
 - `pip3 install coverage`
-- `pip3 freeze --local > requirements.txt`
-- `coverage run --omit=*/site-packages/*,*/migrations/*,*/__init__.py,env.py,manage.py test`
+- `pip3 freeze > requirements.txt`
+
+I then created a .coveragerc file and included the following to omit files from  the report:
+
+```text
+[report]
+omit =
+    */migrations/*
+    */tests/*
+    manage.py
+    __init__.py
+    settings.py
+```
+
+To run the tests and get the report I ran the following commands:
+
+- `coverage run manage.py test`
 - `coverage report`
 
 To see the HTML version of the reports, and find out whether some pieces of code were missing, I ran the following commands:
 
 - `coverage html`
-- `python3 -m http.server`
+
+I could then click on the link in the terminal to open the report.
 
 Below are the results from the full coverage report on my application that I've tested:
 
-![screenshot](documentation/automation/html-coverage.png)
+![Coverage Report](documentation/testing/unit_testing/ "coverage report")
 
 #### Unit Test Issues
 
