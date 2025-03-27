@@ -113,7 +113,7 @@ def all_products(request):
             )
         # Handling search bar queries.
         if 'q' in request.GET:
-            query = request.GET['q']
+            query = request.GET['q'].strip()
             if not query:
                 messages.info(
                     request,
