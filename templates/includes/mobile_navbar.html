@@ -116,9 +116,15 @@
     {% endif %}
     <!-- Basket View -->
     <div id="basket" class="dropup">
-        <a class="mob-nav-btn" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false" aria-label="shopping basket">
-            <i class="fa-solid fa-basket-shopping fa-xl"></i>
-        </a>
+        {% if user.is_authenticated %}
+            <a class="mob-nav-btn" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-display="static" aria-expanded="false" aria-label="shopping basket">
+                <i class="fa-solid fa-basket-shopping fa-xl"></i>
+            </a>
+        {% else %} 
+            <div class="mob-nav-btn disabled">
+                <i class="fa-solid fa-basket-shopping fa-xl"></i>
+            </div>   
+        {% endif %}
         <div class="dropdown-menu">
             <h2 class="text-center mt-1">Shopping Basket</h2>
             <!-- Check for basket items and show if present -->
