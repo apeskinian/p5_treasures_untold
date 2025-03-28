@@ -61,6 +61,7 @@ def view_basket(request):
     return render(request, template)
 
 
+@login_required
 def add_to_basket(request, item_id):
     """
     Retrieves the basket data from the session and adds an item. If the item
@@ -131,6 +132,7 @@ def add_to_basket(request, item_id):
     return redirect(redirect_url)
 
 
+@login_required
 def adjust_basket(request, item_id):
     """
     Adjusts the quantity of an item in the basket. If the new quantity is
@@ -197,6 +199,7 @@ def adjust_basket(request, item_id):
     return redirect(reverse('view_basket'))
 
 
+@login_required
 def remove_from_basket(request, item_id):
     """
     Removes an item from the basket and updates stock levels accordingly.
