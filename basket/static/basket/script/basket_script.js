@@ -12,5 +12,14 @@ Array.from(spinnerButtons).forEach(button => {
         Array.from(spinnerButtons).forEach(btn => {
             btn.classList.add('disabled');
         });
+
+        setTimeout(() => {
+            buttonElement.querySelector('.btn-text').classList.remove('d-none');
+            buttonElement.querySelector('.spinner-border').classList.add('d-none');
+    
+            Array.from(spinnerButtons).forEach(btn => {
+                btn.classList.remove('disabled');
+            });
+        }, 2000);
     });
 });
