@@ -171,10 +171,17 @@ def adjust_basket(request, item_id):
         try:
             if new_quantity > 0:
                 basket[item_id] = new_quantity
-                messages.success(
-                    request,
-                    f'{product.name} quantity updated to {basket[item_id]}'
-                )
+                if quantity_delta == 0:
+                    messages.error(
+                        request,
+                        'Basket not adjusted. Please check you selected the '
+                        'correct item to refresh and try again.'
+                    )
+                else:
+                    messages.success(
+                        request,
+                        f'{product.name} quantity updated to {basket[item_id]}'
+                    )
             else:
                 basket.pop(item_id, None)
                 messages.info(
