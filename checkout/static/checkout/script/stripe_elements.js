@@ -122,3 +122,20 @@ function setLoading(isLoading) {
         $('#button-text').removeClass('hidden');
     }
 }
+
+// Re-report form validity after focusing on out of view field.
+const submitButton = document.getElementById('submit-button');
+submitButton.addEventListener('click', function () {
+    const currentPosition = window.scrollY;
+    const firstInvalid = form.querySelector(':invalid');
+    setTimeout(() => {
+        const newPosition = window.scrollY;
+        if (newPosition !== currentPosition) {
+            if ((firstInvalid)) {
+                    setTimeout(() => {
+                        form.reportValidity();
+                    }, 500);
+            }
+        }
+    }, 100);
+})
