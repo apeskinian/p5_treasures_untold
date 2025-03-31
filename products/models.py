@@ -25,7 +25,7 @@ class Realm(models.Model):
     - `display_name()`: Formats the `name` field by replacing underscores
         with spaces for a more human-readable display.
     """
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
     the_prefix_required = models.BooleanField(default=False)
 
     def __str__(self):
