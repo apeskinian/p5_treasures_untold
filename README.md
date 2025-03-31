@@ -770,6 +770,22 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Mobile Product Creation | Desktop Product Creation |
     | :---: | :---: |
     | ![Mobile Product Creation](documentation/features/dashboard/product_admin/mobile_product_add.png "Mobile product creation") | ![Desktop Product Creation](documentation/features/dashboard/product_admin/desktop_product_add.png "Desktop product creation") |
+    
+    #### SKU Generation
+
+    When a new product is created, a unique SKU is generated using the following format - **TU-RRR-PPP-U-UUID**:
+
+    - **TU**: An abbreviation for Treasures Untold
+    - **RRR**: A joined string using the first three letters of each word in the products realm
+    - **PPP**: A joined string using the first letter of each word in the products name
+    - **U**: If the product us unique it will have this character
+    - **UUID**: A 4 character long generated UUID to ensure SKU uniqueness
+    <br><br>
+
+    | Example SKUs |
+    | :---: |
+    | ![Jar of Dirt SKU](documentation/features/product_details/sku_generation.png "sku example") |
+    | ![Heart of Te Fiti SKU](documentation/features/product_details/sku_generation_unique.png "sku example") |
 
     When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 

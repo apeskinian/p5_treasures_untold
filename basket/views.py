@@ -262,9 +262,15 @@ def check_for_cave_of_wonders(request):
     """
     # Set variables for method
     basket = request.session.get('basket', {})
-    monkey_idol = str(get_object_or_404(Product, sku='TU-AGR-SMI-U').id)
-    beetle_left = str(get_object_or_404(Product, sku='TU-AGR-LHGSB-U').id)
-    beetle_right = str(get_object_or_404(Product, sku='TU-AGR-RHGSB-U').id)
+    monkey_idol = str(
+        get_object_or_404(Product, sku='TU-AGR-SMIOA-U-A85D').id
+    )
+    beetle_left = str(
+        get_object_or_404(Product, sku='TU-AGR-LHOAGSB-U-A39A').id
+    )
+    beetle_right = str(
+        get_object_or_404(Product, sku='TU-AGR-RHOAGSB-U-9B7C').id
+    )
 
     # Condition checking for reward activation/deactivation
     if monkey_idol not in basket.keys():
