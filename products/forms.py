@@ -139,3 +139,23 @@ class RealmForm(forms.ModelForm):
             'Prefix with "the" (when grammatically applicable,'
             ' eg. Enchanted Forest)?'
         )
+
+    def clean(self):
+        """
+        Overrides the form's clean method to handle the realm name.
+
+        **Behavior:**
+        - Updates the name field to replace spaces with underscores.
+
+        **Returns:**
+        - dict: The cleaned data, with the `name` field updated to have spaces
+            replaced with underscores.
+        """
+        # Set variables
+        cleaned_data = super().clean()
+        realm = cleaned_data.get('name')
+
+        if realm:
+            cleaned_data['name'] = realm.replace(' ', '_')
+
+        return cleaned_data
