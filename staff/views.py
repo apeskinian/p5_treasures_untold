@@ -560,7 +560,7 @@ def manage_realm(request, delete=None, realm_id=None):
                 form = RealmForm(request.POST, instance=realm)
             else:
                 new_realm_name = request.POST['name'].replace(' ', '_')
-                prefix = request.POST['the_prefix_required']
+                prefix = request.POST.get('the_prefix_required')
                 form = RealmForm({
                         'name': new_realm_name,
                         'the_prefix_required': prefix
