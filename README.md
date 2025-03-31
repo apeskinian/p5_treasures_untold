@@ -659,6 +659,14 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Contact Us Thank You](documentation/features/support_pages/mobile_contact_thanks.png "Mobile contact us thanks") | ![Desktop Contact Us Thank You](documentation/features/support_pages/desktop_contact_thanks.png "Desktop contact us thanks") |
 
+    #### Ticket Number generation
+
+    When a new message is created, a unique ticket number is generated using the following format - **TU-UUID**:
+
+    - **TU**: An abbreviation for Treasures Untold
+    - **UUID**: An 8 character long generated UUID to ensure uniqueness
+    <br><br>
+
     | Example Acknowledgement Email |
     | --- |
     | ![Example Acknowledgement Email](documentation/features/support_pages/contact_example_acknowledgement_email.png "Example acknowledgement email") |
