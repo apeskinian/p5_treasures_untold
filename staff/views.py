@@ -579,7 +579,12 @@ def manage_realm(request, delete=None, realm_id=None):
                     if realm_id else 'Failed to create realm'
                 )
     else:
-        form = RealmForm(instance=realm)
+        if realm:
+            form = RealmForm(
+                instance=realm, initial={'name': realm.display_name()}
+            )
+        else:
+            form = RealmForm()
 
     associated = realm.product_realm.count() if realm else None
 
