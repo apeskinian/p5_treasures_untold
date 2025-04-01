@@ -1,6 +1,7 @@
 import uuid
-from django.utils import timezone
+
 from django.db import models
+from django.utils import timezone
 
 
 class ContactMessage(models.Model):
@@ -94,7 +95,9 @@ class FaqsTopics(models.Model):
         verbose_name_plural = 'FAQ Topics'
         ordering = ['sort_order', ]
 
-    name = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(
+        max_length=100, null=False, blank=False, unique=True
+    )
     sort_order = models.PositiveIntegerField(default=100)
 
     def __str__(self):
@@ -132,7 +135,9 @@ class Faqs(models.Model):
     topic = models.ForeignKey(
         FaqsTopics, on_delete=models.CASCADE, related_name='faq_topic'
     )
-    question = models.CharField(max_length=254, null=False, blank=False)
+    question = models.CharField(
+        max_length=254, null=False, blank=False, unique=True
+    )
     answer = models.TextField()
     sort_order = models.PositiveIntegerField(default=100)
 
