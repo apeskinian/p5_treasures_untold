@@ -654,13 +654,19 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
+| Clicking the edit button for a FAQ Topic will display the FAQ Topic update form. | Click on the edit button for a FAQ Topic. | SUCCESS - the FAQ Topic update form is displayed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_topic_edit_button.gif "updating a faq topic") |
+| Clicking on the 'Cancel' button will close the update FAQ Topic form and no entered information will be saved. The user will be notified. | Click on the 'Cancel' button when the form is displayed. | SUCCESS - the form is closed, no new data is saved and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_topic_edit_cancel.gif "updating a faq topic") |
+| Clicking on the 'Close' button will close the update FAQ Topic form and no entered information will be saved. The user will be notified. | Click on the 'Close' button when the form is displayed. | SUCCESS - the form is closed, no new data is saved and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_topic_edit_close.gif "updating a faq topic") |
+| Submitting an empty FAQ Topic update form will notify the user that the form is invalid. | Submit an empty FAQ Topic update form. | SUCCESS - the user it notified of the invalid form. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_topic_edit_blank.gif "updating a faq topic") |
+| Submitting a valid FAQ Topic update form with an identical topic name as an existing topic will notify the user of the duplicate error. | Submit a FAQ Topic update form with an identical topic as an existing one. | SUCCESS - the user is notified of the duplicate. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_topic_edit_duplicate.gif "updating a faq topic") |
+| Submitting a valid FAQ Topic update form will update the topic. The user will be notified. | Submit a valid FAQ Topic update form. | SUCCESS - the topic is updated and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_topic_edit_success.gif "updating a faq topic") |
 
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
+| Clicking the delete button for a FAQ Topic will prompt the user to confirm deletion. | Click on the delete button for a FAQ Topic. | SUCCESS - the user is shown a prompt to confirm deletion. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq "deleting a faq topic") |
+| Clicking the 'Cancel' button on the delete prompt will cancel the action. The FAQ Topic will not be deleted and the user notified. | Click on the 'Cancel' button on the delete prompt. | SUCCESS - the FAQ Topic is not deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq "deleting a faq topic") |
+| Clicking the 'Close' button on the delete prompt will cancel the action. The FAQ Topic will not be deleted and the user notified. | Click on the 'Close' button on the delete prompt. | SUCCESS - the FAQ Topic is not deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq "deleting a faq topic") |
+| Clickng the 'Delete' button on the delete prompt will delete the FAQ Topic. User will be notified. | Click the 'Delete' button on the delete prompt. | SUCCESS - the FAQ Topic is deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq "deleting a faq topic") |
 
 #### Message Admin
 | Expectation | Test | Result | Screenshot |
