@@ -637,8 +637,10 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
+| Clicking the delete button for a FAQ will prompt the user to confirm deletion. | Click on the delete button for a FAQ. | SUCCESS - the user is shown a prompt to confirm deletion. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq/mt_dashboard_faq_delete_button.gif "deleting a faq") |
+| Clicking the 'Cancel' button on the delete prompt will cancel the action. The FAQ will not be deleted and the user notified. | Click on the 'Cancel' button on the delete prompt. | SUCCESS - the FAQ is not deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq/mt_dashboard_faq_delete_cancel.gif "deleting a faq") |
+| Clicking the 'Close' button on the delete prompt will cancel the action. The FAQ will not be deleted and the user notified. | Click on the 'Close' button on the delete prompt. | SUCCESS - the FAQ is not deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq/mt_dashboard_faq_delete_close.gif "deleting a faq") |
+| Clickng the 'Delete' button on the delete prompt will delete the FAQ. User will be notified. | Click the 'Delete' button on the delete prompt. | SUCCESS - the FAQ is deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/delete_faq/mt_dashboard_faq_delete_confirm.gif "deleting a faq") |
 
 #### FAQ Topic Admin
 | Expectation | Test | Result | Screenshot |
