@@ -386,7 +386,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 - ### Navigation
 
-    **Note:** Tapping/clicking on the main title will bring you back to the home page on both mobile and desktop versions.
+    **Note:** Clicking on the main title will bring you back to the home page on both mobile and desktop versions.
 
     ### Mobile
     Navigation on mobile devices is found at the bottom of the view for easy access without compromising what the user can see. The standard navigation bar as the following options:
@@ -488,7 +488,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     **Featured Realm**
 
-    This section highlights a particular realm and shows the items from that realm in the slideshow. Tapping/clicking on the image or link will take the user to view the products from that realm. This feature is refreshed every time the page loads to show a different realm.
+    This section highlights a particular realm and shows the items from that realm in the slideshow. Clicking on the image or link will take the user to view the products from that realm. This feature is refreshed every time the page loads to show a different realm.
 
     ![Featured Realm](documentation/features/homepage/homepage_featured.png "Featured Realm")
 
@@ -816,7 +816,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Realms](documentation/features/dashboard/product_admin/realms.png "Realms") |
 
-    Tapping/clicking on the green plus icon in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
+    Clicking on the green plus icon in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
     The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -884,7 +884,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![FAQ Topics](documentation/features/dashboard/faq_admin/topics.png "FAQ Topics") |
 
-    Tapping/clicking on the green plus icon in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
+    Clicking on the green plus icon in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
 
     The user can then save the new topic by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
