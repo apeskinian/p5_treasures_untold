@@ -645,8 +645,12 @@ Defensive programming was manually tested with the below user acceptance testing
 #### FAQ Topic Admin
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
+| Clicking on the add button in the FAQ Topic table will display the add FAQ form. | Click on the add button in the FAQ Topic table. | SUCCESS - the add faq form is displayed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/add_faq/mt_dashboard_faq_topic_add_button.gif "adding a faq topic") |
+| Clicking on the 'Cancel' button will close the add FAQ Topic form and no entered information will be saved. The user will be notified. | Click on the 'Cancel' button when the form is displayed. | SUCCESS - the form is closed, no new data is saved and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/add_faq/mt_dashboard_faq_topic_add_cancel.gif "adding a faq topic") |
+| Clicking on the 'Close' button will close the add FAQ Topic form and no entered information will be saved. The user will be notified. | Click on the 'Close' button when the form is displayed. | SUCCESS - the form is closed, no new data is saved and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/add_faq/mt_dashboard_faq_topic_add_close.gif "adding a faq topic") |
+| Submitting an empty FAQ Topic form will notify the user that the form is invalid. | Submit an empty FAQ Topic form. | SUCCESS - the user it notified of the invalid form. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/add_faq/mt_dashboard_faq_topic_add_blank.gif "adding a faq topic") |
+| Submitting a valid FAQ Topic form with an identical topic name as an existing topic will notify the user of the duplicate error. | Submit a FAQ Topic form with an identical topic as an existing one. | SUCCESS - the user is notified of the duplicate. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/add_faq/mt_dashboard_faq_topic_add_duplicate.gif "adding a faq topic") |
+| Submitting a valid FAQ Topic form will create a new topic. The user will be notified. | Submit a valid FAQ Topic form. | SUCCESS - the new topic is created and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/add_faq/mt_dashboard_faq_topic_add_success.gif "adding a faq topic") |
 
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
