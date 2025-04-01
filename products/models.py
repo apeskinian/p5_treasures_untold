@@ -65,7 +65,7 @@ class Product(models.Model):
     class Meta:
         ordering = [Lower('realm__name')]
 
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
     realm = models.ForeignKey(
         'Realm', null=True, blank=True, on_delete=models.SET_NULL,
         related_name='product_realm'
