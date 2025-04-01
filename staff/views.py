@@ -916,3 +916,40 @@ def clear_expired_subscribers(request):
     }
 
     return render(request, template, context)
+
+
+def cancel_action(request, action, tab, url):
+    """
+    View to inform user of cancelled actions. Message is compiled depending
+    on the action the user was currently doing when they cancelled.
+
+    **Arguments:**
+    - `request`: The HTTP request.
+    - `action`: The current mode that the view was in depending on what the
+        user was doing. (Add, Update, Delete, View, Clear, Remove)
+    - `tab`: The current dashboard tab the user is on.
+    - `url`: The return url set from the view.
+
+    **Returns:**
+    - A redirect to the return url passed as url.
+    """
+    if 'FAQ' in tab:
+        element = tab.lower().replace('faq', 'FAQ')
+    else:
+        element = tab.lower()
+
+    # Compile the message.
+    if action == 'Remove':
+        message = 'Removing subscriber cancelled.'
+    elif action == 'Clear':
+        message = 'Clearing expired subscribers cancelled.'
+    elif action == 'Reply':
+        message = f'{action} to {element} cancelled.'
+    else:
+        message = f'{action} {element} cancelled.'
+
+    # Send the message if the user wasn't in View mode.
+    if action != 'View':
+        messages.info(request, message)
+
+    return redirect(url)

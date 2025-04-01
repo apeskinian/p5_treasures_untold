@@ -137,4 +137,11 @@ urlpatterns = [
         views.manage_newsletters,
         name='manage_newsletters'
     ),
+
+    # View to inform user of cancelled action.
+    path(
+        'cancel/<str:action>/<str:tab>/<path:url>/',
+        views.cancel_action,
+        name='cancel_action',
+    ),
 ]

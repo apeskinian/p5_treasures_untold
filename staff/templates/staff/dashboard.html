@@ -67,7 +67,7 @@
                 <h5 class="modal-title flex-grow-1 text-center" id="dashboard-modal-label">
                     {{ mode }} {% if mode == 'Remove' %}from {% elif mode == 'Reply' %}to {% endif %}{{ active_tab }}
                 </h5>
-                <a id="dashboard-modal-close" href="{{ return_url }}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
+                <a id="dashboard-modal-close" href="{% url 'cancel_action' action=mode tab=active_tab url=return_url %}" class="btn-close p-1 mx-auto" aria-label="Close"></a>
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
@@ -198,7 +198,7 @@
                     </div>
                     <div class="text-center">
                         <div class="d-flex justify-content-center gap-2">
-                            <a href="{{ return_url }}" id="dashboard-modal-cancel" class="btn btn-teal btn-with-spinner w-25" aria-label="Close">
+                            <a href="{% url 'cancel_action' action=mode tab=active_tab url=return_url %}" id="dashboard-modal-cancel" class="btn btn-teal btn-with-spinner w-25" aria-label="Close">
                                 <span class="btn-text">{% if mode == 'View' %}Close{% else %}Cancel{% endif %}</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status"></span>
                             </a>
