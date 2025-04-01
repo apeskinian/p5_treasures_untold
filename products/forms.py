@@ -58,54 +58,87 @@ class ProductForm(forms.ModelForm):
             required=True
         )
 
+    def save(self, commit=True):
+        """
+        Overrides the form's save method to handle new realm creation.
+
+        **Behavior:**
+        - If there is a new realm, it is created and replaces the placholder
+            realm that was set in the clean method.
+
+        **Raises:**
+        - Exception: If there is problem creating and assigning the new realm.
+
+        **Returns:**
+        - instance: The updated instance of :form:`products.ProductForm` with a
+            new realm selected if one was created.
+        """
+        instance = super().save(commit=False)
+
+        # Check for cleaned new realm info
+        new_realm_name = self.cleaned_data.get('new_realm', '').strip()
+        new_realm_prefix = self.cleaned_data.get('new_realm_prefix')
+
+        # If a new realm name exists, create the realm and assign it to the
+        # product.
+        if new_realm_name:
+            try:
+                realm_obj, created = (
+                    Realm.objects.get_or_create(
+                        name=new_realm_name,
+                        the_prefix_required=new_realm_prefix
+                    )
+                )
+                instance.realm = realm_obj
+            except Exception as e:
+                self.add_error('realm', f'An error occured: {str(e)}')
+
+        if commit:
+            instance.save()
+        return instance
+
     def clean(self):
         """
         Overrides the form's clean method to handle realm selection, allowing
         the creation of a new realm if `Add New Realm` is chosen.
 
         **Behavior:**
-        - If `Add New Realm` is selected, a new realm is created with its name
-        formatted by replacing spaces with underscores.
-        - If the realm already exists it is retrieved instead of being created.
+        - If `Add New Realm` is selected, a placeholder realm is used to pass
+         form validation so that a new realm can be created in the save method.
         - If an existing realm is selected, it is validated and assigned.
 
         **Raises:**
-        - Exception: If `Add New Realm` is selected but the realm creation
+        - Error: If the new realm name is invalid.
+        - Exception: If `Add New Realm` is selected but the realm placeholder
             fails.
         - `Realm.DoesNotExist`: If the selected existing realm does not exist.
 
         **Returns:**
         - dict: The cleaned data, with the `realm` field set to either the
-            new or selected realm instance.
+            placeholder or selected realm instance.
         """
         # Set variables for method.
         cleaned_data = super().clean()
         realm = cleaned_data.get('realm')
-        new_realm = cleaned_data.get('new_realm')
-        new_realm_model_name = new_realm.replace(' ', '_')
-        new_realm_prefix = cleaned_data.get('new_realm_prefix')
+        new_realm = cleaned_data.get('new_realm', '').strip()
 
-        # If 'Add New Realm' is selected, process the input from the new field.
-        if realm == 'new' and new_realm == '':
+        # If 'Add New Realm' is selected check for invalid input first.
+        if realm == 'new' and not new_realm:
             self.add_error(
                 'realm',
                 'Realm name cannot be blank.'
             )
+        # If there is a valid new realm name, use an existing realm as a
+        # placeholder first to pass form validation.
         elif realm == 'new':
             try:
-                realm_obj, created = (
-                    Realm.objects.get_or_create(
-                        name=new_realm_model_name,
-                        the_prefix_required=new_realm_prefix
-                    )
-                )
-                cleaned_data['realm'] = realm_obj
+                cleaned_data['realm'] = Realm.objects.first()
             except Exception as e:
                 self.add_error(
                     'realm',
                     f'An error occured while processing the realm: {str(e)}'
                 )
-        # Process the chosen existing realm as normal.
+        # Otherwise process the chosen existing realm as normal.
         else:
             try:
                 cleaned_data['realm'] = Realm.objects.get(pk=int(realm))
