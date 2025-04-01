@@ -762,7 +762,11 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
                 return redirect(return_url)
         else:
             form = NewsletterForm(request.POST, instance=newsletter)
-            if form.is_valid:
+            if request.POST['news_body'].strip() == '':
+                messages.error(
+                    request,
+                    'Failed to create newsletter, ensure form is valid.')
+            elif form.is_valid:
                 new_newsletter = form.save()
                 send_newsletter(new_newsletter, request)
                 messages.success(request, 'Newsletter created')
@@ -770,7 +774,7 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
             else:
                 messages.error(
                     request,
-                    'Failed to create newsletter, ensure form is valid')
+                    'Failed to create newsletter, ensure form is valid.')
 
     else:
         form = NewsletterForm(instance=newsletter)
