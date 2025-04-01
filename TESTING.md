@@ -626,8 +626,14 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
-|  |  |  |  |
+| Clicking the edit button for a FAQ will display the FAQ update form. | Click on the edit button for a FAQ. | SUCCESS - the FAQ update form is displayed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_button.gif "updating a faq") |
+| Clicking on the 'Cancel' button will close the update FAQ form and no entered information will be saved. The user will be notified. | Click on the 'Cancel' button when the form is displayed. | SUCCESS - the form is closed, no new data is saved and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_cancel.gif "updating a faq") |
+| Clicking on the 'Close' button will close the update FAQ form and no entered information will be saved. The user will be notified. | Click on the 'Close' button when the form is displayed. | SUCCESS - the form is closed, no new data is saved and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_close.gif "updating a faq") |
+| Submitting the FAQ upate form with 'Add New Topic' selected and and empty topic field will notify the user of an invalid form. | Submit the FAQ update form with an empty topic field. | SUCCESS - the user is notified of the invalid form. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_empty_topic.gif "updating a faq") |
+| Submitting the FAQ upate form with an empty question field will notify the user of an invalid form. | Submit the FAQ update form with an empty question field. | SUCCESS - the user is notified of the invalid form. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_empty_question.gif "updating a faq") |
+| Submitting the FAQ upate form with an empty answer field will notify the user of an invalid form. | Submit the FAQ update form with an empty answer field. | SUCCESS - the user is notified of the invalid form. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_empty_answer.gif "updating a faq") |
+| Submitting a valid FAQ update form with an indentical question as an already existing question will notify the user of the duplicate error. | Submit a valid FAQ update form with the question set to an indentical one to an existing FAQ. | SUCCESS - the user is notified of the duplicate question field. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_duplicate.gif "updating a faq") |
+| Submitting an valid FAQ update form will update the FAQ. The user will be notified. | Submit a valid FAQ update form. | SUCCESS - the FAQ is updated and the user is informed. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/faq_admin/update_faq/mt_dashboard_faq_edit_success.gif "updating a faq") |
 
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
