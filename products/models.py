@@ -29,9 +29,23 @@ class Realm(models.Model):
     the_prefix_required = models.BooleanField(default=False)
 
     def __str__(self):
+        """
+        Returns the `name` field as a string.
+
+        **Returns:**
+        - The `name` field as a string.
+        """
         return self.name
 
     def display_name(self):
+        """
+        Returns the `name` field as a string with underscores replaced
+        with spaces.
+
+        **Returns:**
+        - The `name` field as a string with underscores replaced
+        with spaces.
+        """
         return self.name.replace('_', ' ')
 
 
