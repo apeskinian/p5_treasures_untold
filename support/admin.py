@@ -14,6 +14,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
         'ticket_number', 'name', 'email', 'message', 'replied'
     )
     list_filter = ('replied',)
+    readonly_fields = ('reply',)
 
 
 @admin.register(Faqs)
