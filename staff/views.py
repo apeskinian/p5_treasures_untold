@@ -659,7 +659,12 @@ def manage_message(request, message_id, delete=None):
                 return redirect(return_url)
         else:
             form = ContactReplyForm(request.POST, instance=message)
-            if form.is_valid:
+            if request.POST['reply'].strip() == '':
+                messages.error(
+                    request,
+                    'Failed to send reply, please ensure form is valid.'
+                )
+            elif form.is_valid:
                 message.date_replied = date.today()
                 message.replied = True
                 message_reply = form.save()
@@ -672,7 +677,7 @@ def manage_message(request, message_id, delete=None):
             else:
                 messages.error(
                     request,
-                    'Failed to send reply, please ensure form is valid'
+                    'Failed to send reply, please ensure form is valid.'
                 )
     else:
         form = ContactReplyForm(instance=message)

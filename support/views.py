@@ -222,7 +222,7 @@ def contact(request):
         else:
             messages.error(
                 request,
-                'There was a problem sending your message,'
+                'There was a problem sending your message, '
                 'please ensure the form is valid'
             )
     else:

@@ -44,7 +44,7 @@ class ContactMessage(models.Model):
     replied = models.BooleanField(default=False)
     date_received = models.DateField(auto_now_add=True)
     date_replied = models.DateField(null=True, blank=True)
-    reply = models.TextField(null=True, blank=True)
+    reply = models.TextField(null=True, blank=False)
 
     def _generate_ticket_number(self):
         """
