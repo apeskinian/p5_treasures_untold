@@ -86,7 +86,12 @@ class ProductForm(forms.ModelForm):
         new_realm_prefix = cleaned_data.get('new_realm_prefix')
 
         # If 'Add New Realm' is selected, process the input from the new field.
-        if realm == "new":
+        if realm == 'new' and new_realm == '':
+            self.add_error(
+                'realm',
+                'Realm name cannot be blank.'
+            )
+        elif realm == 'new':
             try:
                 realm_obj, created = (
                     Realm.objects.get_or_create(
@@ -140,22 +145,21 @@ class RealmForm(forms.ModelForm):
             ' eg. Enchanted Forest)?'
         )
 
-    def clean(self):
+    def save(self, commit=True):
         """
-        Overrides the form's clean method to handle the realm name.
+        Overrides the form's save method to handle the realm name.
 
         **Behavior:**
         - Updates the name field to replace spaces with underscores.
 
         **Returns:**
-        - dict: The cleaned data, with the `name` field updated to have spaces
-            replaced with underscores.
+        - instance: The form instance with `name` field updated to have
+              spaces replaced with underscores.
         """
-        # Set variables
-        cleaned_data = super().clean()
-        realm = cleaned_data.get('name')
+        instance = super().save(commit=False)
+        if instance.name:
+            instance.name = instance.name.replace(' ', '_')
 
-        if realm:
-            cleaned_data['name'] = realm.replace(' ', '_')
-
-        return cleaned_data
+        if commit:
+            instance.save()
+        return instance
