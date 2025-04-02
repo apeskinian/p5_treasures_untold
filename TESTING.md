@@ -753,13 +753,45 @@ Defensive programming was manually tested with the below user acceptance testing
 | Clicking on the 'Home' button from the 500 page takes the user back to the homepage. | Click on the 'Home' button on the 500 page. | SUCCESS - the user it taken to the homepage. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_500_home.gif "error pages") |
 
 ### Stock Control
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+|  |  |  |  |
 
 ### Site Maintenance
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+|  |  |  |  |
 
 ### Easter Eggs
+<details>
+<summary>Click here to reveal the testing of the Easter Eggs in Treasures Untold.</summary>
+<br>
+<details>
+<summary>Last chance to change your mind.</summary>
+<br>
 
+#### Bibbidi-Bobbidi-Boo
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+|  |  |  |  |
 
-| 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.png) |
+#### Magic Lamp
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+|  |  |  |  |
+
+#### Cave of Wonders
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+|  |  |  |  |
+
+#### Infidels
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+|  |  |  |  |
+
+</details>
+</details>
 
 ## User Story Testing
 
