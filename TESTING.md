@@ -744,6 +744,13 @@ Defensive programming was manually tested with the below user acceptance testing
 | Clicking the 'Close' button on the delete prompt will cancel the action. The subscriber will not be deleted and the user notified. | Click on the 'Close' button on the delete prompt. | SUCCESS - the subscriber is not deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/newsletter_admin/subscribers/mt_dashboard_subscribers_clear_close.gif "clearing expired subscribers") |
 | Clicking the 'Remove' button on the delete prompt will delete the subscriber. User will be notified. | Click the 'Remove' button on the delete prompt. | SUCCESS - the subscriber is deleted and the user is notified. | ![screenrecording](documentation/testing/manual_testing/staff_dashboard/newsletter_admin/subscribers/mt_dashboard_subscribers_clear_confirm.gif "clearing expired subscribers") |
 
+### Error Pages
+| Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- |
+| When a user navigates to a non existent page they are shown a 404 error page. | Navigate to a non existing page. | SUCCESS - the user is show the 404 page. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_400.gif "error pages") |
+| Clicking on the 'Home' button from the 404 page takes the user back to the homepage. | Click on the 'Home' button on the 404 page. | SUCCESS - the user it taken to the homepage. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_400_home.gif "error pages") |
+| If the user encounters a server error they are shown the 500 error page. | Experience a server error. | SUCCESS - the user is shown the 500 error page. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_500.gif "error pages") |
+| Clicking on the 'Home' button from the 500 page takes the user back to the homepage. | Click on the 'Home' button on the 500 page. | SUCCESS - the user it taken to the homepage. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_500_home.gif "error pages") |
 
 ### Stock Control
 
