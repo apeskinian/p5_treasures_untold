@@ -420,6 +420,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
 | Submitting an empty newsletter form will flag that the email field is empty. | Submit an empty newsletter form. | SUCCESS - form was flagged as invalid. | ![screenrecording](documentation/testing/manual_testing/info_section/mt_info_newsletter_empty.gif "empty newsletter form") |
+| Submitting a newsletter form with just whitespace will flag that the form is invalid. | Submit a newsletter form with whitespace. | SUCCESS - form was flagged as invalid. | ![screenrecording](documentation/testing/manual_testing/info_section/mt_info_newsletter_whitespace.gif "whitespace newsletter form") |
 | Submitting an invalid newsletter form will flag that the input is invalid. | Submit and invalid newsletter form. | SUCCESS - form was flagged as invalid. | ![screenrecording](documentation/testing/manual_testing/info_section/mt_info_newsletter_invalid.gif "invalid newsletter form") |
 | Submitting a valid email in the newsletter form will show a confirmation message. | Submit a valid newsletter form. | SUCCESS - form was submitted and user informed via message. | ![screenrecording](documentation/testing/manual_testing/info_section/mt_info_newsletter_valid.gif "valid newsletter form") |
 
