@@ -50,8 +50,8 @@ def profile(request, order_number=None):
                 request,
                 'Update failed. Please ensure the form is valid'
             )
-    else:
-        form = UserProfileForm(instance=profile)
+
+    form = UserProfileForm(instance=profile)
 
     # Retrieve previous order details if requested.
     if order_number:
