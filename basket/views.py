@@ -161,7 +161,16 @@ def adjust_basket(request, item_id):
     # Set up variables for the method
     product = get_object_or_404(Product, pk=item_id)
     previous_quantity = int(request.POST.get('previous-quantity'))
-    new_quantity = int(request.POST.get('quantity'))
+
+    # Get quantity and catch non integer inputs.
+    try:
+        new_quantity = int(request.POST.get('quantity'))
+    except Exception:
+        messages.error(
+            request, 'Error in quantity, please try again.'
+        )
+        return redirect(reverse('view_basket'))
+
     basket = request.session.get('basket', {})
 
     product.refresh_from_db()
