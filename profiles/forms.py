@@ -43,13 +43,9 @@ class UserProfileForm(forms.ModelForm):
         if self.instance and self.instance.user:
             self.fields['email'].initial = self.instance.user.email
 
-        self.fields['default_full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'default_country' and field != 'email':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
+                placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
         self.fields['email'].widget.attrs['aria-label'] = 'email'
