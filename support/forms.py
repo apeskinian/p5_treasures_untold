@@ -103,41 +103,85 @@ class FaqsForm(forms.ModelForm):
             required=True
         )
 
+    def save(self, commit=True):
+        """
+        Overrides the form's save method to handle new topic creation.
+
+        **Behavior:**
+        - If there is a new topic, it is created and replaces the placholder
+            topic that was set in the clean method.
+
+        **Raises:**
+        - Exception: If there is problem creating and assigning the new topic.
+
+        **Returns:**
+        - instance: The updated instance of :form:`support.FaqsTopicForm` with
+            a new topic selected if one was created.
+        """
+        instance = super().save(commit=False)
+
+        # Check for cleaned new topic data.
+        new_topic_name = self.cleaned_data.get('new_topic', '').strip()
+
+        # If a new topic exists, create the topic and assign it to the FAQ.
+        if new_topic_name:
+            try:
+                topic_obj, created = (
+                    FaqsTopics.objects.get_or_create(
+                        name=new_topic_name
+                    )
+                )
+                instance.topic = topic_obj
+            except Exception as e:
+                self.add_error('topic', f'An erroc occured: {str(e)}')
+
+        if commit:
+            instance.save()
+        return instance
+
     def clean(self):
         """
         Overrides the form's clean method to handle topic selection, allowing
         the creation of a new topic if `Add New Topic` is chosen.
 
         **Behavior:**
-        - If `Add New Topic` is selected, a new topic is created.
-        - If the topic already exists it is retrieved instead of being created.
+        - If `Add New Topic` is selected, a placeholder topic is used to pass
+         form validation so that a new topic can be created in the save method.
         - If an existing topic is selected, it is validated and assigned.
 
         **Raises:**
-        - Exception: If `Add New Topic` is selected but the topic creation
+        - Error: If the new topic name is invalid.
+        - Exception: If `Add New Topic` is selected but the topic placeholder
             fails.
         - `Topic.DoesNotExist`: If the selected existing topic does not exist.
 
         **Returns:**
         - dict: The cleaned data, with the `topic` field set to either the
-            new or selected topic instance.
+            placeholder or selected topic instance.
         """
+        # Set variables for method.
         cleaned_data = super().clean()
         topic = cleaned_data.get('topic')
-        new_topic = cleaned_data.get('new_topic')
+        new_topic = cleaned_data.get('new_topic').strip()
 
-        if topic == "new":
+        # If 'Add new topic' is selected check for invalid input first
+        if topic == 'new' and not new_topic:
+            self.add_error(
+                'topic',
+                'Topic cannot be blank.'
+            )
+        # If there is a valid new topic name, use an existing topic as a
+        # placeholder first to pass form validation.
+        elif topic == 'new':
             try:
-                topic_obj, created = (
-                    FaqsTopics.objects.get_or_create(name=new_topic)
-                )
-                cleaned_data['topic'] = topic_obj
+                cleaned_data['topic'] = FaqsTopics.objects.first()
             except Exception as e:
                 self.add_error(
                     'topic',
                     'An error occured while processing the new topic: '
                     f'{str(e)}'
                 )
+        # Otherwise process the chosen topic as normal
         else:
             try:
                 cleaned_data['topic'] = FaqsTopics.objects.get(pk=int(topic))
