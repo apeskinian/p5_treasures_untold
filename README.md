@@ -521,7 +521,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Sold Items | ![Mobile sold products](documentation/features/viewing_products/mobile_sold.png "Mobile sold products") | ![Desktop sold products](documentation/features/viewing_products/desktop_sold.png "Desktop sold products") |
 
 - ### Viewing Product Details
-    By tapping/clicking on a products image the user is show the product in more detail including:
+    By clicking on a products image the user is show the product in more detail including:
     - Larger image
     - Name
     - Realm (also a link to show all products from that realm)
@@ -773,7 +773,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     If adding a new product requires the creation of a new realm, you can easily do so through the same form. Simply select ‘Add New Realm’ in the realm selector. This will reveal an input field for entering the new realm’s name. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
-    The user can then save the new product by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the new product by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Product Creation | Desktop Product Creation |
     | :---: | :---: |
@@ -797,7 +797,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 
-    The user can then save the product by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the product by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Product Update | Desktop Product Update |
     | :---: | :---: |
@@ -805,7 +805,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
 
-    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Product Delete | Desktop Product Delete |
     | :---: | :---: |
@@ -818,7 +818,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     Clicking on the green plus icon in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
-    The user can then save the new realm by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the new realm by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Realm Creation | Desktop Realm Creation |
     | :---: | :---: |
@@ -826,7 +826,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     
     When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
 
-    The user can then save the realm by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the realm by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Realm Update | Desktop Realm Update |
     | :---: | :---: |
@@ -834,7 +834,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
 
-    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Realm Delete | Desktop Realm Delete |
     | :---: | :---: |
@@ -857,7 +857,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     
     If adding a new FAQ requires the creation of a new topic, you can easily do so through the same form. Simply select ‘Add New Topic' in the topic selector. This will reveal an input field for entering the new topic.
 
-    The user can then save the new FAQ by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the new FAQ by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile FAQ Creation | Desktop FAQ Creation |
     | :---: | :---: |
@@ -865,7 +865,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     
     To update a FAQ the yellow edit icon is tapped/clicked. A prompt is displayed prefilled with the selected FAQ details. These can be edited in the same manner as the creation of a new FAQ.
 
-    The user can then save the FAQ by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the FAQ by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile FAQ Update | Desktop FAQ Update |
     | :---: | :---: |
@@ -873,7 +873,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     To delete a FAQ the red bin icon is tapped/clicked. A prompt is displayed asking the user to confirm the deletion of the selected FAQ.
 
-    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile FAQ Delete | Desktop FAQ Delete |
     | :---: | :---: |
@@ -886,7 +886,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     Clicking on the green plus icon in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
 
-    The user can then save the new topic by tapping/clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the new topic by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Topic Creation | Desktop Topic Creation |
     | :---: | :---: |
@@ -894,7 +894,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     To update a topic the user taps/clicks on the yellow edit icon. A prompt is displayed prefilled with the selected topic details. These can be edited in the same manner as the creation of a new topic. The user will also be informed of how many FAQs will be affected by this change.
 
-    The user can then save the topic by tapping/clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can then save the topic by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Topic Update | Desktop Topic Update |
     | :---: | :---: |
@@ -902,7 +902,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected topic. The user will also be informed of how many FAQs will be affected by this deletion.
 
-    The user can the confirm the deletion by tapping/clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
+    The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
     | Mobile Topic Delete | Desktop Topic Delete |
     | :---: | :---: |
@@ -930,7 +930,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Messages](documentation/features/dashboard/message_admin/messages.png "Messages") |
 
-    To reply to a message the yellow reply icon is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by tapping/clicking on the 'Reply' button or cancel and return to the dashboard by tapping/clicking on the 'Cancel' or modal close buttons.
+    To reply to a message the yellow reply icon is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by clicking on the 'Reply' button or cancel and return to the dashboard by clicking on the 'Cancel' or modal close buttons.
 
     | Mobile Message Reply | Desktop Message Reply |
     | :---: | :---: |
@@ -972,13 +972,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Example Newsletter](documentation/features/support_pages/example_newsletter.png "Example Newsletter") |
 
-    Previously sent newsletters can also be viewed by tapping/clicking on the blue open icon next to each newsletter. This will open the newsletter in a prompt. This can be closed with the 'Close' or modal close button to return to the dashboard.
+    Previously sent newsletters can also be viewed by clicking on the blue open icon next to each newsletter. This will open the newsletter in a prompt. This can be closed with the 'Close' or modal close button to return to the dashboard.
 
     | Mobile Newsletter View | Desktop Newsletter View |
     | :---: | :---: |
     | ![Mobile Newsletter View](documentation/features/dashboard/newsletter_admin/mobile_newsletter_view.png "Mobile newsletter view") | ![Desktop Newsletter View](documentation/features/dashboard/newsletter_admin/desktop_newsletter_view.png "Desktop newsletter view") |
 
-    Newsletters can also be deleted by tapping/clicking on the red bin icon. A prompt will be displayed to confirm the deletion. To confirm deletion the user must tap/click on the 'Delete' button. This can be cancelled with the 'Cancel' or modal close buttons to return to the dashboard.
+    Newsletters can also be deleted by clicking on the red bin icon. A prompt will be displayed to confirm the deletion. To confirm deletion the user must tap/click on the 'Delete' button. This can be cancelled with the 'Cancel' or modal close buttons to return to the dashboard.
 
     | Mobile Newsletter Delete | Desktop Newsletter Delete |
     | :---: | :---: |
@@ -995,14 +995,14 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Subscribers](documentation/features/dashboard/newsletter_admin/subscribers.png "Subscribers") |
 
-    Staff members can remove individual subscribers by tapping/clicking the red bin icon next to their email address. A confirmation prompt will appear, displaying their current status. To proceed with removal, select ‘Remove.’ To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
+    Staff members can remove individual subscribers by clicking the red bin icon next to their email address. A confirmation prompt will appear, displaying their current status. To proceed with removal, select ‘Remove.’ To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
 
     |  | Remove Active Subscriber | Remove Pending Subscriber | Remove Expired Subscriber |
     | :---: | :---: | :---: | :---: |
     | Mobile | ![Mobile Remove Active Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_active.png "Mobile remove active subscriber") | ![Mobile Remove Pending Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_pending.png "Mobile remove pending subscriber") | ![Mobile Remove Expired Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_expired.png "Mobile remove expired subscriber") |
     | Desktop | ![Desktop Remove Active Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_active.png "Desktop remove active subscriber") | ![Desktop Remove Pending Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_pending.png "Desktop remove pending subscriber") | ![Desktop Remove Expired Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_expired.png "Desktop remove expired subscriber") |
 
-    Staff members can also clear all current expired subscribers by tapping/clicking on the 'Clear Expired Subscribers' button. This will display a prompt listing all emails that are expired. To confirm removal the 'Clear' button can be tapped/clicked. To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
+    Staff members can also clear all current expired subscribers by clicking on the 'Clear Expired Subscribers' button. This will display a prompt listing all emails that are expired. To confirm removal the 'Clear' button can be tapped/clicked. To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
 
     | Mobile Clear Expired | Desktop Clear Expired |
     | :---: | :---: |
