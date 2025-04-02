@@ -169,8 +169,12 @@ def checkout(request):
                 reverse('checkout_success', args=[order.order_number])
             )
         else:
-            messages.error(request, 'There was an error with your form. \
-                           Please double check your information.')
+            messages.error(
+                request,
+                'There was an error with your form. '
+                'Please double check your information and try again'
+            )
+            return redirect(reverse('checkout'))
     else:
         # Get basket contents and generate payment intent for Stripe.
         basket = request.session.get('basket', {})

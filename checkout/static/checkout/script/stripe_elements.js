@@ -38,6 +38,19 @@ form.addEventListener('submit', function (event) {
     event.preventDefault();
     setLoading(true);
 
+    // Checking for invalid form data and returning for Django to process
+    let fullNameField = document.getElementById('id_full_name')
+    let streetAddress1Field = document.getElementById('id_street_address_1')
+    let townCityField = document.getElementById('id_town_city')
+    let fullName = fullNameField.value.trim()
+    let streetAddress1 = streetAddress1Field.value.trim()
+    let townCity = townCityField.value.trim()
+
+    if (fullName === '' || streetAddress1 === '' || townCity === ''){
+        form.submit()
+        return
+    }
+
     var saveInfo = Boolean($('#id-save-info').prop('checked'));
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
