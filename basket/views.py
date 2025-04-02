@@ -82,10 +82,22 @@ def add_to_basket(request, item_id):
     """
     # Set up variables for the method
     product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    return_url = request.POST.get('return_url')
     basket = request.session.get('basket', {})
+
+    # Looking for and adjusting return_url to prevent loop.
+    return_url = request.POST.get('return_url')
+    if return_url:
+        request.session['return_url'] = return_url
+
+    # Get quantity and catch non integer inputs.
+    try:
+        quantity = int(request.POST.get('quantity'))
+    except Exception:
+        messages.error(
+            request, 'Error in quantity, please try again.'
+        )
+        return redirect(redirect_url)
 
     product.refresh_from_db()
     if quantity > product.stock:
@@ -118,10 +130,6 @@ def add_to_basket(request, item_id):
                 f'There was a problem adding {product.name} to your basket: '
                 f'{e} Please try again later.'
             )
-
-    # Adjusting return_url to prevent loop.
-    if return_url:
-        request.session['return_url'] = return_url
 
     # Save basket data to session.
     request.session['basket'] = basket
