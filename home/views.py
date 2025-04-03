@@ -2,11 +2,13 @@ import random
 
 from django.db.models.functions import TruncDate
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.cache import cache_control
 
 from products.models import Product, Realm
 from profiles.models import UserProfile
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def index(request):
     """
     A view to return the index page including a queryset for the newest

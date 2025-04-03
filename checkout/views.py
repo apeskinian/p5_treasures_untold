@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.http import require_POST
+from django.views.decorators.cache import cache_control
 
 import stripe
 
@@ -54,6 +55,7 @@ def cache_checkout_data(request):
 
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def checkout(request):
     """
     Displays the checkout page, handles the checkout process, and creates an

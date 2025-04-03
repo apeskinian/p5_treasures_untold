@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
     get_object_or_404, HttpResponse, redirect, render, reverse
 )
+from django.views.decorators.cache import cache_control
 
 from products.models import Product
 from products.views import activate_reward
@@ -42,6 +43,7 @@ def update_stock(request, product, adjustment):
 
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def view_basket(request):
     """
     A view to show the basket contents.

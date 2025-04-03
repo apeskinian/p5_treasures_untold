@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.cache import cache_control
+
 
 from checkout.models import Order
 from .forms import UserProfileForm
@@ -8,6 +10,7 @@ from .models import UserProfile
 
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def profile(request, order_number=None):
     """
     A view to show the user's profile and order history. If an `order_number`
