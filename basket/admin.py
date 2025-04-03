@@ -43,6 +43,10 @@ def empty_basket(modeladmin, request, queryset):
             store.update(session_data)
             store.save()
 
+        if request.session.session_key == session.session_key:
+            if 'basket' in request.session:
+                del request.session['basket']
+
     modeladmin.message_user(
         request,
         'Selected basket(s) have been cleared. Stock has been recovered.'
@@ -63,6 +67,10 @@ def clear_rewards(modeladmin, request, queryset):
             store.clear()
             store.update(session_data)
             store.save()
+
+        if request.session.session_key == session.session_key:
+            if 'rewards' in request.session:
+                del request.session['rewards']
 
     modeladmin.message_user(
         request,
