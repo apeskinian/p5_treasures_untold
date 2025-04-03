@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.html import strip_tags
+from django.views.decorators.cache import cache_control
 
 from products.forms import ProductForm, RealmForm
 from products.models import Product, Realm
@@ -171,6 +172,7 @@ def send_newsletter(new_newsletter, request):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dashboard(request):
     """
     Renders the main staff dashboard, organized into tabs:
@@ -233,6 +235,7 @@ def dashboard(request):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_faq(request, delete=None, faq_id=None):
     """
     View to manage FAQs. Staff members can create, edit and delete instances
@@ -317,6 +320,7 @@ def manage_faq(request, delete=None, faq_id=None):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_faq_topic(request, delete=None, faq_topic_id=None):
     """
     View to manage FAQ topics. Staff members can create, edit and delete
@@ -411,6 +415,7 @@ def manage_faq_topic(request, delete=None, faq_topic_id=None):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_product(request, delete=None, product_id=None):
     """
     View to manage products. Staff members can create, edit and delete
@@ -500,6 +505,7 @@ def manage_product(request, delete=None, product_id=None):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_realm(request, delete=None, realm_id=None):
     """
     View to manage Realms. Staff members can create, edit and delete
@@ -607,6 +613,7 @@ def manage_realm(request, delete=None, realm_id=None):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_message(request, message_id, delete=None):
     """
     View to manage contact messages. Staff members can view, reply to
@@ -700,6 +707,7 @@ def manage_message(request, message_id, delete=None):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_newsletters(request, delete=None, newsletter_id=None):
     """
     View to manage newsletters. Staff members can create and send new
@@ -800,6 +808,7 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_subscriber(request, subscriber_id):
     """
     View to remove (unsubscribe) a subscriber from the mailing list by
@@ -866,6 +875,7 @@ def manage_subscriber(request, subscriber_id):
 
 
 @staff_member_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def clear_expired_subscribers(request):
     """
     View to remove all expired subscribers from the mailing list.

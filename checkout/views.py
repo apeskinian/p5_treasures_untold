@@ -224,6 +224,7 @@ def checkout(request):
 
 
 @login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def checkout_success(request, order_number):
     """
     Handles the successful completion of a checkout, including updating the

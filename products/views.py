@@ -4,10 +4,12 @@ from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.views.decorators.cache import cache_control
 
 from .models import Product, Realm
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def all_products(request):
     """
     A view to display all products with sorting, searching, and filtering
@@ -148,6 +150,7 @@ def all_products(request):
     return render(request, template, context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def product_detail(request, product_id):
     """
     A view to display detailed information for a single product.
