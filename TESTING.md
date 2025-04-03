@@ -762,7 +762,10 @@ Defensive programming was manually tested with the below user acceptance testing
 ### Stock Control
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Logging out while products are still in the basket will activate a recovery. The basket will be emptied and products restocked. | With products in the shopping basket, log out. Log back in to check product stock. | SUCCESS - basket was emptied and stock recovered. | ![screenrecording](documentation/testing/manual_testing/stock_control/mt_stock_control_logout.gif "stock control") |
+| Sessions are checked regularly and any that are deemed abandoned will have any basket contents recovered and then deleted. An email will be sent to the admin to notify of abandoned baskets and details of the items recovered. | Add products to the basket and close the browser making sure **not** to log out. Wait for admin to receive email and then log back in as user to check the basket. | SUCCESS - admin received an email detailing the items that were left in the basket of the user. Logging back in as that user shows the basket it empty. | ![screenrecording](documentation/testing/manual_testing/stock_control/mt_stock_control_abandon.gif "stock control") ![screenshot](documentation/testing/manual_testing/stock_control/mt_stock_control_admin_email.png "admin email") ![screenrecording](documentation/testing/manual_testing/stock_control/mt_stock_control_login.gif "stock control") |
+
+Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [Basket Management](#basket-management) for realtime stock level testing.
 
 ### Easter Eggs
 <details>
