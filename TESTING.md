@@ -752,12 +752,14 @@ Defensive programming was manually tested with the below user acceptance testing
 | If the user encounters a server error they are shown the 500 error page. | Experience a server error. | SUCCESS - the user is shown the 500 error page. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_500.gif "error pages") |
 | Clicking on the 'Home' button from the 500 page takes the user back to the homepage. | Click on the 'Home' button on the 500 page. | SUCCESS - the user it taken to the homepage. | ![screenrecording](documentation/testing/manual_testing/error_pages/mt_error_pages_500_home.gif "error pages") |
 
-### Stock Control
+### Site Maintenance
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Using the product restock admin action will restock all selected unique items to 1 and all selected non unique items to 50. | Use the product restock admin action. | SUCCESS - stock levels were updated to the correct amounts. | ![screenrecording](documentation/testing/manual_testing/maintenance/mt_maintenance_restock.gif "product restock") |
+| Using the deactivate session rewards will remove all active rewards from the selected session. | Use the deactivate session rewards admin action. | SUCCESS - rewards were deactivated from the selected sessions. | ![screenrecording](documentation/testing/manual_testing/maintenance/mt_maintenance_rewards.gif "reward removal") |
+| Using the empty basket and recover stock admin action will remove all items from the basket of the selected sesssions and restock the items accordingly. | Use the empty basket and recover stock admin action. | SUCCESS - the baskets were emptied and stock recovered from the selected sessions. | ![screenrecording](documentation/testing/manual_testing/maintenance/mt_maintenance_baskets.gif "basket clearance") |
 
-### Site Maintenance
+### Stock Control
 | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- |
 |  |  |  |  |
