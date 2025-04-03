@@ -21,7 +21,7 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = (Lower('realm__name'), 'name')
 
     @admin.action(description='Restock items')
-    def restock(self, request, queryset):
+    def restock(modeladmin, request, queryset):
         """
         Restocks selected item makes stock level 50 unless the item is unique
         and then sets it to 1
@@ -32,5 +32,10 @@ class ProductAdmin(admin.ModelAdmin):
             else:
                 product.stock = 50
             product.save()
+
+        modeladmin.message_user(
+            request,
+            'Selected products have been restocked.'
+        )
 
     actions = [restock]
