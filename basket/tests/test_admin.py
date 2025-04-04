@@ -1,6 +1,8 @@
-from django.contrib.admin.sites import site
+from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.admin.sites import AdminSite
 from django.test import RequestFactory, TestCase
-from unittest.mock import MagicMock
+from unittest.mock import Mock
 
 from products.models import Product
 from ..admin import clear_rewards, empty_basket
@@ -13,8 +15,7 @@ class EmptyBasketAdminActionTest(TestCase):
         """
         # Create a mock request and admin instance.
         self.factory = RequestFactory()
-        self.admin_site = site
-        self.modeladmin = MagicMock()
+        self.admin_site = AdminSite()
 
         # Create test products
         self.product1 = Product.objects.create(
@@ -32,26 +33,100 @@ class EmptyBasketAdminActionTest(TestCase):
             price=14.00,
             stock=3
         )
+        self.product3 = Product.objects.create(
+            id=3,
+            name='test product 3',
+            description='product descripton',
+            price=10.00,
+            stock=1,
+        )
+        self.product4 = Product.objects.create(
+            id=4,
+            name='test product 4',
+            description='product descripton',
+            price=14.00,
+            stock=25
+        )
+
+        # Create test sessions with basket contents
+        self.session1 = SessionStore()
+        self.session1['basket'] = {'1': 1, '2': 2}
+        self.session1.save()
+
+        self.session2 = SessionStore()
+        self.session2['basket'] = {'3': 1, '4': 5}
+        self.session2.save()
+
+        # Sesson 3 for testing more than one unique stock
+        self.session3 = SessionStore()
+        self.session3['basket'] = {'1': 2}
+        self.session3.save()
+
+        # Sesson 4 for testing negative stock
+        self.session4 = SessionStore()
+        self.session4['basket'] = {'3': -5}
+        self.session4.save()
+
+        # Retrieve stored sessions
+        self.session_obj1 = (
+            Session.objects.get(session_key=self.session1.session_key)
+        )
+        self.session_obj2 = (
+            Session.objects.get(session_key=self.session2.session_key)
+        )
+        self.session_obj3 = (
+            Session.objects.get(session_key=self.session3.session_key)
+        )
+        self.session_obj4 = (
+            Session.objects.get(session_key=self.session4.session_key)
+        )
+
+        # Mock request with session key matching session1
+        self.request = self.factory.post('/admin/')
+        self.request.session = self.session1
+        self.request.session.save()
+
+        # Mock modeladmin object
+        self.modeladmin = Mock()
 
     def test_emptying_basket_items(self):
         """
         Testing for successful stock replenishment from basket items stored
         in session.
         """
-        request = self.factory.get('/')
-        request.session = {'basket': {'1': 1, '2': 2}}
+        queryset = [self.session_obj1, self.session_obj2]
 
-        empty_basket(self.modeladmin, request, None)
+        empty_basket(self.modeladmin, self.request, queryset)
 
+        # Check product stock
         self.product1.refresh_from_db()
         self.product2.refresh_from_db()
+        self.product3.refresh_from_db()
+        self.product4.refresh_from_db()
         self.assertEqual(self.product1.stock, 1)
         self.assertEqual(self.product2.stock, 5)
+        self.assertEqual(self.product3.stock, 2)
+        self.assertEqual(self.product4.stock, 30)
 
-        self.assertNotIn('basket', request.session)
+        # Reload sessions
+        self.session_obj1 = (
+            Session.objects.get(session_key=self.session1.session_key)
+        )
+        self.session_obj2 = (
+            Session.objects.get(session_key=self.session2.session_key)
+        )
 
+        store1 = SessionStore(session_key=self.session_obj1.session_key)
+        store2 = SessionStore(session_key=self.session_obj2.session_key)
+
+        # Check that rewards were removed
+        self.assertNotIn('basket', store1.load())
+        self.assertNotIn('basket', store2.load())
+        self.assertNotIn('basket', self.request.session)
+
+        # Check for admin confirmation message
         self.modeladmin.message_user.assert_called_once_with(
-            request,
+            self.request,
             'Selected basket(s) have been cleared. Stock has been recovered.'
         )
 
@@ -60,46 +135,82 @@ class EmptyBasketAdminActionTest(TestCase):
         Test to see if unique stock error checking raised the value error
         before passing on it.
         """
-        request = self.factory.get('/')
-        request.session = {'basket': {'1': 2}}
+        queryset = [self.session_obj3]
         try:
-            empty_basket(self.modeladmin, request, None)
+            empty_basket(self.modeladmin, self.request, queryset)
         except ValueError:
             self.fail('ValueError was raised')
+
+        self.product1.refresh_from_db()
+        self.assertEqual(self.product1.stock, 1)
 
     def test_catching_stock_less_than_zero(self):
         """
         Test to see if the error checking raised a value error for negative
         stock before passing on it.
         """
-        request = self.factory.get('/')
-        request.session = {'basket': {'1': -2}}
+        queryset = [self.session_obj4]
         try:
-            empty_basket(self.modeladmin, request, None)
+            empty_basket(self.modeladmin, self.request, queryset)
         except ValueError:
             self.fail('ValueError was raised')
+
+        self.product3.refresh_from_db()
+        self.assertEqual(self.product3.stock, 0)
 
 
 class ClearRewardsAdminActionTest(TestCase):
     def setUp(self):
-        """
-        Set up request and admin instance for test.
-        """
         self.factory = RequestFactory()
-        self.admin_site = site
-        self.modeladmin = MagicMock()
+        self.admin_site = AdminSite()
 
-    def test_removing_rewards_from_session(self):
-        """
-        Test if 'rewards' is successfully removed from session data.
-        """
-        request = self.factory.get('/')
-        request.session = {'rewards': ['magic-lamp']}
+        # Create two test sessions with rewards
+        self.session1 = SessionStore()
+        self.session1['rewards'] = 'magic-lamp'
+        self.session1.save()
 
-        clear_rewards(self.modeladmin, request, None)
+        self.session2 = SessionStore()
+        self.session2['rewards'] = 'bibbidi-bobbidi-boo'
+        self.session2.save()
 
-        self.assertNotIn('rewards', request.session)
+        # Retrieve stored sessions
+        self.session_obj1 = (
+            Session.objects.get(session_key=self.session1.session_key)
+        )
+        self.session_obj2 = (
+            Session.objects.get(session_key=self.session2.session_key)
+        )
 
-        self.modeladmin.message_user.assert_called_once_with(
-            request, 'Reward data has been cleared for selected sessions.'
+        # Mock request with session key matching session1
+        self.request = self.factory.post('/admin/')
+        self.request.session = self.session1
+        self.request.session.save()
+
+        # Mock modeladmin object
+        self.modeladmin = Mock()
+
+    def test_clear_rewards(self):
+        # Call the action
+        queryset = [self.session_obj1, self.session_obj2]
+        clear_rewards(self.modeladmin, self.request, queryset)
+
+        # Reload sessions
+        self.session_obj1 = (
+            Session.objects.get(session_key=self.session1.session_key)
+        )
+        self.session_obj2 = (
+            Session.objects.get(session_key=self.session2.session_key)
+        )
+
+        store1 = SessionStore(session_key=self.session_obj1.session_key)
+        store2 = SessionStore(session_key=self.session_obj2.session_key)
+
+        # Check that rewards were removed
+        self.assertNotIn('rewards', store1.load())
+        self.assertNotIn('rewards', store2.load())
+        self.assertNotIn('rewards', self.request.session)
+
+        # Check if success message was sent
+        self.modeladmin.message_user.assert_called_with(
+            self.request, 'Reward data has been cleared for selected sessions.'
         )
