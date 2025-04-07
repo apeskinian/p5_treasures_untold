@@ -432,7 +432,6 @@ class UpdateBasketTest(TestCase):
         - '2': Testing for no change in the quantity.
         - '3': Testing for valid change in quantity.
         - '0': Testing for removal by changing quantity to 0.
-
         """
         for quantity_option in ['8', '2', '3', '0']:
             # Set request, user, session and get response.

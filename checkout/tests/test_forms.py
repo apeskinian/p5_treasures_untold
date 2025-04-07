@@ -25,7 +25,9 @@ class OrderFormTests(TestCase):
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_placeholders_and_autofocus(self):
-        """Placeholders are correct and autofocus is set on full_name."""
+        """
+        Placeholders are correct and autofocus is set on full_name.
+        """
         self.assertEqual(
             self.form.fields['full_name'].widget.attrs.get('autofocus'), True
         )

@@ -8,7 +8,9 @@ from ..middleware import UpdateSessionMiddleware
 
 class UpdateSessionMiddelwareTest(TestCase):
     def setUp(self):
-        """Sets up a request and session for testing."""
+        """
+        Sets up a request and session for testing.
+        """
         self.middleware = UpdateSessionMiddleware(lambda x: None)
         self.factory = RequestFactory()
 
