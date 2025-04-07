@@ -166,11 +166,10 @@ def adjust_basket(request, item_id):
     """
     # Set up variables for the method
     product = get_object_or_404(Product, pk=item_id)
-    previous_quantity = int(request.POST.get('previous-quantity'))
-
     # Get quantity and catch non integer inputs.
     try:
         new_quantity = int(request.POST.get('quantity'))
+        previous_quantity = int(request.POST.get('previous-quantity'))
     except Exception:
         messages.error(
             request, 'Error in quantity, please try again.'

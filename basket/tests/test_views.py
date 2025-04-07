@@ -9,7 +9,10 @@ from django.urls import reverse
 from unittest.mock import patch
 
 from products.models import Product
-from ..views import update_stock, add_to_basket
+from ..views import (
+    update_stock, add_to_basket, adjust_basket,
+    remove_from_basket, check_for_cave_of_wonders
+)
 
 
 class UpdateStockTest(TestCase):
@@ -291,7 +294,7 @@ class AddToBasketTest(TestCase):
     @patch('basket.views.check_for_cave_of_wonders')
     def test_add_item_no_stock(self, mock_check_reward, mock_update_stock):
         """
-        Test for not enough stock.
+        Test for no stock left.
         """
         # Set request, user, session and get response.
         request = self.factory.post(
@@ -316,7 +319,7 @@ class AddToBasketTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, '/basket/')
 
-    @patch('basket.views.update_stock', side_effect=Exception('ERROR'))
+    @patch('basket.views.update_stock')
     @patch('basket.views.check_for_cave_of_wonders')
     def test_add_item_error(self, mock_check_reward, mock_update_stock):
         """
@@ -346,3 +349,318 @@ class AddToBasketTest(TestCase):
         # Ensure it redirects.
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, '/basket/')
+
+
+class UpdateBasketTest(TestCase):
+    def setUp(self):
+        """
+        Set up request, session and products for test.
+        """
+        # Create request.
+        self.factory = RequestFactory()
+
+        # Create test products.
+        self.product1 = Product.objects.create(
+            id=1,
+            name='test product 1',
+            description='product descripton',
+            price=10.00,
+            stock=4,
+        )
+
+        # Create a test user.
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword'
+        )
+
+    def _set_session_and_messages(self, request):
+        """
+        Helper to add session and messages support to the request.
+        """
+        # Attach session middleware.
+        session_middleware = SessionMiddleware(lambda req: None)
+        session_middleware.process_request(request)
+        request.session.save()
+
+        # Attach messages framework.
+        messages_middleware = MessageMiddleware(lambda req: None)
+        messages_middleware.process_request(request)
+        setattr(request, '_messages', FallbackStorage(request))
+
+    @patch('basket.views.update_stock')
+    @patch('basket.views.check_for_cave_of_wonders')
+    def test_add_item_qtys_non_int(self, mock_check_reward, mock_update_stock):
+        """
+        Test errors in quantity.
+        """
+        # Set request, user, session and get response.
+        for field in ('quantity', 'previous-quantity'):
+            with self.subTest(field=field):
+                post_data = {
+                    'quantity': '1',
+                    'previous-quantity': '1',
+                    'redirect_url': '/basket/'
+                }
+            post_data[field] = 'not_an_integer'
+
+            request = self.factory.post(
+                reverse('adjust_basket', args=[self.product1.id]),
+                post_data
+            )
+            request.user = self.user
+            self._set_session_and_messages(request)
+            response = adjust_basket(request, self.product1.id)
+            messages = list(get_messages(request))
+
+            # Tests assertions.
+            # Ensure an error message was added.
+            self.assertTrue(
+                any("Error in quantity" in str(m) for m in messages)
+            )
+            # Ensure it redirects.
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(response.url, '/basket/')
+
+    @patch('basket.views.update_stock')
+    @patch('basket.views.check_for_cave_of_wonders')
+    def test_adjust_item_stocks(self, mock_check_reward, mock_update_stock):
+        """
+        Test for stock level results using `quantity_option` to control tests.
+
+        **Tests from `quantity_option` values**
+        - '8': Testing for not enough stock for the reauested new amount.
+        - '2': Testing for no change in the quantity.
+        - '3': Testing for valid change in quantity.
+        - '0': Testing for removal by changing quantity to 0.
+
+        """
+        for quantity_option in ['8', '2', '3', '0']:
+            # Set request, user, session and get response.
+            request = self.factory.post(
+                reverse('adjust_basket', args=[self.product1.id]),
+                {
+                    'quantity': quantity_option,
+                    'previous-quantity': '2',
+                    'redirect_url': '/basket/'
+                }
+            )
+            request.user = self.user
+            self._set_session_and_messages(request)
+            response = adjust_basket(request, self.product1.id)
+            messages = list(get_messages(request))
+
+            # Tests assertions.
+            # Ensure an error message was added.
+            if quantity_option == '8':
+                self.assertTrue(
+                    any('Sorry, the maximum' in str(m) for m in messages)
+                )
+            elif quantity_option == '2':
+                self.assertTrue(
+                    any('Basket not adjusted.' in str(m) for m in messages)
+                )
+            elif quantity_option == '3':
+                self.assertTrue(
+                    any('quantity updated' in str(m) for m in messages)
+                )
+            elif quantity_option == '0':
+                self.assertTrue(
+                    any('removed from basket' in str(m) for m in messages)
+                )
+            # Ensure it redirects.
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(response.url, '/basket/')
+
+    @patch('basket.views.update_stock')
+    @patch('basket.views.check_for_cave_of_wonders')
+    def test_adjust_item_error(self, mock_check_reward, mock_update_stock):
+        """
+        Test for exception handling.
+        """
+        # Create an exception.
+        mock_update_stock.side_effect = Exception("Forced error")
+        # Set request, user, session and get response.
+        request = self.factory.post(
+            reverse('adjust_basket', args=[self.product1.id]),
+            {
+                'quantity': '2',
+                'previous-quantity': '1',
+                'redirect_url': '/basket/'
+            }
+        )
+        request.user = self.user
+        self._set_session_and_messages(request)
+        response = adjust_basket(request, self.product1.id)
+        messages = list(get_messages(request))
+
+        # Tests assertions.
+        # Ensure an error message was added.
+        self.assertTrue(any(
+            'There was a problem adjusting'
+            in str(m) for m in messages
+        ))
+        # Ensure it redirects.
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/basket/')
+
+
+class RemoveFromBasket(TestCase):
+    def setUp(self):
+        """
+        Set up request, session and products for test.
+        """
+        # Create request.
+        self.factory = RequestFactory()
+
+        # Create test products.
+        self.product1 = Product.objects.create(
+            id=1,
+            name='test product 1',
+            description='product descripton',
+            price=10.00,
+            stock=4,
+        )
+
+        # Create a test user.
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword'
+        )
+
+    def _set_session_and_messages(self, request):
+        """
+        Helper to add session and messages support to the request.
+        """
+        # Attach session middleware.
+        session_middleware = SessionMiddleware(lambda req: None)
+        session_middleware.process_request(request)
+        request.session.save()
+
+        # Attach messages framework.
+        messages_middleware = MessageMiddleware(lambda req: None)
+        messages_middleware.process_request(request)
+        setattr(request, '_messages', FallbackStorage(request))
+
+    @patch('basket.views.update_stock')
+    @patch('basket.views.check_for_cave_of_wonders')
+    def test_delete_item(self, mock_check_reward, mock_update_stock):
+        """
+        Test for deleting an item using the `quantity` context to control
+        a forced errror for exception handling.
+
+        **Test Options**
+        '2': Simulates a valid number.
+        'E': Simulates a non integer to cause an Exception.
+        """
+        for test in ['2', 'E']:
+            # Set request, user, session and get response.
+            request = self.factory.post(
+                reverse('remove_from_basket', args=[self.product1.id]),
+                {
+                    'quantity': test
+                }
+            )
+            request.user = self.user
+            self._set_session_and_messages(request)
+            request.session["basket"] = {str(self.product1.id): 2}
+            request.session.save()
+            response = remove_from_basket(request, self.product1.id)
+            messages = list(get_messages(request))
+
+            # Tests assertions.
+            # Ensure an error message was added.
+            if test == '2':
+                self.assertTrue(any(
+                    'removed from basket'
+                    in str(m) for m in messages
+                ))
+                # Check stock update was called.
+                mock_update_stock.assert_called_once_with(
+                    request, self.product1, 2
+                )
+            elif test == 'E':
+                self.assertTrue(any(
+                    'Error removing item:'
+                    in str(m) for m in messages
+                ))
+            # Ensure it redirects.
+            self.assertEqual(response.status_code, 200)
+
+
+class CheckCaveOfWondersTest(TestCase):
+    def setUp(self):
+        """
+        Set up request and session and products for test.
+        """
+        # Create request.
+        self.factory = RequestFactory()
+        self.request = self.factory.get('/')
+        self.request.session = {}
+
+        # Create products.
+        self.monkey_idol = Product.objects.create(
+            id=1,
+            name='monkey_idol',
+            description='product descripton',
+            sku='TU-AGR-SMIOA-U-A85D',
+            price=10.00,
+            stock=1,
+        )
+        self.beetle_left = Product.objects.create(
+            id=2,
+            name='beetle_left',
+            description='product descripton',
+            sku='TU-AGR-LHOAGSB-U-A39A',
+            price=10.00,
+            stock=1,
+        )
+        self.beetle_right = Product.objects.create(
+            id=3,
+            name='beetle_right',
+            description='product descripton',
+            sku='TU-AGR-RHOAGSB-U-9B7C',
+            price=10.00,
+            stock=1,
+        )
+
+    @patch('basket.views.activate_reward')
+    def test_activates_with_both_scarab_halves(self, mock_activate_reward):
+        """
+        Activates reward when both scarab halves are present
+        and idol is absent.
+        """
+        self.request.session['basket'] = {
+            str(self.beetle_left.id):  1,
+            str(self.beetle_right.id):  1,
+        }
+        check_for_cave_of_wonders(self.request)
+        mock_activate_reward.assert_called_once_with(
+            self.request, 'activate', 'cave-of-wonders'
+        )
+
+    @patch('basket.views.activate_reward')
+    def test_deactivates_with_one_scarab_half(self, mock_activate_reward):
+        """
+        Deactivates reward if only one scarab half is present.
+        """
+        self.request.session['basket'] = {
+            str(self.beetle_left.id):  1,
+        }
+        check_for_cave_of_wonders(self.request)
+        mock_activate_reward.assert_called_once_with(
+            self.request, 'deactivate', 'cave-of-wonders'
+        )
+
+    @patch('basket.views.activate_reward')
+    def test_deactivates_reward_with_idol_present(self, mock_activate_reward):
+        """
+        Deactivates reward immediately if the idol is present.
+        """
+        self.request.session['basket'] = {
+            str(self.beetle_left.id):  1,
+            str(self.beetle_right.id):  1,
+            str(self.monkey_idol.id):  1,
+        }
+        check_for_cave_of_wonders(self.request)
+        mock_activate_reward.assert_called_once_with(
+            self.request, 'deactivate', 'cave-of-wonders', 'infidels'
+        )
