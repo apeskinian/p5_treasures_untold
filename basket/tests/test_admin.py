@@ -119,7 +119,7 @@ class EmptyBasketAdminActionTest(TestCase):
         store1 = SessionStore(session_key=self.session_obj1.session_key)
         store2 = SessionStore(session_key=self.session_obj2.session_key)
 
-        # Check that rewards were removed
+        # Check that baskets were removed
         self.assertNotIn('basket', store1.load())
         self.assertNotIn('basket', store2.load())
         self.assertNotIn('basket', self.request.session)

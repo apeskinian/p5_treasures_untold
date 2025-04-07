@@ -59,8 +59,12 @@ def clear_session_on_logout(sender, request, user, **kwargs):
                 updated_stock = product.stock
                 updated_stock += quantity
                 if updated_stock < 0:
+                    product.stock = 0
+                    product.save()
                     raise ValueError('Stock cannot be negative.')
                 elif product.unique_stock and updated_stock > 1:
+                    product.stock = 1
+                    product.save()
                     raise ValueError(
                         'Stock cannot be more than one for unique items'
                     )
