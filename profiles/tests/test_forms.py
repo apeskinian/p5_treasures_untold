@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 
 from ..forms import UserProfileForm
-from checkout.models import UserProfile
+from profiles.models import UserProfile
 
 
 class ProfileFormTests(TestCase):
