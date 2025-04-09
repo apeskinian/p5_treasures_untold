@@ -255,7 +255,8 @@ class StripeWH_Handler:
                     ):
                         product.price = 0
                     if (
-                        product.realm.name == 'Agrabah'
+                        product.realm
+                        and product.realm.name == 'Agrabah'
                         and 'cave-of-wonders' in json.loads(active_rewards)
                     ):
                         product.price = 0

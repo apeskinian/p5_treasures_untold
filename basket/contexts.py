@@ -47,7 +47,11 @@ def basket_contents(request):
         original_price = product.price
         if index < 3 and 'magic-lamp' in rewards:
             product.price = 0
-        if product.realm.name == 'Agrabah' and 'cave-of-wonders' in rewards:
+        if (
+            product.realm
+            and product.realm.name == 'Agrabah'
+            and 'cave-of-wonders' in rewards
+        ):
             product.price = 0
         total += quantity * product.price
         product_count += quantity

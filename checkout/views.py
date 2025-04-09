@@ -139,7 +139,8 @@ def checkout(request):
                     if index < 3 and 'magic-lamp' in rewards:
                         product.price = 0
                     if (
-                        product.realm.name == 'Agrabah'
+                        product.realm
+                        and product.realm.name == 'Agrabah'
                         and 'cave-of-wonders' in rewards
                     ):
                         product.price = 0
@@ -265,7 +266,6 @@ def checkout_success(request, order_number):
     profile = UserProfile.objects.get(user=request.user)
     order.user_profile = profile
     order.save()
-
     # Check if user requested to save the info provided.
     if save_info:
         profile_data = {
@@ -279,7 +279,7 @@ def checkout_success(request, order_number):
             'default_country': order.country,
         }
         user_profile_form = UserProfileForm(profile_data, instance=profile)
-        if user_profile_form.is_valid:
+        if user_profile_form.is_valid():
             user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
