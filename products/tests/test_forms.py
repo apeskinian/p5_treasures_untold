@@ -26,7 +26,7 @@ class RealmFormTests(TestCase):
         """
         Test the save method to confirm it replaces spaces with underscores.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {'name': 'Test Realm Name'}
         form = RealmForm(data=form_data)
         # Assertion for form validation.
@@ -92,7 +92,7 @@ class ProductFormTests(TestCase):
         """
         Testing the save method with valid new realm data.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {
             'name': 'Test Product',
             'realm': 'new',
@@ -113,7 +113,7 @@ class ProductFormTests(TestCase):
         """
         Testing the save method with patched exception.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {
             'name': 'Test Product',
             'realm': 'new',
@@ -141,7 +141,7 @@ class ProductFormTests(TestCase):
         """
         Testing the clean method for new realm selection but blank input.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {
             'name': 'Test Product',
             'realm': 'new',
@@ -163,7 +163,7 @@ class ProductFormTests(TestCase):
         Testing the clean method for new realm selection exception
         handling.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {
             'name': 'Test Product',
             'realm': 'new',
@@ -192,7 +192,7 @@ class ProductFormTests(TestCase):
         """
         Testing the clean method with valid existing realm selected.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {
             'name': 'Test Product',
             'realm': '2',
@@ -213,7 +213,7 @@ class ProductFormTests(TestCase):
         Testing the clean method for choosing an existing realm exception
         handling.
         """
-        # Create form data with a name with spaces.
+        # Create form data.
         form_data = {
             'name': 'Test Product',
             'realm': '2',

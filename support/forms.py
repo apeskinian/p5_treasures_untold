@@ -133,7 +133,7 @@ class FaqsForm(forms.ModelForm):
                 )
                 instance.topic = topic_obj
             except Exception as e:
-                self.add_error('topic', f'An erroc occured: {str(e)}')
+                self.add_error('topic', f'An error occured: {str(e)}')
 
         if commit:
             instance.save()
