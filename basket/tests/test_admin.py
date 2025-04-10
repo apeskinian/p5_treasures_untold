@@ -11,7 +11,7 @@ from ..admin import clear_rewards, empty_basket
 class EmptyBasketAdminActionTest(TestCase):
     def setUp(self):
         """
-        Set up request, realm and products for test.
+        Set up request and products for test.
         """
         # Create a mock request and admin instance.
         self.factory = RequestFactory()
