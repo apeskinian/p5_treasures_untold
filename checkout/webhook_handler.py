@@ -107,7 +107,7 @@ class StripeWH_Handler:
             and handled, with a status code of 200 for successful processing.
         """
         return HttpResponse(
-            content=f'TU Unhandled webhook: {event['type']}', status=200
+            content=f"TU Unhandled webhook: {event['type']}", status=200
         )
 
     def handle_payment_intent_succeeded(self, event):
@@ -186,7 +186,7 @@ class StripeWH_Handler:
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_country = shipping_details.address.country
                 profile.save()
-        except profile.DoesNotExist:
+        except UserProfile.DoesNotExist:
             return HttpResponse(
                     content='User not found, database error',
                     status=500
@@ -321,5 +321,5 @@ class StripeWH_Handler:
             and handled, with a status code of 200 for successful processing.
         """
         return HttpResponse(
-            content=f'TU Payment failed: {event['type']}', status=200
+            content=f"TU Payment failed: {event['type']}", status=200
         )
