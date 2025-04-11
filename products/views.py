@@ -213,7 +213,7 @@ def activate_reward(request, action=None, reward=None, extra=None):
     reward = reward if reward else None
 
     # Handling no argument error.
-    if not reward:
+    if not reward or reward.lower() == 'none':
         return HttpResponse('reward not found', status=404)
 
     rewards = request.session.get('rewards', [])
