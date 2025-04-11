@@ -294,7 +294,6 @@ def manage_faq(request, delete=None, faq_id=None):
                 )
                 return redirect(return_url)
             else:
-                print('ERRORS FOUND: ', form.errors)
                 messages.error(
                     request,
                     'Failed to update FAQ' if faq_id else 'Failed to add FAQ'
