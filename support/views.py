@@ -332,7 +332,9 @@ def subscribe(request):
     else:
         for errors in subscribe_form.errors.values():
             for error in errors:
-                messages.error(request, error)
+                messages.error(
+                    request, f'Please ensure the form is valid: {error}'
+                )
         return redirect(return_url)
 
     return redirect(return_url)
