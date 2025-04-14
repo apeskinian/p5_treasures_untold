@@ -665,12 +665,7 @@ def manage_message(request, message_id, delete=None):
                 return redirect(return_url)
         else:
             form = ContactReplyForm(request.POST, instance=message)
-            if request.POST['reply'].strip() == '':
-                messages.error(
-                    request,
-                    'Failed to send reply, please ensure form is valid.'
-                )
-            elif form.is_valid:
+            if form.is_valid():
                 message.date_replied = date.today()
                 message.replied = True
                 message_reply = form.save()
@@ -769,11 +764,7 @@ def manage_newsletters(request, delete=None, newsletter_id=None):
                 return redirect(return_url)
         else:
             form = NewsletterForm(request.POST, instance=newsletter)
-            if request.POST['news_body'].strip() == '':
-                messages.error(
-                    request,
-                    'Failed to create newsletter, ensure form is valid.')
-            elif form.is_valid:
+            if form.is_valid():
                 new_newsletter = form.save()
                 send_newsletter(new_newsletter, request)
                 messages.success(request, 'Newsletter created')

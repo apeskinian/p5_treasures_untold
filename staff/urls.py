@@ -27,7 +27,8 @@ urlpatterns = [
     # View to delete a FAQ.
     path(
         'manage_faq/<str:delete>/<int:faq_id>/',
-        views.manage_faq, name='manage_faq'
+        views.manage_faq,
+        name='manage_faq'
     ),
 
     # View to create a FAQ topic.
