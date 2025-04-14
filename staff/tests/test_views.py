@@ -1,19 +1,26 @@
 from datetime import timedelta
-
-from django.test import TestCase, Client
-from django.contrib.auth.models import User
-from django.urls import reverse
-from django.utils import timezone
-from django.contrib.messages import get_messages
 from unittest.mock import patch, MagicMock
 
-from products.models import Product, Realm
+from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
+from django.test import TestCase, Client
+from django.urls import reverse
+from django.utils import timezone
+
 from products.forms import ProductForm, RealmForm
-from support.models import (
-    Faqs, FaqsTopics, ContactMessage, Newsletter, Subscriber
-)
+from products.models import Product, Realm
 from support.forms import (
-    FaqsForm, FaqsTopicsForm, ContactReplyForm, NewsletterForm
+    FaqsForm,
+    FaqsTopicsForm,
+    ContactReplyForm,
+    NewsletterForm
+)
+from support.models import (
+    Faqs,
+    FaqsTopics,
+    ContactMessage,
+    Newsletter,
+    Subscriber
 )
 
 
@@ -46,7 +53,7 @@ class DashboardTests(TestCase):
 class FaqAdminTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create intances of
+        Create staff user for tests and log in. Also create instances of
         :model:`support.Faqs` and :model:`support.FaqsTopics` for testing.
         """
         # Creating staff user and logging in.
@@ -87,7 +94,7 @@ class FaqAdminTests(TestCase):
         """
         Test that the dashboard displays the FAQ tab and context includes an
         instance of :form:`support.FaqsForm` pre-filled with the selected
-        :model:`support.Faq`.
+        :model:`support.Faqs`.
         """
         self.url = reverse('manage_faq', args=[self.test_faq.id])
         response = self.client.get(self.url)
@@ -101,7 +108,7 @@ class FaqAdminTests(TestCase):
     def test_get_delete_faq_confirmation(self):
         """
         Test that the dashboard displays the FAQ tab and context includes the
-        instance of :model:`support.Faq` sent as an argument.
+        instance of :model:`support.Faqs` sent as an argument.
         """
         self.url = reverse('manage_faq', args=['delete', self.test_faq.id])
         response = self.client.get(self.url)
@@ -113,7 +120,7 @@ class FaqAdminTests(TestCase):
 
     def test_post_add_faq_form(self):
         """
-        Test the creation of a new instance of :model:`support.Faq`.
+        Test the creation of a new instance of :model:`support.Faqs`.
         """
         self.url = reverse('manage_faq')
         response = self.client.post(
@@ -135,7 +142,7 @@ class FaqAdminTests(TestCase):
 
     def test_post_edit_faq_form(self):
         """
-        Test the successful update of a :model:`support.Faq` instance.
+        Test the successful update of a :model:`support.Faqs` instance.
         """
         self.url = reverse('manage_faq', args=[self.test_faq.id])
         response = self.client.post(
@@ -163,7 +170,8 @@ class FaqAdminTests(TestCase):
     def test_post_edit_faq_form_invalid(self):
         """
         Test the error handling when attempting to update a
-        :model:`support.Faq` instance with an invalid form.
+        :model:`support.Faqs` instance with an invalid
+        :form:`support.FaqsForm`.
         """
         self.url = reverse('manage_faq', args=[self.test_faq.id])
         response = self.client.post(
@@ -184,7 +192,7 @@ class FaqAdminTests(TestCase):
 
     def test_post_delete_faq(self):
         """
-        Test the deletion of a :model:`support.Faq` instance.
+        Test the deletion of a :model:`support.Faqs` instance.
         """
         self.url = reverse('manage_faq', args=['delete', self.test_faq.id])
         response = self.client.post(self.url)
@@ -202,7 +210,7 @@ class FaqAdminTests(TestCase):
     def test_post_delete_faq_error(self):
         """
         Test the error handling of a simulated error when attempting to delete
-        a :model:`support.Faq` instance.
+        a :model:`support.Faqs` instance.
         """
         self.url = reverse('manage_faq', args=['delete', self.test_faq.id])
         with patch.object(Faqs, 'delete', side_effect=Exception()):
@@ -217,11 +225,12 @@ class FaqAdminTests(TestCase):
 
     def test_get_add_faqtopic_form(self):
         """
-        Testing for dashboard to be showing the faqs tab and a new form for
-        adding a faq topic to be in the context.
+        Test that the dashboard displays the FAQ tab and context includes a
+        blank instance of :form:`support.FaqsTopicsForm`.
         """
         self.url = reverse('manage_faq_topic')
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'FAQ Topic')
@@ -229,11 +238,13 @@ class FaqAdminTests(TestCase):
 
     def test_get_edit_faqtopic_form(self):
         """
-        Testing for dashboard to be showing the faqs tab and a form for
-        editing a faq topic to be in the context.
+        Test that the dashboard displays the FAQ tab and context includes an
+        instance of :form:`support.FaqsTopicsForm` pre-filled with the selected
+        :model:`support.FaqsTopics`.
         """
         self.url = reverse('manage_faq_topic', args=[self.faq_topic.id])
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'FAQ Topic')
@@ -242,14 +253,14 @@ class FaqAdminTests(TestCase):
 
     def test_get_delete_faqtopic_confirmation(self):
         """
-        Testing for dashboard to be showing the faqs tab and the same instance
-        of `faq_topic` in the context that was sent as an argument for
-        deletion.
+        Test that the dashboard displays the FAQ tab and context includes the
+        instance of :model:`support.FaqsTopics` sent as an argument.
         """
         self.url = reverse(
             'manage_faq_topic', args=['delete', self.faq_topic.id]
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'FAQ Topic')
@@ -257,7 +268,7 @@ class FaqAdminTests(TestCase):
 
     def test_post_add_faqtopic_form(self):
         """
-        Test the addition of a new faq topic.
+        Test the creation of a new instance of :model:`support.FaqsTopics`.
         """
         self.url = reverse('manage_faq_topic')
         response = self.client.post(
@@ -266,8 +277,9 @@ class FaqAdminTests(TestCase):
                 'name': 'New Topic',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'FAQ topic Added' in str(msg)
             for msg in messages
@@ -278,7 +290,7 @@ class FaqAdminTests(TestCase):
 
     def test_post_edit_faqtopic_form(self):
         """
-        Test the update of an existing faq topic.
+        Test the successful update of a :model:`support.FaqsTopics` instance.
         """
         self.url = reverse('manage_faq_topic', args=[self.faq_topic.id])
         response = self.client.post(
@@ -287,8 +299,9 @@ class FaqAdminTests(TestCase):
                 'name': 'New New Topic',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'FAQ topic updated' in str(msg)
             for msg in messages
@@ -302,7 +315,9 @@ class FaqAdminTests(TestCase):
 
     def test_post_edit_faqtopic_form_invalid(self):
         """
-        Test the error handling of update of an existing faq topic.
+        Test the error handling when attempting to update a
+        :model:`support.FaqsTopics` instance with an invalid
+        :form:`support.FaqsTopicsForm`.
         """
         self.url = reverse('manage_faq_topic', args=[self.faq_topic.id])
         response = self.client.post(
@@ -311,8 +326,9 @@ class FaqAdminTests(TestCase):
                 'name': ''
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Failed to update FAQ topic' in str(msg)
             for msg in messages
@@ -320,14 +336,15 @@ class FaqAdminTests(TestCase):
 
     def test_post_delete_faqtopic(self):
         """
-        Test the deletion of an existing faq topic.
+        Test the deletion of a :model:`support.FaqsTopics` instance.
         """
         self.url = reverse(
             'manage_faq_topic', args=['delete', self.faq_topic.id]
         )
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'FAQ topic deleted' in str(msg)
             for msg in messages
@@ -338,16 +355,17 @@ class FaqAdminTests(TestCase):
 
     def test_post_delete_faqtopic_error(self):
         """
-        Test the error handling of deletion of an existing faq topic.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`support.FaqsTopics` instance.
         """
         self.url = reverse(
             'manage_faq_topic', args=['delete', self.faq_topic.id]
         )
-
         with patch.object(FaqsTopics, 'delete', side_effect=Exception()):
             response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Error deleting FAQ topic' in str(msg)
             for msg in messages
@@ -357,7 +375,8 @@ class FaqAdminTests(TestCase):
 class ProductAdminTests(TestCase):
     def setUp(self):
         """
-        Create staff user and url for tests.
+        Create staff user for tests and log in. Also create instances of
+        :model:`products.Realm` and :model:`products.Product` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -381,11 +400,12 @@ class ProductAdminTests(TestCase):
 
     def test_get_add_product_form(self):
         """
-        Testing for dashboard to be showing the products tab and a new form for
-        adding a product to be in the context.
+        Test that the dashboard displays the Product tab and context includes a
+        blank instance of :form:`products.ProductForm`.
         """
         self.url = reverse('manage_product')
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Product')
@@ -393,11 +413,13 @@ class ProductAdminTests(TestCase):
 
     def test_get_edit_product_form(self):
         """
-        Testing for dashboard to be showing the products tab and a form for
-        editing a product to be in the context.
+        Test that the dashboard displays the Product tab and context includes
+        an instance of :form:`products.ProductForm` pre-filled with the
+        selected :model:`products.Product`.
         """
         self.url = reverse('manage_product', args=[self.test_product.id])
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Product')
@@ -406,14 +428,14 @@ class ProductAdminTests(TestCase):
 
     def test_get_delete_product_confirmation(self):
         """
-        Testing for dashboard to be showing the product tab and the same
-        instance of `product` in the context that was sent as an argument for
-        deletion.
+        Test that the dashboard displays the Product tab and context includes
+        the instance of :model:`products.Product` sent as an argument.
         """
         self.url = reverse(
             'manage_product', args=['delete', self.test_product.id]
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Product')
@@ -421,7 +443,7 @@ class ProductAdminTests(TestCase):
 
     def test_post_add_product_form(self):
         """
-        Test the addition of a new product.
+        Test the creation of a new instance of :model:`products.Product`.
         """
         self.url = reverse('manage_product')
         response = self.client.post(
@@ -434,8 +456,9 @@ class ProductAdminTests(TestCase):
                 'stock': 5,
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Product Added' in str(msg)
             for msg in messages
@@ -446,7 +469,7 @@ class ProductAdminTests(TestCase):
 
     def test_post_edit_product_form(self):
         """
-        Test the update of an existing product.
+        Test the successful update of a :model:`products.Product` instance.
         """
         self.url = reverse('manage_product', args=[self.test_product.id])
         response = self.client.post(
@@ -459,8 +482,9 @@ class ProductAdminTests(TestCase):
                 'stock': 5,
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Product updated' in str(msg)
             for msg in messages
@@ -474,7 +498,9 @@ class ProductAdminTests(TestCase):
 
     def test_post_edit_product_form_invalid(self):
         """
-        Test the error handling of update of an existing product.
+        Test the error handling when attempting to update a
+        :model:`products.Product` instance with an invalid
+        :form:`products.ProductForm`.
         """
         self.url = reverse('manage_product', args=[self.test_product.id])
         response = self.client.post(
@@ -487,8 +513,9 @@ class ProductAdminTests(TestCase):
                 'stock': 5,
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Failed to update product' in str(msg)
             for msg in messages
@@ -496,14 +523,15 @@ class ProductAdminTests(TestCase):
 
     def test_post_delete_product(self):
         """
-        Test the deletion of an existing product.
+        Test the deletion of a :model:`products.Product` instance.
         """
         self.url = reverse(
             'manage_product', args=['delete', self.test_product.id]
             )
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Product deleted' in str(msg)
             for msg in messages
@@ -514,16 +542,17 @@ class ProductAdminTests(TestCase):
 
     def test_post_delete_product_error(self):
         """
-        Test the error handling of deletion of an existing product.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`products.Product` instance.
         """
         self.url = reverse(
             'manage_product', args=['delete', self.test_product.id]
         )
-
         with patch.object(Product, 'delete', side_effect=Exception()):
             response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Error deleting product' in str(msg)
             for msg in messages
@@ -533,7 +562,8 @@ class ProductAdminTests(TestCase):
 class RealmAdminTests(TestCase):
     def setUp(self):
         """
-        Create staff user and url for tests.
+        Create staff user for tests and log in. Also create instance of
+        :model:`products.Realm` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -549,11 +579,12 @@ class RealmAdminTests(TestCase):
 
     def test_get_add_realm_form(self):
         """
-        Testing for dashboard to be showing the products tab and a new form for
-        adding a realm to be in the context.
+        Test that the dashboard displays the Product tab and context includes a
+        blank instance of :form:`products.RealmForm`.
         """
         self.url = reverse('manage_realm')
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Realm')
@@ -561,11 +592,13 @@ class RealmAdminTests(TestCase):
 
     def test_get_edit_realm_form(self):
         """
-        Testing for dashboard to be showing the products tab and a form for
-        editing a realm to be in the context.
+        Test that the dashboard displays the Product tab and context includes
+        an instance of :form:`products.RealmForm` pre-filled with the
+        selected :model:`products.Realm`.
         """
         self.url = reverse('manage_realm', args=[self.test_realm.id])
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Realm')
@@ -574,14 +607,14 @@ class RealmAdminTests(TestCase):
 
     def test_get_delete_realm_confirmation(self):
         """
-        Testing for dashboard to be showing the product tab and the same
-        instance of `realm` in the context that was sent as an argument for
-        deletion.
+        Test that the dashboard displays the Product tab and context includes
+        the instance of :model:`products.Realm` sent as an argument.
         """
         self.url = reverse(
             'manage_realm', args=['delete', self.test_realm.id]
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Realm')
@@ -589,7 +622,7 @@ class RealmAdminTests(TestCase):
 
     def test_post_add_realm_form(self):
         """
-        Test the addition of a new realm.
+        Test the creation of a new instance of :model:`products.Realm`.
         """
         self.url = reverse('manage_realm')
         response = self.client.post(
@@ -598,8 +631,9 @@ class RealmAdminTests(TestCase):
                 'name': 'test_new_realm',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Realm created' in str(msg)
             for msg in messages
@@ -610,7 +644,7 @@ class RealmAdminTests(TestCase):
 
     def test_post_edit_realm_form(self):
         """
-        Test the update of an existing realm.
+        Test the successful update of a :model:`products.Realm` instance.
         """
         self.url = reverse('manage_realm', args=[self.test_realm.id])
         response = self.client.post(
@@ -619,8 +653,9 @@ class RealmAdminTests(TestCase):
                 'name': 'Updated_Realm',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Realm updated' in str(msg)
             for msg in messages
@@ -634,7 +669,9 @@ class RealmAdminTests(TestCase):
 
     def test_post_edit_realm_form_invalid(self):
         """
-        Test the error handling of update of an existing realm.
+        Test the error handling when attempting to update a
+        :model:`products.Realm` instance with an invalid
+        :form:`products.RealmForm`.
         """
         self.url = reverse('manage_realm', args=[self.test_realm.id])
         response = self.client.post(
@@ -643,8 +680,9 @@ class RealmAdminTests(TestCase):
                 'name': '',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Failed to update realm' in str(msg)
             for msg in messages
@@ -652,14 +690,15 @@ class RealmAdminTests(TestCase):
 
     def test_post_delete_realm(self):
         """
-        Test the deletion of an existing realm.
+        Test the deletion of a :model:`products.Realm` instance.
         """
         self.url = reverse(
             'manage_realm', args=['delete', self.test_realm.id]
             )
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Realm deleted' in str(msg)
             for msg in messages
@@ -670,16 +709,17 @@ class RealmAdminTests(TestCase):
 
     def test_post_delete_realm_error(self):
         """
-        Test the error handling of deletion of an existing realm.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`products.Realm` instance.
         """
         self.url = reverse(
             'manage_realm', args=['delete', self.test_realm.id]
         )
-
         with patch.object(Realm, 'delete', side_effect=Exception()):
             response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Error deleting realm' in str(msg)
             for msg in messages
@@ -689,7 +729,8 @@ class RealmAdminTests(TestCase):
 class ManageMessageTests(TestCase):
     def setUp(self):
         """
-        Create staff user and url for tests.
+        Create staff user for tests and log in. Also create instance of
+        :model:`support.ContactMessage` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -711,11 +752,13 @@ class ManageMessageTests(TestCase):
 
     def test_get_send_message_reply_form(self):
         """
-        Testing for dashboard to be showing the messages tab and a new form for
-        sending a reply to a message to be in the context.
+        Test that the dashboard displays the Message tab and context includes
+        an instance of :form:`support.ContactReplyForm` pre-filled with the
+        selected :model:`support.ContactMessage`.
         """
         self.url = reverse('manage_message', args=[self.test_message.id])
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Message')
@@ -724,14 +767,14 @@ class ManageMessageTests(TestCase):
 
     def test_get_delete_message_confirmation(self):
         """
-        Testing for dashboard to be showing the messages tab and the same
-        instance of `ContactMessage` in the context that was sent as an
-        argument for deletion.
+        Test that the dashboard displays the Message tab and context includes
+        the instance of :model:`support.ContactMessage` sent as an argument.
         """
         self.url = reverse(
             'manage_message', args=[self.test_message.id, 'delete']
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Message')
@@ -739,14 +782,15 @@ class ManageMessageTests(TestCase):
 
     def test_post_delete_message(self):
         """
-        Test the deletion of an existing message.
+        Test the deletion of a :model:`support.ContactMessage` instance.
         """
         self.url = reverse(
             'manage_message', args=[self.test_message.id, 'delete']
         )
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Message deleted' in str(msg)
             for msg in messages
@@ -757,16 +801,17 @@ class ManageMessageTests(TestCase):
 
     def test_post_delete_message_error(self):
         """
-        Test the error handling of deletion of an existing message.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`support.ContactMessage` instance.
         """
         self.url = reverse(
             'manage_message', args=[self.test_message.id, 'delete']
         )
-
         with patch.object(ContactMessage, 'delete', side_effect=Exception()):
             response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Error deleting message' in str(msg)
             for msg in messages
@@ -774,7 +819,8 @@ class ManageMessageTests(TestCase):
 
     def test_post_message_reply_with_invalid_form(self):
         """
-        Test the error handling of replying to a message.
+        Test the error handling when attempting to reply to a message by
+        submitting an invalid :form:`support.ContactReplyForm`.
         """
         self.url = reverse('manage_message', args=[self.test_message.id])
         response = self.client.post(
@@ -783,8 +829,9 @@ class ManageMessageTests(TestCase):
                 'reply': '  ',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Failed to send reply' in str(msg)
             for msg in messages
@@ -793,11 +840,13 @@ class ManageMessageTests(TestCase):
     @patch('staff.views.send_mail')
     def test_post_message_reply(self, mock_send_mail):
         """
-        Test the reply to a message with a valid reply form.
+        Test the successful reply to a message by submitting a valid
+        :form:`support.ContactReplyForm`. The `send_mail` method is patched
+        to test that there is a call to send an email without actually
+        sending a real email.
         """
         mock_request = MagicMock()
         mock_request.build_absolute_uri.return_value = 'http://example.com'
-
         self.url = reverse('manage_message', args=[self.test_message.id])
         response = self.client.post(
             self.url,
@@ -805,8 +854,9 @@ class ManageMessageTests(TestCase):
                 'reply': 'This is a test for a valid reply.',
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Reply sent' in str(msg)
             for msg in messages
@@ -817,7 +867,9 @@ class ManageMessageTests(TestCase):
 class ManageNewslettersTests(TestCase):
     def setUp(self):
         """
-        Create staff user and model instances for tests.
+        Create staff user for tests and log in. Also creates instances of
+        :model:`support.Newsletter` and :model:`support.Subscriber`
+        for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -843,11 +895,12 @@ class ManageNewslettersTests(TestCase):
 
     def test_get_create_newsletter_form(self):
         """
-        Testing for dashboard to be showing the newsletter tab and a new form
-        for creating a newsletter to be in the context.
+        Test that the dashboard displays the Newsletter tab and context
+        includes a blank instance of :form:`support.NewsletterForm`.
         """
         self.url = reverse('manage_newsletters')
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Newsletter')
@@ -855,13 +908,15 @@ class ManageNewslettersTests(TestCase):
 
     def test_get_view_newsletter(self):
         """
-        Testing for dashboard to be showing the newsletter tab and the same
-        instance of `Newsletter` in the context that was sent as an argument.
+        Test that the dashboard displays the Newsletter tab and context
+        includes an instance of :form:`support.NewsletterForm` pre-filled with
+        the selected :model:`support.Newsletter`.
         """
         self.url = reverse(
             'manage_newsletters', args=[self.existing_newsletter.id]
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Newsletter')
@@ -872,13 +927,15 @@ class ManageNewslettersTests(TestCase):
 
     def test_get_delete_newsletter_confirmation(self):
         """
-        Testing for dashboard to be showing the newsletter tab and the same
-        instance of `Newsletter` in the context that was sent as an argument.
+        Test that the dashboard displays the Newsletter tab and context
+        includes the instance of :model:`support.Newsletter` sent as an
+        argument.
         """
         self.url = reverse(
             'manage_newsletters', args=['delete', self.existing_newsletter.id]
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Newsletter')
@@ -888,14 +945,15 @@ class ManageNewslettersTests(TestCase):
 
     def test_post_delete_newsletter(self):
         """
-        Test the deletion of an existing newsletter.
+        Test the deletion of a :model:`support.Newsletter` instance.
         """
         self.url = reverse(
             'manage_newsletters', args=['delete', self.existing_newsletter.id]
             )
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Newsletter deleted' in str(msg)
             for msg in messages
@@ -906,16 +964,17 @@ class ManageNewslettersTests(TestCase):
 
     def test_post_delete_newsletter_error(self):
         """
-        Test the error handling of deletion of an existing newsletter.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`support.Newsletter` instance.
         """
         self.url = reverse(
             'manage_newsletters', args=['delete', self.existing_newsletter.id]
         )
-
         with patch.object(Newsletter, 'delete', side_effect=Exception()):
             response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Error deleting newsletter' in str(msg)
             for msg in messages
@@ -923,7 +982,9 @@ class ManageNewslettersTests(TestCase):
 
     def test_post_send_newsletter_with_invalid_form(self):
         """
-        Test the error handling of sending a newsletter.
+        Test the error handling when attempting to create a
+        :model:`support.Newsletter` instance with an invalid
+        :form:`support.NewsletterForm`.
         """
         self.url = reverse('manage_newsletters')
         response = self.client.post(
@@ -933,8 +994,9 @@ class ManageNewslettersTests(TestCase):
                 'news_body': '    '
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Failed to create newsletter' in str(msg)
             for msg in messages
@@ -943,11 +1005,12 @@ class ManageNewslettersTests(TestCase):
     @patch('staff.views.send_mail')
     def test_post_newsletter_creation(self, mock_send_mail):
         """
-        Test the creation and sending of a newsletter.
+        Test the creation of a new instance of :model:`support.Newsletter`.
+        The `send_mail` method is patched to test that there is a call to send
+        an email without actually sending a real email.
         """
         mock_request = MagicMock()
         mock_request.build_absolute_uri.return_value = 'http://example.com'
-
         self.url = reverse('manage_newsletters')
         response = self.client.post(
             self.url,
@@ -956,8 +1019,9 @@ class ManageNewslettersTests(TestCase):
                 'news_body': 'Some great news!'
             }
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Newsletter created' in str(msg)
             for msg in messages
@@ -972,7 +1036,9 @@ class ManageNewslettersTests(TestCase):
 class ManageSubscriberTests(TestCase):
     def setUp(self):
         """
-        Create staff user and model instances for tests.
+        Create staff user for tests and log in. Also create instance of
+        :model:`support.Newsletter` and :model:`support.Subscriber`
+        for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -996,13 +1062,15 @@ class ManageSubscriberTests(TestCase):
 
     def test_get_delete_subscriber_confirmation(self):
         """
-        Testing for dashboard to be showing the newsletter tab and the same
-        instance of `Subscriber` in the context that was sent as an argument.
+        Test that the dashboard displays the Newsletter tab and context
+        includes the instance of :model:`support.Subscriber` sent as
+        an argument.
         """
         self.url = reverse(
             'manage_subscriber', args=[self.subscriber.id]
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Newsletter')
@@ -1010,16 +1078,17 @@ class ManageSubscriberTests(TestCase):
 
     def test_post_delete_subscriber_error(self):
         """
-        Test the error handling of deletion of an existing subscriber.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`support.Subscriber` instance.
         """
         self.url = reverse(
             'manage_subscriber', args=[self.subscriber.id]
         )
-
         with patch.object(Subscriber, 'delete', side_effect=Exception()):
             response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Error unsubscribing' in str(msg)
             for msg in messages
@@ -1027,12 +1096,13 @@ class ManageSubscriberTests(TestCase):
 
     def test_post_delete_subscriber(self):
         """
-        Test the deletion of an existing subscriber.
+        Test the deletion of a :model:`support.Subscriber` instance.
         """
         self.url = reverse('manage_subscriber', args=[self.subscriber.id])
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'Unsubscribed' in str(msg)
             for msg in messages
@@ -1045,7 +1115,9 @@ class ManageSubscriberTests(TestCase):
 class ManageExpiredSubscriberTests(TestCase):
     def setUp(self):
         """
-        Create staff user and model instances for tests.
+        Create staff user for tests and log in. Also create instances of
+        :model:`support.Newsletter` and :model:`support.Subscriber`
+        for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -1085,13 +1157,16 @@ class ManageExpiredSubscriberTests(TestCase):
 
     def test_get_delete_expired_subscribers_confirmation(self):
         """
-        Testing for dashboard to be showing the newsletter tab and the instance
-        of each `Subscribe` to be in the relevant context.
+        Test that the dashboard displays the Newsletter tab and context
+        includes all instances of :model:`support.Subscriber` split into three
+        different querysets, `active_subscribers`, `unconfirmed_subscribers`
+        and `expired_subscribers`.
         """
         self.url = reverse(
             'clear_expired_subscribers'
         )
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'staff/dashboard.html')
         self.assertEqual(response.context['active_tab'], 'Newsletter')
@@ -1108,15 +1183,17 @@ class ManageExpiredSubscriberTests(TestCase):
 
     def test_post_delete_expired_subscribers_error(self):
         """
-        Test the error handling of deletion of an expired subscribers.
+        Test the error handling of a simulated error when attempting to delete
+        a :model:`support.Subscriber` instances that are expired.
         """
         # Delete the expired subscriber so that none will be found.
         self.expired_subscriber.delete()
         # Make the request
         self.url = reverse('clear_expired_subscribers')
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'There are no expired subscribers' in str(msg)
             for msg in messages
@@ -1126,13 +1203,15 @@ class ManageExpiredSubscriberTests(TestCase):
 
     def test_post_delete_expired_subscribers(self):
         """
-        Test the error handling of deletion of an expired subscribers.
+        Test the deletion of :model:`support.Subscriber` instances that are
+        expired.
         """
         # Make the request
         self.url = reverse('clear_expired_subscribers')
         response = self.client.post(self.url)
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'All expired subscribers removed' in str(msg)
             for msg in messages
@@ -1145,7 +1224,7 @@ class ManageExpiredSubscriberTests(TestCase):
 class CancelActionTests(TestCase):
     def setUp(self):
         """
-        Create staff user and model instances for tests.
+        Create staff user for tests and log in.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -1165,6 +1244,7 @@ class CancelActionTests(TestCase):
         url = reverse('cancel_action', args=['Delete', 'FAQ', return_url])
         response = self.client.get(url)
         messages = list(get_messages(response.wsgi_request))
+
         # Assertions
         self.assertTrue(any(
             'Delete FAQ cancelled.' in str(msg)
@@ -1183,6 +1263,7 @@ class CancelActionTests(TestCase):
         )
         response = self.client.get(url)
         messages = list(get_messages(response.wsgi_request))
+
         # Assertions
         self.assertTrue(any(
             'Removing subscriber cancelled.' in str(msg)
@@ -1202,6 +1283,7 @@ class CancelActionTests(TestCase):
         )
         response = self.client.get(url)
         messages = list(get_messages(response.wsgi_request))
+
         # Assertions
         self.assertTrue(any(
             'Clearing expired subscribers cancelled.' in str(msg)
@@ -1221,6 +1303,7 @@ class CancelActionTests(TestCase):
         )
         response = self.client.get(url)
         messages = list(get_messages(response.wsgi_request))
+
         # Assertions
         self.assertTrue(any(
             'Reply to message cancelled.' in str(msg)
