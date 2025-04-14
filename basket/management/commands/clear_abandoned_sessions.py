@@ -1,13 +1,12 @@
 from datetime import datetime, timedelta
 
 from django.contrib.sessions.models import Session
+from django.conf import settings
+from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
 from django.shortcuts import get_object_or_404
 
 from products.models import Product
-
-from django.core.mail import send_mail
-from django.conf import settings
 
 
 class Command(BaseCommand):
