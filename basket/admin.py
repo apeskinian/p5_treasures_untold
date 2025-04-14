@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.sessions.models import Session
 from django.shortcuts import get_object_or_404
 
 from products.models import Product
