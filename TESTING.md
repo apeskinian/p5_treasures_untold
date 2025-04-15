@@ -1048,57 +1048,58 @@ Use this section to list any known issues you ran into while writing your Python
 
 ## Bugs
 
-⚠️ INSTRUCTIONS ⚠️
-
-Nobody likes bugs,... except the assessors! Projects seem more suspicious if a student doesn't properly track their bugs. If you're about to submit your project without any bugs listed below, you should ask yourself why you're doing this course in the first place, if you're able to build this entire application without running into any bugs. The best thing you can do for any project is to document your bugs! Not only does it show the true stages of development, but think of it as breadcrumbs for yourself in the future, should you encounter the same/similar bug again, it acts as a gentle reminder on what you did to fix the bug.
-
-If/when you encounter bugs during the development stages of your project, you should document them here, ideally with a screenshot explaining what the issue was, and what you did to fix the bug.
-
-Alternatively, an improved way to manage bugs is to use the built-in **[Issues](https://www.github.com/apeskinian/p5_treasures_untold/issues)** tracker on your GitHub repository. This can be found at the top of your repository, the tab called "Issues".
-
-If using the Issues tracker for bug management, you can simplify the documentation process for testing. Issues allow you to directly paste screenshots into the issue page without having to first save the screenshot locally. You can add labels to your issues (e.g. `bug`), assign yourself as the owner, and add comments/updates as you progress with fixing the issue(s). Once you've solved the issue/bug, you should then "Close" it.
-
-When showcasing your bug tracking for assessment, you can use the following examples below.
-
-⚠️ --- END --- ⚠️
+I've used [GitHub Issues](https://github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue%20label%3Abug) to track and manage bugs and issues during the development stages of my project.
 
 ### Fixed Bugs
 
 [![GitHub issue custom search](https://img.shields.io/github/issues-search?query=repo%3Aapeskinian%2Fp5_treasures_untold%20label%3Abug&label=bugs)](https://www.github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue+is%3Aclosed+label%3Abug)
 
-I've used [GitHub Issues](https://www.github.com/apeskinian/p5_treasures_untold/issues) to track and manage bugs and issues during the development stages of my project.
-
 All previously closed/fixed bugs can be tracked [here](https://www.github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue+is%3Aclosed+label%3Abug).
 
-![screenshot](documentation/bugs/gh-issues-closed.png)
+| Bug | Status |
+| --- | --- |
+| [[BUG] - New realm name from new product has no underscores #84](https://github.com/apeskinian/p5_treasures_untold/issues/84) | Closed |
+| [[BUG] - Nonetype for realm crashes app #83](https://github.com/apeskinian/p5_treasures_untold/issues/83) | Closed |
+| [[BUG] - Session admin actions not working on deployed site #82](https://github.com/apeskinian/p5_treasures_untold/issues/82) | Closed |
+| [[BUG] - Whitespace in checkout form #81](https://github.com/apeskinian/p5_treasures_untold/issues/81) | Closed |
+| [[BUG] - Blank input in product quantity crashes app. #80](https://github.com/apeskinian/p5_treasures_untold/issues/80) | Closed |
+| [[BUG] - Contact reply form accepting whitespace replies. #79](https://github.com/apeskinian/p5_treasures_untold/issues/79) | Closed |
+| [[BUG] - Creating a new realm crashes the app. #78](https://github.com/apeskinian/p5_treasures_untold/issues/78) | Closed |
+| [[BUG] - Form validity messages for out of view fields #77](https://github.com/apeskinian/p5_treasures_untold/issues/77) | Closed |
+| [[BUG] - Whitespace entry on search #76](https://github.com/apeskinian/p5_treasures_untold/issues/76) | Closed |
+| [[BUG] - Basket link active for guests on mobile navbar #75](https://github.com/apeskinian/p5_treasures_untold/issues/75) | Closed |
+| [[BUG] - Duplicate orders again #74](https://github.com/apeskinian/p5_treasures_untold/issues/74) | Closed |
+| [[BUG] - Newsletter forms failing validaton #61](https://github.com/apeskinian/p5_treasures_untold/issues/61) | Closed |
+| [[BUG] - Back to results loop #58](https://github.com/apeskinian/p5_treasures_untold/issues/58) | Closed |
+| [[BUG] - Phone number is not updated when save_info is checked #53](https://github.com/apeskinian/p5_treasures_untold/issues/53) | Closed |
+| [[BUG] - django.db.utils.DataError: value too long for type character varying (2) #52](https://github.com/apeskinian/p5_treasures_untold/issues/52) | Closed |
+| [[BUG] - Duplicate orders #51](https://github.com/apeskinian/p5_treasures_untold/issues/51) | Closed |
+| [[BUG] - Multi click to increase stock #48](https://github.com/apeskinian/p5_treasures_untold/issues/48) | Closed |
+| [[BUG] - Basket adjustment can go past stock levels #47](https://github.com/apeskinian/p5_treasures_untold/issues/47) | Closed |
+| [[BUG] - Multiple basket additions for single stock items #46](https://github.com/apeskinian/p5_treasures_untold/issues/46) | Closed |
+| [[BUG] - Unwanted whitespace from template tags #43](https://github.com/apeskinian/p5_treasures_untold/issues/43) | Closed |
+| [[BUG] - Filtering to Neverland #42](https://github.com/apeskinian/p5_treasures_untold/issues/42) | Closed |
 
-### Unfixed Bugs
+### Closed Issues
 
-⚠️ INSTRUCTIONS ⚠️
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/apeskinian/p5_treasures_untold)](https://github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue+is%3Aclosed)
 
-You will need to mention any unfixed bugs and why they are not fixed upon submission of your project. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. Where possible, you must fix all outstanding bugs, unless outside of your control.
+Closed issues can be tracked [here](https://github.com/apeskinian/p5_treasures_untold/issues?q=is%3Aissue+is%3Aclosed)
 
-If you've identified any unfixed bugs, no matter how small, be sure to list them here! It's better to be honest and list them, because if it's not documented and an assessor finds the issue, they need to know whether or not you're aware of them as well, and why you've not corrected/fixed them.
+### Open Issues
 
-⚠️ --- END --- ⚠️
-
-[![GitHub issues](https://img.shields.io/github/issues/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/issues)
+[![GitHub open issues](https://img.shields.io/github/issues/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/issues)
 
 Any remaining open issues can be tracked [here](https://www.github.com/apeskinian/p5_treasures_untold/issues).
 
-![screenshot](documentation/bugs/gh-issues-open.png)
-
-### Known Issues
-
-| Issue | Screenshot |
+| Issue | Status |
 | --- | --- |
-| On devices smaller than 375px, the page starts to have horizontal `overflow-x` scrolling. | ![screenshot](documentation/issues/overflow.png) |
-| When validating HTML with a semantic `<section>` element, the validator warns about lacking a header `h2-h6`. This is acceptable. | ![screenshot](documentation/issues/section-header.png) |
-| Validation errors on "signup.html" coming from the Django Allauth package. | ![screenshot](documentation/issues/allauth.png) |
-| With a known order-number, users can brute-force "checkout_success.html" and see potentially sensitive information. | ![screenshot](documentation/issues/checkout-success.png) |
-| If a product is in your bag/cart, but then gets deleted from the database, it throws errors from the session storage memory. | ![screenshot](documentation/issues/session-storage.png) |
-| The `-`/`+` quantity buttons work well on "product_details.html", but not on "bag.html". | ![screenshot](documentation/issues/quantity-buttons.png) |
+| [[USER STORY] - Multi-Currency Support #73](https://github.com/apeskinian/p5_treasures_untold/issues/73) | Backlog |
+| [[USER STORY] - Social Media Account Integration #72](https://github.com/apeskinian/p5_treasures_untold/issues/72) | Backlog |
+| [[USER STORY] - Sharing to Social Media #71](https://github.com/apeskinian/p5_treasures_untold/issues/71) | Backlog |
+| [[USER STORY] - Product Restock Alert #70](https://github.com/apeskinian/p5_treasures_untold/issues/70) | Backlog |
+
+### Unfixed Bugs
 
 > [!IMPORTANT]
 > There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
-
