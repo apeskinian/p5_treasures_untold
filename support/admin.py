@@ -1,6 +1,6 @@
-from django.contrib import admin
-
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
+
+from django.contrib import admin
 
 from .models import ContactMessage, Faqs, FaqsTopics, Newsletter, Subscriber
 
