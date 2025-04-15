@@ -1,7 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
-    get_object_or_404, HttpResponse, redirect, render, reverse
+    get_object_or_404,
+    HttpResponse,
+    redirect,
+    render,
+    reverse
 )
 from django.views.decorators.cache import cache_control
 
