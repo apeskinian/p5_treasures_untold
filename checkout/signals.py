@@ -1,9 +1,10 @@
+from django.contrib.auth.signals import user_logged_out
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from django.contrib.auth.signals import user_logged_out
 from django.shortcuts import get_object_or_404
 
 from products.models import Product
+
 from .models import OrderLineItem
 
 

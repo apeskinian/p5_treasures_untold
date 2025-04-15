@@ -5,8 +5,9 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.sessions.models import Session
 from django.test import RequestFactory, TestCase
 
-from ..admin import clear_rewards, empty_basket
 from products.models import Product
+
+from ..admin import clear_rewards, empty_basket
 
 
 class EmptyBasketAdminActionTest(TestCase):

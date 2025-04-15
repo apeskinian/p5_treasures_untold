@@ -9,6 +9,8 @@ from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import TestCase, RequestFactory
 from django.urls import reverse
 
+from products.models import Product
+
 from ..views import (
     update_stock,
     add_to_basket,
@@ -16,7 +18,6 @@ from ..views import (
     remove_from_basket,
     check_for_cave_of_wonders
 )
-from products.models import Product
 
 
 class UpdateStockTest(TestCase):

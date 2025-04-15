@@ -1,20 +1,21 @@
 from decimal import Decimal
 import json
 
+import stripe
+
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
-from django.views.decorators.http import require_POST
 from django.views.decorators.cache import cache_control
-
-import stripe
+from django.views.decorators.http import require_POST
 
 from basket.contexts import basket_contents
 from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
+
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 

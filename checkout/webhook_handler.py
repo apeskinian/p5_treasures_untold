@@ -2,18 +2,19 @@ from decimal import Decimal
 import json
 import time
 
-from django.contrib.sessions.models import Session
+import stripe
+
 from django.conf import settings
+from django.contrib.sessions.models import Session
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import reverse
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-import stripe
-
 from products.models import Product
 from profiles.models import UserProfile
+
 from .models import Order, OrderLineItem
 
 
