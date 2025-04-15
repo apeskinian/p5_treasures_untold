@@ -13,7 +13,7 @@ from products.models import Product, Realm
 from ..models import Order, OrderLineItem
 
 
-class CachCheckoutTests(TestCase):
+class CacheCheckoutTests(TestCase):
     def setUp(self):
         """
         Create client, url and instance of :model:`auth.User` for tests.
