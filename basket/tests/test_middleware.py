@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from django.test import TestCase, RequestFactory
 from django.contrib.sessions.backends.db import SessionStore
+from django.test import TestCase, RequestFactory
 
 from ..middleware import UpdateSessionMiddleware
 
@@ -9,7 +9,7 @@ from ..middleware import UpdateSessionMiddleware
 class UpdateSessionMiddelwareTest(TestCase):
     def setUp(self):
         """
-        Sets up a request and session for testing.
+        Sets up a request and session for tests.
         """
         self.middleware = UpdateSessionMiddleware(lambda x: None)
         self.factory = RequestFactory()
@@ -27,9 +27,9 @@ class UpdateSessionMiddelwareTest(TestCase):
         """
         # Call the middlware.
         self.middleware(self.request)
-        # Check session data.
+
+        # Assertions
         self.assertTrue('modified' in self.request.session)
-        # Check session marked as modified.
         self.assertTrue(self.request.session.modified)
         # Check timestamp format.
         timestamp = self.request.session['modified']
