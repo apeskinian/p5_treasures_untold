@@ -2,12 +2,18 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 
 from ..forms import UserProfileForm
-from profiles.models import UserProfile
+from ..models import UserProfile
 
 
 class ProfileFormTests(TestCase):
     def setUp(self):
-        # Create user
+        """
+        Create instances of:
+        - :model:`auth.User`
+        - :models:`profiles.UserProfile`
+        - :form:`profiles.UserProfileForm`
+        for tests.
+        """
         self.user = User.objects.create_user(
             username='test',
             email='tesstyuza@test.com',
@@ -21,7 +27,8 @@ class ProfileFormTests(TestCase):
 
     def test_form_fields(self):
         """
-        Test the form includes the expected fields.
+        Test the :form:`profiles.UserProfileForm` instance includes the
+        expected fields.
         """
         expected_fields = [
             'default_full_name',
@@ -34,6 +41,8 @@ class ProfileFormTests(TestCase):
             'default_country',
             'email'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_placeholders(self):
@@ -41,6 +50,7 @@ class ProfileFormTests(TestCase):
         Test to check placeholders are correct and autofocus is set to the
         `default_full_name` field.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['default_full_name']
             .widget.attrs.get('placeholder'),
@@ -79,8 +89,9 @@ class ProfileFormTests(TestCase):
 
     def test_labels_are_removed(self):
         """
-        All labels should be removed (set to False).
+        Test all labels are removed (set to False).
         """
+        # Assertions
         for field in self.form.fields.values():
             self.assertFalse(field.label)
 
@@ -89,7 +100,8 @@ class ProfileFormTests(TestCase):
         Test that custom aria-labels are set.
         """
         country_attrs = self.form.fields['default_country'].widget.attrs
-        self.assertEqual(country_attrs.get('aria-label'), 'country')
-
         email_attrs = self.form.fields['email'].widget.attrs
+
+        # Assertions
+        self.assertEqual(country_attrs.get('aria-label'), 'country')
         self.assertEqual(email_attrs.get('aria-label'), 'email')

@@ -3,13 +3,20 @@ from django.contrib.messages import get_messages
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from ..models import UserProfile
 from checkout.models import Order
+
+from ..models import UserProfile
 
 
 class ProfileTests(TestCase):
     def setUp(self):
-        # Create client, user, profile, order and url
+        """
+        Create a client, url and intances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        - :model:`checkout.Order`
+        for tests.
+        """
         self.client = Client()
         self.user = User.objects.create(
             username='TessTyuza',
@@ -39,6 +46,7 @@ class ProfileTests(TestCase):
         """
         # Try to access the profile view without logging in.
         response = self.client.get(self.url)
+
         # Assertions
         self.assertRedirects(response, f'/accounts/login/?next={self.url}')
 
@@ -48,6 +56,7 @@ class ProfileTests(TestCase):
         """
         self.client.force_login(self.user)
         response = self.client.get(self.url)
+
         # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'profiles/profile.html')
@@ -65,6 +74,7 @@ class ProfileTests(TestCase):
             'order_history', kwargs={'order_number': self.order.order_number}
         )
         response = self.client.get(url)
+
         # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['view_order'], self.order)
@@ -78,14 +88,15 @@ class ProfileTests(TestCase):
             'default_full_name': 'Tess Tyuza',
             'default_phone_number': '123456'
         })
+        messages = list(get_messages(response.wsgi_request))
+        self.profile.refresh_from_db()
+
         # Assertions
         self.assertEqual(response.status_code, 200)
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Profile updated.' in str(msg)
             for msg in messages
         ))
-        self.profile.refresh_from_db()
         self.assertEqual(self.profile.default_full_name, 'Tess Tyuza')
         self.assertEqual(self.profile.default_phone_number, '123456')
 
@@ -97,9 +108,10 @@ class ProfileTests(TestCase):
         response = self.client.post(self.url, {
             'default_country': '345',
         })
+        messages = list(get_messages(response.wsgi_request))
+
         # Assertions
         self.assertEqual(response.status_code, 200)
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Update failed. Please ensure the form is valid' in str(msg)
             for msg in messages

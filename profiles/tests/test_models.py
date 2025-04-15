@@ -7,9 +7,9 @@ from ..models import UserProfile
 class ProfilesModelsTests(TestCase):
     def setUp(self):
         """
-        Create test model.
+        Create instances of :model:`auth.User` and
+        :model:`profiles.UserProfile` for test.
         """
-        # Create user
         self.user = User.objects.create_user(
             username='test',
             email='tesstyuza@test.com',
