@@ -1,13 +1,21 @@
+from unittest.mock import patch
+
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.urls import reverse
-from unittest.mock import patch
 
 from products.models import Realm, Product
 
 
 class IndexTests(TestCase):
     def setUp(self):
+        """
+        Create client, url and instances of:
+        - :model:`auth.User`
+        - :model:`products.Realm`
+        - :model:`products.Product`
+        for tests.
+        """
         # Create client and URL
         self.client = Client()
         self.user = User.objects.create(
@@ -47,6 +55,7 @@ class IndexTests(TestCase):
             .distinct.return_value.order_by.return_value = []
         # Get the response
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'home/index.html')
         self.assertIn('current_user', response.context)
@@ -66,6 +75,7 @@ class IndexTests(TestCase):
         mock_order_by_return[:] = [{'added_date': '2025-04-09'}]
         # Get the response
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'home/index.html')
         self.assertIn('current_user', response.context)
