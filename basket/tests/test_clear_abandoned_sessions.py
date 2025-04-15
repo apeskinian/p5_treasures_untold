@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
+from io import StringIO
 
+from django.contrib.sessions.backends.db import SessionStore
 from django.core.management import call_command
 from django.test import TestCase
-from io import StringIO
-from django.contrib.sessions.backends.db import SessionStore
 
 from products.models import Product
 
@@ -11,7 +11,7 @@ from products.models import Product
 class ClearAbandonedSessionsTests(TestCase):
     def setUp(self):
         """
-        Set up sessions, realms and products.
+        Create :model:`products.Product` instances and a session for testing.
         """
         self.command = 'clear_abandoned_sessions'
         # Create test products
@@ -40,13 +40,20 @@ class ClearAbandonedSessionsTests(TestCase):
         self.session1.save()
 
     def test_no_timestamp(self):
+        """
+        Test the error handling for session with no timestamp.
+        """
         # Call command
         out = StringIO()
         call_command(self.command, stdout=out)
+
         # Assertions
         self.assertIn('Skipping session', out.getvalue())
 
     def test_invalid_timestamp_format(self):
+        """
+        Test the error handling for incorrect timestamp format.
+        """
         self.session1['modified'] = (
             datetime.now().strftime('%d/%m/%Y, %H:%M')
         )
@@ -55,10 +62,15 @@ class ClearAbandonedSessionsTests(TestCase):
         out = StringIO()
         err = StringIO()
         call_command(self.command, stdout=out, stderr=err)
+
         # Assertions
         self.assertIn('Invalid modified format', err.getvalue())
 
     def test_valid_timestamp_format_and_basket_clearance(self):
+        """
+        Test for a successful basket clerance. Session has correct timestamp
+        and basket info.
+        """
         # Add timestamp to session
         self.session1['modified'] = (
             self.fake_expiry.strftime('%d/%m/%Y, %H:%M:%S')
@@ -78,6 +90,10 @@ class ClearAbandonedSessionsTests(TestCase):
         self.assertEqual(self.product2.stock, 5)
 
     def test_catchin_overstocking_for_unique_and_negative_retock(self):
+        """
+        Testing error handling for overstock and negative stock events as a
+        result of recovering stock.
+        """
         # Adjust basket contents to force the errors.
         self.session1['basket'] = {'1': 2, '2': -10}
         self.session1['modified'] = (
