@@ -158,6 +158,7 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | home | [models.py](home/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/models.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_models.png "Valid models.py") | All clear, no errors found. |
 | home | [urls.py](home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/urls.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_urls.png "Valid urls.py") | All clear, no errors found. |
 | home | [views.py](home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/views.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_views.png "Valid views.py") | All clear, no errors found. |
+| home/tests | [test_views.py](home/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/home/tests/test_views.py) | ![Python Validation](documentation/testing/validation/python/home_app/valid_home_test_views.png "Valid test_views.py") | All clear, no errors found. |
 
 #### Products App Files
 | Directory | File | URL | Screenshot | Notes |
