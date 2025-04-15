@@ -1,13 +1,25 @@
-from django.contrib.auth.models import User
-from django.test import TestCase
 from unittest.mock import patch
 
+from django.contrib.auth.models import User
+from django.test import TestCase
 
-from ..models import Order, UserProfile, Product, OrderLineItem
+from products.models import Product
+from profiles.models import UserProfile
+
+from ..models import Order, OrderLineItem
 
 
 class SignalTests(TestCase):
     def setUp(self):
+        """
+        Create instances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        - :model:`products.Product`
+        - :model:`checkout.Order`
+        - :model:`checkout.OrderLineItem`
+        for tests.
+        """
         # Create user.
         self.user = User.objects.create_user(
             username='test',
@@ -17,7 +29,7 @@ class SignalTests(TestCase):
         self.user_profile, created = (
             UserProfile.objects.get_or_create(user=self.user)
         )
-        # Create product.
+        # Create products.
         # Used for testing unique stock recovery.
         self.product1 = Product.objects.create(
             id=1,
@@ -62,57 +74,63 @@ class SignalTests(TestCase):
 
     @patch('checkout.models.Order.update_total')
     def test_update_total_on_save(self, mock_update_total):
-        # Save the OrderLineItem and check if update_total is called
+        """
+        Test to check if `update_total()` is called when an intance of
+        :model:`checkout.OrderLineItem` is saved.
+        """
         self.order_line_item.save()
 
-        # Assert that the update_total method was called on the related order
+        # Assertions
         mock_update_total.assert_called_once()
 
     @patch('checkout.models.Order.update_total')
     def test_update_total_on_delete(self, mock_update_total):
-        # Delete the OrderLineItem and check if update_total is called
+        """
+        Test to check if `update_total()` is called when an intance of
+        :model:`checkout.OrderLineItem` is deleted.
+        """
         self.order_line_item.delete()
 
-        # Assert that the update_total method was called on the related order
+        # Assertions
         mock_update_total.assert_called_once()
 
     def test_clear_basket(self):
         """
-        Tests the stock recovery on user logout.
+        Test for stock recovery control when a user logs out by logging in,
+        creating a basket with items in the session and then logging out. This
+        also tests for stock error handling for overstocking unique items and
+        negative stock events.
         """
         # Login in with user.
         self.client.login(
             username=self.user.username,
             password=self.user.password
         )
-
         # Create session and add basket contents and rewards.
         session = self.client.session
         session['basket'] = {'1': 1, '2': 2, '3': -4}
         session['rewards'] = ['magic-lamp']
         session.save()
 
-        # Confirm session has the data.
+        # Assertions
         self.assertIn('basket', self.client.session)
         self.assertIn('rewards', self.client.session)
 
         # Logout to trigger signal.
         self.client.logout()
-
         # Refresh session.
         session = self.client.session
-
-        # Check that session data is cleared.
-        self.assertNotIn('basket', session)
-        self.assertNotIn('rewards', session)
-
         # Check product stock is recovered.
         self.product1.refresh_from_db()
         self.product2.refresh_from_db()
         self.product3.refresh_from_db()
-        # Test for unique stock recovery so stock cannot exceed 1.
-        self.assertEqual(self.product1.stock, 1)
+
+        # Assertions
+        self.assertNotIn('basket', session)
+        self.assertNotIn('rewards', session)
         # Test normal stock recovery.
         self.assertEqual(self.product2.stock, 6)
+        # Test for unique stock recovery so stock cannot exceed 1.
+        self.assertEqual(self.product1.stock, 1)
         # Test negative stock error catching.
         self.assertEqual(self.product3.stock, 0)

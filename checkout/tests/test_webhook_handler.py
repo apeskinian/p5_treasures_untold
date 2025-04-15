@@ -1,18 +1,21 @@
 from decimal import Decimal
+from unittest.mock import patch, MagicMock
 
 from django.contrib.auth.models import User
 from django.contrib.sessions.backends.db import SessionStore
 from django.test import TestCase, Client, RequestFactory
-from unittest.mock import patch, MagicMock
 
-from ..webhook_handler import StripeWH_Handler
 from products.models import Product, Realm
 from profiles.models import UserProfile
+
+from ..webhook_handler import StripeWH_Handler
 
 
 class DotDict(dict):
     """
-    A dictionary that allows dot notation access.
+    A dictionary that allows dot notation access. Used to simulate a data
+    structure similar to that sent by Stripe so that dot notation can be used
+    to access data.
     """
     def __getattr__(self, name):
         try:
@@ -52,6 +55,12 @@ class StripeHandlerTests(TestCase):
         view creation. This also tests removing session data and all three
         rewards. None values in the stripe data are also tested to be replaced
         with ''.
+        Instances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        - :model:`products.Realm`
+        - :model:`products.Product`
+        are created for the test.
         """
         # Mock request object
         mock_request = MagicMock()
@@ -121,8 +130,7 @@ class StripeHandlerTests(TestCase):
             },
             'type': 'payment_intent.succeeded'
         }
-        # Create dot notation navigational dictionary to simulate info from
-        # stripe.
+        # Create dot notation dictionary to simulate info from stripe.
         event_data_dot = dot_dict(event_data)
         # Instantiate the handler
         handler = StripeWH_Handler(request=mock_request)
@@ -133,7 +141,7 @@ class StripeHandlerTests(TestCase):
         # Check if the email was sent
         mock_send_mail.assert_called_once()
 
-        # Verify the response
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn(
             'SUCCESS order created in webhook',
@@ -147,8 +155,14 @@ class StripeHandlerTests(TestCase):
     ):
         """
         Testing order creation from webhook when order cannot be found from
-        view creation. This also checks for the warning that also be shown
+        view creation. This also checks for the warning that will also be shown
         when no session data can be found to clear.
+        Instances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        - :model:`products.Realm`
+        - :model:`products.Product`
+        are created for the test.
         """
         # Mock request object
         mock_request = MagicMock()
@@ -211,9 +225,9 @@ class StripeHandlerTests(TestCase):
             },
             'type': 'payment_intent.succeeded'
         }
-        # Create dot notation navigational dictionary to simulate info from
-        # stripe.
+        # Create dot notation dictionary to simulate info from stripe.
         event_data_dot = dot_dict(event_data)
+
         # Instantiate the handler
         handler = StripeWH_Handler(request=mock_request)
 
@@ -223,7 +237,7 @@ class StripeHandlerTests(TestCase):
         # Check if the email was sent
         mock_send_mail.assert_called_once()
 
-        # Verify the response
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn(
             'SUCCESS order created in webhook',
@@ -239,7 +253,8 @@ class StripeHandlerTests(TestCase):
         self, mock_charge_retrieve
     ):
         """
-        Testing webhook exception handling for no user profile found.
+        Testing webhook exception handling for no user profile found. An
+        instance of :model:`products.Product` is created for the tests.
         """
         # Set up mock charge for Stripe
         mock_charge = MagicMock()
@@ -286,16 +301,16 @@ class StripeHandlerTests(TestCase):
             },
             'type': 'payment_intent.succeeded'
         }
-        # Create dot notation navigational dictionary to simulate info from
-        # stripe.
+        # Create dot notation dictionary to simulate info from stripe.
         event_data_dot = dot_dict(event_data)
+
         # Instantiate the handler
         handler = StripeWH_Handler(request=None)
 
         # Call the handler method
         response = handler.handle_payment_intent_succeeded(event_data_dot)
 
-        # Verify the response
+        # Assertions
         self.assertEqual(response.status_code, 500)
         self.assertIn('User not found', response.content.decode())
 
@@ -305,7 +320,9 @@ class StripeHandlerTests(TestCase):
     ):
         """
         Testing webhook exception handling for errors in creating the order.
-        This test references a product that does not exist.
+        This test references a product that does not exist. Instances of
+        :model:`auth.User` and :model:`profiles.UserProfile` are created for
+        the test.
         """
         # Set up mock charge for Stripe
         mock_charge = MagicMock()
@@ -363,7 +380,7 @@ class StripeHandlerTests(TestCase):
         # Call the handler method
         response = handler.handle_payment_intent_succeeded(event_data_dot)
 
-        # Verify the response
+        # Assertions
         self.assertEqual(response.status_code, 500)
         self.assertIn('ERRROR:', response.content.decode())
 
@@ -375,7 +392,9 @@ class StripeHandlerTests(TestCase):
     ):
         """
         Test webhook handler seeing an order has been created and so does not
-        create one itself, just the email is sent.
+        create one itself, just the email is sent. Instances of
+        :model:`auth.User` and :model:`profiles.UserProfile` are created
+        for the test.
         """
         # Create mock order data
         mock_order = MagicMock()
@@ -449,16 +468,16 @@ class StripeHandlerTests(TestCase):
             'type': 'payment_intent.succeeded'
         }
 
-        # Create dot notation navigational dictionary to simulate info from
-        # stripe.
+        # Create dot notation dictionary to simulate info from stripe.
         event_data_dot = dot_dict(event_data)
+
         # Instantiate the handler
         handler = StripeWH_Handler(request=mock_request)
 
         # Call the handler method
         response = handler.handle_payment_intent_succeeded(event_data_dot)
 
-        # Verify that the order exists and the confirmation email is sent
+        # Assertions
         mock_send_mail.assert_called_once()
         self.assertEqual(response.status_code, 200)
         self.assertIn('Order verified in database', response.content.decode())
@@ -476,6 +495,7 @@ class StripeHandlerTests(TestCase):
 
         response = self.handler.handle_event(event)
 
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn(
             'TU Unhandled webhook:',
@@ -495,6 +515,7 @@ class StripeHandlerTests(TestCase):
 
         response = self.handler.handle_payment_intent_payment_failed(event)
 
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn(
             'TU Payment failed:',

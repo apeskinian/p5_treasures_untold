@@ -1,7 +1,7 @@
 import json
+from unittest.mock import patch
 
 from django.test import TestCase, RequestFactory
-from unittest.mock import patch
 
 from ..webhooks import webhook
 
@@ -33,6 +33,7 @@ class WebhooksTests(TestCase):
 
         response = webhook(request)
 
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn('TU Unhandled webhook:', response.content.decode())
 
@@ -52,6 +53,7 @@ class WebhooksTests(TestCase):
 
         response = webhook(request)
 
+        # Assertions
         self.assertEqual(response.status_code, 400)
         self.assertIn('Invalid payload', response.content.decode())
 
@@ -71,5 +73,6 @@ class WebhooksTests(TestCase):
 
         response = webhook(request)
 
+        # Assertions
         self.assertEqual(response.status_code, 400)
         self.assertIn('Something went wrong', response.content.decode())

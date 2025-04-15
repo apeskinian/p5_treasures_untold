@@ -1,17 +1,22 @@
 from decimal import Decimal
-
-from django.contrib.auth.models import User
-from django.test import TestCase
-from django.conf import settings
 from unittest.mock import patch
 
-from ..models import Order, UserProfile, OrderLineItem
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.test import TestCase
+
 from products.models import Product
+from profiles.models import UserProfile
+
+from ..models import Order, OrderLineItem
 
 
 class OrderModelTests(TestCase):
     def setUp(self):
-        # Create user
+        """
+        Create instances of :model:`auth.User` and
+        :model:`profiles.UserProfile` for tests.
+        """
         self.user = User.objects.create_user(
             username='test',
             email='tesstyuza@test.com',
@@ -23,7 +28,7 @@ class OrderModelTests(TestCase):
 
     def test_order_number_is_generated(self):
         """
-        Order number should be generated on save if not provided.
+        Test order number is generated on save if not provided.
         """
         # Create order.
         order = Order.objects.create(
@@ -34,6 +39,7 @@ class OrderModelTests(TestCase):
             town_city='Town',
             country='GB'
         )
+
         # Assertions.
         self.assertTrue(order.order_number.startswith('TU-'))
         self.assertEqual(str(order), order.order_number)
@@ -42,7 +48,8 @@ class OrderModelTests(TestCase):
     @patch('checkout.models.Order.lineitems')
     def test_update_total_calculates_correct_totals(self, mock_lineitems):
         """
-        update_total() should correctly compute order and grand totals.
+        Test that calling `update_total()` correctly calculates the order and
+        grand totals.
         """
         # Create order.
         order = Order.objects.create(
@@ -69,6 +76,14 @@ class OrderModelTests(TestCase):
 
 class OrderLineItemModelTests(TestCase):
     def setUp(self):
+        """
+        Create instances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        - :model:`products.Product`
+        - :model:`checkout.Order`
+        for tests.
+        """
         # Create user.
         self.user = User.objects.create_user(
             username='test',

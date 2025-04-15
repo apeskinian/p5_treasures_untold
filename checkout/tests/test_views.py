@@ -1,20 +1,23 @@
 import json
-
-from django.test import TestCase, Client
-from django.contrib.auth.models import User
 from unittest.mock import patch
-from django.urls import reverse
+
+from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.contrib.sessions.middleware import SessionMiddleware
+from django.test import TestCase, Client
+from django.urls import reverse
 
-from ..models import Order, OrderLineItem
 from profiles.models import UserProfile
 from products.models import Product, Realm
+
+from ..models import Order, OrderLineItem
 
 
 class CachCheckoutTests(TestCase):
     def setUp(self):
-        # Create client, user and url
+        """
+        Create client, url and instance of :model:`auth.User` for tests.
+        """
         self.client = Client()
         self.user = User.objects.create(
             username='TessTyuza',
@@ -24,6 +27,9 @@ class CachCheckoutTests(TestCase):
         self.url = reverse('cache_checkout_data')
 
     def _add_session_data(self, request):
+        """
+        Add session to the request.
+        """
         middleware = SessionMiddleware(get_response=lambda x: x)
         middleware.process_request(request)
         request.session.save()
@@ -41,7 +47,6 @@ class CachCheckoutTests(TestCase):
         session['basket'] = {'1': 2}
         session['rewards'] = ['magic lamp']
         session.save()
-
         post_data = {
             'client_secret': 'pi_123456789_secret_abcdef',
             'save_info': 'on',
@@ -68,7 +73,7 @@ class CachCheckoutTests(TestCase):
     )
     def test_cache_checkout_data_failure(self, mock_modify):
         """
-        Siumlating a stripe error for exception handling test.
+        Test exception handling by simulating a stripe error.
         """
         # Log user in.
         self.client.force_login(self.user)
@@ -92,7 +97,13 @@ class CachCheckoutTests(TestCase):
 
 class CheckoutTests(TestCase):
     def setUp(self):
-        # Create client, user and urls.
+        """
+        Create a client, urls and instances of:
+        - :model:`auth.User`
+        - :model:`products.Realm`
+        - :model:`products.Product`
+        for tests. User is also logged in.
+        """
         self.client = Client()
         self.user = User.objects.create(
             username='TessTyuza',
@@ -118,18 +129,18 @@ class CheckoutTests(TestCase):
 
     def test_empty_basket_redirects_to_products_page(self):
         """
-        Test for empty basket.
+        Test that requesting the checkout view with an empty basket redirects
+        the user to the products page with a relevant message.
         """
-        # Create session with empty basket.
         session = self.client.session
         session['basket'] = {}
         session.save()
 
         response = self.client.get(self.checkout_url)
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
         self.assertRedirects(response, self.products_url)
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             "There's nothing in your basket at the moment" in str(msg)
             for msg in messages
@@ -137,9 +148,8 @@ class CheckoutTests(TestCase):
 
     def test_post_with_invalid_form(self):
         """
-        Test for invalid form when checkout is submitted.
+        Testing form validation for invalid form when checkout is submitted.
         """
-        # Create session with empty basket.
         session = self.client.session
         session['basket'] = {'1': 4}
         session.save()
@@ -156,10 +166,10 @@ class CheckoutTests(TestCase):
             'country': '',
             'client_secret': 'pi_123456789_secret_abc123',
         })
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
         self.assertRedirects(response, self.checkout_url)
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             "There was an error with your form." in str(msg)
             for msg in messages
@@ -169,7 +179,6 @@ class CheckoutTests(TestCase):
         """
         Test for successful checkout process.
         """
-        # Create session with empty basket.
         session = self.client.session
         session['basket'] = {'1': 4}
         session['rewards'] = [
@@ -202,9 +211,9 @@ class CheckoutTests(TestCase):
 
     def test_post_with_exception_product_does_not_exist(self):
         """
-        Test for exception that product cannot be found.
+        Testing error handling by simulating a `DoesNotExist` exception for
+        the `get_object_or_404` method.
         """
-        # Create session with empty basket.
         session = self.client.session
         session['basket'] = {'1': 4}
         session.save()
@@ -225,10 +234,10 @@ class CheckoutTests(TestCase):
                 'country': 'GB',
                 'client_secret': 'pi_123456789_secret_abc123',
             })
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
         self.assertRedirects(response, reverse('view_basket'))
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             "One of the products in the basket was lost fom our" in str(msg)
             for msg in messages
@@ -236,9 +245,9 @@ class CheckoutTests(TestCase):
 
     def test_no_profile_exists_shows_empty_form(self):
         """
-        Delivery details form should be empty if no user profile is found yet.
+        Test the checkout page still renders if there is no related instance of
+        :model:`profiles.UserProfile` to the logged in user.
         """
-        # Create session with empty basket.
         session = self.client.session
         session['basket'] = {'1': 4}
         session.save()
@@ -256,7 +265,11 @@ class CheckoutTests(TestCase):
 class CheckoutSuccessTests(TestCase):
     def setUp(self):
         """
-        Create order and user for tests.
+        Create client, url and instances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        - :model:`checkout.Order`
+        for tests.
         """
         # Create client, user and urls.
         self.client = Client()
@@ -288,21 +301,21 @@ class CheckoutSuccessTests(TestCase):
         )
 
     def test_checkout_success_view_valid_order_and_saved_profile_details(self):
-        # Simulate the session with a basket and rewards
+        """
+        Test that a successful checkout with the `save_info` set to True will
+        update the users profile with the delivery info set during checkout.
+        """
         session = self.client.session
         session['basket'] = {'1': 2}
-        session.save()
-
-        # Patch the save_info to simulate user opted to save their info
         session['save_info'] = True
         session.save()
 
         response = self.client.get(self.success_url)
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout_success.html')
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Order successfully processed!' in str(msg)
             for msg in messages

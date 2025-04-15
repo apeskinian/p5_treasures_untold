@@ -5,11 +5,15 @@ from ..forms import OrderForm
 
 class OrderFormTests(TestCase):
     def setUp(self):
+        """
+        Create instance of :form:`checkout.OrderForm` for tests.
+        """
         self.form = OrderForm()
 
     def test_order_form_fields(self):
         """
-        Test the form includes all the expected fields.
+        Test the instance of :form:`checkout.OrderForm` includes all the
+        expected fields.
         """
         expected_fields = [
             'full_name',
@@ -22,12 +26,16 @@ class OrderFormTests(TestCase):
             'postcode',
             'country',
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_placeholders_and_autofocus(self):
         """
-        Placeholders are correct and autofocus is set on full_name.
+        Test that the placeholders are correct and autofocus is set on
+        the `full_name` field.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['full_name'].widget.attrs.get('autofocus'), True
         )
@@ -70,8 +78,9 @@ class OrderFormTests(TestCase):
 
     def test_labels_are_removed(self):
         """
-        All labels should be removed (set to False).
+        Test that all labels are removed (set to False).
         """
+        # Assertions
         for field in self.form.fields.values():
             self.assertFalse(field.label)
 
@@ -80,8 +89,9 @@ class OrderFormTests(TestCase):
         Custom attributes like aria-label and autocomplete are set.
         """
         country_attrs = self.form.fields['country'].widget.attrs
+        email_attrs = self.form.fields['email'].widget.attrs
+
+        # Assertions
         self.assertEqual(country_attrs.get('aria-label'), 'country')
         self.assertEqual(country_attrs.get('autocomplete'), 'no')
-
-        email_attrs = self.form.fields['email'].widget.attrs
         self.assertEqual(email_attrs.get('autocomplete'), 'no')
