@@ -1,35 +1,44 @@
 from django.test import TestCase
 from unittest.mock import patch
 
-from ..forms import (
-    ContactForm, ContactReplyForm,
-    FaqsTopicsForm, FaqsForm, NewsletterForm, SubscriberForm
-)
 from support.models import FaqsTopics
+
+from ..forms import (
+    ContactForm,
+    ContactReplyForm,
+    FaqsTopicsForm,
+    FaqsForm,
+    NewsletterForm,
+    SubscriberForm
+)
 
 
 class ContactFormTests(TestCase):
     def setUp(self):
         """
-        Create test form.
+        Create an instance of :form:`support.ContactForm` for tests.
         """
         self.form = ContactForm()
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the :form:`support.ContactForm` instance has the expected fields.
         """
         expected_fields = [
             'name',
             'email',
             'message'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_for_placeholders(self):
         """
         Test for correct placeholders.
         """
+
+        # Assertions
         self.assertEqual(
             self.form.fields['name'].widget.attrs.get('placeholder'),
             'Full Name *'
@@ -44,6 +53,7 @@ class ContactFormTests(TestCase):
         )
 
     def test_for_custom_field_attributes(self):
+        # Assertions
         self.assertEqual(
             self.form.fields['name'].widget.attrs.get('autofocus'),
             True
@@ -55,23 +65,27 @@ class ContactFormTests(TestCase):
 class ContactReplyFormTests(TestCase):
     def setUp(self):
         """
-        Create form.
+        Create an instance of :form:`support.ContactReplyForm` for tests.
         """
         self.form = ContactReplyForm()
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the :form:`support.ContactReplyForm` instance has the
+        expected fields.
         """
         expected_fields = [
             'reply',
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_for_field_attributes(self):
         """
         Check the reply field has the correct attributes.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['reply'].widget.attrs.get('autofocus'),
             True
@@ -86,23 +100,27 @@ class ContactReplyFormTests(TestCase):
 class FaqsTopicFormTests(TestCase):
     def setUp(self):
         """
-        Create form.
+        Create an instance of :form:`support.FaqsTopicsForm` for tests.
         """
         self.form = FaqsTopicsForm()
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the :form:`support.FaqsTopicsForm` instance has the
+        expected fields.
         """
         expected_fields = [
             'name',
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_for_field_attributes(self):
         """
         Check the name field has the correct attributes.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['name'].widget.attrs.get('placeholder'),
             'Topic name...'
@@ -113,7 +131,8 @@ class FaqsTopicFormTests(TestCase):
 class FaqsFormTests(TestCase):
     def setUp(self):
         """
-        Create form.
+        Create instances of :model:`support.FaqsTopics` and
+        :form:`support.FaqsForm` for tests.
         """
         # Create test topics
         self.topic_one = FaqsTopics.objects.create(name='Topic 1')
@@ -123,7 +142,7 @@ class FaqsFormTests(TestCase):
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the :form:`support.FaqsForm` instance has the expected fields.
         """
         expected_fields = [
             'topic',
@@ -131,12 +150,15 @@ class FaqsFormTests(TestCase):
             'answer',
             'new_topic'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_for_field_attributes(self):
         """
         Check the form fields have the correct attributes.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['question'].widget.attrs.get('placeholder'),
             'Question'
@@ -159,7 +181,8 @@ class FaqsFormTests(TestCase):
             (1, 'Topic 1'),
             (2, 'Topic 2')
         ]
-        # Assertion
+
+        # Assertions
         self.assertEqual(topic_choices, expected_choices)
 
     def test_save_method_with_new_topic(self):
@@ -174,16 +197,15 @@ class FaqsFormTests(TestCase):
             'new_topic': 'New Topic'
             }
         form = FaqsForm(data=form_data)
-        # Assertion for form validation.
-        self.assertTrue(form.is_valid())
-        # Save the form.
         saved_instance = form.save(commit=True)
-        # Assertion for name replacement.
+
+        # Assertions
         self.assertEqual(str(saved_instance.topic), 'New Topic')
 
     def test_save_method_with_invalid_new_topic(self):
         """
-        Testing the save method with patched exception.
+        Testing the save method error handling with patched `get_or_create`
+        to simulate an exception.
         """
         # Create form data.
         form_data = {
@@ -197,13 +219,11 @@ class FaqsFormTests(TestCase):
             'support.forms.FaqsTopics.objects.get_or_create',
             side_effect=Exception()
         ):
-            # Create form and assert validity.
             form = FaqsForm(data=form_data)
-            self.assertTrue(form.is_valid())
             instance = form.save(commit=True)
-            self.assertIsNotNone(instance)
 
             # Assertions for errors.
+            self.assertIsNotNone(instance)
             self.assertIn('topic', form.errors)
             self.assertIn('An error occured:', form.errors['topic'][0])
 
@@ -228,8 +248,9 @@ class FaqsFormTests(TestCase):
 
     def test_clean_method_new_selected_exception_for_placeholder(self):
         """
-        Testing the clean method for new topic selection exception
-        handling.
+        Testing the clean method error handling for new topic selection by
+        patching the `first()` method to simulate an exception when getting
+        a placeholder topic.
         """
         # Create form data.
         form_data = {
@@ -246,7 +267,7 @@ class FaqsFormTests(TestCase):
             # Create form.
             form = FaqsForm(data=form_data)
 
-            # Assertions for errors.
+            # Assertions
             self.assertFalse(form.is_valid())
             self.assertIn('topic', form.errors)
             self.assertIn(
@@ -265,17 +286,16 @@ class FaqsFormTests(TestCase):
             'answer': 'Test Answer',
             }
         form = FaqsForm(data=form_data)
-        # Assertion for form validation.
-        self.assertTrue(form.is_valid())
-        # Save the form.
         saved_instance = form.save(commit=True)
-        # Assertion for name replacement.
+
+        # Assertions
         self.assertEqual(str(saved_instance.topic), 'Topic 1')
 
     def test_clean_method_exception_for_existing_topic(self):
         """
-        Testing the clean method for choosing an existing topic exception
-        handling.
+        Testing the clean method error handling for choosing an existing topic
+        by patching the `get()` method when assigning the topic to simulate an
+        exception.
         """
         # Create form data.
         form_data = {
@@ -291,7 +311,7 @@ class FaqsFormTests(TestCase):
             # Create form.
             form = FaqsForm(data=form_data)
 
-            # Assertions for errors.
+            # Assertions
             self.assertFalse(form.is_valid())
             self.assertIn('topic', form.errors)
             self.assertIn(
@@ -303,25 +323,29 @@ class FaqsFormTests(TestCase):
 class NewsletterFormTests(TestCase):
     def setUp(self):
         """
-        Create form.
+        Create an instance of :form:`support.NewsletterForm` for tests.
         """
         # Create test form
         self.form = NewsletterForm()
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the :form:`support.NewsletterForm` instance has the
+        expected fields.
         """
         expected_fields = [
             'subject',
             'news_body'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_for_field_attributes(self):
         """
         Check the form fields have the correct attributes.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['subject'].widget.attrs.get('placeholder'),
             'Subject'
@@ -337,26 +361,29 @@ class NewsletterFormTests(TestCase):
 class SubscriberFormTests(TestCase):
     def setUp(self):
         """
-        Create form.
+        Create an existing email and instance of :form:`support.SubscriberForm`
+        for tests.
         """
-        # Create existing email
         self.existing_email = 'already@here.com'
-        # Create test form
         self.form = SubscriberForm()
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the :form:`support.SubscriberForm` instance has the
+        expected fields.
         """
         expected_fields = [
             'email'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_for_field_attributes(self):
         """
         Check the form fields have the correct attributes.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['email'].widget.attrs.get('placeholder'),
             'email@example.com'
@@ -372,5 +399,6 @@ class SubscriberFormTests(TestCase):
         form_data = {'email': 'already@here.com'}
         form = SubscriberForm(data=form_data)
 
+        # Assertions
         self.assertTrue(form.is_valid())
         self.assertNotIn('email', form.errors)

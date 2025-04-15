@@ -1,22 +1,24 @@
 from datetime import timedelta
+from unittest.mock import MagicMock, patch
 
 from django.contrib.messages import get_messages
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
-from unittest.mock import MagicMock, patch
 
-from ..views import generate_confirmation_token
 from ..models import Subscriber
+from ..views import generate_confirmation_token
 
 
 class GenerateConfirmationTokenTests(TestCase):
     def test_confirmation_token_generation(self):
         """
-        Create test subscriber and request token. Confirm token is generated.
+        Create instance of :model:`support.Subscriber` and request token using
+        that instance. Confirm token is generated.
         """
         subscriber = Subscriber.objects.create(email='tess@tyuza.com')
         token = generate_confirmation_token(subscriber)
+
         # Assertions
         self.assertIsInstance(token, str)
         self.assertTrue(token)
@@ -30,6 +32,8 @@ class FaqTests(TestCase):
         self.client = Client()
         self.url = reverse('faq')
         response = self.client.get(self.url)
+
+        # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'FAQs')
 
@@ -42,6 +46,7 @@ class ContactTests(TestCase):
         self.client = Client()
         self.url = reverse('contact')
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'Contact Us')
@@ -83,9 +88,9 @@ class ContactTests(TestCase):
                 'email': 'tess@tyuza.com',
                 'message': ''
             })
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'There was a problem sending your message' in str(msg)
             for msg in messages
@@ -102,6 +107,8 @@ class NewsletterTests(TestCase):
         self.client = Client()
         self.url = reverse('newsletter')
         response = self.client.get(self.url)
+
+        # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'Newsletter')
 
@@ -124,9 +131,9 @@ class SubscribeTests(TestCase):
             {'newsletter-email': 'tess@tyuza.com'},
             HTTP_REFERER='http://example.com/origin/'
         )
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Thank you for subscribing!' in str(msg)
             for msg in messages
@@ -136,7 +143,8 @@ class SubscribeTests(TestCase):
     def test_subscription_request_with_already_active_email(self):
         """
         Testing the submission of the newsletter form with an email that is
-        already marked as active.
+        already marked as active. An instance of :model:`support.Subscriber`
+        is created for this test.
         """
         self.client = Client()
         self.url = reverse('subscribe')
@@ -150,10 +158,10 @@ class SubscribeTests(TestCase):
             {'newsletter-email': 'tess@tyuza.com'},
             HTTP_REFERER='http://example.com/origin/'
         )
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
         self.assertTrue(subscriber.is_active)
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'This email has already been subscribed' in str(msg)
             for msg in messages
@@ -162,7 +170,7 @@ class SubscribeTests(TestCase):
     def test_subscription_request_with_invalid_email(self):
         """
         Testing the submission of the newsletter form with an email that is
-        already marked as active.
+        invalid.
         """
         self.client = Client()
         self.url = reverse('subscribe')
@@ -172,9 +180,9 @@ class SubscribeTests(TestCase):
             {'newsletter-email': 'tesstyuza.com'},
             HTTP_REFERER='http://example.com/origin/'
         )
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Please ensure the form is valid:' in str(msg)
             for msg in messages
@@ -184,7 +192,8 @@ class SubscribeTests(TestCase):
 class ConfirmSubscriptionTests(TestCase):
     def test_successful_subscription_confirmation(self):
         """
-        Tests a confirmation attemp with the token within the expiry time.
+        Tests a confirmation attempt with a token within the expiry time. An
+        instance of :model:`support.Subscriber` is created for this test.
         """
         token_creation = timezone.now()
         subscriber = Subscriber.objects.create(
@@ -207,7 +216,8 @@ class ConfirmSubscriptionTests(TestCase):
 
     def test_subscription_confirmation_with_expired_token(self):
         """
-        Tests a confirmation attempt with the token within the expiry time.
+        Tests a confirmation attempt with a token that has expired. An
+        instance of :model:`support.Subscriber` is created for this test.
         """
         token_creation = timezone.now() - timedelta(days=3)
         subscriber = Subscriber.objects.create(
@@ -223,9 +233,9 @@ class ConfirmSubscriptionTests(TestCase):
         )
 
         response = self.client.get(self.url)
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Your confirmation link has expired, please try again.' in str(msg)
             for msg in messages
@@ -235,7 +245,8 @@ class ConfirmSubscriptionTests(TestCase):
 
     def test_subscription_confirmation_with_invalid_token(self):
         """
-        Tests a confirmation attempt with an invalid token.
+        Tests a confirmation attempt with an invalid token. An
+        instance of :model:`support.Subscriber` is created for this test.
         """
         token_creation = timezone.now()
         subscriber = Subscriber.objects.create(
@@ -251,9 +262,9 @@ class ConfirmSubscriptionTests(TestCase):
         )
 
         response = self.client.get(self.url)
+        messages = list(get_messages(response.wsgi_request))
 
         # Assertions
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Invalid token' in str(msg)
             for msg in messages
@@ -264,7 +275,7 @@ class ConfirmSubscriptionTests(TestCase):
 class ConfirmUnsubscriptionTests(TestCase):
     def setUp(self):
         """
-        Create subsciber with token and client.
+        Create client and instance of :model:`support.Subscriber` for tests.
         """
         self.client = Client()
         self.subscriber = Subscriber.objects.create(
@@ -283,8 +294,9 @@ class ConfirmUnsubscriptionTests(TestCase):
                 args=[self.subscriber.id, self.subscriber.token]
             )
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'You have been unsubscribed' in str(msg)
             for msg in messages
@@ -300,8 +312,9 @@ class ConfirmUnsubscriptionTests(TestCase):
                 args=[self.subscriber.id, 'wrong-token']
             )
         )
-        # Assertions
         messages = list(get_messages(response.wsgi_request))
+
+        # Assertions
         self.assertTrue(any(
             'The was an error please contact admin' in str(msg)
             for msg in messages
@@ -316,6 +329,8 @@ class PrivacyTests(TestCase):
         self.client = Client()
         self.url = reverse('privacy')
         response = self.client.get(self.url)
+
+        # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'Privacy Statement')
 
@@ -328,6 +343,8 @@ class ReturnsTests(TestCase):
         self.client = Client()
         self.url = reverse('returns')
         response = self.client.get(self.url)
+
+        # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'Returns Policy')
 
@@ -340,5 +357,7 @@ class TermsTests(TestCase):
         self.client = Client()
         self.url = reverse('terms')
         response = self.client.get(self.url)
+
+        # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'Terms and Conditions')

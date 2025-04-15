@@ -1,5 +1,7 @@
 from datetime import timedelta
 
+from itsdangerous import URLSafeTimedSerializer
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -8,8 +10,6 @@ from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.html import strip_tags
 from django.views.decorators.http import require_POST
-
-from itsdangerous import URLSafeTimedSerializer
 
 from .forms import ContactForm, SubscriberForm
 from .models import Faqs, FaqsTopics, Subscriber
