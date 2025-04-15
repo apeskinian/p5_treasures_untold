@@ -962,6 +962,7 @@ omit =
     manage.py
     __init__.py
     settings.py
+    env.py
 ```
 
 To run the tests and get the report I ran the following commands:
@@ -977,7 +978,65 @@ I could then click on the link in the terminal to open the report.
 
 Below are the results from the full coverage report on my application that I've tested:
 
-![Coverage Report](documentation/testing/unit_testing/ "coverage report")
+![Coverage Report](documentation/testing/unit_testing/coverage_report.png "coverage report")
+
+Below are the results from the various apps on my application that I've tested:
+
+| App | File | Coverage | Screenshot |
+| --- | --- | --- | --- |
+| basket | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_admin.png "individual coverage report") |
+| basket | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_apps.png "individual coverage report") |
+| basket | context.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_contexts.png "individual coverage report") |
+| basket | clear_abandoned_sessions.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_clear_abandoned_sessions.png "individual coverage report") |
+| basket | middleware.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_middleware.png "individual coverage report") |
+| basket | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_models.png "individual coverage report") |
+| basket | basket_tools.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_basket_tools.png "individual coverage report") |
+| basket | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_urls.png "individual coverage report") |
+| basket | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_basket_views.png "individual coverage report") |
+| checkout | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_admin.png "individual coverage report") |
+| checkout | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_apps.png "individual coverage report") |
+| checkout | forms.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_forms.png "individual coverage report") |
+| checkout | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_models.png "individual coverage report") |
+| checkout | signals.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_signals.png "individual coverage report") |
+| checkout | checkout_tools.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_checkout_tools.png "individual coverage report") |
+| checkout | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_urls.png "individual coverage report") |
+| checkout | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_views.png "individual coverage report") |
+| checkout | webhook_handler.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_webhook_handler.png "individual coverage report") |
+| checkout | webhooks.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_checkout_webhooks.png "individual coverage report") |
+| home | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_home_admin.png "individual coverage report") |
+| home | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_home_apps.png "individual coverage report") |
+| home | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_home_models.png "individual coverage report") |
+| home | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_home_urls.png "individual coverage report") |
+| home | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_home_views.png "individual coverage report") |
+| products | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_admin.png "individual coverage report") |
+| products | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_apps.png "individual coverage report") |
+| products | contexts.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_contexts.png "individual coverage report") |
+| products | forms.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_forms.png "individual coverage report") |
+| products | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_models.png "individual coverage report") |
+| products | signals.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_signals.png "individual coverage report") |
+| products | product_tags.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_product_tags.png "individual coverage report") |
+| products | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_urls.png "individual coverage report") |
+| products | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_views.png "individual coverage report") |
+| products | widgets.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_products_widgets.png "individual coverage report") |
+| profiles | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_profiles_admin.png "individual coverage report") |
+| profiles | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_profiles_apps.png "individual coverage report") |
+| profiles | forms.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_profiles_forms.png "individual coverage report") |
+| profiles | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_profiles_models.png "individual coverage report") |
+| profiles | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_profiles_urls.png "individual coverage report") |
+| profiles | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_profiles_views.png "individual coverage report") |
+| staff | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_staff_admin.png "individual coverage report") |
+| staff | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_staff_apps.png "individual coverage report") |
+| staff | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_staff_models.png "individual coverage report") |
+| staff | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_staff_urls.png "individual coverage report") |
+| staff | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_staff_views.png "individual coverage report") |
+| support | admin.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_admin.png "individual coverage report") |
+| support | apps.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_apps.png "individual coverage report") |
+| support | context.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_contexts.png "individual coverage report") |
+| support | forms.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_forms.png "individual coverage report") |
+| support | models.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_models.png "individual coverage report") |
+| support | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_urls.png "individual coverage report") |
+| support | views.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_support_views.png "individual coverage report") |
+| treasures_untold | urls.py | 100% | ![Individual Coverage Report](documentation/testing/unit_testing/coverage_treasures_untold_urls.png "individual coverage report") |
 
 #### Unit Test Issues
 
