@@ -4,18 +4,18 @@ from django.conf import settings
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import TestCase, RequestFactory
 
-from products.models import Product, Realm
 from ..contexts import basket_contents
+from products.models import Product, Realm
 
 
 class BasketContentsTest(TestCase):
     def setUp(self):
         """
-        Set up request, realm and products for test.
+        Set up request and create instances of :model:`products.Realm` and
+        :model:`products.Product` for tests.
         """
         # Create a mock request
         self.factory = RequestFactory()
-
         # Create test realm
         self.agrabah = Realm.objects.create(
             name='Agrabah',
@@ -23,7 +23,6 @@ class BasketContentsTest(TestCase):
         self.atlantica = Realm.objects.create(
             name='Atlantica',
         )
-
         # Create test products
         self.product1 = Product.objects.create(
             id=1,
@@ -90,6 +89,7 @@ class BasketContentsTest(TestCase):
 
         context = basket_contents(request)
 
+        # Assertions
         self.assertEqual(len(context['basket_items']), 2)
         self.assertEqual(context['rewards'], [])
         self.assertEqual(context['original_total'], Decimal(0))
@@ -111,6 +111,7 @@ class BasketContentsTest(TestCase):
 
         context = basket_contents(request)
 
+        # Assertions
         self.assertEqual(len(context['basket_items']), 1)
         self.assertEqual(context['rewards'], 'bibbidi-bobbidi-boo')
         self.assertEqual(context['original_total'], Decimal(50))
@@ -138,13 +139,13 @@ class BasketContentsTest(TestCase):
 
         context = basket_contents(request)
 
+        # Assertions
         # Check that only first three products prices are 0
         for index, (item) in enumerate(context['basket_items']):
             if index < 3:
                 self.assertEqual(item['product'].price, Decimal(0))
             else:
                 self.assertEqual(item['product'].price, Decimal(10))
-
         # Check context
         self.assertEqual(len(context['basket_items']), 4)
         self.assertEqual(context['rewards'], 'magic-lamp')
@@ -173,13 +174,13 @@ class BasketContentsTest(TestCase):
 
         context = basket_contents(request)
 
+        # Assertions
         # Check that items from Agrabah are now free
         for item in context['basket_items']:
             if item['product'].realm.name == 'Agrabah':
                 self.assertEqual(item['product'].price, Decimal(0))
             if item['product'].realm.name != 'Agrabah':
                 self.assertEqual(item['product'].price, Decimal(10))
-
         # Check context
         self.assertEqual(len(context['basket_items']), 4)
         self.assertEqual(context['rewards'], 'cave-of-wonders')
