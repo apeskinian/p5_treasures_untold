@@ -85,7 +85,7 @@ class ProductForm(forms.ModelForm):
             try:
                 realm_obj, created = (
                     Realm.objects.get_or_create(
-                        name=new_realm_name,
+                        name=new_realm_name.replace(' ', '_'),
                         the_prefix_required=new_realm_prefix
                     )
                 )
@@ -189,7 +189,9 @@ class RealmForm(forms.ModelForm):
         - instance: The form instance with `name` field updated to have
               spaces replaced with underscores.
         """
+        print('CALLED')
         instance = super().save(commit=False)
+        print(instance)
         if instance.name:
             instance.name = instance.name.replace(' ', '_')
 
