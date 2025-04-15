@@ -1,7 +1,7 @@
+from cloudinary.uploader import destroy
+
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-
-from cloudinary.uploader import destroy
 
 from .models import Product
 

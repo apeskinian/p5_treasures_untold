@@ -1,12 +1,17 @@
-from django.test import TestCase, RequestFactory
 from unittest.mock import Mock
 
+from django.test import TestCase, RequestFactory
+
 from products.models import Product
+
 from ..admin import ProductAdmin
 
 
 class RestockProductAdminActionTest(TestCase):
     def setUp(self):
+        """
+        Create request and instances of :model:`products.Product` for tests.
+        """
         # Create request.
         self.factory = RequestFactory()
         self.request = self.factory.get('/')

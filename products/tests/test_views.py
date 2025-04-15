@@ -1,10 +1,10 @@
 from datetime import datetime
+from unittest.mock import patch
 
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.test import TestCase, Client
 from django.urls import reverse
-from unittest.mock import patch
 
 from ..models import Realm, Product
 
@@ -12,7 +12,10 @@ from ..models import Realm, Product
 class AllProductsTests(TestCase):
     def setUp(self):
         """
-        Create test realms, products and client.
+        Create client, url and instances of:
+        - :model:`products.Realm`
+        - :model:`products.Product`
+        for tests.
         """
         self.realm1 = Realm.objects.create(name='Hereington')
         self.realm2 = Realm.objects.create(name='There_Without')
@@ -57,6 +60,7 @@ class AllProductsTests(TestCase):
         Testing the all products view renders the template and context.
         """
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
@@ -73,7 +77,6 @@ class AllProductsTests(TestCase):
             .distinct.return_value.order_by.return_value = [
                 {'added_date': recent_date}
             ]
-
         # Mock products to return products with the recent date
         mock_filter = patch('products.models.Product.objects.filter')
         mock_filter.return_value = Product.objects.filter(
@@ -83,6 +86,7 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'new': ''}
         )
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
@@ -98,6 +102,7 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'new': ''}
         )
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
@@ -110,10 +115,11 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'sort': 'name', 'direction': 'asc'}
         )
+        products = response.context['products']
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
-        products = response.context['products']
         self.assertEqual(products.first(), self.product2)
         self.assertEqual(products.last(), self.product1)
 
@@ -125,10 +131,11 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'sort': 'realm', 'direction': 'desc'}
         )
+        products = response.context['products']
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
-        products = response.context['products']
         self.assertEqual(products.first(), self.product4)
         self.assertEqual(products.last(), self.product1)
 
@@ -140,10 +147,11 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'stock': 'in'}
         )
+        products = response.context['products']
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
-        products = response.context['products']
         self.assertEqual(products.first(), self.product2)
         self.assertEqual(products.last(), self.product4)
 
@@ -155,10 +163,11 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'stock': 'out'}
         )
+        products = response.context['products']
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
-        products = response.context['products']
         self.assertEqual(products.first(), self.product1)
         self.assertEqual(products.last(), self.product3)
 
@@ -170,10 +179,11 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'realm': 'There_Without'}
         )
+        products = response.context['products']
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
-        products = response.context['products']
         self.assertEqual(products.first(), self.product4)
         self.assertEqual(products.last(), self.product3)
 
@@ -185,10 +195,11 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'q': 'girl'}
         )
+        products = response.context['products']
+
         # Assertions
         self.assertTemplateUsed(response, 'products/products.html')
         self.assertIn('products', response.context)
-        products = response.context['products']
         self.assertEqual(products.first(), self.product2)
         self.assertEqual(products.last(), self.product3)
 
@@ -199,9 +210,10 @@ class AllProductsTests(TestCase):
         response = self.client.get(
             self.url, {'q': '  '}
         )
+        messages = list(get_messages(response.wsgi_request))
+
         # Assertions
         self.assertRedirects(response, reverse('products'))
-        messages = list(get_messages(response.wsgi_request))
         self.assertTrue(any(
             'Your spell needs a little more magic,' in str(msg)
             for msg in messages
@@ -212,7 +224,9 @@ class AllProductsTests(TestCase):
         self, mock_activate_reward
     ):
         """
-        Blank search terms are ignored and a message is sent to the user.
+        Test for activation of 'Bibbidi-Bobbidi-Boo' discount reward when a
+        looged in user searches for the correct term. An instance of
+        :model:`auth.User` is created for this test.
         """
         # Create client, user and urls.
         self.client = Client()
@@ -228,13 +242,17 @@ class AllProductsTests(TestCase):
             {'q': 'bibbidi-bobbidi-boo'},
             HTTP_REFERER='http://example.com/origin/'
         )
+
+        # Assertions
         mock_activate_reward.assert_called_once()
 
 
 class ProductDetailTests(TestCase):
     def test_product_detail_view(self):
         """
-        Test the view for a product detail page.
+        Test the view for a product detail page. Client, url and instances
+        of :model:`products.Realm` and :model:`products.Product` are created
+        for this test.
         """
         self.realm1 = Realm.objects.create(name='Hereington')
         self.product1 = Product.objects.create(
@@ -250,6 +268,7 @@ class ProductDetailTests(TestCase):
         self.url = reverse('product_detail', args=[self.product1.id])
 
         response = self.client.get(self.url)
+
         # Assertions
         self.assertTemplateUsed(response, 'products/product_detail.html')
         self.assertIn('product', response.context)
@@ -267,6 +286,7 @@ class ActivateRewardTests(TestCase):
         )
 
         response = self.client.get(self.url)
+
         # Assertions
         self.assertEqual(response.status_code, 404)
 
@@ -278,8 +298,9 @@ class ActivateRewardTests(TestCase):
         self.url = reverse('activate_reward', args=['activate', 'magic-lamp'])
 
         response = self.client.get(self.url)
-        # Assertions
         session = self.client.session
+
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn('magic-lamp', session.get('rewards', []))
 
@@ -296,8 +317,9 @@ class ActivateRewardTests(TestCase):
         self.url = reverse('activate_reward', args=['activate', 'magic-lamp'])
 
         response = self.client.get(self.url)
-        # Assertions
         session = self.client.session
+
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertIn('magic-lamp', session.get('rewards', []))
 
@@ -315,7 +337,8 @@ class ActivateRewardTests(TestCase):
         )
 
         response = self.client.get(self.url)
-        # Assertions
         session = self.client.session
+
+        # Assertions
         self.assertEqual(response.status_code, 200)
         self.assertNotIn('magic-lamp', session.get('rewards', []))

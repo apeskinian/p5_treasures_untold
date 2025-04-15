@@ -10,4 +10,6 @@ class ProductTagsTest(TestCase):
         """
         input = 'The_Test_to_Remove_Underscores'
         expected = 'The Test to Remove Underscores'
+
+        # Assertions
         self.assertEqual(friendly_name(input), expected)

@@ -1,25 +1,30 @@
-from django.test import TestCase
 from unittest.mock import patch
 
-from ..forms import RealmForm, ProductForm
+from django.test import TestCase
+
 from products.models import Realm
+
+from ..forms import RealmForm, ProductForm
 
 
 class RealmFormTests(TestCase):
     def setUp(self):
         """
-        Create test form.
+        Create an instance of :form:`products.RealmForm` for tests.
         """
         self.form = RealmForm()
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the instance of :form:`products.RealmForm` has the
+        expected fields.
         """
         expected_fields = [
             'name',
             'the_prefix_required'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_save_method(self):
@@ -29,18 +34,17 @@ class RealmFormTests(TestCase):
         # Create form data.
         form_data = {'name': 'Test Realm Name'}
         form = RealmForm(data=form_data)
-        # Assertion for form validation.
-        self.assertTrue(form.is_valid())
-        # Save the form.
         saved_instance = form.save(commit=True)
-        # Assertion for name replacement.
+
+        # Assertions
         self.assertEqual(saved_instance.name, 'Test_Realm_Name')
 
 
 class ProductFormTests(TestCase):
     def setUp(self):
         """
-        Create test form.
+        Create instaces of :model:`products.Realm` and
+        :form:`products.RealmForm` for the tests.
         """
         # Create test realms.
         self.realm_a = Realm.objects.create(name='Realm_A')
@@ -50,7 +54,8 @@ class ProductFormTests(TestCase):
 
     def test_for_fields(self):
         """
-        Check the form has the expected fields.
+        Check the instance of :form:`products.RealmForm` has the
+        expected fields.
         """
         expected_fields = [
             'name',
@@ -63,12 +68,15 @@ class ProductFormTests(TestCase):
             'new_realm',
             'new_realm_prefix'
         ]
+
+        # Assertions
         self.assertEqual(list(self.form.fields.keys()), expected_fields)
 
     def test_placeholder_for_price(self):
         """
         Check placeholder for price field.
         """
+        # Assertions
         self.assertEqual(
             self.form.fields['price'].widget.attrs.get('placeholder'),
             '£'
@@ -85,12 +93,13 @@ class ProductFormTests(TestCase):
             (1, 'Realm A'),
             (2, 'Realm B')
         ]
-        # Assertion
+
+        # Assertions
         self.assertEqual(realm_choices, expected_choices)
 
     def test_save_method_with_new_realm(self):
         """
-        Testing the save method with valid new realm data.
+        Testing the save method creates and applies a new realm.
         """
         # Create form data.
         form_data = {
@@ -102,12 +111,11 @@ class ProductFormTests(TestCase):
             'new_realm': 'Realm C'
             }
         form = ProductForm(data=form_data)
-        # Assertion for form validation.
-        self.assertTrue(form.is_valid())
-        # Save the form.
         saved_instance = form.save(commit=True)
-        # Assertion for name replacement.
-        self.assertEqual(str(saved_instance.realm), 'Realm C')
+
+        # Assertions
+        self.assertTrue(Realm.objects.filter(name='Realm_C').exists())
+        self.assertEqual(str(saved_instance.realm), 'Realm_C')
 
     def test_save_method_with_invalid_new_realm(self):
         """
@@ -129,11 +137,10 @@ class ProductFormTests(TestCase):
         ):
             # Create form and assert validity.
             form = ProductForm(data=form_data)
-            self.assertTrue(form.is_valid())
             instance = form.save(commit=True)
-            self.assertIsNotNone(instance)
 
             # Assertions for errors.
+            self.assertIsNotNone(instance)
             self.assertIn('realm', form.errors)
             self.assertIn('An error occured:', form.errors['realm'][0])
 
@@ -161,7 +168,8 @@ class ProductFormTests(TestCase):
     def test_clean_method_new_selected_exception_for_placeholder(self):
         """
         Testing the clean method for new realm selection exception
-        handling.
+        handling by simulating an exception when assigning the placeholder
+        realm.
         """
         # Create form data.
         form_data = {
@@ -180,7 +188,7 @@ class ProductFormTests(TestCase):
             # Create form.
             form = ProductForm(data=form_data)
 
-            # Assertions for errors.
+            # Assertions
             self.assertFalse(form.is_valid())
             self.assertIn('realm', form.errors)
             self.assertIn(
@@ -201,17 +209,15 @@ class ProductFormTests(TestCase):
             'stock': '4',
             }
         form = ProductForm(data=form_data)
-        # Assertion for form validation.
-        self.assertTrue(form.is_valid())
-        # Save the form.
         saved_instance = form.save(commit=True)
-        # Assertion for name replacement.
+
+        # Assertions
         self.assertEqual(str(saved_instance.realm), 'Realm_B')
 
     def test_clean_method_exception_for_existing_realm(self):
         """
         Testing the clean method for choosing an existing realm exception
-        handling.
+        handling. The exception is simulated in `objects.get()`
         """
         # Create form data.
         form_data = {
@@ -229,7 +235,7 @@ class ProductFormTests(TestCase):
             # Create form.
             form = ProductForm(data=form_data)
 
-            # Assertions for errors.
+            # Assertions
             self.assertFalse(form.is_valid())
             self.assertIn('realm', form.errors)
             self.assertIn(

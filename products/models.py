@@ -1,14 +1,14 @@
 import uuid
 
+from cloudinary.models import CloudinaryField
+from cloudinary.utils import cloudinary_url
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models.functions import Lower
 from django.templatetags.static import static
-
-from cloudinary.models import CloudinaryField
-from cloudinary.utils import cloudinary_url
 
 
 class Realm(models.Model):

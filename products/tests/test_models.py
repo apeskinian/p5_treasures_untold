@@ -1,7 +1,8 @@
-from django.core.exceptions import ValidationError
-from django.test import TestCase, override_settings
 from unittest.mock import patch, MagicMock
+
+from django.core.exceptions import ValidationError
 from django.templatetags.static import static
+from django.test import TestCase, override_settings
 
 from ..models import Realm, Product
 
@@ -9,7 +10,7 @@ from ..models import Realm, Product
 class ReamModelTests(TestCase):
     def setUp(self):
         """
-        Create a realm for testing.
+        Create an instance of :model:`products.Realm` for testing.
         """
         self.test_realm = Realm.objects.create(
             name='Test_Realm'
@@ -19,19 +20,23 @@ class ReamModelTests(TestCase):
         """
         Test to check the return string.
         """
+        # Assertions
         self.assertEqual(str(self.test_realm), 'Test_Realm')
 
     def test_display_name(self):
         """
-        Testing display name creation.
+        Testing display name creation returns the name with undescores
+        replaced with spaces.
         """
+        # Assertions
         self.assertEqual(self.test_realm.display_name(), 'Test Realm')
 
 
 class ProductModelTests(TestCase):
     def setUp(self):
         """
-        Create test realm and products.
+        Create instances of :model:`products.Realm` and
+        :model:`products.Product` for tests.
         """
         self.test_realm = Realm.objects.create(
             name='Test_Realm'
@@ -58,14 +63,16 @@ class ProductModelTests(TestCase):
 
     def test_name_return(self):
         """
-        Test the string return.
+        Test the string return for a product.
         """
         self.assertEqual(str(self.product1), 'test product 1')
 
     def test_realma_name(self):
         """
-        Test realm name returned.
+        Test realm name returned for a product, this shoul have underscores
+        replaced with spaces.
         """
+        # Assertions
         self.assertEqual(self.product1.realm_name(), 'Test Realm')
 
     @override_settings(DEBUG=True)
@@ -74,6 +81,8 @@ class ProductModelTests(TestCase):
         Test image_url for placeholder images with debug on.
         """
         self.product1.image = 'placeholder'
+
+        # Assertions
         self.assertEqual(
             self.product1.image_url, static('images/dev_placeholder.png')
         )
@@ -84,6 +93,8 @@ class ProductModelTests(TestCase):
         Test image_url for custom images with debug on.
         """
         self.product1.image = 'custom_image'
+
+        # Assertions
         self.assertEqual(
             self.product1.image_url, static(
                 f'images/dev_mode/{self.product1.sku}.png'
@@ -96,6 +107,8 @@ class ProductModelTests(TestCase):
         Test image_url for custom images with debug off.
         """
         self.product1.image = 'placeholder'
+
+        # Assertions
         self.assertEqual(
             self.product1.image_url, static('images/placeholder.png')
         )
@@ -114,7 +127,7 @@ class ProductModelTests(TestCase):
             'https://res.cloudinary.com/test_url'
         ]
 
-        # Asserstions.
+        # Asserstions
         self.assertEqual(
             self.product1.image_url,
             'https://res.cloudinary.com/test_url'
@@ -131,8 +144,8 @@ class ProductModelTests(TestCase):
 
     def test_unique_stock_exception_handling_on_clean(self):
         """
-        Test the model clean method to handle stock more than one for unique
-        products.
+        Test the model clean method to handle errors when stock is set to
+        more than one for unique products.
         """
         with self.assertRaises(ValidationError):
             self.product2.clean()

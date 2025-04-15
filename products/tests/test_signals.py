@@ -1,5 +1,6 @@
-from django.test import TestCase
 from unittest.mock import MagicMock, patch
+
+from django.test import TestCase
 
 from ..models import Product
 
@@ -7,7 +8,8 @@ from ..models import Product
 class ProductsSignalTests(TestCase):
     def setUp(self):
         """
-        Create products and images with public ids.
+        Create instances of :model:`products.Product` and images with
+        public ids for tests.
         """
         # Create product
         self.product1 = Product.objects.create(
@@ -42,6 +44,8 @@ class ProductsSignalTests(TestCase):
         'placheholder'
         """
         self.product1.delete()
+
+        # Assertions
         mock_destroy.assert_called_once_with('test_public_id')
 
     @patch('products.signals.destroy')
@@ -51,4 +55,6 @@ class ProductsSignalTests(TestCase):
         method is not called.
         """
         self.product2.delete()
+
+        # Assertions
         mock_destroy.assert_not_called()

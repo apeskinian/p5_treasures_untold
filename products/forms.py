@@ -189,9 +189,7 @@ class RealmForm(forms.ModelForm):
         - instance: The form instance with `name` field updated to have
               spaces replaced with underscores.
         """
-        print('CALLED')
         instance = super().save(commit=False)
-        print(instance)
         if instance.name:
             instance.name = instance.name.replace(' ', '_')
 
