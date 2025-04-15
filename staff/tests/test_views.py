@@ -27,7 +27,8 @@ from support.models import (
 class DashboardTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in.
         """
         self.client = Client()
         self.staff_user = User.objects.create_user(
@@ -53,8 +54,9 @@ class DashboardTests(TestCase):
 class FaqAdminTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create instances of
-        :model:`support.Faqs` and :model:`support.FaqsTopics` for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also create instances of :model:`support.Faqs` and
+        :model:`support.FaqsTopics` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -375,8 +377,9 @@ class FaqAdminTests(TestCase):
 class ProductAdminTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create instances of
-        :model:`products.Realm` and :model:`products.Product` for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also create instances of :model:`products.Realm` and
+        :model:`products.Product` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -562,8 +565,8 @@ class ProductAdminTests(TestCase):
 class RealmAdminTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create instance of
-        :model:`products.Realm` for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also create instance of :model:`products.Realm` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -729,8 +732,9 @@ class RealmAdminTests(TestCase):
 class ManageMessageTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create instance of
-        :model:`support.ContactMessage` for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also create instance of :model:`support.ContactMessage`
+        for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -867,9 +871,9 @@ class ManageMessageTests(TestCase):
 class ManageNewslettersTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also creates instances of
-        :model:`support.Newsletter` and :model:`support.Subscriber`
-        for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also creates instances of :model:`support.Newsletter` and
+        :model:`support.Subscriber` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -1036,9 +1040,9 @@ class ManageNewslettersTests(TestCase):
 class ManageSubscriberTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create instance of
-        :model:`support.Newsletter` and :model:`support.Subscriber`
-        for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also create instance of :model:`support.Newsletter` and
+        :model:`support.Subscriber` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -1115,9 +1119,9 @@ class ManageSubscriberTests(TestCase):
 class ManageExpiredSubscriberTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in. Also create instances of
-        :model:`support.Newsletter` and :model:`support.Subscriber`
-        for testing.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in. Also create instances of :model:`support.Newsletter` and
+        :model:`support.Subscriber` for testing.
         """
         # Creating staff user and logging in.
         self.client = Client()
@@ -1224,7 +1228,8 @@ class ManageExpiredSubscriberTests(TestCase):
 class CancelActionTests(TestCase):
     def setUp(self):
         """
-        Create staff user for tests and log in.
+        Create instance of :model:`auth.User` set as staff for tests and
+        log in.
         """
         # Creating staff user and logging in.
         self.client = Client()
