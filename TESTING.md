@@ -201,6 +201,7 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | staff | [models.py](staff/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/staff/models.py) | ![Python Validation](documentation/testing/validation/python/staff_app/valid_staff_models.png "Valid models.py") | All clear, no errors found. |
 | staff | [urls.py](staff/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/staff/urls.py) | ![Python Validation](documentation/testing/validation/python/staff_app/valid_staff_urls.png "Valid urls.py") | All clear, no errors found. |
 | staff | [views.py](staff/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/staff/views.py) | ![Python Validation](documentation/testing/validation/python/staff_app/valid_staff_views.png "Valid views.py") | All clear, no errors found. |
+| staff/tests | [test_views.py](staff/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/apeskinian/p5_treasures_untold/main/staff/tests/test_views.py) | ![Python Validation](documentation/testing/validation/python/staff_app/valid_staff_test_views.png "Valid test_views.py") | All clear, no errors found. |
 
 #### Support App Files
 | Directory | File | URL | Screenshot | Notes |
