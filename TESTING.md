@@ -1040,11 +1040,11 @@ Below are the results from the various apps on my application that I've tested:
 
 #### Unit Test Issues
 
-⚠️ INSTRUCTIONS ⚠️
+##### Realm Nonetype
+- The Product model permits the realm field to be null, ensuring that products remain intact even if their associated realm is deleted. However, this led to an edge case where adding a product without a realm to the basket caused the app to crash. The issue stemmed from the “Cave of Wonders” reward logic, which assumed every product had a realm and did not account for null values. This exception was documented and resolved in [issue #83](https://github.com/apeskinian/p5_treasures_untold/issues/83).
 
-Use this section to list any known issues you ran into while writing your Python unit tests. Remember to include screenshots (where possible), and a solution to the issue (if known). This can be used for both "fixed" and "unresolved" issues. Remove this sub-section entirely if you somehow didn't run into any issues while working with your tests.
-
-⚠️ --- END --- ⚠️
+##### Realm Creation
+- The save method of the RealmForm overrides the name field to replace spaces with underscores. However, during unit testing, it was discovered that when a new realm is created indirectly through the creation of a new product, this transformation does not occur. This inconsistency was documented and resolved in [issue #84](https://github.com/apeskinian/p5_treasures_untold/issues/84).
 
 ## Bugs
 
