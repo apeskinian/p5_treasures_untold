@@ -1669,7 +1669,7 @@ class Realm(models.Model):
     - `display_name()`: Formats the `name` field by replacing underscores
         with spaces for a more human-readable display.
     """
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
     the_prefix_required = models.BooleanField(default=False)
 ```
 
@@ -1704,7 +1704,7 @@ class Product(models.Model):
     class Meta:
         ordering = [Lower('realm__name')]
 
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
     realm = models.ForeignKey(
         'Realm', null=True, blank=True, on_delete=models.SET_NULL,
         related_name='product_realm'
@@ -1922,7 +1922,7 @@ class ContactMessage(models.Model):
     replied = models.BooleanField(default=False)
     date_received = models.DateField(auto_now_add=True)
     date_replied = models.DateField(null=True, blank=True)
-    reply = models.TextField(null=True, blank=True)
+    reply = models.TextField(null=True, blank=False)
 ```
 
 ```python
@@ -1944,9 +1944,11 @@ class FaqsTopics(models.Model):
     """
     class Meta:
         verbose_name_plural = 'FAQ Topics'
-        ordering = ['sort_order',]
+        ordering = ['sort_order', ]
 
-    name = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(
+        max_length=100, null=False, blank=False, unique=True
+    )
     sort_order = models.PositiveIntegerField(default=100)
 ```
 
@@ -1971,12 +1973,14 @@ class Faqs(models.Model):
     """
     class Meta:
         verbose_name_plural = 'FAQs'
-        ordering = ['topic', 'sort_order',]
+        ordering = ['topic', 'sort_order', ]
 
     topic = models.ForeignKey(
         FaqsTopics, on_delete=models.CASCADE, related_name='faq_topic'
     )
-    question = models.CharField(max_length=254, null=False, blank=False)
+    question = models.CharField(
+        max_length=254, null=False, blank=False, unique=True
+    )
     answer = models.TextField()
     sort_order = models.PositiveIntegerField(default=100)
 ```
@@ -2072,7 +2076,7 @@ source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to
 
 ### GitHub Projects
 
-[GitHub Projects](https://github.com/users/apeskinian/projects/8) served as an Agile tool for this project. Through it, EPICs, User Stories, issues/bugs, and Milestone tasks were planned, then subsequently tracked on a regular basis using the Kanban project board.
+[GitHub Projects](https://github.com/users/apeskinian/projects/8) served as an Agile tool for this project. Through it, User Stories, issues/bugs, and Milestone tasks were planned, then subsequently tracked on a regular basis using the Kanban project board.
 
 ![Agile Tracker](documentation/agile/agile_tracker.png "Project Tracker")
 
