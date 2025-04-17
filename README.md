@@ -2530,7 +2530,7 @@ There are no remaining major differences between the local version when compared
 | [CSS Marquee Examples](https://codepen.io/hexagoncircle/pen/eYMrGwW) | Base code for homepage marquee |
 | [Privacy Policy](https://www.privacypolicygenerator.info/) | Generating the privacy policy |
 | [Return Policy](https://www.freeprivacypolicy.com/free-return-refund-policy-generator/) | Generating the returns policy |
-| [Terms and Conditions](https://www.termsfeed.com/terms-conditions-generator/) | Generatin the terms and conditions |
+| [Terms and Conditions](https://www.termsfeed.com/terms-conditions-generator/) | Generating the terms and conditions |
 | [Virtual Environments in Visual Studio Code on macOS](https://medium.com/@apartha77/creating-and-using-virtual-environments-in-visual-studio-code-on-macos-0e50fe1b8501) | Creating a venv in macOS |
 | [Colour Contrast Tool](https://dequeuniversity.com/rules/axe/4.10/color-contrast) | Testing colour contrast for lighthouse audits |
 
@@ -2547,7 +2547,7 @@ There are no remaining major differences between the local version when compared
 
 ### Acknowledgements
 
-- I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for his support throughout the development of this project.
+- I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for his support throughout the development of this project. Thank you Tim.
 - I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
 - I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
 - I would like to thank my daughter Niamh, my sisters Laura & Natalie and my whole family for believing in me, and supporting me while making this transition into software development.
