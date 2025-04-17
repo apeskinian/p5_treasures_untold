@@ -473,7 +473,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     A short welcome messages to the site with a link to view all products. If the user is logged in it will address them by their username instead of 'Traveler'.
 
     | Guest Message | User Message |
-    | --- | --- |
+    | :---: | :---: |
     | ![Welcome Message Guest](documentation/features/homepage/homepage_welcome_traveler.png "Welcome message guest") | ![Welcome Message User](documentation/features/homepage/homepage_welcome_user.png "Welcome message user") |
 
     **New Products**
@@ -499,7 +499,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     The filter, sort and search functions for mobile can be found in the extra filter menu on the navigation bar at the bottom of the view. For desktop users, the sort and filter controls are to the left of the displayed products and the search bar can be found in the navigation panel accessed via the burger menu icon.
 
-    To clear all searches, sort orders or filters the user can tap/click on the clear button to show all products again.
+    To clear all searches, sort orders or filters, the user can click on the clear button to show all products again.
 
     Any items that are out of stock or sold are shown at the bottom of the page, their image is desaturated and the price is replaced with the text 'SOLD' if the item is unique or 'OUT OF STOCK' if not.
 
@@ -507,7 +507,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![SOLD and OUT OF STOCK](documentation/features/product_details/unavailable_items.png "unavailable items") |
 
-    To view a product in more detail the user can tap/click on the product image. Products that are sold or out of stock can still be viewed in more detail.
+    To view a product in more detail the user can click on the product image. Products that are sold or out of stock can still be viewed in more detail.
 
     | Mobile | Desktop |
     | --- | --- |
@@ -523,7 +523,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Sold Items | ![Mobile sold products](documentation/features/viewing_products/mobile_sold.png "Mobile sold products") | ![Desktop sold products](documentation/features/viewing_products/desktop_sold.png "Desktop sold products") |
 
 - ### Viewing Product Details
-    By clicking on a products image the user is show the product in more detail including:
+    By clicking on a product's image the user is shown the product in more detail including:
     - Larger image
     - Name
     - Realm (also a link to show all products from that realm)
@@ -531,7 +531,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - Cost
     - Availablity
     - A quantity input if the item is not unique
-    - If the user is logged in an 'Add to Basket' button is shown otherwise 'Log In' and 'Sign Up' buttons are shown. With a message to say you need to log in to add items to the basket.
+    - If the user is logged in, an 'Add to Basket' button is shown otherwise 'Log In' and 'Sign Up' buttons are shown. With a message to say you need to log in to add items to the basket.
     - A live timer counting down to 5pm local time for same day dispatch. If the time is past 5pm, the timer then counts to 5pm the following day and the message changes appropriately.
     - A button to return to the previous product page, this includes any search, sort or filters that were active at the time.
 
