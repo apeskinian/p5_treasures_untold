@@ -12,7 +12,7 @@ Wouldn't you think your collection's complete?
 
 **No!** You can always find something more to add to your magical collection at Treasures Untold!
 
-Treasures Untold is an e-commerce solution to selling the rare and difficult to acquire items from some of the most famous realms featured in Disney. From a frying pan to glass slipper, there's a whole trove of products to browse. Items can be filtered, sorted, and searched using the site's easily accessible features. Each product can then be viewed in more detail and added to a shopping basket ready for secure checkout processing using Stripe. For security, users do need to register an account to be able to purchase items but can freely browse as a guest. There are also opportunities to unlock rewards that grant certain perks...
+Treasures Untold is an e-commerce solution to selling the rare and difficult to acquire items from some of the most famous realms featured in Disney. From a frying pan to a glass slipper, there's a whole trove of products to browse. Items can be filtered, sorted, and searched using the site's easily accessible features. Each product can then be viewed in more detail and added to a shopping basket ready for secure checkout processing using Stripe. For security, users do need to register for an account to be able to purchase items but can freely browse as a guest. There are also opportunities to unlock rewards that grant certain perks...
 
 A well featured list of support pages also offers help for users including:
   - **FAQs** page for the common questions that users have.
@@ -67,7 +67,7 @@ A full list of [Features](#features) can be viewed in detail below but essential
 
 **Content Requirements**
 - Product details, including name, price, description, stock level, category, and images.
-- Clear prompts and instructions for browsing, filtering, and purchasing.
+- Easy to navigate, with intuitive browsing, filtering and purchasing.
 - Order details, confirmation pages, and email notifications.
 - Secure payment processing using Stripe.
 - Payment success emails sent to users.
@@ -86,7 +86,7 @@ The account and basket menus are situated to the top right of the screen. The ac
 
 The navigation, account and basket access for mobile users is all done from a menu at the bottom of the screen for easier access on smaller devices.
 
-When viewing products user will be able to filter and sort further using options either to the side of the products for desktop devices or via another filter menu option in the mobile navigation bar. Items can be added to a registered users basket from the product detail page.
+Users can filter and sort products using options located beside the product listings on desktop, or through a filter menu in the mobile navigation bar. Registered users can add items to their basket directly from the product detail page.
 
 The users next step will either be to navigate to the basket view where they can adjust quantities and remove items or go straight to the checkout page to complete their purchase.
 
