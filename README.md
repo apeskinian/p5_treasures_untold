@@ -262,10 +262,10 @@ The action buttons are grouped by colour for specific types of action. This shou
 | User | Capability | Benefit |
 | --- | --- | --- |
 | As a user | I can select how many of a product I wish to buy | so that I can add the amount I need in one process to the basket. |
-| As a user | I can view the basket | so that see the total cost and all the items I have added to it. |
+| As a user | I can view the basket | so that I see the total cost and all the items I have added to it. |
 | As a user | I can adjust the quantity of product from the basket | so that I can easily edit how many I want. |
 | As a user | I can remove an item directly from the basket | so that I can quickly adjust what I'm buying. |
-| As a user | I can easily enter my payment details | so that checkout quickly and hassle free. |
+| As a user | I can easily enter my payment details | so that the checkout process is quick and hassle free. |
 | As a user | I can see an order confirmation after completing a purchase | so that I know the transaction was successful. |
 | As a user | I receive an email confirming my order confirmation and details | so that I know the transaction was successful. |
 | As a developer | I can expand the application to support multiple currencies | so that users can view and complete transactions in their preferred currency, improving accessibility and user experience. |
@@ -276,19 +276,19 @@ The action buttons are grouped by colour for specific types of action. This shou
 | As a user | I can send a message to the shop owner | so that if I have a question or message I can send it directly with my details so that they can get back to me. |
 | As a user | I can view the FAQ on the help and support page | so that I may find the answer to a question I have before sending a message to ask. |
 | As a user | I can sign up to a newsletter | so that I can be informed when new magical items have been found and added to the store for sale. |
-| As a user | I can view the sites privacy policy | so that I can see how my data is stored and used. |
-| As a user | I can view the sites returns policy | so that I can see how the returns process works should I not be happy with a purchase. |
-| As a user | I can view the sites general terms and conditions | so that I can I can understand the rules, policies, and my rights when using the website. |
+| As a user | I can view the site's privacy policy | so that I can see how my data is stored and used. |
+| As a user | I can view the site's returns policy | so that I can see how the returns process works should I not be happy with a purchase. |
+| As a user | I can view the site's general terms and conditions | so that I can I can understand the rules, policies, and my rights when using the website. |
 
 **Admin and store management**
 | User | Capability | Benefit |
 | --- | --- | --- |
-| As a shop owner | I can access a shop admin page | so that they add edit and delete products so that they can keep the catalogue up to date. |
+| As a shop owner | I can access a shop admin page | so that I can add edit and delete products, keeping the catalogue up to date. |
 | As a shop owner | I can add a new product | so that the shop can be updated with new items. |
 | As a shop owner | I can edit products | so that I can update prices, stock levels and keep the catalogue up to date. |
 | As a shop owner | I can delete products from the catalogue | so that I can make sure the catalogue is up to date. |
 | As a shop owner | I can add new questions and answers to the FAQ section of the help and support page | so that site users have the most up to date FAQ. |
-| As a shop owner | I can edit any FAQ entries | so that amend any that I need to. |
+| As a shop owner | I can edit any FAQ entries | so that I can amend any that I need to. |
 | As a shop owner | I can delete FAQ entries | so that I can keep the list up to date by removing any redundant entries. |
 | As a shop owner | I can view the messages sent from the contact us form | so that I can send an initial reply. |
 | As a shop owner | I can manage newsletters including viewing previous newsletters and creating and sending newsletters | so that subscribers can be updated on any offers and news from the site. |
