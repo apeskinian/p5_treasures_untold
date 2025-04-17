@@ -552,6 +552,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     Users can view their baskets in two ways. Via the basket preview or the basket page.
     
     **Basket Preview**
+
     The basket preview is easily accessible from any page via the basket icon on both mobile and desktop navigation. When expanded it provides a summary of the basket contents including:
     - Products with image, name, sku and quantity with total cost for that product
     - Current subtotal
@@ -625,20 +626,20 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - ### User Profile Page
     Registered users can access a profile page where they can view their order history and also update their details that are used for orders during checkout.
 
-    To update their details, users can enter new details into the form and tap/click on the submit button.
+    To update their details, users can enter new details into the form and click on the 'Update Details' button.
 
     | Mobile Profile Page | Desktop Profile Page |
     | --- | --- |
     | ![Mobile Profile Page](documentation/features/profile_page/mobile_profile_page.png "Mobile profile page") | ![Desktop Profile Page](documentation/features/profile_page/desktop_profile_page.png "Desktop profile page") |
 
-    To view details of previous orders, users can tap/click on the relevant order number shown in the table to bring up details of that order.
+    To view details of previous orders, users can click on the relevant order number shown in the table to bring up details of that order.
 
     | Mobile Order History View | Desktop Order History View |
     | --- | --- |
     | ![Mobile Order History](documentation/features/profile_page/mobile_order_history.png "Mobile Order History") | ![Desktop Order History](documentation/features/profile_page/desktop_order_history.png "Desktop order history") |
 
 - ### Support and Help Pages
-    Tresures Untold has the following support pages for users which can be accessed via the navigation menus or the links at the bottom of each page:
+    Treasures Untold has the following support pages for users which can be accessed via the navigation menus or the links at the bottom of each page:
     - FAQs
     - Contact Us
     - Newsletter
@@ -677,13 +678,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Example Acknowledgement Email](documentation/features/support_pages/contact_example_acknowledgement_email.png "Example acknowledgement email") |
 
     ### Newsletter
-    Users can sign up to receive the Treasures Untold newsletter by entering their email into the newsletter form at the bottom of most pages or from the dedicated newsletter page which is accessed via the navigation menus or the links at the bottom of each page.
+    Users can sign up to receive the Treasures Untold newsletter by entering their email into the newsletter form at the bottom of most pages, or from the dedicated newsletter page, which is accessed via the navigation menus or the links at the bottom of each page.
 
     | Newsletter Form | Mobile Newsletter Page | Desktop Newsletter Page |
     | --- | --- | --- |
     | ![Newsletter Form](documentation/features/support_pages/newsletter_form_section.png "Newsletter Form") | ![Mobile Newsletter Page](documentation/features/support_pages/mobile_newsletter_page.png "Mobile newsletter page") | ![Desktop Newsletter Page](documentation/features/support_pages/desktop_newsletter_page.png "Desktop newsletter page") |
 
-    Upon submitting the form the user is given a message informing them that they will receive an email for them to confirm their subsription.
+    Upon submitting the form the user is given a message informing them that they will receive an email for them to confirm their subscription.
 
     | Acknowledgement Message |
     | --- |
@@ -765,7 +766,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Products](documentation/features/dashboard/product_admin/products.png "Products") |
 
-    When the green plus icon is clicked, a prompt is displayed with the input form to create a new product with the following fields:
+    When the green add button is clicked, a prompt is displayed with the input form to create a new product with the following fields:
     - Name
     - Realm
     - Description
@@ -800,7 +801,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Jar of Dirt SKU](documentation/features/product_details/sku_generation.png "sku example") |
     | ![Heart of Te Fiti SKU](documentation/features/product_details/sku_generation_unique.png "sku example") |
 
-    When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
+    When the yellow edit button is clicked, a prompt is displayed prefilled with the selected products details. These can be edited in the same manner as the creation of a new product. If a new image is selected, a preview of the chosen file will show next to the current image.
 
     The user can then save the product by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -808,7 +809,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile Product Update](documentation/features/dashboard/product_admin/mobile_product_update.png "Mobile product update") | ![Desktop Product Update](documentation/features/dashboard/product_admin/desktop_product_update.png "Desktop product update") |
 
-    When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
+    When the red delete button is clicked, a prompt is displayed asking the user to confirm the deletion of the selected product.
 
     The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -821,7 +822,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Realms](documentation/features/dashboard/product_admin/realms.png "Realms") |
 
-    Clicking on the green plus icon in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
+    Clicking on the green add button in the realm table displays the new realm prompt. The user can enter the name of the new realm here. Additionally, there is a checkbox to indicate whether the realm name should include a prefix of ‘The’ in specific grammatical contexts (e.g., ‘The Enchanted Forest’ — where the realm is named Enchanted Forest, but the article ‘The’ is used in certain instances).
 
     The user can then save the new realm by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -829,7 +830,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile Realm Creation](documentation/features/dashboard/product_admin/mobile_realm_add.png "Mobile realm creation") | ![Desktop Realm Creation](documentation/features/dashboard/product_admin/desktop_realm_add.png "Desktop realm creation") |
     
-    When the yellow edit icon is tapped/clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
+    When the yellow edit button is clicked, a prompt is displayed prefilled with the selected realms details. These can be edited in the same manner as the creation of a new realm. The user will also be informed of how many products will be affected by this change.
 
     The user can then save the realm by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -837,7 +838,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile Realm Update](documentation/features/dashboard/product_admin/mobile_realm_update.png "Mobile realm update") | ![Desktop Realm Update](documentation/features/dashboard/product_admin/desktop_realm_update.png "Desktop realm update") |
 
-    When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
+    When the red delete button is clicked, a prompt is displayed asking the user to confirm the deletion of the selected realm. The user will also be informed of how many products will be affected by this deletion.
 
     The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -853,7 +854,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![FAQs](documentation/features/dashboard/faq_admin/faqs.png "FAQs") |
 
-    To create a a FAQ the green plus icon is tapped/clicked, a prompt is displayed with the input form to create a new FAQ with the following fields:
+    To create a a FAQ the green add button is clicked, a prompt is displayed with the input form to create a new FAQ with the following fields:
     - Topic
     - Question
     - Answer
@@ -868,7 +869,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile FAQ Creation](documentation/features/dashboard/faq_admin/mobile_faq_add.png "Mobile faq creation") | ![Desktop FAQ Creation](documentation/features/dashboard/faq_admin/desktop_faq_add.png "Desktop faq creation") |
     
-    To update a FAQ the yellow edit icon is tapped/clicked. A prompt is displayed prefilled with the selected FAQ details. These can be edited in the same manner as the creation of a new FAQ.
+    To update a FAQ the yellow edit button is clicked. A prompt is displayed prefilled with the selected FAQ details. These can be edited in the same manner as the creation of a new FAQ.
 
     The user can then save the FAQ by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -876,7 +877,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile FAQ Update](documentation/features/dashboard/faq_admin/mobile_faq_update.png "Mobile faq update") | ![Desktop FAQ Update](documentation/features/dashboard/faq_admin/desktop_faq_update.png "Desktop faq update") |
 
-    To delete a FAQ the red bin icon is tapped/clicked. A prompt is displayed asking the user to confirm the deletion of the selected FAQ.
+    To delete a FAQ the red delete button is tapped/clicked. A prompt is displayed asking the user to confirm the deletion of the selected FAQ.
 
     The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -889,7 +890,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![FAQ Topics](documentation/features/dashboard/faq_admin/topics.png "FAQ Topics") |
 
-    Clicking on the green plus icon in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
+    Clicking on the green add button in the FAQ Topics table displays the new topic prompt. The user can enter the name of the new topic here.
 
     The user can then save the new topic by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -897,7 +898,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
 
-    To update a topic the user taps/clicks on the yellow edit icon. A prompt is displayed prefilled with the selected topic details. These can be edited in the same manner as the creation of a new topic. The user will also be informed of how many FAQs will be affected by this change.
+    To update a topic the user clicks on the yellow edit button. A prompt is displayed prefilled with the selected topic details. These can be edited in the same manner as the creation of a new topic. The user will also be informed of how many FAQs will be affected by this change.
 
     The user can then save the topic by clicking on the 'Update' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -905,7 +906,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile Topic Update](documentation/features/dashboard/faq_admin/mobile_topic_update.png "Mobile topic update") | ![Desktop Topic Update](documentation/features/dashboard/faq_admin/desktop_topic_update.png "Desktop topic update") |
 
-    When the red bin icon is tapped/clicked, a prompt is displayed asking the user to confirm the deletion of the selected topic. The user will also be informed of how many FAQs will be affected by this deletion.
+    When the red delete button is clicked, a prompt is displayed asking the user to confirm the deletion of the selected topic. The user will also be informed of how many FAQs will be affected by this deletion.
 
     The user can the confirm the deletion by clicking the 'Delete' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
@@ -935,7 +936,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Messages](documentation/features/dashboard/message_admin/messages.png "Messages") |
 
-    To reply to a message the yellow reply icon is tapped/clicked. This will display a message prompt for the staff member to type in. They can then send this by clicking on the 'Reply' button or cancel and return to the dashboard by clicking on the 'Cancel' or modal close buttons.
+    To reply to a message the yellow reply button is clicked. This will display a message prompt for the staff member to type in. They can then send this by clicking on the 'Reply' button or cancel and return to the dashboard by clicking on the 'Cancel' or modal close buttons.
 
     | Mobile Message Reply | Desktop Message Reply |
     | :---: | :---: |
@@ -947,7 +948,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Example Reply Email](documentation/features/dashboard/message_admin/message_reply_email.png "Example reply email") |
 
-    To delete a message the red bin icon can be tapped/clicked. A prompt asking the user to confirm will be displayed. The can then either tap/click on 'Delete' to confirm or return to the dashboard with the 'Cancel' or model close button.
+    To delete a message the red delete button can be clicked. A prompt asking the user to confirm will be displayed. The can then either click on 'Delete' to confirm or return to the dashboard with the 'Cancel' or model close button.
 
     | Mobile Message Delete | Desktop Message Delete |
     | :---: | :---: |
@@ -963,11 +964,11 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Newsletters](documentation/features/dashboard/newsletter_admin/newsletters.png "Newsletters") |
 
-    To create a newsletter the green plus icon is clicked. A prompt is then displayed with the input form to create a newsletter with the following fields:
+    To create a newsletter the green add button is clicked. A prompt is then displayed with the input form to create a newsletter with the following fields:
     - Subject
     - ... (for content)
 
-    To send the newsletter the user taps/clicks on the 'Send' button. An email is then sent to every active subscriber in the list. Newsletter creation can also be cancelled using the 'Cancel' or modal close button to return to the dashboard.
+    To send the newsletter the user clicks on the 'Send' button. An email is then sent to every active subscriber in the list. Newsletter creation can also be cancelled using the 'Cancel' or modal close button to return to the dashboard.
 
     | Mobile Newsletter Creation | Desktop Newsletter Creation |
     | :---: | :---: |
@@ -977,13 +978,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Example Newsletter](documentation/features/support_pages/example_newsletter.png "Example Newsletter") |
 
-    Previously sent newsletters can also be viewed by clicking on the blue open icon next to each newsletter. This will open the newsletter in a prompt. This can be closed with the 'Close' or modal close button to return to the dashboard.
+    Previously sent newsletters can also be viewed by clicking on the blue open button next to each newsletter. This will open the newsletter in a prompt. This can be closed with the 'Close' or modal close button to return to the dashboard.
 
     | Mobile Newsletter View | Desktop Newsletter View |
     | :---: | :---: |
     | ![Mobile Newsletter View](documentation/features/dashboard/newsletter_admin/mobile_newsletter_view.png "Mobile newsletter view") | ![Desktop Newsletter View](documentation/features/dashboard/newsletter_admin/desktop_newsletter_view.png "Desktop newsletter view") |
 
-    Newsletters can also be deleted by clicking on the red bin icon. A prompt will be displayed to confirm the deletion. To confirm deletion the user must tap/click on the 'Delete' button. This can be cancelled with the 'Cancel' or modal close buttons to return to the dashboard.
+    Newsletters can also be deleted by clicking on the red delete button. A prompt will be displayed to confirm the deletion. To confirm deletion the user must click on the 'Delete' button. This can be cancelled with the 'Cancel' or modal close buttons to return to the dashboard.
 
     | Mobile Newsletter Delete | Desktop Newsletter Delete |
     | :---: | :---: |
@@ -1000,14 +1001,14 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: |
     | ![Subscribers](documentation/features/dashboard/newsletter_admin/subscribers.png "Subscribers") |
 
-    Staff members can remove individual subscribers by clicking the red bin icon next to their email address. A confirmation prompt will appear, displaying their current status. To proceed with removal, select ‘Remove.’ To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
+    Staff members can remove individual subscribers by clicking the red delete button next to their email address. A confirmation prompt will appear, displaying their current status. To proceed with removal, select ‘Remove.’ To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
 
     |  | Remove Active Subscriber | Remove Pending Subscriber | Remove Expired Subscriber |
     | :---: | :---: | :---: | :---: |
     | Mobile | ![Mobile Remove Active Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_active.png "Mobile remove active subscriber") | ![Mobile Remove Pending Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_pending.png "Mobile remove pending subscriber") | ![Mobile Remove Expired Subscriber](documentation/features/dashboard/newsletter_admin/mobile_remove_expired.png "Mobile remove expired subscriber") |
     | Desktop | ![Desktop Remove Active Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_active.png "Desktop remove active subscriber") | ![Desktop Remove Pending Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_pending.png "Desktop remove pending subscriber") | ![Desktop Remove Expired Subscriber](documentation/features/dashboard/newsletter_admin/desktop_remove_expired.png "Desktop remove expired subscriber") |
 
-    Staff members can also clear all current expired subscribers by clicking on the 'Clear Expired Subscribers' button. This will display a prompt listing all emails that are expired. To confirm removal the 'Clear' button can be tapped/clicked. To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
+    Staff members can also clear all current expired subscribers by clicking on the 'Clear Expired Subscribers' button. This will display a prompt listing all emails that are expired. To confirm removal the 'Clear' button can be clicked. To cancel and return to the dashboard, simply click ‘Cancel’ or close the modal.
 
     | Mobile Clear Expired | Desktop Clear Expired |
     | :---: | :---: |
@@ -1062,6 +1063,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         - FAQ and topic management
         - Contact Message admin
         - Newsletter and subscriber admin
+        - Cancellation of actions
     - Form errors
 
     Colour-coded messages are used for clear understanding of what a message is about:
@@ -1180,8 +1182,12 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
                 updated_stock = product.stock
                 updated_stock += adjustment
                 if updated_stock < 0:
+                    product.stock = 0
+                    product.save()
                     raise ValueError('Stock cannot be negative')
                 elif product.unique_stock and updated_stock > 1:
+                    product.stock = 1
+                    product.save()
                     raise ValueError(
                         'Stock cannot be more than one for unique items'
                     )
@@ -1203,7 +1209,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         
         This signal then iterates through any basket items and adjusts the database quantities by adding the relevant amount for each item that was in the basket back to stock.
         
-        This also has error checking to make sure stock levels in the database cannot be less than 1 and if an item is unique that the stock level cannot exceed 1.
+        This also has error checking to make sure stock levels in the database cannot be less than 0 and if an item is unique that the stock level cannot exceed 1.
 
         ```python
         @receiver(user_logged_out)
@@ -1231,6 +1237,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
                         if updated_stock < 0:
                             raise ValueError('Stock cannot be negative.')
                         elif product.unique_stock and updated_stock > 1:
+                            product.stock = 1
+                            product.save()
                             raise ValueError(
                                 'Stock cannot be more than one for unique items'
                             )
@@ -1250,7 +1258,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - ### Secondary stock check on basket adjustments
         One of the main issues that can arise is if there are multiple sessions running. The stock levels shown in the templates are only accurate from the last request made and so there is the risk that two users could be on the same page and add the same item to their basket at the same time.
         
-        Neither session would see this as an issue as when the template was loaded there was stock available. The template will still allow the item to be added to the basket. The potential issues with this are:
+        Neither session would see this as an issue as when the template was loaded, there was stock available. The template will still allow the item to be added to the basket. The potential issues with this are:
         
         - Unique items could be purchased twice by two different users.
         - Items that are not unique may be oversold as the stock levels become innacurate.
@@ -1306,7 +1314,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         To mitigate this I have implemented a management command that is run via [Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler). This is a free add-on that can run specific commands at set time intervals for your app. It is currently set to run every 10 minutes.
 
-        The command runs through every current session and looks for 'modified' in the session data. This will be a timestamp in string format created by custom middleware. The timestamp is the last time that the user interacted with the site as the middleware is activated on every request.
+        The command iterates through every current session and looks for 'modified' in the session data. This will be a timestamp in string format created by custom middleware. The timestamp is the last time that the user interacted with the site as the middleware is activated on every request.
         
         The session is deemed as abandoned if the time delta is more than **30 minutes**. This can be altered in the command if required.
 
@@ -1383,8 +1391,12 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
                                     updated_stock = product.stock
                                     updated_stock += quantity
                                     if updated_stock < 0:
+                                        product.stock = 0
+                                        product.save()
                                         raise ValueError('Stock cannot be negative.')
                                     elif product.unique_stock and updated_stock > 1:
+                                        product.stock = 1
+                                        product.save()
                                         raise ValueError(
                                             'Stock cannot be more than 1 '
                                             'for unique items'
