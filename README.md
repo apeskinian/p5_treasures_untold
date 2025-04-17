@@ -375,7 +375,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
             - Access the Django Admin Panel.
             - Create, update and delete any type of user.
             - Create, update and delete orders.
-            - Access custom session management commands (clear rewards, empty baskets, recover abandoned baskets)
+            - Access custom session management commands (clear rewards, empty baskets, batch restock products)
     
     If you are a staff member or super user (admin), you will be presented with extra buttons to access the appropriate settings given to you.
 
