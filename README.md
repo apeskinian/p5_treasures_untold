@@ -534,6 +534,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - If the user is logged in, an 'Add to Basket' button is shown otherwise 'Log In' and 'Sign Up' buttons are shown. With a message to say you need to log in to add items to the basket.
     - A live timer counting down to 5pm local time for same day dispatch. If the time is past 5pm, the timer then counts to 5pm the following day and the message changes appropriately.
     - A button to return to the previous product page, this includes any search, sort or filters that were active at the time.
+    <br>
 
     |  | Product Detail Guest View | Product Detail User View - Unique Product | Product Detail User View - Non Unique Product |
     | --- | --- | --- | --- |
@@ -541,7 +542,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Desktop | ![Desktop guest details](documentation/features/product_details/desktop_detail_logged_off.png "Desktop guest view") | ![Desktop unique view](documentation/features/product_details/desktop_detail_unique.png "Desktop unique view") |![Desktop stocked view](documentation/features/product_details/desktop_detail_stocked.png "Desktop stocked view") |
 
 - ### Adding Products to the Basket
-    To add an item to the basket a user simply taps/clicks on the 'Add to Basket' button on the product detail page. If the product is not unique the user can specify the quantity required in the input field by either typing or using the plus/minus buttons. When the user adds the product to their basket, the page is updated to reflect any stock changes and availability.
+    To add an item to the basket a user simply clicks on the 'Add to Basket' button on the product detail page. If the product is not unique the user can specify the quantity required in the input field by either typing or using the plus/minus buttons. When the user adds the product to their basket, the page is updated to reflect any stock changes and availability.
 
     | Unique Product Availability Adjusting | Product Quantity Adjusting | Product Quantity Zero Adjusting |
     | --- | --- | --- |
@@ -565,11 +566,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Mobile Basket Preview](documentation/features/basket_view/mobile_basket_preview.png "Mobile basket preview") | ![Desktop Basket Preview](documentation/features/basket_view/desktop_basket_preview.png "Desktop basket preview") |
 
     **Basket Page**
+
     The basket page shows everything that the preview does with the additions of:
-    - Product cost each
+    - Product cost each.
+    
     This page is also where a user can also edit the contents of their basket before proceeding to the secure checkout. For each line item the user can:
     - Remove the product from the basket using the bin icon
-    - If the product is not unique, the quantity required can also be adjusted. To confirm the adjustment the refresh icon must be tapped/clicked which is situated next to the quantity adjuster. Adjusting the quantity to 0 will remove the product from the basket.
+    - If the product is not unique, the quantity required can also be adjusted. To confirm the adjustment the refresh icon must be clicked which is situated next to the quantity adjuster. Adjusting the quantity to 0 will remove the product from the basket.
 
     This page shows two buttons at the bottom, one to contine shopping which navigates to the products page, the other is to proceed to secure checkout.
 
