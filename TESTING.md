@@ -882,7 +882,7 @@ Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- | --- |
 | As a user | I can search manually for an item from an input field | so that I can find and view specific items quickly. | ![Search Bar](documentation/testing/user_stories/search_bar.png "search bar") |
-| As a user | I can sort products | so that view the list of products sorted based on a selected property. | ![Result sorting](documentation/testing/user_stories/order_items.png "product sorting") |
+| As a user | I can sort products | so that I can view the list of products sorted based on a selected property. | ![Result sorting](documentation/testing/user_stories/order_items.png "product sorting") |
 | As a user | I can filter products | so that only products that match the filter property are shown. | ![Filter products](documentation/features/navigation/desktop_sort_filter.png "product filtering") |
 | As a user | I can sort search and filter results | so that I can view the results in the order that I want to. | ![Result sorting](documentation/testing/user_stories/order_items.png "product sorting") |
 
@@ -891,9 +891,9 @@ Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [
 | --- | --- | --- | --- |
 | As a user | I can select how many of a product I wish to buy | so that I can add the amount I need in one process to the basket. | ![Quantity modifier](documentation/features/product_details/stocked_product_updating.gif "quantity selection") |
 | As a user | I can view the basket | so that see the total cost and all the items I have added to it. | ![Basket view](documentation/features/basket_view/desktop_basket_page.png "basket view") |
-| As a user | I can adjust the quantity of product from the basket | so that I can easily edit how many I want. | ![Basket view quantity adjusting](documentation/testing/user_stories/adjusting_quanity_in_basket_view.gif "adjusting quantity in basket view") |
+| As a user | I can adjust the quantity of products from the basket | so that I can easily edit how many I want. | ![Basket view quantity adjusting](documentation/testing/user_stories/adjusting_quanity_in_basket_view.gif "adjusting quantity in basket view") |
 | As a user | I can remove an item directly from the basket | so that I can quickly adjust what I'm buying. | ![Removing item from basket](documentation/testing/user_stories/removing_item_from_basket.gif "removing item from basket") |
-| As a user | I can easily enter my payment details | so that checkout quickly and hassle free. | ![Checkout payment form](documentation/features/checkout_view/desktop_checkout.png "checkout process") |
+| As a user | I can easily enter my payment details | so that the checkout process is quick and hassle free. | ![Checkout payment form](documentation/features/checkout_view/desktop_checkout.png "checkout process") |
 | As a user | I can see an order confirmation after completing a purchase | so that I know the transaction was successful. | ![Order confirmation](documentation/features/checkout_view/desktop_checkout_success.png "order confirmation") |
 | As a user | I receive an email confirming my order confirmation and details | so that I know the transaction was successful. | ![Email order confirmation](documentation/features/checkout_view/checkout_success_email.png "email order confirmation") |
 | As a developer | I can expand the application to support multiple currencies | so that users can view and complete transactions in their preferred currency, improving accessibility and user experience. |  **Not implemented in this iteration.** |
@@ -911,12 +911,12 @@ Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [
 **Admin and store management**
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- | --- |
-| As a shop owner | I can access a shop admin page | so that they add edit and delete products so that they can keep the catalogue up to date. | ![Staff Dashboard](documentation/features/dashboard/desktop_product_admin.png "staff dashboard") |
+| As a shop owner | I can access a shop admin page | so that I can add edit and delete products, keeping the catalogue up to date. | ![Staff Dashboard](documentation/features/dashboard/desktop_product_admin.png "staff dashboard") |
 | As a shop owner | I can add a new product | so that the shop can be updated with new items. | ![Add a product](documentation/features/dashboard/product_admin/desktop_product_add.png "adding a product") |
 | As a shop owner | I can edit products | so that I can update prices, stock levels and keep the catalogue up to date. | ![Edit a product](documentation/features/dashboard/product_admin/desktop_product_update.png "update a product") |
 | As a shop owner | I can delete products from the catalogue | so that I can make sure the catalogue is up to date. | ![Delete a product](documentation/features/dashboard/product_admin/desktop_product_delete.png "deleting a product") |
 | As a shop owner | I can add new questions and answers to the FAQ section of the help and support page | so that site users have the most up to date FAQ. | ![Adding a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_add.png "adding a faq") |
-| As a shop owner | I can edit any FAQ entries | so that amend any that I need to. | ![Editing a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_update.png "updating a faq") |
+| As a shop owner | I can edit any FAQ entries | so that I can amend any that I need to. | ![Editing a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_update.png "updating a faq") |
 | As a shop owner | I can delete FAQ entries | so that I can keep the list up to date by removing any redundant entries. | ![Deleting a FAQ](documentation/features/dashboard/faq_admin/desktop_faq_delete.png "deleting a faq") |
 | As a shop owner | I can view the messages sent from the contact us form | so that I can send an initial reply. | ![Message Viewing](documentation/features/dashboard/message_admin/messages.png "message viewing") |
 | As a shop owner | I can manage newsletters including viewing previous newsletters and creating and sending newsletters | so that subscribers can be updated on any offers and news from the site. | ![Newsletter admin](documentation/features/dashboard/newsletter_admin/newsletters.png "newsletters") ![Creating newsletter](documentation/features/dashboard/newsletter_admin/desktop_newsletter_send.png "creating newsletter") |

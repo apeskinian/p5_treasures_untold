@@ -254,7 +254,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | User | Capability | Benefit |
 | --- | --- | --- |
 | As a user | I can search manually for an item from an input field | so that I can find and view specific items quickly. |
-| As a user | I can sort products | so that view the list of products sorted based on a selected property. |
+| As a user | I can sort products | so that I can view the list of products sorted based on a selected property. |
 | As a user | I can filter products | so that only products that match the filter property are shown. |
 | As a user | I can sort search and filter results | so that I can view the results in the order that I want to. |
 
@@ -263,7 +263,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | --- | --- | --- |
 | As a user | I can select how many of a product I wish to buy | so that I can add the amount I need in one process to the basket. |
 | As a user | I can view the basket | so that I see the total cost and all the items I have added to it. |
-| As a user | I can adjust the quantity of product from the basket | so that I can easily edit how many I want. |
+| As a user | I can adjust the quantity of products from the basket | so that I can easily edit how many I want. |
 | As a user | I can remove an item directly from the basket | so that I can quickly adjust what I'm buying. |
 | As a user | I can easily enter my payment details | so that the checkout process is quick and hassle free. |
 | As a user | I can see an order confirmation after completing a purchase | so that I know the transaction was successful. |
