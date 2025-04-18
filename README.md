@@ -56,7 +56,7 @@ source: [Techsini Multi Device Website Mockup Generator](https://techsini.com/mu
 **Features**
 
 A full list of [Features](#features) can be viewed in detail below but essentially I wanted to include:
- - Browsing and support avaible for guests.
+ - Browsing and support available for guests.
  - Account requirement for purchases.
  - Full sort, filter, and search functionality for browsing products.
  - Smooth checkout experience with redundancy built it.
@@ -121,9 +121,9 @@ All logged in users will have confirmation of their login displayed along with a
 
 ### Skeleton
 
-In the wireframing process, I decided the navigation should be simple and remain constant throughout the site where possible. Having navigation on the bottom for mobile devices makes it easier for the user to interact with while keeping the screen visible. The navigation would move to the top for larger screens for a more traditional layout.
+In the wire framing process, I decided the navigation should be simple and remain constant throughout the site where possible. Having navigation on the bottom for mobile devices makes it easier for the user to interact with while keeping the screen visible. The navigation would move to the top for larger screens for a more traditional layout.
 
-A full list of [Wireframes](#wireframes) can be viewed in detail below.
+A full list of [Wire frames](#wireframes) can be viewed in detail below.
 
 ### Surface
 
@@ -164,7 +164,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 | --tu-teal-hover: | #546b6e | Used when --tu-teal items are hovered over |
 | --tu-teal-shadow: | #28383abd | Used for the border when --tu-teal items are focused |
 | --tu-dark-teal: | #1B2429 | Mobile navigation menu background |
-| --tu-purple: | #885b92 | Unloacked rewards message border |
+| --tu-purple: | #885b92 | Unlocked rewards message border |
 | --tu-link: | #8c5699 | Link text |
 | --tu-white: | #FFF | All contrasting text and icons that are on a dark background |
 | --tu-off-white: | #f0f0f0 | Page content containers |
@@ -310,7 +310,7 @@ The action buttons are grouped by colour for specific types of action. This shou
 
 ## Wireframes
 
-To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
+To follow best practice, wire frames were developed for mobile, tablet, and desktop sizes.
 I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
 
 ### Mobile Wireframes
@@ -365,7 +365,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
             - Create, update or delete FAQ Topics
             - View and reply to messages received from the Contact Us page
             - Create and send newsletters
-            - View and delete previous newletters
+            - View and delete previous newsletters
             - View subscriber list and current status for each
             - Remove individual subscribers
             - Clear all expired subscribers
@@ -405,7 +405,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     | Account Menu | Site Navigation and Search | Sort and Filter | Basket Preview |
     | --- | --- | --- | --- |
-    | ![Mobile Account Menu](documentation/features/navigation/mobile_account_menu.png "Mobile Account Menu") | ![Mobile Site Navigation](documentation/features/navigation/mobile_navigation_menu.png "Mobile Site Navigation") |  ![Mobile Sort and Filter](documentation/features/navigation/mobile_sort_filter.png "Mobile Sort and Filter") | ![Mobile Basker Preview](documentation/features/navigation/mobile_basket_preview.png "Mobile Basket Preview") |
+    | ![Mobile Account Menu](documentation/features/navigation/mobile_account_menu.png "Mobile Account Menu") | ![Mobile Site Navigation](documentation/features/navigation/mobile_navigation_menu.png "Mobile Site Navigation") |  ![Mobile Sort and Filter](documentation/features/navigation/mobile_sort_filter.png "Mobile Sort and Filter") | ![Mobile Basket Preview](documentation/features/navigation/mobile_basket_preview.png "Mobile Basket Preview") |
 
     ### Desktop
     Navigation on desktop devices is found at the top of the screen in the hero image and title banner. Site navigation is located at the top left which is expanded by clicking on the burger menu icon. The account menu is opened by clicking on the wizard hat and the basket icon will open the basket preview panel. The sort and filter control can be found in the product page to the left of the results.
@@ -529,7 +529,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - Realm (also a link to show all products from that realm)
     - Product Description
     - Cost
-    - Availablity
+    - Availability
     - A quantity input if the item is not unique
     - If the user is logged in, an 'Add to Basket' button is shown otherwise 'Log In' and 'Sign Up' buttons are shown. With a message to say you need to log in to add items to the basket.
     - A live timer counting down to 5pm local time for same day dispatch. If the time is past 5pm, the timer then counts to 5pm the following day and the message changes appropriately.
@@ -575,7 +575,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - Remove the product from the basket using the bin icon
     - If the product is not unique, the quantity required can also be adjusted. To confirm the adjustment the refresh icon must be clicked which is situated next to the quantity adjuster. Adjusting the quantity to 0 will remove the product from the basket.
 
-    This page shows two buttons at the bottom, one to contine shopping which navigates to the products page, the other is to proceed to secure checkout.
+    This page shows two buttons at the bottom, one to continue shopping which navigates to the products page, the other is to proceed to secure checkout.
 
     | Mobile Basket Page | Desktop Basket Page |
     | --- | --- |
@@ -593,7 +593,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     The contact and delivery sections will be prefilled with any details currently saved in the user's profile page with a checkbox option to save any details added or amended during the checkout process (any email change will not be saved, this will always default to the users email defined for their account).
 
-    When the user has completed the form they can then click on the 'Complete Order' button to complete payment via Stripe. On a successul payment they will be taken to the order confirmation page. If any errors occur the user will be notified and any corrections can be made before attempting payment again.
+    When the user has completed the form they can then click on the 'Complete Order' button to complete payment via Stripe. On a successful payment they will be taken to the order confirmation page. If any errors occur the user will be notified and any corrections can be made before attempting payment again.
 
     The user also has the option to go back to the edit basket page directly from the checkout page should they see something they need to change before proceeding.
 
@@ -604,7 +604,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - ### Order Processing
     When a user submits their order for payment, a processing overlay is displayed before either going back to the checkout page if there was an error, or continuing to the confirmation page. This encourages the user to be patient while the transaction is processed as it gives them a visual indication of something happening. 
 
-    ![Processinf Overlay](documentation/features/checkout_view/processing_overlay.gif "Processing overlay")
+    ![Processing Overlay](documentation/features/checkout_view/processing_overlay.gif "Processing overlay")
 
 - ### Order Confirmation
     Upon completing a successful order, the user is directed to a confirmation page. This page informs them that a confirmation email will be sent to the provided address and includes a link to the contact page in case they need to report any issues. Additionally, it displays the following details of their purchase:
@@ -710,7 +710,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     | Example Newsletter | Unsubscribe Message |
     | --- | --- |
-    | ![Example Newsletter](documentation/features/support_pages/example_newsletter.png "Example Newsletter") | ![Unsubscription Message](documentation/features/support_pages/unsubscribe_message.png "Unsubscription Message") |
+    | ![Example Newsletter](documentation/features/support_pages/example_newsletter.png "Example Newsletter") | ![Un-subscription Message](documentation/features/support_pages/unsubscribe_message.png "Un-subscription Message") |
 
     ### Returns Policy
     This page displays the return policy for Treasures Untold.
@@ -756,7 +756,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     |  | Product Admin | FAQ Admin | Message Admin | Newsletter Admin |
     | --- | --- | --- | --- | --- |
     | Mobile | ![Mobile Product Admin](documentation/features/dashboard/mobile_product_admin.png "Mobile Product Admin") | ![Mobile FAQ Admin](documentation/features/dashboard/mobile_faq_admin.png "Mobile faq admin") | ![Mobile Message Admin](documentation/features/dashboard/mobile_message_admin.png "Mobile message admin") | ![Mobile Newsletter Admin](documentation/features/dashboard/mobile_newsletter_admin.png "Mobile newsletter admin") |
-    | Desktop | ![Desktop Product Admin](documentation/features/dashboard/desktop_product_admin.png "Dektop product admin") | ![Desktop FAQ Admin](documentation/features/dashboard/desktop_faq_admin.png "Desktop faq admin") | ![Desktop Message Admin](documentation/features/dashboard/desktop_message_admin.png "Desktop message admin") | ![Desktop Newsletter Admin](documentation/features/dashboard/desktop_newsletter_admin.png "Desktop newsletter admin") | 
+    | Desktop | ![Desktop Product Admin](documentation/features/dashboard/desktop_product_admin.png "Desktop product admin") | ![Desktop FAQ Admin](documentation/features/dashboard/desktop_faq_admin.png "Desktop faq admin") | ![Desktop Message Admin](documentation/features/dashboard/desktop_message_admin.png "Desktop message admin") | ![Desktop Newsletter Admin](documentation/features/dashboard/desktop_newsletter_admin.png "Desktop newsletter admin") | 
 
     ### Product Admin
     The products and realms are displayed in table format that is responsive showing details relevant to display size. Both products and realms can be managed separately here.
@@ -916,10 +916,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     ### Message Admin
     Messages are grouped into two sections:
-    - Unreplied
+    - Un-replied
     - Replied
 
-    The unreplied messages are shown at the top and are also ordered chronologically with the oldest messages at the top. This gives the staff a clear indication of which messages need replying to.
+    The un-replied messages are shown at the top and are also ordered chronologically with the oldest messages at the top. This gives the staff a clear indication of which messages need replying to.
 
     Each message pane show the following information:
     - Unique ticket number
@@ -940,7 +940,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     | Mobile Message Reply | Desktop Message Reply |
     | :---: | :---: |
-    | ![Mobile Message Reply](documentation/features/dashboard/message_admin/mobile_message_reply.png "Mobile message reply") | ![Desktop Message Reply](documentation/features/dashboard/message_admin/desktop_message_reply.png "Desktop messsage reply") |
+    | ![Mobile Message Reply](documentation/features/dashboard/message_admin/mobile_message_reply.png "Mobile message reply") | ![Desktop Message Reply](documentation/features/dashboard/message_admin/desktop_message_reply.png "Desktop message reply") |
 
     Once a message reply has been created, an email will be sent to the original user who created the message and the message will be updated in the dashboard to reflect the replied status.
 
@@ -994,7 +994,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     Staff can see the list of subscribers and their current status. This will be one of the following:
 
     - **ACTIVE**: The user has confirmed their subscription by clicking on the link in the email sent to them when signing up. They will receive newsletters.
-    - **PENDING**: The user has not yet confirmed their subscription by clicking on the link. The token to activate their subscription is still valid. They will not recieve newsletters until they confirm their subscription.
+    - **PENDING**: The user has not yet confirmed their subscription by clicking on the link. The token to activate their subscription is still valid. They will not receive newsletters until they confirm their subscription.
     - **EXPIRED**: The user has not yet confirmed their subscription and the token has expired.<br><br>
 
     | Subscribers |
@@ -1021,7 +1021,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Django Panel](documentation/features/admin_panel/mobile_django_admin.png "Mobile admin panel") | ![Desktop Admin Panel](documentation/features/admin_panel/desktop_django_admin.png "Desktop admin panel") |
     
-    ### Mainentance Methods
+    ### Maintenance Methods
 
     - ### Product Restock
         Found in the product model settings, this method quickly sets the stock levels of all products selected. If the item is not unique, a default level of 50 is set, otherwise a level of 1 is set. This is primarily for any maintenance that requires testing of the checkout process where stock levels will be affected. As a lot of items are unique this has an impact of availability of stock.
@@ -1069,10 +1069,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     Colour-coded messages are used for clear understanding of what a message is about:
     - Green messages are confirmation of a process completing successfully
     - Blue messages are indicators of an event or process that the user should be aware of
-    - Purple messagea are related to rewards and inform the user when a reward has been activated
+    - Purple message are related to rewards and inform the user when a reward has been activated
     - Red messages indicate that there has been an error
 
-    All messages except green success messages require acknowledgement by the user and so do not autohide. Success messages will hide after a few seconds as they are confirming successful events.
+    All messages except green success messages require acknowledgement by the user and so do not auto-hide. Success messages will hide after a few seconds as they are confirming successful events.
 
     | Message | Screenshot |
     | :---: | :---: |
@@ -1080,8 +1080,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Sign out | ![Sign out message](documentation/features/communication/message_toasts/success_sign_out.png "Sign out message") |
     | Item added to basket | ![Add to basket message](documentation/features/communication/message_toasts/success_added_to_basket.png "Add to basket message") |
     | Item quantity adjusted in basket | ![Basket quantity adjustment message](documentation/features/communication/message_toasts/success_basket_qty_adjustment.png "Basket quantity adjustment message") |
-    | Item removed from basket | ![Item removed from basker message](documentation/features/communication/message_toasts/info_removed_from_basket.png "Item removed from basket message") |
-    | Order succssfully processed | ![Order processed message](documentation/features/communication/message_toasts/success_order_processing.png "Order processed message") |
+    | Item removed from basket | ![Item removed from basket message](documentation/features/communication/message_toasts/info_removed_from_basket.png "Item removed from basket message") |
+    | Order successfully processed | ![Order processed message](documentation/features/communication/message_toasts/success_order_processing.png "Order processed message") |
     | Reward Activations | ![Reward activation message](documentation/features/communication/message_toasts/reward_notification.png "Reward activation message") |
     | Profile updates | ![Profile update message](documentation/features/communication/message_toasts/success_details_updated.png "Profile update message") |
     | Contact message acknowledgement | ![Contact message acknowledgement](documentation/features/communication/message_toasts/success_message_received.png "Contact message acknowledgement") |
@@ -1089,9 +1089,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Newsletter sign up event | ![Newsletter already subscribed message](documentation/features/communication/message_toasts/info_already_subscribed.png "Newsletter already subscribed message") |
     | Product management | ![Product management message](documentation/features/communication/message_toasts/success_product_updated.png "Product management message") |
     | FAQ management | ![FAQ management message](documentation/features/communication/message_toasts/info_deleted_faq.png "FAQ management message") |
-    | Contact message admin | ![Contact message admin message](documentation/features/communication/message_toasts/success_message_replied.png "Contect message admin message") |
+    | Contact message admin | ![Contact message admin message](documentation/features/communication/message_toasts/success_message_replied.png "Contact message admin message") |
     | Newsletter admin | ![Newsletter admin message](documentation/features/communication/message_toasts/success_newsletter.png "Newsletter admin message") |
-    | Expired token error | ![Expired token message](documentation/features/communication/message_toasts/error_expired_token.png "Expired token messsage") |
+    | Expired token error | ![Expired token message](documentation/features/communication/message_toasts/error_expired_token.png "Expired token message") |
     | Error deleting | ![Error deleting message](documentation/features/communication/message_toasts/error_realm_deletion.png "Error deleting message") |
     | Error basket item removal | ![Basket removal error message](documentation/features/communication/message_toasts/error_removing_item.png "Basket removal error message") |
 
@@ -1263,7 +1263,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         Neither session would see this as an issue as when the template was loaded, there was stock available. The template will still allow the item to be added to the basket. The potential issues with this are:
         
         - Unique items could be purchased twice by two different users.
-        - Items that are not unique may be oversold as the stock levels become innacurate.
+        - Items that are not unique may be oversold as the stock levels become inaccurate.
 
         To prevent this I have implemented a secondary stock check in the view before the item is added or adjusted in the basket.
         
@@ -1312,7 +1312,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - ### Abandoned sessions and baskets
         One of the most challenging issues to manage occurs when a user’s connection to the site is disrupted. Whether due to an unintentional loss of connection, closing the browser, or navigating away while their session is still active.
 
-        The signal to manage log out actions will not pick this up and any items that were in the users basket can be lost leading to innacurate stock levels for the site.
+        The signal to manage log out actions will not pick this up and any items that were in the users basket can be lost leading to inaccurate stock levels for the site.
 
         To mitigate this I have implemented a management command that is run via [Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler). This is a free add-on that can run specific commands at set time intervals for your app. It is currently set to run every 10 minutes.
 
@@ -1459,7 +1459,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
             """
             def __init__(self, get_response):
                 """
-                Initiliazes the middleware.
+                Initializes the middleware.
                 """
                 self.get_response = get_response
 
@@ -1478,7 +1478,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
         ```
 
         ### Setting the session expiry
-        The method update_stock sets the expiry time to 86400 because if a user logs in without checking the remember me box, the default sesssion time is set to **'Session'**.
+        The method update_stock sets the expiry time to 86400 because if a user logs in without checking the remember me box, the default session time is set to **'Session'**.
 
         Sessions with an expiry of **'Session'** will terminate when the browser is closed and therefore will lose any data stored in that session including basket contents. By overriding this, the session data is preserved until the management command can recover the data and terminate the session safely.
 
@@ -1489,7 +1489,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     A full explanation of the [SEO & Marketing](#seo--marketing) features can be viewed in detail below.
 
 - ### Heroku Deployment
-    The site is deployed to Heroku, making it accessible online for users. More inforation on [deployment](#deployment) can be found below.
+    The site is deployed to Heroku, making it accessible online for users. More information on [deployment](#deployment) can be found below.
 
 ### Future Features
 
@@ -1687,7 +1687,7 @@ class Product(models.Model):
     - `stock (IntegerField)`: The current stock level of the product.
     - `sku (CharField)`: The unique Stock Keeping Unit (SKU) for the product.
     - `image (CloudinaryField)`: The image associated with the product.
-    - `date_added (DateField)`: Date the product was addded to inventory.
+    - `date_added (DateField)`: Date the product was added to inventory.
     - `unique_stock (BooleanField)`: Indicates whether the product is a
       one-of-a-kind item (stock cannot exceed 1).
 
@@ -1901,7 +1901,7 @@ class ContactMessage(models.Model):
     - `reply (TextField)`: The content of the reply (optional).
 
     **Meta:**
-    - Messages are ordered by `replied` status, ensuring unreplied messages
+    - Messages are ordered by `replied` status, ensuring un-replied messages
       appear first.
 
     **Methods:**
@@ -2111,11 +2111,11 @@ The GitHub projects helped keep track of this with the creation of a graph.
 
 ![MoSCoW Graph](documentation/agile/agile_moscow.png "Agile MoSCoW Graph")
 
-## Ecommerce Business Model
+## E-commerce Business Model
 
 Treasures Untold follows a **Business to Customer** model selling rare curated magical items from the Disney realms to customers.
 
-The revenue model focuses on a one-time purchase system as there are no services offered which would require a reccuring payment. There is also incentivised engagement in the form of [easter eggs](#easter-eggs) that give surprise discounts.
+The revenue model focuses on a one-time purchase system as there are no services offered which would require a recurring payment. There is also incentivised engagement in the form of [easter eggs](#easter-eggs) that give surprise discounts.
 
 Treasures Untold is in its exciting early stages of development and already features a newsletter and social media links to connect with its growing community.
 
@@ -2168,7 +2168,7 @@ Creating a strong social base (with participation) and linking that to the busin
 
 I've created a mockup Facebook business account using the [Free Facebook Page Mockup 2022](https://unblast.com/free-facebook-page-mockup-2022-psd/) provided free from [Unblast](https://unblast.com/).
 
-![Fcebook Mockup](documentation/seo_marketing/marketing_facebook.png "Facebook Mockup")
+![Facebook Mockup](documentation/seo_marketing/marketing_facebook.png "Facebook Mockup")
 
 ### Newsletter Marketing
 
@@ -2358,7 +2358,7 @@ To obtain my own Postgres Database from Code Institute, I followed these steps:
 
 ### Stripe API
 
-This project uses [Stripe](https://stripe.com) to handle the ecommerce payments.
+This project uses [Stripe](https://stripe.com) to handle the e-commerce payments.
 
 Once you've created a Stripe account and logged-in, follow these series of steps to get your project connected.
 
@@ -2375,7 +2375,7 @@ As a backup, in case users prematurely close the purchase-order page during paym
 - Click **receive all events**.
 - Click **Add Endpoint** to complete the process.
 - You'll have a new key here:
-	- `STRIPE_WH_SECRET` = Signing Secret (Wehbook) Key (starts with **wh**)
+	- `STRIPE_WH_SECRET` = Signing Secret (Webhook) Key (starts with **wh**)
 
 ### Gmail API
 
@@ -2515,7 +2515,7 @@ There are no remaining major differences between the local version when compared
 | Source | Notes |
 | --- | --- |
 | [Markdown Builder](https://markdown.2bn.dev/) | Tool to help generate the Markdown files |
-| [Bootrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) | Using Bootstrap |
+| [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) | Using Bootstrap |
 | [Boutique Ado](https://codeinstitute.net) | Code Institute walkthrough project inspiration |
 | [Cloudinary](https://cloudinary.com/) | Hosting user uploaded images |
 | [Whitenoise](https://whitenoise.readthedocs.io) | Static file service |
