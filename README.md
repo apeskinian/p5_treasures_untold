@@ -6,8 +6,8 @@
 
 **An online store for all your magical Disney items!**
 
-Look at your stuff..<br>
-Isn't it neat?<br>
+Look at your stuff..
+Isn't it neat?
 Wouldn't you think your collection's complete?
 
 **No!** You can always find something more to add to your magical collection at Treasures Untold!
@@ -445,10 +445,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - **Newsletter quick sign up:** provides users a quick and simple way to sign up to the newsletter.
     - **Social media links:** provides links to the sites social media account pages.
     - **Helpful site links:** provides the user easy access to the main site pages.
-    <br>
-
-    > [!NOTE]  
-    > The social media links point to the social media platforms homepage as there is no actual account for Treasures Untold on these platforms at this time.
+   
+> [!NOTE]  
+> The social media links point to the social media platforms homepage as there is no actual account for Treasures Untold on these platforms at this time.
 
 - ### Scroll Button
     For pages that require a lot of scrolling there is a scroll button that will appear after the page has scrolled past the main hero banner. Tapping or clicking on this button will gracefully take the user back to the top of the page.
@@ -534,7 +533,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - If the user is logged in, an 'Add to Basket' button is shown otherwise 'Log In' and 'Sign Up' buttons are shown. With a message to say you need to log in to add items to the basket.
     - A live timer counting down to 5pm local time for same day dispatch. If the time is past 5pm, the timer then counts to 5pm the following day and the message changes appropriately.
     - A button to return to the previous product page, this includes any search, sort or filters that were active at the time.
-    <br>
 
     |  | Product Detail Guest View | Product Detail User View - Unique Product | Product Detail User View - Non Unique Product |
     | --- | --- | --- | --- |
@@ -671,7 +669,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - **TU**: An abbreviation for Treasures Untold
     - **UUID**: An 8 character long generated UUID to ensure uniqueness
-    <br><br>
 
     | Example Acknowledgement Email |
     | --- |
@@ -751,7 +748,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - [Product Admin](#product-admin): This is where products can be created, updated and deleted. Product realms can also be managed here too.
     - [FAQ Admin](#faq-admin): FAQs can be created, updated and deleted here, including FAQ topics.
     - [Message Admin](#message-admin): This is where messages sent via the contact us page can be viewed, replied to and deleted.
-    - [Newsletter Admin](#newsletter-admin): Staff can create and send newsletters here, they can also read and delete previously sent newsletters. The current list of subscribers and their status is also manageable here.<br><br>
+    - [Newsletter Admin](#newsletter-admin): Staff can create and send newsletters here, they can also read and delete previously sent newsletters. The current list of subscribers and their status is also manageable here.
 
     |  | Product Admin | FAQ Admin | Message Admin | Newsletter Admin |
     | --- | --- | --- | --- | --- |
@@ -792,9 +789,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - **TU**: An abbreviation for Treasures Untold
     - **RRR**: A joined string using the first three letters of each word in the products realm
     - **PPP**: A joined string using the first letter of each word in the products name
-    - **U**: If the product us unique it will have this character
+    - **U**: If the product is unique it will have this character
     - **UUID**: A 4 character long generated UUID to ensure SKU uniqueness
-    <br><br>
 
     | Example SKUs |
     | :---: |
@@ -930,7 +926,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     If the message has been replied to the additional information is visible:
     - Date the reply was sent
-    - Reply content<br><br>
+    - Reply content
 
     | Messages |
     | :---: |
@@ -995,7 +991,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - **ACTIVE**: The user has confirmed their subscription by clicking on the link in the email sent to them when signing up. They will receive newsletters.
     - **PENDING**: The user has not yet confirmed their subscription by clicking on the link. The token to activate their subscription is still valid. They will not receive newsletters until they confirm their subscription.
-    - **EXPIRED**: The user has not yet confirmed their subscription and the token has expired.<br><br>
+    - **EXPIRED**: The user has not yet confirmed their subscription and the token has expired.
 
     | Subscribers |
     | :---: |
@@ -1110,10 +1106,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     <details>
     <summary>Click here to reveal the hidden Easter eggs in Treasures Untold.</summary>
-    <br>
     <details>
     <summary>Last chance to change your mind.</summary>
-    <br>
     
     - **Bibbidi-Bobbidi-Boo:**
 

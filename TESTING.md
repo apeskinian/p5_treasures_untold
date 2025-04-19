@@ -795,10 +795,8 @@ Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [
 ### Easter Eggs
 <details>
 <summary>Click here to reveal the testing of the Easter Eggs in Treasures Untold.</summary>
-<br>
 <details>
 <summary>Last chance to change your mind.</summary>
-<br>
 
 #### Bibbidi-Bobbidi-Boo
 | Expectation | Test | Result | Screenshot |
