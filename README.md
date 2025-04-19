@@ -1102,6 +1102,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Edit Spinner](documentation/features/communication/spinners/spinner_edit.gif "Edit spinner") |
     | ![Delete Spinner](documentation/features/communication/spinners/spinner_delete.gif "Delete spinner") |
 
+> [!faq]- Are callouts foldable?
+> Yes! In a foldable callout, the contents are hidden when the callout is collapsed.
+
 - ### Easter Eggs
     There's more than meets the eye in Treasures Untold. I have implemented 4 Easter eggs into the site that if discovered will unlock special rewards. These rewards can only be activated by users that are logged in.
 
@@ -1122,7 +1125,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
         Users can activate a special reward by interacting with the Magic Lamp product image. Moving the mouse cursor over the lamp will simulate “rubbing” it, and after sufficient interaction, the reward will be triggered. Once activated, this reward applies a 100% discount to the first three items in the user’s basket.
 
-        NOTE: This currently only works for desktop devices with a mouse as it tracks the cursor movement.
+        **NOTE:** This currently only works for desktop devices with a mouse as it tracks the cursor movement.
 
         | Reward Activation | Message to user |
         | --- | --- |
