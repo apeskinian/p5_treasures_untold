@@ -6,8 +6,8 @@
 
 **An online store for all your magical Disney items!**
 
-Look at your stuff..
-Isn't it neat?
+Look at your stuff..  
+Isn't it neat?  
 Wouldn't you think your collection's complete?
 
 **No!** You can always find something more to add to your magical collection at Treasures Untold!
@@ -445,7 +445,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - **Newsletter quick sign up:** provides users a quick and simple way to sign up to the newsletter.
     - **Social media links:** provides links to the sites social media account pages.
     - **Helpful site links:** provides the user easy access to the main site pages.
-   
+
 > [!NOTE]  
 > The social media links point to the social media platforms homepage as there is no actual account for Treasures Untold on these platforms at this time.
 
@@ -745,6 +745,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 - ### Staff Dashboard
     The staff dashboard is an area of the site with access reserved for users with a level of **staff** or **super user**. This is where shop owners can manage the day to day admin of the site, the page is split into four sections:
+
     - [Product Admin](#product-admin): This is where products can be created, updated and deleted. Product realms can also be managed here too.
     - [FAQ Admin](#faq-admin): FAQs can be created, updated and deleted here, including FAQ topics.
     - [Message Admin](#message-admin): This is where messages sent via the contact us page can be viewed, replied to and deleted.
