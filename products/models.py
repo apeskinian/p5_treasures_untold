@@ -1,3 +1,4 @@
+import re
 import uuid
 
 from cloudinary.models import CloudinaryField
@@ -122,13 +123,17 @@ class Product(models.Model):
         - A string representing the generated SKU.
         """
         name_part = []
-        name_part_words = self.name.split(' ')
+        cleaned_name = re.sub(r'[^a-zA-Z0-9 ]', '', self.name)
+        name_part_words = cleaned_name.split(' ')
         for word in name_part_words:
             name_part.append(word[0].upper())
         name_part = ''.join(name_part)
         if self.realm:
             realm_part = []
-            realm_part_words = self.realm.display_name().split(' ')
+            cleaned_realm_name = re.sub(
+                r'[^a-zA-Z0-9 ]', '', self.realm.display_name()
+            )
+            realm_part_words = cleaned_realm_name.split(' ')
             for word in realm_part_words:
                 realm_part.append(word[:3].upper())
             realm_part = ''.join(realm_part)
