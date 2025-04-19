@@ -37,7 +37,7 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Overide init method by adding extra choices to the realm field. This
+        Override init method by adding extra choices to the realm field. This
         allows the user to create a new realm at the same time as a creating or
         adjusting a product.
         """
@@ -63,7 +63,7 @@ class ProductForm(forms.ModelForm):
         Overrides the form's save method to handle new realm creation.
 
         **Behavior:**
-        - If there is a new realm, it is created and replaces the placholder
+        - If there is a new realm, it is created and replaces the placeholder
             realm that was set in the clean method.
 
         **Raises:**
@@ -91,7 +91,7 @@ class ProductForm(forms.ModelForm):
                 )
                 instance.realm = realm_obj
             except Exception as e:
-                self.add_error('realm', f'An error occured: {str(e)}')
+                self.add_error('realm', f'An error occurred: {str(e)}')
 
         if commit:
             instance.save()
@@ -136,7 +136,7 @@ class ProductForm(forms.ModelForm):
             except Exception as e:
                 self.add_error(
                     'realm',
-                    f'An error occured while processing the realm: {str(e)}'
+                    f'An error occurred while processing the realm: {str(e)}'
                 )
         # Otherwise process the chosen existing realm as normal.
         else:
