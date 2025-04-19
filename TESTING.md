@@ -810,8 +810,8 @@ Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [
 | As a logged in user, the cursor changes when you move it over the Magic Lamp product image. 'Rubbing the lamp' by moving the mouse cursor over the image for a prolonged period of time will activate the 'Magic Lamp' reward. The first three items in shopping basket will have a 100% discount applied to them. The user is notified via messages and the discount is visible in all basket views. | Move the mouse cursor repeatedly over the magic lamp image as a logged in user. | SUCCESS - the reward is activated and the first three items in the basket are discounted. The user is notified and the discount is visible in the basket view. | ![screen recording](documentation/testing/manual_testing/easter_eggs/mt_easter_egg_magic_lamp_user.gif "easter eggs") |
 | As a guest trying to activate the 'Magic Lamp' reward will not work. The cursor does not change when you move over it. | Attempt to activate the reward as a guest. | SUCCESS - the reward is not activated. | ![screen recording](documentation/testing/manual_testing/easter_eggs/mt_easter_egg_magic_lamp_guest.gif "easter eggs") |
 
-> [!NOTE]
-> The Magic Lamp easter egg is only available to unlock on devices with a mouse as the activation relies on tracking the cursor movement.
+**:warning: NOTE:**  
+The Magic Lamp easter egg is only available to unlock on devices with a mouse as the activation relies on tracking the cursor movement.
 
 #### Cave of Wonders
 | Expectation | Test | Result | Screenshot |
@@ -819,8 +819,8 @@ Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [
 | As a logged in user, adding both halves of the Golden Scarab Beetle to the basket when the Shiva Monkey Idol of Agrabah is **not** in the basket will activate the 'Cave of Wonders' reward. All items from Agrabah that the user adds to their basket will be free. The exception to this is the Monkey Idol of Agrabah, see [Infidels](#infidels) below for details. The user is notified via messages and the discount can be seen in all basket views. | Add both halves of the Golden Scarab Beetle to the basket when the Shiva Monkey Idol of Agrabah is not in the basket as a logged in user. | SUCCESS - the reward is activated, user is notified and the discount can be seen in basket views. | ![screen recording](documentation/testing/manual_testing/easter_eggs/mt_easter_egg_cave_no_idol.gif "easter eggs") |
 | As a logged in user, adding both halves of the Golden Scarab Beetle to the basket when it already has the Shiva Monkey Idol of Agrabah in it does not activate the 'Cave of Wonders' reward. | As a logged in user add the Shiva Monkey Idol of Agrabah to the basket and then both halves of the Golden Scarab Beetle. | SUCCESS - the reward is not activated. | ![screen recording](documentation/testing/manual_testing/easter_eggs/mt_easter_egg_cave_idol.gif "easter eggs") |
 
-> [!NOTE]
-> Guests cannot add products to a basket.
+**NOTE:**
+Guests cannot add products to a basket.
 
 #### Infidels
 | Expectation | Test | Result | Screenshot |
