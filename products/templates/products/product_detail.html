@@ -18,7 +18,7 @@
         <div class="row">
             <div id="product-details-image-container" class="col-12 col-md">
                 {% if 'placeholder' in product.image.url %}
-                    <a href="{{ product.image_url }}" target="_blank" aria-label="view larger image of {{ product.name }}">
+                    <a href="{{ product.image_url }}" target="_blank" rel="noopener" aria-label="view larger image of {{ product.name }}">
                     <img class="product-details-image card-img-top rounded-4" src="{% static 'images/placeholder.png' %}" alt="{{ product.name }}">
                     </a>
                 {% else %}                               
