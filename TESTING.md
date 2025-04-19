@@ -792,11 +792,11 @@ Defensive programming was manually tested with the below user acceptance testing
 
 Please see [Adding Products to the Basket](#adding-products-to-the-basket) and [Basket Management](#basket-management) for realtime stock level testing.
 
-### Easter Eggs
+### Easter Eggs :open_mouth:
 <details>
-<summary>Click here to reveal the testing of the Easter Eggs in Treasures Untold.</summary>
+<summary>:exclamation: Click here to reveal the testing of the Easter Eggs in Treasures Untold. :exclamation:</summary>
 <details>
-<summary>Last chance to change your mind.</summary>
+<summary>:exclamation: Last chance to change your mind. :exclamation:</summary>
 
 #### Bibbidi-Bobbidi-Boo
 | Expectation | Test | Result | Screenshot |

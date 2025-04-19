@@ -1106,9 +1106,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     There's more than meets the eye in Treasures Untold. I have implemented 4 Easter eggs into the site that if discovered will unlock special rewards. These rewards can only be activated by users that are logged in.
 
     <details>
-    <summary>:exclamation: Click here to reveal the hidden Easter eggs in Treasures Untold.</summary>
+    <summary>:exclamation: Click here to reveal the hidden Easter eggs in Treasures Untold. :exclamation:</summary>
     <details>
-    <summary>:exclamation: Last chance to change your mind.</summary>
+    <summary>:exclamation: Last chance to change your mind. :exclamation:</summary>
     
     - **Bibbidi-Bobbidi-Boo:**
 
