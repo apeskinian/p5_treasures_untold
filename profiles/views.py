@@ -51,8 +51,14 @@ def profile(request, order_number=None):
         else:
             messages.error(
                 request,
-                'Update failed. Please ensure the form is valid'
+                'Update failed. Please ensure the form is valid.'
             )
+            for field, errors in form.errors.items():
+                for error in errors:
+                    placeholder = form.fields[field].widget.attrs.get(
+                        'placeholder', field
+                    )
+                    messages.error(request, f"{placeholder}: {error}")
 
     form = UserProfileForm(instance=profile)
 

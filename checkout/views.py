@@ -34,7 +34,7 @@ def cache_checkout_data(request):
     - Exception: When the metadata fails to modify.
 
     **Returns:**
-    - `HttpResponse` with status 200 on succesful modification.
+    - `HttpResponse` with status 200 on successful modification.
     - `HttpResponse` with status 400 on failed modification.
     """
     # Add session and other relevant data to the stripe metadata.
@@ -176,8 +176,14 @@ def checkout(request):
             messages.error(
                 request,
                 'There was an error with your form. '
-                'Please double check your information and try again'
+                'Please double check your information and try again.'
             )
+            for field, errors in order_form.errors.items():
+                for error in errors:
+                    placeholder = order_form.fields[field].widget.attrs.get(
+                        'placeholder', field
+                    )
+                    messages.error(request, f"{placeholder}: {error}")
             return redirect(reverse('checkout'))
     else:
         # Get basket contents and generate payment intent for Stripe.

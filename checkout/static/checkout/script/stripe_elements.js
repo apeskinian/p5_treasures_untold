@@ -45,8 +45,18 @@ form.addEventListener('submit', function (event) {
     let fullName = fullNameField.value.trim();
     let streetAddress1 = streetAddress1Field.value.trim();
     let townCity = townCityField.value.trim();
-
+    
     if (fullName === '' || streetAddress1 === '' || townCity === ''){
+        form.submit();
+        return;
+    }
+    
+    // Checking for invalid form phone data and returning for Django to process
+    let phoneField = document.getElementById('id_phone_number');
+    let phone = phoneField.value.trim();
+    const e164Regex = /^\+[1-9]\d{1,14}$/;
+
+    if (phone && !e164Regex.test(phone)) {
         form.submit();
         return;
     }

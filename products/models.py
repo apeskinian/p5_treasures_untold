@@ -63,7 +63,7 @@ class Product(models.Model):
     - `stock (IntegerField)`: The current stock level of the product.
     - `sku (CharField)`: The unique Stock Keeping Unit (SKU) for the product.
     - `image (CloudinaryField)`: The image associated with the product.
-    - `date_added (DateField)`: Date the product was addded to inventory.
+    - `date_added (DateField)`: Date the product was added to inventory.
     - `unique_stock (BooleanField)`: Indicates whether the product is a
       one-of-a-kind item (stock cannot exceed 1).
 

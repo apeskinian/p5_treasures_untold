@@ -1,3 +1,5 @@
+import re
+
 from django import forms
 
 from .models import Order
@@ -47,3 +49,22 @@ class OrderForm(forms.ModelForm):
         self.fields['country'].widget.attrs['aria-label'] = 'country'
         self.fields['country'].widget.attrs['autocomplete'] = 'no'
         self.fields['email'].widget.attrs['autocomplete'] = 'no'
+
+    def clean(self):
+        """
+        Overrides the clean method to check telephone numbers conform to E.164.
+        """
+        # Set variables for method.
+        cleaned_data = super().clean()
+        phone_number = cleaned_data.get('phone_number')
+
+        if phone_number:
+            if not re.fullmatch(r'^\+[1-9]\d{1,14}$', phone_number):
+                self.add_error(
+                    'phone_number',
+                    'Phone number must be in E.164 format (e.g. +1234567890).'
+                )
+            else:
+                cleaned_data['phone_number'] = phone_number
+
+        return cleaned_data
