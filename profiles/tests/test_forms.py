@@ -105,3 +105,34 @@ class ProfileFormTests(TestCase):
         # Assertions
         self.assertEqual(country_attrs.get('aria-label'), 'country')
         self.assertEqual(email_attrs.get('aria-label'), 'email')
+
+    def test_clean_method_with_invalid_phone_number(self):
+        """
+        Testing the clean method with an invalid phone number.
+        """
+        # Create form data.
+        form_data = {
+            'default_phone_number': 'invalid',
+            }
+        self.form = UserProfileForm(instance=self.user_profile, data=form_data)
+
+        # Assertions
+        self.assertFalse(self.form.is_valid())
+        self.assertIn('default_phone_number', self.form.errors)
+        self.assertIn(
+            'Phone number must be in E.164 format (e.g. +1234567890).',
+            self.form.errors['default_phone_number']
+        )
+
+    def test_clean_method_with_valid_phone_number(self):
+        """
+        Testing the clean method with a valid phone number.
+        """
+        # Create form data.
+        form_data = {
+            'default_phone_number': '+1234567890',
+            }
+        self.form = UserProfileForm(instance=self.user_profile, data=form_data)
+
+        # Assertions
+        self.assertTrue(self.form.is_valid())
