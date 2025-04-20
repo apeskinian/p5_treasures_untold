@@ -142,7 +142,7 @@ class ProductFormTests(TestCase):
             # Assertions for errors.
             self.assertIsNotNone(instance)
             self.assertIn('realm', form.errors)
-            self.assertIn('An error occured:', form.errors['realm'][0])
+            self.assertIn('An error occurred:', form.errors['realm'][0])
 
     def test_clean_method_new_selected_blank_input(self):
         """
@@ -192,7 +192,7 @@ class ProductFormTests(TestCase):
             self.assertFalse(form.is_valid())
             self.assertIn('realm', form.errors)
             self.assertIn(
-                'An error occured while processing the realm:',
+                'An error occurred while processing the realm:',
                 form.errors['realm'][0]
             )
 

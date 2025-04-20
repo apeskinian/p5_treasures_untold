@@ -86,7 +86,7 @@ class ProfileTests(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(self.url, {
             'default_full_name': 'Tess Tyuza',
-            'default_phone_number': '123456'
+            'default_phone_number': '+1234567890'
         })
         messages = list(get_messages(response.wsgi_request))
         self.profile.refresh_from_db()
@@ -98,7 +98,7 @@ class ProfileTests(TestCase):
             for msg in messages
         ))
         self.assertEqual(self.profile.default_full_name, 'Tess Tyuza')
-        self.assertEqual(self.profile.default_phone_number, '123456')
+        self.assertEqual(self.profile.default_phone_number, '+1234567890')
 
     def test_invalid_profile_update(self):
         """
