@@ -2326,7 +2326,7 @@ The project should now be connected and deployed to Heroku!
 Heroku imposes a maximum slug size limit of 500 MB for deployed applications. This limit applies to the entire application, including its code and dependencies after compression. As the documentation for this app contains a significant amount of screenshots and recordings I have implemented the use of a `.slugignore` file saved in the root directory of the repository. This works in a similar way to `.gitignore` with the difference being that when the app is deployed to Heroku, any files listed in the `.slugignore` file will not be included in the Heroku deployment. This saves space by not including all the documentation files which are not needed for the live app.
 
 | Local Repo Folder Map | Key |
-| --- | --- |
+| :---: | :---: |
 | ![Daisy Disk Map](documentation/charts/daisy_disk_chart.png "daisy disk chart") | ![Daisy Disk Key](documentation/charts/daisy_disk_key.png "daisy disk key") |
 
 ### Cloudinary API
