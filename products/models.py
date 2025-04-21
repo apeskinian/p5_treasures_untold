@@ -220,7 +220,8 @@ class Product(models.Model):
         - The `realm.name` field as a string with underscores replaced
         with spaces.
         """
-        return self.realm.name.replace('_', ' ')
+        if self.realm:
+            return self.realm.name.replace('_', ' ')
 
     def clean(self):
         """
