@@ -1,10 +1,10 @@
-# Ensure consistent line endings
+# Enable Git’s automatic line ending normalization
 * text=auto
 
-# Specifically enforce LF for Python files
+# Ensure that all .py (Python) files always use LF line endings, regardless of the OS.
 *.py text eol=lf
 
-# Binary files should not be modified
+# Tell Git to treat the following image files as binary.
 *.png binary
 *.jpg binary
 *.gif binary

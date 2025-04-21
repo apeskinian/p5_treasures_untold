@@ -2321,6 +2321,14 @@ Or:
 
 The project should now be connected and deployed to Heroku!
 
+#### Heroku app size limitations
+
+Heroku imposes a maximum slug size limit of 500 MB for deployed applications. This limit applies to the entire application, including its code and dependencies after compression. As the documentation for this app contains a significant amount of screenshots and recordings I have implemented the use of a `.slugignore` file saved in the root directory of the repository. This works in a similar way to `.gitignore` with the difference being that when the app is deployed to Heroku, any files listed in the `.slugignore` file will not be included in the Heroku deployment. This saves space by not including all the documentation files which are not needed for the live app.
+
+| Local Repo Folder Map | Key |
+| --- | --- |
+| ![Daisy Disk Map](documentation/charts/daisy_disk_chart.png "daisy disk chart") | ![Daisy Disk Key](documentation/charts/daisy_disk_key.png "daisy disk key") |
+
 ### Cloudinary API
 
 This project uses the [Cloudinary API](https://cloudinary.com) to store media assets online, due to the fact that Heroku doesn't persist this type of data.
@@ -2419,7 +2427,6 @@ MIDDLEWARE = [
 ]
 ```
 
-
 ### Local Development
 
 This project can be cloned or forked in order to make a local copy on your own system.
@@ -2498,6 +2505,23 @@ By forking the GitHub Repository, you make a copy of the original repository on 
 2. At the top of the Repository, just below the "Settings" button on the menu, locate and click the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
+### Cross-platform development.
+
+If you are using both Windows and Mac operating systems to develop on, you can use a `.gitattributes` file to help line ending consistency. This should be saved in your root directory of your repository.
+
+```
+# Enable Git’s automatic line ending normalization
+* text=auto
+
+# Ensure that all .py (Python) files always use LF line endings, regardless of the OS.
+*.py text eol=lf
+
+# Tell Git to treat the following image files as binary.
+*.png binary
+*.jpg binary
+*.gif binary
+```
+
 ### Local VS Deployment
 
 The local version of this project contains a folder of product images that are used when in debug mode to prevent excessive impressions on the cloudinary server when testing.
@@ -2511,6 +2535,7 @@ There are no remaining major differences between the local version when compared
 | Source | Notes |
 | --- | --- |
 | [Markdown Builder](https://markdown.2bn.dev/) | Tool to help generate the Markdown files |
+| [Complete list of GitHub markdown emojis](https://gist.github.com/rxaviers/7360908) | Including emojis in the markdown files |
 | [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) | Using Bootstrap |
 | [Boutique Ado](https://codeinstitute.net) | Code Institute walkthrough project inspiration |
 | [Cloudinary](https://cloudinary.com/) | Hosting user uploaded images |
