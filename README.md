@@ -2532,14 +2532,49 @@ There are no remaining major differences between the local version when compared
 
 ### Media
 
+#### Icons
 | Source | Location | Type | Notes |
 | --- | --- | --- | --- |
 | [FlatIcon](https://www.flaticon.com/free-icon/lamp_867845?term=magic&page=1&position=59&origin=tag&related_id=867845) | Entire site | Favicon | PNG used for favicon generation |
 | [Favicon Generator](https://favicon.io/favicon-converter/) | Entire site | Favicon | Icon generated from Lamp png downloaded from FlatIcon |
 | [Font Awesome](https://fontawesome.com) | Icons used throughout the site | Icons | See [typography](#icons) full all icons used |
 | [Canva](https://www.canva.com/) | Entire site | AI generated and edited images | Free trial used to expand images with AI |
-| [Disney Fandom](https://disney.fandom.com/wiki/The_Disney_Wiki) | Products and realms | Images and information | Image and names for products and realms |
-| [Disney Villainous Fandom](https://disney-villainous.fandom.com/wiki/Disney_Villainous_Wiki) | Products and realms | Images and information | Image and names for products and realms |
+
+#### Product Images
+| Item | Source | Notes |
+| --- | --- | --- |
+| Alarm Clock | [lorcana.gg](https://lorcana.gg/cards/001-066-magic-mirror/) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab)  |
+| Apprentice's Broom | [Disney Wiki](https://disney.fandom.com/wiki/Magic_Brooms/Gallery?file=Fantasia-disneyscreencaps_com-2196.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Bakora Staff | [The Lion Guard Wiki](https://lionguard.fandom.com/wiki/Bakora_Staff?file=Bakorastaff.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Captain Hook's Cutlass | [lorcana.gg](https://lorcana.gg/cards/003-199-captain-hooks-rapier) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Captain Hook's Hook | [Disney Wiki](https://disney.fandom.com/es/wiki/Captain_Hook's_Hook?file=Garfio.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Cinderella's Glass Slipper | [Disney Wiki](https://disney.fandom.com/wiki/Glass_Slipper?file=Glass_Slipper.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Dinglehopper | [lorcana.gg](https://lorcana.gg/cards/001-032-dinglehopper) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Eat Me Cookies | [Disney Wiki](https://disney.fandom.com/wiki/Eat_Me_Cookies?file=IMG_6675.JPG) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Enchanted Rose | [Disney Wiki](https://disney.fandom.com/wiki/Enchanted_Rose/Gallery?file=Beauty-and-the-beast-disneyscreencaps.com-5197.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Fairy Godmother's Wand | [Disney Wiki](https://disney.fandom.com/wiki/Magic_Wand?file=Magic_Wand22.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Fishbone Quill | [lorcana.gg](https://lorcana.gg/cards/001-168-fishbone-quill) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Heart of Te Fiti | [lorcana.gg](https://lorcana.gg/cards/003-164-heart-of-te-fiti) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Jar of Dirt | [ChatGPT](https://chatgpt.com) | Created from prompt given to [ChatGPT](https://chatgpt.com) |
+| King Triton's Trident | [Disney Villainous Wiki](https://disney-villainous.fandom.com/wiki/Trident?file=Trident.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Left Half of a Golden Scarab Beetle | [Disney Wiki](https://disney.fandom.com/wiki/Golden_Scarab_Beetle?file=Golden_Scarab_Beetle_Right_Piece.jpg) | I used the source image to recreate a matching left half using [Affinity Photo 2](https://affinity.serif.com/en-gb/photo/) |
+| Magic Carpet | [Canva Dream Lab](https://www.canva.com/dream-lab) | Created from prompt given to [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Magic Lamp | [Canva Dream Lab](https://www.canva.com/dream-lab) | Created from prompt given to [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Magic Mirror | [lorcana.gg](https://lorcana.gg/cards/001-066-magic-mirror/) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Maui's Fish Hook | [lorcana.gg](https://lorcana.gg/cards/003-132-mauis-fish-hook) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Oogie Boogie's Bathtub | [Disney Villainous Wiki](https://disney-villainous.fandom.com/wiki/Bathtub?file=Bathtub.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Pixie Dust | [Disney Fairies Wiki](https://disneyfairies.fandom.com/wiki/Pixie_Dust?file=Pixie_dust_tree_-_visual_development_by_Scott_Fassett.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Prince Eric's Statue | [Disney Wiki](https://disney.fandom.com/wiki/Ariel's_Secret_Grotto?file=Prince_Eric's_statue_in_Ariel's_Grotto.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Rapunzel's Frying Pan | [lorcana.gg](https://lorcana.gg/cards/001-202-frying-pan) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Rapunzel's Hairbrush | [Disney Villainous Wiki](https://disney-villainous.fandom.com/wiki/Hair_Brush?file=Hair_Brush.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Right Half of a Golden Scarab Beetle | [Disney Wiki](https://disney.fandom.com/wiki/Golden_Scarab_Beetle?file=Golden_Scarab_Beetle_Right_Piece.jpg) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Shield of Virtue | [lorcana.gg](https://lorcana.gg/cards/001-135-shield-of-virtue) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Shiva Monkey Idol of Agrabah | [Aladdin Wiki](https://aladdin.fandom.com/wiki/Shiva-Monkey?file=Shiva_Monkey_in_storybook.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Snarfblat | [Disney Villainous Wiki](https://disney-villainous.fandom.com/wiki/Snarfblat?file=Snarfblat.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Sorcerer's Hat | [lorcana.gg](https://lorcana.gg/cards/003-065-the-sorcerers-hat) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Spinning Wheel | [Disney Villainous Wiki](https://disney-villainous.fandom.com/wiki/Spinning_Wheel?file=Spinning_Wheel.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| Sword of Truth | [Disney Villainous Wiki](https://disney-villainous.fandom.com/wiki/Sword_of_Truth?file=Sword_of_Truth.png) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
+| White Rabbit's Pocket Watch | [lorcana.gg](https://lorcana.gg/cards/001-068-white-rabbits-pocket-watch) | Expanded to square image and cleaned using [Canva Dream Lab](https://www.canva.com/dream-lab) |
 
 ### Acknowledgements
 
