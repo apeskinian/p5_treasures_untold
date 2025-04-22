@@ -22,7 +22,6 @@
     --tu-teal-shadow: #28383abd;
     --tu-dark-teal: #1B2429;
     --tu-purple: #885b92;
-    --tu-link: #8c5699;
     --tu-white: #FFF;
     --tu-off-white: #f0f0f0;
     --tu-light-grey: #dcdcdc;
@@ -50,10 +49,6 @@
     pointer-events: none;
 }
 
-a {
-    color: var(--tu-link);
-}
-
 h1 {
     font-family: 'Pirata One', serif;
 }
@@ -74,6 +69,15 @@ main {
     display: flex;
     flex-direction: column;
     background-color: var(--tu-white);
+}
+
+.product-realm-link {
+    color: var(--tu-blue);
+    text-decoration: none;
+}
+
+.product-realm-link:hover {
+    text-decoration: underline;
 }
 
 /* Footer Styling */

@@ -165,7 +165,6 @@ The action buttons are grouped by colour for specific types of action. This shou
 | --tu-teal-shadow: | #28383abd | Used for the border when --tu-teal items are focused |
 | --tu-dark-teal: | #1B2429 | Mobile navigation menu background |
 | --tu-purple: | #885b92 | Unlocked rewards message border |
-| --tu-link: | #8c5699 | Link text |
 | --tu-white: | #FFF | All contrasting text and icons that are on a dark background |
 | --tu-off-white: | #f0f0f0 | Page content containers |
 | --tu-light-grey: | #dcdcdc | Nav pills / Table headers / Message reply content background |
