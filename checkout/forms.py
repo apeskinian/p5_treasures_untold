@@ -29,7 +29,7 @@ class OrderForm(forms.ModelForm):
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email',
-            'phone_number': 'Phone Number (e.g. +441234567890)',
+            'phone_number': 'Phone Number (e.g. +123456789012345)',
             'street_address_1': 'Street Address 1',
             'street_address_2': 'Street Address 2',
             'town_city': 'Town or City',
@@ -62,7 +62,8 @@ class OrderForm(forms.ModelForm):
             if not re.fullmatch(r'^\+[1-9]\d{1,14}$', phone_number):
                 self.add_error(
                     'phone_number',
-                    'Phone number must be in E.164 format (e.g. +1234567890).'
+                    'Phone number must be in E.164 format '
+                    '(e.g. +123456789012345).'
                 )
             else:
                 cleaned_data['phone_number'] = phone_number

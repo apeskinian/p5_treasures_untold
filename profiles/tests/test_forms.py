@@ -59,7 +59,7 @@ class ProfileFormTests(TestCase):
         self.assertEqual(
             self.form.fields['default_phone_number']
             .widget.attrs.get('placeholder'),
-            'Phone Number (e.g. +441234567890)'
+            'Phone Number (e.g. +123456789012345)'
         )
         self.assertEqual(
             self.form.fields['default_street_address_1']
@@ -120,7 +120,7 @@ class ProfileFormTests(TestCase):
         self.assertFalse(self.form.is_valid())
         self.assertIn('default_phone_number', self.form.errors)
         self.assertIn(
-            'Phone number must be in E.164 format (e.g. +1234567890).',
+            'Phone number must be in E.164 format (e.g. +123456789012345).',
             self.form.errors['default_phone_number']
         )
 

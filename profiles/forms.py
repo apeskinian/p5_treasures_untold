@@ -34,7 +34,7 @@ class UserProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'default_full_name': 'Full Name',
-            'default_phone_number': 'Phone Number (e.g. +441234567890)',
+            'default_phone_number': 'Phone Number (e.g. +123456789012345)',
             'default_street_address_1': 'Street Address 1',
             'default_street_address_2': 'Street Address 2',
             'default_town_city': 'Town or City',
@@ -65,7 +65,8 @@ class UserProfileForm(forms.ModelForm):
             if not re.fullmatch(r'^\+[1-9]\d{1,14}$', phone_number):
                 self.add_error(
                     'default_phone_number',
-                    'Phone number must be in E.164 format (e.g. +1234567890).'
+                    'Phone number must be in E.164 format '
+                    '(e.g. +123456789012345).'
                 )
             else:
                 cleaned_data['default_phone_number'] = phone_number

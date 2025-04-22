@@ -49,7 +49,7 @@ class OrderFormTests(TestCase):
         )
         self.assertEqual(
             self.form.fields['phone_number'].widget.attrs.get('placeholder'),
-            'Phone Number (e.g. +441234567890)'
+            'Phone Number (e.g. +123456789012345)'
         )
         self.assertEqual(
             self.form.fields['street_address_1'].widget.attrs.get(
@@ -115,7 +115,7 @@ class OrderFormTests(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn('phone_number', form.errors)
         self.assertIn(
-            'Phone number must be in E.164 format (e.g. +1234567890).',
+            'Phone number must be in E.164 format (e.g. +123456789012345).',
             form.errors['phone_number']
         )
 
