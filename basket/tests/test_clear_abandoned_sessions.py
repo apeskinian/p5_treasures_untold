@@ -18,7 +18,7 @@ class ClearAbandonedSessionsTests(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=0,
             unique_stock=True
@@ -26,7 +26,7 @@ class ClearAbandonedSessionsTests(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=3
         )
@@ -68,7 +68,7 @@ class ClearAbandonedSessionsTests(TestCase):
 
     def test_valid_timestamp_format_and_basket_clearance(self):
         """
-        Test for a successful basket clerance. Session has correct timestamp
+        Test for a successful basket clearance. Session has correct timestamp
         and basket info.
         """
         # Add timestamp to session
@@ -89,7 +89,7 @@ class ClearAbandonedSessionsTests(TestCase):
         self.assertEqual(self.product1.stock, 1)
         self.assertEqual(self.product2.stock, 5)
 
-    def test_catchin_overstocking_for_unique_and_negative_retock(self):
+    def test_catching_overstocking_for_unique_and_negative_restock(self):
         """
         Testing error handling for overstock and negative stock events as a
         result of recovering stock.

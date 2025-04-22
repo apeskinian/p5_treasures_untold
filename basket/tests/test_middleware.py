@@ -6,7 +6,7 @@ from django.test import TestCase, RequestFactory
 from ..middleware import UpdateSessionMiddleware
 
 
-class UpdateSessionMiddelwareTest(TestCase):
+class UpdateSessionMiddlewareTest(TestCase):
     def setUp(self):
         """
         Sets up a request and session for tests.
@@ -25,7 +25,7 @@ class UpdateSessionMiddelwareTest(TestCase):
         Testing that the middleware updates the session with a 'modified'
         timestamp.
         """
-        # Call the middlware.
+        # Call the middleware.
         self.middleware(self.request)
 
         # Assertions

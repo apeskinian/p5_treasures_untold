@@ -8,7 +8,7 @@ class UpdateSessionMiddleware:
     """
     def __init__(self, get_response):
         """
-        Initiliazes the middleware.
+        Initializes the middleware.
         """
         self.get_response = get_response
 

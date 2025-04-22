@@ -29,7 +29,7 @@ class BasketContentsTest(TestCase):
             id=1,
             name='Magic Lamp',
             realm=self.agrabah,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True
@@ -38,7 +38,7 @@ class BasketContentsTest(TestCase):
             id=2,
             name='Left Half of a Golden Scarab Beetle',
             realm=self.agrabah,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True
@@ -47,7 +47,7 @@ class BasketContentsTest(TestCase):
             id=3,
             name='Dinglehopper',
             realm=self.atlantica,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=5
         )
@@ -55,7 +55,7 @@ class BasketContentsTest(TestCase):
             id=4,
             name='Right Half of a Golden Scarab Beetle',
             realm=self.agrabah,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True

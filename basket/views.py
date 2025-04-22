@@ -247,7 +247,7 @@ def remove_from_basket(request, item_id):
         levels.
 
     **Returns:**
-    - A `HttpResponse` with status of 200 for a successul removal or 500 if an
+    - A `HttpResponse` with status of 200 for a successful removal or 500 if an
         exception occurs.
     """
     # Remove the item from the basket

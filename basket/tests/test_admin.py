@@ -23,7 +23,7 @@ class EmptyBasketAdminActionTest(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=0,
             unique_stock=True
@@ -31,21 +31,21 @@ class EmptyBasketAdminActionTest(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=3
         )
         self.product3 = Product.objects.create(
             id=3,
             name='test product 3',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
         )
         self.product4 = Product.objects.create(
             id=4,
             name='test product 4',
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=25
         )
@@ -59,12 +59,12 @@ class EmptyBasketAdminActionTest(TestCase):
         self.session2['basket'] = {'3': 1, '4': 5}
         self.session2.save()
 
-        # Sesson 3 for testing more than one unique stock
+        # Session 3 for testing more than one unique stock
         self.session3 = SessionStore()
         self.session3['basket'] = {'1': 2}
         self.session3.save()
 
-        # Sesson 4 for testing negative stock
+        # Session 4 for testing negative stock
         self.session4 = SessionStore()
         self.session4['basket'] = {'3': -5}
         self.session4.save()
@@ -197,7 +197,7 @@ class ClearRewardsAdminActionTest(TestCase):
 
     def test_clear_rewards(self):
         """
-        Test to see if rewards are successfully removed from sesion data.
+        Test to see if rewards are successfully removed from session data.
         """
         # Call the action
         queryset = [self.session_obj1, self.session_obj2]
@@ -214,7 +214,7 @@ class ClearRewardsAdminActionTest(TestCase):
         store1 = SessionStore(session_key=self.session_obj1.session_key)
         store2 = SessionStore(session_key=self.session_obj2.session_key)
 
-        # Asssertions
+        # Assertions
         self.assertNotIn('rewards', store1.load())
         self.assertNotIn('rewards', store2.load())
         self.assertNotIn('rewards', self.request.session)
