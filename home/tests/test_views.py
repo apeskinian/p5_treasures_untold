@@ -31,7 +31,7 @@ class IndexTests(TestCase):
             id=1,
             name='test product 1',
             realm=self.realm,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=0,
             unique_stock=True
@@ -40,7 +40,7 @@ class IndexTests(TestCase):
             id=2,
             name='test product 2',
             realm=self.realm,
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=3
         )
