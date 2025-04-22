@@ -31,7 +31,7 @@
                 <div id="new-items-text" class="col-12 col-sm-6 col-lg-5 col-xl-4 offset-lg-1 offset-xl-2 d-flex flex-column justify-content-center align-items-center p-3 text-center">
                     <h3>Latest Additions!</h3>
                     <p>Explore our newest arrivals and uncover unique treasures and magical items. Add a touch of enchantment to your collection today.</p>
-                    <a href="{% url 'products' %}?new" class="btn btn-teal">Shop New</a>
+                    <a href="{% url 'products' %}?new" class="btn btn-teal w-75">Shop New</a>
                 </div>
                 <div id="new-items-images" class="col-12 col-sm-6 col-lg-5 col-xl-4 d-flex flex-column align-items-center justify-content-center p-3">
                     <div class="slideshow-container">
@@ -114,7 +114,7 @@
                 <div id="featured-items-text" class="col-12 col-sm-6 col-lg-5 col-xl-4 order-sm-last d-flex flex-column justify-content-center align-items-center p-3 text-center">
                     <h3>{{ featured_realm.display_name }}</h3>
                     <p>Explore the magic of {% if featured_realm.the_prefix_required %}the {% endif %}{{ featured_realm.display_name }}. Discover exclusive treasures inspired by this enchanting realm!</p>
-                    <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-teal">Shop {{ featured_realm.display_name }}</a>
+                    <a href="{% url 'products' %}?realm={{ featured_realm.name }}" class="btn btn-teal w-75">Shop {{ featured_realm.display_name }}</a>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-5 col-xl-4 offset-lg-1 offset-xl-2 d-flex flex-column align-items-center justify-content-center p-3">
                     <div id="featured-slide-main" class="slideshow-container">
