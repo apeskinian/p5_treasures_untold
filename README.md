@@ -890,6 +890,16 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     The user can then save the new topic by clicking on the 'Add' button or cancel and return to the dashboard with the 'Cancel' or modal close button.
 
+    :bulb: **NOTE:**  
+    The ordering of the standard FAQ Topics is specific so that they have a natural order to read in. This order is:
+    - About Treasures Untold
+    - Orders & Shipping
+    - Payment & Returns
+    - Product Care
+    - Contact & Support
+
+    This order is maintained by use of the `sort_order` model field. Any new topics that are added will be assigned a default value of 100 so as not to interfere with this order. New topics will be sorted alphabetically at the end of the standard list. All `sort_order` values including the standard topics can be changed in the Django Admin panel.
+
     | Mobile Topic Creation | Desktop Topic Creation |
     | :---: | :---: |
     | ![Mobile Topic Creation](documentation/features/dashboard/faq_admin/mobile_topic_add.png "Mobile topic creation") | ![Desktop Topic Creation](documentation/features/dashboard/faq_admin/desktop_topic_add.png "Desktop topic creation") |
@@ -910,6 +920,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | :---: | :---: |
     | ![Mobile Topic Delete](documentation/features/dashboard/faq_admin/mobile_topic_delete.png "Mobile topic delete") | ![Desktop Topic Delete](documentation/features/dashboard/faq_admin/desktop_topic_delete.png "Desktop topic delete") |
 
+
     ### Message Admin
     Messages are grouped into two sections:
     - Un-replied
@@ -927,7 +938,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     If the message has been replied to the additional information is visible:
     - Date the reply was sent
     - Reply content
-
+    
     | Messages |
     | :---: |
     | ![Messages](documentation/features/dashboard/message_admin/messages.png "Messages") |
