@@ -11,7 +11,7 @@ from ..models import UserProfile
 class ProfileTests(TestCase):
     def setUp(self):
         """
-        Create a client, url and intances of:
+        Create a client, url and instances of:
         - :model:`auth.User`
         - :model:`profiles.UserProfile`
         - :model:`checkout.Order`
