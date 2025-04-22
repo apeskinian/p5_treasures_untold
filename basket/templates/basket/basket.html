@@ -25,7 +25,7 @@
                 {% endif %}
                 <div class="item-row row">
                     <div class="image-column col">
-                        <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                        <img {% if user.is_authenticated and item.product.sku == 'TU-AGR-ML-U-129C' %}id="magic-lamp"{% endif %} class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
                     </div>
                     <div class="info-column col">
                         <div class="details-row row mb-2">
@@ -129,4 +129,5 @@
     <!-- Load product_limits.js -->
     <script src="{% static 'script/product_limits.js' %}"></script>
     <script src="{% static 'basket/script/basket_script.js' %}"></script>
+    <script src="{% static 'products/script/magic_lamp.js' %}"></script>
 {% endblock %}

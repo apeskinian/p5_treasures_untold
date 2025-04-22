@@ -29,6 +29,10 @@
     min-width: fit-content;
 }
 
+.rubbing {
+    cursor: grab;
+}
+
 /* Media queries for larger screens. */
 @media screen and (min-width: 768px) {
     #basket-container {
