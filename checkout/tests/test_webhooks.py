@@ -13,7 +13,7 @@ class WebhooksTests(TestCase):
     @patch('stripe.Webhook.construct_event')
     def test_handle_unhandled_event(self, mock_construct_event):
         """
-        Testing the webook handler for a generic event.
+        Testing the webhook handler for a generic event.
         """
         event_payload = {
             'type': 'some_unhandled_event',

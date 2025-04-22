@@ -121,7 +121,7 @@ class CheckoutTests(TestCase):
             id=1,
             realm=self.agrabah,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=8,
             sku='TEST123',

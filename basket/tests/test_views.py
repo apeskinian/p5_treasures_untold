@@ -39,7 +39,7 @@ class UpdateStockTest(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True
@@ -47,14 +47,14 @@ class UpdateStockTest(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=5,
         )
 
     def test_normal_stock_update(self):
         """
-        Testing stock adjusment within normal parameters.
+        Testing stock adjustment within normal parameters.
         """
         update_stock(self.request, self.product2, 5)
         self.product2.refresh_from_db()
@@ -150,14 +150,14 @@ class AddToBasketTest(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=4,
         )
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=0,
         )
@@ -361,7 +361,7 @@ class UpdateBasketTest(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=4,
         )
@@ -507,7 +507,7 @@ class RemoveFromBasket(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=4,
         )
@@ -536,7 +536,7 @@ class RemoveFromBasket(TestCase):
     def test_delete_item(self, mock_check_reward, mock_update_stock):
         """
         Test for deleting an item using the `quantity` context to control
-        a simulated errror for exception handling.
+        a simulated error for exception handling.
 
         **Test Options**
         '2': Simulates a valid number.
@@ -588,7 +588,7 @@ class CheckCaveOfWondersTest(TestCase):
         self.monkey_idol = Product.objects.create(
             id=1,
             name='monkey_idol',
-            description='product descripton',
+            description='product description',
             sku='TU-AGR-SMIOA-U-A85D',
             price=10.00,
             stock=1,
@@ -596,7 +596,7 @@ class CheckCaveOfWondersTest(TestCase):
         self.beetle_left = Product.objects.create(
             id=2,
             name='beetle_left',
-            description='product descripton',
+            description='product description',
             sku='TU-AGR-LHOAGSB-U-A39A',
             price=10.00,
             stock=1,
@@ -604,7 +604,7 @@ class CheckCaveOfWondersTest(TestCase):
         self.beetle_right = Product.objects.create(
             id=3,
             name='beetle_right',
-            description='product descripton',
+            description='product description',
             sku='TU-AGR-RHOAGSB-U-9B7C',
             price=10.00,
             stock=1,

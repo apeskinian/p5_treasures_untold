@@ -89,7 +89,7 @@ class StripeHandlerTests(TestCase):
             id=1,
             name='test product 1',
             realm=self.agrabah,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=3
         )
@@ -191,7 +191,7 @@ class StripeHandlerTests(TestCase):
             id=1,
             name='test product 1',
             realm=self.agrabah,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=3
         )
@@ -267,7 +267,7 @@ class StripeHandlerTests(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=3
         )
@@ -382,7 +382,7 @@ class StripeHandlerTests(TestCase):
 
         # Assertions
         self.assertEqual(response.status_code, 500)
-        self.assertIn('ERRROR:', response.content.decode())
+        self.assertIn('ERROR:', response.content.decode())
 
     @patch('checkout.webhook_handler.stripe.Charge.retrieve')
     @patch('checkout.webhook_handler.send_mail')

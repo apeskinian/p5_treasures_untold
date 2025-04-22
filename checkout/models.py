@@ -105,7 +105,7 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Overides the standard save method by checking for an order number and
+        Overrides the standard save method by checking for an order number and
         generating one if not present.
         """
         if not self.order_number:
@@ -161,7 +161,7 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Overides the save method and calculates the `lineitem_total` field.
+        Overrides the save method and calculates the `lineitem_total` field.
         """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)

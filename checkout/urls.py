@@ -5,7 +5,7 @@ from .webhooks import webhook
 
 
 urlpatterns = [
-    # View for completing purchse and processing payment.
+    # View for completing purchase and processing payment.
     path('', views.checkout, name='checkout'),
 
     # Confirmation view of transaction.

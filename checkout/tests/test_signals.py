@@ -34,7 +34,7 @@ class SignalTests(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True
@@ -43,7 +43,7 @@ class SignalTests(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=4,
         )
@@ -51,7 +51,7 @@ class SignalTests(TestCase):
         self.product3 = Product.objects.create(
             id=3,
             name='test product 3',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=2,
         )
@@ -75,7 +75,7 @@ class SignalTests(TestCase):
     @patch('checkout.models.Order.update_total')
     def test_update_total_on_save(self, mock_update_total):
         """
-        Test to check if `update_total()` is called when an intance of
+        Test to check if `update_total()` is called when an instance of
         :model:`checkout.OrderLineItem` is saved.
         """
         self.order_line_item.save()
@@ -86,7 +86,7 @@ class SignalTests(TestCase):
     @patch('checkout.models.Order.update_total')
     def test_update_total_on_delete(self, mock_update_total):
         """
-        Test to check if `update_total()` is called when an intance of
+        Test to check if `update_total()` is called when an instance of
         :model:`checkout.OrderLineItem` is deleted.
         """
         self.order_line_item.delete()

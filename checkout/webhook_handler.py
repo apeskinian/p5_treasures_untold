@@ -272,7 +272,7 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
                 return HttpResponse(
-                    content=f': {event['type']} | ERRROR: {e}',
+                    content=f': {event['type']} | ERROR: {e}',
                     status=500
                 )
 

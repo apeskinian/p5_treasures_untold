@@ -97,7 +97,7 @@ class OrderLineItemModelTests(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             sku='TEST123',
@@ -113,7 +113,7 @@ class OrderLineItemModelTests(TestCase):
             country='GB'
         )
 
-    def test_lineitem_total_calculcation(self):
+    def test_lineitem_total_calculation(self):
         """
         Tests the lineitem total calculation and returned string.
         """
