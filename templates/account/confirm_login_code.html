@@ -9,7 +9,7 @@
         {% translate "Enter Sign-In Code" %}
     {% endelement %}
     {% setvar email_link %}
-        <a href="mailto:{{ email }}">{{ email }}</a>
+        <a href="mailto:{{ email }}" class="text-link">{{ email }}</a>
     {% endsetvar %}
     {% element p %}
         {% blocktranslate %}We’ve sent a code to {{ email_link }}. The code expires shortly, so please enter it soon.{% endblocktranslate %}

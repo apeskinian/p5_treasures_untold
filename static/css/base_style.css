@@ -81,6 +81,16 @@ main {
     text-decoration: underline;
 }
 
+#id_password_helptext a{
+    color: var(--tu-dark-teal);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#id_password_helptext a:hover{
+    text-decoration: underline;
+}
+
 .product-realm-link {
     color: var(--tu-blue);
     text-decoration: none;
