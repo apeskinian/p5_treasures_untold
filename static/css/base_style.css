@@ -71,6 +71,16 @@ main {
     background-color: var(--tu-white);
 }
 
+.text-link {
+    color: var(--tu-dark-teal);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
 .product-realm-link {
     color: var(--tu-blue);
     text-decoration: none;
