@@ -243,7 +243,7 @@ def contact(request):
 def newsletter(request):
     """
     Displays the newsletter information page where a user can sign up to
-    reieve the letter via email.
+    receive the letter via email.
 
     **Context:**
     - `title`: Used to dynamically set the H1 page heading.

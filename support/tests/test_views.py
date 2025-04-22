@@ -66,7 +66,7 @@ class ContactTests(TestCase):
             {
                 'name': 'Tess Tyuza',
                 'email': 'tess@tyuza.com',
-                'message': 'Test messsage.'
+                'message': 'Test message.'
             })
 
         # Assertions

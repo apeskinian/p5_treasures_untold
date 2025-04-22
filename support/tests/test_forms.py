@@ -137,7 +137,7 @@ class FaqsFormTests(TestCase):
         # Create test topics
         self.topic_one = FaqsTopics.objects.create(name='Topic 1')
         self.topic_two = FaqsTopics.objects.create(name='Topic 2')
-        # Creat test form
+        # Create test form
         self.form = FaqsForm()
 
     def test_for_fields(self):
@@ -225,7 +225,7 @@ class FaqsFormTests(TestCase):
             # Assertions for errors.
             self.assertIsNotNone(instance)
             self.assertIn('topic', form.errors)
-            self.assertIn('An error occured:', form.errors['topic'][0])
+            self.assertIn('An error occurred:', form.errors['topic'][0])
 
     def test_clean_method_new_selected_blank_input(self):
         """
@@ -271,7 +271,7 @@ class FaqsFormTests(TestCase):
             self.assertFalse(form.is_valid())
             self.assertIn('topic', form.errors)
             self.assertIn(
-                'An error occured while processing the new topic:',
+                'An error occurred while processing the new topic:',
                 form.errors['topic'][0]
             )
 

@@ -109,7 +109,7 @@ class FaqsForm(forms.ModelForm):
         Overrides the form's save method to handle new topic creation.
 
         **Behavior:**
-        - If there is a new topic, it is created and replaces the placholder
+        - If there is a new topic, it is created and replaces the placeholder
             topic that was set in the clean method.
 
         **Raises:**
@@ -134,7 +134,7 @@ class FaqsForm(forms.ModelForm):
                 )
                 instance.topic = topic_obj
             except Exception as e:
-                self.add_error('topic', f'An error occured: {str(e)}')
+                self.add_error('topic', f'An error occurred: {str(e)}')
 
         if commit:
             instance.save()
@@ -179,7 +179,7 @@ class FaqsForm(forms.ModelForm):
             except Exception as e:
                 self.add_error(
                     'topic',
-                    'An error occured while processing the new topic: '
+                    'An error occurred while processing the new topic: '
                     f'{str(e)}'
                 )
         # Otherwise process the chosen topic as normal

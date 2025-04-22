@@ -58,7 +58,7 @@ class ContactMessage(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Overides the standard save method by checking for a ticket number and
+        Overrides the standard save method by checking for a ticket number and
         generating one if not present.
         """
         if not self.ticket_number:
