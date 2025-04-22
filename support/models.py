@@ -93,7 +93,7 @@ class FaqsTopics(models.Model):
     """
     class Meta:
         verbose_name_plural = 'FAQ Topics'
-        ordering = ['sort_order', ]
+        ordering = ['sort_order', 'name']
 
     name = models.CharField(
         max_length=100, null=False, blank=False, unique=True
