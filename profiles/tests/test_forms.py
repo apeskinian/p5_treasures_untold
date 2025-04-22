@@ -59,7 +59,7 @@ class ProfileFormTests(TestCase):
         self.assertEqual(
             self.form.fields['default_phone_number']
             .widget.attrs.get('placeholder'),
-            'Phone Number'
+            'Phone Number (e.g. +441234567890)'
         )
         self.assertEqual(
             self.form.fields['default_street_address_1']

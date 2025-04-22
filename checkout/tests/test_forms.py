@@ -49,7 +49,7 @@ class OrderFormTests(TestCase):
         )
         self.assertEqual(
             self.form.fields['phone_number'].widget.attrs.get('placeholder'),
-            'Phone Number'
+            'Phone Number (e.g. +441234567890)'
         )
         self.assertEqual(
             self.form.fields['street_address_1'].widget.attrs.get(
