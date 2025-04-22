@@ -43,7 +43,7 @@ class RealmFormTests(TestCase):
 class ProductFormTests(TestCase):
     def setUp(self):
         """
-        Create instaces of :model:`products.Realm` and
+        Create instances of :model:`products.Realm` and
         :form:`products.RealmForm` for the tests.
         """
         # Create test realms.

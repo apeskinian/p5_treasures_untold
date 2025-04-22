@@ -19,7 +19,7 @@ class RestockProductAdminActionTest(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=0,
             unique_stock=True
@@ -27,21 +27,21 @@ class RestockProductAdminActionTest(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=3
         )
         self.product3 = Product.objects.create(
             id=3,
             name='test product 3',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
         )
         self.product4 = Product.objects.create(
             id=4,
             name='test product 4',
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=25
         )

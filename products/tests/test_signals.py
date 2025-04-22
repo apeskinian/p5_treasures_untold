@@ -15,7 +15,7 @@ class ProductsSignalTests(TestCase):
         self.product1 = Product.objects.create(
             id=1,
             name='test product 1',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True,
@@ -23,7 +23,7 @@ class ProductsSignalTests(TestCase):
         self.product2 = Product.objects.create(
             id=2,
             name='test product 2',
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True,
@@ -32,7 +32,7 @@ class ProductsSignalTests(TestCase):
         self.mock_image1 = MagicMock()
         self.mock_image1.public_id = 'test_public_id'
         self.product1.image = self.mock_image1
-        # Create image with placeholder id so sohouldn't be deleted.
+        # Create image with placeholder id so shouldn't be deleted.
         self.mock_image2 = MagicMock()
         self.mock_image2.public_id = 'placeholder'
         self.product2.image = self.mock_image2
@@ -41,7 +41,7 @@ class ProductsSignalTests(TestCase):
     def test_cloudinary_delete(self, mock_destroy):
         """
         Test calling the cloudinary `destroy` method if public id is not
-        'placheholder'
+        'placeholder'
         """
         self.product1.delete()
 

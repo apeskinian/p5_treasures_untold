@@ -225,7 +225,7 @@ class AllProductsTests(TestCase):
     ):
         """
         Test for activation of 'Bibbidi-Bobbidi-Boo' discount reward when a
-        looged in user searches for the correct term. An instance of
+        logged in user searches for the correct term. An instance of
         :model:`auth.User` is created for this test.
         """
         # Create client, user and urls.

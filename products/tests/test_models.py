@@ -25,7 +25,7 @@ class ReamModelTests(TestCase):
 
     def test_display_name(self):
         """
-        Testing display name creation returns the name with undescores
+        Testing display name creation returns the name with underscores
         replaced with spaces.
         """
         # Assertions
@@ -45,7 +45,7 @@ class ProductModelTests(TestCase):
             id=1,
             name='test product 1',
             realm=self.test_realm,
-            description='product descripton',
+            description='product description',
             price=10.00,
             stock=1,
             unique_stock=True,
@@ -55,7 +55,7 @@ class ProductModelTests(TestCase):
             id=2,
             name='test product 2',
             realm=self.test_realm,
-            description='product descripton',
+            description='product description',
             price=14.00,
             stock=3,
             unique_stock=True
@@ -67,9 +67,9 @@ class ProductModelTests(TestCase):
         """
         self.assertEqual(str(self.product1), 'test product 1')
 
-    def test_realma_name(self):
+    def test_realm_name(self):
         """
-        Test realm name returned for a product, this shoul have underscores
+        Test realm name returned for a product, this should have underscores
         replaced with spaces.
         """
         # Assertions
@@ -127,7 +127,7 @@ class ProductModelTests(TestCase):
             'https://res.cloudinary.com/test_url'
         ]
 
-        # Asserstions
+        # Assertions
         self.assertEqual(
             self.product1.image_url,
             'https://res.cloudinary.com/test_url'
