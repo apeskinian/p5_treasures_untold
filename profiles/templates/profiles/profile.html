@@ -18,7 +18,7 @@
         <h2 class="text-center mb-3">{{ profile.user }}'s profile</h2>
         <p class="text-center">
             Welcome to your profile! Here, you can update your default details, such as your name, phone number, and delivery address, to make future checkouts faster and easier.<br>
-            You can also view your past orders and access order details whenever you need them.
+            You can also view your past orders and access order details whenever you need them. Click the order number to view details.
         </p>
         <div class="row">
             <!-- Details section -->
@@ -67,7 +67,7 @@
                                 {% for order in orders %}
                                 <tr>
                                     <td class="order-table-order-number">
-                                        <a href="{% url 'order_history' order.order_number %}"
+                                        <a href="{% url 'order_history' order.order_number %}" class="text-link"
                                         title="{{ order.order_number }}" aria-label="view order details for {{ order.order_number }}">
                                         {{ order.order_number }}
                                         </a>
