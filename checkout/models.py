@@ -149,7 +149,13 @@ class OrderLineItem(models.Model):
         related_name='lineitems'
     )
     product = models.ForeignKey(
-        Product, null=False, blank=False, on_delete=models.CASCADE
+        Product, null=True, blank=True, on_delete=models.SET_NULL
+    )
+    product_name = models.CharField(
+        max_length=254, null=False, blank=False, default=''
+    )
+    product_sku = models.CharField(
+        max_length=254, null=False, blank=False, default=''
     )
     purchase_price = models.DecimalField(
         null=True, blank=True, max_digits=6, decimal_places=2, default=0.00
@@ -164,6 +170,8 @@ class OrderLineItem(models.Model):
         Overrides the save method and calculates the `lineitem_total` field.
         """
         self.lineitem_total = self.product.price * self.quantity
+        self.product_name = self.product.name
+        self.product_sku = self.product.sku
         super().save(*args, **kwargs)
 
     def __str__(self):

@@ -133,15 +133,15 @@
                             <div class="row my-3">
                                 <div class="col d-flex image-column align-items-center">
                                     <div class=" position-relative">
-                                        <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                        <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product_name }}" onError="this.onerror=null;this.src='{% static "images/placeholder.png" %}';">
                                         <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
                                             {{ item.quantity }}
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col flex-grow-1 d-flex flex-column">
-                                    <strong>{{ item.product.name }}</strong>
-                                    <small>{{ item.product.sku }}</small>
+                                    <strong>{{ item.product_name }}</strong>
+                                    <small>{{ item.product_sku }}</small>
                                     {% if view_order.rewards_used %}
                                         {% if 'magic-lamp' in view_order.rewards_used %}
                                             {% if forloop.counter < 4 %}
