@@ -1132,7 +1132,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - **Magic Lamp:**
 
-        Users can activate a special reward by interacting with the Magic Lamp product image. Moving the mouse cursor over the lamp will simulate “rubbing” it, and after sufficient interaction, the reward will be triggered. Once activated, this reward applies a 100% discount to the first three items in the user’s basket.
+        Users can activate a special reward by interacting with the Magic Lamp product image. Moving the mouse cursor over the lamp will simulate “rubbing” it, and after sufficient interaction, the reward will be triggered. Once activated, this reward applies a 100% discount to the first three items in the user’s basket. This reward can be activated on the products, product detail and shopping basket pages. It is not implemented in the basket preview off-canvas element due to the smaller size of the image used.
 
         **:warning: NOTE:**  
         This currently only works for desktop devices with a mouse as it tracks the cursor movement.
