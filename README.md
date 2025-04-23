@@ -629,11 +629,14 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | --- | --- |
     | ![Mobile Profile Page](documentation/features/profile_page/mobile_profile_page.png "Mobile profile page") | ![Desktop Profile Page](documentation/features/profile_page/desktop_profile_page.png "Desktop profile page") |
 
-    To view details of previous orders, users can click on the relevant order number shown in the table to bring up details of that order.
+    To view details of previous orders, users can click on the relevant order number shown in the table to bring up details of that order. Clicking on the item name will also take the user to that products detail page.
 
     | Mobile Order History View | Desktop Order History View |
     | --- | --- |
     | ![Mobile Order History](documentation/features/profile_page/mobile_order_history.png "Mobile Order History") | ![Desktop Order History](documentation/features/profile_page/desktop_order_history.png "Desktop order history") |
+
+    #### Discontinued Items
+    Products that are deleted from the database and have previously been ordered will still show on previous order details but be marked as discontinued. The item name will not link to a product page and the placeholder image will be used for the product.
 
 - ### Support and Help Pages
     Treasures Untold has the following support pages for users which can be accessed via the navigation menus or the links at the bottom of each page:
