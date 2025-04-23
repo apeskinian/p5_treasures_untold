@@ -133,7 +133,11 @@
                             <div class="row my-3">
                                 <div class="col d-flex image-column align-items-center">
                                     <div class=" position-relative">
-                                        <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product_name }}" onError="this.onerror=null;this.src='{% static "images/placeholder.png" %}';">
+                                        {% if item.product != None %}
+                                            <img class="img-fluid rounded-3" src="{{ item.product.image_url }}" alt="{{ item.product_name }}">
+                                        {% else %}
+                                            <img class="img-fluid rounded-3" src="{% static 'images/placeholder.png' %}" alt="{{ item.product_name }}">
+                                        {% endif %}
                                         <span class="mob-basket-badge position-absolute translate-middle badge rounded-pill">
                                             {{ item.quantity }}
                                         </span>
