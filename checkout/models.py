@@ -129,6 +129,10 @@ class OrderLineItem(models.Model):
     **Fields:**
     - `order (ForeignKey)`: Links to :model:`checkout.Order`.
     - `product (ForeignKey)`: Links to :model:`products.Product`.
+    - `product_name` (CharField): Redundant denormalised field for product name
+        in case of product deletion.
+    - 'product_sku` (CharField): Redundant denormalised field for product sku
+        in case of product deletion.
     - `purchase_price (DecimalField)`: The value that the line item was
         purchased for taking into account any active rewards at the time of
         checkout.
@@ -140,7 +144,7 @@ class OrderLineItem(models.Model):
     - `save()`: Overrides the default save method to calculate the
         `lineitem_total` value.
     - `__str__()`: Returns the sku and order in an f string representation of
-      the orderlineitem.
+        the orderlineitem.
     """
     order = models.ForeignKey(
         Order, null=False,

@@ -1813,6 +1813,10 @@ class OrderLineItem(models.Model):
     **Fields:**
     - `order (ForeignKey)`: Links to :model:`checkout.Order`.
     - `product (ForeignKey)`: Links to :model:`products.Product`.
+    - `product_name` (CharField): Redundant denormalised field for product name
+        in case of product deletion.
+    - 'product_sku` (CharField): Redundant denormalised field for product sku
+        in case of product deletion.
     - `purchase_price (DecimalField)`: The value that the line item was
         purchased for taking into account any active rewards at the time of
         checkout.
@@ -1834,6 +1838,12 @@ class OrderLineItem(models.Model):
     )
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE
+    )
+    product_name = models.CharField(
+        max_length=254, null=False, blank=False, default=''
+    )
+    product_sku = models.CharField(
+        max_length=254, null=False, blank=False, default=''
     )
     purchase_price = models.DecimalField(
         null=True, blank=True, max_digits=6, decimal_places=2, default=0.00
