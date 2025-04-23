@@ -1115,7 +1115,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | ![Delete Spinner](documentation/features/communication/spinners/spinner_delete.gif "Delete spinner") |
 
 - ### Easter Eggs :open_mouth:
-    There's more than meets the eye in Treasures Untold. I have implemented 4 Easter eggs into the site that if discovered will unlock special rewards. These rewards can only be activated by users that are logged in.
+    There's more than meets the eye in Treasures Untold. I have implemented 4 Easter eggs into the site that if discovered will unlock special rewards.
+    
+    :warning: **NOTE:** These rewards can only be activated by authenticated users that are logged in.
 
     <details>
     <summary>:exclamation: Click here to reveal the hidden Easter eggs in Treasures Untold. :exclamation:</summary>
