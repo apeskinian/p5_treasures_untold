@@ -558,6 +558,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     It also shows any current rewards or discounts that have been activated and updated totals/costs.
     There is also a button to open the basket page and another to proceed straight to the secure checkout.
+    Users can click on a product name to take them to the specific product detail page.
 
     | Mobile Basket Preview | Desktop Basket Preview |
     | --- | --- |
@@ -572,6 +573,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - Remove the product from the basket using the bin icon
     - If the product is not unique, the quantity required can also be adjusted. To confirm the adjustment the refresh icon must be clicked which is situated next to the quantity adjuster. Adjusting the quantity to 0 will remove the product from the basket.
 
+    Users can click on a product name to take them to the specific product detail page.
     This page shows two buttons at the bottom, one to continue shopping which navigates to the products page, the other is to proceed to secure checkout.
 
     | Mobile Basket Page | Desktop Basket Page |
@@ -581,7 +583,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - ### Secure Checkout
     When users are ready to checkout, they are directed to the checkout page. Here they are presented with a from to complete for delivery and payment details along with a summary of the items they are buying.
     
-    The order summary is in the same format as the basket preview described above.
+    The order summary is in the same format as the basket preview described above. Users can click on a product name to take them to the specific product detail page.
 
     The Payment and Delivery section is split into three sub sections:
     - Contact Details
@@ -608,7 +610,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - Order Number
     - Date
     - Contact and Delivery details provided during checkout
-    - Order summary including any activated rewards and relevant price adjustments
+    - Order summary including any activated rewards and relevant price adjustments, users can also click on a product name to take them to the specific product detail page.
 
     There are two buttons at the bottom of the page, one to go straight to the users profile page, the other to continue shopping which goes to the products page.
 
