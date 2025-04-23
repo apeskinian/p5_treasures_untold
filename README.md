@@ -640,6 +640,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     #### Discontinued Items
     Products that are deleted from the database and have previously been ordered will still show on previous order details but be marked as discontinued. The item name will not link to a product page and the placeholder image will be used for the product.
 
+    | Order History Showing Discontinued Product |
+    | :---: |
+    | ![Desktop Order History With Discontinued Product](documentation/features/profile_page/desktop_order_history_discontinued.png "discontinued product") |
+
 - ### Support and Help Pages
     Treasures Untold has the following support pages for users which can be accessed via the navigation menus or the links at the bottom of each page:
     - FAQs
