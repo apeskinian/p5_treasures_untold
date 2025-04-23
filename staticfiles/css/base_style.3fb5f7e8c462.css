@@ -1,7 +1,7 @@
 /* Treasures Untold - CSS styling*/
 /* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cantora+One&family=Pirata+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('/static/css/custom_colours.css');
+@import url("/static/css/custom_colours.bbbc0e90baab.css");
 
 /* Configuring custom colours */
 :root {
@@ -195,7 +195,7 @@ main {
     position: relative;
     height: 40vw;
     max-height: 350px;
-    background: url('/static/images/banner_small.webp') no-repeat top center;
+    background: url("/static/images/banner_small.8fb6f10b19f9.webp") no-repeat top center;
     background-color: #0B0C13;
     background-size: auto min(40vw, 350px);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
@@ -377,7 +377,7 @@ main {
 
 #support-newsletter {
     background-color: var(--tu-red);
-    background-image: url('/static/images/pattern_lamp.svg');
+    background-image: url("/static/images/pattern_lamp.bcf8b9799f25.svg");
     background-size: 40px 40px;
     height: 160px;
     display: flex;
@@ -421,7 +421,7 @@ main {
 
 #support-social {
     background-color: var(--tu-green);
-    background-image: url('/static/images/pattern_hook.svg');
+    background-image: url("/static/images/pattern_hook.0134a18ead16.svg");
     background-size: 40px 40px;
     height: 120px;
     font-size: 40px;
@@ -430,7 +430,7 @@ main {
 
 #support-links {
     background-color: var(--tu-green);
-    background-image: url('/static/images/pattern_broom.svg');
+    background-image: url("/static/images/pattern_broom.5fc380b65d60.svg");
     background-size: 40px 40px;
     height: 120px;
     color: var(--tu-white);
@@ -525,7 +525,7 @@ main {
 /* Media queries for larger screens. */
 @media screen and (min-width: 576px) {
     .top-nav {
-        background: url('/static/images/banner.webp') no-repeat top center;
+        background: url("/static/images/banner.72b3c6690b08.webp") no-repeat top center;
         background-color: #0B0C13;
         background-size: auto min(40vw, 350px);
     }
