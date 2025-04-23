@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col flex-grow-1 d-flex flex-column">
-                        <strong>{{ item.product.name }}</strong>
+                        <strong><a href="{% url 'product_detail' item.product.id %}" class="text-link">{{ item.product.name }}</a></strong>
                         <small>{{ item.product.sku }}</small>
                         {% if rewards %}
                             {% if 'magic-lamp' in rewards %}

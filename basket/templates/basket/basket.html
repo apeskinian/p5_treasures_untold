@@ -30,7 +30,7 @@
                     <div class="info-column col">
                         <div class="details-row row mb-2">
                             <div class="product-info col d-flex flex-column">
-                                <strong>{{ item.product.name }}</strong>
+                                <strong><a href="{% url 'product_detail' item.product.id %}" class="text-link">{{ item.product.name }}</a></strong>
                                 <small>{{ item.product.sku }}</small>
                                 {% if item.product.price == 0.00 %}
                                     <small class="m-0 text-danger text-decoration-line-through">£{{ item.original_price }}</small>
