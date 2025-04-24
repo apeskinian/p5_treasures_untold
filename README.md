@@ -4,7 +4,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold/commits/main)
 [![GitHub repo size](https://img.shields.io/github/repo-size/apeskinian/p5_treasures_untold)](https://www.github.com/apeskinian/p5_treasures_untold)
 
-**An online store for all your magical Disney items!**
+## An online store for all your magical Disney items!
 
 Look at your stuff..  
 Isn't it neat?  
