@@ -779,7 +779,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - Price
     - Stock
 
-    All the above criteria are required to create a new product, additionally the product can be set as unique via the checkbox and an image can be uploaded using the 'Select New Image' button.
+    All the above criteria are required to create and edit products, additionally the product can be set as unique via the checkbox and an image can be uploaded using the 'Select New Image' button.
     
     Any selected image will then be shown and if no image is selected, a placeholder is used.
 
@@ -790,6 +790,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     | Mobile Product Creation | Desktop Product Creation |
     | :---: | :---: |
     | ![Mobile Product Creation](documentation/features/dashboard/product_admin/mobile_product_add.png "Mobile product creation") | ![Desktop Product Creation](documentation/features/dashboard/product_admin/desktop_product_add.png "Desktop product creation") |
+
+    :bulb: **NOTE:**
+    The realm field for the product model is set to `on_delete=models.SET_NULL` to prevent loss of products when a realm is deleted. The products can remain without a realm but if they are edited, a realm will need to be assigned to them.
     
     #### SKU Generation
 

@@ -65,17 +65,17 @@ class Product(models.Model):
     - `image (CloudinaryField)`: The image associated with the product.
     - `date_added (DateField)`: Date the product was added to inventory.
     - `unique_stock (BooleanField)`: Indicates whether the product is a
-      one-of-a-kind item (stock cannot exceed 1).
+        one-of-a-kind item (stock cannot exceed 1).
 
     **Methods:**
     - `_generate_sku()`: Generates a unique SKU using UUID and product data.
     - `image_url() (property)`: Returns the correct image URL based on debug
-      mode and hosting conditions.
+        mode and hosting conditions.
     - `save()`: Assigns an SKU before saving if one is not already present.
     - `__str__()`: Returns the name of the product as a string.
     - `realm_name()`: Returns the realm name formatted for display.
     - `clean()`: Validates stock levels for unique items to prevent more than
-      one in stock.
+        one in stock.
     """
     class Meta:
         ordering = [Lower('realm__name')]
