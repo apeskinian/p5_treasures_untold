@@ -12,7 +12,13 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-center">
-                    <button class="btn btn-green w-25" type="submit">Submit</button>
+                    <button id="message-submit-button" type="submit" class="btn btn-green w-25">
+                        <span class="spinner d-none" id="spinner">
+                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                            <span role="status"></span>
+                        </span>
+                        <span id="btn-text">Submit</span>
+                    </button>
                 </div>
             </form>
         </div>

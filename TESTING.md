@@ -99,6 +99,7 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 | products/static/products/script | [products_script.js](products/static/products/script/products_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_products_script.png "Valid products_script.js") | No errors or warnings found. |
 | profiles/static/profiles/script | [profiles_script.js](profiles/static/profiles/script/profiles_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_profiles_script.png "Valid profiles_script.js") | No errors, 'bootstrap' shown as undefined variable. |
 | staff/static/staff/script | [staff_script.js](staff/static/staff/script/staff_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_staff_script.png "Valid staff_script.js") | No errors, 'bootstrap' shown as undefined variable. |
+| support/static/support/script | [support_script.js](support/static/support/script/support_script.js) | ![JSHint Validation](documentation/testing/validation/script/valid_support_script.png "Valid support_script.js") | No errors or warnings found. |
 
 ### Python
 

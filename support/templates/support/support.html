@@ -35,3 +35,9 @@
 </div>
 {% include 'includes/info_section.html' %}
 {% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    <!-- Load profiles_script.js -->
+    <script src="{% static 'support/script/support_script.js' %}"></script>
+{% endblock %}
