@@ -9,7 +9,10 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.html import strip_tags
+from django.views.decorators.cache import cache_control
 from django.views.decorators.http import require_POST
+
+from profiles.models import UserProfile
 
 from .forms import ContactForm, SubscriberForm
 from .models import Faqs, FaqsTopics, Subscriber
@@ -169,6 +172,7 @@ def faq(request):
     return render(request, template, context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def contact(request):
     """
     Displays the contact us page for the site where users can submit a
@@ -226,8 +230,20 @@ def contact(request):
                 'please ensure the form is valid'
             )
     else:
-        # Initiate form.
-        contact_form = ContactForm()
+        # Initiate form prefilling with users details if logged in.
+        if request.user.is_authenticated:
+            try:
+                user = UserProfile.objects.get(user=request.user)
+                user_name = user.default_full_name
+            except UserProfile.DoesNotExist:
+                user_name = request.user.get_username()
+            initial_data = {
+                'name': user_name,
+                'email': request.user.email,
+            }
+            contact_form = ContactForm(initial=initial_data)
+        else:
+            contact_form = ContactForm()
 
     # Set up view parameters.
     template = 'support/support.html'
