@@ -234,7 +234,9 @@ def contact(request):
         if request.user.is_authenticated:
             try:
                 user = UserProfile.objects.get(user=request.user)
-                user_name = user.default_full_name
+                user_name = (
+                    user.default_full_name or request.user.get_username()
+                )
             except UserProfile.DoesNotExist:
                 user_name = request.user.get_username()
             initial_data = {

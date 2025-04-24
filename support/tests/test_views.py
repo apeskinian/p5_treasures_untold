@@ -1,10 +1,14 @@
 from datetime import timedelta
 from unittest.mock import MagicMock, patch
 
+from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
+
+from profiles.models import UserProfile
+from support.forms import ContactForm
 
 from ..models import Subscriber
 from ..views import generate_confirmation_token
@@ -39,6 +43,22 @@ class FaqTests(TestCase):
 
 
 class ContactTests(TestCase):
+    def setUp(self):
+        """
+        Create instances of:
+        - :model:`auth.User`
+        - :model:`profiles.UserProfile`
+        for tests.
+        """
+        self.user = User.objects.create(
+            username='TessTyuza',
+            password='testpass',
+            email='tess@tyuza.com'
+        )
+        self.profile, created = (
+            UserProfile.objects.get_or_create(user=self.user)
+        )
+
     def test_contact_form_get(self):
         """
         Testing the contact view.
@@ -50,6 +70,45 @@ class ContactTests(TestCase):
         # Assertions
         self.assertTemplateUsed(response, 'support/support.html')
         self.assertEqual(response.context['title'], 'Contact Us')
+
+    def test_contact_form_get_with_prefilled_details(self):
+        """
+        Testing the form is prefilled with a logged in users email and username
+        """
+        self.client.force_login(self.user)
+        self.url = reverse('contact')
+        response = self.client.get(self.url)
+        form = response.context.get('form')
+
+        # Assertions
+        self.assertTemplateUsed(response, 'support/support.html')
+        self.assertEqual(response.context['title'], 'Contact Us')
+        self.assertIsInstance(form, ContactForm)
+        self.assertEqual(form['name'].value(), 'TessTyuza')
+        self.assertEqual(form['email'].value(), 'tess@tyuza.com')
+
+    def test_contact_form_get_with_simulated_exception(self):
+        """
+        Testing the form is prefilled with a logged in users username with a
+        simulated exception for finding the :model:`Profiles.UserProfile`
+        instance for the user.
+        """
+        self.client.force_login(self.user)
+        self.url = reverse('contact')
+
+        with patch(
+            'profiles.models.UserProfile.objects.get',
+            side_effect=UserProfile.DoesNotExist()
+        ):
+            response = self.client.get(self.url)
+        form = response.context.get('form')
+
+        # Assertions
+        self.assertTemplateUsed(response, 'support/support.html')
+        self.assertEqual(response.context['title'], 'Contact Us')
+        self.assertIsInstance(form, ContactForm)
+        self.assertEqual(form['name'].value(), 'TessTyuza')
+        self.assertEqual(form['email'].value(), 'tess@tyuza.com')
 
     @patch('support.views.send_mail')
     def test_contact_form_post_valid_form(self, mock_send_mail):
