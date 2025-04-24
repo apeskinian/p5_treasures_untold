@@ -1016,7 +1016,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
     - **PENDING**: The user has not yet confirmed their subscription by clicking on the link. The token to activate their subscription is still valid. They will not receive newsletters until they confirm their subscription.
     - **EXPIRED**: The user has not yet confirmed their subscription and the token has expired.
 
-    :warning: **NOTE**: The code to filter out subscriber status on the dashboard is currently set to 365 days before they expire. This is purely for demonstration purposes to show examples of pending subscribers. The actual subscription tokens are still set to expire after 24 hours. :warning:
+    :warning: **NOTE**: The code to filter out subscriber status on the dashboard is currently set to 365 days before they expire. This is purely for demonstration purposes to show examples of pending subscribers. The actual subscription tokens are still set to expire after 24 hours. If a user clicks on their confirmation link after 24hrs they will receive the message that their link has expired and asked to try again. Their email will also be removed from the list in the dashboard. :warning:
 
     | Subscribers |
     | :---: |
