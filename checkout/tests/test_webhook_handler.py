@@ -45,10 +45,11 @@ def dot_dict(d):
 
 
 class StripeHandlerTests(TestCase):
+    @patch('time.sleep')
     @patch('checkout.webhook_handler.stripe.Charge.retrieve')
     @patch('checkout.webhook_handler.send_mail')
     def test_handle_payment_intent_succeeded_order_not_found(
-        self, mock_send_mail, mock_charge_retrieve
+        self, mock_send_mail, mock_charge_retrieve, mock_sleep
     ):
         """
         Testing order creation from webhook when order cannot be found from
@@ -72,6 +73,8 @@ class StripeHandlerTests(TestCase):
         mock_charge.billing_details.name = 'Tess Tyuza'
         mock_charge.latest_charge = 'pidtest'
         mock_charge_retrieve.return_value = mock_charge
+        # Set mock time
+        mock_sleep.return_value = None
         # Create client, user and urls.
         self.client = Client()
         self.user = User.objects.create(
@@ -148,10 +151,11 @@ class StripeHandlerTests(TestCase):
             response.content.decode()
         )
 
+    @patch('time.sleep')
     @patch('checkout.webhook_handler.stripe.Charge.retrieve')
     @patch('checkout.webhook_handler.send_mail')
     def test_handle_payment_intent_succeeded_order_not_found_no_session(
-        self, mock_send_mail, mock_charge_retrieve
+        self, mock_send_mail, mock_charge_retrieve, mock_sleep
     ):
         """
         Testing order creation from webhook when order cannot be found from
@@ -174,6 +178,8 @@ class StripeHandlerTests(TestCase):
         mock_charge.billing_details.name = 'Tess Tyuza'
         mock_charge.latest_charge = 'pidtest'
         mock_charge_retrieve.return_value = mock_charge
+        # Mock time.sleep
+        mock_sleep.return_value = None
         # Create client, user and urls.
         self.client = Client()
         self.user = User.objects.create(
@@ -314,9 +320,10 @@ class StripeHandlerTests(TestCase):
         self.assertEqual(response.status_code, 500)
         self.assertIn('User not found', response.content.decode())
 
+    @patch('time.sleep')
     @patch('checkout.webhook_handler.stripe.Charge.retrieve')
     def test_handle_payment_intent_succeeded_product_not_found(
-        self, mock_charge_retrieve
+        self, mock_charge_retrieve, mock_sleep
     ):
         """
         Testing webhook exception handling for errors in creating the order.
@@ -331,6 +338,8 @@ class StripeHandlerTests(TestCase):
         mock_charge.billing_details.name = 'Tess Tyuza'
         mock_charge.latest_charge = 'pidtest'
         mock_charge_retrieve.return_value = mock_charge
+        # Create mock sleep
+        mock_sleep.return_value = None
         # Create client, user and urls.
         self.client = Client()
         self.user = User.objects.create(
