@@ -1,11 +1,15 @@
+import os
 import random
 
 from django.db.models.functions import TruncDate
+from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.cache import cache_control
 
 from products.models import Product, Realm
 from profiles.models import UserProfile
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -74,3 +78,17 @@ def index(request):
     }
 
     return render(request, template, context)
+
+
+def robots_txt(request):
+    return FileResponse(
+        open(os.path.join(BASE_DIR, 'home/static/home/robots.txt'), 'rb'),
+        content_type='text/plain'
+    )
+
+
+def sitemap_xml(request):
+    return FileResponse(
+        open(os.path.join(BASE_DIR, 'home/static/home/sitemap.xml'), 'rb'),
+        content_type='application/xml'
+    )

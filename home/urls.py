@@ -6,4 +6,6 @@ from . import views
 urlpatterns = [
     # View for the homepage.
     path('', views.index, name='home'),
+    path('robots.txt', views.robots_txt),
+    path('sitemap.xml', views.sitemap_xml)
 ]

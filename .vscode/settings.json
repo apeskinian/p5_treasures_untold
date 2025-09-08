@@ -15,4 +15,7 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "One Candy",
    "terminal.integrated.gpuAcceleration": "canvas",
+   "cSpell.words": [
+      "htmlcov"
+   ],
 }

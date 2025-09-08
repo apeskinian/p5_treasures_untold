@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /basket/
+Disallow: /checkout/
+Disallow: /staff/
+Disallow: /profile/
+Disallow: /?*
+Sitemap: https://treasures.apeskinian.com/sitemap.xml

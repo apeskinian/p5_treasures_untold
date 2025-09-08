@@ -10,6 +10,7 @@ cloudinary_python.txt
 .flake8
 *.sqlite3
 *.DS_Store
+.venv
 .venv_mac
 .venv_win
 static/images/dev_mode/
