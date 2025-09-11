@@ -1,0 +1,7 @@
+[flake8]
+exclude =
+    migrations,
+    .vscode,
+    */migrations/*,  # Ensures it also ignores migrations in subdirectories
+    .venv,           # Optionally ignore your virtual environment
+    __pycache__      # Ignore Python cache files
